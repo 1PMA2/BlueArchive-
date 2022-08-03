@@ -1,5 +1,29 @@
 #pragma once
 
+#define GET_INSTANCE(CLASSNAME)	[](){											\
+	CLASSNAME*	pInstance = CLASSNAME::Get_Instance();							\
+	if(nullptr == pInstance) {													\
+	char	szMessage[MAX_PATH] = "";											\
+	strcpy_s(szMessage, typeid(CLASSNAME).name());								\
+	strcat_s(szMessage, "is nullptr");											\
+	MessageBoxA(0, szMessage, nullptr, MB_OK);}									\
+	else {																		\
+	pInstance->AddRef();}														\
+	return pInstance;															\
+	}();
+
+#define RELEASE_INSTANCE(CLASSNAME)	[](){										\
+	CLASSNAME*	pInstance = CLASSNAME::Get_Instance();							\
+	if(nullptr == pInstance) {													\
+	char	szMessage[MAX_PATH] = "";											\
+	strcpy_s(szMessage, typeid(CLASSNAME).name());								\
+	strcat_s(szMessage, "is nullptr");											\
+	MessageBoxA(0, szMessage, nullptr, MB_OK);}									\
+	else {																		\
+	pInstance->Release();}														\
+	}();
+
+
 #ifdef ENGINE_EXPORTS
 #define ENGINE_DLL _declspec(dllexport)
 #else

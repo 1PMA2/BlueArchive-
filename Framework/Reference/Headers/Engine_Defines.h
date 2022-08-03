@@ -6,6 +6,7 @@
 #include <d3d11.h>
 #include <DirectXMath.h>
 
+#include <typeinfo.h>
 using namespace DirectX;
 
 #define DIRECTINPUT_VERSION  0x0800

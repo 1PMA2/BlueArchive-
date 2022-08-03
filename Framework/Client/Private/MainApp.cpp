@@ -17,7 +17,7 @@ HRESULT CMainApp::Initialize()
 	GraphicDesc.hWnd = g_hWnd;
 	GraphicDesc.iWinCX = g_iWinCX;
 	GraphicDesc.iWinCY = g_iWinCY;
-	GraphicDesc.isWindowMode = GRAPHICDESC::MODE_FULL;
+	GraphicDesc.isWindowMode = GRAPHICDESC::MODE_WIN;
 
 	if (FAILED(m_pGameInstance->Initialize_Engine(g_hInst, LEVEL_END, GraphicDesc, &m_pDevice, &m_pContext)))
 		return E_FAIL;	
@@ -45,7 +45,7 @@ HRESULT CMainApp::Render()
 		nullptr == m_pRenderer*/)
 		return E_FAIL;
 
-	m_pGameInstance->Clear_BackBuffer_View(_float4(0.f, 0.f, 1.f, 1.f));
+	m_pGameInstance->Clear_BackBuffer_View(_float4(0.5f, 0.5f, 0.5f, 1.f));
 	m_pGameInstance->Clear_DepthStencil_View();
 	
 	// m_pRenderer->Draw_RenderGroup();

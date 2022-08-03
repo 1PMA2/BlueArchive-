@@ -3,8 +3,8 @@
 
 #include "stdafx.h"
 #include "Client.h"
-
 #include "../Public/MainApp.h"
+#include "GameInstance.h"
 
 #define MAX_LOADSTRING 100
 
@@ -46,9 +46,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (nullptr == pMainApp)
 		return FALSE;
 
+	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
+
+	if (FAILED(pGameInstance->Add_Timer(TEXT("Timer_Default"))))
+		return FALSE;
+	if (FAILED(pGameInstance->Add_Timer(TEXT("Timer_120"))))
+		return FALSE;
+
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
 
     MSG msg;
+
+	_float fTimeAcc = 0.f;
 
     // 기본 메시지 루프입니다.
 	while (true)
@@ -65,11 +74,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			}
 		}
 
-		pMainApp->Tick(0.0);
-		pMainApp->Render();
+		fTimeAcc += pGameInstance->Compute_Timer(TEXT("Timer_Default"));
+
+		if (fTimeAcc > 1.f / 120.f)
+		{
+			pMainApp->Tick(pGameInstance->Compute_Timer(TEXT("Timer_120")));
+			pMainApp->Render();
+
+			fTimeAcc = 0.f;
+		}
 	}
 
-    
+	RELEASE_INSTANCE(CGameInstance);
 
 	Safe_Release(pMainApp);
 
