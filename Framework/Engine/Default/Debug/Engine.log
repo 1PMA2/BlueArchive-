@@ -1,0 +1,58 @@
+﻿  Timer_Manager.cpp
+d:\jung\128\framework\engine\private\timer_manager.cpp(2): fatal error C1083: 포함 파일을 열 수 없습니다. 'Timer.h': No such file or directory
+  Timer.cpp
+d:\jung\128\framework\engine\private\timer.cpp(2): fatal error C1083: 포함 파일을 열 수 없습니다. 'Timer.h': No such file or directory
+  Renderer.cpp
+d:\jung\128\framework\engine\private\renderer.cpp(2): fatal error C1083: 포함 파일을 열 수 없습니다. 'GameObject.h': No such file or directory
+  Object_Manager.cpp
+d:\jung\128\framework\engine\private\object_manager.cpp(2): fatal error C1083: 포함 파일을 열 수 없습니다. 'Layer.h': No such file or directory
+  Level_Manager.cpp
+d:\jung\128\framework\engine\private\level_manager.cpp(2): fatal error C1083: 포함 파일을 열 수 없습니다. 'Level.h': No such file or directory
+  Level.cpp
+d:\jung\128\framework\engine\private\level.cpp(26): error C2065: 'm_pGraphic_Device': 선언되지 않은 식별자입니다.
+  Layer.cpp
+d:\jung\128\framework\engine\private\layer.cpp(2): fatal error C1083: 포함 파일을 열 수 없습니다. 'GameObject.h': No such file or directory
+  Input_Device.cpp
+  Graphic_Device.cpp
+d:\jung\128\framework\engine\public\graphic_device.h(15): error C2039: 'WINMODE': 'Engine::tagGraphicDesc'의 멤버가 아닙니다.
+  d:\jung\128\framework\engine\public\engine_struct.h(42): note: 'Engine::tagGraphicDesc' 선언을 참조하십시오.
+d:\jung\128\framework\engine\public\graphic_device.h(15): error C2061: 구문 오류: 식별자 'WINMODE'
+d:\jung\128\framework\engine\public\graphic_device.h(34): error C2039: 'WINMODE': 'Engine::tagGraphicDesc'의 멤버가 아닙니다.
+  d:\jung\128\framework\engine\public\engine_struct.h(42): note: 'Engine::tagGraphicDesc' 선언을 참조하십시오.
+d:\jung\128\framework\engine\public\graphic_device.h(34): error C2061: 구문 오류: 식별자 'WINMODE'
+d:\jung\128\framework\engine\private\graphic_device.cpp(14): error C2039: 'WINMODE': 'Engine::tagGraphicDesc'의 멤버가 아닙니다.
+  d:\jung\128\framework\engine\public\engine_struct.h(42): note: 'Engine::tagGraphicDesc' 선언을 참조하십시오.
+d:\jung\128\framework\engine\private\graphic_device.cpp(14): error C2061: 구문 오류: 식별자 'WINMODE'
+d:\jung\128\framework\engine\private\graphic_device.cpp(27): error C2065: 'WinMode': 선언되지 않은 식별자입니다.
+d:\jung\128\framework\engine\private\graphic_device.cpp(27): error C2065: 'iWinCX': 선언되지 않은 식별자입니다.
+d:\jung\128\framework\engine\private\graphic_device.cpp(27): error C2065: 'iWinCY': 선언되지 않은 식별자입니다.
+d:\jung\128\framework\engine\private\graphic_device.cpp(33): error C2065: 'iWinCX': 선언되지 않은 식별자입니다.
+d:\jung\128\framework\engine\private\graphic_device.cpp(33): error C2065: 'iWinCY': 선언되지 않은 식별자입니다.
+d:\jung\128\framework\engine\private\graphic_device.cpp(43): error C2065: 'iWinCX': 선언되지 않은 식별자입니다.
+d:\jung\128\framework\engine\private\graphic_device.cpp(44): error C2065: 'iWinCY': 선언되지 않은 식별자입니다.
+d:\jung\128\framework\engine\private\graphic_device.cpp(50): error C2065: 'ppDeviceOut': 선언되지 않은 식별자입니다.
+d:\jung\128\framework\engine\private\graphic_device.cpp(51): error C2065: 'ppDeviceContextOut': 선언되지 않은 식별자입니다.
+d:\jung\128\framework\engine\private\graphic_device.cpp(92): error C2039: 'WINMODE': 'Engine::tagGraphicDesc'의 멤버가 아닙니다.
+  d:\jung\128\framework\engine\public\engine_struct.h(42): note: 'Engine::tagGraphicDesc' 선언을 참조하십시오.
+d:\jung\128\framework\engine\private\graphic_device.cpp(92): error C2061: 구문 오류: 식별자 'WINMODE'
+d:\jung\128\framework\engine\private\graphic_device.cpp(106): error C2065: 'iWinCX': 선언되지 않은 식별자입니다.
+d:\jung\128\framework\engine\private\graphic_device.cpp(107): error C2065: 'iWinCY': 선언되지 않은 식별자입니다.
+d:\jung\128\framework\engine\private\graphic_device.cpp(119): error C2065: 'eWinMode': 선언되지 않은 식별자입니다.
+  GameObject.cpp
+d:\jung\128\framework\engine\private\gameobject.cpp(2): fatal error C1083: 포함 파일을 열 수 없습니다. 'GameInstance.h': No such file or directory
+  GameInstance.cpp
+d:\jung\128\framework\engine\public\graphic_device.h(15): error C2039: 'WINMODE': 'Engine::tagGraphicDesc'의 멤버가 아닙니다.
+  d:\jung\128\framework\engine\public\engine_struct.h(42): note: 'Engine::tagGraphicDesc' 선언을 참조하십시오.
+d:\jung\128\framework\engine\public\graphic_device.h(15): error C2061: 구문 오류: 식별자 'WINMODE'
+d:\jung\128\framework\engine\public\graphic_device.h(34): error C2039: 'WINMODE': 'Engine::tagGraphicDesc'의 멤버가 아닙니다.
+  d:\jung\128\framework\engine\public\engine_struct.h(42): note: 'Engine::tagGraphicDesc' 선언을 참조하십시오.
+d:\jung\128\framework\engine\public\graphic_device.h(34): error C2061: 구문 오류: 식별자 'WINMODE'
+d:\jung\128\framework\engine\public\component_manager.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'Shader.h': No such file or directory
+  Component_Manager.cpp
+d:\jung\128\framework\engine\public\component_manager.h(6): fatal error C1083: 포함 파일을 열 수 없습니다. 'Shader.h': No such file or directory
+  Component.cpp
+d:\jung\128\framework\engine\private\component.cpp(33): error C2065: 'm_pGraphic_Device': 선언되지 않은 식별자입니다.
+  Camera.cpp
+d:\jung\128\framework\engine\public\camera.h(4): fatal error C1083: 포함 파일을 열 수 없습니다. 'Transform.h': No such file or directory
+  Base.cpp
+  코드를 생성하고 있습니다...
