@@ -49,6 +49,30 @@
     <Filter Include="98.Default">
       <UniqueIdentifier>{65376df2-2a03-48c0-b9a4-e1bcd404fb50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Level">
+      <UniqueIdentifier>{93c3bc83-1c12-4e53-abe3-650047b4570e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Sensei">
+      <UniqueIdentifier>{76e28b5f-23f6-49b1-bd93-ad9be73b3def}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. GameObject">
+      <UniqueIdentifier>{d846d80f-85d7-4c4a-9d0c-4bb570f3ba7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Level\Logo">
+      <UniqueIdentifier>{567e531c-ac5d-4f79-b5b9-411dd866638a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Level\Loading">
+      <UniqueIdentifier>{e31462cc-ef6e-4f27-a8fa-53a9cd6bbe84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Level\Loading\Loader">
+      <UniqueIdentifier>{5ac91282-fdf7-4b79-b0a2-5599ad1b21f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Level\Lobby">
+      <UniqueIdentifier>{12b9408b-f5cf-4dc1-96c2-cb8bc4e2796c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Level\GamePlay">
+      <UniqueIdentifier>{a85d72b1-8ffc-48c1-b238-6b8532f07489}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
