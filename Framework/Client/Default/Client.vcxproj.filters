@@ -31,6 +31,9 @@
     <ClInclude Include="..\Public\Level_Lobby.h">
       <Filter>02. Level\Lobby</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Level_GamePlay.h">
+      <Filter>02. Level\GamePlay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -53,6 +56,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Level_Lobby.cpp">
       <Filter>02. Level\Lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_GamePlay.cpp">
+      <Filter>02. Level\GamePlay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +102,9 @@
     </Filter>
     <Filter Include="02. Level\GamePlay">
       <UniqueIdentifier>{a85d72b1-8ffc-48c1-b238-6b8532f07489}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Level\Gacha">
+      <UniqueIdentifier>{5cb62ca9-dafc-4a11-8778-fd1e7c39fcff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

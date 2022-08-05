@@ -33,6 +33,9 @@ unsigned int APIENTRY LoadingMain(void* pArg)
 	case LEVEL_LOBBY:
 		hr = pLoader->Loading_ForLobbyLevel();
 		break;
+	case LEVEL_GAMEPLAY:
+		hr = pLoader->Loading_ForGamePlayLevel();
+		break;
 	}
 
 	if (FAILED(hr))

@@ -28,7 +28,7 @@ void CLevel_Lobby::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
 
-	/*if (GetKeyState(VK_SPACE) & 0x8000)
+	if (GetKeyState(VK_SPACE) & 0x8000)
 	{
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
@@ -37,7 +37,7 @@ void CLevel_Lobby::Tick(_float fTimeDelta)
 			return;
 
 		Safe_Release(pGameInstance);
-	}*/
+	}
 
 
 }
