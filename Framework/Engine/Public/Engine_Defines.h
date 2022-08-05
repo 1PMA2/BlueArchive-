@@ -1,10 +1,13 @@
 #pragma once
 
-#pragma warning (disable : 4005)
-#pragma warning (disable : 4251)
+//#pragma warning (disable : 4005)
+//#pragma warning (disable : 4251)
 
 #include <d3d11.h>
 #include <DirectXMath.h>
+
+#include <Effects11/d3dx11effect.h>
+#include <d3dcompiler.h>
 
 #include <typeinfo.h>
 using namespace DirectX;

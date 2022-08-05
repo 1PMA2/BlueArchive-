@@ -106,6 +106,9 @@
     <Filter Include="02. Level\Gacha">
       <UniqueIdentifier>{5cb62ca9-dafc-4a11-8778-fd1e7c39fcff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. GameObject\BackGround">
+      <UniqueIdentifier>{9eb413cb-e638-4128-95af-4837f2a28c25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
