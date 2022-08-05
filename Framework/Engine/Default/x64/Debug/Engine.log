@@ -1,23 +1,22 @@
-﻿  VIBuffer_Rect.cpp
-  VIBuffer.cpp
-  Timer_Manager.cpp
-  Timer.cpp
-  Renderer.cpp
-  Object_Manager.cpp
-  Level_Manager.cpp
-  Level.cpp
-  Layer.cpp
-  Input_Device.cpp
+﻿  Base.cpp
+  Camera.cpp
+  Component.cpp
+  Component_Manager.cpp
+  GameInstance.cpp
+  GameObject.cpp
   Graphic_Device.cpp
+  Input_Device.cpp
+  Layer.cpp
+  Level.cpp
+  Level_Manager.cpp
+  Object_Manager.cpp
+  Renderer.cpp
+  Timer.cpp
+  Timer_Manager.cpp
+  VIBuffer.cpp
 c:\users\slave\documents\github\bluearchive\framework\engine\private\graphic_device.cpp(43): warning C4244: '=': 'Engine::_uint'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 c:\users\slave\documents\github\bluearchive\framework\engine\private\graphic_device.cpp(44): warning C4244: '=': 'Engine::_uint'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  GameObject.cpp
-  GameInstance.cpp
-  Component_Manager.cpp
-  Component.cpp
-  Camera.cpp
-  Base.cpp
-  코드를 생성하고 있습니다...
+  VIBuffer_Rect.cpp
      ..\Bin\Engine.lib 라이브러리 및 ..\Bin\Engine.exp 개체를 생성하고 있습니다.
   Engine.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Engine\Default\..\Bin\Engine.dll
   Engine.vcxproj -> ..\Bin\Engine.pdb (Full PDB)
