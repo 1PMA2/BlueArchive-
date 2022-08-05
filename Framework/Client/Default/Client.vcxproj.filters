@@ -19,6 +19,18 @@
     <ClInclude Include="..\Public\Client_Defines.h">
       <Filter>99.Defines</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Level_Logo.h">
+      <Filter>02. Level\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Level_Loading.h">
+      <Filter>02. Level\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Loader.h">
+      <Filter>02. Level\Loading\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Level_Lobby.h">
+      <Filter>02. Level\Lobby</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -29,6 +41,18 @@
     </ClCompile>
     <ClCompile Include="..\Private\MainApp.cpp">
       <Filter>00.MainApp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Logo.cpp">
+      <Filter>02. Level\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Loading.cpp">
+      <Filter>02. Level\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Loader.cpp">
+      <Filter>02. Level\Loading\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Lobby.cpp">
+      <Filter>02. Level\Lobby</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

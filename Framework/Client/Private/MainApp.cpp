@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "..\Public\MainApp.h"
 #include "GameInstance.h"
-
+#include "Level_Loading.h"
 
 CMainApp::CMainApp()
 	: m_pGameInstance(CGameInstance::Get_Instance())
@@ -61,15 +61,15 @@ HRESULT CMainApp::Render()
 
 HRESULT CMainApp::Open_Level(LEVEL eLevelID)
 {
-	/*if (nullptr == m_pGameInstance)
+	if (nullptr == m_pGameInstance)
 		return E_FAIL;
 
-	CLevel_Loading*		pLevel_Loading = CLevel_Loading::Create(m_pGraphic_Device, eLevelID);
+	CLevel_Loading*		pLevel_Loading = CLevel_Loading::Create(m_pDevice, m_pContext, eLevelID);
 	if (nullptr == pLevel_Loading)
 		return E_FAIL;
 
 	if (FAILED(m_pGameInstance->Open_Level(LEVEL_LOADING, pLevel_Loading)))
-		return E_FAIL;*/
+		return E_FAIL;
 
 	return S_OK;
 }
