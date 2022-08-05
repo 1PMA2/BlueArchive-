@@ -2,7 +2,6 @@
 
 CBase::CBase()
 {
-	int a = 10;
 }
 
 unsigned long CBase::AddRef()

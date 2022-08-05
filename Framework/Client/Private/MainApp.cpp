@@ -36,7 +36,8 @@ void CMainApp::Tick(float fTimeDelta)
 	if (nullptr == m_pGameInstance)
 		return;
 
-	m_pGameInstance->Tick_Engine(fTimeDelta);
+	m_pGameInstance->Tick_Engine(fTimeDelta)
+		;
 }
 
 HRESULT CMainApp::Render()
