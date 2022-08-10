@@ -9,10 +9,11 @@ class ENGINE_DLL CShader final : public CComponent
 public:
 	typedef struct tagPasses
 	{
-		ID3DX11EffectPass*			pPass = nullptr;
+		ID3DX11EffectPass*			pPass = nullptr;		
 		ID3D11InputLayout*			pInputLayout = nullptr;
 	}PASSDESC;
 
+	
 
 private:
 	CShader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
@@ -33,6 +34,8 @@ private:
 	vector<PASSDESC>				m_Passes;
 	typedef vector<PASSDESC>		PASSES;
 
+
+
 public:
 	static CShader* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, const _tchar* pShaderFilePath, const D3D11_INPUT_ELEMENT_DESC* pElements, _uint iNumElement);
 	virtual CComponent* Clone(void* pArg) override;
@@ -40,4 +43,3 @@ public:
 };
 
 END
-

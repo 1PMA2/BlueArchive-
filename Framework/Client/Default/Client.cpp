@@ -57,7 +57,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
-	_float fTimeAcc = 0.f;
+	_float		fTimeAcc = 0.f;
 
     // 기본 메시지 루프입니다.
 	while (true)
@@ -76,13 +76,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 		fTimeAcc += pGameInstance->Compute_Timer(TEXT("Timer_Default"));
 
-		if (fTimeAcc > 1.f / 60.f)
+		if (fTimeAcc > 1.f / 60.0f)
 		{
 			pMainApp->Tick(pGameInstance->Compute_Timer(TEXT("Timer_60")));
 			pMainApp->Render();
 
 			fTimeAcc = 0.f;
-		}
+		}		
 	}
 
 	RELEASE_INSTANCE(CGameInstance);

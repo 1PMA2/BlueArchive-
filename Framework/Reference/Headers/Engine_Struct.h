@@ -27,10 +27,10 @@ namespace Engine
 
 
 	typedef struct tagVertex_Texture
-	{
+	{		
 		XMFLOAT3		vPosition;
-		XMFLOAT2		vTexUV;
-	}VTXTEX;
+		XMFLOAT2		vTexUV;				
+	}VTXTEX;	
 
 	typedef struct ENGINE_DLL tagVertex_Texture_Declaration
 	{

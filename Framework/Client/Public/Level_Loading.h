@@ -1,4 +1,9 @@
 #pragma once
+
+/* 로더가 자우너을 로드하는 동안 화면에 뭔가를 보여줄꺼여. */
+/* 로더한테 계쏙 물어볼꺼야 끝났냐?? */
+/* 어 라고하면 다음레벨로 가자.고 */
+
 #include "Client_Defines.h"
 #include "Level.h"
 
@@ -25,4 +30,3 @@ public:
 };
 
 END
-

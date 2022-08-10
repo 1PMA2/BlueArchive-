@@ -67,6 +67,7 @@ private:
 	CComponent_Manager*				m_pComponent_Manager = nullptr;
 	CTimer_Manager*					m_pTimer_Manager = nullptr;
 
+
 public:
 	static void Release_Engine();
 	virtual void Free() override;

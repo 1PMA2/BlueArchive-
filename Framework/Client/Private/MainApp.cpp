@@ -3,6 +3,7 @@
 #include "GameInstance.h"
 #include "Level_Loading.h"
 
+
 CMainApp::CMainApp()
 	: m_pGameInstance(CGameInstance::Get_Instance())
 {
@@ -11,6 +12,8 @@ CMainApp::CMainApp()
 
 HRESULT CMainApp::Initialize()
 {
+	//D3D11_SAMPLER_DESC
+
 	GRAPHICDESC		GraphicDesc;
 	ZeroMemory(&GraphicDesc, sizeof(GRAPHICDESC));
 
@@ -36,8 +39,7 @@ void CMainApp::Tick(float fTimeDelta)
 	if (nullptr == m_pGameInstance)
 		return;
 
-	m_pGameInstance->Tick_Engine(fTimeDelta)
-		;
+	m_pGameInstance->Tick_Engine(fTimeDelta);
 }
 
 HRESULT CMainApp::Render()
@@ -46,7 +48,7 @@ HRESULT CMainApp::Render()
 		nullptr == m_pRenderer)
 		return E_FAIL;
 
-	m_pGameInstance->Clear_BackBuffer_View(_float4(0.5f, 0.5f, 0.5f, 1.f));
+	m_pGameInstance->Clear_BackBuffer_View(_float4(0.f, 0.f, 1.f, 1.f));
 	m_pGameInstance->Clear_DepthStencil_View();
 	
 	m_pRenderer->Draw_RenderGroup();
@@ -94,8 +96,8 @@ HRESULT CMainApp::Ready_Prototype_Component()
 	//	CTransform::Create(m_pGraphic_Device))))
 	//	return E_FAIL;
 
-	/* For.Prototype_Component_Shader_Rect */
-	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Shader_Rect"),
+	/* For.Prototype_Component_Shader_VtxTex */
+	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Shader_VtxTex"),
 		CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxTex.hlsl"), VTXTEX_DECLARATION::Element, VTXTEX_DECLARATION::iNumElements))))
 		return E_FAIL;
 

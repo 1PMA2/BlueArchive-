@@ -1,30 +1,32 @@
-﻿  Base.cpp
-  Camera.cpp
-  Component.cpp
-  Component_Manager.cpp
-  GameInstance.cpp
-  GameObject.cpp
-  Graphic_Device.cpp
-  Input_Device.cpp
-  Layer.cpp
-  Level.cpp
-  Level_Manager.cpp
-  Object_Manager.cpp
-  Renderer.cpp
-  Shader.cpp
-  Timer.cpp
-  Timer_Manager.cpp
-c:\users\slave\documents\github\bluearchive\framework\engine\private\graphic_device.cpp(43): warning C4244: '=': 'Engine::_uint'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\engine\private\graphic_device.cpp(44): warning C4244: '=': 'Engine::_uint'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  VIBuffer_Rect.cpp
   VIBuffer.cpp
-  VIBuffer_Rect.cpp
+  Timer_Manager.cpp
+  Timer.cpp
+  Shader.cpp
+  Renderer.cpp
+  Object_Manager.cpp
+  Level_Manager.cpp
+  Level.cpp
+  Layer.cpp
+  Input_Device.cpp
+  Graphic_Device.cpp
+c:\users\slave\desktop\desktop\7\4일차 - 셰이더 세팅2\engine\private\graphic_device.cpp(43): warning C4244: '=': 'Engine::_uint'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\desktop\desktop\7\4일차 - 셰이더 세팅2\engine\private\graphic_device.cpp(44): warning C4244: '=': 'Engine::_uint'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GameObject.cpp
+  GameInstance.cpp
   Engine_Struct.cpp
+  Component_Manager.cpp
+  Component.cpp
+  Camera.cpp
+  Base.cpp
+  코드를 생성하고 있습니다...
+  LINK : ..\Bin\Engine.dll을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
      ..\Bin\Engine.lib 라이브러리 및 ..\Bin\Engine.exp 개체를 생성하고 있습니다.
-Effects11d.lib(d3dxGlobal.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(d3dxGlobal.obj)' 또는 'C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-Effects11d.lib(EffectAPI.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(EffectAPI.obj)' 또는 'C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-Effects11d.lib(EffectLoad.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(EffectLoad.obj)' 또는 'C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-Effects11d.lib(EffectNonRuntime.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(EffectNonRuntime.obj)' 또는 'C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-Effects11d.lib(EffectReflection.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(EffectReflection.obj)' 또는 'C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-Effects11d.lib(EffectRuntime.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(EffectRuntime.obj)' 또는 'C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-  Engine.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Engine\Default\..\Bin\Engine.dll
+Effects11d.lib(d3dxGlobal.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(d3dxGlobal.obj)' 또는 'C:\Users\Slave\Desktop\Desktop\7\4일차 - 셰이더 세팅2\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+Effects11d.lib(EffectAPI.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(EffectAPI.obj)' 또는 'C:\Users\Slave\Desktop\Desktop\7\4일차 - 셰이더 세팅2\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+Effects11d.lib(EffectLoad.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(EffectLoad.obj)' 또는 'C:\Users\Slave\Desktop\Desktop\7\4일차 - 셰이더 세팅2\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+Effects11d.lib(EffectNonRuntime.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(EffectNonRuntime.obj)' 또는 'C:\Users\Slave\Desktop\Desktop\7\4일차 - 셰이더 세팅2\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+Effects11d.lib(EffectReflection.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(EffectReflection.obj)' 또는 'C:\Users\Slave\Desktop\Desktop\7\4일차 - 셰이더 세팅2\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+Effects11d.lib(EffectRuntime.obj) : warning LNK4099: 'Effects11d.pdb' PDB를 'Effects11d.lib(EffectRuntime.obj)' 또는 'C:\Users\Slave\Desktop\Desktop\7\4일차 - 셰이더 세팅2\Engine\Bin\Effects11d.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+  Engine.vcxproj -> C:\Users\Slave\Desktop\Desktop\7\4일차 - 셰이더 세팅2\Engine\Default\..\Bin\Engine.dll
   Engine.vcxproj -> ..\Bin\Engine.pdb (Full PDB)

@@ -12,8 +12,8 @@ protected:
 	virtual ~CVIBuffer() = default;
 
 public:
-	virtual HRESULT Initialize_Prototype();
-	virtual HRESULT Initialize(void* pArg);
+	virtual HRESULT Initialize_Prototype() override;
+	virtual HRESULT Initialize(void* pArg) override;
 
 public:
 	HRESULT Render();
@@ -34,16 +34,20 @@ protected:
 	DXGI_FORMAT						m_eIndexFormat;
 	D3D11_PRIMITIVE_TOPOLOGY		m_eToplogy;
 
+protected:
+	
+	
+
 
 protected:
 	HRESULT Create_VertexBuffer();
 	HRESULT Create_IndexBuffer();
 
+
+
 public:
 	virtual CComponent* Clone(void* pArg) = 0;
 	virtual void Free() override;
-
 };
 
 END
-

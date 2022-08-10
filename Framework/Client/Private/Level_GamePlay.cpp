@@ -35,7 +35,7 @@ HRESULT CLevel_GamePlay::Initialize()
 
 void CLevel_GamePlay::Tick(_float fTimeDelta)
 {
-	__super::Tick(fTimeDelta);
+	__super::Tick(fTimeDelta);		
 }
 
 HRESULT CLevel_GamePlay::Render()
@@ -99,7 +99,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_BackGround(const _tchar * pLayerTag)
 }
 
 HRESULT CLevel_GamePlay::Ready_Layer_Player(const _tchar * pLayerTag)
-{
+{	
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 

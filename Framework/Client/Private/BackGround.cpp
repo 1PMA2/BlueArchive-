@@ -47,7 +47,7 @@ HRESULT CBackGround::Render()
 		return E_FAIL;
 
 	m_pShaderCom->Begin(0);
-
+	
 	m_pVIBufferCom->Render();
 
 	return S_OK;
@@ -92,11 +92,11 @@ CBackGround * CBackGround::Create(ID3D11Device * pDevice, ID3D11DeviceContext * 
 
 	if (FAILED(pInstance->Initialize_Prototype()))
 	{
-		MSG_BOX("Failed to Created : CBackGround");
+		MSG_BOX("Failed to Created : CBackGround");		
 		Safe_Release(pInstance);
 	}
 
-	return pInstance;
+	return pInstance; 
 }
 
 CGameObject * CBackGround::Clone(void * pArg)

@@ -9,7 +9,7 @@ class CGameInstance;
 END
 
 BEGIN(Client)
-
+//class CGameInstance;
 class CMainApp final : public CBase
 {
 private:
@@ -27,7 +27,6 @@ private:
 	CRenderer*				m_pRenderer = nullptr;
 
 private:
-
 	HRESULT Open_Level(LEVEL eLevelID);
 	HRESULT Ready_Prototype_Component();
 

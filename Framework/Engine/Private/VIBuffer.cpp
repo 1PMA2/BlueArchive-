@@ -1,7 +1,7 @@
 #include "..\Public\VIBuffer.h"
 
 CVIBuffer::CVIBuffer(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
-	:CComponent(pDevice, pContext)
+	: CComponent(pDevice, pContext)
 {
 }
 
@@ -41,7 +41,7 @@ HRESULT CVIBuffer::Render()
 	};
 
 	_uint		iStrides[] = {
-		m_iStride,
+		m_iStride, 
 	};
 
 	_uint		iOffsets[] = {
@@ -57,6 +57,7 @@ HRESULT CVIBuffer::Render()
 	return S_OK;
 }
 
+
 HRESULT CVIBuffer::Create_VertexBuffer()
 {
 	if (nullptr == m_pDevice)
@@ -64,7 +65,7 @@ HRESULT CVIBuffer::Create_VertexBuffer()
 
 	if (FAILED(m_pDevice->CreateBuffer(&m_BufferDesc, &m_SubResourceData, &m_pVB)))
 		return E_FAIL;
-
+	
 	return S_OK;
 }
 

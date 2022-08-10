@@ -1,5 +1,6 @@
 #pragma once
 
+
 #define GET_INSTANCE(CLASSNAME)	[](){											\
 	CLASSNAME*	pInstance = CLASSNAME::Get_Instance();							\
 	if(nullptr == pInstance) {													\

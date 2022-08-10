@@ -2,136 +2,121 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="Client.h">
-      <Filter>98. Default</Filter>
+      <Filter>98.Default</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>98. Default</Filter>
+      <Filter>98.Default</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
-      <Filter>98. Default</Filter>
+      <Filter>98.Default</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>98. Default</Filter>
+      <Filter>98.Default</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\MainApp.h">
       <Filter>00.MainApp</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Client_Defines.h">
-      <Filter>99. Defines</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Public\Level_Logo.h">
-      <Filter>02. Level\Logo</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Public\Level_Loading.h">
-      <Filter>02. Level\Loading</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Public\Loader.h">
-      <Filter>02. Level\Loading\Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Public\Level_Lobby.h">
-      <Filter>02. Level\Lobby</Filter>
+      <Filter>99.Defines</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Level_GamePlay.h">
-      <Filter>02. Level\GamePlay</Filter>
+      <Filter>01.Level\GamePlay</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\BackGround.h">
-      <Filter>03. GameObject\BackGround</Filter>
+    <ClInclude Include="..\Public\Level_Loading.h">
+      <Filter>01.Level\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Level_Logo.h">
+      <Filter>01.Level\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Loader.h">
+      <Filter>01.Level\Loading\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\BackGround.h">
+      <Filter>02.GameObject\BackGround</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
-      <Filter>98. Default</Filter>
+      <Filter>98.Default</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>98. Default</Filter>
+      <Filter>98.Default</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\MainApp.cpp">
       <Filter>00.MainApp</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\Level_Logo.cpp">
-      <Filter>02. Level\Logo</Filter>
+    <ClCompile Include="..\Private\Level_GamePlay.cpp">
+      <Filter>01.Level\GamePlay</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Level_Loading.cpp">
-      <Filter>02. Level\Loading</Filter>
+      <Filter>01.Level\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Logo.cpp">
+      <Filter>01.Level\Logo</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Loader.cpp">
-      <Filter>02. Level\Loading\Loader</Filter>
+      <Filter>01.Level\Loading\Loader</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\Level_Lobby.cpp">
-      <Filter>02. Level\Lobby</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Private\Level_GamePlay.cpp">
-      <Filter>02. Level\GamePlay</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Private\BackGround.cpp">
-      <Filter>03. GameObject\BackGround</Filter>
+    <ClCompile Include="..\private\BackGround.cpp">
+      <Filter>02.GameObject\BackGround</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Client.ico">
-      <Filter>98. Default</Filter>
+      <Filter>98.Default</Filter>
     </Image>
     <Image Include="small.ico">
-      <Filter>98. Default</Filter>
+      <Filter>98.Default</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="00.MainApp">
       <UniqueIdentifier>{d893f375-d010-4a8a-bdbc-7084075a09cb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. Level">
-      <UniqueIdentifier>{93c3bc83-1c12-4e53-abe3-650047b4570e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Sensei">
-      <UniqueIdentifier>{76e28b5f-23f6-49b1-bd93-ad9be73b3def}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03. GameObject">
-      <UniqueIdentifier>{d846d80f-85d7-4c4a-9d0c-4bb570f3ba7b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. Level\Logo">
-      <UniqueIdentifier>{567e531c-ac5d-4f79-b5b9-411dd866638a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. Level\Loading">
-      <UniqueIdentifier>{e31462cc-ef6e-4f27-a8fa-53a9cd6bbe84}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. Level\Loading\Loader">
-      <UniqueIdentifier>{5ac91282-fdf7-4b79-b0a2-5599ad1b21f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. Level\Lobby">
-      <UniqueIdentifier>{12b9408b-f5cf-4dc1-96c2-cb8bc4e2796c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. Level\GamePlay">
-      <UniqueIdentifier>{a85d72b1-8ffc-48c1-b238-6b8532f07489}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02. Level\Gacha">
-      <UniqueIdentifier>{5cb62ca9-dafc-4a11-8778-fd1e7c39fcff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03. GameObject\BackGround">
-      <UniqueIdentifier>{9eb413cb-e638-4128-95af-4837f2a28c25}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. ShaderFiles">
-      <UniqueIdentifier>{2d66cb56-0f03-4898-b190-76b38a9c4e67}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="99. Defines">
+    <Filter Include="99.Defines">
       <UniqueIdentifier>{ca7671a3-fda7-41c0-8070-09afde17063e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="98. Default">
+    <Filter Include="98.Default">
       <UniqueIdentifier>{65376df2-2a03-48c0-b9a4-e1bcd404fb50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Level">
+      <UniqueIdentifier>{21371941-8fc0-43d9-b47a-6f347c9fae61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Level\Logo">
+      <UniqueIdentifier>{289b4d09-7c95-466b-9f74-173b2e22e40e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Level\GamePlay">
+      <UniqueIdentifier>{2c0cd078-e1ec-4276-a003-e7ec4d0edcf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Level\Loading">
+      <UniqueIdentifier>{807441ba-e54d-4b86-960a-e96a8505241f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Level\Loading\Loader">
+      <UniqueIdentifier>{33e1de52-700d-4cac-9e56-af962b2b6268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject">
+      <UniqueIdentifier>{57f74c26-08d1-4431-861b-7a6105d37c3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\BackGround">
+      <UniqueIdentifier>{c829d861-a14a-4627-a9ce-aa73e649e01e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.ShaderFiles">
+      <UniqueIdentifier>{d3a98933-0c07-4640-bc38-9a0b4f9abd9e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
-      <Filter>98. Default</Filter>
+      <Filter>98.Default</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt">
-      <Filter>98. Default</Filter>
+      <Filter>98.Default</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxTex.hlsl">
-      <Filter>04. ShaderFiles</Filter>
+      <Filter>03.ShaderFiles</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
