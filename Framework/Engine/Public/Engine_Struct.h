@@ -32,11 +32,23 @@ namespace Engine
 		XMFLOAT2		vTexUV;
 	}VTXTEX;
 
+	typedef struct ENGINE_DLL tagVertex_Texture_Declaration
+	{
+		static const unsigned int		iNumElements = 2;
+		static const D3D11_INPUT_ELEMENT_DESC	Element[iNumElements];
+	} VTXTEX_DECLARATION;
+
 	typedef struct tagVertex_Cube_Texture
 	{
 		XMFLOAT3		vPosition;
 		XMFLOAT3		vTexUV;
 	}VTXCUBETEX;
+
+	typedef struct ENGINE_DLL tagVertex_Cube_Texture_Declaration
+	{
+		static const unsigned int		iNumElements = 2;
+		static const D3D11_INPUT_ELEMENT_DESC	Element[iNumElements];
+	} VTXCUBETEX_DECLARATION;
 
 	typedef struct tagGraphicDesc
 	{

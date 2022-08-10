@@ -42,14 +42,14 @@ void CMainApp::Tick(float fTimeDelta)
 
 HRESULT CMainApp::Render()
 {
-	if (nullptr == m_pGameInstance/* || 
-		nullptr == m_pRenderer*/)
+	if (nullptr == m_pGameInstance || 
+		nullptr == m_pRenderer)
 		return E_FAIL;
 
 	m_pGameInstance->Clear_BackBuffer_View(_float4(0.5f, 0.5f, 0.5f, 1.f));
 	m_pGameInstance->Clear_DepthStencil_View();
 	
-	// m_pRenderer->Draw_RenderGroup();
+	m_pRenderer->Draw_RenderGroup();
 
 	m_pGameInstance->Render_Engine();
 
@@ -79,25 +79,25 @@ HRESULT CMainApp::Ready_Prototype_Component()
 	if (nullptr == m_pGameInstance)
 		return E_FAIL;
 
-	///* For.Prototype_Component_Renderer */
-	//if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Renderer"),
-	//	m_pRenderer = CRenderer::Create(m_pGraphic_Device))))
-	//	return E_FAIL;
+	/* For.Prototype_Component_Renderer */
+	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Renderer"),
+		m_pRenderer = CRenderer::Create(m_pDevice, m_pContext))))
+		return E_FAIL;
 
-	///* For.Prototype_Component_VIBuffer_Rect*/
-	//if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Rect"),
-	//	CVIBuffer_Rect::Create(m_pGraphic_Device))))
-	//	return E_FAIL;
+	/* For.Prototype_Component_VIBuffer_Rect*/
+	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Rect"),
+		CVIBuffer_Rect::Create(m_pDevice, m_pContext))))
+		return E_FAIL;
 
 	///* For.Prototype_Component_Transform */
 	//if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Transform"),
 	//	CTransform::Create(m_pGraphic_Device))))
 	//	return E_FAIL;
 
-	///* For.Prototype_Component_Shader_Rect */
-	//if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Shader_Rect"),
-	//	CShader::Create(m_pGraphic_Device, TEXT("../Bin/ShaderFiles/Shader_Rect.hlsl")))))
-	//	return E_FAIL;
+	/* For.Prototype_Component_Shader_Rect */
+	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Shader_Rect"),
+		CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxTex.hlsl"), VTXTEX_DECLARATION::Element, VTXTEX_DECLARATION::iNumElements))))
+		return E_FAIL;
 
 	//Safe_AddRef(m_pRenderer);
 

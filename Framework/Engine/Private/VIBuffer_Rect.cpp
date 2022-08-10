@@ -13,12 +13,6 @@ CVIBuffer_Rect::CVIBuffer_Rect(const CVIBuffer_Rect & rhs)
 
 HRESULT CVIBuffer_Rect::Initialize_Prototype()
 {
-	/*UINT ByteWidth;         BufferDesc
-	D3D11_USAGE Usage;
-	UINT BindFlags;
-	UINT CPUAccessFlags;
-	UINT MiscFlags;
-	UINT StructureByteStride;*/
 
 #pragma region VERTEXBUFFER
 	m_iStride = sizeof(VTXTEX); //uv, position size
@@ -26,7 +20,7 @@ HRESULT CVIBuffer_Rect::Initialize_Prototype()
 
 	//ZeroMemory(&m_BufferDesc, sizeof(D3D11_BUFFER_DESC));
 
-	memset(&m_BufferDesc, 0, sizeof(D3D11_BUFFER_DESC));
+	ZeroMemory(&m_BufferDesc, sizeof(D3D11_BUFFER_DESC));
 	m_BufferDesc.ByteWidth = m_iStride * m_iNumVertices; //use byte
 	m_BufferDesc.Usage = D3D11_USAGE_DEFAULT; //gpu 의 읽기 쓰기 허용
 	m_BufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;

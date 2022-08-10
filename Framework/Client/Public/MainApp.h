@@ -9,7 +9,7 @@ class CGameInstance;
 END
 
 BEGIN(Client)
-//class CGameInstance;
+
 class CMainApp final : public CBase
 {
 private:
@@ -27,9 +27,6 @@ private:
 	CRenderer*				m_pRenderer = nullptr;
 
 private:
-	/* 그리기 상태를 셋팅하낟. */
-	HRESULT SetUp_RenderState();
-	HRESULT SetUp_SamplerState();
 
 	HRESULT Open_Level(LEVEL eLevelID);
 	HRESULT Ready_Prototype_Component();

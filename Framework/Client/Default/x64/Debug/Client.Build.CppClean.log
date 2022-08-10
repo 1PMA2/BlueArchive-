@@ -2,8 +2,15 @@ c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\c
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\vc140.pdb
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\vc140.idb
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\stdafx.obj
-c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\mainapp.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\loader.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\mainapp.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\background.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\level_gameplay.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\level_loading.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\level_logo.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\level_lobby.obj
+c:\users\slave\documents\github\bluearchive\framework\client\bin\shader_vtxtex.cso
 c:\users\slave\documents\github\bluearchive\framework\client\bin\client.ilk
 c:\users\slave\documents\github\bluearchive\framework\client\bin\client.exe
 c:\users\slave\documents\github\bluearchive\framework\client\bin\client.pdb
@@ -12,6 +19,10 @@ c:\users\slave\documents\github\bluearchive\framework\client\default\..\bin\clie
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\cl.command.1.tlog
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\cl.read.1.tlog
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\cl.write.1.tlog
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\client.write.1u.tlog
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\fxc.command.1.tlog
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\fxc.read.1.tlog
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\fxc.write.1.tlog
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\link.command.1.tlog
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\link.read.1.tlog
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\link.write.1.tlog
