@@ -1,2 +1,198 @@
-﻿  Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
+﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\Shader_VtxTex.cso
+  stdafx.cpp
+  BackGround.cpp
+  Level_GamePlay.cpp
+  Level_Loading.cpp
+  Level_Lobby.cpp
+  Level_Logo.cpp
+  Loader.cpp
+  MainApp.cpp
+  Client.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): warning C4251: 'Engine::CShader::m_Passes': class 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>'에서는 class 'Engine::CShader'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\Level_GamePlay.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): note: 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\Level_GamePlay.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): warning C4251: 'Engine::CRenderer::m_RenderObjects': class 'std::list<Engine::CGameObject *,std::allocator<_Ty>>'에서는 class 'Engine::CRenderer'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\Level_GamePlay.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): note: 'std::list<Engine::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\Level_GamePlay.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): warning C4251: 'Engine::CShader::m_Passes': class 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>'에서는 class 'Engine::CShader'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\Level_Lobby.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): note: 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\Level_Lobby.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\gameobject.h(36): warning C4251: 'Engine::CGameObject::m_Components': class 'std::map<const Engine::_tchar *,Engine::CComponent *,std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'Engine::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=const Engine::_tchar *,
+              _Ty=Engine::CComponent *
+          ] (소스 파일 컴파일 중 ..\Private\BackGround.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\gameobject.h(36): note: 'std::map<const Engine::_tchar *,Engine::CComponent *,std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=const Engine::_tchar *,
+              _Ty=Engine::CComponent *
+          ] (소스 파일 컴파일 중 ..\Private\BackGround.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): warning C4251: 'Engine::CRenderer::m_RenderObjects': class 'std::list<Engine::CGameObject *,std::allocator<_Ty>>'에서는 class 'Engine::CRenderer'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\Level_Lobby.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): note: 'std::list<Engine::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\Level_Lobby.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): warning C4251: 'Engine::CShader::m_Passes': class 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>'에서는 class 'Engine::CShader'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 Client.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): note: 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 Client.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): warning C4251: 'Engine::CRenderer::m_RenderObjects': class 'std::list<Engine::CGameObject *,std::allocator<_Ty>>'에서는 class 'Engine::CRenderer'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 Client.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): note: 'std::list<Engine::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 Client.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): warning C4251: 'Engine::CShader::m_Passes': class 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>'에서는 class 'Engine::CShader'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\Level_Logo.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): note: 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\Level_Logo.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): warning C4251: 'Engine::CRenderer::m_RenderObjects': class 'std::list<Engine::CGameObject *,std::allocator<_Ty>>'에서는 class 'Engine::CRenderer'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\Level_Logo.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): note: 'std::list<Engine::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\Level_Logo.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): warning C4251: 'Engine::CShader::m_Passes': class 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>'에서는 class 'Engine::CShader'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\MainApp.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): note: 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\MainApp.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): warning C4251: 'Engine::CRenderer::m_RenderObjects': class 'std::list<Engine::CGameObject *,std::allocator<_Ty>>'에서는 class 'Engine::CRenderer'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\MainApp.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): note: 'std::list<Engine::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\MainApp.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): warning C4251: 'Engine::CShader::m_Passes': class 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>'에서는 class 'Engine::CShader'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\Level_Loading.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): note: 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\Level_Loading.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): warning C4251: 'Engine::CShader::m_Passes': class 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>'에서는 class 'Engine::CShader'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\BackGround.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): note: 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\BackGround.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): warning C4251: 'Engine::CRenderer::m_RenderObjects': class 'std::list<Engine::CGameObject *,std::allocator<_Ty>>'에서는 class 'Engine::CRenderer'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\Level_Loading.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): note: 'std::list<Engine::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\Level_Loading.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): warning C4251: 'Engine::CRenderer::m_RenderObjects': class 'std::list<Engine::CGameObject *,std::allocator<_Ty>>'에서는 class 'Engine::CRenderer'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\BackGround.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): note: 'std::list<Engine::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\BackGround.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): warning C4251: 'Engine::CShader::m_Passes': class 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>'에서는 class 'Engine::CShader'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\Loader.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\shader.h(33): note: 'std::vector<Engine::CShader::PASSDESC,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CShader::PASSDESC
+          ] (소스 파일 컴파일 중 ..\Private\Loader.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): warning C4251: 'Engine::CRenderer::m_RenderObjects': class 'std::list<Engine::CGameObject *,std::allocator<_Ty>>'에서는 class 'Engine::CRenderer'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\Loader.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\renderer.h(30): note: 'std::list<Engine::CGameObject *,std::allocator<_Ty>>' 선언을 참조하십시오.
+          with
+          [
+              _Ty=Engine::CGameObject *
+          ] (소스 파일 컴파일 중 ..\Private\Loader.cpp)
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\gameobject.h(36): warning C4251: 'Engine::CGameObject::m_Components': class 'std::map<const Engine::_tchar *,Engine::CComponent *,std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'에서는 class 'Engine::CGameObject'의 클라이언트에서 DLL 인터페이스를 사용하도록 지정해야 합니다.
+          with
+          [
+              _Kty=const Engine::_tchar *,
+              _Ty=Engine::CComponent *
+          ] (소스 파일 컴파일 중 ..\Private\Loader.cpp)
+  c:\users\slave\documents\github\bluearchive\framework\reference\headers\component_manager.h(34): note: 'std::map<const Engine::_tchar *,Engine::CComponent *,std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' 선언을 참조하십시오.
+          with
+          [
+              _Kty=const Engine::_tchar *,
+              _Ty=Engine::CComponent *
+          ] (소스 파일 컴파일 중 ..\Private\Loader.cpp)
+  Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)
