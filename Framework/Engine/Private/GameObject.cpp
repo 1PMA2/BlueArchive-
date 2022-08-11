@@ -8,23 +8,23 @@ CGameObject::CGameObject(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice), m_pContext(pContext)
 	, m_pTransformCom(CTransform::Create(m_pDevice, m_pContext))
 {
-	Safe_AddRef(m_pDevice);
+	Safe_AddRef(m_pDevice);  
 	Safe_AddRef(m_pContext);
 }
 
 CGameObject::CGameObject(const CGameObject & Prototype)
 	: m_pDevice(Prototype.m_pDevice)
-	, m_pContext(Prototype.m_pContext)
+	, m_pContext(Prototype.m_pContext)	
 	, m_pTransformCom((CTransform*)Prototype.m_pTransformCom->Clone())
 
 {
-	Safe_AddRef(m_pDevice);
+	Safe_AddRef(m_pDevice); 
 	Safe_AddRef(m_pContext);
 }
 
 CComponent * CGameObject::Get_Component(const _tchar * pComponentTag)
 {
-	return Find_Components(pComponentTag);
+	return Find_Components(pComponentTag);	
 }
 
 HRESULT CGameObject::Initialize_Prototype()

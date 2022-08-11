@@ -1,7 +1,7 @@
 #include "..\Public\VIBuffer.h"
 
 CVIBuffer::CVIBuffer(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
-	:CComponent(pDevice, pContext)
+	: CComponent(pDevice, pContext)
 {
 }
 
@@ -15,7 +15,8 @@ CVIBuffer::CVIBuffer(const CVIBuffer & rhs)
 	, m_iNumVertexBuffers(rhs.m_iNumVertexBuffers)
 	, m_eIndexFormat(rhs.m_eIndexFormat)
 	, m_pVB(rhs.m_pVB)
-	, m_pIB(rhs.m_pIB)
+	, m_pIB(rhs.m_pIB)	
+	, m_eToplogy(rhs.m_eToplogy)
 {
 	Safe_AddRef(m_pVB);
 	Safe_AddRef(m_pIB);
@@ -41,7 +42,7 @@ HRESULT CVIBuffer::Render()
 	};
 
 	_uint		iStrides[] = {
-		m_iStride,
+		m_iStride, 
 	};
 
 	_uint		iOffsets[] = {
@@ -52,10 +53,11 @@ HRESULT CVIBuffer::Render()
 	m_pContext->IASetIndexBuffer(m_pIB, m_eIndexFormat, 0);
 	m_pContext->IASetPrimitiveTopology(m_eToplogy);
 
-	m_pContext->DrawIndexed(m_iNumIndices, 0, 0);
+ 	m_pContext->DrawIndexed(m_iNumIndices, 0, 0);
 
 	return S_OK;
 }
+
 
 HRESULT CVIBuffer::Create_VertexBuffer()
 {
@@ -64,7 +66,7 @@ HRESULT CVIBuffer::Create_VertexBuffer()
 
 	if (FAILED(m_pDevice->CreateBuffer(&m_BufferDesc, &m_SubResourceData, &m_pVB)))
 		return E_FAIL;
-
+	
 	return S_OK;
 }
 

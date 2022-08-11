@@ -15,7 +15,7 @@ public:
 	HRESULT Set_ShaderResourceView(class CShader* pShader, const char* pConstantName, _uint iIndex = 0);
 
 public:
-	virtual HRESULT Initialize_Prototype(const _tchar* pTextureFilePath, _uint iNumTextures);
+	virtual HRESULT Initialize_Prototype(const _tchar* pTextureFilePath, _uint iNumTextures) ;
 	virtual HRESULT Initialize(void* pArg) override;
 
 private:

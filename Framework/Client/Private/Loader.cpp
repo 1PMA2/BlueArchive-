@@ -19,7 +19,7 @@ CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 
 unsigned int APIENTRY LoadingMain(void* pArg)
 {
-	//CoInitializeEx(nullptr, 0);
+	CoInitializeEx(nullptr, 0);
 
 	CLoader*		pLoader = (CLoader*)pArg;
 
@@ -32,13 +32,10 @@ unsigned int APIENTRY LoadingMain(void* pArg)
 	case LEVEL_LOGO:
 		hr = pLoader->Loading_ForLogoLevel();
 		break;
-	case LEVEL_LOBBY:
-		hr = pLoader->Loading_ForLobbyLevel();
-		break;
 	case LEVEL_GAMEPLAY:
 		hr = pLoader->Loading_ForGamePlayLevel();
 		break;
-	}
+	}	
 
 	if (FAILED(hr))
 		MSG_BOX("Failed to Loading");
@@ -65,10 +62,10 @@ HRESULT CLoader::Loading_ForLogoLevel()
 {
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
-
+	
 #pragma region PROTOTYPE_GAMEOBJECT
 
-	lstrcpy(m_szLoadingText, TEXT("객체를 생성중."));
+	lstrcpy(m_szLoadingText, TEXT("객체를 생성중입니다."));
 
 	/* For.Prototype_GameObject_BackGround */
 	if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_BackGround"),
@@ -85,67 +82,17 @@ HRESULT CLoader::Loading_ForLogoLevel()
 #pragma endregion
 
 
-	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중. "));
+	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
 	/* For.Prototype_Component_Texture_Default */
 	if (FAILED(pGameInstance->Add_Prototype(LEVEL_LOGO, TEXT("Prototype_Component_Texture_Default"),
 		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Default%d.jpg"), 2))))
 		return E_FAIL;
 
+	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
 
 
 
-	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중. "));
-
-
-
-	lstrcpy(m_szLoadingText, TEXT("로딩 끝 "));
-
-	m_isFinished = true;
-
-	Safe_Release(pGameInstance);
-
-	return S_OK;
-}
-
-HRESULT CLoader::Loading_ForLobbyLevel()
-{
-	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-	Safe_AddRef(pGameInstance);
-
-#pragma region PROTOTYPE_GAMEOBJECT
-
-	lstrcpy(m_szLoadingText, TEXT("객체를 생성중."));
-
-	///* For.Prototype_GameObject_BackGround */
-	//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_BackGround"),
-	//	CBackGround::Create(m_pGraphic_Device))))
-	//	return E_FAIL;
-
-
-
-	///* For.Prototype_GameObject_Camera_Free*/
-	//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Free"),
-	//	CCamera_Free::Create(m_pGraphic_Device))))
-	//	return E_FAIL;
-
-#pragma endregion
-
-
-	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중. "));
-	///* For.Prototype_Component_Texture_Default */
-	//if (FAILED(pGameInstance->Add_Prototype(LEVEL_LOGO, TEXT("Prototype_Component_Texture_Default"),
-	//	CTexture::Create(m_pGraphic_Device, CTexture::TYPE_DEFAULT, 
-	//		TEXT("../Bin/Resources/Textures/Default%d.jpg"), 2))))
-	//	return E_FAIL;
-
-
-
-
-	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중. "));
-
-
-
-	lstrcpy(m_szLoadingText, TEXT("로딩 끝 "));
+	lstrcpy(m_szLoadingText, TEXT("로딩 끝 "));	
 
 	m_isFinished = true;
 
@@ -191,7 +138,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 #pragma endregion
 
-	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중. "));
+	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
 	///* For.Prototype_Component_Texture_Terrain */
 	//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Terrain"),
 	//	CTexture::Create(m_pGraphic_Device, CTexture::TYPE_DEFAULT, TEXT("../Bin/Resources/Textures/Terrain/Grass_%d.tga"), 2))))
@@ -219,7 +166,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 
 
-	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중. "));
+	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
 
 	///* For.Prototype_Component_VIBuffer_Terrain */
 	//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_VIBuffer_Terrain"),

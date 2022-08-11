@@ -30,7 +30,7 @@ HRESULT CComponent_Manager::Add_Prototype(_uint iLevelIndex, const _tchar * pPro
 		return E_FAIL;
 
 	m_pPrototypes[iLevelIndex].emplace(pPrototypeTag, pPrototype);
-
+	
 	return S_OK;
 }
 
@@ -41,7 +41,7 @@ CComponent * CComponent_Manager::Clone_Component(_uint iLevelIndex, const _tchar
 		return nullptr;
 
 	CComponent*		pPrototype = Find_Components(iLevelIndex, pPrototypeTag);
-	if (nullptr == pPrototype)
+	if(nullptr == pPrototype)
 		return nullptr;
 
 	return pPrototype->Clone(pArg);
@@ -81,5 +81,5 @@ void CComponent_Manager::Free()
 	}
 
 	Safe_Delete_Array(m_pPrototypes);
-
+	
 }

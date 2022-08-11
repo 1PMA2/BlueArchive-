@@ -57,7 +57,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
-	_float fTimeAcc = 0.f;
+	_float		fTimeAcc = 0.f;
 
     // 기본 메시지 루프입니다.
 	while (true)
@@ -76,13 +76,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 		fTimeAcc += pGameInstance->Compute_Timer(TEXT("Timer_Default"));
 
-		if (fTimeAcc > 1.f / 60.f)
+		if (fTimeAcc > 1.f / 60.0f)
 		{
 			pMainApp->Tick(pGameInstance->Compute_Timer(TEXT("Timer_60")));
 			pMainApp->Render();
 
 			fTimeAcc = 0.f;
-		}
+		}		
 	}
 
 	RELEASE_INSTANCE(CGameInstance);
@@ -134,8 +134,12 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    g_hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
+   RECT		rcWindow = { 0, 0, g_iWinCX, g_iWinCY };
+
+   AdjustWindowRect(&rcWindow, WS_OVERLAPPEDWINDOW, TRUE);
+
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+      CW_USEDEFAULT, 0, rcWindow.right - rcWindow.left, rcWindow.bottom - rcWindow.top, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {

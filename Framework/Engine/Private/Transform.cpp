@@ -25,9 +25,9 @@ void CTransform::Set_Scaled(_float3 vScale)
 
 _float3 CTransform::Get_Scaled()
 {
-	return _float3(XMVectorGetX(XMVector3Length(Get_State(CTransform::STATE_RIGHT))),
+	return _float3(XMVectorGetX(XMVector3Length(Get_State(CTransform::STATE_RIGHT))), 
 		XMVectorGetX(XMVector3Length(Get_State(CTransform::STATE_UP))),
-		XMVectorGetX(XMVector3Length(Get_State(CTransform::STATE_LOOK))));
+		XMVectorGetX(XMVector3Length(Get_State(CTransform::STATE_LOOK))));	
 }
 
 HRESULT CTransform::Initialize_Prototype()
@@ -56,10 +56,10 @@ HRESULT CTransform::Go_Straight(_float fTimeDelta)
 	_vector		vPosition = Get_State(CTransform::STATE_TRANSLATION);
 	_vector		vLook = Get_State(CTransform::STATE_LOOK);
 
-	vPosition += XMVector3Normalize(vLook) * m_TransformDesc.fSpeedPerSec * fTimeDelta;
+	vPosition += XMVector3Normalize(vLook) * m_TransformDesc.fSpeedPerSec * fTimeDelta;	
 
 	Set_State(CTransform::STATE_TRANSLATION, vPosition);
-
+	
 	return S_OK;
 }
 

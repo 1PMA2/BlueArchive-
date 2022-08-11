@@ -102,7 +102,7 @@ HRESULT CBackGround::SetUp_ShaderResource()
 		return E_FAIL;
 
 	/*if (FAILED(m_pShaderCom->Set_RawValue("g_WorldMatrix", &XMMatrixIdentity(), sizeof(_float4x4))))
-	return E_FAIL;*/
+		return E_FAIL;*/
 	if (FAILED(m_pTransformCom->Set_ShaderResource(m_pShaderCom, "g_WorldMatrix")))
 		return E_FAIL;
 	if (FAILED(m_pShaderCom->Set_RawValue("g_ViewMatrix", &XMMatrixIdentity(), sizeof(_float4x4))))
@@ -123,11 +123,11 @@ CBackGround * CBackGround::Create(ID3D11Device * pDevice, ID3D11DeviceContext * 
 
 	if (FAILED(pInstance->Initialize_Prototype()))
 	{
-		MSG_BOX("Failed to Created : CBackGround");
+		MSG_BOX("Failed to Created : CBackGround");		
 		Safe_Release(pInstance);
 	}
 
-	return pInstance;
+	return pInstance; 
 }
 
 CGameObject * CBackGround::Clone(void * pArg)

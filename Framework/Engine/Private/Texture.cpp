@@ -41,17 +41,17 @@ HRESULT CTexture::Initialize_Prototype(const _tchar * pTextureFilePath, _uint iN
 
 		HRESULT		hr = 0;
 
-		if (!lstrcmp(szExt, TEXT(".dds")))
+		if (!lstrcmp(szExt, TEXT(".dds")))		
 			hr = DirectX::CreateDDSTextureFromFile(m_pDevice, szTextureFilePath, nullptr, &pSRV);
-
-		else
+		
+		else		
 			hr = DirectX::CreateWICTextureFromFile(m_pDevice, szTextureFilePath, nullptr, &pSRV);
 
 		if (FAILED(hr))
 			return E_FAIL;
 
 		m_SRVs.push_back(pSRV);
-
+		
 	}
 
 	return S_OK;

@@ -21,7 +21,7 @@ protected:
 	_bool						m_isCloned = false;
 	
 public:
-	virtual CComponent* Clone(void* pArg) = 0;
+	virtual CComponent* Clone(void* pArg = nullptr) = 0;
 	virtual void Free() override;
 };
 

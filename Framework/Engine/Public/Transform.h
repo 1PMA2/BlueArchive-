@@ -29,7 +29,7 @@ public:
 	{
 		_float4		vData;
 		XMStoreFloat4(&vData, vState);
-		memcpy(&m_WorldMatrix.m[eState], &vData, sizeof(_float4));
+		memcpy(&m_WorldMatrix.m[eState], &vData, sizeof(_float4));		
 	}
 
 public:

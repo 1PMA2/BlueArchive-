@@ -1,5 +1,7 @@
 #pragma once
 
+/* 다음레벨에 필요한 자원을 로드하낟. */
+
 #include "Client_Defines.h"
 #include "Base.h"
 
@@ -31,12 +33,11 @@ public:
 public:
 	HRESULT Initialize(LEVEL eNextLevel);
 	HRESULT Loading_ForLogoLevel();
-	HRESULT Loading_ForLobbyLevel();
 	HRESULT Loading_ForGamePlayLevel();
 
 private:
 	ID3D11Device*				m_pDevice = nullptr;
-	ID3D11DeviceContext*		m_pContext = nullptr;
+	ID3D11DeviceContext*		m_pContext = nullptr;	
 	LEVEL						m_eNextLevel = LEVEL_END;
 
 private:
@@ -47,7 +48,7 @@ private:
 
 public:
 
-
+	
 public:
 	static CLoader* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, LEVEL eNextLevel);
 	virtual void Free() override;

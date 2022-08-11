@@ -2,7 +2,6 @@
 #include "..\Public\Level_Loading.h"
 #include "Loader.h"
 #include "Level_Logo.h"
-#include "Level_Lobby.h"
 #include "Level_GamePlay.h"
 #include "GameInstance.h"
 
@@ -28,7 +27,7 @@ HRESULT CLevel_Loading::Initialize(LEVEL eNextLevel)
 
 void CLevel_Loading::Tick(_float fTimeDelta)
 {
-	__super::Tick(fTimeDelta);
+	__super::Tick(fTimeDelta);	
 
 	if (true == m_pLoader->is_Finished())
 	{
@@ -40,9 +39,6 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 			{
 			case LEVEL_LOGO:
 				pLevel = CLevel_Logo::Create(m_pDevice, m_pContext);
-				break;
-			case LEVEL_LOBBY:
-				pLevel = CLevel_Lobby::Create(m_pDevice, m_pContext);
 				break;
 			case LEVEL_GAMEPLAY:
 				pLevel = CLevel_GamePlay::Create(m_pDevice, m_pContext);
@@ -68,7 +64,7 @@ HRESULT CLevel_Loading::Render()
 	if (FAILED(__super::Render()))
 		return E_FAIL;
 
-	SetWindowText(g_hWnd, m_pLoader->Get_LoadingText());
+	SetWindowText(g_hWnd, m_pLoader->Get_LoadingText());	
 
 	return S_OK;
 }

@@ -62,22 +62,22 @@
       <Filter>00.System\00.Graphic</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Renderer.h">
-      <Filter>01.Utility\03.Component\00. Renderer</Filter>
+      <Filter>01.Utility\03.Component\00.Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\VIBuffer.h">
-      <Filter>01.Utility\03.Component\01. VIBuffer</Filter>
+    <ClInclude Include="..\public\VIBuffer.h">
+      <Filter>01.Utility\03.Component\00.VIBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\VIBuffer_Rect.h">
-      <Filter>01.Utility\03.Component\01. VIBuffer\Rect</Filter>
+    <ClInclude Include="..\public\VIBuffer_Rect.h">
+      <Filter>01.Utility\03.Component\00.VIBuffer\Rect</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Shader.h">
-      <Filter>01.Utility\03.Component\02. Shader</Filter>
+    <ClInclude Include="..\public\Shader.h">
+      <Filter>01.Utility\03.Component\01.Shader</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Texture.h">
-      <Filter>01.Utility\03.Component\03.Textures</Filter>
+    <ClInclude Include="..\public\Texture.h">
+      <Filter>01.Utility\03.Component\02.Textures</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Transform.h">
-      <Filter>01.Utility\03.Component\04.Transform</Filter>
+    <ClInclude Include="..\public\Transform.h">
+      <Filter>01.Utility\03.Component\02.Transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -124,25 +124,25 @@
       <Filter>00.System\00.Graphic</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Renderer.cpp">
-      <Filter>01.Utility\03.Component\00. Renderer</Filter>
+      <Filter>01.Utility\03.Component\00.Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\VIBuffer.cpp">
-      <Filter>01.Utility\03.Component\01. VIBuffer</Filter>
+    <ClCompile Include="..\private\VIBuffer.cpp">
+      <Filter>01.Utility\03.Component\00.VIBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\VIBuffer_Rect.cpp">
-      <Filter>01.Utility\03.Component\01. VIBuffer\Rect</Filter>
+    <ClCompile Include="..\private\VIBuffer_Rect.cpp">
+      <Filter>01.Utility\03.Component\00.VIBuffer\Rect</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\Shader.cpp">
-      <Filter>01.Utility\03.Component\02. Shader</Filter>
+    <ClCompile Include="..\private\Shader.cpp">
+      <Filter>01.Utility\03.Component\01.Shader</Filter>
     </ClCompile>
-    <ClCompile Include="Engine_Struct.cpp">
+    <ClCompile Include="..\Private\Engine_Struct.cpp">
       <Filter>99.Defines</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\Texture.cpp">
-      <Filter>01.Utility\03.Component\03.Textures</Filter>
+    <ClCompile Include="..\private\Texture.cpp">
+      <Filter>01.Utility\03.Component\02.Textures</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\Transform.cpp">
-      <Filter>01.Utility\03.Component\04.Transform</Filter>
+    <ClCompile Include="..\private\Transform.cpp">
+      <Filter>01.Utility\03.Component\02.Transform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -197,23 +197,23 @@
     <Filter Include="01.Utility\02.GameObject\Camera">
       <UniqueIdentifier>{a9a64c53-12de-4ff0-bf34-5d4590a7a6c8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Utility\03.Component\00. Renderer">
-      <UniqueIdentifier>{da5ea37d-c9b8-4043-8383-d49d878267f9}</UniqueIdentifier>
+    <Filter Include="01.Utility\03.Component\00.VIBuffer">
+      <UniqueIdentifier>{30e5d191-30d6-48e9-a6c8-c1ea3e895d12}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Utility\03.Component\02. Shader">
-      <UniqueIdentifier>{e820ba83-d920-4f97-9970-27966d6d790c}</UniqueIdentifier>
+    <Filter Include="01.Utility\03.Component\00.Renderer">
+      <UniqueIdentifier>{e4c3a83d-4671-41b5-8afc-221ae2d30e17}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Utility\03.Component\01. VIBuffer">
-      <UniqueIdentifier>{ddf6e5c6-6a26-408e-9436-325531624106}</UniqueIdentifier>
+    <Filter Include="01.Utility\03.Component\00.VIBuffer\Rect">
+      <UniqueIdentifier>{779dd5fc-8ddb-4425-b55f-3b26b9b79088}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Utility\03.Component\01. VIBuffer\Rect">
-      <UniqueIdentifier>{f38350cb-e0c1-4d38-82cb-dec0f20aaae6}</UniqueIdentifier>
+    <Filter Include="01.Utility\03.Component\01.Shader">
+      <UniqueIdentifier>{7cf475e6-20ef-41a4-b610-24d2e3ed698e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Utility\03.Component\04.Transform">
-      <UniqueIdentifier>{336fc68e-a440-4de7-af8a-0bfb2ad0cad9}</UniqueIdentifier>
+    <Filter Include="01.Utility\03.Component\02.Textures">
+      <UniqueIdentifier>{74aa39ae-e2ea-4861-a61b-624b33cac053}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Utility\03.Component\03.Textures">
-      <UniqueIdentifier>{abaa3b2e-3a4d-4ba1-8e5f-17dd379538ef}</UniqueIdentifier>
+    <Filter Include="01.Utility\03.Component\02.Transform">
+      <UniqueIdentifier>{1a479879-7c63-431b-a020-ea7503be601c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
