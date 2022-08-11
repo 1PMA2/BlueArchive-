@@ -86,11 +86,10 @@ HRESULT CLoader::Loading_ForLogoLevel()
 
 
 	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중. "));
-	///* For.Prototype_Component_Texture_Default */
-	//if (FAILED(pGameInstance->Add_Prototype(LEVEL_LOGO, TEXT("Prototype_Component_Texture_Default"),
-	//	CTexture::Create(m_pGraphic_Device, CTexture::TYPE_DEFAULT, 
-	//		TEXT("../Bin/Resources/Textures/Default%d.jpg"), 2))))
-	//	return E_FAIL;
+	/* For.Prototype_Component_Texture_Default */
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_LOGO, TEXT("Prototype_Component_Texture_Default"),
+		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Default%d.jpg"), 2))))
+		return E_FAIL;
 
 
 

@@ -5,6 +5,7 @@
 
 BEGIN(Engine)
 class CShader;
+class CTexture;
 class CRenderer;
 class CVIBuffer_Rect;
 END
@@ -27,8 +28,13 @@ public:
 
 private:
 	CShader*				m_pShaderCom = nullptr;
+	CTexture*				m_pTextureCom = nullptr;
 	CRenderer*				m_pRendererCom = nullptr;
 	CVIBuffer_Rect*			m_pVIBufferCom = nullptr;
+
+private:
+	_float			m_fX, m_fY, m_fSizeX, m_fSizeY;
+	_float4x4		m_ProjMatrix;
 
 private:
 	HRESULT SetUp_Components();

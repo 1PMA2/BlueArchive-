@@ -14,6 +14,7 @@ public:
 	}PASSDESC;
 
 
+
 private:
 	CShader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
 	CShader(const CShader& rhs);
@@ -25,6 +26,7 @@ public:
 
 public:
 	HRESULT Set_RawValue(const char* pConstantName, void* pData, _uint iDataSize);
+	HRESULT Set_ShaderResourceView(const char* pConstantName, ID3D11ShaderResourceView* pSRV);
 	HRESULT Begin(_uint iPassIndex);
 
 private:
@@ -33,11 +35,12 @@ private:
 	vector<PASSDESC>				m_Passes;
 	typedef vector<PASSDESC>		PASSES;
 
+
+
 public:
 	static CShader* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, const _tchar* pShaderFilePath, const D3D11_INPUT_ELEMENT_DESC* pElements, _uint iNumElement);
-	virtual CComponent* Clone(void* pArg) override;
+	virtual CComponent* Clone(void* pArg = nullptr) override;
 	virtual void Free() override;
 };
 
 END
-

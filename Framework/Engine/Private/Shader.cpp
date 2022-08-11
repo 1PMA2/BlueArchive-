@@ -8,7 +8,15 @@ CShader::CShader(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 
 CShader::CShader(const CShader & rhs)
 	: CComponent(rhs)
+	, m_pEffect(rhs.m_pEffect)
+	, m_Passes(rhs.m_Passes)
 {
+	Safe_AddRef(m_pEffect);
+
+	for (auto& PassDesc : m_Passes)
+	{
+		Safe_AddRef(PassDesc.pInputLayout);
+	}
 
 }
 
@@ -23,6 +31,7 @@ HRESULT CShader::Initialize_Prototype(const _tchar * pShaderFilePath, const D3D1
 #endif
 	if (FAILED(D3DX11CompileEffectFromFile(pShaderFilePath, nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, iHLSLFlag, 0, m_pDevice, &m_pEffect, /*&pError*/nullptr)))
 		return E_FAIL;
+
 	ID3DX11EffectTechnique*		pTechnique = m_pEffect->GetTechniqueByIndex(0);
 	if (nullptr == pTechnique)
 		return E_FAIL;
@@ -75,6 +84,21 @@ HRESULT CShader::Set_RawValue(const char * pConstantName, void * pData, _uint iD
 		return E_FAIL;
 
 	return pVariable->SetRawValue(pData, 0, iDataSize);
+
+}
+
+HRESULT CShader::Set_ShaderResourceView(const char * pConstantName, ID3D11ShaderResourceView * pSRV)
+{
+	if (nullptr == m_pEffect)
+		return E_FAIL;
+
+	ID3DX11EffectVariable*		pVariable = m_pEffect->GetVariableByName(pConstantName);
+	if (nullptr == pVariable)
+		return E_FAIL;
+
+	ID3DX11EffectShaderResourceVariable*	pVariable_SRV = pVariable->AsShaderResource();
+
+	return pVariable_SRV->SetResource(pSRV);
 }
 
 HRESULT CShader::Begin(_uint iPassIndex)
@@ -119,5 +143,15 @@ CComponent * CShader::Clone(void * pArg)
 void CShader::Free()
 {
 	__super::Free();
+
+	for (auto& PassDesc : m_Passes)
+	{
+		Safe_Release(PassDesc.pInputLayout);
+
+		/*if (false == m_isCloned)
+		Safe_Release(PassDesc.pPass);*/
+	}
+
+	Safe_Release(m_pEffect);
 
 }
