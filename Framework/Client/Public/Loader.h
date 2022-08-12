@@ -40,6 +40,7 @@ public:
 	HRESULT Loading_ForGamePlayLevel();
 
 private:
+	D3D11_TEXTURE2D_DESC		desc;
 	ID3D11Device*				m_pDevice = nullptr;
 	ID3D11DeviceContext*		m_pContext = nullptr;	
 	LEVEL						m_eNextLevel = LEVEL_END;

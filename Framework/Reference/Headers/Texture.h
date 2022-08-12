@@ -13,6 +13,7 @@ private:
 
 public:
 	HRESULT Set_ShaderResourceView(class CShader* pShader, const char* pConstantName, _uint iIndex = 0);
+	D3D11_TEXTURE2D_DESC Get_TextureSize(_uint iIndex) { return desc[iIndex]; }
 
 public:
 	virtual HRESULT Initialize_Prototype(const _tchar* pTextureFilePath, _uint iNumTextures) ;
@@ -21,6 +22,8 @@ public:
 private:
 	vector<ID3D11ShaderResourceView*>			m_SRVs;
 	typedef vector<ID3D11ShaderResourceView*>	SRVS;
+
+	D3D11_TEXTURE2D_DESC desc[8];
 
 public:
 	static CTexture* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, const _tchar* pTextureFilePath, _uint iNumTextures = 1);

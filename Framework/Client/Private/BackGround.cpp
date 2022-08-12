@@ -21,7 +21,7 @@ HRESULT CBackGround::Initialize_Prototype()
 HRESULT CBackGround::Initialize(void * pArg)
 {
 	CTransform::TRANSFORMDESC		TransformDesc;
-	TransformDesc.fSpeedPerSec = 5.f;
+	TransformDesc.fSpeedPerSec = 10.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
 	if (FAILED(__super::Initialize(&TransformDesc)))
@@ -29,9 +29,10 @@ HRESULT CBackGround::Initialize(void * pArg)
 
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
+	
 
-	m_fSizeX = g_iWinCX;
-	m_fSizeY = g_iWinCY;
+	m_fSizeX = 1600;
+	m_fSizeY = 1124;
 	m_fX = g_iWinCX >> 1;
 	m_fY = g_iWinCY >> 1;
 
@@ -43,10 +44,20 @@ HRESULT CBackGround::Initialize(void * pArg)
 
 void CBackGround::Tick(_float fTimeDelta)
 {
+	m_fTick += fTimeDelta;
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_fX - (g_iWinCX * 0.5f), -m_fY + (g_iWinCY * 0.5f), 0.f, 1.f));
+	m_pTransformCom->Go_Left(fTimeDelta);
 
-	//if(0 != m_fFade)
+	if (5.f < m_fTick)
+	{
+		m_iImgNum = 1;
+	}
+	//m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_fX - (g_iWinCX * 0.5f), -m_fY + (g_iWinCY * 0.5f), 0.f, 1.f));
+
+	if (0 != m_fFade)
+	{
+		m_fFade -= 0.1f * fTimeDelta;
+	}
 	//CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 
 	//// pGameInstance->Get_Component(LEVEL_LOGO, TEXT("Layer_Test"), m_pTransformTag, 
@@ -113,7 +124,7 @@ HRESULT CBackGround::SetUp_ShaderResource()
 	if (FAILED(m_pShaderCom->Set_RawValue("g_Fade", &m_fFade, sizeof(_float))))
 		return E_FAIL;
 
-	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 1)))
+	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", m_iImgNum)))
 		return E_FAIL;
 
 

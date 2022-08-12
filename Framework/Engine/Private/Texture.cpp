@@ -12,7 +12,11 @@ CTexture::CTexture(const CTexture & rhs)
 	, m_SRVs(rhs.m_SRVs)
 {
 	for (auto& pSRV : m_SRVs)
+	{
 		Safe_AddRef(pSRV);
+	}
+
+	
 }
 
 HRESULT CTexture::Set_ShaderResourceView(CShader * pShader, const char* pConstantName, _uint iIndex)
@@ -41,8 +45,9 @@ HRESULT CTexture::Initialize_Prototype(const _tchar * pTextureFilePath, _uint iN
 
 		HRESULT		hr = 0;
 
-		if (!lstrcmp(szExt, TEXT(".dds")))		
+		if (!lstrcmp(szExt, TEXT(".dds")))
 			hr = DirectX::CreateDDSTextureFromFile(m_pDevice, szTextureFilePath, nullptr, &pSRV);
+			
 		
 		else		
 			hr = DirectX::CreateWICTextureFromFile(m_pDevice, szTextureFilePath, nullptr, &pSRV);
@@ -50,10 +55,18 @@ HRESULT CTexture::Initialize_Prototype(const _tchar * pTextureFilePath, _uint iN
 		if (FAILED(hr))
 			return E_FAIL;
 
-		m_SRVs.push_back(pSRV);
-		
-	}
+		ID3D11Resource*						pResource = nullptr;
+		ID3D11Texture2D*					pTexture2D = nullptr;
 
+		pSRV->GetResource(&pResource);
+		pResource->QueryInterface(&pTexture2D);
+		pTexture2D->GetDesc(&desc[i]);
+		
+		pResource->Release();
+		pTexture2D->Release();
+
+		m_SRVs.push_back(pSRV);
+	}
 	return S_OK;
 }
 
@@ -93,8 +106,12 @@ void CTexture::Free()
 {
 	__super::Free();
 
+	
+
 	for (auto& pSRV : m_SRVs)
+	{
 		Safe_Release(pSRV);
+	}
 
 	m_SRVs.clear();
 }

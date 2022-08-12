@@ -33,8 +33,10 @@ private:
 	CVIBuffer_Rect*			m_pVIBufferCom = nullptr;
 
 private:
-	_float			m_fX, m_fY, m_fSizeX, m_fSizeY;
+	_float			m_fX, m_fY, m_fSizeX, m_fSizeY, m_fTick = 0;
 	_float4x4		m_ProjMatrix;
+
+	_int			m_iImgNum = 0;
 	_float			m_fFade = 1.f;
 
 private:
