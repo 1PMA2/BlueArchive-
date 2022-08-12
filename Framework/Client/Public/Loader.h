@@ -26,6 +26,10 @@ public:
 		return m_isFinished;
 	}
 
+	_bool is_TexFinished() const {
+		return m_isTexFinished;
+	}
+
 	const _tchar* Get_LoadingText() const {
 		return m_szLoadingText;
 	}
@@ -44,6 +48,7 @@ private:
 	HANDLE					m_hThread;
 	CRITICAL_SECTION		m_CriticalSection;
 	_bool					m_isFinished = false;
+	_bool					m_isTexFinished = false;
 	_tchar					m_szLoadingText[MAX_PATH] = TEXT("");
 
 public:

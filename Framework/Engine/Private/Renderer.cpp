@@ -84,6 +84,6 @@ void CRenderer::Free()
 		for (auto& pGameObject : m_RenderObjects[i])
 			Safe_Release(pGameObject);
 
-		m_RenderObjects[i].clear();		
+		m_RenderObjects[i].clear();
 	}
 }

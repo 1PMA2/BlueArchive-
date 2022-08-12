@@ -6,6 +6,9 @@
 #include "Object_Manager.h"
 #include "Component_Manager.h"
 #include "Timer_Manager.h"
+#include "PipeLine.h"
+#include "Font_Manager.h"
+#include "Light_Manager.h"
 
 
 /* 1. 게임내에 필요한 객체(매니져등)들을 모아서 보관한다. */
@@ -55,8 +58,27 @@ public: /* For.Timer_Manager */
 	HRESULT Add_Timer(const _tchar* pTimerTag);
 	_float Compute_Timer(const _tchar* pTimerTag);
 
-public: /* For.Picking */
-	_bool Picking(class CVIBuffer* pVIBuffer, class CTransform* pTransform, _float3* pOut);
+public: /* For.PipeLine */
+	void Set_Transform(CPipeLine::TRANSFORMSTATE eState, _fmatrix TransformState);
+	_matrix Get_Transform(CPipeLine::TRANSFORMSTATE eState);
+	const _float4x4* Get_Transform_float4x4(CPipeLine::TRANSFORMSTATE eState);
+	const _float4x4* Get_Transform_TP(CPipeLine::TRANSFORMSTATE eState);
+	_float4 Get_CamPosition();
+
+public: /* For.Font_Manager */
+	HRESULT Add_Font(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, const _tchar* pFontTag, const _tchar* pFontFilePath);
+	HRESULT Render_Font(const _tchar* pFontTag, const _tchar* pString, const _float2& vPosition, _fvector vColor);
+
+	
+public: /* For.Light_Manager */
+	HRESULT Add_Light(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, const LIGHTDESC & LightDesc);
+	const LIGHTDESC* Get_LightDesc(_uint iIndex);
+
+
+
+
+
+
 
 
 private:
@@ -66,6 +88,9 @@ private:
 	CObject_Manager*				m_pObject_Manager = nullptr;
 	CComponent_Manager*				m_pComponent_Manager = nullptr;
 	CTimer_Manager*					m_pTimer_Manager = nullptr;
+	CPipeLine*						m_pPipeLine = nullptr;
+	CFont_Manager*					m_pFont_Manager = nullptr;
+	CLight_Manager*					m_pLight_Manager = nullptr;
 
 
 public:

@@ -17,7 +17,7 @@ CTexture::CTexture(const CTexture & rhs)
 
 HRESULT CTexture::Set_ShaderResourceView(CShader * pShader, const char* pConstantName, _uint iIndex)
 {
-	if (iIndex >= m_SRVs.size())
+ 	if (iIndex >= m_SRVs.size())
 		return E_FAIL;
 
 	return pShader->Set_ShaderResourceView(pConstantName, m_SRVs[iIndex]);

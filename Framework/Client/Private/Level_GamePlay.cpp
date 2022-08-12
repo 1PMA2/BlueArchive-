@@ -2,6 +2,8 @@
 #include "..\Public\Level_GamePlay.h"
 #include "GameInstance.h"
 
+#include "Camera_Free.h"
+
 
 
 CLevel_GamePlay::CLevel_GamePlay(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -15,14 +17,17 @@ HRESULT CLevel_GamePlay::Initialize()
 	if (FAILED(__super::Initialize()))
 		return E_FAIL;
 
-	//if (FAILED(Ready_Layer_Camera(TEXT("Layer_Camera"))))
-	//	return E_FAIL;
+	if (FAILED(Ready_Lights()))
+		return E_FAIL;
 
-	//if (FAILED(Ready_Layer_BackGround(TEXT("Layer_BackGround"))))
-	//	return E_FAIL;
+	if (FAILED(Ready_Layer_Camera(TEXT("Layer_Camera"))))
+		return E_FAIL;
 
-	//if (FAILED(Ready_Layer_Player(TEXT("Layer_Player"))))
-	//	return E_FAIL;
+	if (FAILED(Ready_Layer_BackGround(TEXT("Layer_BackGround"))))
+		return E_FAIL;
+
+	if (FAILED(Ready_Layer_Player(TEXT("Layer_Player"))))
+		return E_FAIL;
 
 	//if (FAILED(Ready_Layer_Monster(TEXT("Layer_Monster"))))
 	//	return E_FAIL;
@@ -50,29 +55,60 @@ HRESULT CLevel_GamePlay::Render()
 }
 
 
+HRESULT CLevel_GamePlay::Ready_Lights()
+{
+	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
+
+	LIGHTDESC			LightDesc;
+	ZeroMemory(&LightDesc, sizeof(LIGHTDESC));
+
+	LightDesc.eType = tagLightDesc::TYPE_DIRECTIONAL;
+	LightDesc.vDirection = _float4(1.f, -1.f, 1.f, 0.f);
+	LightDesc.vDiffuse = _float4(1.f, 1.f, 1.f, 1.f);
+	LightDesc.vAmbient = _float4(0.4f, 0.4f, 0.4f, 1.f);
+	LightDesc.vSpecular = _float4(1.f, 1.f, 1.f, 1.f);
+
+	if (FAILED(pGameInstance->Add_Light(m_pDevice, m_pContext, LightDesc)))
+		return E_FAIL;	
+
+	/*ZeroMemory(&LightDesc, sizeof(LIGHTDESC));
+
+	LightDesc.eType = tagLightDesc::TYPE_POINT;
+	LightDesc.vPosition = _float4(10.f, 5.f, 10.f, 0.f);
+	LightDesc.fRange = 10.f;
+	LightDesc.vDiffuse = _float4(1.f, 1.f, 1.f, 1.f);
+	LightDesc.vAmbient = _float4(0.4f, 0.4f, 0.4f, 1.f);
+	LightDesc.vSpecular = _float4(1.f, 1.f, 1.f, 1.f);
+
+	if (FAILED(pGameInstance->Add_Light(m_pDevice, m_pContext, LightDesc)))
+		return E_FAIL;*/
+
+	RELEASE_INSTANCE(CGameInstance);
+
+	return S_OK;
+}
+
 HRESULT CLevel_GamePlay::Ready_Layer_Camera(const _tchar * pLayerTag)
 {
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
 	/* For.Camera_Free */
-	//CCamera::CAMERADESC			CameraDesc;
-	//ZeroMemory(&CameraDesc, sizeof(CCamera::CAMERADESC));
+	CCamera::CAMERADESC			CameraDesc;
+	ZeroMemory(&CameraDesc, sizeof(CCamera::CAMERADESC));
 
-	//CameraDesc.iLevelIndex = LEVEL_STATIC;
-	//CameraDesc.pTransformPrototypeTag = TEXT("Prototype_Component_Transform");
-	//CameraDesc.vEye = _float3(5.0f, 5.f, -3.f);
-	//CameraDesc.vAt = _float3(5.f, 0.f, 20.f);
-	//CameraDesc.TransformDesc.fSpeedPerSec = 5.f;
-	//CameraDesc.TransformDesc.fRotationPerSec = D3DXToRadian(90.0f);
+	CameraDesc.vEye = _float4(0.0f, 10.f, -10.f, 1.f);
+	CameraDesc.vAt = _float4(0.f, 0.f, 0.f, 1.f);
+	CameraDesc.TransformDesc.fSpeedPerSec = 5.f;
+	CameraDesc.TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	//CameraDesc.fFovy = D3DXToRadian(65.0f);
-	//CameraDesc.fAspect = (_float)g_iWinCX / g_iWinCY;
-	//CameraDesc.fNear = 0.2f;
-	//CameraDesc.fFar = 300.f;
+	CameraDesc.fFovy = XMConvertToRadians(65.0f);
+	CameraDesc.fAspect = (_float)g_iWinCX / g_iWinCY;
+	CameraDesc.fNear = 0.2f;
+	CameraDesc.fFar = 300.f;
 
-	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOGO, pLayerTag, TEXT("Prototype_GameObject_Camera_Free"), &CameraDesc)))
-	//	return E_FAIL;
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Camera_Free"), &CameraDesc)))
+		return E_FAIL;
 
 	Safe_Release(pGameInstance);
 

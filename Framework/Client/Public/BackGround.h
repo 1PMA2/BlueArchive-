@@ -35,6 +35,7 @@ private:
 private:
 	_float			m_fX, m_fY, m_fSizeX, m_fSizeY;
 	_float4x4		m_ProjMatrix;
+	_float			m_fFade = 1.f;
 
 private:
 	HRESULT SetUp_Components();

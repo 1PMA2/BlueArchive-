@@ -10,9 +10,14 @@ CGameInstance::CGameInstance()
 	, m_pObject_Manager(CObject_Manager::Get_Instance())
 	, m_pComponent_Manager(CComponent_Manager::Get_Instance())
 	, m_pTimer_Manager(CTimer_Manager::Get_Instance())
+	, m_pPipeLine(CPipeLine::Get_Instance())
+	, m_pFont_Manager(CFont_Manager::Get_Instance())
+	, m_pLight_Manager(CLight_Manager::Get_Instance())
 	
 {	
-
+	Safe_AddRef(m_pLight_Manager);
+	Safe_AddRef(m_pFont_Manager);
+	Safe_AddRef(m_pPipeLine);
 	Safe_AddRef(m_pTimer_Manager);
 	Safe_AddRef(m_pComponent_Manager);
 	Safe_AddRef(m_pObject_Manager);
@@ -48,8 +53,10 @@ HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInst, _uint iNumLevels, cons
 
 HRESULT CGameInstance::Tick_Engine(_float fTimeDelta)
 {
-	if (nullptr == m_pLevel_Manager || 
-		nullptr == m_pInput_Device)	
+	if (nullptr == m_pLevel_Manager ||
+		nullptr == m_pInput_Device ||
+		nullptr == m_pPipeLine || 
+		nullptr == m_pObject_Manager)
 		return E_FAIL;
 
 	m_pInput_Device->SetUp_DeviceState();
@@ -58,7 +65,7 @@ HRESULT CGameInstance::Tick_Engine(_float fTimeDelta)
 
 	m_pObject_Manager->Tick(fTimeDelta);
 
-
+	m_pPipeLine->Tick();
 
 	m_pObject_Manager->LateTick(fTimeDelta);
 
@@ -210,6 +217,78 @@ _float CGameInstance::Compute_Timer(const _tchar * pTimerTag)
 	return m_pTimer_Manager->Compute_Timer(pTimerTag);
 }
 
+void CGameInstance::Set_Transform(CPipeLine::TRANSFORMSTATE eState, _fmatrix TransformState)
+{
+	if (nullptr == m_pPipeLine)
+		return;
+
+	m_pPipeLine->Set_Transform(eState, TransformState);
+}
+
+_matrix CGameInstance::Get_Transform(CPipeLine::TRANSFORMSTATE eState)
+{
+	if (nullptr == m_pPipeLine)
+		return XMMatrixIdentity();
+
+	return m_pPipeLine->Get_Transform(eState);
+}
+
+const _float4x4 * CGameInstance::Get_Transform_float4x4(CPipeLine::TRANSFORMSTATE eState)
+{
+	if (nullptr == m_pPipeLine)
+		return nullptr;
+
+	return m_pPipeLine->Get_Transform_float4x4(eState);
+}
+
+const _float4x4 * CGameInstance::Get_Transform_TP(CPipeLine::TRANSFORMSTATE eState)
+{
+	if (nullptr == m_pPipeLine)
+		return nullptr;
+
+	return m_pPipeLine->Get_Transform_TP(eState);
+}
+
+_float4 CGameInstance::Get_CamPosition()
+{
+	if (nullptr == m_pPipeLine)
+		return _float4(0.f, 0.f, 0.f, 1.f);
+
+	return m_pPipeLine->Get_CamPosition();	
+}
+
+HRESULT CGameInstance::Add_Font(ID3D11Device * pDevice, ID3D11DeviceContext * pContext, const _tchar * pFontTag, const _tchar * pFontFilePath)
+{
+	if (nullptr == m_pFont_Manager)
+		return E_FAIL;
+
+	return m_pFont_Manager->Add_Font(pDevice, pContext, pFontTag, pFontFilePath);
+}
+
+HRESULT CGameInstance::Render_Font(const _tchar * pFontTag, const _tchar * pString, const _float2 & vPosition, _fvector vColor)
+{
+	if (nullptr == m_pFont_Manager)
+		return E_FAIL;
+
+	return m_pFont_Manager->Render_Font(pFontTag, pString, vPosition, vColor);
+}
+
+HRESULT CGameInstance::Add_Light(ID3D11Device * pDevice, ID3D11DeviceContext * pContext, const LIGHTDESC & LightDesc)
+{
+	if (nullptr == m_pLight_Manager)
+		return E_FAIL;
+
+	return m_pLight_Manager->Add_Light(pDevice, pContext, LightDesc);	
+}
+
+const LIGHTDESC * CGameInstance::Get_LightDesc(_uint iIndex)
+{
+	if (nullptr == m_pLight_Manager)
+		return nullptr;
+
+	return m_pLight_Manager->Get_LightDesc(iIndex);
+}
+
 
 
 void CGameInstance::Release_Engine()
@@ -224,9 +303,13 @@ void CGameInstance::Release_Engine()
 
 	CTimer_Manager::Get_Instance()->Destroy_Instance();
 
-	CInput_Device::Get_Instance()->Destroy_Instance();
+	CPipeLine::Get_Instance()->Destroy_Instance();
 
-	
+	CFont_Manager::Get_Instance()->Destroy_Instance();
+
+	CLight_Manager::Get_Instance()->Destroy_Instance();
+
+	CInput_Device::Get_Instance()->Destroy_Instance();	
 
 	CGraphic_Device::Get_Instance()->Destroy_Instance();
 
@@ -234,7 +317,9 @@ void CGameInstance::Release_Engine()
 
 void CGameInstance::Free()
 {
-
+	Safe_Release(m_pLight_Manager);
+	Safe_Release(m_pFont_Manager);
+	Safe_Release(m_pPipeLine);
 	Safe_Release(m_pTimer_Manager);
 	Safe_Release(m_pComponent_Manager);
 	Safe_Release(m_pObject_Manager);

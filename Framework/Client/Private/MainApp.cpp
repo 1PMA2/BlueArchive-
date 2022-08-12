@@ -8,6 +8,24 @@ CMainApp::CMainApp()
 	: m_pGameInstance(CGameInstance::Get_Instance())
 {
 	Safe_AddRef(m_pGameInstance);
+
+	// D3D11_CULL_MODE
+	// D3D11_FILL_MODE
+
+	// D3D11_RASTERIZER_DESC
+
+	//D3D11_COMPARISON_FUNC
+	//D3D11_DEPTH_WRITE_MASK
+	//D3D11_DEPTH_STENCIL_DESC
+
+	
+
+	/*D3D11_BLEND_DESC
+
+	m_pContext->OMSetBlendState();
+	m_pContext->OMSetDepthStencilState();
+	m_pContext->SetRasterizerState();*/
+
 }
 
 HRESULT CMainApp::Initialize()
@@ -23,7 +41,10 @@ HRESULT CMainApp::Initialize()
 	GraphicDesc.isWindowMode = GRAPHICDESC::MODE_WIN;
 
 	if (FAILED(m_pGameInstance->Initialize_Engine(g_hInst, LEVEL_END, GraphicDesc, &m_pDevice, &m_pContext)))
-		return E_FAIL;	
+		return E_FAIL;
+
+	if (FAILED(m_pGameInstance->Add_Font(m_pDevice, m_pContext, TEXT("Font_Dream"), TEXT("../Bin/Resources/Fonts/128.spriteFont"))))
+		return E_FAIL;
 
 	if (FAILED(Ready_Prototype_Component()))
 		return E_FAIL;
@@ -38,6 +59,8 @@ void CMainApp::Tick(float fTimeDelta)
 {
 	if (nullptr == m_pGameInstance)
 		return;
+
+	m_fTimeAcc += fTimeDelta;
 
 	m_pGameInstance->Tick_Engine(fTimeDelta);
 }
@@ -54,6 +77,19 @@ HRESULT CMainApp::Render()
 	m_pRenderer->Draw_RenderGroup();
 
 	m_pGameInstance->Render_Engine();
+
+
+	++m_iNumRender;
+
+	if (m_fTimeAcc >= 1.f)
+	{
+		wsprintf(m_szFPS, TEXT("에프피에스 : %d"), m_iNumRender);
+		m_fTimeAcc = 0.f;
+		m_iNumRender = 0;
+	}
+	// MakeSpriteFont "폰트이름" /FontSize:32 /FastPack /CharacterRegion:0x0020-0x00FF /CharacterRegion:0x3131-0x3163 /CharacterRegion:0xAC00-0xD800 /DefaultCharacter:0xAC00 출력파일이름.spritefont
+	m_pGameInstance->Render_Font(TEXT("Font_Dream"), m_szFPS, _float2(0.f, 0.f), XMVectorSet(1.f, 1.f, 1.f, 1.f));
+
 
 	m_pGameInstance->Present();
 
@@ -101,7 +137,7 @@ HRESULT CMainApp::Ready_Prototype_Component()
 		CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxTex.hlsl"), VTXTEX_DECLARATION::Element, VTXTEX_DECLARATION::iNumElements))))
 		return E_FAIL;
 
-	//Safe_AddRef(m_pRenderer);
+	Safe_AddRef(m_pRenderer);
 
 	return S_OK;
 }

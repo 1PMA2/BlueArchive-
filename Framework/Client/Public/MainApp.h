@@ -27,6 +27,11 @@ private:
 	CRenderer*				m_pRenderer = nullptr;
 
 private:
+	_uint					m_iNumRender = 0;
+	_tchar					m_szFPS[MAX_PATH] = TEXT("");
+	_float					m_fTimeAcc = 0.f;
+
+private:
 	HRESULT Open_Level(LEVEL eLevelID);
 	HRESULT Ready_Prototype_Component();
 
