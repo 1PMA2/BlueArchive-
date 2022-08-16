@@ -31,8 +31,8 @@ HRESULT CBackGround::Initialize(void * pArg)
 		return E_FAIL;
 	
 
-	m_fSizeX = 1600;
-	m_fSizeY = 1124;
+	m_fSizeX = 1.f;
+	m_fSizeY = 1.f;
 	m_fX = g_iWinCX >> 1;
 	m_fY = g_iWinCY >> 1;
 
@@ -44,20 +44,10 @@ HRESULT CBackGround::Initialize(void * pArg)
 
 void CBackGround::Tick(_float fTimeDelta)
 {
+
 	m_fTick += fTimeDelta;
-	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
+	
 	m_pTransformCom->Go_Left(fTimeDelta);
-
-	if (5.f < m_fTick)
-	{
-		m_iImgNum = 1;
-	}
-	//m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_fX - (g_iWinCX * 0.5f), -m_fY + (g_iWinCY * 0.5f), 0.f, 1.f));
-
-	if (0 != m_fFade)
-	{
-		m_fFade -= 0.1f * fTimeDelta;
-	}
 	//CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 
 	//// pGameInstance->Get_Component(LEVEL_LOGO, TEXT("Layer_Test"), m_pTransformTag, 
@@ -80,6 +70,20 @@ HRESULT CBackGround::Render()
 	if (FAILED(SetUp_ShaderResource()))
 		return E_FAIL;
 
+	static int i = 1;
+	if (3.f < m_fTick)
+	{
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_fX - (g_iWinCX * 0.5f), -m_fY + (g_iWinCY * 0.5f), 0.f, 1.f));
+		m_iImgNum += i;
+		i *= -1;
+		m_fTick = 0.f;
+	}
+
+	m_fSizeX = m_pTextureCom->Get_TextureSize(m_iImgNum).Width;
+	m_fSizeY = m_pTextureCom->Get_TextureSize(m_iImgNum).Height;
+
+	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
+	
 	m_pShaderCom->Begin(0);
 
 	m_pVIBufferCom->Render();

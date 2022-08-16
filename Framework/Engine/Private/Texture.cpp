@@ -24,6 +24,16 @@ HRESULT CTexture::Set_ShaderResourceView(CShader * pShader, const char* pConstan
  	if (iIndex >= m_SRVs.size())
 		return E_FAIL;
 
+	ID3D11Resource*						pResource = nullptr;
+	ID3D11Texture2D*					pTexture2D = nullptr;
+
+	m_SRVs[iIndex]->GetResource(&pResource);
+	pResource->QueryInterface(&pTexture2D);
+	pTexture2D->GetDesc(&desc[iIndex]);
+
+	pResource->Release();
+	pTexture2D->Release();
+
 	return pShader->Set_ShaderResourceView(pConstantName, m_SRVs[iIndex]);
 }
 
@@ -54,16 +64,6 @@ HRESULT CTexture::Initialize_Prototype(const _tchar * pTextureFilePath, _uint iN
 
 		if (FAILED(hr))
 			return E_FAIL;
-
-		ID3D11Resource*						pResource = nullptr;
-		ID3D11Texture2D*					pTexture2D = nullptr;
-
-		pSRV->GetResource(&pResource);
-		pResource->QueryInterface(&pTexture2D);
-		pTexture2D->GetDesc(&desc[i]);
-		
-		pResource->Release();
-		pTexture2D->Release();
 
 		m_SRVs.push_back(pSRV);
 	}
