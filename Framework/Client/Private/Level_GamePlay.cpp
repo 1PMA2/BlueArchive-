@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "..\Public\Level_GamePlay.h"
 #include "GameInstance.h"
-
+#include "Level_Loading.h"
 #include "Camera_Free.h"
 
 
@@ -41,6 +41,17 @@ HRESULT CLevel_GamePlay::Initialize()
 void CLevel_GamePlay::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);		
+
+	if (GetKeyState(VK_RETURN) & 0x8000)
+	{
+		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+		Safe_AddRef(pGameInstance);
+
+		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
+			return;
+
+		Safe_Release(pGameInstance);
+	}
 }
 
 HRESULT CLevel_GamePlay::Render()

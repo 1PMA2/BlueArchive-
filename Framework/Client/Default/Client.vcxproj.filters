@@ -52,6 +52,9 @@
     <ClInclude Include="..\Public\LoadingImage.h">
       <Filter>02.GameObject\BackGround\LoadingImage</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Level_Lobby.h">
+      <Filter>01.Level\Lobby</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -92,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\LoadingImage.cpp">
       <Filter>02.GameObject\BackGround\LoadingImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Lobby.cpp">
+      <Filter>01.Level\Lobby</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +156,12 @@
     </Filter>
     <Filter Include="02.GameObject\BackGround\LoadingImage">
       <UniqueIdentifier>{8c5ac1f4-9f7f-422a-9d70-596186ddc00e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Level\Lobby">
+      <UniqueIdentifier>{7e404202-24cc-48c1-a722-9784376dee40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\BackGround\LoadingImage\GameLogo">
+      <UniqueIdentifier>{17eac4a8-3f70-440d-8326-2b153a4762bd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

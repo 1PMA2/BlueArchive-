@@ -37,6 +37,7 @@ public:
 public:
 	HRESULT Initialize(LEVEL eNextLevel);
 	HRESULT Loading_ForLogoLevel();
+	HRESULT Loading_ForLobbyLevel();
 	HRESULT Loading_ForGamePlayLevel();
 
 private:

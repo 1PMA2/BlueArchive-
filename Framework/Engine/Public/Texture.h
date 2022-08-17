@@ -13,7 +13,7 @@ private:
 
 public:
 	HRESULT Set_ShaderResourceView(class CShader* pShader, const char* pConstantName, _uint iIndex = 0);
-	D3D11_TEXTURE2D_DESC Get_TextureSize(_uint iIndex) { return desc[iIndex]; }
+	const D3D11_TEXTURE2D_DESC Get_TextureSize(_uint iIndex) { return desc[iIndex]; }
 
 public:
 	virtual HRESULT Initialize_Prototype(const _tchar* pTextureFilePath, _uint iNumTextures) ;

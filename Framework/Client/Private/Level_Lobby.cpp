@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "..\Public\Level_Lobby.h"
 #include "GameInstance.h"
-#include "LEvel_Loading.h"
+#include "Level_Loading.h"
 
 
 
@@ -18,7 +18,7 @@ HRESULT CLevel_Lobby::Initialize()
 
 
 
-	if (FAILED(Ready_Layer_Lobby(TEXT("Layer_Lobby"))))
+	if (FAILED(Ready_Layer_Lobby(TEXT("Layer_LoadingImage"))))
 		return E_FAIL;
 
 	return S_OK;
@@ -28,7 +28,7 @@ void CLevel_Lobby::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
 
-	if (GetKeyState(VK_SPACE) & 0x8000)
+	if (GetKeyState(VK_RETURN) & 0x8000)
 	{
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
@@ -58,8 +58,8 @@ HRESULT CLevel_Lobby::Ready_Layer_Lobby(const _tchar * pLayerTag)
 	Safe_AddRef(pGameInstance);
 
 	/* For.BackGround */
-	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOGO, pLayerTag, TEXT("Prototype_GameObject_BackGround"))))
-	//	return E_FAIL;
+	/*if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_LoadingImage"))))
+		return E_FAIL;*/
 
 	Safe_Release(pGameInstance);
 
