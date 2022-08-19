@@ -11,14 +11,14 @@ c:\users\slave\documents\github\bluearchive\framework\engine\private\vibuffer_te
   Renderer.cpp
   PipeLine.cpp
   Object_Manager.cpp
-c:\users\slave\documents\github\bluearchive\framework\engine\public\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\engine\public\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_ulong'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Model.cpp
 c:\users\slave\documents\github\bluearchive\framework\engine\private\model.cpp(128): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   MeshContainer.cpp
   Light_Manager.cpp
   Light.cpp
   Level_Manager.cpp
-c:\users\slave\documents\github\bluearchive\framework\engine\public\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\engine\public\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_ulong'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Level.cpp
   Layer.cpp
   Input_Device.cpp
@@ -28,16 +28,16 @@ c:\users\slave\documents\github\bluearchive\framework\engine\public\object_manag
 c:\users\slave\documents\github\bluearchive\framework\engine\private\graphic_device.cpp(43): warning C4244: '=': 'Engine::_uint'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 c:\users\slave\documents\github\bluearchive\framework\engine\private\graphic_device.cpp(44): warning C4244: '=': 'Engine::_uint'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   GameObject.cpp
-c:\users\slave\documents\github\bluearchive\framework\engine\public\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\engine\public\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_ulong'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   GameInstance.cpp
-c:\users\slave\documents\github\bluearchive\framework\engine\public\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\engine\public\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_ulong'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Font_Manager.cpp
   Engine_Struct.cpp
   CustomFont.cpp
   Component_Manager.cpp
   Component.cpp
   Camera.cpp
-c:\users\slave\documents\github\bluearchive\framework\engine\public\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\engine\public\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_ulong'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Base.cpp
   코드를 생성하고 있습니다...
      ..\Bin\Engine.lib 라이브러리 및 ..\Bin\Engine.exp 개체를 생성하고 있습니다.

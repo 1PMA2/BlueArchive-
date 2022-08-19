@@ -151,7 +151,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 	Safe_AddRef(pGameInstance);
 
 
-	if (2 >= pGameInstance->Get_PTypeSize())
+	if (2 >= pGameInstance->Get_PTypeSize()) //객체 개수, 재생성 막기
 	{
 
 #pragma region PROTOTYPE_GAMEOBJECT

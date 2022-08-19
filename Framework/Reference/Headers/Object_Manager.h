@@ -16,8 +16,10 @@ private:
 
 public:
 	class CComponent* Get_Component(_uint iLevelIndex, const _tchar* pLayerTag, const _tchar* pComponentTag, _uint iIndex = 0);
-	_uint Get_PTypeSize() { return m_Prototypes.size(); }
-
+	_ulong Get_PTypeSize() { return m_Prototypes.size(); }
+	void ClearPT() {
+		m_Prototypes.clear();
+	}
 public:
 	HRESULT Reserve_Container(_uint iNumLevels);
 
