@@ -44,7 +44,7 @@ HRESULT CLoadingImage::Initialize(void * pArg)
 
 void CLoadingImage::Tick(_float fTimeDelta)
 {
-
+	
 	m_fTick += fTimeDelta;
 
 	m_pTransformCom->Go_Left(fTimeDelta);
@@ -52,7 +52,7 @@ void CLoadingImage::Tick(_float fTimeDelta)
 
 void CLoadingImage::LateTick(_float fTimeDelta)
 {
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, this);
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_ALPHABLEND, this);
 }
 
 HRESULT CLoadingImage::Render()

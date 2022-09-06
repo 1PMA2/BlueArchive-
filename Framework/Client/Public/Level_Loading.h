@@ -21,7 +21,7 @@ public:
 	virtual HRESULT Render();
 
 private:
-	HRESULT Ready_Layer_BackGround(const _tchar* pLayerTag);
+	HRESULT Ready_Layer_LoadingImage(const _tchar* pLayerTag);
 
 private:
 	LEVEL			m_eNextLevel = LEVEL_END;

@@ -18,7 +18,7 @@ HRESULT CLevel_Lobby::Initialize()
 
 
 
-	if (FAILED(Ready_Layer_Lobby(TEXT("Layer_LoadingImage"))))
+	if (FAILED(Ready_Layer_Lobby(TEXT("Layer_Lobby"))))
 		return E_FAIL;
 
 	return S_OK;
@@ -47,7 +47,7 @@ HRESULT CLevel_Lobby::Render()
 	if (FAILED(__super::Render()))
 		return E_FAIL;
 
-	SetWindowText(g_hWnd, TEXT("·Îºñ"));
+	SetWindowText(g_hWnd, TEXT("Lobby"));
 
 	return S_OK;
 }
@@ -58,8 +58,9 @@ HRESULT CLevel_Lobby::Ready_Layer_Lobby(const _tchar * pLayerTag)
 	Safe_AddRef(pGameInstance);
 
 	/* For.BackGround */
-	/*if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_LoadingImage"))))
-		return E_FAIL;*/
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_BackGround"))))
+		return E_FAIL;
+
 
 	Safe_Release(pGameInstance);
 

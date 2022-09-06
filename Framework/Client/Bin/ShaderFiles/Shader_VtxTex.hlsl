@@ -65,8 +65,7 @@ PS_OUT PS_MAIN(PS_IN In)
 
 	Out.vColor = g_DiffuseTexture.Sample(DefaultSampler, In.vTexUV);
 
-	/*if (Out.vColor.a < 0.1f)
-		discard;*/
+	Out.vColor.a = g_Fade;
 
 	return Out;	
 }
@@ -75,7 +74,7 @@ technique11 DefaultTechnique
 {
 	pass Default
 	{
-		SetBlendState(BS_Default, float4(0.f, 0.f, 0.f, 1.f), 0xffffffff);
+		SetBlendState(BS_AlphaBlending, float4(0.f, 0.f, 0.f, 1.f), 0xffffffff);
 		SetDepthStencilState(DSS_Default, 0);
 		SetRasterizerState(RS_Default);
 

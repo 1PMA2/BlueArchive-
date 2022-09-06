@@ -55,9 +55,6 @@
     <ClInclude Include="..\Public\Level_Lobby.h">
       <Filter>01.Level\Lobby</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Lobby.h">
-      <Filter>02.GameObject\Lobby</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -101,9 +98,6 @@
     </ClCompile>
     <ClCompile Include="..\Private\Level_Lobby.cpp">
       <Filter>01.Level\Lobby</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Private\Lobby.cpp">
-      <Filter>02.GameObject\Lobby</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,11 +163,14 @@
     <Filter Include="02.GameObject\BackGround\LoadingImage\GameLogo">
       <UniqueIdentifier>{17eac4a8-3f70-440d-8326-2b153a4762bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\Lobby">
-      <UniqueIdentifier>{d1534af8-f28f-47cc-878b-9414039d330c}</UniqueIdentifier>
+    <Filter Include="02.GameObject\UI">
+      <UniqueIdentifier>{0652f6ff-6032-40bb-9c46-a5dd685a071d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\Lobby\Lobby_UI">
+    <Filter Include="02.GameObject\UI\Lobby_UI">
       <UniqueIdentifier>{77644339-21b1-445c-9def-c0f104e0fc22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\BackGround\LoadingImage\FadeImage">
+      <UniqueIdentifier>{95fc54d3-6528-4e88-8296-3c9e79c10c16}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

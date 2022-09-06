@@ -44,6 +44,10 @@ HRESULT CBackGround::Initialize(void * pArg)
 
 void CBackGround::Tick(_float fTimeDelta)
 {
+	if (0.f < m_fFade)
+		m_fFade -= 0.01f;
+	else
+		m_fFade = 0.f;
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_fX - (g_iWinCX * 0.5f), -m_fY + (g_iWinCY * 0.5f), 0.f, 1.f));
 
@@ -51,7 +55,7 @@ void CBackGround::Tick(_float fTimeDelta)
 
 void CBackGround::LateTick(_float fTimeDelta)
 {
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, this);
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_ALPHABLEND, this);
 }
 
 HRESULT CBackGround::Render()
@@ -88,7 +92,7 @@ HRESULT CBackGround::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_Texture */
-	if (FAILED(__super::Add_Component(LEVEL_LOGO, TEXT("Prototype_Component_Texture_Default"), TEXT("Com_Texture "), (CComponent**)&m_pTextureCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Default"), TEXT("Com_Texture "), (CComponent**)&m_pTextureCom)))
 		return E_FAIL;
 
 	/* For.Com_VIBuffer */

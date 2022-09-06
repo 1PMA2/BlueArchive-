@@ -25,7 +25,7 @@ HRESULT CLevel_Loading::Initialize(LEVEL eNextLevel)
 
 	if (LEVEL_LOGO != m_eNextLevel)
 	{
-		if (FAILED(Ready_Layer_BackGround(TEXT("Layer_LoadingImage"))))
+		if (FAILED(Ready_Layer_LoadingImage(TEXT("Layer_LoadingImage"))))
 			return E_FAIL;
 	}
 
@@ -38,7 +38,7 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 
 	if (true == m_pLoader->is_Finished())
 	{
-		if (GetKeyState(VK_LBUTTON) & 0x8000)
+		if ((GetKeyState(VK_LBUTTON) & 0x8000))
 		{
 			CLevel*			pLevel = nullptr;
 
@@ -82,12 +82,15 @@ HRESULT CLevel_Loading::Render()
 	return S_OK;
 }
 
-HRESULT CLevel_Loading::Ready_Layer_BackGround(const _tchar * pLayerTag)
+HRESULT CLevel_Loading::Ready_Layer_LoadingImage(const _tchar * pLayerTag)
 {
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOADING, pLayerTag, TEXT("Prototype_GameObject_LoadingImage"))))
+		return E_FAIL;
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOADING, pLayerTag, TEXT("Prototype_GameObject_BackGround"))))
 		return E_FAIL;
 
 
