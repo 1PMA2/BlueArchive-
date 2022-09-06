@@ -18,7 +18,7 @@ HRESULT CLevel_Lobby::Initialize()
 
 
 
-	if (FAILED(Ready_Layer_Lobby(TEXT("Layer_Lobby"))))
+	if (FAILED(Ready_Layer_Lobby(TEXT("Layer_Lobby_BG"))))
 		return E_FAIL;
 
 	return S_OK;
@@ -58,8 +58,11 @@ HRESULT CLevel_Lobby::Ready_Layer_Lobby(const _tchar * pLayerTag)
 	Safe_AddRef(pGameInstance);
 
 	/* For.BackGround */
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_BackGround"))))
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_BG_Lobby"))))
 		return E_FAIL;
+
+	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_BackGround"))))
+	//	return E_FAIL;
 
 
 	Safe_Release(pGameInstance);

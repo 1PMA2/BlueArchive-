@@ -55,6 +55,9 @@
     <ClInclude Include="..\Public\Level_Lobby.h">
       <Filter>01.Level\Lobby</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\BG_Lobby.h">
+      <Filter>02.GameObject\BackGround\BG_Lobby</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -98,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Level_Lobby.cpp">
       <Filter>01.Level\Lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\BG_Lobby.cpp">
+      <Filter>02.GameObject\BackGround\BG_Lobby</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +177,9 @@
     </Filter>
     <Filter Include="02.GameObject\BackGround\LoadingImage\FadeImage">
       <UniqueIdentifier>{95fc54d3-6528-4e88-8296-3c9e79c10c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\BackGround\BG_Lobby">
+      <UniqueIdentifier>{e4d79119-13e7-49f2-a408-eaca2d6fc2ed}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
 #include "GameInstance.h"
 #include "BackGround.h"
 #include "LoadingImage.h"
+#include "BG_Lobby.h"
 #include "Camera_Free.h"
 //#include "Monster.h"
 #include "Terrain.h"
@@ -115,28 +116,33 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
+	if (pGameInstance->Get_NumPlayObj() > pGameInstance->Get_PTypeSize()) //객체 개수, 재생성 막기
+	{
 #pragma region PROTOTYPE_GAMEOBJECT
 
-	lstrcpy(m_szLoadingText, TEXT("객체를 생성중입니다."));
+		lstrcpy(m_szLoadingText, TEXT("객체를 생성중입니다."));
 
-	/* For.Prototype_GameObject_Lobby */
+		/* For.Prototype_GameObject_Lobby */
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_BG_Lobby"),
+			CBG_Lobby::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
 
-
-
-
+		//pGameInstance->Set_NumLobbyObj(pGameInstance->Get_PTypeSize());
 
 #pragma endregion
-
+	}
 
 	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
-
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_LOBBY, TEXT("Prototype_Component_Texture_BG_Lobby"),
+		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Bg_Lobby%d.png"), 1))))
+		return E_FAIL;
 
 
 	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
 
 
 
-	lstrcpy(m_szLoadingText, TEXT("로딩 끝 "));
+	lstrcpy(m_szLoadingText, TEXT("fhql로딩 끝 "));
 
 	m_isFinished = true;
 	Safe_Release(pGameInstance);
@@ -151,7 +157,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 	Safe_AddRef(pGameInstance);
 
 
-	if (2 >= pGameInstance->Get_PTypeSize()) //객체 개수, 재생성 막기
+	if (3 >= pGameInstance->Get_PTypeSize()) //객체 개수, 재생성 막기
 	{
 
 #pragma region PROTOTYPE_GAMEOBJECT
@@ -179,7 +185,6 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			return E_FAIL;
 
 
-
 		///* For.Prototype_GameObject_Monster */
 		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Monster"),
 		//	CMonster::Create(m_pGraphic_Device))))
@@ -190,8 +195,11 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		//	CEffect::Create(m_pGraphic_Device))))
 		//	return E_FAIL;
 
-	}
+
 #pragma endregion
+
+		pGameInstance->Set_NumPlayObj(pGameInstance->Get_PTypeSize());
+	}
 
 		lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
 

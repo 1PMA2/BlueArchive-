@@ -17,6 +17,7 @@ private:
 public:
 	class CComponent* Get_Component(_uint iLevelIndex, const _tchar* pLayerTag, const _tchar* pComponentTag, _uint iIndex = 0);
 	_uint Get_PTypeSize() { return m_Prototypes.size(); }
+	void Set_NumPlayObj(_uint iNumPlayObj) { m_iNumPlayObj = iNumPlayObj; }
 
 public:
 	HRESULT Reserve_Container(_uint iNumLevels);
@@ -44,6 +45,8 @@ private:
 	typedef map<const _tchar*, class CLayer*>		LAYERS;
 
 	_uint					m_iNumLevels = 0;
+	_uint					m_iNumLobbyObj = 0;
+	_uint					m_iNumPlayObj = 0;
 
 
 private:

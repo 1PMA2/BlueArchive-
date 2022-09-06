@@ -1,4 +1,43 @@
-﻿  Level_Lobby.cpp
+﻿  Client.cpp
 c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
-  Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)
+  BackGround.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\background.cpp(40): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\background.cpp(71): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\background.cpp(72): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Terrain.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Sky.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Player.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MainApp.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  LoadingImage.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\loadingimage.cpp(40): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\loadingimage.cpp(133): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\loadingimage.cpp(134): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Loader.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Level_Logo.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Level_Lobby.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Level_Loading.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Level_GamePlay.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Camera_Free.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  BG_Lobby.cpp
+c:\users\slave\documents\github\bluearchive\framework\reference\headers\object_manager.h(19): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\bg_lobby.cpp(40): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\bg_lobby.cpp(67): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\bg_lobby.cpp(68): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+Loader.obj : error LNK2019: "__declspec(dllimport) public: unsigned int __cdecl Engine::CGameInstance::Get_NumPlayObj(void)" (__imp_?Get_NumPlayObj@CGameInstance@Engine@@QEAAIXZ) 외부 기호(참조 위치: "public: long __cdecl Client::CLoader::Loading_ForLobbyLevel(void)" (?Loading_ForLobbyLevel@CLoader@Client@@QEAAJXZ) 함수)에서 확인하지 못했습니다.
+Loader.obj : error LNK2019: "__declspec(dllimport) public: void __cdecl Engine::CGameInstance::Set_NumPlayObj(unsigned int)" (__imp_?Set_NumPlayObj@CGameInstance@Engine@@QEAAXI@Z) 외부 기호(참조 위치: "public: long __cdecl Client::CLoader::Loading_ForGamePlayLevel(void)" (?Loading_ForGamePlayLevel@CLoader@Client@@QEAAJXZ) 함수)에서 확인하지 못했습니다.
+..\Bin\Client.exe : fatal error LNK1120: 2개의 확인할 수 없는 외부 참조입니다.
