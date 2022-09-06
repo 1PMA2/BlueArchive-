@@ -16,7 +16,7 @@ vector		g_vLightAmbient;
 vector		g_vLightSpecular;
 
 vector		g_vMtrlAmbient = vector(1.f, 1.f, 1.f, 1.f);
-vector		g_vMtrlSpecular = vector(0.f, 0.f, 0.f, 0.f);
+vector		g_vMtrlSpecular = vector(1.f, 1.f, 1.f, 1.f);
 float		g_fPower = 30.f;
 
 

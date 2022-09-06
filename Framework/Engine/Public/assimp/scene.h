@@ -289,7 +289,7 @@ struct aiScene
     * All animations imported from the given file are listed here.
     * The array is mNumAnimations in size.
     */
-    C_STRUCT aiAnimation** mAnimations;
+    C_STRUCT aiAnimation** mAnimations;	
 
     /** The number of textures embedded into the file */
     unsigned int mNumTextures;

@@ -107,6 +107,21 @@
     <ClInclude Include="..\public\MeshContainer.h">
       <Filter>01.Utility\03.Component\04.Model\MeshContainer</Filter>
     </ClInclude>
+    <ClInclude Include="..\public\HIerarchyNode.h">
+      <Filter>01.Utility\03.Component\04.Model\HierarchyNode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\Animation.h">
+      <Filter>01.Utility\03.Component\04.Model\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Channel.h">
+      <Filter>01.Utility\03.Component\04.Model\Animation\Channel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\Collider.h">
+      <Filter>01.Utility\03.Component\05.Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\DebugDraw.h">
+      <Filter>01.Utility\03.Component\05.Collider\DebugDraw</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Base.cpp">
@@ -198,6 +213,21 @@
     </ClCompile>
     <ClCompile Include="..\private\MeshContainer.cpp">
       <Filter>01.Utility\03.Component\04.Model\MeshContainer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\HIerarchyNode.cpp">
+      <Filter>01.Utility\03.Component\04.Model\HierarchyNode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Animation.cpp">
+      <Filter>01.Utility\03.Component\04.Model\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Channel.cpp">
+      <Filter>01.Utility\03.Component\04.Model\Animation\Channel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\Collider.cpp">
+      <Filter>01.Utility\03.Component\05.Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\DebugDraw.cpp">
+      <Filter>01.Utility\03.Component\05.Collider\DebugDraw</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -296,6 +326,21 @@
     </Filter>
     <Filter Include="01.Utility\03.Component\04.Model\MeshContainer">
       <UniqueIdentifier>{562dd38e-5b11-4c79-a9a5-9f4fa0771d6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\03.Component\04.Model\HierarchyNode">
+      <UniqueIdentifier>{ff23f683-fcd5-40c2-941b-c342f470f203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\03.Component\04.Model\Animation">
+      <UniqueIdentifier>{38f686fa-0b02-43bb-9ea2-92310eb9dc66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\03.Component\04.Model\Animation\Channel">
+      <UniqueIdentifier>{24d5d3b3-127b-4f7c-8f67-2f30b838f88b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\03.Component\05.Collider">
+      <UniqueIdentifier>{68a7c2b6-d965-4a0b-93b5-33e1ff7bd3aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\03.Component\05.Collider\DebugDraw">
+      <UniqueIdentifier>{867490be-66e2-42ca-98f1-11d0cecdf3e8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

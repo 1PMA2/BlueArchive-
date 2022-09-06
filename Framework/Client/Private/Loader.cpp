@@ -5,6 +5,7 @@
 #include "LoadingImage.h"
 #include "BG_Lobby.h"
 #include "Camera_Free.h"
+#include "Camera_Ex.h"
 //#include "Monster.h"
 #include "Terrain.h"
 #include "Player.h"
@@ -180,6 +181,11 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CCamera_Free::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		/* For.Prototype_GameObject_Camera_Ex*/
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Ex"),
+			CCamera_Ex::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		/* For.Prototype_GameObject_Player */
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Player"),
 			CPlayer::Create(m_pDevice, m_pContext))))
@@ -243,6 +249,21 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		//	CTexture::Create(m_pGraphic_Device, CTexture::TYPE_DEFAULT, TEXT("../Bin/Resources/Textures/Explosion/Explosion%d.png"), 90))))
 		//	return E_FAIL;
 
+		lstrcpy(m_szLoadingText, TEXT("콜라이더추가.  "));
+		/* For.Prototype_Component_Collider_AABB */
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_AABB"),
+			CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_AABB))))
+			return E_FAIL;
+
+		/* For.Prototype_Component_Collider_OBB */
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_OBB"),
+			CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_OBB))))
+			return E_FAIL;
+
+		/* For.Prototype_Component_Collider_SPHERE */
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_SPHERE"),
+			CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_SPHERE))))
+			return E_FAIL;
 
 		lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
 
@@ -260,19 +281,19 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		_matrix			TransformMatrix;
 
 		/* For.Prototype_Component_Model_ForkLift*/
-		TransformMatrix = XMMatrixScaling(1.01f, 1.01f, 1.01f) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+		/*TransformMatrix = XMMatrixScaling(1.01f, 1.01f, 1.01f) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_ForkLift"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/ForkLift/", "ForkLift.fbx", TransformMatrix))))
-			return E_FAIL;
-
+			return E_FAIL;*/
 
 		/* For.Prototype_Component_Model_Fiona */
-		//TransformMatrix = /*XMMatrixScaling(0.01f, 0.01f, 0.01f) * */XMMatrixRotationY(XMConvertToRadians(180.0f));
+		TransformMatrix = /*XMMatrixScaling(0.01f, 0.01f, 0.01f) * */XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 
-		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Fiona"),
-		//	CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/Fiona/", "Fiona.fbx", TransformMatrix))))
-		//	return E_FAIL;
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Fiona"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Fiona/", "Fiona.fbx", TransformMatrix))))
+			return E_FAIL;
+
 
 		lstrcpy(m_szLoadingText, TEXT("셰이더를 로딩중이빈다. "));
 		/* For.Prototype_Component_Shader_VtxTex */
@@ -288,6 +309,11 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		/* For.Prototype_Component_Shader_VtxModel */
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Shader_VtxModel"),
 			CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxModel.hlsl"), VTXMODEL_DECLARATION::Element, VTXMODEL_DECLARATION::iNumElements))))
+			return E_FAIL;
+
+		/* For.Prototype_Component_Shader_VtxAnimModel */
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Shader_VtxAnimModel"),
+			CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxAnimModel.hlsl"), VTXANIM_DECLARATION::Element, VTXANIM_DECLARATION::iNumElements))))
 			return E_FAIL;
 
 		lstrcpy(m_szLoadingText, TEXT("로딩 끝 "));

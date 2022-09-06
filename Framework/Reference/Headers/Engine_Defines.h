@@ -3,9 +3,6 @@
 #pragma warning (disable : 4005)
 #pragma warning (disable : 4251)
 
-
-#include <wrl.h>
-namespace wrl = Microsoft::WRL;
 #include <d3d11.h>
 #include <DirectXMath.h>
 
@@ -15,6 +12,9 @@ namespace wrl = Microsoft::WRL;
 #include <DirectXTK/SpriteBatch.h>
 #include <DirectXTK/SpriteFont.h>
 #include <DirectXTK/ScreenGrab.h>
+#include <DirectXTK/PrimitiveBatch.h>
+#include <DirectXTK/VertexTypes.h>
+#include <DirectXTK/Effects.h>
 
 #include <assimp/scene.h>
 #include <assimp/Importer.hpp>
@@ -22,6 +22,7 @@ namespace wrl = Microsoft::WRL;
 
 
 #include <DirectXCollision.h>
+
 
 #include <d3dcompiler.h>
 
