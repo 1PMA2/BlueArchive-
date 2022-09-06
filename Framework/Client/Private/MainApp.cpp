@@ -3,6 +3,8 @@
 #include "GameInstance.h"
 #include "Level_Loading.h"
 
+_bool g_bLobby = true;
+_bool g_bPlay = true;
 
 CMainApp::CMainApp()
 	: m_pGameInstance(CGameInstance::Get_Instance())

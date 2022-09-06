@@ -52,7 +52,7 @@ void CLoadingImage::Tick(_float fTimeDelta)
 
 void CLoadingImage::LateTick(_float fTimeDelta)
 {
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_ALPHABLEND, this);
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, this);
 }
 
 HRESULT CLoadingImage::Render()

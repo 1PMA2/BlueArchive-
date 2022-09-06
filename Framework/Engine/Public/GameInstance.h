@@ -50,10 +50,6 @@ public: /* For.Object_Manager */
 	class CComponent* Get_Component(_uint iLevelIndex, const _tchar* pLayerTag, const _tchar* pComponentTag, _uint iIndex = 0);
 	_uint Get_PTypeSize() { return m_pObject_Manager->Get_PTypeSize(); }
 
-	_uint Get_NumPlayObj() { return m_pObject_Manager->Get_NumPlayObj(); }
-	void Set_NumPlayObj(_uint iNumPlayObj) { m_pObject_Manager->Set_NumPlayObj(iNumPlayObj); }
-
-
 public: /* For.Component_Mananger */
 	HRESULT Add_Prototype(_uint iLevelIndex, const _tchar* pPrototypeTag, class CComponent* pPrototype);
 	class CComponent* Clone_Component(_uint iLevelIndex, const _tchar* pPrototypeTag, void* pArg = nullptr);

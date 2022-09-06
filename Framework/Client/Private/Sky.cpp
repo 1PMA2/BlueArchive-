@@ -91,7 +91,7 @@ HRESULT CSky::SetUp_ShaderResource()
 {
 	if (nullptr == m_pShaderCom)
 		return E_FAIL;
-
+	
 	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 
 	if (FAILED(m_pTransformCom->Set_ShaderResource(m_pShaderCom, "g_WorldMatrix")))

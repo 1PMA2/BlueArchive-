@@ -11,7 +11,6 @@
 //#include "Effect.h"
 #include "Sky.h"
 
-
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
 	, m_pContext(pContext)
@@ -116,7 +115,7 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
-	if (pGameInstance->Get_NumPlayObj() > pGameInstance->Get_PTypeSize()) //객체 개수, 재생성 막기
+	if (g_bLobby) //객체 개수, 재생성 막기
 	{
 #pragma region PROTOTYPE_GAMEOBJECT
 
@@ -130,6 +129,8 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 		//pGameInstance->Set_NumLobbyObj(pGameInstance->Get_PTypeSize());
 
 #pragma endregion
+
+		g_bLobby = false;
 	}
 
 	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
@@ -157,7 +158,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 	Safe_AddRef(pGameInstance);
 
 
-	if (3 >= pGameInstance->Get_PTypeSize()) //객체 개수, 재생성 막기
+	if (g_bPlay) //객체 개수, 재생성 막기
 	{
 
 #pragma region PROTOTYPE_GAMEOBJECT
@@ -198,7 +199,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 #pragma endregion
 
-		pGameInstance->Set_NumPlayObj(pGameInstance->Get_PTypeSize());
+		g_bPlay = false;
 	}
 
 		lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
