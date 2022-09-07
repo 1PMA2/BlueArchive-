@@ -139,7 +139,7 @@ HRESULT CPlayer::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_Model */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Fiona"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
+	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru_Ex"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
 		return E_FAIL;
 
 	return S_OK;
@@ -185,6 +185,14 @@ HRESULT CPlayer::SetUp_ShaderResource()
 	RELEASE_INSTANCE(CGameInstance);
 
 	return S_OK;
+}
+
+void CPlayer::OnDisable()
+{
+}
+
+void CPlayer::OnEnable()
+{
 }
 
 CPlayer * CPlayer::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)

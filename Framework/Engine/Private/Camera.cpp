@@ -60,6 +60,14 @@ HRESULT CCamera::Bind_PipeLine()
 	return S_OK;
 }
 
+void CCamera::OnDisable()
+{
+}
+
+void CCamera::OnEnable()
+{
+}
+
 void CCamera::Free()
 {
 	__super::Free();

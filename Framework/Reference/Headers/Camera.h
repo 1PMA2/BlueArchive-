@@ -44,6 +44,10 @@ protected:
 	HRESULT Bind_PipeLine();	
 
 public:
+	virtual void OnDisable() override;
+	virtual void OnEnable() override;
+
+public:
 	virtual CGameObject* Clone(void* pArg) = 0;
 	virtual void Free() override;
 };

@@ -44,6 +44,10 @@ private:
 	HRESULT SetUp_ShaderResource();
 
 public:
+	virtual void OnDisable() override;
+	virtual void OnEnable() override;
+
+public:
 	static CBackGround* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
 	virtual CGameObject* Clone(void* pArg) override;
 	virtual void Free() override;

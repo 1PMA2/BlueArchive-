@@ -1,4 +1,5 @@
 #pragma once
+#include "Engine_Defines.h"
 
 namespace Client 
 {
@@ -6,6 +7,8 @@ namespace Client
 	static const unsigned int g_iWinCY = 720;
 
 	enum LEVEL { LEVEL_STATIC, LEVEL_LOADING, LEVEL_LOGO, LEVEL_LOBBY, LEVEL_GAMEPLAY, LEVEL_END };
+
+	enum ANIM {ANIM_EXCUTIN, ANIM_EX, ANIM_SET, ANIM_SETUP, ANIM_ZOOM, ANIM_END};
 }
 
 extern HWND g_hWnd;

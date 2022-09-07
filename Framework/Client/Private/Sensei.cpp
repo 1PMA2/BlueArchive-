@@ -2,7 +2,7 @@
 #include "..\Public\Sensei.h"
 
 
-//IMPLEMENT_SINGLETON(CSensei)
+IMPLEMENT_SINGLETON(CSensei)
 
 CSensei::CSensei()
 {

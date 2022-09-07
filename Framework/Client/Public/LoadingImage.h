@@ -49,6 +49,10 @@ private:
 	HRESULT Change_Img();
 
 public:
+	virtual void OnDisable() override;
+	virtual void OnEnable() override;
+
+public:
 	static CLoadingImage* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
 	virtual CGameObject* Clone(void* pArg) override;
 	virtual void Free() override;

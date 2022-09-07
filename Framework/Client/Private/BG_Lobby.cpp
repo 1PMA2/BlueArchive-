@@ -121,6 +121,14 @@ HRESULT CBG_Lobby::SetUp_ShaderResource()
 	return S_OK;
 }
 
+void CBG_Lobby::OnDisable()
+{
+}
+
+void CBG_Lobby::OnEnable()
+{
+}
+
 CBG_Lobby * CBG_Lobby::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 {
 	CBG_Lobby*		pInstance = new CBG_Lobby(pDevice, pContext);

@@ -202,6 +202,15 @@
     <Filter Include="02.GameObject\Camera\Camera_Ex">
       <UniqueIdentifier>{f5aa8694-719b-4cb8-aebc-b12a4edf5696}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.GameObject\Student">
+      <UniqueIdentifier>{3907ecac-8ac1-4f4b-aa9f-6060b7bdd066}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\Student\00. Aru">
+      <UniqueIdentifier>{c0c8e996-cdad-403f-942e-1f9762ce2bc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\FSM">
+      <UniqueIdentifier>{3c29857d-6183-4d2a-9ceb-75fcb8ca2c84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">

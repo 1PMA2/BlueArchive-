@@ -27,6 +27,14 @@ CComponent * CGameObject::Get_Component(const _tchar * pComponentTag)
 	return Find_Components(pComponentTag);	
 }
 
+void CGameObject::Set_Enable(bool bEnable)
+{
+	if (m_bEnable == bEnable)
+		return;
+
+	(m_bEnable = bEnable) ? OnEnable() : OnDisable();
+}
+
 HRESULT CGameObject::Initialize_Prototype()
 {
 	return S_OK;

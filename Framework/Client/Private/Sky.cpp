@@ -108,6 +108,14 @@ HRESULT CSky::SetUp_ShaderResource()
 	return S_OK;
 }
 
+void CSky::OnDisable()
+{
+}
+
+void CSky::OnEnable()
+{
+}
+
 CSky * CSky::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 {
 	CSky*		pInstance = new CSky(pDevice, pContext);

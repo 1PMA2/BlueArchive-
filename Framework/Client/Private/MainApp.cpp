@@ -2,6 +2,8 @@
 #include "..\Public\MainApp.h"
 #include "GameInstance.h"
 #include "Level_Loading.h"
+#include "Camera_Free.h"
+#include "Camera_Ex.h"
 
 _bool g_bLobby = true;
 _bool g_bPlay = true;
@@ -63,6 +65,8 @@ void CMainApp::Tick(float fTimeDelta)
 		return;
 
 	m_fTimeAcc += fTimeDelta;
+
+	CCamera* pCamera = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), 1);
 
 	m_pGameInstance->Tick_Engine(fTimeDelta);
 }

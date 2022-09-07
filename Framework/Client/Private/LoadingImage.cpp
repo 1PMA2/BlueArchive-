@@ -138,6 +138,14 @@ HRESULT CLoadingImage::Change_Img()
 	return S_OK;
 }
 
+void CLoadingImage::OnDisable()
+{
+}
+
+void CLoadingImage::OnEnable()
+{
+}
+
 CLoadingImage * CLoadingImage::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 {
 	CLoadingImage*		pInstance = new CLoadingImage(pDevice, pContext);

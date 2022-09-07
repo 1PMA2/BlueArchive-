@@ -63,7 +63,6 @@ void CCamera_Ex::Tick(_float fTimeDelta)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
-
 	//if (nullptr == m_pBonePtr)
 	//	return;
 
@@ -105,6 +104,14 @@ void CCamera_Ex::LateTick(_float fTimeDelta)
 HRESULT CCamera_Ex::Render()
 {
 	return S_OK;
+}
+
+void CCamera_Ex::OnDisable()
+{
+}
+
+void CCamera_Ex::OnEnable()
+{
 }
 
 CCamera_Ex * CCamera_Ex::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)

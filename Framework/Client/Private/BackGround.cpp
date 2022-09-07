@@ -125,6 +125,14 @@ HRESULT CBackGround::SetUp_ShaderResource()
 	return S_OK;
 }
 
+void CBackGround::OnDisable()
+{
+}
+
+void CBackGround::OnEnable()
+{
+}
+
 CBackGround * CBackGround::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 {
 	CBackGround*		pInstance = new CBackGround(pDevice, pContext);

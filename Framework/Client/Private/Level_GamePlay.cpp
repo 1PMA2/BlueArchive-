@@ -52,7 +52,7 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 
 		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
 			return;
-
+	
 		Safe_Release(pGameInstance);
 	}
 }
@@ -122,6 +122,9 @@ HRESULT CLevel_GamePlay::Ready_Layer_Camera(const _tchar * pLayerTag)
 	CameraDesc.fFar = 300.f;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Camera_Ex"), &CameraDesc)))
+		return E_FAIL;
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Camera_Free"), &CameraDesc)))
 		return E_FAIL;
 
 	Safe_Release(pGameInstance);

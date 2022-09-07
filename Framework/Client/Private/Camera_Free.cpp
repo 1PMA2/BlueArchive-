@@ -22,10 +22,13 @@ HRESULT CCamera_Free::Initialize_Prototype()
 
 HRESULT CCamera_Free::Initialize(void * pArg)
 {
+	this->IsDisable();
 	/* 트랜스폼 컴포넌늩를 추가한다. */
 	/* 내가 원하는 카메라의 초기상태를 동기화하낟. */
 	if (FAILED(__super::Initialize(pArg)))
 		return E_FAIL;
+
+	
 
 	return S_OK;
 }
@@ -33,6 +36,8 @@ HRESULT CCamera_Free::Initialize(void * pArg)
 void CCamera_Free::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
+
+	
 
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);		
@@ -83,6 +88,14 @@ void CCamera_Free::LateTick(_float fTimeDelta)
 HRESULT CCamera_Free::Render()
 {
 	return S_OK;
+}
+
+void CCamera_Free::OnDisable()
+{
+}
+
+void CCamera_Free::OnEnable()
+{
 }
 
 CCamera_Free * CCamera_Free::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)

@@ -11,6 +11,7 @@
 #include "Player.h"
 //#include "Effect.h"
 #include "Sky.h"
+#include "Sensei.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -290,8 +291,8 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		/* For.Prototype_Component_Model_Fiona */
 		TransformMatrix = /*XMMatrixScaling(0.01f, 0.01f, 0.01f) * */XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Fiona"),
-			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Fiona/", "Fiona.fbx", TransformMatrix))))
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru_Ex"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru_Ex.fbx", TransformMatrix))))
 			return E_FAIL;
 
 

@@ -28,9 +28,6 @@
     <ClInclude Include="..\Public\GameInstance.h">
       <Filter>01.Utility\00.GameInstance</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\GameObject.h">
-      <Filter>01.Utility\02.GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="..\Public\Level.h">
       <Filter>01.Utility\01.Level</Filter>
     </ClInclude>
@@ -121,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="..\Public\DebugDraw.h">
       <Filter>01.Utility\03.Component\05.Collider\DebugDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\GameObject.h">
+      <Filter>01.Utility\02.GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

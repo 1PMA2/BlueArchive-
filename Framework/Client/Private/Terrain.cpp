@@ -202,6 +202,14 @@ HRESULT CTerrain::Create_FilterTexture()
 	return S_OK;
 }
 
+void CTerrain::OnDisable()
+{
+}
+
+void CTerrain::OnEnable()
+{
+}
+
 CTerrain * CTerrain::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 {
 	CTerrain*		pInstance = new CTerrain(pDevice, pContext);

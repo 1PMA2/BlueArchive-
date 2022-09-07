@@ -46,6 +46,10 @@ private:
 	class CHierarchyNode*	m_pTargetBonePtr = nullptr;
 
 public:
+	virtual void OnDisable() override;
+	virtual void OnEnable() override;
+
+public:
 	static CCamera_Ex* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
 	virtual CGameObject* Clone(void* pArg) override;
 	virtual void Free() override;
