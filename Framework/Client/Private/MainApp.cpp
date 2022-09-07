@@ -66,7 +66,9 @@ void CMainApp::Tick(float fTimeDelta)
 
 	m_fTimeAcc += fTimeDelta;
 
-	CCamera* pCamera = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), 1);
+	CCamera* pCamera = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), 0);
+	if(pCamera != nullptr)
+		pCamera->Set_Enable(false);
 
 	m_pGameInstance->Tick_Engine(fTimeDelta);
 }
