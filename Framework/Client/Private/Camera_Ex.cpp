@@ -69,21 +69,23 @@ void CCamera_Ex::Tick(_float fTimeDelta)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
-
 	if (nullptr == m_pBonePtr)
 		return;
-
+	
 	_matrix		ParentMatrix = m_pBonePtr->Get_OffsetMatrix() * m_pBonePtr->Get_CombinedMatrix() * m_pBonePtr->Get_TransformMatrix();
 	ParentMatrix.r[0] = XMVector3Normalize(ParentMatrix.r[0]);
 	ParentMatrix.r[1] = XMVector3Normalize(ParentMatrix.r[1]);
 	ParentMatrix.r[2] = XMVector3Normalize(ParentMatrix.r[2]);
+	ParentMatrix.r[3] = XMVector3Normalize(ParentMatrix.r[3]);
+	
 
 	_matrix		ParentTargetMatrix = m_pTargetBonePtr->Get_OffsetMatrix() * m_pTargetBonePtr->Get_CombinedMatrix() * m_pTargetBonePtr->Get_TransformMatrix();
 	ParentTargetMatrix.r[0] = XMVector3Normalize(ParentTargetMatrix.r[0]);
 	ParentTargetMatrix.r[1] = XMVector3Normalize(ParentTargetMatrix.r[1]);
 	ParentTargetMatrix.r[2] = XMVector3Normalize(ParentTargetMatrix.r[2]);
+	//타겟은 translation 받아오지 말것 fov 십창남
 
-	
+
 	XMStoreFloat4x4(&m_WorldMatrix, ParentMatrix * m_pTargetTransform->Get_WorldMatrix());
 	XMStoreFloat4x4(&m_TargetWorldMatrix, ParentTargetMatrix * m_pTargetTransform->Get_WorldMatrix());
 

@@ -3,26 +3,29 @@
 #include "Client_Defines.h"
 #include "GameObject.h"
 
-BEGIN(Engine)
-class CShader;
-class CRenderer;
-class CCollider;
-class CModel;
-END
 
 BEGIN(Client)
 
-class CStudent : public CGameObject
+class CState;
+
+class CStudent abstract : public CGameObject
 {
 public:
 	typedef struct tagStudentDesc
 	{
 		wstring	strName;
 
-		_uint	iMagazine;
-		_float	fFireSpeed;
+		_uint	iHp;
+		_uint	iShield;
+		_uint	iAtk;
+		_uint	iDef; //엄폐시 데미지 입을 확률
+		_uint	iEx; //스킬공격, 실드, 힐 여러곳에서 사용
 		_uint	iExCost;
+
+		_uint	iMagazine;
 		_uint	iRange;
+
+		_float	fFireSpeed;
 
 		_uint	iAnimNum;
 
@@ -34,28 +37,16 @@ public:
 	virtual ~CStudent() = default;
 
 public:
-	virtual HRESULT Initialize_Prototype();
-	virtual HRESULT Initialize(void* pArg);
-	virtual void Tick(_float fTimeDelta);
-	virtual void LateTick(_float fTimeDelta);
-	virtual HRESULT Render();
+	
 
 private:
-	CShader*				m_pShaderCom = nullptr;
-	CRenderer*				m_pRendererCom = nullptr;
-	CModel*					m_pModelCom = nullptr;
-	CCollider*				m_pAABBCom = nullptr;
-	CCollider*				m_pOBBCom = nullptr;
-	CCollider*				m_pSphereCom = nullptr;
+
 
 private:
-	HRESULT SetUp_Components();
-	HRESULT SetUp_ShaderResource();
+
 
 
 public:
-	static CStudent* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
-	virtual CGameObject* Clone(void* pArg) override;
 	virtual void Free() override;
 };
 

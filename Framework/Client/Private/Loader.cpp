@@ -8,7 +8,7 @@
 #include "Camera_Ex.h"
 //#include "Monster.h"
 #include "Terrain.h"
-#include "Player.h"
+#include "Aru.h"
 //#include "Effect.h"
 #include "Sky.h"
 #include "Sensei.h"
@@ -189,7 +189,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		/* For.Prototype_GameObject_Player */
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Player"),
-			CPlayer::Create(m_pDevice, m_pContext))))
+			CAru::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 
@@ -289,7 +289,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			return E_FAIL;*/
 
 		/* For.Prototype_Component_Model_Fiona */
-		TransformMatrix = /*XMMatrixScaling(0.01f, 0.01f, 0.01f) * */XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+		TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru_Ex"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru_Ex.fbx", TransformMatrix))))
