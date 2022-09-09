@@ -44,6 +44,7 @@ public:
 private:
 	class CHierarchyNode*	m_pBonePtr = nullptr;
 	class CHierarchyNode*	m_pTargetBonePtr = nullptr;
+	class CTransform*		m_pTargetTransform = nullptr;
 
 public:
 	virtual void OnDisable() override;

@@ -102,9 +102,6 @@
     <ClCompile Include="..\Private\Player.cpp">
       <Filter>02.GameObject\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\LoadingImage.cpp">
-      <Filter>02.GameObject\BackGround\LoadingImage</Filter>
-    </ClCompile>
     <ClCompile Include="..\Private\Level_Lobby.cpp">
       <Filter>01.Level\Lobby</Filter>
     </ClCompile>
@@ -116,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Camera_Ex.cpp">
       <Filter>02.GameObject\Camera\Camera_Ex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\LoadingImage.cpp">
+      <Filter>02.GameObject\BackGround</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

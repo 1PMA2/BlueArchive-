@@ -35,7 +35,7 @@ CMainApp::CMainApp()
 HRESULT CMainApp::Initialize()
 {
 	//D3D11_SAMPLER_DESC
-
+	
 	GRAPHICDESC		GraphicDesc;
 	ZeroMemory(&GraphicDesc, sizeof(GRAPHICDESC));
 
@@ -43,6 +43,8 @@ HRESULT CMainApp::Initialize()
 	GraphicDesc.iWinCX = g_iWinCX;
 	GraphicDesc.iWinCY = g_iWinCY;
 	GraphicDesc.isWindowMode = GRAPHICDESC::MODE_WIN;
+
+
 
 	if (FAILED(m_pGameInstance->Initialize_Engine(g_hInst, LEVEL_END, GraphicDesc, &m_pDevice, &m_pContext)))
 		return E_FAIL;
@@ -66,9 +68,24 @@ void CMainApp::Tick(float fTimeDelta)
 
 	m_fTimeAcc += fTimeDelta;
 
-	CCamera* pCamera = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), 0);
-	if(pCamera != nullptr)
-		pCamera->Set_Enable(false);
+
+	///////////////////////////////
+	CCamera* pCameraFree = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
+	CCamera* pCameraEx   = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_EX);
+
+	if ((m_pGameInstance->Get_DIKeyState(DIK_1) & 0x8001) && (nullptr != pCameraEx))
+	{
+		{
+			pCameraFree->Set_Enable(true);
+			pCameraEx->Set_Enable(false);
+		}
+	}
+	else if ((m_pGameInstance->Get_DIKeyState(DIK_2) & 0x8001) && (nullptr != pCameraEx))
+	{
+		pCameraEx->Set_Enable(true);
+		pCameraFree->Set_Enable(false);
+	}
+	///////////////////////////
 
 	m_pGameInstance->Tick_Engine(fTimeDelta);
 }

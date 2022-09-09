@@ -40,6 +40,12 @@ HRESULT CCamera_Ex::Initialize(void * pArg)
 	m_pTargetBonePtr = pTargetModel->Find_HierarcyNode("Camera001.Target");
 	if (nullptr == m_pBonePtr)
 		return E_FAIL;
+	Safe_AddRef(m_pBonePtr);
+
+	m_pTargetTransform = (CTransform*)pGameInstance->Get_Component(m_WeaponDesc.eTargetLevel, m_WeaponDesc.pTargetLayerTag, TEXT("Com_Transform"));
+	if (nullptr == m_pTargetTransform)
+		return E_FAIL;
+	Safe_AddRef(m_pTargetTransform);
 
 
 
@@ -63,8 +69,9 @@ void CCamera_Ex::Tick(_float fTimeDelta)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
-	//if (nullptr == m_pBonePtr)
-	//	return;
+
+	if (nullptr == m_pBonePtr)
+		return;
 
 	_matrix		ParentMatrix = m_pBonePtr->Get_OffsetMatrix() * m_pBonePtr->Get_CombinedMatrix() * m_pBonePtr->Get_TransformMatrix();
 	ParentMatrix.r[0] = XMVector3Normalize(ParentMatrix.r[0]);
@@ -76,20 +83,14 @@ void CCamera_Ex::Tick(_float fTimeDelta)
 	ParentTargetMatrix.r[1] = XMVector3Normalize(ParentTargetMatrix.r[1]);
 	ParentTargetMatrix.r[2] = XMVector3Normalize(ParentTargetMatrix.r[2]);
 
+	
+	XMStoreFloat4x4(&m_WorldMatrix, ParentMatrix * m_pTargetTransform->Get_WorldMatrix());
+	XMStoreFloat4x4(&m_TargetWorldMatrix, ParentTargetMatrix * m_pTargetTransform->Get_WorldMatrix());
 
-	XMStoreFloat4x4(&m_WorldMatrix, ParentMatrix);
-	XMStoreFloat4x4(&m_TargetWorldMatrix, ParentTargetMatrix);
-
-
-
-
-
-	m_pTransformCom->Set_State(CTransform::STATE_RIGHT, XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_RIGHT]);
-	m_pTransformCom->Set_State(CTransform::STATE_UP, XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_UP]);
-	m_pTransformCom->Set_State(CTransform::STATE_LOOK, XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_LOOK]);
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_TRANSLATION]);
 
 	m_pTransformCom->LookAt(XMLoadFloat4x4(&m_TargetWorldMatrix).r[CTransform::STATE_TRANSLATION]);
+
 	Safe_Release(pGameInstance);
 
 	if (FAILED(Bind_PipeLine()))
@@ -143,4 +144,7 @@ CGameObject * CCamera_Ex::Clone(void * pArg)
 void CCamera_Ex::Free()
 {
 	__super::Free();
+
+	Safe_Release(m_pBonePtr);
+	Safe_Release(m_pTargetTransform);
 }
