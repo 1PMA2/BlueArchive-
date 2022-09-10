@@ -217,12 +217,12 @@ HRESULT CGameInstance::Add_Timer(const _tchar * pTimerTag)
 	return m_pTimer_Manager->Add_Timer(pTimerTag);	
 }
 
-_float CGameInstance::Compute_Timer(const _tchar * pTimerTag)
+_float CGameInstance::Compute_Timer(const _tchar * pTimerTag, _float fTimeSpeed)
 {
 	if (nullptr == m_pTimer_Manager)
 		return 0.0f;
 
-	return m_pTimer_Manager->Compute_Timer(pTimerTag);
+	return m_pTimer_Manager->Compute_Timer(pTimerTag, fTimeSpeed);
 }
 
 void CGameInstance::Set_Transform(CPipeLine::TRANSFORMSTATE eState, _fmatrix TransformState)

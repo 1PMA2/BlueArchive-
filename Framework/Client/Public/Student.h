@@ -3,6 +3,13 @@
 #include "Client_Defines.h"
 #include "GameObject.h"
 
+BEGIN(Engine)
+class CShader;
+class CRenderer;
+class CCollider;
+class CModel;
+END
+
 
 BEGIN(Client)
 
@@ -14,6 +21,8 @@ public:
 	typedef struct tagStudentDesc
 	{
 		wstring	strName;
+
+		FORMATION eFormation;
 
 		_uint	iHp;
 		_uint	iShield;
@@ -37,12 +46,23 @@ public:
 	virtual ~CStudent() = default;
 
 public:
+	virtual void Tick(_float fTimeDelta);
+	virtual void LateTick(_float fTimeDelta);
+	virtual HRESULT Render();
 	
 
-private:
+protected:
+	STUDENTINFO				m_eStudentInfo = {};
+	CShader*				m_pShaderCom = nullptr;
+	CRenderer*				m_pRendererCom = nullptr;
+	CModel*					m_pModelCom = nullptr;
+	CCollider*				m_pAABBCom = nullptr;
+	CCollider*				m_pOBBCom = nullptr;
+	CCollider*				m_pSphereCom = nullptr;
 
-
-private:
+protected:
+	HRESULT SetUp_Components();
+	HRESULT SetUp_ShaderResource();
 
 
 

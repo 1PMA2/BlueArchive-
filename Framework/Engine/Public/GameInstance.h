@@ -57,7 +57,7 @@ public: /* For.Component_Mananger */
 	
 public: /* For.Timer_Manager */
 	HRESULT Add_Timer(const _tchar* pTimerTag);
-	_float Compute_Timer(const _tchar* pTimerTag);
+	_float Compute_Timer(const _tchar* pTimerTag, _float fTimeSpeed = 1.f);
 
 public: /* For.PipeLine */
 	void Set_Transform(CPipeLine::TRANSFORMSTATE eState, _fmatrix TransformState);

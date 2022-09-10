@@ -25,7 +25,7 @@ HRESULT CCamera_Ex::Initialize(void * pArg)
 {
 	/* 트랜스폼 컴포넌늩를 추가한다. */
 	m_WeaponDesc.eTargetLevel = LEVEL_GAMEPLAY;
-	m_WeaponDesc.pTargetLayerTag = TEXT("Layer_Player");
+	m_WeaponDesc.pTargetLayerTag = TEXT("Layer_Student");
 	m_WeaponDesc.iTargetIndex = 0;
 	m_WeaponDesc.pTargetModelComTag = TEXT("Com_Model");
 	m_WeaponDesc.pBoneName = "Camera001";

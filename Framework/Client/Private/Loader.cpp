@@ -188,7 +188,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			return E_FAIL;
 
 		/* For.Prototype_GameObject_Player */
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Player"),
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Student"),
 			CAru::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 

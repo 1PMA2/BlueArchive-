@@ -17,7 +17,7 @@ private:
 	virtual ~CMainApp() = default;
 public:
 	HRESULT Initialize();	
-	void Tick(float fTimeDelta);
+	void Tick();
 	HRESULT Render();
 
 private:
@@ -34,8 +34,6 @@ private:
 private:
 	HRESULT Open_Level(LEVEL eLevelID);
 	HRESULT Ready_Prototype_Component();
-
-public:
 	
 
 public:

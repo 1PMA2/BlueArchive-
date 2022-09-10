@@ -4,6 +4,7 @@
 #include "Level_Loading.h"
 #include "Camera_Free.h"
 #include "Camera_Ex.h"
+#include "Sensei.h"
 
 _bool g_bLobby = true;
 _bool g_bPlay = true;
@@ -61,15 +62,19 @@ HRESULT CMainApp::Initialize()
 	return S_OK;
 }
 
-void CMainApp::Tick(float fTimeDelta)
+void CMainApp::Tick()
 {
 	if (nullptr == m_pGameInstance)
 		return;
 
+	CSensei* pSensei = CSensei::Get_Instance();
+
+
+	_float fTimeDelta = m_pGameInstance->Compute_Timer(TEXT("Timer_60"), pSensei->Get_SenseiInfo().fTimeSpeed);
+
 	m_fTimeAcc += fTimeDelta;
 
-
-	///////////////////////////////
+	/////////////////////////////// cameratest
 	CCamera* pCameraFree = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
 	CCamera* pCameraEx   = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_EX);
 
@@ -112,6 +117,7 @@ HRESULT CMainApp::Render()
 		m_fTimeAcc = 0.f;
 		m_iNumRender = 0;
 	}
+
 	// MakeSpriteFont "폰트이름" /FontSize:32 /FastPack /CharacterRegion:0x0020-0x00FF /CharacterRegion:0x3131-0x3163 /CharacterRegion:0xAC00-0xD800 /DefaultCharacter:0xAC00 출력파일이름.spritefont
 	m_pGameInstance->Render_Font(TEXT("Font_Dream"), m_szFPS, _float2(0.f, 0.f), XMVectorSet(1.f, 1.f, 1.f, 1.f));
 
@@ -182,6 +188,9 @@ CMainApp * CMainApp::Create()
 
 void CMainApp::Free()
 {
+
+	CSensei::Get_Instance()->Destroy_Instance();
+
 	Safe_Release(m_pRenderer);
 	Safe_Release(m_pDevice);
 	Safe_Release(m_pContext);

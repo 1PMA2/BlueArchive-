@@ -23,7 +23,7 @@ HRESULT CTimer::Initialize()
 	return S_OK;
 }
 
-_float CTimer::Compute_Timer(void)
+_float CTimer::Compute_Timer(_float fTimeSpeed)
 {
 	QueryPerformanceCounter(&m_CurrentTime);	// 2000	//	3000 // 4000 // 5000
 	
@@ -37,7 +37,7 @@ _float CTimer::Compute_Timer(void)
 
 	m_OldTime = m_CurrentTime;
 
-	return m_fTimeDelta;
+	return m_fTimeDelta * fTimeSpeed;
 }
 
 CTimer * CTimer::Create()

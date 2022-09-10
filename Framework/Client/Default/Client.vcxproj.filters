@@ -32,40 +32,40 @@
       <Filter>01.Level\Loading\Loader</Filter>
     </ClInclude>
     <ClInclude Include="..\public\BackGround.h">
-      <Filter>02.GameObject\BackGround</Filter>
+      <Filter>02.GameObject\04.BackGround</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Terrain.h">
-      <Filter>02.GameObject\Terrain</Filter>
+      <Filter>02.GameObject\06.Terrain</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Camera_Free.h">
-      <Filter>02.GameObject\Camera</Filter>
+      <Filter>02.GameObject\03.Camera</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Sky.h">
-      <Filter>02.GameObject\Sky</Filter>
+      <Filter>02.GameObject\07.Sky</Filter>
     </ClInclude>
     <ClInclude Include="..\Bin\ShaderFiles\Client_Shader_Defines.hpp">
       <Filter>03.ShaderFiles</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\LoadingImage.h">
-      <Filter>02.GameObject\BackGround\LoadingImage</Filter>
+      <Filter>02.GameObject\04.BackGround\LoadingImage</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Level_Lobby.h">
       <Filter>01.Level\Lobby</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\BG_Lobby.h">
-      <Filter>02.GameObject\BackGround\BG_Lobby</Filter>
+      <Filter>02.GameObject\04.BackGround\BG_Lobby</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Sensei.h">
       <Filter>00.Design\Sensei</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Camera_Ex.h">
-      <Filter>02.GameObject\Camera\Camera_Ex</Filter>
+      <Filter>02.GameObject\03.Camera\Camera_Ex</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Student.h">
-      <Filter>02.GameObject\Student</Filter>
+      <Filter>02.GameObject\00.Student</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Aru.h">
-      <Filter>02.GameObject\Student\00. Aru</Filter>
+      <Filter>02.GameObject\00.Student\00. Aru</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -91,37 +91,37 @@
       <Filter>01.Level\Loading\Loader</Filter>
     </ClCompile>
     <ClCompile Include="..\private\BackGround.cpp">
-      <Filter>02.GameObject\BackGround</Filter>
+      <Filter>02.GameObject\04.BackGround</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Terrain.cpp">
-      <Filter>02.GameObject\Terrain</Filter>
+      <Filter>02.GameObject\06.Terrain</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Camera_Free.cpp">
-      <Filter>02.GameObject\Camera</Filter>
+      <Filter>02.GameObject\03.Camera</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Sky.cpp">
-      <Filter>02.GameObject\Sky</Filter>
+      <Filter>02.GameObject\07.Sky</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Level_Lobby.cpp">
       <Filter>01.Level\Lobby</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\BG_Lobby.cpp">
-      <Filter>02.GameObject\BackGround\BG_Lobby</Filter>
+      <Filter>02.GameObject\04.BackGround\BG_Lobby</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Sensei.cpp">
       <Filter>00.Design\Sensei</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Camera_Ex.cpp">
-      <Filter>02.GameObject\Camera\Camera_Ex</Filter>
+      <Filter>02.GameObject\03.Camera\Camera_Ex</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\LoadingImage.cpp">
-      <Filter>02.GameObject\BackGround</Filter>
+      <Filter>02.GameObject\04.BackGround</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Student.cpp">
-      <Filter>02.GameObject\Student</Filter>
+      <Filter>02.GameObject\00.Student</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Aru.cpp">
-      <Filter>02.GameObject\Student\00. Aru</Filter>
+      <Filter>02.GameObject\00.Student\00. Aru</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,41 +160,11 @@
     <Filter Include="02.GameObject">
       <UniqueIdentifier>{57f74c26-08d1-4431-861b-7a6105d37c3f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\BackGround">
-      <UniqueIdentifier>{c829d861-a14a-4627-a9ce-aa73e649e01e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03.ShaderFiles">
       <UniqueIdentifier>{d3a98933-0c07-4640-bc38-9a0b4f9abd9e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\Terrain">
-      <UniqueIdentifier>{da236dcb-b5e6-4bb7-a979-485518c32bc1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\Camera">
-      <UniqueIdentifier>{bc09692a-cf30-483f-b2c5-106cf1ce0bbe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\Sky">
-      <UniqueIdentifier>{3e4f58c9-22e0-4a53-9a6e-3405a181b217}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\BackGround\LoadingImage">
-      <UniqueIdentifier>{8c5ac1f4-9f7f-422a-9d70-596186ddc00e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01.Level\Lobby">
       <UniqueIdentifier>{7e404202-24cc-48c1-a722-9784376dee40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\BackGround\LoadingImage\GameLogo">
-      <UniqueIdentifier>{17eac4a8-3f70-440d-8326-2b153a4762bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\UI">
-      <UniqueIdentifier>{0652f6ff-6032-40bb-9c46-a5dd685a071d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\UI\Lobby_UI">
-      <UniqueIdentifier>{77644339-21b1-445c-9def-c0f104e0fc22}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\BackGround\LoadingImage\FadeImage">
-      <UniqueIdentifier>{95fc54d3-6528-4e88-8296-3c9e79c10c16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\BackGround\BG_Lobby">
-      <UniqueIdentifier>{e4d79119-13e7-49f2-a408-eaca2d6fc2ed}</UniqueIdentifier>
     </Filter>
     <Filter Include="00.Design">
       <UniqueIdentifier>{36de67cd-4c03-46d2-ab0c-9d373df96dbc}</UniqueIdentifier>
@@ -202,17 +172,50 @@
     <Filter Include="00.Design\Sensei">
       <UniqueIdentifier>{389923aa-b11d-4cfc-830b-df03a6d85bfc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\Camera\Camera_Ex">
-      <UniqueIdentifier>{f5aa8694-719b-4cb8-aebc-b12a4edf5696}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\Student">
+    <Filter Include="02.GameObject\00.Student">
       <UniqueIdentifier>{3907ecac-8ac1-4f4b-aa9f-6060b7bdd066}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\Student\00. Aru">
+    <Filter Include="02.GameObject\00.Student\00. Aru">
       <UniqueIdentifier>{c0c8e996-cdad-403f-942e-1f9762ce2bc5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\FSM">
+    <Filter Include="02.GameObject\01.FSM">
       <UniqueIdentifier>{3c29857d-6183-4d2a-9ceb-75fcb8ca2c84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\03.Camera">
+      <UniqueIdentifier>{bc09692a-cf30-483f-b2c5-106cf1ce0bbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\03.Camera\Camera_Ex">
+      <UniqueIdentifier>{f5aa8694-719b-4cb8-aebc-b12a4edf5696}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\04.BackGround">
+      <UniqueIdentifier>{c829d861-a14a-4627-a9ce-aa73e649e01e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\04.BackGround\LoadingImage">
+      <UniqueIdentifier>{8c5ac1f4-9f7f-422a-9d70-596186ddc00e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\04.BackGround\LoadingImage\GameLogo">
+      <UniqueIdentifier>{17eac4a8-3f70-440d-8326-2b153a4762bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\04.BackGround\LoadingImage\FadeImage">
+      <UniqueIdentifier>{95fc54d3-6528-4e88-8296-3c9e79c10c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\04.BackGround\BG_Lobby">
+      <UniqueIdentifier>{e4d79119-13e7-49f2-a408-eaca2d6fc2ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI">
+      <UniqueIdentifier>{0652f6ff-6032-40bb-9c46-a5dd685a071d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\Lobby_UI">
+      <UniqueIdentifier>{77644339-21b1-445c-9def-c0f104e0fc22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\06.Terrain">
+      <UniqueIdentifier>{da236dcb-b5e6-4bb7-a979-485518c32bc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\07.Sky">
+      <UniqueIdentifier>{3e4f58c9-22e0-4a53-9a6e-3405a181b217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Student\01. Mutsuki">
+      <UniqueIdentifier>{7f0f99de-01ee-4a24-a50a-e69aa70b4f30}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

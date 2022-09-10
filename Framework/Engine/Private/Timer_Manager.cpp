@@ -21,13 +21,13 @@ HRESULT CTimer_Manager::Add_Timer(const _tchar * pTimerTag)
 	return S_OK;
 }
 
-_float CTimer_Manager::Compute_Timer(const _tchar * pTimerTag)
+_float CTimer_Manager::Compute_Timer(const _tchar * pTimerTag, _float fTimeSpeed)
 {
 	CTimer*		pTimer = Find_Timer(pTimerTag);
 	if (nullptr == pTimer)
 		return 0.f;
 
-	return pTimer->Compute_Timer();	
+	return pTimer->Compute_Timer(fTimeSpeed);	
 }
 
 CTimer * CTimer_Manager::Find_Timer(const _tchar * pTimerTag)

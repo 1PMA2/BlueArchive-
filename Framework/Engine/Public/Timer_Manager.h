@@ -13,7 +13,7 @@ public:
 
 public:
 	HRESULT Add_Timer(const _tchar* pTimerTag);
-	_float Compute_Timer(const _tchar* pTimerTag);
+	_float Compute_Timer(const _tchar* pTimerTag, _float fTimeSpeed = 1.f);
 
 private:
 	map<const _tchar*, class CTimer*>			m_Timers;

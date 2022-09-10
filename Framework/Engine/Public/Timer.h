@@ -12,7 +12,7 @@ private:
 
 public:
 	HRESULT	Initialize();
-	_float Compute_Timer(void);
+	_float Compute_Timer(_float fTimeSpeed = 1.f);
 
 private:
 	LARGE_INTEGER		m_CurrentTime;

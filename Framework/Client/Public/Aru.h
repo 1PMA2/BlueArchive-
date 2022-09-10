@@ -29,14 +29,6 @@ public:
 	virtual HRESULT Render();
 
 private:
-	CShader*				m_pShaderCom = nullptr;	
-	CRenderer*				m_pRendererCom = nullptr;		
-	CModel*					m_pModelCom = nullptr;
-	CCollider*				m_pAABBCom = nullptr;
-	CCollider*				m_pOBBCom = nullptr;
-	CCollider*				m_pSphereCom = nullptr;
-
-private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
 	
