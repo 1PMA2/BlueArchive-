@@ -45,8 +45,6 @@ HRESULT CMainApp::Initialize()
 	GraphicDesc.iWinCY = g_iWinCY;
 	GraphicDesc.isWindowMode = GRAPHICDESC::MODE_WIN;
 
-
-
 	if (FAILED(m_pGameInstance->Initialize_Engine(g_hInst, LEVEL_END, GraphicDesc, &m_pDevice, &m_pContext)))
 		return E_FAIL;
 
@@ -68,11 +66,12 @@ void CMainApp::Tick()
 		return;
 
 	CSensei* pSensei = CSensei::Get_Instance();
-
-
+	pSensei->Set_TimeSpeed();
 	_float fTimeDelta = m_pGameInstance->Compute_Timer(TEXT("Timer_60"), pSensei->Get_SenseiInfo().fTimeSpeed);
 
-	m_fTimeAcc += fTimeDelta;
+
+
+	m_fTimeAcc += fTimeDelta / pSensei->Get_SenseiInfo().fTimeSpeed;
 
 	/////////////////////////////// cameratest
 	CCamera* pCameraFree = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
@@ -189,12 +188,13 @@ CMainApp * CMainApp::Create()
 void CMainApp::Free()
 {
 
-	CSensei::Get_Instance()->Destroy_Instance();
 
 	Safe_Release(m_pRenderer);
 	Safe_Release(m_pDevice);
 	Safe_Release(m_pContext);
 	Safe_Release(m_pGameInstance);		
+
+	CSensei::Get_Instance()->Destroy_Instance();
 
 	CGameInstance::Release_Engine();	
 }

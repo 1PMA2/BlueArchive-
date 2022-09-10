@@ -146,7 +146,7 @@ void CTransform::LookAt(_fvector vTargetPos)
 
 	_vector		vUp = XMVector3Cross(vLook, vRight);
 
-	_float3		vScale = Get_Scaled();
+	_float3		vScale = { 1.f, 1.f, 1.f };//Get_Scaled();
 
 	Set_State(CTransform::STATE_RIGHT, XMVector3Normalize(vRight) * vScale.x);
 	Set_State(CTransform::STATE_UP, XMVector3Normalize(vUp) * vScale.y);

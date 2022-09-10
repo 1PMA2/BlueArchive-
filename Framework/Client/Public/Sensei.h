@@ -5,6 +5,18 @@
 BEGIN(Client)
 class CStudent;
 
+	typedef struct tagSenseiDesc
+	{
+		CStudent* pStudent[10] = {nullptr};
+
+		CAMERA eCamera = CAMERA_FREE;
+		_float fTimeSpeed = 1.f;
+		_uint iCost = 0.f;
+
+		_bool bEx = true;
+
+	}SENSEIINFO;
+
 class CSensei final : public CBase
 {
 	DECLARE_SINGLETON(CSensei)
@@ -13,28 +25,12 @@ private:
 	virtual ~CSensei();
 
 public:
-	typedef struct tagSenseiDesc
-	{
-		CStudent* pStudent[10] = { nullptr };
-
-		CAMERA eCamera;
-		_float fTimeSpeed;
-		_uint iCost;
-
-		_bool bEx = true;
-
-	}SENSEIINFO;
-
-public:
 	SENSEIINFO Get_SenseiInfo() { return m_tSensei; }
-	_float Set_TimeSpeed(float f);
+	void Set_TimeSpeed();
 	void Set_Camera(CAMERA eCamera) { m_tSensei.eCamera = eCamera; }
 
 public:
 	SENSEIINFO m_tSensei;
-
-public:
-	virtual void Free() override;
 };
 
 END

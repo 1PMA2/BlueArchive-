@@ -83,6 +83,7 @@ void CCamera_Ex::Tick(_float fTimeDelta)
 	ParentTargetMatrix.r[0] = XMVector3Normalize(ParentTargetMatrix.r[0]);
 	ParentTargetMatrix.r[1] = XMVector3Normalize(ParentTargetMatrix.r[1]);
 	ParentTargetMatrix.r[2] = XMVector3Normalize(ParentTargetMatrix.r[2]);
+	//ParentTargetMatrix.r[3] = XMVector3Normalize(ParentTargetMatrix.r[3]);
 	//타겟은 translation 받아오지 말것 fov 십창남
 
 
