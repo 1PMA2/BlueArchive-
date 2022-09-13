@@ -3,7 +3,7 @@
 #include "Component.h"
 
 BEGIN(Engine)
-
+class CAnimation;
 class ENGINE_DLL CModel final : public CComponent
 {
 public:
@@ -14,6 +14,7 @@ private:
 	virtual ~CModel() = default;
 
 public:
+	_bool Get_isFinished() const { return m_isFinished; }
 	_uint Get_NumMeshContainers() const {
 		return m_iNumMeshContainers;
 	}
@@ -55,6 +56,7 @@ private:
 	typedef vector<class CHierarchyNode*>	HIERARCHYNODES;
 
 private:
+	_bool									m_isFinished = false;
 	_uint									m_iCurrentAnimationIndex = 0;
 	_uint									m_iNumAnimations;
 	vector<class CAnimation*>				m_Animations;

@@ -65,13 +65,17 @@ void CMainApp::Tick()
 	if (nullptr == m_pGameInstance)
 		return;
 
-	CSensei* pSensei = CSensei::Get_Instance();
-	pSensei->Set_TimeSpeed();
+	CSensei* pSensei = GET_INSTANCE(CSensei);
+
+	//pSensei->Set_TimeSpeed();
+
 	_float fTimeDelta = m_pGameInstance->Compute_Timer(TEXT("Timer_60"), pSensei->Get_SenseiInfo().fTimeSpeed);
 
-
-
 	m_fTimeAcc += fTimeDelta / pSensei->Get_SenseiInfo().fTimeSpeed;
+
+	RELEASE_INSTANCE(CSensei);
+
+
 
 	/////////////////////////////// cameratest
 	CCamera* pCameraFree = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
@@ -110,9 +114,11 @@ HRESULT CMainApp::Render()
 
 	++m_iNumRender;
 
+	swprintf_s(m_szFPS, TEXT("cost:%.1f"), CSensei::Get_Instance()->Get_SenseiInfo().fCost);
+
 	if (m_fTimeAcc >= 1.f)
 	{
-		wsprintf(m_szFPS, TEXT("에프피에스 : %d"), m_iNumRender);
+		//wsprintf(m_szFPS, TEXT("에프피에스 : %d"), m_iNumRender);
 		m_fTimeAcc = 0.f;
 		m_iNumRender = 0;
 	}

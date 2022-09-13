@@ -188,7 +188,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			return E_FAIL;
 
 		/* For.Prototype_GameObject_Player */
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Student"),
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Aru"),
 			CAru::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
@@ -289,10 +289,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			return E_FAIL;*/
 
 		/* For.Prototype_Component_Model_Fiona */
-		TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+		TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru_Ex"),
-			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru_Ex.fbx", TransformMatrix))))
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru.fbx", TransformMatrix))))
 			return E_FAIL;
 
 

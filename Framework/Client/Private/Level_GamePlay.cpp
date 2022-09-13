@@ -4,7 +4,7 @@
 #include "Level_Loading.h"
 #include "Camera_Free.h"
 #include "Camera_Ex.h"
-
+#include "Sensei.h"
 
 
 CLevel_GamePlay::CLevel_GamePlay(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -44,6 +44,11 @@ HRESULT CLevel_GamePlay::Initialize()
 void CLevel_GamePlay::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);		
+
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	pSensei->Tick_Cost(fTimeDelta);
+
 
 	if (GetKeyState(VK_RETURN) & 0x8000)
 	{
@@ -157,7 +162,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student(const _tchar * pLayerTag)
 	Safe_AddRef(pGameInstance);
 
 	/* For.Player */
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Student"))))
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Aru"))))
 		return E_FAIL;
 
 	Safe_Release(pGameInstance);

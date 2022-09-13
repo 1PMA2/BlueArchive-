@@ -8,11 +8,6 @@ CSensei::CSensei()
 {
 }
 
-CSensei::~CSensei()
-{
-	
-}
-
 void CSensei::Set_TimeSpeed()
 {
 
@@ -27,4 +22,16 @@ void CSensei::Set_TimeSpeed()
 	{
 		m_tSensei.fTimeSpeed = 1.f;
 	}
+}
+
+void CSensei::Tick_Cost(_float fTimeDelta)
+{
+	if (10.f > m_tSensei.fCost)
+		m_tSensei.fCost += fTimeDelta;
+	else
+		m_tSensei.fCost = 10.f;
+}
+
+void CSensei::Free()
+{
 }

@@ -217,6 +217,9 @@
     <Filter Include="02.GameObject\00.Student\01. Mutsuki">
       <UniqueIdentifier>{7f0f99de-01ee-4a24-a50a-e69aa70b4f30}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.GameObject\00.Student\00. Aru\Aru_Ex">
+      <UniqueIdentifier>{cf4c17e5-260f-48ba-a8f8-ea177813a7ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">

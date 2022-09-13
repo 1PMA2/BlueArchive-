@@ -123,8 +123,12 @@ HRESULT CModel::Play_Animation(_float fTimeDelta)
 {
 	if (m_iCurrentAnimationIndex >= m_iNumAnimations)
 		return E_FAIL;
+	m_Animations[m_iCurrentAnimationIndex]->ReStartAnimation();
 
 	m_Animations[m_iCurrentAnimationIndex]->Update_TransformationMatrices(fTimeDelta);
+
+	m_isFinished = m_Animations[m_iCurrentAnimationIndex]->Get_isFinished();
+
 
 	for (auto& pHierarchyNode : m_HierarchyNodes)
 		pHierarchyNode->Update_CombinedTransformationMatrix();

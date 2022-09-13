@@ -51,11 +51,19 @@ HRESULT CAru::Initialize(void * pArg)
 
 void CAru::Tick(_float fTimeDelta)
 {
+	__super::Tick(fTimeDelta);
+
 	if (GetKeyState(VK_UP) & 0x8000)
+	{
 		m_pTransformCom->Go_Straight(fTimeDelta);
+		m_pModelCom->Set_CurrentAnimation(14);
+	}
 
 	if (GetKeyState(VK_LEFT) & 0x8000)
+	{
 		m_pTransformCom->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta * -1.f);
+		m_pModelCom->Set_CurrentAnimation(13);
+	}
 
 	if (GetKeyState(VK_RIGHT) & 0x8000)
 		m_pTransformCom->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta);
@@ -63,7 +71,10 @@ void CAru::Tick(_float fTimeDelta)
 	if (GetKeyState(VK_DOWN) & 0x8000)
 		m_pTransformCom->Go_Backward(fTimeDelta);
 
-	__super::Tick(fTimeDelta);
+	if (m_pModelCom->Get_isFinished())
+	{
+		int i = 10;
+	}
 	
 }
 
@@ -84,7 +95,7 @@ HRESULT CAru::SetUp_Components()
 	__super::SetUp_Components();
 
 	/* For.Com_Model */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru_Ex"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
+	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
 		return E_FAIL;
 
 	return S_OK;
