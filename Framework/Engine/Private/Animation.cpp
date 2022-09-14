@@ -48,11 +48,6 @@ void CAnimation::Update_TransformationMatrices(_float fTimeDelta)
 {
 	m_fTimeAcc += m_fTickPerSecond * fTimeDelta;
 	
-	if (m_fTimeAcc >= m_fDuration)
-	{
-		m_isFinished = true;
-		m_fTimeAcc = 0.f;
-	}
 
 	for (_uint i = 0; i < m_iNumChannels; ++i)
 	{
@@ -63,9 +58,16 @@ void CAnimation::Update_TransformationMatrices(_float fTimeDelta)
 
 
 		m_Channels[i]->Update_TransformationMatrices(m_fTimeAcc);
+
 	}
 
+	m_isFinished = false;
 
+	if (m_fTimeAcc >= m_fDuration)
+	{
+		m_isFinished = true;
+		m_fTimeAcc = 0.f;
+	}
 
 
 

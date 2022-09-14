@@ -29,6 +29,11 @@ CModel::CModel(const CModel & rhs)
 	}
 }
 
+_bool CModel::Get_isFinished()
+{
+	return m_Animations[m_iCurrentAnimationIndex]->Get_isFinished();
+}
+
 CHierarchyNode * CModel::Find_HierarcyNode(const char * pBoneName)
 {
 	auto	iter = find_if(m_HierarchyNodes.begin(), m_HierarchyNodes.end(), [&](CHierarchyNode* pNode) 
@@ -123,12 +128,8 @@ HRESULT CModel::Play_Animation(_float fTimeDelta)
 {
 	if (m_iCurrentAnimationIndex >= m_iNumAnimations)
 		return E_FAIL;
-	m_Animations[m_iCurrentAnimationIndex]->ReStartAnimation();
 
 	m_Animations[m_iCurrentAnimationIndex]->Update_TransformationMatrices(fTimeDelta);
-
-	m_isFinished = m_Animations[m_iCurrentAnimationIndex]->Get_isFinished();
-
 
 	for (auto& pHierarchyNode : m_HierarchyNodes)
 		pHierarchyNode->Update_CombinedTransformationMatrix();

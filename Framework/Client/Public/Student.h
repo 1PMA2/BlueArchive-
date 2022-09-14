@@ -36,7 +36,7 @@ public:
 
 		_float	fFireSpeed;
 
-		_uint	iAnimNum;
+		ANIM	eAnim;
 
 	}STUDENTINFO;
 
@@ -59,6 +59,7 @@ protected:
 	CCollider*				m_pAABBCom = nullptr;
 	CCollider*				m_pOBBCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
+	CState*					m_pState = nullptr;
 
 protected:
 	HRESULT SetUp_Components();

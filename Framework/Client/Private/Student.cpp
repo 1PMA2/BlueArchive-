@@ -2,6 +2,7 @@
 #include "..\Public\Student.h"
 
 #include "GameInstance.h"
+#include "State.h"
 
 CStudent::CStudent(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -11,11 +12,20 @@ CStudent::CStudent(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 
 CStudent::CStudent(const CStudent & rhs)
 	: CGameObject(rhs)
+	, m_eStudentInfo(rhs.m_eStudentInfo)
+	, m_pState(nullptr)
 {
 }
 
 void CStudent::Tick(_float fTimeDelta)
 {
+	if (CState*	pNewState = m_pState->Loop(fTimeDelta))
+	{
+		m_pState->Exit();
+		m_pState = pNewState;
+		m_pState->Enter();
+	}
+
 	m_pModelCom->Play_Animation(fTimeDelta);
 
 	m_pAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
@@ -152,6 +162,12 @@ HRESULT CStudent::SetUp_ShaderResource()
 void CStudent::Free()
 {
 	__super::Free();
+
+	if (m_pState)
+	{
+		m_pState->Destroy_Instance();
+		m_pState = nullptr;
+	}
 
 	Safe_Release(m_pSphereCom);
 	Safe_Release(m_pOBBCom);

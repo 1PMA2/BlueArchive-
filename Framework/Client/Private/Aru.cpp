@@ -2,6 +2,7 @@
 #include "..\Public\Aru.h"
 
 #include "GameInstance.h"
+#include "Run_Sign.h"
 
 CAru::CAru(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CStudent(pDevice, pContext)
@@ -21,13 +22,13 @@ HRESULT CAru::Initialize_Prototype()
 HRESULT CAru::Initialize(void * pArg)
 {
 	CTransform::TRANSFORMDESC		TransformDesc;
-	TransformDesc.fSpeedPerSec = 5.f;
+	TransformDesc.fSpeedPerSec = 1.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
 	m_eStudentInfo.strName = TEXT("Aru");
 
 	m_eStudentInfo.fFireSpeed = 0.5f;
-	m_eStudentInfo.iAnimNum = 0;
+	m_eStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
 	m_eStudentInfo.iAtk = 10;
 	m_eStudentInfo.iDef = 0;
 	m_eStudentInfo.iEx = 50;
@@ -44,38 +45,17 @@ HRESULT CAru::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-	m_pModelCom->Set_CurrentAnimation(m_eStudentInfo.iAnimNum);
+	m_pModelCom->Set_CurrentAnimation(m_eStudentInfo.eAnim);
 
+	m_pState = CRun_Sign::Create(this);
 	return S_OK;
 }
 
 void CAru::Tick(_float fTimeDelta)
 {
+
 	__super::Tick(fTimeDelta);
 
-	if (GetKeyState(VK_UP) & 0x8000)
-	{
-		m_pTransformCom->Go_Straight(fTimeDelta);
-		m_pModelCom->Set_CurrentAnimation(14);
-	}
-
-	if (GetKeyState(VK_LEFT) & 0x8000)
-	{
-		m_pTransformCom->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta * -1.f);
-		m_pModelCom->Set_CurrentAnimation(13);
-	}
-
-	if (GetKeyState(VK_RIGHT) & 0x8000)
-		m_pTransformCom->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta);
-
-	if (GetKeyState(VK_DOWN) & 0x8000)
-		m_pTransformCom->Go_Backward(fTimeDelta);
-
-	if (m_pModelCom->Get_isFinished())
-	{
-		int i = 10;
-	}
-	
 }
 
 void CAru::LateTick(_float fTimeDelta)
