@@ -17,10 +17,6 @@ public:
 public:
 	HRESULT Initialize(aiAnimation* pAIAnimation, class CModel* pModel);
 	void Update_TransformationMatrices(_float fTimeDelta);
-	void ReStartAnimation() {
-		if (m_isFinished)
-			m_isFinished = false;
-	}
 
 public:
 	HRESULT Clone_Channel(CAnimation* pPrototype, class CModel* pModel);

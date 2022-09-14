@@ -22,7 +22,6 @@ HRESULT CCamera_Free::Initialize_Prototype()
 
 HRESULT CCamera_Free::Initialize(void * pArg)
 {
-	this->IsDisable();
 	/* 트랜스폼 컴포넌늩를 추가한다. */
 	/* 내가 원하는 카메라의 초기상태를 동기화하낟. */
 	if (FAILED(__super::Initialize(pArg)))

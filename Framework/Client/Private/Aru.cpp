@@ -3,6 +3,7 @@
 
 #include "GameInstance.h"
 #include "Run_Sign.h"
+#include "Run.h"
 
 CAru::CAru(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CStudent(pDevice, pContext)
@@ -27,8 +28,10 @@ HRESULT CAru::Initialize(void * pArg)
 
 	m_eStudentInfo.strName = TEXT("Aru");
 
+	m_eStudentInfo.bExModel = false;
 	m_eStudentInfo.fFireSpeed = 0.5f;
 	m_eStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
+	m_eStudentInfo.eFormation = FORMATION_FIRST;
 	m_eStudentInfo.iAtk = 10;
 	m_eStudentInfo.iDef = 0;
 	m_eStudentInfo.iEx = 50;
@@ -45,9 +48,9 @@ HRESULT CAru::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-	m_pModelCom->Set_CurrentAnimation(m_eStudentInfo.eAnim);
 
-	m_pState = CRun_Sign::Create(this);
+	m_pState = CRun::Create(this);
+
 	return S_OK;
 }
 

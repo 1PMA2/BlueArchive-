@@ -27,6 +27,9 @@ HRESULT CLevel_GamePlay::Initialize()
 	if (FAILED(Ready_Layer_Student(TEXT("Layer_Student"))))
 		return E_FAIL;
 
+	if (FAILED(Ready_Layer_Student_Ex(TEXT("Layer_Student_Ex"))))
+		return E_FAIL;
+
 	if (FAILED(Ready_Layer_Camera(TEXT("Layer_Camera"))))
 		return E_FAIL;
 
@@ -163,6 +166,20 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student(const _tchar * pLayerTag)
 
 	/* For.Player */
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Aru"))))
+		return E_FAIL;
+
+	Safe_Release(pGameInstance);
+
+	return S_OK;
+}
+
+HRESULT CLevel_GamePlay::Ready_Layer_Student_Ex(const _tchar * pLayerTag)
+{
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+	Safe_AddRef(pGameInstance);
+
+	/* For.Player */
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Aru_Ex"))))
 		return E_FAIL;
 
 	Safe_Release(pGameInstance);

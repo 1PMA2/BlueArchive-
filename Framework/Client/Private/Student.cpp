@@ -3,6 +3,7 @@
 
 #include "GameInstance.h"
 #include "State.h"
+#include "Run_Sign.h"
 
 CStudent::CStudent(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -17,6 +18,30 @@ CStudent::CStudent(const CStudent & rhs)
 {
 }
 
+HRESULT CStudent::Initialize(void * pArg)
+{
+	if (FAILED(__super::Initialize(pArg)))
+		return E_FAIL;
+
+	switch (m_eStudentInfo.eFormation)
+	{
+	case FORMATION_FIRST:
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-5.f, 0.f, 0.f, 1.f));
+		break;
+	case FORMATION_FIRST_EX:
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 0.f, 1.f));
+		break;
+	case FORMATION_SECOND:
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 0.f, 1.f));
+		break;
+	case FORMATION_SECOND_EX:
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 0.f, 1.f));
+		break;
+	}
+
+	return S_OK;
+}
+
 void CStudent::Tick(_float fTimeDelta)
 {
 	if (CState*	pNewState = m_pState->Loop(fTimeDelta))
@@ -26,7 +51,7 @@ void CStudent::Tick(_float fTimeDelta)
 		m_pState->Enter();
 	}
 
-	m_pModelCom->Play_Animation(fTimeDelta);
+	//m_pModelCom->Play_Animation(fTimeDelta);
 
 	m_pAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
 	m_pOBBCom->Update(m_pTransformCom->Get_WorldMatrix());

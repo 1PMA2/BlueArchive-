@@ -24,6 +24,8 @@ public:
 
 		FORMATION eFormation;
 
+		_bool	bExModel;
+
 		_uint	iHp;
 		_uint	iShield;
 		_uint	iAtk;
@@ -46,6 +48,10 @@ public:
 	virtual ~CStudent() = default;
 
 public:
+	STUDENTINFO Get_StudentInfo() { return m_eStudentInfo; }
+
+public:
+	virtual HRESULT Initialize(void* pArg);
 	virtual void Tick(_float fTimeDelta);
 	virtual void LateTick(_float fTimeDelta);
 	virtual HRESULT Render();

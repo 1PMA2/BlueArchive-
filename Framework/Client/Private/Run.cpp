@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "..\Public\Run.h"
-#include "Transform.h"
-#include "Model.h"
+#include "GameInstance.h"
 #include "Student.h"
+#include "Sensei.h"
 
 CRun::CRun(CStudent* pOwner)
 	:CState(pOwner)
@@ -11,7 +11,10 @@ CRun::CRun(CStudent* pOwner)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	pModel->Set_CurrentAnimation(m_eAnim);
+	if(true == m_pOwner->Get_StudentInfo().bExModel)
+		pModel->Set_CurrentAnimation(m_pOwner->Get_StudentInfo().eAnim);
+	else
+		pModel->Set_CurrentAnimation(m_eAnim);
 }
 
 
@@ -30,7 +33,15 @@ CState * CRun::Loop(_float fTimeDelta)
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
-	pTransform->Go_Straight(fTimeDelta);
+	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
+
+	if (false == m_pOwner->Get_StudentInfo().bExModel)
+		pTransform->Go_Straight(fTimeDelta);
+
+	//CSensei* pSensei = CSensei::Get_Instance();
+	//if(pSensei->Get_SenseiInfo().bEx)
+	pModel->Play_Animation(fTimeDelta);
+
 
 
 	return pState;

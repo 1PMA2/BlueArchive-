@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "..\Public\Run_Sign.h"
+#include "GameInstance.h"
 #include "Student.h"
 #include "Model.h"
 #include "Run.h"
@@ -34,11 +35,13 @@ CState * CRun_Sign::Loop(_float fTimeDelta)
 
 	pTransform->Go_Straight(fTimeDelta);
 
+	pModel->Play_Animation(fTimeDelta);
+	
 	if (pModel->Get_isFinished())
 	{
 		pState = CRun::Create(m_pOwner);
 	}
-	
+
 	return pState;
 }
 
