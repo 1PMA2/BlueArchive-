@@ -76,16 +76,21 @@ void CCamera_Ex::Tick(_float fTimeDelta)
 	ParentMatrix.r[0] = XMVector3Normalize(ParentMatrix.r[0]);
 	ParentMatrix.r[1] = XMVector3Normalize(ParentMatrix.r[1]);
 	ParentMatrix.r[2] = XMVector3Normalize(ParentMatrix.r[2]);
-	ParentMatrix.r[3] = XMVector3Normalize(ParentMatrix.r[3]);
 	
-
+	
 	_matrix		ParentTargetMatrix = m_pTargetBonePtr->Get_OffsetMatrix() * m_pTargetBonePtr->Get_CombinedMatrix() * m_pTargetBonePtr->Get_TransformMatrix();
 	ParentTargetMatrix.r[0] = XMVector3Normalize(ParentTargetMatrix.r[0]);
 	ParentTargetMatrix.r[1] = XMVector3Normalize(ParentTargetMatrix.r[1]);
 	ParentTargetMatrix.r[2] = XMVector3Normalize(ParentTargetMatrix.r[2]);
-	//ParentTargetMatrix.r[3] = XMVector3Normalize(ParentTargetMatrix.r[3]);
+	
 	//타겟은 translation 받아오지 말것 fov 십창남
+	_float fFov;
+	
+	XMStoreFloat(&fFov,XMVector4Length(ParentMatrix.r[3]));
 
+	fFov = 0.7f / fFov;
+
+	this->Set_Fov(fFov);
 
 	XMStoreFloat4x4(&m_WorldMatrix, ParentMatrix * m_pTargetTransform->Get_WorldMatrix());
 	XMStoreFloat4x4(&m_TargetWorldMatrix, ParentTargetMatrix * m_pTargetTransform->Get_WorldMatrix());

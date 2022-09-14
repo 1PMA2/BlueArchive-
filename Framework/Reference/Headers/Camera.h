@@ -29,6 +29,9 @@ protected:
 	CCamera(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
 	CCamera(const CCamera& Prototype);
 	virtual ~CCamera() = default;
+
+public:
+	void Set_Fov(_float fFovy) { m_CameraDesc.fFovy = fFovy; }
 	
 public:
 	virtual HRESULT Initialize_Prototype();
