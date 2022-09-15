@@ -4,7 +4,7 @@
 #include "GameInstance.h"
 #include "Student.h"
 #include "Model.h"
-#include "Run.h"
+#include "Hide_Idle.h"
 
 CRun_ToHide::CRun_ToHide(CStudent* pOwner)
 	:CState(pOwner)
@@ -34,9 +34,9 @@ CState * CRun_ToHide::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	
 
 	pModel->Play_Animation(fTimeDelta);
+
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
@@ -56,9 +56,9 @@ CState * CRun_ToHide::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
-
-		//pState = CRun::Create(m_pOwner);
+		pState = CHide_Idle::Create(m_pOwner);
 	}
+	
 
 	return pState;
 }

@@ -91,6 +91,15 @@
     <ClInclude Include="..\Private\Run_ToHide.h">
       <Filter>02.GameObject\01.State\Run_ToHide</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Hide_Idle.h">
+      <Filter>02.GameObject\01.State\Hide_Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Fire.h">
+      <Filter>02.GameObject\01.State\Fire</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Hide_FireStart.h">
+      <Filter>02.GameObject\01.State\Hide_FireStart</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -170,6 +179,15 @@
     </ClCompile>
     <ClCompile Include="..\Public\Run_ToHide.cpp">
       <Filter>02.GameObject\01.State\Run_ToHide</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Hide_Idle.cpp">
+      <Filter>02.GameObject\01.State\Hide_Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Fire.cpp">
+      <Filter>02.GameObject\01.State\Fire</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Hide_FireStart.cpp">
+      <Filter>02.GameObject\01.State\Hide_FireStart</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,9 +307,6 @@
     <Filter Include="02.GameObject\01.State\Fire">
       <UniqueIdentifier>{9f489b98-593c-4347-93bb-a4481bd8e3e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\01.State\Hide_ReloadEnd">
-      <UniqueIdentifier>{95363383-2a10-499f-b0e8-f94e1e7c129a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.GameObject\01.State\Hide_Sign">
       <UniqueIdentifier>{6b764e08-c797-4759-84f6-db7286523d1c}</UniqueIdentifier>
     </Filter>
@@ -366,6 +381,9 @@
     </Filter>
     <Filter Include="02.GameObject\00.Monster">
       <UniqueIdentifier>{55185f6b-c8e8-44a3-a0f9-ecb6ddf094ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Hide_FireStart">
+      <UniqueIdentifier>{95363383-2a10-499f-b0e8-f94e1e7c129a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

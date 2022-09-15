@@ -1,3 +1,17 @@
-﻿  Monster.cpp
+﻿  Run_ToHide.cpp
+  Student.cpp
+  State.cpp
+  Run_Sign.cpp
+  Run.cpp
+  Hide_Idle.cpp
+  Hide_FireStart.cpp
+  Fire.cpp
+  Ex_Cutin.cpp
+  Aru_Ex.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  Aru.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\private\aru.cpp(121): warning C4244: '인수': 'Engine::_uint'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

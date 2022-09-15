@@ -24,7 +24,7 @@ HRESULT CAru::Initialize(void * pArg)
 {
 	CTransform::TRANSFORMDESC		TransformDesc;
 	TransformDesc.fSpeedPerSec = 2.f;
-	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
+	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
 
 	m_tStudentInfo.strName = TEXT("Aru");
 	  
