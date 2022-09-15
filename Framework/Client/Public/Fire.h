@@ -8,7 +8,7 @@ class CFire final : public
 {
 private:
 	CFire(CStudent* pOwner);
-	virtual ~CFire();
+	virtual ~CFire() = default;
 
 public:
 	// CState을(를) 통해 상속됨

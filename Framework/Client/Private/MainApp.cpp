@@ -67,7 +67,7 @@ void CMainApp::Tick()
 
 	CSensei* pSensei = GET_INSTANCE(CSensei);
 
-	//pSensei->Set_TimeSpeed();
+	pSensei->Set_TimeSpeed();
 
 	_float fTimeDelta = m_pGameInstance->Compute_Timer(TEXT("Timer_60"), pSensei->Get_SenseiInfo().fTimeSpeed);
 

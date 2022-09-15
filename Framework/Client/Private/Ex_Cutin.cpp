@@ -5,6 +5,7 @@
 #include "Student.h"
 #include "Sensei.h"
 #include "Fire.h"
+#include "Ex.h"
 
 CEx_Cutin::CEx_Cutin(CStudent* pOwner)
 	:CState(pOwner)
@@ -43,7 +44,7 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 
 	if (m_pOwner->Get_StudentInfo().bExModel)
 	{
-		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), 0);
+		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), m_pOwner->Get_StudentInfo().eFormation);
 
 		if (m_pOwner->Get_StudentInfo().eFormation == pStudent->Get_StudentInfo().eFormation)
 		{
@@ -69,7 +70,7 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 		pModel->Play_Animation(fTimeDelta);
 		
 		if (pModel->Get_isFinished())
-			pState = CFire::Create(m_pOwner);
+			pState = CEx::Create(m_pOwner);
 		
 	}
 

@@ -27,9 +27,9 @@ HRESULT CStudent::Initialize(void * pArg)
 	{
 	case FORMATION_FIRST:
 		if(m_tStudentInfo.bExModel)
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -10.f, 0.f, 1.f));
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -20.f, 0.f, 1.f));
 		else
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-5.f, 0.f, 0.f, 1.f));
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, -5.f, 1.f));
 		break;
 	case FORMATION_SECOND:
 		if (m_tStudentInfo.bExModel)

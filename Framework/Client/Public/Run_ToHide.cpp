@@ -43,13 +43,13 @@ CState * CRun_ToHide::Loop(_float fTimeDelta)
 	CTransform* pTTransform;
 	pTTransform = (CTransform*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Obstacle"), 0)->Get_Component(TEXT("Com_Transform"));
 
-	_float4 f;
+	_float4 fOffset;
 
-	XMStoreFloat4(&f, pTTransform->Get_WorldMatrix().r[3]);
+	XMStoreFloat4(&fOffset, pTTransform->Get_WorldMatrix().r[3]);
 
 	_vector		vTarget;
 
-	vTarget = XMVectorSet(f.x, f.y, f.z - 0.7f, f.w);
+	vTarget = XMVectorSet(fOffset.x, fOffset.y, fOffset.z - 0.7f, fOffset.w);
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 	pTransform->Set_State(CTransform::STATE_TRANSLATION, vTarget);

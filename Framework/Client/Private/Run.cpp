@@ -70,7 +70,7 @@ CState * CRun::Loop(_float fTimeDelta)
 			_float		fDegree = XMConvertToDegrees(fAngle);
 
 
-			if (2.f < fabs(fDegree))
+			if (5.f < fabs(fDegree))
 			{
 				if(0 < fDegree)
 					pTransform->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta);

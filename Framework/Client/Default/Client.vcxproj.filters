@@ -100,6 +100,30 @@
     <ClInclude Include="..\Public\Hide_FireStart.h">
       <Filter>02.GameObject\01.State\Hide_FireStart</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Ex.h">
+      <Filter>02.GameObject\01.State\EX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Knee_ZoomFire.h">
+      <Filter>02.GameObject\01.State\Knee_ZoomFire</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Knee_ZoomStart.h">
+      <Filter>02.GameObject\01.State\Knee_ZoomStart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\City.h">
+      <Filter>02.GameObject\06.Terrain\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Knee_ZoomEnd.h">
+      <Filter>02.GameObject\01.State\Knee_ZoomEnd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Knee_Reload.h">
+      <Filter>02.GameObject\01.State\Knee_Reload</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Hide_ReloadStart.h">
+      <Filter>02.GameObject\01.State\Hide_ReloadStart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Hide_Reloading.h">
+      <Filter>02.GameObject\01.State\Hide_Reloading</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -188,6 +212,30 @@
     </ClCompile>
     <ClCompile Include="..\Private\Hide_FireStart.cpp">
       <Filter>02.GameObject\01.State\Hide_FireStart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Ex.cpp">
+      <Filter>02.GameObject\01.State\EX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Knee_ZoomFire.cpp">
+      <Filter>02.GameObject\01.State\Knee_ZoomFire</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Knee_ZoomStart.cpp">
+      <Filter>02.GameObject\01.State\Knee_ZoomStart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\City.cpp">
+      <Filter>02.GameObject\06.Terrain\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Knee_ZoomEnd.cpp">
+      <Filter>02.GameObject\01.State\Knee_ZoomEnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Knee_Reload.cpp">
+      <Filter>02.GameObject\01.State\Knee_Reload</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Hide_ReloadStart.cpp">
+      <Filter>02.GameObject\01.State\Hide_ReloadStart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Hide_Reloading.cpp">
+      <Filter>02.GameObject\01.State\Hide_Reloading</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

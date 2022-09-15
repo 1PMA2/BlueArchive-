@@ -34,6 +34,7 @@ public:
 		_float	fExCost;
 
 		_uint	iMagazine;
+		_uint	iBullet;
 		_uint	iRange;
 
 		_float	fFireSpeed;
@@ -49,7 +50,9 @@ public:
 
 public:
 	STUDENTINFO Get_StudentInfo() { return m_tStudentInfo; }
-	void	Set_State(ANIM eANIM) { m_tStudentInfo.eAnim = eANIM; }
+	void		Use_Bullet() { m_tStudentInfo.iBullet -= 1; }
+	void		Reload() { m_tStudentInfo.iBullet = m_tStudentInfo.iMagazine; }
+	void		Set_State(ANIM eANIM) { m_tStudentInfo.eAnim = eANIM; }
 	_bool		FoundMonster() { return m_bFoundMonster; }
 	_bool		FoundObstacle() { return m_bFoundObstacle; }
 

@@ -62,7 +62,7 @@ CState * CHide_Idle::Loop(_float fTimeDelta)
 	_float		fDegree = XMConvertToDegrees(fAngle);
 
 
-	if (1.f < fabs(fDegree))
+	if (5.f < fabs(fDegree))
 	{
 		if (0 < fDegree)
 			pTransform->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta);
@@ -70,7 +70,9 @@ CState * CHide_Idle::Loop(_float fTimeDelta)
 			pTransform->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta * -1.f);
 	}
 	else
+	{
 		pState = CHide_FireStart::Create(m_pOwner);
+	}
 
 
 

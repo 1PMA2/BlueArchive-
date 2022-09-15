@@ -24,13 +24,21 @@ void CSensei::Set_TimeSpeed()
 
 	if (GetKeyState(VK_F1) & 0x8000)
 	{
-		m_tSensei.fTimeSpeed += 1.f;
-	}
-
-	if (3 < m_tSensei.fTimeSpeed)
-	{
 		m_tSensei.fTimeSpeed = 1.f;
 	}
+	if (GetKeyState(VK_F2) & 0x8000)
+	{
+		m_tSensei.fTimeSpeed = 2.f;
+	}
+	if (GetKeyState(VK_F3) & 0x8000)
+	{
+		m_tSensei.fTimeSpeed = 3.f;
+	}
+	if (GetKeyState(VK_F4) & 0x8000)
+	{
+		m_tSensei.fTimeSpeed = 0.1f;
+	}
+
 }
 
 void CSensei::Tick_Cost(_float fTimeDelta)

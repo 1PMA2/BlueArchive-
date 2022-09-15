@@ -5,6 +5,7 @@
 #include "Student.h"
 #include "Model.h"
 #include "Ex_Cutin.h"
+#include "Hide_ReloadStart.h"
 
 CFire::CFire(CStudent* pOwner)
 	:CState(pOwner)
@@ -17,13 +18,9 @@ CFire::CFire(CStudent* pOwner)
 }
 
 
-CFire::~CFire()
-{
-}
-
 void CFire::Enter()
 {
-
+	m_pOwner->Use_Bullet();
 }
 
 CState * CFire::Loop(_float fTimeDelta)
@@ -36,7 +33,16 @@ CState * CFire::Loop(_float fTimeDelta)
 
 	pModel->Play_Animation(fTimeDelta);
 
-	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+	if (pModel->Get_isFinished())
+	{
+		if(0 < m_pOwner->Get_StudentInfo().iBullet)
+			pState = CFire::Create(m_pOwner);
+		else
+		{
+			pState = CHide_ReloadStart::Create(m_pOwner);
+		}
+		return pState;
+	}
 
 	if (GetKeyState(VK_SPACE) & 0x8000)
 	{
