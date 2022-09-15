@@ -35,12 +35,29 @@ CState * CRun::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	if (false == m_pOwner->Get_StudentInfo().bExModel)
-		pTransform->Go_Straight(fTimeDelta);
+	CSensei* pSensei = CSensei::Get_Instance();
 
-	//CSensei* pSensei = CSensei::Get_Instance();
-	//if(pSensei->Get_SenseiInfo().bEx)
-	pModel->Play_Animation(fTimeDelta);
+	if (false == m_pOwner->Get_StudentInfo().bExModel)
+	{
+		pTransform->Go_Straight(fTimeDelta);
+		pModel->Play_Animation(fTimeDelta);
+	}
+
+	else
+	{
+		if (GetKeyState(VK_UP) & 0x8000)
+		{
+			pSensei->Use_Ex(true);
+		}
+		if (pSensei->Get_SenseiInfo().bEx)
+		{
+			pModel->Play_Animation(fTimeDelta);
+		}
+		if (pModel->Get_isFinished())
+		{
+			pSensei->Use_Ex(false);
+		}
+	}
 
 
 

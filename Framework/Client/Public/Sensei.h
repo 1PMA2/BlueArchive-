@@ -13,7 +13,7 @@ class CStudent;
 		_float fTimeSpeed = 1.f;
 		_float fCost = 0.f;
 
-		_bool bEx = true;
+		_bool bEx = false;
 
 	}SENSEIINFO;
 
@@ -26,6 +26,7 @@ private:
 
 public:
 	SENSEIINFO Get_SenseiInfo() { return m_tSensei; }
+	void Use_Ex(_bool bEx) { m_tSensei.bEx = bEx; }
 	void Set_TimeSpeed();
 	void Set_Camera(CAMERA eCamera) { m_tSensei.eCamera = eCamera; }
 	void Tick_Cost(_float fTimeDelta);

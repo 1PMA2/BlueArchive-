@@ -13,6 +13,7 @@
 //#include "Effect.h"
 #include "Sky.h"
 #include "Sensei.h"
+#include "ForkLift.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -197,6 +198,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CAru_Ex::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_ForkLift"),
+			CForkLift::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 
 		///* For.Prototype_GameObject_Monster */
 		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Monster"),
@@ -287,11 +292,11 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		_matrix			TransformMatrix;
 
 		/* For.Prototype_Component_Model_ForkLift*/
-		/*TransformMatrix = XMMatrixScaling(1.01f, 1.01f, 1.01f) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+		TransformMatrix = XMMatrixScaling(0.005f, 0.005f, 0.005f) * XMMatrixRotationY(XMConvertToRadians(90.0f));
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_ForkLift"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/ForkLift/", "ForkLift.fbx", TransformMatrix))))
-			return E_FAIL;*/
+			return E_FAIL;
 
 		/* For.Prototype_Component_Model_Fiona */
 		TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));

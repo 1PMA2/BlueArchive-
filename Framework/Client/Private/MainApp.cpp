@@ -81,14 +81,14 @@ void CMainApp::Tick()
 	CCamera* pCameraFree = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
 	CCamera* pCameraEx   = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_EX);
 
-	if ((m_pGameInstance->Get_DIKeyState(DIK_1) & 0x8001) && (nullptr != pCameraEx))
+	if (pSensei->Get_SenseiInfo().bEx && (nullptr != pCameraEx))
 	{
 		{
 			pCameraFree->Set_Enable(true);
 			pCameraEx->Set_Enable(false);
 		}
 	}
-	else if ((m_pGameInstance->Get_DIKeyState(DIK_2) & 0x8001) && (nullptr != pCameraEx))
+	else if (nullptr != pCameraEx)
 	{
 		pCameraEx->Set_Enable(true);
 		pCameraFree->Set_Enable(false);
