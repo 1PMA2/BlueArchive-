@@ -4,7 +4,7 @@
 #include "GameInstance.h"
 #include "Student.h"
 #include "Sensei.h"
-#include "Run.h"
+#include "Fire.h"
 
 CEx_Cutin::CEx_Cutin(CStudent* pOwner)
 	:CState(pOwner)
@@ -68,8 +68,8 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 	{
 		pModel->Play_Animation(fTimeDelta);
 		
-		/*if (pModel->Get_isFinished())
-			pState = CRun::Create(m_pOwner);*/
+		if (pModel->Get_isFinished())
+			pState = CFire::Create(m_pOwner);
 		
 	}
 

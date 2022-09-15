@@ -4,7 +4,7 @@
 #include "GameInstance.h"
 #include "Student.h"
 #include "Model.h"
-#include "Run.h"
+#include "Ex_Cutin.h"
 
 CFire::CFire(CStudent* pOwner)
 	:CState(pOwner)
@@ -35,6 +35,13 @@ CState * CFire::Loop(_float fTimeDelta)
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
 	pModel->Play_Animation(fTimeDelta);
+
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	if (GetKeyState(VK_SPACE) & 0x8000)
+	{
+		pState = CEx_Cutin::Create(m_pOwner);
+	}
 
 	return pState;
 }

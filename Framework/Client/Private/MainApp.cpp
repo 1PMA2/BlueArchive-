@@ -83,14 +83,14 @@ void CMainApp::Tick()
 
 	if (nullptr != pCameraFree)
 	{
-		/*if (pSensei->Get_SenseiInfo().bEx)
+		if (pSensei->Get_SenseiInfo().bEx)
 		{
 			{
 				pCameraFree->Set_Enable(false);
 				pCameraEx->Set_Enable(true);
 			}
 		}
-		else*/
+		else
 		{
 			pCameraEx->Set_Enable(false);
 			pCameraFree->Set_Enable(true);
