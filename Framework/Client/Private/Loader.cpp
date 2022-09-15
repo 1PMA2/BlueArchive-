@@ -6,7 +6,7 @@
 #include "BG_Lobby.h"
 #include "Camera_Free.h"
 #include "Camera_Ex.h"
-//#include "Monster.h"
+#include "Monster.h"
 #include "Terrain.h"
 #include "Aru.h"
 #include "Aru_Ex.h"
@@ -204,9 +204,9 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 
 		///* For.Prototype_GameObject_Monster */
-		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Monster"),
-		//	CMonster::Create(m_pGraphic_Device))))
-		//	return E_FAIL;
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Monster"),
+			CMonster::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
 
 		///* For.Prototype_GameObject_Effect */
 		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Effect"),

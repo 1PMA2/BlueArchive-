@@ -16,6 +16,9 @@ public:
 	virtual CState * Loop(_float fTimeDelta) override;
 	virtual void Exit() override;
 
+private:
+	void Find_Monster();
+
 public:
 	static CRun* Create(CStudent* pOwner);
 };

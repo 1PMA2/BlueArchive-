@@ -8,6 +8,15 @@ CSensei::CSensei()
 {
 }
 
+void CSensei::Use_Ex(_bool bEx, _float fCost)
+{
+	if (fCost <= m_tSensei.fCost)
+	{
+		m_tSensei.bEx = bEx;
+		m_tSensei.fCost -= fCost;
+	}
+}
+
 void CSensei::Set_TimeSpeed()
 {
 

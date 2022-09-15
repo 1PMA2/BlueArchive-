@@ -13,7 +13,7 @@ protected:
 	virtual ~CState();
 public:
 	ANIM	Get_State() { return m_eAnim; }
-	void	Set_State(ANIM eState) { m_eAnim = eState; }
+	void	Set_State(ANIM eState); 
 public:
 	virtual	void	Enter() PURE;
 	virtual CState*	Loop(_float fTimeDelta) PURE;

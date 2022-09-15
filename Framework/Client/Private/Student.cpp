@@ -13,7 +13,7 @@ CStudent::CStudent(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 
 CStudent::CStudent(const CStudent & rhs)
 	: CGameObject(rhs)
-	, m_eStudentInfo(rhs.m_eStudentInfo)
+	, m_tStudentInfo(rhs.m_tStudentInfo)
 	, m_pState(nullptr)
 {
 }
@@ -23,18 +23,15 @@ HRESULT CStudent::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(pArg)))
 		return E_FAIL;
 
-	switch (m_eStudentInfo.eFormation)
+	switch (m_tStudentInfo.eFormation)
 	{
 	case FORMATION_FIRST:
-		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-5.f, 0.f, 0.f, 1.f));
-		break;
-	case FORMATION_FIRST_EX:
-		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -10.f, 0.f, 1.f));
+		if(m_tStudentInfo.bExModel)
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-5.f, 0.f, 0.f, 1.f));
+		else
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 0.f, 1.f));
 		break;
 	case FORMATION_SECOND:
-		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 0.f, 1.f));
-		break;
-	case FORMATION_SECOND_EX:
 		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 0.f, 1.f));
 		break;
 	}
@@ -59,6 +56,7 @@ void CStudent::Tick(_float fTimeDelta)
 
 void CStudent::LateTick(_float fTimeDelta)
 {
+
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 }
 
@@ -89,7 +87,7 @@ HRESULT CStudent::Render()
 	}
 
 #ifdef _DEBUG
-	m_pAABBCom->Render();
+//	m_pAABBCom->Render();
 	m_pOBBCom->Render();
 	m_pSphereCom->Render();
 #endif // _DEBUG
@@ -166,6 +164,7 @@ void CStudent::Free()
 	Safe_Release(m_pOBBCom);
 	Safe_Release(m_pAABBCom);
 	Safe_Release(m_pShaderCom);
+	Safe_Release(m_pSphereCom_Obstacle);
 	Safe_Release(m_pRendererCom);
 	Safe_Release(m_pModelCom);
 }

@@ -21,6 +21,8 @@ HRESULT CLevel_Lobby::Initialize()
 	if (FAILED(Ready_Layer_Lobby(TEXT("Layer_Lobby_BG"))))
 		return E_FAIL;
 
+
+
 	return S_OK;
 }
 

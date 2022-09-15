@@ -2,8 +2,7 @@
 #include "..\Public\Aru_Ex.h"
 
 #include "GameInstance.h"
-#include "Run_Sign.h"
-#include "Run.h"
+#include "Ex_Cutin.h"
 
 CAru_Ex::CAru_Ex(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CStudent(pDevice, pContext)
@@ -26,19 +25,19 @@ HRESULT CAru_Ex::Initialize(void * pArg)
 	TransformDesc.fSpeedPerSec = 1.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	m_eStudentInfo.strName = TEXT("Aru_Ex");
-	m_eStudentInfo.bExModel = true;
-	m_eStudentInfo.fFireSpeed = 0.5f;
-	m_eStudentInfo.eAnim = ANIM_EX;
-	m_eStudentInfo.eFormation = FORMATION_FIRST_EX;
-	m_eStudentInfo.iAtk = 10;
-	m_eStudentInfo.iDef = 0;
-	m_eStudentInfo.iEx = 50;
-	m_eStudentInfo.iExCost = 4;
-	m_eStudentInfo.iHp = 100;
-	m_eStudentInfo.iMagazine = 5;
-	m_eStudentInfo.iRange = 10;
-	m_eStudentInfo.iShield = 0;
+	m_tStudentInfo.strName = TEXT("Aru_Ex");
+	m_tStudentInfo.bExModel = true;
+	m_tStudentInfo.fFireSpeed = 0.5f;
+	m_tStudentInfo.eAnim = ANIM_EX;
+	m_tStudentInfo.eFormation = FORMATION_SECOND;
+	m_tStudentInfo.iAtk = 10;
+	m_tStudentInfo.iDef = 0;
+	m_tStudentInfo.iEx = 50;
+	m_tStudentInfo.fExCost = 4.f;
+	m_tStudentInfo.iHp = 100;
+	m_tStudentInfo.iMagazine = 5;
+	m_tStudentInfo.iRange = 10;
+	m_tStudentInfo.iShield = 0;
 
 
 	if (FAILED(__super::Initialize(&TransformDesc)))
@@ -48,7 +47,7 @@ HRESULT CAru_Ex::Initialize(void * pArg)
 		return E_FAIL;
 
 
-	m_pState = CRun::Create(this);
+	m_pState = CEx_Cutin::Create(this);
 
 	return S_OK;
 }

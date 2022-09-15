@@ -11,3 +11,8 @@ CState::CState(CStudent* pOwner)
 CState::~CState()
 {
 }
+
+void CState::Set_State(ANIM eState)
+{
+	 m_pOwner->Set_State(eState);
+}
