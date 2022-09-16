@@ -34,6 +34,8 @@ CState * CHide_ReloadStart::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
+		pModel->Set_CurrentAnimation(ANIM_HIDERELOADING);
+		pModel->Play_Animation(fTimeDelta);
 		pState = CHide_Reloading::Create(m_pOwner);
 	}
 

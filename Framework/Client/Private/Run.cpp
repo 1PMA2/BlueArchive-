@@ -70,7 +70,7 @@ CState * CRun::Loop(_float fTimeDelta)
 			_float		fDegree = XMConvertToDegrees(fAngle);
 
 
-			if (5.f < fabs(fDegree))
+			if (3.f < fabs(fDegree))
 			{
 				if(0 < fDegree)
 					pTransform->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta);
@@ -79,7 +79,7 @@ CState * CRun::Loop(_float fTimeDelta)
 			}
 
 
-			if (0.5f < XMVectorGetX(XMVector3Length(vLook)))
+			if (0.3f < XMVectorGetX(XMVector3Length(vLook)))
 				pTransform->Chase(vTarget, fTimeDelta);
 			else
 			{
@@ -92,7 +92,6 @@ CState * CRun::Loop(_float fTimeDelta)
 	{
 		pTransform->Go_Straight(fTimeDelta);
 	}
-	
 
 	return pState;
 }

@@ -44,7 +44,7 @@ void CSensei::Set_TimeSpeed()
 void CSensei::Tick_Cost(_float fTimeDelta)
 {
 	if (10.f > m_tSensei.fCost)
-		m_tSensei.fCost += fTimeDelta;
+		m_tSensei.fCost += (fTimeDelta * 0.5f);
 	else
 		m_tSensei.fCost = 10.f;
 }

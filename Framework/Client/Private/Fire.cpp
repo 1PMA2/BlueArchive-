@@ -39,6 +39,8 @@ CState * CFire::Loop(_float fTimeDelta)
 			pState = CFire::Create(m_pOwner);
 		else
 		{
+			pModel->Set_CurrentAnimation(ANIM_HIDERELOADSTART);
+			pModel->Play_Animation(fTimeDelta);
 			pState = CHide_ReloadStart::Create(m_pOwner);
 		}
 		return pState;
@@ -46,6 +48,8 @@ CState * CFire::Loop(_float fTimeDelta)
 
 	if (GetKeyState(VK_SPACE) & 0x8000)
 	{
+		pModel->Set_CurrentAnimation(ANIM_EXCUTIN);
+		pModel->Play_Animation(fTimeDelta);
 		pState = CEx_Cutin::Create(m_pOwner);
 	}
 

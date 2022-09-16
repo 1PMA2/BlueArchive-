@@ -6,6 +6,7 @@
 #include "Model.h"
 #include "Fire.h"
 #include "Knee_ZoomStart.h"
+#include "Sensei.h"
 
 CEx::CEx(CStudent* pOwner)
 	:CState(pOwner)
@@ -19,7 +20,6 @@ CEx::CEx(CStudent* pOwner)
 
 void CEx::Enter()
 {
-
 }
 
 CState * CEx::Loop(_float fTimeDelta)
@@ -34,6 +34,8 @@ CState * CEx::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
+		pModel->Set_CurrentAnimation(ANIM_KNEEZOOMSTART);
+		pModel->Play_Animation(fTimeDelta);
 		pState = CKnee_ZoomStart::Create(m_pOwner);
 	}
 

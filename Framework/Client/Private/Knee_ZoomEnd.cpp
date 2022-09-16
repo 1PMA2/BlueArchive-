@@ -34,6 +34,8 @@ CState * CKnee_ZoomEnd::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
+		pModel->Set_CurrentAnimation(ANIM_KNEERELOAD);
+		pModel->Play_Animation(fTimeDelta);
 		pState = CKnee_Reload::Create(m_pOwner);
 	}
 

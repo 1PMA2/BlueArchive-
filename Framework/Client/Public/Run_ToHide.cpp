@@ -56,6 +56,8 @@ CState * CRun_ToHide::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
+		pModel->Set_CurrentAnimation(ANIM_HIDEIDLE);
+		pModel->Play_Animation(fTimeDelta);
 		pState = CHide_Idle::Create(m_pOwner);
 	}
 	

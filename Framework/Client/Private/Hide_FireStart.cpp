@@ -34,6 +34,8 @@ CState * CHide_FireStart::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
+		pModel->Set_CurrentAnimation(ANIM_FIRE);
+		pModel->Play_Animation(fTimeDelta);
 		pState = CFire::Create(m_pOwner);
 	}
 

@@ -39,6 +39,9 @@ CState * CRun_Sign::Loop(_float fTimeDelta)
 	
 	if (pModel->Get_isFinished())
 	{
+		pModel->Set_CurrentAnimation(ANIM_RUN);
+		pModel->Play_Animation(fTimeDelta);
+
 		pState = CRun::Create(m_pOwner);
 	}
 

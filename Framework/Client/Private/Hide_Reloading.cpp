@@ -34,6 +34,8 @@ CState * CHide_Reloading::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
+		pModel->Set_CurrentAnimation(ANIM_HIDEFIRESTART);
+		pModel->Play_Animation(fTimeDelta);
 		pState = CHide_FireStart::Create(m_pOwner);
 	}
 
