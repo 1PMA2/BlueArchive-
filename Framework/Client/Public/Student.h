@@ -20,7 +20,7 @@ class CStudent abstract : public CGameObject
 public:
 	typedef struct tagStudentDesc
 	{
-		wstring	strName;
+		_tchar*	pName;
 
 		FORMATION eFormation;
 
@@ -53,6 +53,7 @@ public:
 	void		Use_Bullet() { m_tStudentInfo.iBullet -= 1; }
 	void		Reload() { m_tStudentInfo.iBullet = m_tStudentInfo.iMagazine; }
 	void		Set_State(ANIM eANIM) { m_tStudentInfo.eAnim = eANIM; }
+	void		Set_Formation(FORMATION eFormation) { m_tStudentInfo.eFormation = eFormation; }
 	_bool		FoundMonster() { return m_bFoundMonster; }
 	_bool		FoundObstacle() { return m_bFoundObstacle; }
 

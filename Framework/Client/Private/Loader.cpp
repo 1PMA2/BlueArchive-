@@ -42,6 +42,9 @@ unsigned int APIENTRY LoadingMain(void* pArg)
 		case LEVEL_LOBBY:
 			hr = pLoader->Loading_ForLobbyLevel();
 			break;
+		case LEVEL_FORMATION:
+			hr = pLoader->Loading_ForFormationLevel();
+			break;
 		case LEVEL_GAMEPLAY:
 			hr = pLoader->Loading_ForGamePlayLevel();
 			break;
@@ -87,7 +90,26 @@ HRESULT CLoader::Loading_ForLogoLevel()
 		CLoadingImage::Create(m_pDevice, m_pContext))))
 		return E_FAIL;
 
-	
+	lstrcpy(m_szLoadingText, TEXT("셰이더를 로딩중이빈다. "));
+	/* For.Prototype_Component_Shader_VtxTex */
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Shader_VtxNorTex"),
+		CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxNorTex.hlsl"), VTXNORTEX_DECLARATION::Element, VTXNORTEX_DECLARATION::iNumElements))))
+		return E_FAIL;
+
+	/* For.Prototype_Component_Shader_VtxCubeTex */
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Shader_VtxCubeTex"),
+		CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxCubeTex.hlsl"), VTXCUBETEX_DECLARATION::Element, VTXCUBETEX_DECLARATION::iNumElements))))
+		return E_FAIL;
+
+	/* For.Prototype_Component_Shader_VtxModel */
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Shader_VtxModel"),
+		CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxModel.hlsl"), VTXMODEL_DECLARATION::Element, VTXMODEL_DECLARATION::iNumElements))))
+		return E_FAIL;
+
+	/* For.Prototype_Component_Shader_VtxAnimModel */
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Shader_VtxAnimModel"),
+		CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxAnimModel.hlsl"), VTXANIM_DECLARATION::Element, VTXANIM_DECLARATION::iNumElements))))
+		return E_FAIL;
 
 	
 
@@ -131,7 +153,16 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 			CBG_Lobby::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
-		//pGameInstance->Set_NumLobbyObj(pGameInstance->Get_PTypeSize());
+		/* For.Prototype_GameObject_Student */
+
+		CSensei* pSensei = CSensei::Get_Instance();
+
+		pSensei->Set_Student(TEXT("Aru"), CAru::Create(m_pDevice, m_pContext));
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Aru"),
+			pSensei->Get_Student(TEXT("Aru")))))
+			return E_FAIL;
+
 
 #pragma endregion
 
@@ -143,10 +174,62 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Bg_Lobby%d.png"), 1))))
 		return E_FAIL;
 
+	
+
+	lstrcpy(m_szLoadingText, TEXT("fhql로딩 끝 "));
+
+	m_isFinished = true;
+	Safe_Release(pGameInstance);
+	return S_OK;
+}
+
+HRESULT CLoader::Loading_ForFormationLevel()
+{
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+	Safe_AddRef(pGameInstance);
+
+	if (g_bFormation) //객체 개수, 재생성 막기
+	{
+#pragma region PROTOTYPE_GAMEOBJECT
+
+		lstrcpy(m_szLoadingText, TEXT("객체를 생성중입니다."));
+
+		/* For.Prototype_GameObject_Student */
+
+		/* For.Prototype_GameObject_Camera_Free*/
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Free"),
+			CCamera_Free::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+#pragma endregion
+
+		g_bFormation = false;
+	}
+
+	lstrcpy(m_szLoadingText, TEXT("콜라이더추가.  "));
+	/* For.Prototype_Component_Collider_AABB */
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"),
+		CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_AABB))))
+		return E_FAIL;
+
+	/* For.Prototype_Component_Collider_OBB */
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Collider_OBB"),
+		CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_OBB))))
+		return E_FAIL;
+
+	/* For.Prototype_Component_Collider_SPHERE */
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"),
+		CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_SPHERE))))
+		return E_FAIL;
+
 
 	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
-
-
+	_matrix			TransformMatrix;
+	ZeroMemory(&TransformMatrix, sizeof(_matrix));
+	TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Aru"),
+		CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru.fbx", TransformMatrix))))
+		return E_FAIL;
 
 	lstrcpy(m_szLoadingText, TEXT("fhql로딩 끝 "));
 
@@ -185,20 +268,15 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CTerrain::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
-		/* For.Prototype_GameObject_Camera_Free*/
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Free"),
-			CCamera_Free::Create(m_pDevice, m_pContext))))
-			return E_FAIL;
-
 		/* For.Prototype_GameObject_Camera_Ex*/
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Ex"),
 			CCamera_Ex::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
-		/* For.Prototype_GameObject_Student */
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Aru"),
-			CAru::Create(m_pDevice, m_pContext))))
-			return E_FAIL;
+		///* For.Prototype_GameObject_Student */
+		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Aru"),
+		//	CAru::Create(m_pDevice, m_pContext))))
+		//	return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Aru_Ex"),
 			CAru_Ex::Create(m_pDevice, m_pContext))))
@@ -249,39 +327,6 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Brush.png"), 1))))
 			return E_FAIL;
 
-		///* For.Prototype_Component_Texture_Player */
-		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Player"),
-		//	CTexture::Create(m_pGraphic_Device, CTexture::TYPE_DEFAULT, TEXT("../Bin/Resources/Textures/Player/Player.jpg"), 1))))
-		//	return E_FAIL;
-
-
-
-		///* For.Prototype_Component_Texture_Monster */
-		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Monster"),
-		//	CTexture::Create(m_pGraphic_Device, CTexture::TYPE_DEFAULT, TEXT("../Bin/Resources/Textures/Snow/Snow.png"), 1))))
-		//	return E_FAIL;
-
-		///* For.Prototype_Component_Texture_Explosion */
-		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Explosion"),
-		//	CTexture::Create(m_pGraphic_Device, CTexture::TYPE_DEFAULT, TEXT("../Bin/Resources/Textures/Explosion/Explosion%d.png"), 90))))
-		//	return E_FAIL;
-
-		lstrcpy(m_szLoadingText, TEXT("콜라이더추가.  "));
-		/* For.Prototype_Component_Collider_AABB */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_AABB"),
-			CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_AABB))))
-			return E_FAIL;
-
-		/* For.Prototype_Component_Collider_OBB */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_OBB"),
-			CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_OBB))))
-			return E_FAIL;
-
-		/* For.Prototype_Component_Collider_SPHERE */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_SPHERE"),
-			CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_SPHERE))))
-			return E_FAIL;
-
 		lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
 
 		/* For.Prototype_Component_VIBuffer_Terrain */
@@ -306,11 +351,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 
 		/* For.Prototype_Component_Model_Fiona */
-		ZeroMemory(&TransformMatrix, sizeof(_matrix));
-		TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru"),
-			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru.fbx", TransformMatrix))))
-			return E_FAIL;
+		
 
 		ZeroMemory(&TransformMatrix, sizeof(_matrix));
 		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
@@ -325,26 +366,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			return E_FAIL;
 
 
-		lstrcpy(m_szLoadingText, TEXT("셰이더를 로딩중이빈다. "));
-		/* For.Prototype_Component_Shader_VtxTex */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Shader_VtxNorTex"),
-			CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxNorTex.hlsl"), VTXNORTEX_DECLARATION::Element, VTXNORTEX_DECLARATION::iNumElements))))
-			return E_FAIL;
-
-		/* For.Prototype_Component_Shader_VtxCubeTex */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Shader_VtxCubeTex"),
-			CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxCubeTex.hlsl"), VTXCUBETEX_DECLARATION::Element, VTXCUBETEX_DECLARATION::iNumElements))))
-			return E_FAIL;
-
-		/* For.Prototype_Component_Shader_VtxModel */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Shader_VtxModel"),
-			CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxModel.hlsl"), VTXMODEL_DECLARATION::Element, VTXMODEL_DECLARATION::iNumElements))))
-			return E_FAIL;
-
-		/* For.Prototype_Component_Shader_VtxAnimModel */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Shader_VtxAnimModel"),
-			CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_VtxAnimModel.hlsl"), VTXANIM_DECLARATION::Element, VTXANIM_DECLARATION::iNumElements))))
-			return E_FAIL;
+		
 
 		lstrcpy(m_szLoadingText, TEXT("로딩 끝 "));
 

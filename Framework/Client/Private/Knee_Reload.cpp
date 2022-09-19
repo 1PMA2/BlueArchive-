@@ -19,7 +19,6 @@ CKnee_Reload::CKnee_Reload(CStudent* pOwner)
 
 void CKnee_Reload::Enter()
 {
-	m_pOwner->Reload();
 }
 
 CState * CKnee_Reload::Loop(_float fTimeDelta)
@@ -30,10 +29,9 @@ CState * CKnee_Reload::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	//pModel->Play_Animation(fTimeDelta);
-
 	if (pModel->Get_isFinished())
 	{
+		m_pOwner->Reload();
 		pState = CKnee_ZoomStart::Create(m_pOwner);
 	}
 

@@ -124,6 +124,9 @@
     <ClInclude Include="..\Public\Hide_Reloading.h">
       <Filter>02.GameObject\01.State\Hide_Reloading</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Level_Formation.h">
+      <Filter>01.Level\Level_Formation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -236,6 +239,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Hide_Reloading.cpp">
       <Filter>02.GameObject\01.State\Hide_Reloading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Formation.cpp">
+      <Filter>01.Level\Level_Formation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -432,6 +438,9 @@
     </Filter>
     <Filter Include="02.GameObject\01.State\Hide_FireStart">
       <UniqueIdentifier>{95363383-2a10-499f-b0e8-f94e1e7c129a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Level\Level_Formation">
+      <UniqueIdentifier>{4dcbffa4-0c45-4902-bd56-e72df6b4ef97}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -39,6 +39,7 @@ public:
 	HRESULT Loading_ForLogoLevel();
 	HRESULT Loading_ForLobbyLevel();
 	HRESULT Loading_ForGamePlayLevel();
+	HRESULT Loading_ForFormationLevel();
 
 private:
 	D3D11_TEXTURE2D_DESC		desc;

@@ -3,6 +3,7 @@
 #include "GameInstance.h"
 #include "Level_Loading.h"
 #include "Sensei.h"
+#include "Student.h"
 
 
 CLevel_Lobby::CLevel_Lobby(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -13,17 +14,19 @@ CLevel_Lobby::CLevel_Lobby(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 
 HRESULT CLevel_Lobby::Initialize()
 {
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	pSensei->Set_CurrentLevel(LEVEL_LOBBY);
+
 	if (FAILED(__super::Initialize()))
 		return E_FAIL;
-
-
 
 	if (FAILED(Ready_Layer_Lobby(TEXT("Layer_Lobby_BG"))))
 		return E_FAIL;
 
-	CSensei* pSensei = CSensei::Get_Instance();
 
 	pSensei->Use_Ex(false);
+	
 
 	return S_OK;
 }
@@ -37,12 +40,12 @@ void CLevel_Lobby::Tick(_float fTimeDelta)
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
 
-		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GAMEPLAY))))
+		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_FORMATION))))
 			return;
 
 		Safe_Release(pGameInstance);
 	}
-
+	CSensei* pSensei = CSensei::Get_Instance();
 
 }
 
@@ -66,9 +69,6 @@ HRESULT CLevel_Lobby::Ready_Layer_Lobby(const _tchar * pLayerTag)
 		return E_FAIL;
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_BackGround"))))
 		return E_FAIL;
-
-
-
 
 	Safe_Release(pGameInstance);
 

@@ -42,7 +42,7 @@ CState * CFire::Loop(_float fTimeDelta)
 	}
 
 	if (GetKeyState(VK_SPACE) & 0x8000)
-		pState = CEx_Cutin::Create(m_pOwner);
+  		pState = CEx_Cutin::Create(m_pOwner);
 
 	return pState;
 }

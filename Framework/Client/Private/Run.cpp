@@ -60,11 +60,12 @@ CState * CRun::Loop(_float fTimeDelta)
 
 			fAngle = (acosf(XMVectorGetX(XMVector3Dot(XMVector3Normalize(vLook),
 				XMVector3Normalize(pTransform->Get_State(CTransform::STATE_LOOK))))));
-		
-			if(0 < fAngle)
-				pTransform->TurnFor(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta, fAngle);
+
+			if (0 > XMVectorGetX(vLook))
+				pTransform->TurnFor(XMVectorSet(0.f, -1.f, 0.f, 0.f), fTimeDelta, fAngle);
 			else
-				pTransform->TurnFor(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta * -1.f, fAngle);
+				pTransform->TurnFor(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta, fAngle);
+	
 
 
 

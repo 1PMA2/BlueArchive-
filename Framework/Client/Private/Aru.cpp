@@ -4,6 +4,8 @@
 #include "GameInstance.h"
 #include "Run_Sign.h"
 #include "Run.h"
+#include "Sensei.h"
+#include "Ex.h"
 
 CAru::CAru(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CStudent(pDevice, pContext)
@@ -17,17 +19,8 @@ CAru::CAru(const CAru & rhs)
 
 HRESULT CAru::Initialize_Prototype()
 {
-	return S_OK;
-}
+	m_tStudentInfo.pName = TEXT("Aru");
 
-HRESULT CAru::Initialize(void * pArg)
-{
-	CTransform::TRANSFORMDESC		TransformDesc;
-	TransformDesc.fSpeedPerSec = 2.f;
-	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
-
-	m_tStudentInfo.strName = TEXT("Aru");
-	  
 	m_tStudentInfo.bExModel = false;
 	m_tStudentInfo.fFireSpeed = 0.5f;
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
@@ -41,16 +34,23 @@ HRESULT CAru::Initialize(void * pArg)
 	m_tStudentInfo.iBullet = 5;
 	m_tStudentInfo.iRange = 12;
 	m_tStudentInfo.iShield = 0;
-	
 
+	return S_OK;
+}
+
+HRESULT CAru::Initialize(void * pArg)
+{
+	CTransform::TRANSFORMDESC		TransformDesc;
+	TransformDesc.fSpeedPerSec = 2.f;
+	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
+	
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;	
 
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-
-	m_pState = CRun_Sign::Create(this);
+	m_pState = CEx::Create(this);
 
 	return S_OK;
 }
@@ -66,7 +66,7 @@ void CAru::LateTick(_float fTimeDelta)
 {
 	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 
-	CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Com_SPHERE"));
+	/*CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Com_SPHERE"));
 	if (nullptr == pMonsterCollider)
 		return;
 
@@ -78,7 +78,7 @@ void CAru::LateTick(_float fTimeDelta)
 		return;
 
 	m_bFoundObstacle = m_pSphereCom->Collision(pTargetCollider);
-
+*/
 	Safe_Release(pGameInstance);
 
 	__super::LateTick(fTimeDelta);
@@ -96,38 +96,38 @@ HRESULT CAru::SetUp_Components()
 	__super::SetUp_Components();
 
 	/* For.Com_AABB */
-	CCollider::COLLIDERDESC			ColliderDesc;
-	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
+	//CCollider::COLLIDERDESC			ColliderDesc;
+	//ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(1.f, 2.f, 1.f);
-	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
-	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.5f, 0.f);
+	//ColliderDesc.vScale = _float3(1.f, 2.f, 1.f);
+	//ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
+	//ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.5f, 0.f);
 
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_AABB"), TEXT("Com_AABB"), (CComponent**)&m_pAABBCom, &ColliderDesc)))
-		return E_FAIL;
+	//if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"), TEXT("Com_AABB"), (CComponent**)&m_pAABBCom, &ColliderDesc)))
+	//	return E_FAIL;
 
-	/* For.Com_OBB */
-	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
+	///* For.Com_OBB */
+	//ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(11.2f, 11.2f, 11.2f);
-	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
-	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
+	//ColliderDesc.vScale = _float3(11.2f, 11.2f, 11.2f);
+	//ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
+	//ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE_Obstacle"), (CComponent**)&m_pOBBCom, &ColliderDesc)))
-		return E_FAIL;
+	//if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE_Obstacle"), (CComponent**)&m_pOBBCom, &ColliderDesc)))
+	//	return E_FAIL;
 
-	/* For.Com_SPHERE */
-	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
+	///* For.Com_SPHERE */
+	//ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(m_tStudentInfo.iRange, m_tStudentInfo.iRange, m_tStudentInfo.iRange);
-	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
-	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
+	//ColliderDesc.vScale = _float3(m_tStudentInfo.iRange, m_tStudentInfo.iRange, m_tStudentInfo.iRange);
+	//ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
+	//ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE_Monster"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
-		return E_FAIL;
+	//if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE_Monster"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
+	//	return E_FAIL;
 
 	/* For.Com_Model */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Model_Aru"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
 		return E_FAIL;
 
 	return S_OK;

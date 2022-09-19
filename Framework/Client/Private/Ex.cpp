@@ -6,6 +6,7 @@
 #include "Model.h"
 #include "Fire.h"
 #include "Knee_ZoomStart.h"
+#include "Knee_Reload.h"
 #include "Sensei.h"
 
 CEx::CEx(CStudent* pOwner)
@@ -31,7 +32,12 @@ CState * CEx::Loop(_float fTimeDelta)
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
 	if (pModel->Get_isFinished())
-		pState = CKnee_ZoomStart::Create(m_pOwner);
+	{ 
+		if (0 < m_pOwner->Get_StudentInfo().iBullet)
+			pState = CKnee_ZoomStart::Create(m_pOwner);
+		else
+			pState = CKnee_Reload::Create(m_pOwner);
+	}
 
 	return pState;
 }

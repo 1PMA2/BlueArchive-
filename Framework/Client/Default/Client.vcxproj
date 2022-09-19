@@ -187,6 +187,7 @@
     <ClInclude Include="..\Public\Knee_ZoomEnd.h" />
     <ClInclude Include="..\Public\Knee_ZoomFire.h" />
     <ClInclude Include="..\Public\Knee_ZoomStart.h" />
+    <ClInclude Include="..\Public\Level_Formation.h" />
     <ClInclude Include="..\Public\Level_GamePlay.h" />
     <ClInclude Include="..\Public\Level_Loading.h" />
     <ClInclude Include="..\Public\Level_Lobby.h" />
@@ -227,6 +228,7 @@
     <ClCompile Include="..\Private\Knee_ZoomEnd.cpp" />
     <ClCompile Include="..\Private\Knee_ZoomFire.cpp" />
     <ClCompile Include="..\Private\Knee_ZoomStart.cpp" />
+    <ClCompile Include="..\Private\Level_Formation.cpp" />
     <ClCompile Include="..\Private\Level_GamePlay.cpp" />
     <ClCompile Include="..\Private\Level_Loading.cpp" />
     <ClCompile Include="..\Private\Level_Lobby.cpp" />

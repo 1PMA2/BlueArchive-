@@ -5,6 +5,7 @@
 #include "Camera_Free.h"
 #include "Camera_Ex.h"
 #include "Sensei.h"
+#include "Student.h"
 
 
 CLevel_GamePlay::CLevel_GamePlay(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -171,8 +172,11 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student(const _tchar * pLayerTag)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
+	CSensei* pSensei = CSensei::Get_Instance();
+
 	/* For.Player */
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Aru"))))
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag,
+		pSensei->Get_Student(TEXT("Aru"))->Get_StudentInfo().pName)))
 		return E_FAIL;
 
 	Safe_Release(pGameInstance);

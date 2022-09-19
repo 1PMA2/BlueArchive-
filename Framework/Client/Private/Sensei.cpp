@@ -1,11 +1,34 @@
 #include "stdafx.h"
 #include "..\Public\Sensei.h"
 #include "GameInstance.h"
+#include "Student.h"
 
 IMPLEMENT_SINGLETON(CSensei)
 
 CSensei::CSensei()
 {
+	
+}
+
+
+void CSensei::Set_Student(_tchar* pStudentTag, CStudent* pStudent)
+{
+	m_Student.emplace(pStudentTag, pStudent);
+}
+
+void CSensei::Set_FormationStudents(_uint iIndex, _tchar* pName)
+{
+	pFormationStudents[iIndex] = pName;
+}
+
+CStudent * CSensei::Get_Student(_tchar* pStudentTag)
+{
+	auto	iter = find_if(m_Student.begin(), m_Student.end(), CTag_Finder(pStudentTag));
+
+	if (iter == m_Student.end())
+		return nullptr;
+
+	return iter->second;
 }
 
 void CSensei::Use_Ex(_bool bEx, _float fCost)
@@ -19,8 +42,6 @@ void CSensei::Use_Ex(_bool bEx, _float fCost)
 
 void CSensei::Set_TimeSpeed()
 {
-
-	
 
 	if (GetKeyState(VK_F1) & 0x8000)
 	{
@@ -51,4 +72,8 @@ void CSensei::Tick_Cost(_float fTimeDelta)
 
 void CSensei::Free()
 {
+	for (auto& Pair : m_Student)
+		Safe_Release(Pair.second);
+
+	m_Student.clear();
 }

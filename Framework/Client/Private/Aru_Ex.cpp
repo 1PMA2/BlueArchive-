@@ -25,7 +25,7 @@ HRESULT CAru_Ex::Initialize(void * pArg)
 	TransformDesc.fSpeedPerSec = 1.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	m_tStudentInfo.strName = TEXT("Aru_Ex");
+	m_tStudentInfo.pName = TEXT("Aru_Ex");
 	m_tStudentInfo.bExModel = true;
 	m_tStudentInfo.fFireSpeed = 0.5f;
 	m_tStudentInfo.eAnim = ANIM_EX;
@@ -84,7 +84,7 @@ HRESULT CAru_Ex::SetUp_Components()
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.5f, 0.f);
 
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_AABB"), TEXT("Com_AABB"), (CComponent**)&m_pAABBCom, &ColliderDesc)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"), TEXT("Com_AABB"), (CComponent**)&m_pAABBCom, &ColliderDesc)))
 		return E_FAIL;
 
 	/* For.Com_OBB */
@@ -94,7 +94,7 @@ HRESULT CAru_Ex::SetUp_Components()
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.5f, 0.f);
 
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_OBB"), TEXT("Com_OBB"), (CComponent**)&m_pOBBCom, &ColliderDesc)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_OBB"), TEXT("Com_OBB"), (CComponent**)&m_pOBBCom, &ColliderDesc)))
 		return E_FAIL;
 
 	/* For.Com_SPHERE */
@@ -104,7 +104,7 @@ HRESULT CAru_Ex::SetUp_Components()
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.5f, 0.f);
 
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
 		return E_FAIL;
 
 	/* For.Com_Model */

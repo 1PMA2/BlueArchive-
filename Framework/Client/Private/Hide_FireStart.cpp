@@ -30,10 +30,34 @@ CState * CHide_FireStart::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
+	CTransform* pTTransform;
+	pTTransform = (CTransform*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), 0)->Get_Component(TEXT("Com_Transform"));
+
+
+	_vector		vTarget = pTTransform->Get_State(CTransform::STATE_TRANSLATION);
+
+	_vector		vPosition = pTransform->Get_State(CTransform::STATE_TRANSLATION);
+
+	_vector		vLook = vTarget - vPosition;
+
+	_float		fAngle;
+
+	fAngle = (acosf(XMVectorGetX(XMVector3Dot(XMVector3Normalize(vLook),
+		XMVector3Normalize(pTransform->Get_State(CTransform::STATE_LOOK))))));
+
+	if (0 > XMVectorGetX(vLook))
+		pTransform->TurnFor(XMVectorSet(0.f, -1.f, 0.f, 0.f), fTimeDelta, fAngle);
+	else
+		pTransform->TurnFor(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta, fAngle);
+	
 
 	if (pModel->Get_isFinished())
+	{ 
+		pTransform->LookAt(pTTransform->Get_WorldMatrix().r[3]);
 		pState = CFire::Create(m_pOwner);
+	}
 
 	return pState;
 }

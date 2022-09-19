@@ -1,6 +1,3 @@
-﻿  Ex_Cutin.cpp
-DirectXTKd.lib(pch.obj) : warning LNK4099: 'DirectXTK.pdb' PDB를 'DirectXTKd.lib(pch.obj)' 또는 'C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\DirectXTK.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-DirectXTKd.lib(ScreenGrab.obj) : warning LNK4099: 'DirectXTK.pdb' PDB를 'DirectXTKd.lib(ScreenGrab.obj)' 또는 'C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\DirectXTK.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
-DirectXTKd.lib(WICTextureLoader.obj) : warning LNK4099: 'DirectXTK.pdb' PDB를 'DirectXTKd.lib(WICTextureLoader.obj)' 또는 'C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\DirectXTK.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+﻿  Level_Formation.cpp
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

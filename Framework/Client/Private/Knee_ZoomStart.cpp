@@ -30,8 +30,6 @@ CState * CKnee_ZoomStart::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	//pModel->Play_Animation(fTimeDelta);
-
 	if (pModel->Get_isFinished())
 	{
 		pState = CKnee_ZoomFire::Create(m_pOwner);

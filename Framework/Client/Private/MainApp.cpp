@@ -8,6 +8,7 @@
 
 _bool g_bLobby = true;
 _bool g_bPlay = true;
+_bool g_bFormation = true;
 
 CMainApp::CMainApp()
 	: m_pGameInstance(CGameInstance::Get_Instance())
@@ -197,13 +198,15 @@ CMainApp * CMainApp::Create()
 void CMainApp::Free()
 {
 
-
 	Safe_Release(m_pRenderer);
 	Safe_Release(m_pDevice);
 	Safe_Release(m_pContext);
 	Safe_Release(m_pGameInstance);		
 
-	CSensei::Get_Instance()->Destroy_Instance();
+	CSensei* pSensei = CSensei::Get_Instance();
+	pSensei->Free();
+	pSensei->Destroy_Instance();
+	
 
 	CGameInstance::Release_Engine();	
 }

@@ -51,7 +51,7 @@ void CBG_Lobby::Tick(_float fTimeDelta)
 
 void CBG_Lobby::LateTick(_float fTimeDelta)
 {
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_UI, this);
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_ALPHABLEND, this);
 }
 
 HRESULT CBG_Lobby::Render()

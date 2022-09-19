@@ -35,41 +35,8 @@ CState * CHide_Idle::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	//pModel->Play_Animation(fTimeDelta);
-
-
-	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-
-
-	CTransform* pTTransform;
-	pTTransform = (CTransform*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), 0)->Get_Component(TEXT("Com_Transform"));
-
 	
-	_vector		vTarget = pTTransform->Get_State(CTransform::STATE_TRANSLATION);
-
-	_vector		vPosition = pTransform->Get_State(CTransform::STATE_TRANSLATION);
-
-	_vector		vLook = vTarget - vPosition;
-
-	_float		fAngle;
-
-	fAngle = (acosf(XMVectorGetX(XMVector3Dot(XMVector3Normalize(vLook),
-		XMVector3Normalize(pTransform->Get_State(CTransform::STATE_LOOK))))));
-
-	if (0 > XMVectorGetX(vLook))
-		fAngle *= -1.f;
-
-	_float		fDegree = XMConvertToDegrees(fAngle);
-
-
-	if (8.f < fabs(fDegree))
-	{
-		if (0 < fDegree)
-			pTransform->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta);
-		else
-			pTransform->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta * -1.f);
-	}
-	else
+	
 	{
 		pState = CHide_FireStart::Create(m_pOwner);
 	}
