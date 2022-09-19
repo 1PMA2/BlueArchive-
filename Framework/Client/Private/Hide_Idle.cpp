@@ -35,7 +35,7 @@ CState * CHide_Idle::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	pModel->Play_Animation(fTimeDelta);
+	//pModel->Play_Animation(fTimeDelta);
 
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
@@ -62,7 +62,7 @@ CState * CHide_Idle::Loop(_float fTimeDelta)
 	_float		fDegree = XMConvertToDegrees(fAngle);
 
 
-	if (5.f < fabs(fDegree))
+	if (8.f < fabs(fDegree))
 	{
 		if (0 < fDegree)
 			pTransform->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta);
@@ -71,8 +71,6 @@ CState * CHide_Idle::Loop(_float fTimeDelta)
 	}
 	else
 	{
-		pModel->Set_CurrentAnimation(ANIM_HIDEFIRESTART);
-		pModel->Play_Animation(fTimeDelta);
 		pState = CHide_FireStart::Create(m_pOwner);
 	}
 

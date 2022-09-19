@@ -30,12 +30,10 @@ CState * CKnee_Reload::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	pModel->Play_Animation(fTimeDelta);
+	//pModel->Play_Animation(fTimeDelta);
 
 	if (pModel->Get_isFinished())
 	{
-		pModel->Set_CurrentAnimation(ANIM_KNEEZOOMSTART);
-		pModel->Play_Animation(fTimeDelta);
 		pState = CKnee_ZoomStart::Create(m_pOwner);
 	}
 

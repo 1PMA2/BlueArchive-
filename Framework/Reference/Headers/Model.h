@@ -19,9 +19,7 @@ public:
 		return m_iNumMeshContainers;
 	}
 
-	void Set_CurrentAnimation(_uint iAnimIndex) {
-		m_iCurrentAnimationIndex = iAnimIndex;
-	}
+	void Set_CurrentAnimation(_uint iAnimIndex);
 
 	class CHierarchyNode* Find_HierarcyNode(const char* pBoneName);
 	

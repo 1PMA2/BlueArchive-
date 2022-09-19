@@ -34,14 +34,9 @@ CState * CRun_Sign::Loop(_float fTimeDelta)
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
 	pTransform->Go_Straight(fTimeDelta);
-
-	pModel->Play_Animation(fTimeDelta);
 	
 	if (pModel->Get_isFinished())
 	{
-		pModel->Set_CurrentAnimation(ANIM_RUN);
-		pModel->Play_Animation(fTimeDelta);
-
 		pState = CRun::Create(m_pOwner);
 	}
 

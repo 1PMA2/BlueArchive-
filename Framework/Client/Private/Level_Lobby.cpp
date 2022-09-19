@@ -2,7 +2,7 @@
 #include "..\Public\Level_Lobby.h"
 #include "GameInstance.h"
 #include "Level_Loading.h"
-
+#include "Sensei.h"
 
 
 CLevel_Lobby::CLevel_Lobby(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -21,7 +21,9 @@ HRESULT CLevel_Lobby::Initialize()
 	if (FAILED(Ready_Layer_Lobby(TEXT("Layer_Lobby_BG"))))
 		return E_FAIL;
 
+	CSensei* pSensei = CSensei::Get_Instance();
 
+	pSensei->Use_Ex(false);
 
 	return S_OK;
 }

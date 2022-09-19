@@ -58,6 +58,7 @@ public:
 	HRESULT Go_Right(_float fTimeDelta);
 
 	void Turn(_fvector vAxis, _float fTimeDelta);
+	void TurnFor(_fvector vAxis, _float fTimeDelta, _float fRadian = 0.f);
 	void Rotation(_fvector vAxis, _float fRadian);
 	void LookAt(_fvector vTargetPos);
 	void Chase(_fvector vTargetPos, _float fTimeDelta);

@@ -30,12 +30,10 @@ CState * CHide_Reloading::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	pModel->Play_Animation(fTimeDelta);
+	//pModel->Play_Animation(fTimeDelta);
 
 	if (pModel->Get_isFinished())
 	{
-		pModel->Set_CurrentAnimation(ANIM_HIDEFIRESTART);
-		pModel->Play_Animation(fTimeDelta);
 		pState = CHide_FireStart::Create(m_pOwner);
 	}
 

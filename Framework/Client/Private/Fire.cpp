@@ -31,27 +31,18 @@ CState * CFire::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	pModel->Play_Animation(fTimeDelta);
-
 	if (pModel->Get_isFinished())
 	{
 		if(0 < m_pOwner->Get_StudentInfo().iBullet)
 			pState = CFire::Create(m_pOwner);
 		else
-		{
-			pModel->Set_CurrentAnimation(ANIM_HIDERELOADSTART);
-			pModel->Play_Animation(fTimeDelta);
 			pState = CHide_ReloadStart::Create(m_pOwner);
-		}
+
 		return pState;
 	}
 
 	if (GetKeyState(VK_SPACE) & 0x8000)
-	{
-		pModel->Set_CurrentAnimation(ANIM_EXCUTIN);
-		pModel->Play_Animation(fTimeDelta);
 		pState = CEx_Cutin::Create(m_pOwner);
-	}
 
 	return pState;
 }

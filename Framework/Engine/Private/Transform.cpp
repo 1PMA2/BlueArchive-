@@ -116,6 +116,30 @@ void CTransform::Turn(_fvector vAxis, _float fTimeDelta)
 	Set_State(CTransform::STATE_LOOK, vLook);
 }
 
+void CTransform::TurnFor(_fvector vAxis, _float fTimeDelta, _float fRadian)
+{
+	_matrix		RotationMatrix;
+
+	if (fRadian > m_TransformDesc.fRotationPerSec * fTimeDelta)
+	{
+		RotationMatrix = XMMatrixRotationAxis(vAxis, m_TransformDesc.fRotationPerSec * fTimeDelta);
+
+		_vector		vRight = Get_State(CTransform::STATE_RIGHT);
+		_vector		vUp = Get_State(CTransform::STATE_UP);
+		_vector		vLook = Get_State(CTransform::STATE_LOOK);
+
+		vRight = XMVector3TransformNormal(vRight, RotationMatrix);
+		vUp = XMVector3TransformNormal(vUp, RotationMatrix);
+		vLook = XMVector3TransformNormal(vLook, RotationMatrix);
+
+		Set_State(CTransform::STATE_RIGHT, vRight);
+		Set_State(CTransform::STATE_UP, vUp);
+		Set_State(CTransform::STATE_LOOK, vLook);
+	}
+	else
+		return;
+}
+
 // Rotation(XMVectorSet(0.f, 1.f, 0.f, 0.f), XMConvertToRadians(90.0f));
 
 void CTransform::Rotation(_fvector vAxis, _float fRadian)

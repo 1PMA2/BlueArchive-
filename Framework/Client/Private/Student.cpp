@@ -44,13 +44,18 @@ HRESULT CStudent::Initialize(void * pArg)
 
 void CStudent::Tick(_float fTimeDelta)
 {
+	if (!m_tStudentInfo.bExModel)
+	{
+		m_pModelCom->Play_Animation(fTimeDelta);
+	}
+
 	if (CState*	pNewState = m_pState->Loop(fTimeDelta))
 	{
 		m_pState->Exit();
 		m_pState = pNewState;
 		m_pState->Enter();
 	}
-	//m_pModelCom->Play_Animation(fTimeDelta);
+
 
 	m_pAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
 	m_pOBBCom->Update(m_pTransformCom->Get_WorldMatrix());

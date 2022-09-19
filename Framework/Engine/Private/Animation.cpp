@@ -46,29 +46,34 @@ HRESULT CAnimation::Initialize(aiAnimation * pAIAnimation, class CModel* pModel)
 
 void CAnimation::Update_TransformationMatrices(_float fTimeDelta)
 {
-	m_fTimeAcc += m_fTickPerSecond * fTimeDelta;
-
 	m_isFinished = false;
 
-	if (m_fTimeAcc >= m_fDuration)
+	m_fTimeAcc += m_fTickPerSecond * fTimeDelta;
+
+
+	for (_uint i = 0; i < m_iNumChannels; ++i)
+	{
+		m_Channels[i]->Update_TransformationMatrices(m_fTimeAcc);
+	}
+
+	if (m_fTimeAcc > m_fDuration)
 	{
 		m_isFinished = true;
 		m_fTimeAcc = 0.f;
 	}
+	
+}
 
+void CAnimation::Reset_TransformationMatrices()
+{
 	for (_uint i = 0; i < m_iNumChannels; ++i)
 	{
 		if (true == m_isFinished)
 		{
 			m_Channels[i]->Reset_KeyFrame();
 		}
-
-
-		m_Channels[i]->Update_TransformationMatrices(m_fTimeAcc);
-
+		m_Channels[i]->Update_TransformationMatrices(0.f);
 	}
-
-
 }
 
 HRESULT CAnimation::Clone_Channel(CAnimation * pPrototype, CModel * pModel)

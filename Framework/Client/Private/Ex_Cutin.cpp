@@ -27,12 +27,16 @@ CEx_Cutin::~CEx_Cutin()
 
 void CEx_Cutin::Enter()
 {
+	CSensei* pSensei = CSensei::Get_Instance();
 
+	pSensei->Use_Ex(true, m_pOwner->Get_StudentInfo().fExCost);
 }
 
 CState * CEx_Cutin::Loop(_float fTimeDelta)
 {
 	CState* pState = nullptr;
+
+	CSensei* pSensei = CSensei::Get_Instance();
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
@@ -40,7 +44,7 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	CSensei* pSensei = CSensei::Get_Instance();
+	
 
 	if (m_pOwner->Get_StudentInfo().bExModel)
 	{
@@ -50,31 +54,22 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 		{
 			if (ANIM_EXCUTIN == pStudent->Get_StudentInfo().eAnim)
 			{
-				pSensei->Use_Ex(true, m_pOwner->Get_StudentInfo().fExCost);
-
-				if (pSensei->Get_SenseiInfo().bEx)
-				{
-					pModel->Play_Animation(fTimeDelta);
-				}
+				pModel->Play_Animation(fTimeDelta);
+				
 				if (pModel->Get_isFinished())
-				{
-					pSensei->Use_Ex(false);
-				}
-			
+					pState = CEx_Cutin::Create(m_pOwner);
 			}
 		}
 	}
 
+
 	else
 	{
-		pModel->Play_Animation(fTimeDelta);
-		
 		if (pModel->Get_isFinished())
 		{
-			
+			pSensei->Use_Ex(false);
 			pState = CEx::Create(m_pOwner);
 		}
-		
 	}
 
 	

@@ -36,9 +36,6 @@ CState * CRun::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 	CSensei* pSensei = CSensei::Get_Instance();
-	
-	
-	pModel->Play_Animation(fTimeDelta);
 
 	if (m_pOwner->FoundMonster())
 	{
@@ -63,23 +60,15 @@ CState * CRun::Loop(_float fTimeDelta)
 
 			fAngle = (acosf(XMVectorGetX(XMVector3Dot(XMVector3Normalize(vLook),
 				XMVector3Normalize(pTransform->Get_State(CTransform::STATE_LOOK))))));
-			
-			if (0 > XMVectorGetX(vLook))
-				fAngle *= -1.f;
-
-			_float		fDegree = XMConvertToDegrees(fAngle);
-
-
-			if (3.f < fabs(fDegree))
-			{
-				if(0 < fDegree)
-					pTransform->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta);
-				else
-					pTransform->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta * -1.f);
-			}
+		
+			if(0 < fAngle)
+				pTransform->TurnFor(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta, fAngle);
+			else
+				pTransform->TurnFor(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta * -1.f, fAngle);
 
 
-			if (0.3f < XMVectorGetX(XMVector3Length(vLook)))
+
+			if (0.35f < XMVectorGetX(XMVector3Length(vLook)))
 				pTransform->Chase(vTarget, fTimeDelta);
 			else
 			{
@@ -88,10 +77,14 @@ CState * CRun::Loop(_float fTimeDelta)
 		}
 		
 	}
+
 	else
 	{
 		pTransform->Go_Straight(fTimeDelta);
 	}
+
+	if (pModel->Get_isFinished())
+		pState = CRun::Create(m_pOwner);
 
 	return pState;
 }
