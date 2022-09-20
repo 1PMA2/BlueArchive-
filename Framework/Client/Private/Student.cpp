@@ -57,9 +57,9 @@ void CStudent::Tick(_float fTimeDelta)
 	}
 
 
-	/*m_pAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
+	m_pAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
 	m_pOBBCom->Update(m_pTransformCom->Get_WorldMatrix());
-	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());*/
+	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 }
 
 void CStudent::LateTick(_float fTimeDelta)
@@ -95,9 +95,9 @@ HRESULT CStudent::Render()
 	}
 
 #ifdef _DEBUG
-//	m_pAABBCom->Render();
-//	m_pOBBCom->Render();
-//	m_pSphereCom->Render();
+	m_pAABBCom->Render();
+	m_pOBBCom->Render();
+	m_pSphereCom->Render();
 #endif // _DEBUG
 
 	return S_OK;

@@ -64,22 +64,32 @@ void CAru::Tick(_float fTimeDelta)
 
 void CAru::LateTick(_float fTimeDelta)
 {
+
 	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 
-	/*CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Com_SPHERE"));
+	CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_STATIC, TEXT("Layer_Monster"), TEXT("Com_SPHERE"));
 	if (nullptr == pMonsterCollider)
+	{
+		__super::LateTick(fTimeDelta);
+		Safe_Release(pGameInstance);
 		return;
+	}
+	else
+		m_bFoundMonster = m_pSphereCom->Collision(pMonsterCollider);
 
-	m_bFoundMonster = m_pSphereCom->Collision(pMonsterCollider);
 
 
-	CCollider* pTargetCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Obstacle"), TEXT("Com_SPHERE"));
+	CCollider* pTargetCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_STATIC, TEXT("Layer_Obstacle"), TEXT("Com_SPHERE"));
 	if (nullptr == pTargetCollider)
+	{
+		Safe_Release(pGameInstance);
 		return;
+	}
+	else
+		m_bFoundObstacle = m_pSphereCom->Collision(pTargetCollider);
 
-	m_bFoundObstacle = m_pSphereCom->Collision(pTargetCollider);
-*/
 	Safe_Release(pGameInstance);
+
 
 	__super::LateTick(fTimeDelta);
 }
@@ -96,35 +106,35 @@ HRESULT CAru::SetUp_Components()
 	__super::SetUp_Components();
 
 	/* For.Com_AABB */
-	//CCollider::COLLIDERDESC			ColliderDesc;
-	//ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
+	CCollider::COLLIDERDESC			ColliderDesc;
+	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	//ColliderDesc.vScale = _float3(1.f, 2.f, 1.f);
-	//ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
-	//ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.5f, 0.f);
+	ColliderDesc.vScale = _float3(1.f, 2.f, 1.f);
+	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
+	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.5f, 0.f);
 
-	//if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"), TEXT("Com_AABB"), (CComponent**)&m_pAABBCom, &ColliderDesc)))
-	//	return E_FAIL;
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"), TEXT("Com_AABB"), (CComponent**)&m_pAABBCom, &ColliderDesc)))
+		return E_FAIL;
 
-	///* For.Com_OBB */
-	//ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
+	/* For.Com_OBB */
+	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	//ColliderDesc.vScale = _float3(11.2f, 11.2f, 11.2f);
-	//ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
-	//ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
+	ColliderDesc.vScale = _float3(11.2f, 11.2f, 11.2f);
+	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
+	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
-	//if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE_Obstacle"), (CComponent**)&m_pOBBCom, &ColliderDesc)))
-	//	return E_FAIL;
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE_Obstacle"), (CComponent**)&m_pOBBCom, &ColliderDesc)))
+		return E_FAIL;
 
-	///* For.Com_SPHERE */
-	//ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
+	/* For.Com_SPHERE */
+	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	//ColliderDesc.vScale = _float3(m_tStudentInfo.iRange, m_tStudentInfo.iRange, m_tStudentInfo.iRange);
-	//ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
-	//ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
+	ColliderDesc.vScale = _float3(m_tStudentInfo.iRange, m_tStudentInfo.iRange, m_tStudentInfo.iRange);
+	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
+	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
-	//if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE_Monster"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
-	//	return E_FAIL;
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE_Monster"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
+		return E_FAIL;
 
 	/* For.Com_Model */
 	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Model_Aru"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))

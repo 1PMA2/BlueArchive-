@@ -10,6 +10,7 @@ CGameInstance::CGameInstance()
 	, m_pObject_Manager(CObject_Manager::Get_Instance())
 	, m_pComponent_Manager(CComponent_Manager::Get_Instance())
 	, m_pTimer_Manager(CTimer_Manager::Get_Instance())
+	, m_pKey_Manager(CKey_Manager::Get_Instance())
 	, m_pPipeLine(CPipeLine::Get_Instance())
 	, m_pFont_Manager(CFont_Manager::Get_Instance())
 	, m_pLight_Manager(CLight_Manager::Get_Instance())
@@ -19,6 +20,7 @@ CGameInstance::CGameInstance()
 	Safe_AddRef(m_pFont_Manager);
 	Safe_AddRef(m_pPipeLine);
 	Safe_AddRef(m_pTimer_Manager);
+	Safe_AddRef(m_pKey_Manager);
 	Safe_AddRef(m_pComponent_Manager);
 	Safe_AddRef(m_pObject_Manager);
 	Safe_AddRef(m_pLevel_Manager);
@@ -39,6 +41,9 @@ HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInst, _uint iNumLevels, cons
 	if (FAILED(m_pInput_Device->Initialize(hInst, GraphicDesc.hWnd)))
 		return E_FAIL;
 
+	if (FAILED(m_pKey_Manager->Initialize(GraphicDesc.hWnd)))
+		return E_FAIL;
+
 
 	/* 오브젝트 매니져의 예약. */
 	if (FAILED(m_pObject_Manager->Reserve_Container(iNumLevels)))
@@ -53,11 +58,14 @@ HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInst, _uint iNumLevels, cons
 
 HRESULT CGameInstance::Tick_Engine(_float fTimeDelta)
 {
-	if (nullptr == m_pLevel_Manager ||
+	if (nullptr == m_pKey_Manager ||
+		nullptr == m_pLevel_Manager ||
 		nullptr == m_pInput_Device ||
 		nullptr == m_pPipeLine || 
 		nullptr == m_pObject_Manager)
 		return E_FAIL;
+
+	m_pKey_Manager->Tick();
 
 	m_pInput_Device->SetUp_DeviceState();
 
@@ -225,6 +233,11 @@ _float CGameInstance::Compute_Timer(const _tchar * pTimerTag, _float fTimeSpeed)
 	return m_pTimer_Manager->Compute_Timer(pTimerTag, fTimeSpeed);
 }
 
+KEY_STATE CGameInstance::Get_KeyState(KEY _key)
+{
+	return m_pKey_Manager->Get_KeyState(_key);
+}
+
 void CGameInstance::Set_Transform(CPipeLine::TRANSFORMSTATE eState, _fmatrix TransformState)
 {
 	if (nullptr == m_pPipeLine)
@@ -311,6 +324,8 @@ void CGameInstance::Release_Engine()
 
 	CTimer_Manager::Get_Instance()->Destroy_Instance();
 
+	CKey_Manager::Get_Instance()->Destroy_Instance();
+
 	CPipeLine::Get_Instance()->Destroy_Instance();
 
 	CFont_Manager::Get_Instance()->Destroy_Instance();
@@ -329,6 +344,7 @@ void CGameInstance::Free()
 	Safe_Release(m_pFont_Manager);
 	Safe_Release(m_pPipeLine);
 	Safe_Release(m_pTimer_Manager);
+	Safe_Release(m_pKey_Manager);
 	Safe_Release(m_pComponent_Manager);
 	Safe_Release(m_pObject_Manager);
 	Safe_Release(m_pLevel_Manager);

@@ -51,27 +51,27 @@ void CCamera_Free::Tick(_float fTimeDelta)
 		m_pTransformCom->Go_Backward(fTimeDelta);
 	}
 	 
-	if (pGameInstance->Get_DIKeyState(DIK_A) & 0x80)
+	if (KEY(A, TAP))
 	{
 		m_pTransformCom->Go_Left(fTimeDelta);
 	}
 
-	if (pGameInstance->Get_DIKeyState(DIK_D) & 0x80)
+	if (KEY(D, HOLD))
 	{
 		m_pTransformCom->Go_Right(fTimeDelta);
 	}
 
-	_long		MouseMove = 0;
+	//_long		MouseMove = 0;
 
-	if (MouseMove = pGameInstance->Get_DIMouseMoveState(MMS_X))
-	{
-		m_pTransformCom->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta * MouseMove * 0.1f);
-	}
+	//if (MouseMove = pGameInstance->Get_DIMouseMoveState(MMS_X))
+	//{
+	//	m_pTransformCom->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta * MouseMove * 0.1f);
+	//}
 
-	if (MouseMove = pGameInstance->Get_DIMouseMoveState(MMS_Y))
-	{
-		m_pTransformCom->Turn(m_pTransformCom->Get_State(CTransform::STATE_RIGHT), fTimeDelta * MouseMove * 0.1f);
-	}
+	//if (MouseMove = pGameInstance->Get_DIMouseMoveState(MMS_Y))
+	//{
+	//	m_pTransformCom->Turn(m_pTransformCom->Get_State(CTransform::STATE_RIGHT), fTimeDelta * MouseMove * 0.1f);
+	//}
 
 	Safe_Release(pGameInstance);
 

@@ -54,7 +54,7 @@ HRESULT CLevel_Formation::Render()
 		return E_FAIL;
 
 
-	SetWindowText(g_hWnd, TEXT("°Ô. "));
+	SetWindowText(g_hWnd, TEXT("Formation. "));
 
 	return S_OK;
 }
@@ -102,7 +102,7 @@ HRESULT CLevel_Formation::Ready_Layer_Camera(const _tchar * pLayerTag)
 	CCamera::CAMERADESC			CameraDesc;
 	ZeroMemory(&CameraDesc, sizeof(CCamera::CAMERADESC));
 
-	CameraDesc.vEye = _float4(5.f, 10.f, 0.f, 1.f);
+	CameraDesc.vEye = _float4(0.f, 0.f, 5.f, 1.f);
 	CameraDesc.vAt = _float4(0.f, 0.f, 0.f, 1.f);
 	CameraDesc.TransformDesc.fSpeedPerSec = 5.f;
 	CameraDesc.TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);

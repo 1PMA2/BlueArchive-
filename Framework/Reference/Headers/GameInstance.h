@@ -6,6 +6,7 @@
 #include "Object_Manager.h"
 #include "Component_Manager.h"
 #include "Timer_Manager.h"
+#include "Key_Manager.h"
 #include "PipeLine.h"
 #include "Font_Manager.h"
 #include "Light_Manager.h"
@@ -59,6 +60,9 @@ public: /* For.Timer_Manager */
 	HRESULT Add_Timer(const _tchar* pTimerTag);
 	_float Compute_Timer(const _tchar* pTimerTag, _float fTimeSpeed = 1.f);
 
+public: /* For. Key_Manager */
+	KEY_STATE	Get_KeyState(KEY _key);
+
 public: /* For.PipeLine */
 	void Set_Transform(CPipeLine::TRANSFORMSTATE eState, _fmatrix TransformState);
 	_matrix Get_Transform(CPipeLine::TRANSFORMSTATE eState);
@@ -89,6 +93,7 @@ private:
 	CObject_Manager*				m_pObject_Manager = nullptr;
 	CComponent_Manager*				m_pComponent_Manager = nullptr;
 	CTimer_Manager*					m_pTimer_Manager = nullptr;
+	CKey_Manager*					m_pKey_Manager = nullptr;
 	CPipeLine*						m_pPipeLine = nullptr;
 	CFont_Manager*					m_pFont_Manager = nullptr;
 	CLight_Manager*					m_pLight_Manager = nullptr;

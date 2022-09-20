@@ -64,3 +64,8 @@ unsigned long ClassName::Destroy_Instance()				\
 {														\
 	return Safe_Release(m_pInstance);					\
 }
+
+#define		USEGAMEINSTANCE			CGameInstance* pGameInstance = CGameInstance::Get_Instance()
+
+// Key_Manager
+#define KEY(key, state) CGameInstance::Get_Instance()->Get_KeyState(KEY::key) == KEY_STATE::state
