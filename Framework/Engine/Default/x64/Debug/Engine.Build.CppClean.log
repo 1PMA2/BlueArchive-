@@ -1,6 +1,5 @@
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\vc140.pdb
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\vc140.idb
-c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\input_device.obj
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\layer.obj
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\level.obj
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\level_manager.obj
@@ -9,6 +8,7 @@ c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\l
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\meshcontainer.obj
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\model.obj
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\object_manager.obj
+c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\picking.obj
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\pipeline.obj
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\renderer.obj
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\shader.obj
@@ -35,6 +35,8 @@ c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\g
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\gameobject.obj
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\graphic_device.obj
 c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\hierarchynode.obj
+c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\input_device.obj
+c:\users\slave\documents\github\bluearchive\framework\engine\default\x64\debug\key_manager.obj
 c:\users\slave\documents\github\bluearchive\framework\engine\bin\engine.lib
 c:\users\slave\documents\github\bluearchive\framework\engine\bin\engine.exp
 c:\users\slave\documents\github\bluearchive\framework\engine\bin\engine.ilk

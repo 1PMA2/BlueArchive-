@@ -25,13 +25,13 @@ HRESULT CLevel_GamePlay::Initialize()
 	if (FAILED(Ready_Layer_BackGround(TEXT("Layer_BackGround"))))
 		return E_FAIL;
 
-	if (FAILED(Ready_Layer_Student(TEXT("Layer_Student"))))
-		return E_FAIL;
-
 	if (FAILED(Ready_Layer_Student_Ex(TEXT("Layer_Student_Ex"))))
 		return E_FAIL;
 
 	if (FAILED(Ready_Layer_Camera(TEXT("Layer_Camera"))))
+		return E_FAIL;
+
+	if (FAILED(Ready_Layer_Student(TEXT("Layer_Student"))))
 		return E_FAIL;
 
 	if (FAILED(Ready_Layer_Monster(TEXT("Layer_Monster"))))
@@ -136,6 +136,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_Camera(const _tchar * pLayerTag)
 	
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Camera_Ex"), &CameraDesc)))
 		return E_FAIL;
+	
 
 
 	Safe_Release(pGameInstance);

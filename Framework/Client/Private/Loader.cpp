@@ -201,35 +201,35 @@ HRESULT CLoader::Loading_ForFormationLevel()
 			CCamera_Free::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+
+		lstrcpy(m_szLoadingText, TEXT("콜라이더추가.  "));
+		/* For.Prototype_Component_Collider_AABB */
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"),
+			CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_AABB))))
+			return E_FAIL;
+
+		/* For.Prototype_Component_Collider_OBB */
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Collider_OBB"),
+			CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_OBB))))
+			return E_FAIL;
+
+		/* For.Prototype_Component_Collider_SPHERE */
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"),
+			CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_SPHERE))))
+			return E_FAIL;
+
+		lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
+		_matrix			TransformMatrix;
+		ZeroMemory(&TransformMatrix, sizeof(_matrix));
+		TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Aru"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru.fbx", TransformMatrix))))
+			return E_FAIL;
+
 #pragma endregion
 
 		g_bFormation = false;
 	}
-
-	lstrcpy(m_szLoadingText, TEXT("콜라이더추가.  "));
-	/* For.Prototype_Component_Collider_AABB */
-	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"),
-		CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_AABB))))
-		return E_FAIL;
-
-	/* For.Prototype_Component_Collider_OBB */
-	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Collider_OBB"),
-		CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_OBB))))
-		return E_FAIL;
-
-	/* For.Prototype_Component_Collider_SPHERE */
-	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"),
-		CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_SPHERE))))
-		return E_FAIL;
-
-
-	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
-	_matrix			TransformMatrix;
-	ZeroMemory(&TransformMatrix, sizeof(_matrix));
-	TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
-	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Aru"),
-		CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru.fbx", TransformMatrix))))
-		return E_FAIL;
 
 	lstrcpy(m_szLoadingText, TEXT("fhql로딩 끝 "));
 

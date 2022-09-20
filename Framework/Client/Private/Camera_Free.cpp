@@ -51,7 +51,7 @@ void CCamera_Free::Tick(_float fTimeDelta)
 		m_pTransformCom->Go_Backward(fTimeDelta);
 	}
 	 
-	if (KEY(A, TAP))
+	if (KEY(A, HOLD))
 	{
 		m_pTransformCom->Go_Left(fTimeDelta);
 	}

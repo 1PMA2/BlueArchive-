@@ -82,7 +82,7 @@ void CMainApp::Tick()
 	CCamera* pCameraFree = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
 	CCamera* pCameraEx   = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_EX);
 
-	if (nullptr != pCameraFree)
+	if (nullptr != pCameraEx)
 	{
 		if (pSensei->Get_SenseiInfo().bEx)
 		{

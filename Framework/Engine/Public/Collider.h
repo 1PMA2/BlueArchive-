@@ -3,7 +3,6 @@
 #include "Component.h"
 
 BEGIN(Engine)
-
 /* 충돌체. */
 /* 각종 충돌을 위한 함수를. */
 /* 화면에 그려서 보여줄수 있음 좋겄다. */
@@ -43,6 +42,7 @@ public:
 	_bool Collision_OBB(CCollider* pTargetCollider);
 
 	_bool Collision(CCollider* pTargetCollider);
+	_bool CollisionRay(_vector vRayPos, _vector vRayDir, _float fDist);
 	_matrix Remove_Rotation(_fmatrix TransformMatrix);
 
 

@@ -36,7 +36,7 @@ void CLevel_Formation::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
 
-	if (GetKeyState(VK_LBUTTON) & 0x8000)
+	if (KEY(ENTER,AWAY))
 	{
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
@@ -45,6 +45,11 @@ void CLevel_Formation::Tick(_float fTimeDelta)
 			return;
 
 		Safe_Release(pGameInstance);
+	}
+
+	if (KEY(LBUTTON, TAP))
+	{
+		int i = 10;
 	}
 }
 

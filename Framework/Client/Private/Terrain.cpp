@@ -38,7 +38,7 @@ HRESULT CTerrain::Initialize(void * pArg)
 
 void CTerrain::Tick(_float fTimeDelta)
 {
-	
+
 }
 
 void CTerrain::LateTick(_float fTimeDelta)

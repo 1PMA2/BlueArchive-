@@ -177,6 +177,7 @@ _bool CCollider::Collision_OBB(CCollider * pTargetCollider)
 
 _bool CCollider::Collision(CCollider * pTargetCollider)
 {
+	
 	if (TYPE_AABB == m_eType)
 	{
 		if (TYPE_AABB == pTargetCollider->m_eType)
@@ -207,6 +208,20 @@ _bool CCollider::Collision(CCollider * pTargetCollider)
 			m_isColl = m_pSphere->Intersects(*pTargetCollider->m_pSphere);
 	}	
 
+	return m_isColl;
+}
+
+_bool CCollider::CollisionRay(_vector vRayPos, _vector vRayDir, _float fDist)
+{
+	if (TYPE_AABB == m_eType)
+	{
+		m_isColl = m_pAABB->Intersects(vRayPos, vRayDir, fDist);
+	}
+	if (TYPE_SPHERE == m_eType)
+	{
+		m_isColl = m_pSphere->Intersects(vRayPos, vRayDir, fDist);
+	}
+	
 	return m_isColl;
 }
 

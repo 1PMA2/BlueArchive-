@@ -14,8 +14,10 @@ CGameInstance::CGameInstance()
 	, m_pPipeLine(CPipeLine::Get_Instance())
 	, m_pFont_Manager(CFont_Manager::Get_Instance())
 	, m_pLight_Manager(CLight_Manager::Get_Instance())
+	, m_pPicking(CPicking::Get_Instance())
 	
 {	
+	Safe_AddRef(m_pPicking);
 	Safe_AddRef(m_pLight_Manager);
 	Safe_AddRef(m_pFont_Manager);
 	Safe_AddRef(m_pPipeLine);
@@ -40,6 +42,10 @@ HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInst, _uint iNumLevels, cons
 	/* 인풋 디바이스. */
 	if (FAILED(m_pInput_Device->Initialize(hInst, GraphicDesc.hWnd)))
 		return E_FAIL;
+
+	if (FAILED(m_pPicking->Initialize(GraphicDesc.hWnd, *ppDeviceContextOut)))
+		return E_FAIL;
+
 
 	if (FAILED(m_pKey_Manager->Initialize(GraphicDesc.hWnd)))
 		return E_FAIL;
@@ -74,6 +80,8 @@ HRESULT CGameInstance::Tick_Engine(_float fTimeDelta)
 	m_pObject_Manager->Tick(fTimeDelta);
 
 	m_pPipeLine->Tick();
+
+	m_pPicking->Compute_RayInWorldSpace();
 
 	m_pObject_Manager->LateTick(fTimeDelta);
 
@@ -310,6 +318,14 @@ const LIGHTDESC * CGameInstance::Get_LightDesc(_uint iIndex)
 	return m_pLight_Manager->Get_LightDesc(iIndex);
 }
 
+_bool CGameInstance::Picking(CCollider * pCollider, CTransform * pTransform)
+{
+	if (nullptr == m_pPicking)
+		return nullptr;
+
+	return m_pPicking->Picking(pCollider, pTransform);
+}
+
 
 
 void CGameInstance::Release_Engine()
@@ -334,12 +350,15 @@ void CGameInstance::Release_Engine()
 
 	CInput_Device::Get_Instance()->Destroy_Instance();	
 
+	CPicking::Get_Instance()->Destroy_Instance();
+
 	CGraphic_Device::Get_Instance()->Destroy_Instance();
 
 }
 
 void CGameInstance::Free()
 {
+	Safe_Release(m_pPicking);
 	Safe_Release(m_pLight_Manager);
 	Safe_Release(m_pFont_Manager);
 	Safe_Release(m_pPipeLine);

@@ -50,7 +50,7 @@ HRESULT CAru::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-	m_pState = CEx::Create(this);
+	m_pState = CRun::Create(this);
 
 	return S_OK;
 }
@@ -60,6 +60,7 @@ void CAru::Tick(_float fTimeDelta)
 
 	__super::Tick(fTimeDelta);
 
+
 }
 
 void CAru::LateTick(_float fTimeDelta)
@@ -67,7 +68,8 @@ void CAru::LateTick(_float fTimeDelta)
 
 	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 
-	CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_STATIC, TEXT("Layer_Monster"), TEXT("Com_SPHERE"));
+
+	CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Com_SPHERE"));
 	if (nullptr == pMonsterCollider)
 	{
 		__super::LateTick(fTimeDelta);
@@ -78,8 +80,7 @@ void CAru::LateTick(_float fTimeDelta)
 		m_bFoundMonster = m_pSphereCom->Collision(pMonsterCollider);
 
 
-
-	CCollider* pTargetCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_STATIC, TEXT("Layer_Obstacle"), TEXT("Com_SPHERE"));
+	CCollider* pTargetCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Obstacle"), TEXT("Com_SPHERE"));
 	if (nullptr == pTargetCollider)
 	{
 		Safe_Release(pGameInstance);
@@ -87,6 +88,9 @@ void CAru::LateTick(_float fTimeDelta)
 	}
 	else
 		m_bFoundObstacle = m_pSphereCom->Collision(pTargetCollider);
+
+	
+
 
 	Safe_Release(pGameInstance);
 

@@ -10,7 +10,7 @@
 #include "PipeLine.h"
 #include "Font_Manager.h"
 #include "Light_Manager.h"
-
+#include "Picking.h"
 
 /* 1. 게임내에 필요한 객체(매니져등)들을 모아서 보관한다. */
 /* 2. 클라이언트 개발자가 접근하기좋은 루트를 제공해준다. 나. */
@@ -79,6 +79,9 @@ public: /* For.Light_Manager */
 	HRESULT Add_Light(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, const LIGHTDESC & LightDesc);
 	const LIGHTDESC* Get_LightDesc(_uint iIndex);
 
+public: /* For.Picking */
+	_bool Picking(CCollider* pCollider, CTransform * pTransform);
+
 
 
 
@@ -97,6 +100,7 @@ private:
 	CPipeLine*						m_pPipeLine = nullptr;
 	CFont_Manager*					m_pFont_Manager = nullptr;
 	CLight_Manager*					m_pLight_Manager = nullptr;
+	CPicking*						m_pPicking = nullptr;
 
 
 public:
