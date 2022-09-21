@@ -21,6 +21,7 @@ public:
 protected:
 	CStudent*		m_pOwner;
 	ANIM			m_eAnim = ANIM_RUNSIGN;
+
 protected:
 	friend class CStudent;
 	void	Destroy_Instance() { delete this; }

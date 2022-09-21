@@ -17,6 +17,10 @@ namespace Client
 	};
 }
 
+#define GET_SENSEI		CSensei::Get_Instance()
+
+
+
 extern HWND g_hWnd;
 extern HINSTANCE g_hInst;
 

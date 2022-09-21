@@ -33,7 +33,8 @@ public:
 	void Set_Student(_tchar* pStudentTag, CStudent* pStudent);
 	void Set_FormationStudents(_uint iIndex, _tchar* pName);
 	CStudent* Get_Student(_tchar* pStudentTag);
-	void Use_Ex(_bool bEx, _float fCost = 0.f);
+	_bool Useable_Ex(_float fUseCost);
+	void Use_Ex(_bool bEx, _float fUseCost = 0.f);
 	void Tick_Cost(_float fTimeDelta);
 
 public:

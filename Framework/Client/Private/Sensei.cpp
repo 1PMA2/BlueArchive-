@@ -31,6 +31,14 @@ CStudent * CSensei::Get_Student(_tchar* pStudentTag)
 	return iter->second;
 }
 
+_bool CSensei::Useable_Ex(_float fUseCost) //사용할 코스트
+{
+	if (fUseCost <= m_tSensei.fCost)
+		return true;
+	else
+		return false;
+}
+
 void CSensei::Use_Ex(_bool bEx, _float fCost)
 {
 	if (fCost <= m_tSensei.fCost)

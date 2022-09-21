@@ -16,6 +16,9 @@ public:
 	virtual CState * Loop(_float fTimeDelta) override;
 	virtual void Exit() override;
 
+private:
+	_bool Ex();
+
 public:
 	static CKnee_ZoomFire* Create(CStudent* pOwner);
 };

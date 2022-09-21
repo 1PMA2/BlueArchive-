@@ -21,6 +21,9 @@ CEx::CEx(CStudent* pOwner)
 
 void CEx::Enter()
 {
+	CSensei* pSensei = GET_SENSEI;
+
+	pSensei->Use_Ex(false);
 }
 
 CState * CEx::Loop(_float fTimeDelta)
@@ -30,6 +33,8 @@ CState * CEx::Loop(_float fTimeDelta)
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
+
+
 
 	if (pModel->Get_isFinished())
 	{ 

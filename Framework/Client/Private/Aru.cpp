@@ -64,43 +64,20 @@ void CAru::Tick(_float fTimeDelta)
 void CAru::LateTick(_float fTimeDelta)
 {
 
-	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 	
-	
+	CSensei* pSensei = CSensei::Get_Instance();
 
-	m_bPicked = false;
-
-	if (m_pAABBCom->CollisionRay())
+	switch (pSensei->Get_CurrentLevel())
 	{
-		if (KEY(LBUTTON, HOLD))
-			m_bPicked = true;
+	case LEVEL_FORMATION:
+		FormationLevel_Collision();
+		break;
+	case LEVEL_GAMEPLAY:
+		GamePlayLevel_Collision();
+		break;
 	}
 
-	CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Com_SPHERE"));
-	if (nullptr == pMonsterCollider)
-	{
-		__super::LateTick(fTimeDelta);
-		Safe_Release(pGameInstance);
-		return;
-	}
-	else
-		m_bFoundMonster = m_pSphereCom->Collision(pMonsterCollider);
-
-
-	CCollider* pTargetCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Obstacle"), TEXT("Com_SPHERE"));
-	if (nullptr == pTargetCollider)
-	{
-		Safe_Release(pGameInstance);
-		return;
-	}
-	else
-		m_bFoundObstacle = m_pSphereCom->Collision(pTargetCollider);
-
 	
-
-
-	Safe_Release(pGameInstance);
-
 
 	__super::LateTick(fTimeDelta);
 }
@@ -158,6 +135,43 @@ HRESULT CAru::SetUp_ShaderResource()
 {
 	__super::SetUp_ShaderResource();
 
+	return S_OK;
+}
+
+HRESULT CAru::FormationLevel_Collision()
+{
+	m_bPicked = false;
+
+	if (m_pAABBCom->CollisionRay())
+	{
+		if (KEY(LBUTTON, HOLD))
+			m_bPicked = true;
+	}
+
+	return S_OK;
+}
+
+HRESULT CAru::GamePlayLevel_Collision()
+{
+	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
+
+
+	CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Com_SPHERE"));
+	if (nullptr == pMonsterCollider)
+		return E_FAIL;
+	
+	m_bFoundMonster = m_pSphereCom->Collision(pMonsterCollider);
+
+
+	CCollider* pTargetCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Obstacle"), TEXT("Com_SPHERE"));
+	if (nullptr == pTargetCollider)
+		return E_FAIL;
+	
+	m_bFoundObstacle = m_pSphereCom->Collision(pTargetCollider);
+
+
+	RELEASE_INSTANCE(CGameInstance);
+	
 	return S_OK;
 }
 

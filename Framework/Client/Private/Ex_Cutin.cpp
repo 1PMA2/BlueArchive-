@@ -57,7 +57,9 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 				pModel->Play_Animation(fTimeDelta);
 				
 				if (pModel->Get_isFinished())
+				{
 					pState = CEx_Cutin::Create(m_pOwner);
+				}
 			}
 		}
 	}
@@ -67,7 +69,6 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 	{
 		if (pModel->Get_isFinished())
 		{
-			pSensei->Use_Ex(false);
 			pState = CEx::Create(m_pOwner);
 		}
 	}

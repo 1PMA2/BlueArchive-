@@ -147,6 +147,16 @@ HRESULT CStudent::SetUp_ShaderResource()
 	return S_OK;
 }
 
+HRESULT CStudent::FormationLevel_Collision()
+{
+	return E_NOTIMPL;
+}
+
+HRESULT CStudent::GamePlayLevel_Collision()
+{
+	return E_NOTIMPL;
+}
+
 void CStudent::InitializeStudentState()
 {
 	CSensei* pSensei = GET_INSTANCE(CSensei);

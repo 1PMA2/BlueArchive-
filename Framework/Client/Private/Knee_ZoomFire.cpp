@@ -7,6 +7,7 @@
 #include "Fire.h"
 #include "Knee_ZoomEnd.h"
 #include "Ex_Cutin.h"
+#include "Sensei.h"
 
 CKnee_ZoomFire::CKnee_ZoomFire(CStudent* pOwner)
 	:CState(pOwner)
@@ -42,7 +43,7 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 		return pState;
 	}
 
-	if (GetKeyState(VK_SPACE) & 0x8000)
+	if (Ex())
 	{
 		pState = CEx_Cutin::Create(m_pOwner);
 	}
@@ -53,6 +54,18 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 void CKnee_ZoomFire::Exit()
 {
 	Destroy_Instance();
+}
+
+_bool CKnee_ZoomFire::Ex()
+{
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	if (pSensei->Useable_Ex(m_pOwner->Get_StudentInfo().fExCost))
+	{
+		if (KEY(SPACE, HOLD))
+			return true;
+	}
+	return false;
 }
 
 CKnee_ZoomFire * CKnee_ZoomFire::Create(CStudent * pOwner)

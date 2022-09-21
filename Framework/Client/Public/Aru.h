@@ -31,6 +31,10 @@ public:
 private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
+
+private:
+	HRESULT FormationLevel_Collision() override;
+	HRESULT GamePlayLevel_Collision() override;
 	
 public:
 	virtual void OnDisable() override;

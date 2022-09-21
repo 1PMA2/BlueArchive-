@@ -83,6 +83,10 @@ protected:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
 
+protected:
+	virtual HRESULT FormationLevel_Collision();
+	virtual HRESULT GamePlayLevel_Collision();
+
 private:
 	void InitializeStudentState();
 

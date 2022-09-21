@@ -6,6 +6,7 @@
 #include "Model.h"
 #include "Ex_Cutin.h"
 #include "Hide_ReloadStart.h"
+#include "Sensei.h"
 
 CFire::CFire(CStudent* pOwner)
 	:CState(pOwner)
@@ -41,8 +42,10 @@ CState * CFire::Loop(_float fTimeDelta)
 		return pState;
 	}
 
-	if (GetKeyState(VK_SPACE) & 0x8000)
-  		pState = CEx_Cutin::Create(m_pOwner);
+	if (Ex())
+	{
+		pState = CEx_Cutin::Create(m_pOwner);
+	}
 
 	return pState;
 }
@@ -51,6 +54,19 @@ void CFire::Exit()
 {
 	Destroy_Instance();
 }
+
+_bool CFire::Ex()
+{
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	if (pSensei->Useable_Ex(m_pOwner->Get_StudentInfo().fExCost))
+	{
+		if (KEY(SPACE, HOLD))
+			return true;
+	}
+	return false;
+}
+
 
 CFire * CFire::Create(CStudent * pOwner)
 {
