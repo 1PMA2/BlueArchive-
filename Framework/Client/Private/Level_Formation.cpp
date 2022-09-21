@@ -107,14 +107,14 @@ HRESULT CLevel_Formation::Ready_Layer_Camera(const _tchar * pLayerTag)
 	CCamera::CAMERADESC			CameraDesc;
 	ZeroMemory(&CameraDesc, sizeof(CCamera::CAMERADESC));
 
-	CameraDesc.vEye = _float4(0.f, 0.f, 5.f, 1.f);
-	CameraDesc.vAt = _float4(0.f, 0.f, 0.f, 1.f);
+	CameraDesc.vEye = _float4(0.f, 0.3f, 1.f, 1.f);
+	CameraDesc.vAt = _float4(0.f, 0.3f, 0.f, 1.f);
 	CameraDesc.TransformDesc.fSpeedPerSec = 5.f;
 	CameraDesc.TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	CameraDesc.fFovy = XMConvertToRadians(25.0f);
+	CameraDesc.fFovy = XMConvertToRadians(20.0f);
 	CameraDesc.fAspect = (_float)g_iWinCX / g_iWinCY;
-	CameraDesc.fNear = 0.2f;
+	CameraDesc.fNear = 0.1f;
 	CameraDesc.fFar = 300.f;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Camera_Free"), &CameraDesc)))

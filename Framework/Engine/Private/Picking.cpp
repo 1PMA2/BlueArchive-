@@ -31,66 +31,63 @@ void CPicking::Compute_RayInWorldSpace()
 	ScreenToClient(m_hWnd, &ptMouse);
 
 	UINT ViewportCount = 1;
+
 	D3D11_VIEWPORT		Viewport;
 	ZeroMemory(&Viewport, sizeof(D3D11_VIEWPORT));
 	m_pContext->RSGetViewports(&ViewportCount, &Viewport);
 	
 
 	/* 2. 투영 스페이스 상의 마우스 좌표를 구하자. */
-	_vector		vProjPos;
+	_float4		vProjPos;
 
-	_float x, y, z;
+	vProjPos.x = ptMouse.x / (Viewport.Width/*Viewport.Width*/ * 0.5f) - 1.f;
+	vProjPos.y = ptMouse.y / -(Viewport.Height/*Viewport.Height*/ * 0.5f) + 1.f;
+	vProjPos.z = 0.0f;
+	vProjPos.w = 1.f;
 
-	x = ptMouse.x / (Viewport.Width * 0.5f) - 1.f;
-	y = ptMouse.y / -(Viewport.Height * 0.5f) + 1.f;
-	z = 0.f;
-
-	vProjPos = XMVectorSet(x, y, z, 1.f);
-
+	if (KEY(X, HOLD))
+	{
+		int i = 10;
+	}
+	
 	/* 3.뷰스페이스상의 마우스 좌표를 구하자. */
 	_vector		vViewPos;
 
-	_matrix		ProjMatrixInv;
+	_matrix    ProjMatrixInv = XMMatrixInverse(nullptr, CPipeLine::Get_Instance()->Get_Transform(CPipeLine::D3DTS_PROJ));
 
-	CPipeLine*			pPipeLine = GET_INSTANCE(CPipeLine);
 
-	ProjMatrixInv = pPipeLine->Get_Transform(CPipeLine::D3DTS_PROJ);
-	ProjMatrixInv = XMMatrixInverse(nullptr, ProjMatrixInv);
-	vViewPos = XMVector3TransformCoord(vProjPos, ProjMatrixInv);
+	vViewPos = XMVector3TransformCoord(XMLoadFloat4(&vProjPos), ProjMatrixInv);
 
 	/* 4.마우스레이와 마우스Pos를구하자.  */
-	_vector		vRayDir, vRayPos;
-	vRayDir = vViewPos - XMVectorSet(0, 0, 0, 1);
-	vRayPos = XMVectorSet(0, 0, 0, 1);
+	_float4		 vRayDir = { 0.f, 0.f, 0.f ,0.f };
+	_float4      vRayPos = { 0.f, 0.f, 0.f ,1.f };
+	_float4      vOffSet = { 0.f, 0.f, 0.f ,1.f };
 
-	/* 5.월드로가자. */
-	_matrix		ViewMatrixInv;
-	ViewMatrixInv = pPipeLine->Get_Transform(CPipeLine::D3DTS_VIEW);
-	ViewMatrixInv = XMMatrixInverse(nullptr, ViewMatrixInv);
-
-	m_vRayDir = XMVector3TransformNormal(vRayDir, ViewMatrixInv);
-	m_vRayPos = XMVector3TransformCoord(vRayPos, ViewMatrixInv);
+	XMStoreFloat4(&vRayDir, (vViewPos - XMLoadFloat4(&vOffSet)));
 
 
+	_matrix     ViewMatrixInv = XMMatrixInverse(nullptr, CPipeLine::Get_Instance()->Get_Transform(CPipeLine::D3DTS_VIEW));
 
-	RELEASE_INSTANCE(CPipeLine);
+
+	XMStoreFloat4(&m_vRayPos, XMVector3TransformCoord(XMLoadFloat4(&vRayPos), ViewMatrixInv));
+	XMStoreFloat4(&m_vRayDir, XMVector3TransformNormal(XMLoadFloat4(&vRayDir), ViewMatrixInv));
 }
 
-_bool CPicking::Picking(CCollider* pCollider, CTransform * pTransform)
-{
-	_matrix		WorldMatrix = pTransform->Get_WorldMatrix();
-	WorldMatrix = XMMatrixInverse(nullptr, WorldMatrix);
-
-	_vector			vRayPos, vRayDir;
-
-	vRayPos = XMVector3TransformCoord(m_vRayPos, WorldMatrix);
-	vRayDir = XMVector3TransformNormal(m_vRayDir, WorldMatrix);
-	vRayDir = XMVector3Normalize(vRayDir);
-	
-
-	return pCollider->CollisionRay(vRayPos, vRayDir, 0.f);
-
-}
+//_bool CPicking::Picking(CCollider* pCollider, CTransform * pTransform)
+//{
+//	_matrix		WorldMatrix = pTransform->Get_WorldMatrix();
+//	WorldMatrix = XMMatrixInverse(nullptr, WorldMatrix);
+//
+//	_vector			vRayPos, vRayDir;
+//
+//	vRayPos = XMVector3TransformCoord(m_vRayPos, WorldMatrix);
+//	vRayDir = XMVector3TransformNormal(m_vRayDir, WorldMatrix);
+//	vRayDir = XMVector3Normalize(vRayDir);
+//	
+//	_float fDist = 0.f;
+//
+//	return pCollider->CollisionRay(vRayPos, vRayDir, fDist);
+//}
 
 
 void CPicking::Free()

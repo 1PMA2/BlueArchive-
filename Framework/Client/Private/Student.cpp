@@ -3,7 +3,10 @@
 
 #include "GameInstance.h"
 #include "State.h"
-#include "Run_Sign.h"
+#include "Run.h"
+#include "Sensei.h"
+#include "Ex_Cutin.h"
+#include "Formation_Idle.h"
 
 CStudent::CStudent(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -23,28 +26,14 @@ HRESULT CStudent::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(pArg)))
 		return E_FAIL;
 
-	switch (m_tStudentInfo.eFormation)
-	{
-	case FORMATION_FIRST:
-		if(m_tStudentInfo.bExModel)
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -20.f, 0.f, 1.f));
-		else
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, -5.f, 1.f));
-		break;
-	case FORMATION_SECOND:
-		if (m_tStudentInfo.bExModel)
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -10.f, 0.f, 1.f));
-		else
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 0.f, 1.f));
-		break;
-	}
+	InitializeStudentState();
 
 	return S_OK;
 }
 
 void CStudent::Tick(_float fTimeDelta)
 {
-	if (!m_tStudentInfo.bExModel)
+	if (false == m_tStudentInfo.bExModel) //스킬모델이 아닐시 재생 안함
 	{
 		m_pModelCom->Play_Animation(fTimeDelta);
 	}
@@ -156,6 +145,51 @@ HRESULT CStudent::SetUp_ShaderResource()
 	RELEASE_INSTANCE(CGameInstance);
 
 	return S_OK;
+}
+
+void CStudent::InitializeStudentState()
+{
+	CSensei* pSensei = GET_INSTANCE(CSensei);
+
+	LEVEL eLEVEL = pSensei->Get_CurrentLevel();
+
+	if (false == m_tStudentInfo.bExModel)
+	{
+		switch (eLEVEL)
+		{
+		case LEVEL_FORMATION:
+			m_pState = CFormation_Idle::Create(this);
+			break;
+		case LEVEL_GAMEPLAY:
+			m_pState = CRun::Create(this);
+			break;
+		}
+
+		switch (m_tStudentInfo.eFormation)
+		{
+		case FORMATION_FIRST:
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, -5.f, 1.f));
+			break;
+		case FORMATION_SECOND:
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 0.f, 1.f));
+			break;
+		}
+	}
+	else
+	{
+		m_pState = CEx_Cutin::Create(this);
+
+		switch (m_tStudentInfo.eFormation)
+		{
+		case FORMATION_FIRST:
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -20.f, -5.f, 1.f));
+			break;
+		case FORMATION_SECOND:
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 0.f, 1.f));
+			break;
+		}
+	}
+	RELEASE_INSTANCE(CSensei);
 }
 
 void CStudent::Free()

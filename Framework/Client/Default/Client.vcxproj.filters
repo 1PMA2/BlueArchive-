@@ -127,6 +127,12 @@
     <ClInclude Include="..\Public\Level_Formation.h">
       <Filter>01.Level\Level_Formation</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Formation_Idle.h">
+      <Filter>02.GameObject\01.State\Formation_Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Formation_Pick.h">
+      <Filter>02.GameObject\01.State\Formation_Pick</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -242,6 +248,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\Level_Formation.cpp">
       <Filter>01.Level\Level_Formation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Formation_Idle.cpp">
+      <Filter>02.GameObject\01.State\Formation_Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Formation_Pick.cpp">
+      <Filter>02.GameObject\01.State\Formation_Pick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

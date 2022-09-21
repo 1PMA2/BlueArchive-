@@ -77,28 +77,6 @@ void CMainApp::Tick()
 	RELEASE_INSTANCE(CSensei);
 
 
-
-	/////////////////////////////// cameratest
-	CCamera* pCameraFree = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
-	CCamera* pCameraEx   = (CCamera*)m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_EX);
-
-	if (nullptr != pCameraEx)
-	{
-		if (pSensei->Get_SenseiInfo().bEx)
-		{
-			{
-				pCameraFree->Set_Enable(false);
-				pCameraEx->Set_Enable(true);
-			}
-		}
-		else
-		{
-			pCameraEx->Set_Enable(false);
-			pCameraFree->Set_Enable(true);
-		}
-	}
-	///////////////////////////
-
 	m_pGameInstance->Tick_Engine(fTimeDelta);
 }
 

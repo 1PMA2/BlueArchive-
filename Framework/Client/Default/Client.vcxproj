@@ -179,6 +179,8 @@
     <ClInclude Include="..\Public\Ex_Cutin.h" />
     <ClInclude Include="..\Public\Fire.h" />
     <ClInclude Include="..\Public\ForkLift.h" />
+    <ClInclude Include="..\Public\Formation_Idle.h" />
+    <ClInclude Include="..\Public\Formation_Pick.h" />
     <ClInclude Include="..\Public\Hide_FireStart.h" />
     <ClInclude Include="..\Public\Hide_Idle.h" />
     <ClInclude Include="..\Public\Hide_Reloading.h" />
@@ -220,6 +222,8 @@
     <ClCompile Include="..\Private\Ex_Cutin.cpp" />
     <ClCompile Include="..\Private\Fire.cpp" />
     <ClCompile Include="..\Private\ForkLift.cpp" />
+    <ClCompile Include="..\Private\Formation_Idle.cpp" />
+    <ClCompile Include="..\Private\Formation_Pick.cpp" />
     <ClCompile Include="..\Private\Hide_FireStart.cpp" />
     <ClCompile Include="..\Private\Hide_Idle.cpp" />
     <ClCompile Include="..\Private\Hide_Reloading.cpp" />

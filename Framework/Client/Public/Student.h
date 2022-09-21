@@ -54,6 +54,7 @@ public:
 	void		Reload() { m_tStudentInfo.iBullet = m_tStudentInfo.iMagazine; }
 	void		Set_State(ANIM eANIM) { m_tStudentInfo.eAnim = eANIM; }
 	void		Set_Formation(FORMATION eFormation) { m_tStudentInfo.eFormation = eFormation; }
+	_bool		Is_Picked() { return m_bPicked; }
 	_bool		FoundMonster() { return m_bFoundMonster; }
 	_bool		FoundObstacle() { return m_bFoundObstacle; }
 
@@ -74,12 +75,16 @@ protected:
 	CCollider*				m_pSphereCom = nullptr;
 	CCollider*				m_pSphereCom_Obstacle = nullptr;
 	CState*					m_pState = nullptr;
+	_bool					m_bPicked = false;
 	_bool					m_bFoundMonster = false;
 	_bool					m_bFoundObstacle = false;
 
 protected:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
+
+private:
+	void InitializeStudentState();
 
 
 

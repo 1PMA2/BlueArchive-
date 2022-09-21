@@ -16,6 +16,9 @@ public:
 	virtual void Tick(_float TimeDelta);
 	virtual HRESULT Render();
 
+private:
+	void Change_Camera();
+
 public:
 	HRESULT Ready_Lights();
 	HRESULT Ready_Layer_Camera(const _tchar* pLayerTag);

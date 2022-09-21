@@ -52,7 +52,8 @@ void CLayer::LateTick(_float fTimeDelta)
 	for (auto& pGameObject : m_GameObjects)
 	{
 		if (nullptr != pGameObject)
-			pGameObject->LateTick(fTimeDelta);
+			if (pGameObject->IsValid())
+				pGameObject->LateTick(fTimeDelta);
 	}
 }
 

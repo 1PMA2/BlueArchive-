@@ -56,6 +56,12 @@ unsigned int APIENTRY LoadingMain(void* pArg)
 
 	LeaveCriticalSection(&pLoader->Get_CS());
 
+	CSensei* pSensei = GET_INSTANCE(CSensei);
+
+	pSensei->Set_CurrentLevel(pLoader->Get_NextLevelID());
+
+	RELEASE_INSTANCE(CSensei);
+
 	return 0;
 }
 
@@ -268,11 +274,6 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CTerrain::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
-		/* For.Prototype_GameObject_Camera_Ex*/
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Ex"),
-			CCamera_Ex::Create(m_pDevice, m_pContext))))
-			return E_FAIL;
-
 		///* For.Prototype_GameObject_Student */
 		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Aru"),
 		//	CAru::Create(m_pDevice, m_pContext))))
@@ -280,6 +281,11 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Aru_Ex"),
 			CAru_Ex::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		/* For.Prototype_GameObject_Camera_Ex*/
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Ex"),
+			CCamera_Ex::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_ForkLift"),

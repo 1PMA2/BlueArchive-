@@ -71,9 +71,9 @@ HRESULT CGameInstance::Tick_Engine(_float fTimeDelta)
 		nullptr == m_pObject_Manager)
 		return E_FAIL;
 
-	m_pKey_Manager->Tick();
-
 	m_pInput_Device->SetUp_DeviceState();
+
+	m_pKey_Manager->Tick();
 
 	m_pLevel_Manager->Tick(fTimeDelta);	
 
@@ -318,13 +318,13 @@ const LIGHTDESC * CGameInstance::Get_LightDesc(_uint iIndex)
 	return m_pLight_Manager->Get_LightDesc(iIndex);
 }
 
-_bool CGameInstance::Picking(CCollider * pCollider, CTransform * pTransform)
-{
-	if (nullptr == m_pPicking)
-		return nullptr;
-
-	return m_pPicking->Picking(pCollider, pTransform);
-}
+//_bool CGameInstance::Picking(CCollider * pCollider, CTransform * pTransform)
+//{
+//	if (nullptr == m_pPicking)
+//		return nullptr;
+//
+//	return m_pPicking->Picking(pCollider, pTransform);
+//}
 
 
 

@@ -41,14 +41,18 @@ public:
 	_float4x4				m_WorldMatrix;
 	_float4x4				m_TargetWorldMatrix;
 
+public:
+	virtual void OnDisable() override;
+	virtual void OnEnable() override;
+
 private:
 	class CHierarchyNode*	m_pBonePtr = nullptr;
 	class CHierarchyNode*	m_pTargetBonePtr = nullptr;
 	class CTransform*		m_pTargetTransform = nullptr;
 
-public:
-	virtual void OnDisable() override;
-	virtual void OnEnable() override;
+private:
+	void MoveCamera();
+
 
 public:
 	static CCamera_Ex* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);

@@ -80,7 +80,9 @@ public: /* For.Light_Manager */
 	const LIGHTDESC* Get_LightDesc(_uint iIndex);
 
 public: /* For.Picking */
-	_bool Picking(CCollider* pCollider, CTransform * pTransform);
+	_float4 Get_RayPos() { return m_pPicking->Get_RayPos(); }
+	_float4 Get_RayDir() { return m_pPicking->Get_RayDir(); }
+	/*_bool Picking(CCollider* pCollider, CTransform * pTransform);*/
 
 
 

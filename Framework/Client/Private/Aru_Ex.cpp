@@ -41,14 +41,14 @@ HRESULT CAru_Ex::Initialize(void * pArg)
 	m_tStudentInfo.iShield = 0;
 
 
-	if (FAILED(__super::Initialize(&TransformDesc)))
-		return E_FAIL;
-
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
 
-	m_pState = CEx_Cutin::Create(this);
+
+
+	if (FAILED(__super::Initialize(&TransformDesc)))
+		return E_FAIL;
 
 	return S_OK;
 }

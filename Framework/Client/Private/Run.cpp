@@ -10,6 +10,11 @@
 CRun::CRun(CStudent* pOwner)
 	:CState(pOwner)
 {
+	if (TEXT("Aru") == pOwner->Get_StudentInfo().pName)
+	{
+		int i = 10;
+	}
+
 	m_eAnim = ANIM_RUN;
 	pOwner->Set_State(m_eAnim);
 

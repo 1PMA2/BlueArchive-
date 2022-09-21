@@ -1,6 +1,7 @@
 #include "..\Public\Collider.h"
 #include "DebugDraw.h"
 #include "PipeLine.h"
+#include "Picking.h"
 
 CCollider::CCollider(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CComponent(pDevice, pContext)
@@ -211,8 +212,16 @@ _bool CCollider::Collision(CCollider * pTargetCollider)
 	return m_isColl;
 }
 
-_bool CCollider::CollisionRay(_vector vRayPos, _vector vRayDir, _float fDist)
+_bool CCollider::CollisionRay()
 {
+	CPicking* pPicking = GET_INSTANCE(CPicking);
+
+	_vector vRayPos = XMLoadFloat4(&_float4(pPicking->Get_RayPos().x, pPicking->Get_RayPos().y, pPicking->Get_RayPos().z, 1.f));
+
+	_vector vRayDir = XMVector3Normalize(XMLoadFloat4(&_float4(pPicking->Get_RayDir().x, pPicking->Get_RayDir().y, pPicking->Get_RayDir().z, 0.f)));
+
+	_float fDist = 0;
+
 	if (TYPE_AABB == m_eType)
 	{
 		m_isColl = m_pAABB->Intersects(vRayPos, vRayDir, fDist);
@@ -221,6 +230,8 @@ _bool CCollider::CollisionRay(_vector vRayPos, _vector vRayDir, _float fDist)
 	{
 		m_isColl = m_pSphere->Intersects(vRayPos, vRayDir, fDist);
 	}
+
+	RELEASE_INSTANCE(CPicking);
 	
 	return m_isColl;
 }

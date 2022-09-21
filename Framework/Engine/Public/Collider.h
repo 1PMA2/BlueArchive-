@@ -9,6 +9,7 @@ BEGIN(Engine)
 
 class ENGINE_DLL CCollider final : public CComponent
 {
+	friend class CPicking;
 public:
 	enum TYPE { TYPE_SPHERE, TYPE_AABB, TYPE_OBB, TYPE_END };
 
@@ -42,7 +43,7 @@ public:
 	_bool Collision_OBB(CCollider* pTargetCollider);
 
 	_bool Collision(CCollider* pTargetCollider);
-	_bool CollisionRay(_vector vRayPos, _vector vRayDir, _float fDist);
+	_bool CollisionRay();
 	_matrix Remove_Rotation(_fmatrix TransformMatrix);
 
 

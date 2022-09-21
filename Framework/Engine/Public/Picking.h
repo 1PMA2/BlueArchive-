@@ -12,17 +12,21 @@ public:
 	virtual ~CPicking() = default;
 
 public:
+	_float4 Get_RayDir() { return m_vRayDir; }
+	_float4 Get_RayPos() { return m_vRayPos; }
+
+public:
 	HRESULT Initialize(HWND hWnd, ID3D11DeviceContext* pContext);
 	void Compute_RayInWorldSpace();
 
-	_bool Picking(class CCollider* pCollider, class CTransform* pTransform);
+	//_bool Picking(class CCollider* pCollider, class CTransform* pTransform);
 
 private:
 	HWND				m_hWnd;
 	ID3D11DeviceContext* m_pContext = nullptr;
 
 private:
-	_vector				m_vRayDir, m_vRayPos;
+	_float4				m_vRayDir, m_vRayPos;
 
 
 public:

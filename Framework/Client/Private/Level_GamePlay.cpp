@@ -54,6 +54,7 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 
 	pSensei->Tick_Cost(fTimeDelta);
 
+	Change_Camera();
 
 	if (GetKeyState(VK_RETURN) & 0x8000)
 	{
@@ -76,6 +77,32 @@ HRESULT CLevel_GamePlay::Render()
 	SetWindowText(g_hWnd, TEXT("게임프렐이레벨임. "));
 
 	return S_OK;
+}
+
+void CLevel_GamePlay::Change_Camera()
+{
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	CCamera* pCameraFree = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
+	CCamera* pCameraEx = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_EX);
+
+	if (nullptr != pCameraEx)
+	{
+		if (pSensei->Get_SenseiInfo().bEx)
+		{
+			{
+				pCameraFree->Set_Enable(false);
+				pCameraEx->Set_Enable(true);
+			}
+		}
+		else
+		{
+			pCameraEx->Set_Enable(false);
+			pCameraFree->Set_Enable(true);
+		}
+	}
 }
 
 

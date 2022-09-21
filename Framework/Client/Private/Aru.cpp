@@ -5,7 +5,7 @@
 #include "Run_Sign.h"
 #include "Run.h"
 #include "Sensei.h"
-#include "Ex.h"
+#include "Formation_Idle.h"
 
 CAru::CAru(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CStudent(pDevice, pContext)
@@ -44,13 +44,12 @@ HRESULT CAru::Initialize(void * pArg)
 	TransformDesc.fSpeedPerSec = 2.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
 	
-	if (FAILED(__super::Initialize(&TransformDesc)))
-		return E_FAIL;	
 
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-	m_pState = CRun::Create(this);
+	if (FAILED(__super::Initialize(&TransformDesc)))
+		return E_FAIL;	
 
 	return S_OK;
 }
@@ -60,14 +59,22 @@ void CAru::Tick(_float fTimeDelta)
 
 	__super::Tick(fTimeDelta);
 
-
 }
 
 void CAru::LateTick(_float fTimeDelta)
 {
 
 	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
+	
+	
 
+	m_bPicked = false;
+
+	if (m_pAABBCom->CollisionRay())
+	{
+		if (KEY(LBUTTON, HOLD))
+			m_bPicked = true;
+	}
 
 	CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Com_SPHERE"));
 	if (nullptr == pMonsterCollider)
@@ -113,7 +120,7 @@ HRESULT CAru::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(1.f, 2.f, 1.f);
+	ColliderDesc.vScale = _float3(0.5f, 1.f, 0.5f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.5f, 0.f);
 
