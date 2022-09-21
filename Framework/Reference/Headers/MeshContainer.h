@@ -13,6 +13,13 @@ private:
 	virtual ~CMeshContainer() = default;
 
 public:
+	virtual _uint3 Get_Indices(_uint iIndex) const {
+		return _uint3(((FACEINDICES32*)m_pIndices)[iIndex]._1,
+			((FACEINDICES32*)m_pIndices)[iIndex]._2,
+			((FACEINDICES32*)m_pIndices)[iIndex]._3);
+	}
+
+public:
 	_uint Get_MaterialIndex() const {
 		return m_iMaterialIndex;
 	}

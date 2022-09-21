@@ -3,7 +3,8 @@
 #include "Base.h"
 
 BEGIN(Engine)
-
+class CVIBuffer;
+class CTransform;
 class CPicking final : public CBase
 {
 	DECLARE_SINGLETON(CPicking);
@@ -19,7 +20,8 @@ public:
 	HRESULT Initialize(HWND hWnd, ID3D11DeviceContext* pContext);
 	void Compute_RayInWorldSpace();
 
-	//_bool Picking(class CCollider* pCollider, class CTransform* pTransform);
+
+	_bool Picking(CVIBuffer* pVIBuffer, CTransform* pTransform, _float4* pOut);
 
 private:
 	HWND				m_hWnd;

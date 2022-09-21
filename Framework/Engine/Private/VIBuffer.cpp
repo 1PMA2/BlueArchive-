@@ -17,6 +17,8 @@ CVIBuffer::CVIBuffer(const CVIBuffer & rhs)
 	, m_pVB(rhs.m_pVB)
 	, m_pIB(rhs.m_pIB)	
 	, m_eToplogy(rhs.m_eToplogy)
+	, m_pVerticesPos(rhs.m_pVerticesPos)
+	, m_pIndices(rhs.m_pIndices)
 {
 	Safe_AddRef(m_pVB);
 	Safe_AddRef(m_pIB);
@@ -84,6 +86,12 @@ HRESULT CVIBuffer::Create_IndexBuffer()
 void CVIBuffer::Free()
 {
 	__super::Free();
+
+	if (false == m_isCloned)
+	{
+		Safe_Delete_Array(m_pVerticesPos);
+		Safe_Delete_Array(m_pIndices);
+	}
 
 	Safe_Release(m_pVB);
 	Safe_Release(m_pIB);

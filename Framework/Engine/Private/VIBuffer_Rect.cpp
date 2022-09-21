@@ -25,18 +25,24 @@ HRESULT CVIBuffer_Rect::Initialize_Prototype()
 	m_BufferDesc.CPUAccessFlags = 0;
 	m_BufferDesc.MiscFlags = 0;
 
+	m_pVerticesPos = new _float4[m_iNumVertices];
+
 	VTXTEX*			pVertices = new VTXTEX[m_iNumVertices];
 
+	m_pVerticesPos[0] = _float4(-0.5f, 0.5f, 0.f, 1.f);
 	pVertices[0].vPosition = _float3(-0.5f, 0.5f, 0.f);
 	pVertices[0].vTexUV = _float2(0.0f, 0.f);
 
+	m_pVerticesPos[1] = _float4(0.5f, 0.5f, 0.f, 1.f);
 	pVertices[1].vPosition = _float3(0.5f, 0.5f, 0.f);
 	pVertices[1].vTexUV = _float2(1.0f, 0.f);
 
-	pVertices[2].vPosition = _float3(0.5f, -0.5f, 0.f);
+	m_pVerticesPos[2] = _float4(0.5f, -0.5f, 0.f, 1.f);
+	pVertices[2].vPosition =  _float3(0.5f, -0.5f, 0.f);
 	pVertices[2].vTexUV = _float2(1.0f, 1.f);
 
-	pVertices[3].vPosition = _float3(-0.5f, -0.5f, 0.f);
+	m_pVerticesPos[3] = _float4(-0.5f, -0.5f, 0.f, 1.f);
+	pVertices[3].vPosition =  _float3(-0.5f, -0.5f, 0.f);
 	pVertices[3].vTexUV = _float2(0.0f, 1.f);
 
 	ZeroMemory(&m_SubResourceData, sizeof(D3D11_SUBRESOURCE_DATA));
@@ -66,6 +72,8 @@ HRESULT CVIBuffer_Rect::Initialize_Prototype()
 	m_BufferDesc.CPUAccessFlags = 0;
 	m_BufferDesc.MiscFlags = 0;
 
+	m_pIndices = new FACEINDICES16[m_iNumPrimitive];
+
 	FACEINDICES16*		pIndices = new FACEINDICES16[m_iNumPrimitive];
 	ZeroMemory(pIndices, sizeof(FACEINDICES16) * m_iNumPrimitive);
 
@@ -76,6 +84,8 @@ HRESULT CVIBuffer_Rect::Initialize_Prototype()
 	pIndices[1]._1 = 0;
 	pIndices[1]._2 = 2;
 	pIndices[1]._3 = 3;
+
+	memcpy(m_pIndices, pIndices, sizeof(FACEINDICES16) * m_iNumPrimitive);
 
 	ZeroMemory(&m_SubResourceData, sizeof(D3D11_SUBRESOURCE_DATA));
 	m_SubResourceData.pSysMem = pIndices;

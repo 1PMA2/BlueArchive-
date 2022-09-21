@@ -12,6 +12,21 @@ protected:
 	virtual ~CVIBuffer() = default;
 
 public:
+	_uint Get_NumPrimitive() const {
+		return m_iNumPrimitive;
+	}
+
+	_float4* Get_VerticesPos() const {
+		return m_pVerticesPos;
+	}
+
+	virtual _uint3 Get_Indices(_uint iIndex) const = 0;
+
+	_uint Get_IndexSize() {
+		return m_eIndexFormat == DXGI_FORMAT_R16_UINT ? 2 : 4;
+	}
+
+public:
 	virtual HRESULT Initialize_Prototype() override;
 	virtual HRESULT Initialize(void* pArg) override;
 
@@ -33,9 +48,10 @@ protected:
 	_uint							m_iNumVertexBuffers = 0;
 	DXGI_FORMAT						m_eIndexFormat;
 	D3D11_PRIMITIVE_TOPOLOGY		m_eToplogy;
+	_float4*						m_pVerticesPos = nullptr;
 
 protected:
-	
+	void* m_pIndices = nullptr;
 	
 
 

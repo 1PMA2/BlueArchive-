@@ -7,6 +7,7 @@
 #include "Camera_Free.h"
 #include "Camera_Ex.h"
 #include "Monster.h"
+#include "Formation_Terrain.h"
 #include "Terrain.h"
 #include "Aru.h"
 #include "Aru_Ex.h"
@@ -202,8 +203,8 @@ HRESULT CLoader::Loading_ForFormationLevel()
 
 
 		/* For.Prototype_GameObject_Terrain*/
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Terrain"),
-			CTerrain::Create(m_pDevice, m_pContext))))
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Formation_Terrain"),
+			CFormation_Terrain::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 		/* For.Prototype_GameObject_Student */
@@ -237,9 +238,10 @@ HRESULT CLoader::Loading_ForFormationLevel()
 
 		lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
 
+
 		/* For.Prototype_Component_VIBuffer_Terrain */
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Terrain"),
-			CVIBuffer_Terrain::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Height.bmp")))))
+			CVIBuffer_Terrain::Create(m_pDevice, m_pContext, 10, 10))))
 			return E_FAIL;
 
 		_matrix			TransformMatrix;
@@ -276,6 +278,9 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		lstrcpy(m_szLoadingText, TEXT("객체를 생성중입니다."));
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Terrain"),
+			CTerrain::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_City"),
 			CCity::Create(m_pDevice, m_pContext))))

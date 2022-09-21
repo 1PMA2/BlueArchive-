@@ -78,6 +78,7 @@ protected:
 	_bool					m_bPicked = false;
 	_bool					m_bFoundMonster = false;
 	_bool					m_bFoundObstacle = false;
+	_vector					m_vPreTranslation = {};
 
 protected:
 	HRESULT SetUp_Components();

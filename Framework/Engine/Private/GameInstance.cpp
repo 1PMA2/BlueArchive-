@@ -58,7 +58,7 @@ HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInst, _uint iNumLevels, cons
 	/* 컴포넌트 매니져의 예약. */
 	if (FAILED(m_pComponent_Manager->Reserve_Container(iNumLevels)))
 		return E_FAIL;
-
+	
 	return S_OK;	
 }
 
@@ -318,13 +318,15 @@ const LIGHTDESC * CGameInstance::Get_LightDesc(_uint iIndex)
 	return m_pLight_Manager->Get_LightDesc(iIndex);
 }
 
-//_bool CGameInstance::Picking(CCollider * pCollider, CTransform * pTransform)
-//{
-//	if (nullptr == m_pPicking)
-//		return nullptr;
-//
-//	return m_pPicking->Picking(pCollider, pTransform);
-//}
+_bool CGameInstance::Picking(CVIBuffer * pVIBuffer, CTransform * pTransform, _float4 * pOut)
+{
+	if (nullptr == m_pPicking)
+		return nullptr;
+
+	return m_pPicking->Picking(pVIBuffer, pTransform, pOut);
+}
+
+
 
 
 

@@ -1,8 +1,9 @@
 #include "..\Public\Picking.h"
-#include "VIBuffer.h"
 #include "Transform.h"
 #include "GameInstance.h"
 #include "PipeLine.h"
+#include "VIBuffer.h"
+
 IMPLEMENT_SINGLETON(CPicking)
 
 CPicking::CPicking()
@@ -73,22 +74,50 @@ void CPicking::Compute_RayInWorldSpace()
 	XMStoreFloat4(&m_vRayDir, XMVector3TransformNormal(XMLoadFloat4(&vRayDir), ViewMatrixInv));
 }
 
-//_bool CPicking::Picking(CCollider* pCollider, CTransform * pTransform)
-//{
-//	_matrix		WorldMatrix = pTransform->Get_WorldMatrix();
-//	WorldMatrix = XMMatrixInverse(nullptr, WorldMatrix);
-//
-//	_vector			vRayPos, vRayDir;
-//
-//	vRayPos = XMVector3TransformCoord(m_vRayPos, WorldMatrix);
-//	vRayDir = XMVector3TransformNormal(m_vRayDir, WorldMatrix);
-//	vRayDir = XMVector3Normalize(vRayDir);
-//	
-//	_float fDist = 0.f;
-//
-//	return pCollider->CollisionRay(vRayPos, vRayDir, fDist);
-//}
+_bool CPicking::Picking(CVIBuffer * pVIBuffer, CTransform * pTransform, _float4 * pOut)
+{
+		_matrix         WorldMatrix = XMMatrixInverse(nullptr, pTransform->Get_WorldMatrix());
 
+
+
+		_vector		vRayPos = { 0.f,0.f,0.f };
+		_vector     vRayDir = { 0.f,0.f,0.f };
+
+
+		vRayPos = XMVector3TransformCoord(XMLoadFloat4(&m_vRayPos), WorldMatrix);
+		vRayDir = XMVector3TransformNormal(XMLoadFloat4(&m_vRayDir), WorldMatrix);
+
+		vRayDir = XMVector3Normalize(vRayDir);
+
+
+		_uint			iNumFaces = pVIBuffer->Get_NumPrimitive();
+		_float4*	    pVerticesPos = pVIBuffer->Get_VerticesPos();
+
+		_float		 fDist;
+
+		for (_uint i = 0; i < iNumFaces; ++i)
+		{
+			_uint3		iIndices = pVIBuffer->Get_Indices(i);
+
+			_float4		vPickedPos;
+			_fvector    vVec1 = XMLoadFloat4(&pVerticesPos[iIndices.ix]);
+			GXMVECTOR    vVec2 = XMLoadFloat4(&pVerticesPos[iIndices.iy]);
+			HXMVECTOR    vVec3 = XMLoadFloat4(&pVerticesPos[iIndices.iz]);
+
+
+			if (true == TriangleTests::Intersects(vRayPos, vRayDir, vVec1, vVec2, vVec3, fDist))
+			{
+				//XMLoadFloat3(&vRayDir) = XMVector3Normalize(XMLoadFloat3(&vRayDir));
+				XMStoreFloat4(&vPickedPos, XMVector3Normalize(vRayDir) * fDist + vRayPos);
+				XMStoreFloat4(pOut, XMVector3TransformCoord(XMLoadFloat4(&vPickedPos), pTransform->Get_WorldMatrix()));
+
+				return true;
+			}
+		}
+
+		return false;
+
+}
 
 void CPicking::Free()
 {

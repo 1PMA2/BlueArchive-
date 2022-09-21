@@ -40,7 +40,6 @@ private:
 private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
-	//HRESULT Create_FilterTexture();
 
 public:
 	virtual void OnDisable() override;

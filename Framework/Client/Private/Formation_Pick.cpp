@@ -31,7 +31,6 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 
 	if (m_pOwner->Is_Picked())
 	{
-
 		pState = CFormation_Pick::Create(m_pOwner);
 	}
 	else

@@ -10,14 +10,21 @@
 CEx_Cutin::CEx_Cutin(CStudent* pOwner)
 	:CState(pOwner)
 {
+
 	m_eAnim = ANIM_EXCUTIN;
 	pOwner->Set_State(m_eAnim);
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
+
+	CSensei* pSensei = CSensei::Get_Instance();
+
 	if (true == m_pOwner->Get_StudentInfo().bExModel)
 		pModel->Set_CurrentAnimation(0);
 	else
+	{
+		pSensei->Use_Ex(true, m_pOwner->Get_StudentInfo().fExCost);
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+	}
 }
 
 
@@ -27,9 +34,8 @@ CEx_Cutin::~CEx_Cutin()
 
 void CEx_Cutin::Enter()
 {
-	CSensei* pSensei = CSensei::Get_Instance();
+	
 
-	pSensei->Use_Ex(true, m_pOwner->Get_StudentInfo().fExCost);
 }
 
 CState * CEx_Cutin::Loop(_float fTimeDelta)

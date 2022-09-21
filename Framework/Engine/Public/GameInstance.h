@@ -82,7 +82,7 @@ public: /* For.Light_Manager */
 public: /* For.Picking */
 	_float4 Get_RayPos() { return m_pPicking->Get_RayPos(); }
 	_float4 Get_RayDir() { return m_pPicking->Get_RayDir(); }
-	/*_bool Picking(CCollider* pCollider, CTransform * pTransform);*/
+	_bool Picking(CVIBuffer* pVIBuffer, CTransform* pTransform, _float4* pOut);
 
 
 

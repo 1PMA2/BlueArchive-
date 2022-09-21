@@ -149,7 +149,46 @@ HRESULT CStudent::SetUp_ShaderResource()
 
 HRESULT CStudent::FormationLevel_Collision()
 {
-	return E_NOTIMPL;
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	if (m_bPicked)
+	{
+		_float4 fOut;
+		pGameInstance->Picking((CVIBuffer*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_VIBuffer"), 0),
+			(CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 0), &fOut);
+
+		fOut.y -= 0.5f;
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4(&fOut));
+
+		if (-0.5f < fOut.y && 1.f > fOut.y)
+		{
+			if (1.f <= fOut.x)
+			{
+				m_tStudentInfo.eFormation = FORMATION_FIRST;
+				m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+			}
+			else if (1.f > fOut.x && 0.f <= fOut.x)
+			{
+				m_tStudentInfo.eFormation = FORMATION_SECOND;
+				m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+			}
+			else if (0.f > fOut.x && -1.f <= fOut.x)
+			{
+				m_tStudentInfo.eFormation = FORMATION_THIRD;
+				m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+			}
+			else if (-1.f > fOut.x && -2.f <= fOut.x)
+			{
+				m_tStudentInfo.eFormation = FORMATION_FOURTH;
+				m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+			}
+		}
+
+	}
+	else
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation);
+
+	return S_OK;
 }
 
 HRESULT CStudent::GamePlayLevel_Collision()
@@ -178,10 +217,20 @@ void CStudent::InitializeStudentState()
 		switch (m_tStudentInfo.eFormation)
 		{
 		case FORMATION_FIRST:
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, -5.f, 1.f));
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(1.5f, 0.f, 0.f, 1.f));
+			m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
 			break;
 		case FORMATION_SECOND:
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 0.f, 1.f));
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.5f, 0.f, 0.f, 1.f));
+			m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+			break;
+		case FORMATION_THIRD:
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-0.5f, 0.f, 0.f, 1.f));
+			m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+			break;
+		case FORMATION_FOURTH:
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-1.5f, 0.f, 0.f, 1.f));
+			m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
 			break;
 		}
 	}
