@@ -200,6 +200,12 @@ HRESULT CLoader::Loading_ForFormationLevel()
 
 		lstrcpy(m_szLoadingText, TEXT("객체를 생성중입니다."));
 
+
+		/* For.Prototype_GameObject_Terrain*/
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Terrain"),
+			CTerrain::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		/* For.Prototype_GameObject_Student */
 
 		/* For.Prototype_GameObject_Camera_Free*/
@@ -224,7 +230,18 @@ HRESULT CLoader::Loading_ForFormationLevel()
 			CCollider::Create(m_pDevice, m_pContext, CCollider::TYPE_SPHERE))))
 			return E_FAIL;
 
+		/* For.Prototype_Component_Texture_Terrain */
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Terrain"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Grass_%d.dds"), 2))))
+			return E_FAIL;
+
 		lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
+
+		/* For.Prototype_Component_VIBuffer_Terrain */
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Terrain"),
+			CVIBuffer_Terrain::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Height.bmp")))))
+			return E_FAIL;
+
 		_matrix			TransformMatrix;
 		ZeroMemory(&TransformMatrix, sizeof(_matrix));
 		TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
@@ -237,7 +254,7 @@ HRESULT CLoader::Loading_ForFormationLevel()
 		g_bFormation = false;
 	}
 
-	lstrcpy(m_szLoadingText, TEXT("fhql로딩 끝 "));
+	lstrcpy(m_szLoadingText, TEXT("편성 로딩 끝 "));
 
 	m_isFinished = true;
 	Safe_Release(pGameInstance);
@@ -267,11 +284,6 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		/* For.Prototype_GameObject_Sky */
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Sky"),
 			CSky::Create(m_pDevice, m_pContext))))
-			return E_FAIL;
-
-		/* For.Prototype_GameObject_Terrain*/
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Terrain"),
-			CTerrain::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 		///* For.Prototype_GameObject_Student */
@@ -318,27 +330,18 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/SkyBox/Sky_%d.dds"), 4))))
 			return E_FAIL;
 
-		/* For.Prototype_Component_Texture_Terrain */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Terrain"),
-			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Grass_%d.dds"), 2))))
-			return E_FAIL;
 
-		/* For.Prototype_Component_Texture_Filter */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Filter"),
-			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Filter.bmp"), 1))))
-			return E_FAIL;
+		///* For.Prototype_Component_Texture_Filter */
+		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Filter"),
+		//	CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Filter.bmp"), 1))))
+		//	return E_FAIL;
 
-		/* For.Prototype_Component_Texture_Brush */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Brush"),
-			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Brush.png"), 1))))
-			return E_FAIL;
+		///* For.Prototype_Component_Texture_Brush */
+		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Brush"),
+		//	CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Brush.png"), 1))))
+		//	return E_FAIL;
 
 		lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
-
-		/* For.Prototype_Component_VIBuffer_Terrain */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_VIBuffer_Terrain"),
-			CVIBuffer_Terrain::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Height.bmp")))))
-			return E_FAIL;
 
 		/* For.Prototype_Component_VIBuffer_Cube*/
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_VIBuffer_Cube"),
@@ -354,11 +357,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_ForkLift"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/ForkLift/", "ForkLift.fbx", TransformMatrix))))
 			return E_FAIL;
-
-
-		/* For.Prototype_Component_Model_Fiona */
 		
-
 		ZeroMemory(&TransformMatrix, sizeof(_matrix));
 		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru_Ex"),

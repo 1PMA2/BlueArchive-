@@ -27,8 +27,8 @@ HRESULT CTerrain::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;
 
-	if (FAILED(Create_FilterTexture()))
-		return E_FAIL;
+	//if (FAILED(Create_FilterTexture()))
+	//	return E_FAIL;
 
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
@@ -74,19 +74,19 @@ HRESULT CTerrain::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_Texture */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Terrain"), TEXT("Com_Texture"), (CComponent**)&m_pTextureCom[TYPE_DIFFUSE])))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Terrain"), TEXT("Com_Texture"), (CComponent**)&m_pTextureCom[TYPE_DIFFUSE])))
 		return E_FAIL;
 
-	/* For.Com_Filter */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Filter"), TEXT("Com_Filter"), (CComponent**)&m_pTextureCom[TYPE_FILTER])))
-		return E_FAIL;
+	///* For.Com_Filter */
+	//if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Filter"), TEXT("Com_Filter"), (CComponent**)&m_pTextureCom[TYPE_FILTER])))
+	//	return E_FAIL;
 
-	/* For.Com_Brush */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Brush"), TEXT("Com_Brush"), (CComponent**)&m_pTextureCom[TYPE_BRUSH])))
-		return E_FAIL;
+	///* For.Com_Brush */
+	//if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Brush"), TEXT("Com_Brush"), (CComponent**)&m_pTextureCom[TYPE_BRUSH])))
+	//	return E_FAIL;
 
 	/* For.Com_VIBuffer */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_VIBuffer_Terrain"), TEXT("Com_VIBuffer"), (CComponent**)&m_pVIBufferCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Terrain"), TEXT("Com_VIBuffer"), (CComponent**)&m_pVIBufferCom)))
 		return E_FAIL;
 
 	return S_OK;
@@ -109,8 +109,8 @@ HRESULT CTerrain::SetUp_ShaderResource()
 		return E_FAIL;
 	if (FAILED(m_pTextureCom[TYPE_DIFFUSE]->Set_ShaderResourceView(m_pShaderCom, "g_DestDiffTexture", 1)))
 		return E_FAIL;
-	if (FAILED(m_pTextureCom[TYPE_BRUSH]->Set_ShaderResourceView(m_pShaderCom, "g_BrushTexture", 0)))
-		return E_FAIL;
+	//if (FAILED(m_pTextureCom[TYPE_BRUSH]->Set_ShaderResourceView(m_pShaderCom, "g_BrushTexture", 0)))
+	//	return E_FAIL;
 	/*if (FAILED(m_pTextureCom[TYPE_FILTER]->Set_ShaderResourceView(m_pShaderCom, "g_FilterTexture", 0)))
 		return E_FAIL;*/
 
@@ -145,62 +145,62 @@ HRESULT CTerrain::SetUp_ShaderResource()
 	return S_OK;
 }
 
-HRESULT CTerrain::Create_FilterTexture()
-{
-	ID3D11Texture2D*			pTexture2D = nullptr;
-
-
-	D3D11_TEXTURE2D_DESC	TextureDesc;
-	ZeroMemory(&TextureDesc, sizeof(D3D11_TEXTURE2D_DESC));
-
-	TextureDesc.Width = 256;
-	TextureDesc.Height = 256;
-	TextureDesc.MipLevels = 1;
-	TextureDesc.ArraySize = 1;
-	TextureDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-
-	TextureDesc.SampleDesc.Quality = 0;
-	TextureDesc.SampleDesc.Count = 1;
-
-	TextureDesc.Usage = D3D11_USAGE_DYNAMIC;
-	TextureDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
-	TextureDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	TextureDesc.MiscFlags = 0;
-
-	if (FAILED(m_pDevice->CreateTexture2D(&TextureDesc, nullptr, &pTexture2D)))
-		return E_FAIL;
-
-	D3D11_MAPPED_SUBRESOURCE		SubResource;
-
-	m_pContext->Map(pTexture2D, 0, D3D11_MAP_WRITE_DISCARD, 0, &SubResource);
-
-	for (_uint i = 0; i < 256; ++i)
-	{
-		for (_uint j = 0; j < 256; ++j)
-		{
-			_uint iIndex = i * 256 + j;
-
-			if(j < 128)
-				((_uint*)SubResource.pData)[iIndex] = D3DCOLOR_ABGR(255, 255, 255, 255);
-			else
-				((_uint*)SubResource.pData)[iIndex] = D3DCOLOR_ABGR(255, 0, 0, 0);
-		}
-	}
-
-	
-
-	m_pContext->Unmap(pTexture2D, 0);
-
-	if (FAILED(SaveDDSTextureToFile(m_pContext, pTexture2D, TEXT("../Bin/Test.dds"))))
-		return E_FAIL;
-
-	if (FAILED(m_pDevice->CreateShaderResourceView(pTexture2D, nullptr, &m_pFilterTexture)))
-		return E_FAIL;
-
-	Safe_Release(pTexture2D);
-
-	return S_OK;
-}
+//HRESULT CTerrain::Create_FilterTexture()
+//{
+//	ID3D11Texture2D*			pTexture2D = nullptr;
+//
+//
+//	D3D11_TEXTURE2D_DESC	TextureDesc;
+//	ZeroMemory(&TextureDesc, sizeof(D3D11_TEXTURE2D_DESC));
+//
+//	TextureDesc.Width = 256;
+//	TextureDesc.Height = 256;
+//	TextureDesc.MipLevels = 1;
+//	TextureDesc.ArraySize = 1;
+//	TextureDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+//
+//	TextureDesc.SampleDesc.Quality = 0;
+//	TextureDesc.SampleDesc.Count = 1;
+//
+//	TextureDesc.Usage = D3D11_USAGE_DYNAMIC;
+//	TextureDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+//	TextureDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+//	TextureDesc.MiscFlags = 0;
+//
+//	if (FAILED(m_pDevice->CreateTexture2D(&TextureDesc, nullptr, &pTexture2D)))
+//		return E_FAIL;
+//
+//	D3D11_MAPPED_SUBRESOURCE		SubResource;
+//
+//	m_pContext->Map(pTexture2D, 0, D3D11_MAP_WRITE_DISCARD, 0, &SubResource);
+//
+//	for (_uint i = 0; i < 256; ++i)
+//	{
+//		for (_uint j = 0; j < 256; ++j)
+//		{
+//			_uint iIndex = i * 256 + j;
+//
+//			if(j < 128)
+//				((_uint*)SubResource.pData)[iIndex] = D3DCOLOR_ABGR(255, 255, 255, 255);
+//			else
+//				((_uint*)SubResource.pData)[iIndex] = D3DCOLOR_ABGR(255, 0, 0, 0);
+//		}
+//	}
+//
+//	
+//
+//	m_pContext->Unmap(pTexture2D, 0);
+//
+//	if (FAILED(SaveDDSTextureToFile(m_pContext, pTexture2D, TEXT("../Bin/Test.dds"))))
+//		return E_FAIL;
+//
+//	if (FAILED(m_pDevice->CreateShaderResourceView(pTexture2D, nullptr, &m_pFilterTexture)))
+//		return E_FAIL;
+//
+//	Safe_Release(pTexture2D);
+//
+//	return S_OK;
+//}
 
 void CTerrain::OnDisable()
 {

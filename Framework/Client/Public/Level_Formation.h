@@ -18,6 +18,7 @@ public:
 
 public:
 	HRESULT Ready_Lights();
+	HRESULT Ready_Layer_BackGround(const _tchar* pLayerTag);
 	HRESULT Ready_Layer_Camera(const _tchar* pLayerTag);
 	HRESULT Ready_Layer_Student(const _tchar* pLayerTag);
 

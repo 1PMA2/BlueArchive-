@@ -23,10 +23,13 @@ HRESULT CLevel_Formation::Initialize()
 	if (FAILED(Ready_Lights()))
 		return E_FAIL;
 
-	if (FAILED(Ready_Layer_Camera(TEXT("Layer_FormationCamera"))))
+	if (FAILED(Ready_Layer_BackGround(TEXT("Layer_Formation_BackGround"))))
 		return E_FAIL;
 
-	if (FAILED(Ready_Layer_Student(TEXT("Layer_FormationStudent"))))
+	if (FAILED(Ready_Layer_Camera(TEXT("Layer_Formation_Camera"))))
+		return E_FAIL;
+
+	if (FAILED(Ready_Layer_Student(TEXT("Layer_Formation_Student"))))
 		return E_FAIL;
 
 	return S_OK;
@@ -94,6 +97,22 @@ HRESULT CLevel_Formation::Ready_Lights()
 	return E_FAIL;*/
 
 	RELEASE_INSTANCE(CGameInstance);
+
+	return S_OK;
+}
+
+HRESULT CLevel_Formation::Ready_Layer_BackGround(const _tchar * pLayerTag)
+{
+
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+	Safe_AddRef(pGameInstance);
+
+	/* For.Terrain */
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Terrain"))))
+	return E_FAIL;
+
+
+	Safe_Release(pGameInstance);
 
 	return S_OK;
 }

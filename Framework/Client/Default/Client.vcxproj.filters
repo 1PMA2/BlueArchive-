@@ -101,7 +101,7 @@
       <Filter>02.GameObject\01.State\Hide_FireStart</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Ex.h">
-      <Filter>02.GameObject\01.State\EX</Filter>
+      <Filter>02.GameObject\01.State\Ex</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Knee_ZoomFire.h">
       <Filter>02.GameObject\01.State\Knee_ZoomFire</Filter>
@@ -132,6 +132,9 @@
     </ClInclude>
     <ClInclude Include="..\Public\Formation_Pick.h">
       <Filter>02.GameObject\01.State\Formation_Pick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Formation_Terrain.h">
+      <Filter>02.GameObject\06.Terrain\Formation_Terrain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -223,7 +226,7 @@
       <Filter>02.GameObject\01.State\Hide_FireStart</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Ex.cpp">
-      <Filter>02.GameObject\01.State\EX</Filter>
+      <Filter>02.GameObject\01.State\Ex</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Knee_ZoomFire.cpp">
       <Filter>02.GameObject\01.State\Knee_ZoomFire</Filter>
@@ -254,6 +257,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Formation_Pick.cpp">
       <Filter>02.GameObject\01.State\Formation_Pick</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Formation_Terrain.cpp">
+      <Filter>02.GameObject\06.Terrain\Formation_Terrain</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -351,9 +357,6 @@
     </Filter>
     <Filter Include="02.GameObject\01.State">
       <UniqueIdentifier>{4a482f13-42f2-42e5-8eb8-9047dc1b6c6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\EX">
-      <UniqueIdentifier>{49b0521f-68e1-4d72-9e6f-a17210f48b90}</UniqueIdentifier>
     </Filter>
     <Filter Include="02.GameObject\01.State\EX_Cutin">
       <UniqueIdentifier>{0b9da3b3-34fa-4167-a641-28c32f72f75e}</UniqueIdentifier>
@@ -453,6 +456,12 @@
     </Filter>
     <Filter Include="01.Level\Level_Formation">
       <UniqueIdentifier>{4dcbffa4-0c45-4902-bd56-e72df6b4ef97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\06.Terrain\Formation_Terrain">
+      <UniqueIdentifier>{bb9eab73-8a60-4965-b126-bc93a136cc2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Ex">
+      <UniqueIdentifier>{49b0521f-68e1-4d72-9e6f-a17210f48b90}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

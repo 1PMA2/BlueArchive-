@@ -181,6 +181,7 @@
     <ClInclude Include="..\Public\ForkLift.h" />
     <ClInclude Include="..\Public\Formation_Idle.h" />
     <ClInclude Include="..\Public\Formation_Pick.h" />
+    <ClInclude Include="..\Public\Formation_Terrain.h" />
     <ClInclude Include="..\Public\Hide_FireStart.h" />
     <ClInclude Include="..\Public\Hide_Idle.h" />
     <ClInclude Include="..\Public\Hide_Reloading.h" />
@@ -224,6 +225,7 @@
     <ClCompile Include="..\Private\ForkLift.cpp" />
     <ClCompile Include="..\Private\Formation_Idle.cpp" />
     <ClCompile Include="..\Private\Formation_Pick.cpp" />
+    <ClCompile Include="..\Private\Formation_Terrain.cpp" />
     <ClCompile Include="..\Private\Hide_FireStart.cpp" />
     <ClCompile Include="..\Private\Hide_Idle.cpp" />
     <ClCompile Include="..\Private\Hide_Reloading.cpp" />
