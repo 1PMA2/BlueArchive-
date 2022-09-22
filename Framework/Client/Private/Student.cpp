@@ -149,46 +149,16 @@ HRESULT CStudent::SetUp_ShaderResource()
 
 HRESULT CStudent::FormationLevel_Collision()
 {
-	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-	CSensei* pSensei = GET_SENSEI;
-
-	if (m_bPicked)
+	if (m_pAABBCom->CollisionRay())
 	{
-		_float4 fOut;
-		pGameInstance->Picking((CVIBuffer*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_VIBuffer"), 0),
-			(CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 0), &fOut);
-
-		fOut.y -= 0.5f; // offset
-		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4(&fOut));
-
-		if (-0.5f < fOut.y && 1.f > fOut.y)
+		if (KEY(LBUTTON, TAP))
 		{
-			if (1.f <= fOut.x)
-			{
-				m_tStudentInfo.eFormation = FORMATION_FIRST;
-				m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
-			}
-			else if (1.f > fOut.x && 0.f <= fOut.x)
-			{
-				m_tStudentInfo.eFormation = FORMATION_SECOND;
-				m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
-			}
-			else if (0.f > fOut.x && -1.f <= fOut.x)
-			{
-				m_tStudentInfo.eFormation = FORMATION_THIRD;
-				m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
-			}
-			else if (-1.f > fOut.x && -2.f <= fOut.x)
-			{
-				m_tStudentInfo.eFormation = FORMATION_FOURTH;
-				m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
-			}
-		}  //포메이션 위치
-		
-	}
-	else
-		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation); //이전위치로
+			m_bPicked = true;
+		}
 
+	}
+	if (KEY(LBUTTON, AWAY))
+		m_bPicked = false;
 
 	return S_OK;
 }
@@ -200,7 +170,7 @@ HRESULT CStudent::GamePlayLevel_Collision()
 
 void CStudent::InitializeStudentState()
 {
-	CSensei* pSensei = GET_SENSEI;
+	CSensei* pSensei = GET_INSTANCE(CSensei);
 
 	LEVEL eLEVEL = pSensei->Get_CurrentLevel();
 
@@ -251,7 +221,7 @@ void CStudent::InitializeStudentState()
 			break;
 		}
 	}
-
+	RELEASE_INSTANCE(CSensei);
 }
 
 void CStudent::Free()

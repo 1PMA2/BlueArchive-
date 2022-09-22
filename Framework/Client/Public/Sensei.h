@@ -55,6 +55,7 @@ public:
 public:
 	void Set_FormationStudents(CStudent* pStudents);
 	CStudent* Get_FormationStudents(_uint iIndex);
+	_uint Get_FormationStudentsNum() { return (_uint)m_Formations.size(); }
 
 
 

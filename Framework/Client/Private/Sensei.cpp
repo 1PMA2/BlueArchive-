@@ -114,13 +114,12 @@ void CSensei::Set_FormationStudents(CStudent* pStudents)
 
 CStudent * CSensei::Get_FormationStudents(_uint iIndex)
 {
-	//auto	iter = m_Formations.begin();
-	//
-	//for (_uint i = 0; i < iIndex; ++i)
-	//	++iter;
-	//
-	//return (*iter);
-	return m_Formations.at(iIndex);
+	auto	iter = m_Formations.begin();
+	
+	for (_uint i = 0; i < iIndex; ++i)
+		++iter;
+	
+	return (*iter);
 }
 
 void CSensei::Free()

@@ -63,22 +63,6 @@ void CAru::Tick(_float fTimeDelta)
 
 void CAru::LateTick(_float fTimeDelta)
 {
-
-	
-	CSensei* pSensei = CSensei::Get_Instance();
-
-	switch (pSensei->Get_CurrentLevel())
-	{
-	case LEVEL_FORMATION:
-		FormationLevel_Collision();
-		break;
-	case LEVEL_GAMEPLAY:
-		GamePlayLevel_Collision();
-		break;
-	}
-
-	
-
 	__super::LateTick(fTimeDelta);
 }
 
@@ -140,17 +124,6 @@ HRESULT CAru::SetUp_ShaderResource()
 
 HRESULT CAru::FormationLevel_Collision()
 {
-	if (m_pAABBCom->CollisionRay())
-	{ 
-		if (KEY(LBUTTON, TAP))
-		{
-			m_bPicked = true;
-		}
-		
-	}
-	if(KEY(LBUTTON, AWAY))
-		m_bPicked = false;
-
 	__super::FormationLevel_Collision();
 
 	return S_OK;

@@ -140,16 +140,7 @@ HRESULT CMutsuki::SetUp_ShaderResource()
 
 HRESULT CMutsuki::FormationLevel_Collision()
 {
-	if (m_pAABBCom->CollisionRay())
-	{ 
-		if (KEY(LBUTTON, TAP))
-		{
-			m_bPicked = true;
-		}
-		
-	}
-	if(KEY(LBUTTON, AWAY))
-		m_bPicked = false;
+
 
 	__super::FormationLevel_Collision();
 

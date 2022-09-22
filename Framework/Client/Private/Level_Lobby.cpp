@@ -14,9 +14,6 @@ CLevel_Lobby::CLevel_Lobby(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 
 HRESULT CLevel_Lobby::Initialize()
 {
-	CSensei* pSensei = CSensei::Get_Instance();
-
-	pSensei->Set_CurrentLevel(LEVEL_LOBBY);
 
 	if (FAILED(__super::Initialize()))
 		return E_FAIL;
@@ -24,9 +21,6 @@ HRESULT CLevel_Lobby::Initialize()
 	if (FAILED(Ready_Layer_Lobby(TEXT("Layer_Lobby_BG"))))
 		return E_FAIL;
 
-
-	pSensei->Use_Ex(false);
-	
 
 	return S_OK;
 }
