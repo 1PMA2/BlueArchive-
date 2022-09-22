@@ -40,6 +40,11 @@ void CLevel_Manager::Tick(_float fTimeDelta)
 	m_pCurrentLevel->Tick(fTimeDelta);
 }
 
+void CLevel_Manager::Late_Tick(_float fTimeDelta)
+{
+	m_pCurrentLevel->Late_Tick(fTimeDelta);
+}
+
 HRESULT CLevel_Manager::Render()
 {
 	if (nullptr == m_pCurrentLevel)

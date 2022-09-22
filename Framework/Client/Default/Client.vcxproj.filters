@@ -136,6 +136,9 @@
     <ClInclude Include="..\Public\Formation_Terrain.h">
       <Filter>02.GameObject\06.Terrain\Formation_Terrain</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Mutsuki.h">
+      <Filter>02.GameObject\00.Student\01. Mutsuki</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -260,6 +263,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Formation_Terrain.cpp">
       <Filter>02.GameObject\06.Terrain\Formation_Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Mutsuki.cpp">
+      <Filter>02.GameObject\00.Student\01. Mutsuki</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

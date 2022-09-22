@@ -13,6 +13,7 @@ protected:
 public:
 	virtual HRESULT Initialize();
 	virtual void Tick(_float TimeDelta);
+	virtual void Late_Tick(_float TimeDelta);
 	virtual HRESULT Render();
 
 protected:

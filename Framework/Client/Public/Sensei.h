@@ -31,7 +31,10 @@ public:
 	void Set_TimeSpeed();
 	void Set_Camera(CAMERA eCamera) { m_tSensei.eCamera = eCamera; }
 
-	void Set_Student(_tchar* pStudentTag, CStudent* pStudent);
+	void Set_Student(const _tchar* pStudentTag, CStudent* pStudent);
+	void Set_RealStudent(const _tchar* pStudentTag, CStudent* pStudent);
+	const _tchar* Get_StudentName(_int iIndex);
+	_int Get_StudentNum() { return (_int)m_Student.size(); }
 	CStudent* Get_Student(_tchar* pStudentTag);
 	CStudent* Get_StudentIndex(_uint iIndex);
 
@@ -42,7 +45,6 @@ public:
 public:
 	LEVEL m_eCurrentLevel = LEVEL_END;
 	SENSEIINFO m_tSensei;
-	_tchar*	pFormationStudents[4];
 
 	map<const _tchar*, class CStudent*>					m_Student;
 	typedef map<const _tchar*, class CStudent*>			STUDENTS;
@@ -53,7 +55,6 @@ public:
 public:
 	void Set_FormationStudents(CStudent* pStudents);
 	CStudent* Get_FormationStudents(_uint iIndex);
-	_int Get_StudentNum() { return (_int)m_Student.size(); }
 
 
 

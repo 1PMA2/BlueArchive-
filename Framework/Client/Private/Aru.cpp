@@ -141,13 +141,16 @@ HRESULT CAru::SetUp_ShaderResource()
 HRESULT CAru::FormationLevel_Collision()
 {
 	if (m_pAABBCom->CollisionRay())
-	{
-		if (KEY(LBUTTON, HOLD))
+	{ 
+		if (KEY(LBUTTON, TAP))
+		{
 			m_bPicked = true;
-		else
-			m_bPicked = false;
-			
+		}
+		
 	}
+	if(KEY(LBUTTON, AWAY))
+		m_bPicked = false;
+
 	__super::FormationLevel_Collision();
 
 	return S_OK;

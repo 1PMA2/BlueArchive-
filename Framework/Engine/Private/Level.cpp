@@ -16,6 +16,10 @@ void CLevel::Tick(_float TimeDelta)
 {
 }
 
+void CLevel::Late_Tick(_float TimeDelta)
+{
+}
+
 HRESULT CLevel::Render()
 {
 	return S_OK;

@@ -11,9 +11,29 @@ CSensei::CSensei()
 }
 
 
-void CSensei::Set_Student(_tchar* pStudentTag, CStudent* pStudent)
+void CSensei::Set_Student(const _tchar* pStudentTag, CStudent* pStudent)
 {
 	m_Student.emplace(pStudentTag, pStudent); //선생이 뽑은 학생
+}
+
+void CSensei::Set_RealStudent(const _tchar * pStudentTag, CStudent * pStudent)
+{
+	auto	iter = find_if(m_Student.begin(), m_Student.end(), CTag_Finder(pStudentTag));
+	
+	if (iter == m_Student.end())
+		return;
+
+	iter->second = pStudent;
+}
+
+const _tchar * CSensei::Get_StudentName(_int iIndex)
+{
+	auto	iter = m_Student.begin();
+
+	for (_uint i = 0; i < iIndex; ++i)
+		++iter;
+
+	return iter->first;
 }
 
 CStudent * CSensei::Get_Student(_tchar* pStudentTag)
@@ -94,12 +114,13 @@ void CSensei::Set_FormationStudents(CStudent* pStudents)
 
 CStudent * CSensei::Get_FormationStudents(_uint iIndex)
 {
-	auto	iter = m_Formations.begin();
-
-	for (_uint i = 0; i < iIndex; ++i)
-		++iter;
-
-	return (*iter);
+	//auto	iter = m_Formations.begin();
+	//
+	//for (_uint i = 0; i < iIndex; ++i)
+	//	++iter;
+	//
+	//return (*iter);
+	return m_Formations.at(iIndex);
 }
 
 void CSensei::Free()

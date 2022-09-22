@@ -50,7 +50,12 @@ void CLevel_Formation::Tick(_float fTimeDelta)
 		Safe_Release(pGameInstance);
 	}
 
-	if (KEY(LBUTTON, TAP))
+
+}
+
+void CLevel_Formation::Late_Tick(_float TimeDelta)
+{
+	if (KEY(RBUTTON, TAP))
 	{
 		int i = 10;
 	}
@@ -160,6 +165,7 @@ HRESULT CLevel_Formation::Ready_Layer_Student(const _tchar * pLayerTag)
 		if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, pSensei->Get_StudentIndex(i)->Get_StudentInfo().pName)))
 			return E_FAIL;
 	}
+
 	Safe_Release(pGameInstance);
 
 	return S_OK;

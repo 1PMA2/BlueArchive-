@@ -199,6 +199,7 @@
     <ClInclude Include="..\Public\LoadingImage.h" />
     <ClInclude Include="..\Public\MainApp.h" />
     <ClInclude Include="..\Public\Monster.h" />
+    <ClInclude Include="..\Public\Mutsuki.h" />
     <ClInclude Include="..\Public\Run.h" />
     <ClInclude Include="..\Public\Run_Sign.h" />
     <ClInclude Include="..\Public\Sensei.h" />
@@ -243,6 +244,7 @@
     <ClCompile Include="..\Private\LoadingImage.cpp" />
     <ClCompile Include="..\Private\MainApp.cpp" />
     <ClCompile Include="..\Private\Monster.cpp" />
+    <ClCompile Include="..\Private\Mutsuki.cpp" />
     <ClCompile Include="..\Private\Run.cpp" />
     <ClCompile Include="..\Private\Run_Sign.cpp" />
     <ClCompile Include="..\Private\Sensei.cpp" />

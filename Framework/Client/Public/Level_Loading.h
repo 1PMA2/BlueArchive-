@@ -18,6 +18,7 @@ public:
 public:
 	virtual HRESULT Initialize(LEVEL eNextLevel);
 	virtual void Tick(_float TimeDelta);
+	virtual void Late_Tick(_float TimeDelta);
 	virtual HRESULT Render();
 
 private:

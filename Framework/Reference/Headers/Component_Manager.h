@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 /* 컴포넌트들의 원형을 가지고 있는다. */
 #include "Model.h"
 #include "Shader.h"

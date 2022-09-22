@@ -18,6 +18,7 @@ public:
 public:
 	HRESULT Open_Level(_uint iLevelID, class CLevel* pLevel);
 	void Tick(_float fTimeDelta);
+	void Late_Tick(_float fTimeDelta);
 	HRESULT Render();
 
 private:

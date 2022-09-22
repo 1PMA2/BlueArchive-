@@ -68,6 +68,10 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 	}
 }
 
+void CLevel_GamePlay::Late_Tick(_float TimeDelta)
+{
+}
+
 HRESULT CLevel_GamePlay::Render()
 {
 	if (FAILED(__super::Render()))

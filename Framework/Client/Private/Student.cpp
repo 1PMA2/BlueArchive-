@@ -184,18 +184,11 @@ HRESULT CStudent::FormationLevel_Collision()
 				m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
 			}
 		}  //포메이션 위치
-
-	/*	for (int i = 0; i < 4; ++i)
-		{
-			m_pAABBCom;
-
-
-		}*/
-
-
+		
 	}
 	else
 		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation); //이전위치로
+
 
 	return S_OK;
 }

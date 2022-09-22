@@ -49,6 +49,10 @@ void CLevel_Lobby::Tick(_float fTimeDelta)
 
 }
 
+void CLevel_Lobby::Late_Tick(_float TimeDelta)
+{
+}
+
 HRESULT CLevel_Lobby::Render()
 {
 	if (FAILED(__super::Render()))

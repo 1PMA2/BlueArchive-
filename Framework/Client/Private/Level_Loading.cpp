@@ -73,6 +73,10 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 	}
 }
 
+void CLevel_Loading::Late_Tick(_float TimeDelta)
+{
+}
+
 HRESULT CLevel_Loading::Render()
 {
 
