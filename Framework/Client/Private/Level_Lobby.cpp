@@ -21,6 +21,9 @@ HRESULT CLevel_Lobby::Initialize()
 	if (FAILED(Ready_Layer_Lobby(TEXT("Layer_Lobby_BG"))))
 		return E_FAIL;
 
+	CSensei* pSensei = GET_SENSEI;
+
+	pSensei->Release_FormationStudents();
 
 	return S_OK;
 }

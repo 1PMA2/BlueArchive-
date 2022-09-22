@@ -63,6 +63,19 @@ void CAru::Tick(_float fTimeDelta)
 
 void CAru::LateTick(_float fTimeDelta)
 {
+
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	switch (pSensei->Get_CurrentLevel())
+	{
+	case LEVEL_FORMATION:
+		FormationLevel_Collision();
+		break;
+	case LEVEL_GAMEPLAY:
+		GamePlayLevel_Collision();
+		break;
+	}
+
 	__super::LateTick(fTimeDelta);
 }
 
