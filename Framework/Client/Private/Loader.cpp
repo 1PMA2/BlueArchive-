@@ -315,7 +315,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 {
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 
-
+	CSensei* pSensei = GET_SENSEI;
 	Safe_AddRef(pGameInstance);
 
 

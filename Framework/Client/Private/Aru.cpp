@@ -34,6 +34,7 @@ HRESULT CAru::Initialize_Prototype()
 	m_tStudentInfo.iBullet = 5;
 	m_tStudentInfo.iRange = 12;
 	m_tStudentInfo.iShield = 0;
+	m_tStudentInfo.iIndex = 0;
 
 	return S_OK;
 }

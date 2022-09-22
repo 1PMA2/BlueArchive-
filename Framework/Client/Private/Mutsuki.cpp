@@ -34,7 +34,7 @@ HRESULT CMutsuki::Initialize_Prototype()
 	m_tStudentInfo.iBullet = 30;
 	m_tStudentInfo.iRange = 12;
 	m_tStudentInfo.iShield = 0;
-
+	m_tStudentInfo.iIndex = 1;
 	return S_OK;
 }
 

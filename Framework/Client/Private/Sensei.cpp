@@ -73,6 +73,7 @@ void CSensei::Use_Ex(_bool bEx, _float fCost)
 	}
 }
 
+
 void CSensei::Set_TimeSpeed()
 {
 
@@ -107,9 +108,6 @@ void CSensei::Set_FormationStudents(CStudent* pStudents)
 {
 	m_Formations.push_back(pStudents);
 
-	m_Formations.size();
-
-	int i = 10;
 }
 
 CStudent * CSensei::Get_FormationStudents(_uint iIndex)
@@ -122,14 +120,38 @@ CStudent * CSensei::Get_FormationStudents(_uint iIndex)
 	return (*iter);
 }
 
+void CSensei::Set_FormationInfo()
+{
+	m_FormationsInfo.clear();
+
+	auto	iter = m_Formations.begin();
+
+	for (_uint i = 0; i < m_Formations.size(); ++i)
+	{
+		m_FormationsInfo.push_back((*iter)->Get_StudentInfo());
+		++iter;
+	}
+}
+
+CStudent::STUDENTINFO CSensei::Get_FormationInfo(_uint iIndex)
+{
+	auto	iter = m_FormationsInfo.begin();
+
+	for (_uint i = 0; i < iIndex; ++i)
+		++iter;
+
+	return (*iter);
+}
+
 void CSensei::Free()
 {
-	for (auto& pStudent : m_Formations)
-		Safe_Release(pStudent);
 	m_Formations.clear();
+
+	m_FormationsInfo.clear();
 
 	for (auto& Pair : m_Student)
 		Safe_Release(Pair.second);
 
 	m_Student.clear();
+
 }

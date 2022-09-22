@@ -1,9 +1,9 @@
 #pragma once
 #include "Client_Defines.h"
+#include "Student.h"
 #include "Base.h"
 
 BEGIN(Client)
-class CStudent;
 
 typedef struct tagSenseiDesc
 {	
@@ -22,6 +22,7 @@ class CSensei final : public CBase
 private:
 	CSensei();
 	virtual ~CSensei() = default;
+
 
 public:
 	SENSEIINFO Get_SenseiInfo() { return m_tSensei; }
@@ -45,6 +46,7 @@ public:
 public:
 	LEVEL m_eCurrentLevel = LEVEL_END;
 	SENSEIINFO m_tSensei;
+	CStudent::STUDENTINFO m_tStudentInfo = {};
 
 	map<const _tchar*, class CStudent*>					m_Student;
 	typedef map<const _tchar*, class CStudent*>			STUDENTS;
@@ -52,11 +54,19 @@ public:
 	vector<CStudent*>	m_Formations;
 	typedef vector<CStudent*> FORMATIONS;
 
+	vector<CStudent::STUDENTINFO>	m_FormationsInfo;
+	typedef vector<CStudent::STUDENTINFO> FORMATIONS_C;
+
 public:
 	void Set_FormationStudents(CStudent* pStudents);
 	CStudent* Get_FormationStudents(_uint iIndex);
 	_uint Get_FormationStudentsNum() { return (_uint)m_Formations.size(); }
 	void Release_FormationStudents() { m_Formations.clear(); }
+
+public:
+	void Set_FormationInfo();
+	_uint Get_FormationInfoSize() { return (_uint)m_FormationsInfo.size(); }
+	CStudent::STUDENTINFO Get_FormationInfo(_uint iIndex);
 
 
 

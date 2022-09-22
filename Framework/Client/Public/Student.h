@@ -15,8 +15,9 @@ BEGIN(Client)
 
 class CState;
 
-class CStudent abstract : public CGameObject
-{
+class CStudent : public CGameObject
+{	
+	friend class CSensei;
 public:
 	typedef struct tagStudentDesc
 	{
@@ -25,7 +26,7 @@ public:
 		FORMATION eFormation;
 
 		_bool	bExModel;
-
+		_uint	iIndex;
 		_uint	iHp;
 		_uint	iShield;
 		_uint	iAtk;
@@ -84,6 +85,10 @@ protected:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
 
+public:
+	virtual void OnDisable() {}
+	virtual void OnEnable() {}
+
 protected:
 	virtual HRESULT FormationLevel_Collision();
 	virtual HRESULT GamePlayLevel_Collision();
@@ -95,6 +100,8 @@ private:
 
 public:
 	virtual void Free() override;
+	virtual CGameObject* Clone(void* pArg) { return nullptr; }
+
 };
 
 END

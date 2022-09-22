@@ -6,6 +6,7 @@
 #include "Level_Formation.h"
 #include "Level_GamePlay.h"
 #include "GameInstance.h"
+#include "Sensei.h"
 
 CLevel_Loading::CLevel_Loading(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: CLevel(pDevice, pContext)
@@ -64,6 +65,8 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 
 			CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 			Safe_AddRef(pGameInstance);
+
+			CSensei* pSensei = GET_SENSEI;
 
 			if (FAILED(pGameInstance->Open_Level(m_eNextLevel, pLevel)))
 				return;

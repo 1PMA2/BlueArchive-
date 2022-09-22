@@ -170,12 +170,15 @@ HRESULT CStudent::GamePlayLevel_Collision()
 
 void CStudent::InitializeStudentState()
 {
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
 	CSensei* pSensei = GET_INSTANCE(CSensei);
 
 	LEVEL eLEVEL = pSensei->Get_CurrentLevel();
 
 	if (false == m_tStudentInfo.bExModel)
 	{
+		
 		switch (eLEVEL)
 		{
 		case LEVEL_FORMATION:
@@ -187,25 +190,6 @@ void CStudent::InitializeStudentState()
 			break;
 		}
 
-		switch (m_tStudentInfo.eFormation)
-		{
-		case FORMATION_FIRST:
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(1.5f, 0.f, 0.f, 1.f));
-			m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_SECOND:
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.5f, 0.f, 0.f, 1.f));
-			m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_THIRD:
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-0.5f, 0.f, 0.f, 1.f));
-			m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_FOURTH:
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-1.5f, 0.f, 0.f, 1.f));
-			m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
-			break;
-		}
 	}
 	else
 	{

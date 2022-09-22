@@ -47,6 +47,8 @@ void CLevel_Formation::Tick(_float fTimeDelta)
 	{
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
+		CSensei* pSensei = GET_SENSEI;
+	
 
 		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GAMEPLAY))))
 			return;
@@ -62,26 +64,37 @@ void CLevel_Formation::Late_Tick(_float TimeDelta)
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 	CSensei* pSensei = GET_SENSEI;
 
+	pSensei->Set_FormationInfo();
+
 	for (_uint i = 0; i < pSensei->Get_FormationStudentsNum(); ++i)
 	{
 		CStudent* pStudent = pSensei->Get_FormationStudents(i);
 
 		CTransform* pTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));
 
-		switch (pStudent->Get_StudentInfo().eFormation)
+		if (0 < pSensei->Get_FormationInfoSize())
 		{
-		case FORMATION_FIRST:
-			m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_SECOND:
-			m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_THIRD:
-			m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_FOURTH:
-			m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
-			break;
+			for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
+			{
+				if (pSensei->Get_FormationInfo(i).iIndex == pStudent->Get_StudentInfo().iIndex)
+				{
+					switch (pSensei->Get_FormationInfo(i).eFormation)
+					{
+					case FORMATION_FIRST:
+						m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+						break;
+					case FORMATION_SECOND:
+						m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+						break;
+					case FORMATION_THIRD:
+						m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+						break;
+					case FORMATION_FOURTH:
+						m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+						break;
+					}
+				}
+			}
 		}
 
 	if (pStudent->Is_Picked())
