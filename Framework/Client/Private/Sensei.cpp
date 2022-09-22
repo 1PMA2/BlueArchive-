@@ -13,12 +13,7 @@ CSensei::CSensei()
 
 void CSensei::Set_Student(_tchar* pStudentTag, CStudent* pStudent)
 {
-	m_Student.emplace(pStudentTag, pStudent);
-}
-
-void CSensei::Set_FormationStudents(_uint iIndex, _tchar* pName)
-{
-	pFormationStudents[iIndex] = pName;
+	m_Student.emplace(pStudentTag, pStudent); //선생이 뽑은 학생
 }
 
 CStudent * CSensei::Get_Student(_tchar* pStudentTag)
@@ -27,6 +22,16 @@ CStudent * CSensei::Get_Student(_tchar* pStudentTag)
 
 	if (iter == m_Student.end())
 		return nullptr;
+
+	return iter->second;
+}
+
+CStudent * CSensei::Get_StudentIndex(_uint iIndex)
+{
+	auto	iter = m_Student.begin();
+
+	for (_uint i = 0; i < iIndex; ++i)
+		++iter;
 
 	return iter->second;
 }
@@ -78,8 +83,31 @@ void CSensei::Tick_Cost(_float fTimeDelta)
 		m_tSensei.fCost = 10.f;
 }
 
+void CSensei::Set_FormationStudents(CStudent* pStudents)
+{
+	m_Formations.push_back(pStudents);
+
+	m_Formations.size();
+
+	int i = 10;
+}
+
+CStudent * CSensei::Get_FormationStudents(_uint iIndex)
+{
+	auto	iter = m_Formations.begin();
+
+	for (_uint i = 0; i < iIndex; ++i)
+		++iter;
+
+	return (*iter);
+}
+
 void CSensei::Free()
 {
+	for (auto& pStudent : m_Formations)
+		Safe_Release(pStudent);
+	m_Formations.clear();
+
 	for (auto& Pair : m_Student)
 		Safe_Release(Pair.second);
 

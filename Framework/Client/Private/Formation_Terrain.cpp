@@ -56,7 +56,7 @@ HRESULT CFormation_Terrain::Render()
 	if (FAILED(SetUp_ShaderResource()))
 		return E_FAIL;
 
-	m_pShaderCom->Begin(1);
+	m_pShaderCom->Begin(0);
 
 	m_pVIBufferCom->Render();
 

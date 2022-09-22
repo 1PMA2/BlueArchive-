@@ -46,7 +46,7 @@ HRESULT CVIBuffer_Terrain::Initialize_Prototype(_uint iNumVerticesX, _uint iNumV
 	m_iNumPrimitive = (iNumVerticesX - 1) * (iNumVerticesZ - 1) * 2;
 	m_iNumIndices = 3 * m_iNumPrimitive;
 	m_eIndexFormat = DXGI_FORMAT_R32_UINT;
-	m_eToplogy = D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP;
+	m_eToplogy = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 
 	m_pIndices = new FACEINDICES32[m_iNumPrimitive];
 

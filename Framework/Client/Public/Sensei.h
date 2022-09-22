@@ -30,9 +30,11 @@ public:
 	LEVEL Get_CurrentLevel() { return m_eCurrentLevel; }
 	void Set_TimeSpeed();
 	void Set_Camera(CAMERA eCamera) { m_tSensei.eCamera = eCamera; }
+
 	void Set_Student(_tchar* pStudentTag, CStudent* pStudent);
-	void Set_FormationStudents(_uint iIndex, _tchar* pName);
 	CStudent* Get_Student(_tchar* pStudentTag);
+	CStudent* Get_StudentIndex(_uint iIndex);
+
 	_bool Useable_Ex(_float fUseCost);
 	void Use_Ex(_bool bEx, _float fUseCost = 0.f);
 	void Tick_Cost(_float fTimeDelta);
@@ -45,6 +47,13 @@ public:
 	map<const _tchar*, class CStudent*>					m_Student;
 	typedef map<const _tchar*, class CStudent*>			STUDENTS;
 
+	vector<CStudent*>	m_Formations;
+	typedef vector<CStudent*> FORMATIONS;
+
+public:
+	void Set_FormationStudents(CStudent* pStudents);
+	CStudent* Get_FormationStudents(_uint iIndex);
+	_int Get_StudentNum() { return (_int)m_Student.size(); }
 
 
 

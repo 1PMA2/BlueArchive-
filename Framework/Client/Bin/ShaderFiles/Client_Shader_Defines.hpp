@@ -69,3 +69,10 @@ RasterizerState RS_Sky
 	CullMode = front;
 	FrontCounterClockwise = false;
 };
+
+RasterizerState RS_Wire
+{
+	FillMode = wireframe;
+	CullMode = none;
+	FrontCounterClockwise = false;
+};

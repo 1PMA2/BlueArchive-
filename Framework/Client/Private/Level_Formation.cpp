@@ -155,10 +155,11 @@ HRESULT CLevel_Formation::Ready_Layer_Student(const _tchar * pLayerTag)
 	CSensei* pSensei = CSensei::Get_Instance();
 
 	/* For.Player */
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag,
-		pSensei->Get_Student(TEXT("Aru"))->Get_StudentInfo().pName)))
-		return E_FAIL;
-
+	for (int i = 0; i < pSensei->Get_StudentNum(); ++i)
+	{
+		if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, pSensei->Get_StudentIndex(i)->Get_StudentInfo().pName)))
+			return E_FAIL;
+	}
 	Safe_Release(pGameInstance);
 
 	return S_OK;

@@ -1,3 +1,22 @@
 ﻿  Student.cpp
+  Sensei.cpp
+  Run.cpp
+  MainApp.cpp
+  Loader.cpp
+  Level_Lobby.cpp
+  Level_GamePlay.cpp
+  Knee_ZoomFire.cpp
+  Formation_Pick.cpp
+  Formation_Idle.cpp
+  Fire.cpp
+  Ex_Cutin.cpp
+  Ex.cpp
+  Camera_Ex.cpp
+  Aru.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\private\aru.cpp(120): warning C4244: '인수': 'Engine::_uint'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  Level_Formation.cpp
+  코드를 생성하고 있습니다...
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)
