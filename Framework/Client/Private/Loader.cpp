@@ -18,6 +18,7 @@
 #include "ForkLift.h"
 #include "City.h"
 #include "UI.h"
+#include "UI_RecruitButton.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -218,7 +219,7 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 
 	
 
-	lstrcpy(m_szLoadingText, TEXT("fhql로딩 끝 "));
+	lstrcpy(m_szLoadingText, TEXT("lobby로딩 끝 "));
 
 	m_isFinished = true;
 	Safe_Release(pGameInstance);
@@ -233,16 +234,20 @@ HRESULT CLoader::Loading_ForGachaLevel()
 	if (g_bGacha) //객체 개수, 재생성 막기
 	{
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_RecruitButton"),
+			CUI_RecruitButton::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		g_bGacha = false;
 	}
 
 	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
 	/* For.Prototype_Component_Texture_Default */
-
-
-	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Loading"),
-		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Loading%d.jpg"), 2))))
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_GACHA, TEXT("Prototype_Component_Texture_Recruit"),
+		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/recruit.png"), 1))))
 		return E_FAIL;
+
+
 
 	lstrcpy(m_szLoadingText, TEXT("gacha 로딩 끝 "));
 

@@ -143,7 +143,10 @@
       <Filter>01.Level\Gacha</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\UI.h">
-      <Filter>02.GameObject\05.UI</Filter>
+      <Filter>02.GameObject\05.UI\Lobby_UI\Gacha_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\UI_RecruitButton.h">
+      <Filter>02.GameObject\05.UI\Gacha_UI\Recruit_Button</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -277,7 +280,10 @@
       <Filter>01.Level\Gacha</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\UI.cpp">
-      <Filter>02.GameObject\05.UI</Filter>
+      <Filter>02.GameObject\05.UI\Lobby_UI\Gacha_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\UI_RecruitButton.cpp">
+      <Filter>02.GameObject\05.UI\Gacha_UI\Recruit_Button</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -483,6 +489,18 @@
     </Filter>
     <Filter Include="01.Level\Gacha">
       <UniqueIdentifier>{36fcee6b-45ca-4e3a-9254-c861d5754cfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\Lobby_UI\Gacha_Button">
+      <UniqueIdentifier>{db8f9374-d173-4638-ab89-9b2907f28ccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\Lobby_UI\Work_Button">
+      <UniqueIdentifier>{7f04a91b-cea3-437a-a82b-975eb65eeea3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\Gacha_UI">
+      <UniqueIdentifier>{b61a6c44-348b-4b00-ae7c-28afa990e915}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\Gacha_UI\Recruit_Button">
+      <UniqueIdentifier>{0dff3479-2c7a-4aba-a608-8803c0bdd08e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

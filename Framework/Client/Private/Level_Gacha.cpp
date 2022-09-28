@@ -26,11 +26,11 @@ HRESULT CLevel_Gacha::Initialize()
 	if (FAILED(Ready_Layer_BackGround(TEXT("Layer_Formation_BackGround"))))
 		return E_FAIL;
 
-	if (FAILED(Ready_Layer_Camera(TEXT("Layer_Formation_Camera"))))
-		return E_FAIL;
+	//if (FAILED(Ready_Layer_Camera(TEXT("Layer_Formation_Camera"))))
+	//	return E_FAIL;
 
-	if (FAILED(Ready_Layer_Student(TEXT("Layer_Formation_Student"))))
-		return E_FAIL;
+	/*if (FAILED(Ready_Layer_Student(TEXT("Layer_Formation_Student"))))
+		return E_FAIL;*/
 
 
 
@@ -120,7 +120,10 @@ HRESULT CLevel_Gacha::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	Safe_AddRef(pGameInstance);
 
 	/* For.Terrain */
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Terrain"))))
+	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Terrain"))))
+	//	return E_FAIL;
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHA, pLayerTag, TEXT("Prototype_GameObject_RecruitButton"))))
 		return E_FAIL;
 
 

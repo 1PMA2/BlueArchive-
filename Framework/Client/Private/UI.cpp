@@ -2,6 +2,8 @@
 #include "..\Public\UI.h"
 
 #include "GameInstance.h"
+#include "Level_Loading.h"
+#include "Sensei.h"
 
 CUI::CUI(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -72,8 +74,12 @@ void CUI::Tick(_float fTimeDelta)
 
 	if (PtInRect(&rcButton, ptMouse))
 	{
-		if(KEY(LBUTTON, TAP))
-			int i = 10;
+		if (KEY(LBUTTON, TAP))
+		{
+			CSensei* pSensei = GET_SENSEI;
+
+			pSensei->Set_OpenGacha(true);
+		}
 	}
 
 }
@@ -92,10 +98,6 @@ HRESULT CUI::Render()
 	/* 셰이더 전역변수에 값을 던진다. */
 	if (FAILED(SetUp_ShaderResource()))
 		return E_FAIL;
-
-
-	
-
 
 	m_pShaderCom->Begin(0);
 

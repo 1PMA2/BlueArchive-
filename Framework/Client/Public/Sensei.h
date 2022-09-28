@@ -29,6 +29,10 @@ public:
 
 	void Set_CurrentLevel(LEVEL eLevelID) { m_eCurrentLevel = eLevelID; }
 	LEVEL Get_CurrentLevel() { return m_eCurrentLevel; }
+
+	_bool Get_OpenGacha() { return m_bOpenGachaLevel; }
+	void Set_OpenGacha(_bool bGachaLevel) { m_bOpenGachaLevel = bGachaLevel; }
+
 	void Set_TimeSpeed();
 	void Set_Camera(CAMERA eCamera) { m_tSensei.eCamera = eCamera; }
 
@@ -47,6 +51,7 @@ public:
 	LEVEL m_eCurrentLevel = LEVEL_END;
 	SENSEIINFO m_tSensei;
 	CStudent::STUDENTINFO m_tStudentInfo = {};
+	_bool m_bOpenGachaLevel = false;
 
 	map<const _tchar*, class CStudent*>					m_Student;
 	typedef map<const _tchar*, class CStudent*>			STUDENTS;

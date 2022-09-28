@@ -3,6 +3,7 @@
 #include "Loader.h"
 #include "Level_Logo.h"
 #include "Level_Lobby.h"
+#include "Level_Gacha.h"
 #include "Level_Formation.h"
 #include "Level_GamePlay.h"
 #include "GameInstance.h"
@@ -54,6 +55,9 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 				{
 					pLevel = CLevel_Lobby::Create(m_pDevice, m_pContext);
 				}
+				break;
+			case LEVEL_GACHA:
+				pLevel = CLevel_Gacha::Create(m_pDevice, m_pContext);
 				break;
 			case LEVEL_FORMATION:
 				pLevel = CLevel_Formation::Create(m_pDevice, m_pContext);
