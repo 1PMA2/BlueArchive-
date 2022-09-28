@@ -69,6 +69,8 @@ HRESULT CLevel_Lobby::Ready_Layer_Lobby(const _tchar * pLayerTag)
 	/* For.BackGround */
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_BG_Lobby"))))
 		return E_FAIL;
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_GachaButton"))))
+		return E_FAIL;
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_BackGround"))))
 		return E_FAIL;
 

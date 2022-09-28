@@ -17,6 +17,7 @@
 #include "Sensei.h"
 #include "ForkLift.h"
 #include "City.h"
+#include "UI.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -164,6 +165,10 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 			CBG_Lobby::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_GachaButton"),
+			CUI::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		/* For.Prototype_GameObject_Student */
 
 
@@ -203,6 +208,14 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Bg_Lobby%d.png"), 1))))
 		return E_FAIL;
 
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_LOBBY, TEXT("Prototype_Component_Texture_GachaButton"),
+		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Gacha.png"), 1))))
+		return E_FAIL;
+
+	//if (FAILED(pGameInstance->Add_Prototype(LEVEL_LOBBY, TEXT("Prototype_Component_Texture_WorkButton"),
+	//	CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Gacha.png"), 1))))
+	//	return E_FAIL;
+
 	
 
 	lstrcpy(m_szLoadingText, TEXT("fhql로딩 끝 "));
@@ -222,6 +235,14 @@ HRESULT CLoader::Loading_ForGachaLevel()
 
 		g_bGacha = false;
 	}
+
+	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
+	/* For.Prototype_Component_Texture_Default */
+
+
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Loading"),
+		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Loading%d.jpg"), 2))))
+		return E_FAIL;
 
 	lstrcpy(m_szLoadingText, TEXT("gacha 로딩 끝 "));
 

@@ -30,7 +30,7 @@ HRESULT CUI::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(1000.f, 500.f, 1.f, 1.f));
+	
 
 	m_fSizeX = 127.f;
 	m_fSizeY = 163.f;
@@ -40,6 +40,7 @@ HRESULT CUI::Initialize(void * pArg)
 	// XMMatrixPerspectiveFovLH()
 	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH(g_iWinCX, g_iWinCY, 0.f, 1.f)));
 
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-m_fX + 1000.f, m_fY - 500.f, 0.f, 1.f));
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
 
 	return S_OK;
@@ -47,6 +48,7 @@ HRESULT CUI::Initialize(void * pArg)
 
 void CUI::Tick(_float fTimeDelta)
 {
+
 	_float3 vPos;
 	
 	XMStoreFloat3(&vPos, m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION));
@@ -70,7 +72,8 @@ void CUI::Tick(_float fTimeDelta)
 
 	if (PtInRect(&rcButton, ptMouse))
 	{
-		int i = 10;
+		if(KEY(LBUTTON, TAP))
+			int i = 10;
 	}
 
 }
@@ -112,7 +115,7 @@ HRESULT CUI::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_Texture */
-	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Default"), TEXT("Com_Texture "), (CComponent**)&m_pTextureCom)))
+	if (FAILED(__super::Add_Component(LEVEL_LOBBY, TEXT("Prototype_Component_Texture_GachaButton"), TEXT("Com_Texture "), (CComponent**)&m_pTextureCom)))
 		return E_FAIL;
 
 	/* For.Com_VIBuffer */
