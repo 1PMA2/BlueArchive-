@@ -43,14 +43,15 @@ void CLevel_Formation::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
 
-	if (KEY(ENTER,AWAY))
+	if (KEY(ENTER,TAP))
 	{
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
 		CSensei* pSensei = GET_SENSEI;
-	
 
-		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GAMEPLAY))))
+		pSensei->Set_PreLevel(LEVEL_FORMATION);
+
+		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
 			return;
 
 		Safe_Release(pGameInstance);

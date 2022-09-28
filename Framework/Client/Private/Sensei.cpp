@@ -46,7 +46,7 @@ CStudent * CSensei::Get_Student(_tchar* pStudentTag)
 	return iter->second;
 }
 
-CStudent * CSensei::Get_StudentIndex(_uint iIndex)
+CStudent * CSensei::Get_StudentIndex(_uint iIndex) 
 {
 	auto	iter = m_Student.begin();
 

@@ -58,6 +58,8 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 
 	if (GetKeyState(VK_RETURN) & 0x8000)
 	{
+		pSensei->Set_PreLevel(LEVEL_GAMEPLAY);
+
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
 

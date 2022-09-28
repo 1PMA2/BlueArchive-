@@ -51,10 +51,13 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 				pLevel = CLevel_Logo::Create(m_pDevice, m_pContext);
 				break;
 			case LEVEL_LOBBY:
-				if ((LEVEL_LOGO == pSensei->Get_CurrentLevel()) || KEY(LBUTTON, AWAY))
+				if ((LEVEL_LOGO == pSensei->Get_PreLevel()))
 				{
-					pLevel = CLevel_Lobby::Create(m_pDevice, m_pContext);
+					if(KEY(LBUTTON, AWAY))
+						pLevel = CLevel_Lobby::Create(m_pDevice, m_pContext);
 				}
+				else
+					pLevel = CLevel_Lobby::Create(m_pDevice, m_pContext);
 				break;
 			case LEVEL_GACHA:
 				pLevel = CLevel_Gacha::Create(m_pDevice, m_pContext);

@@ -77,7 +77,7 @@ void CUI_RecruitButton::Tick(_float fTimeDelta)
 		{
 			CSensei* pSensei = GET_SENSEI;
 			
-			_int iRandom = random(1, 1);
+			_int iRandom = random(0, 1);
 
 			switch (iRandom)
 			{

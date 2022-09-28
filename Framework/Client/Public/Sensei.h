@@ -29,6 +29,8 @@ public:
 
 	void Set_CurrentLevel(LEVEL eLevelID) { m_eCurrentLevel = eLevelID; }
 	LEVEL Get_CurrentLevel() { return m_eCurrentLevel; }
+	void Set_PreLevel(LEVEL eLevelID) { m_ePreLevel = eLevelID; }
+	LEVEL Get_PreLevel() { return m_ePreLevel; }
 
 	_bool Get_OpenGacha() { return m_bOpenGachaLevel; }
 	void Set_OpenGacha(_bool bGachaLevel) { m_bOpenGachaLevel = bGachaLevel; }
@@ -41,13 +43,14 @@ public:
 	const _tchar* Get_StudentName(_int iIndex);
 	_int Get_StudentNum() { return (_int)m_Student.size(); }
 	CStudent* Get_Student(_tchar* pStudentTag);
-	CStudent* Get_StudentIndex(_uint iIndex);
+	CStudent* Get_StudentIndex(_uint iIndex); //studentinfo¿« index æ∆¥‘
 
 	_bool Useable_Ex(_float fUseCost);
 	void Use_Ex(_bool bEx, _float fUseCost = 0.f);
 	void Tick_Cost(_float fTimeDelta);
 
 public:
+	LEVEL m_ePreLevel = LEVEL_END;
 	LEVEL m_eCurrentLevel = LEVEL_END;
 	SENSEIINFO m_tSensei;
 	CStudent::STUDENTINFO m_tStudentInfo = {};

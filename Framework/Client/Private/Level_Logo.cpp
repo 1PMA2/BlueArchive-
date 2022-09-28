@@ -29,8 +29,11 @@ void CLevel_Logo::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);		
 
-	//if (GetKeyState(VK_RETURN) & 0x8000)
 	{
+		CSensei* pSensei = GET_SENSEI;
+
+		pSensei->Set_PreLevel(LEVEL_LOGO);
+
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
 

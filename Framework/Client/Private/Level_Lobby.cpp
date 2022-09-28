@@ -34,8 +34,10 @@ void CLevel_Lobby::Tick(_float fTimeDelta)
 
 	CSensei* pSensei = GET_SENSEI;
 
-	if (GetKeyState(VK_RETURN) & 0x8000)
+	if (KEY(ENTER, TAP))
 	{
+		pSensei->Set_PreLevel(LEVEL_LOBBY);
+
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
 
@@ -47,6 +49,8 @@ void CLevel_Lobby::Tick(_float fTimeDelta)
 
 	if (pSensei->Get_OpenGacha())
 	{
+		pSensei->Set_PreLevel(LEVEL_LOBBY);
+
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
 
