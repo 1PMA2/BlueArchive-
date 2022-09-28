@@ -40,6 +40,10 @@ using namespace DirectX;
 #include <map>
 #include <unordered_map>
 #include <algorithm>
+#include <random>
+#include <functional>
+
+using namespace std;
 
 #include "Engine_Typedef.h"
 #include "Engine_Function.h"
@@ -64,7 +68,7 @@ using namespace DirectX;
 #endif // _DEBUG
 
 using namespace Engine;
-using namespace std;
+
 
 
 

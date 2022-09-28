@@ -2,6 +2,15 @@
 
 namespace Engine
 {
+	static int random(_int _min, _int _max)
+	{
+		random_device rd;
+		mt19937 gen(rd());
+		uniform_int_distribution<_int> disx(_min, _max);
+
+		return disx(gen);
+	}
+
 	template<typename T>
 	void Safe_Delete(T& Temp)
 	{

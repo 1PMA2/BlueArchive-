@@ -2,6 +2,7 @@
 #include "..\Public\UI_RecruitButton.h"
 
 #include "GameInstance.h"
+#include "Sensei.h"
 
 CUI_RecruitButton::CUI_RecruitButton(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -73,7 +74,21 @@ void CUI_RecruitButton::Tick(_float fTimeDelta)
 	if (PtInRect(&rcButton, ptMouse))
 	{
 		if (KEY(LBUTTON, TAP))
-			int i = 10;
+		{
+			CSensei* pSensei = GET_SENSEI;
+			
+			_int iRandom = random(1, 1);
+
+			switch (iRandom)
+			{
+			case 0:
+				pSensei->Set_Student(TEXT("Aru"), nullptr);
+				break;
+			case 1:
+				pSensei->Set_Student(TEXT("Mutsuki"), nullptr);
+				break;
+			}
+		}
 	}
 
 }

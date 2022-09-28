@@ -17,11 +17,7 @@ HRESULT CLevel_Logo::Initialize()
 	if (FAILED(__super::Initialize()))
 		return E_FAIL;
 
-	CSensei* pSensei = GET_SENSEI;
 
-	pSensei->Set_Student(TEXT("Aru"), nullptr);
-	pSensei->Set_Student(TEXT("Mutsuki"), nullptr);
-	pSensei->Set_Student(TEXT("Aru"), nullptr);
 
 	//if (FAILED(Ready_Layer_BackGround(TEXT("Layer_BackGround"))))
 	//	return E_FAIL;	
