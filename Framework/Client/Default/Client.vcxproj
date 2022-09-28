@@ -191,6 +191,7 @@
     <ClInclude Include="..\Public\Knee_ZoomFire.h" />
     <ClInclude Include="..\Public\Knee_ZoomStart.h" />
     <ClInclude Include="..\Public\Level_Formation.h" />
+    <ClInclude Include="..\Public\Level_Gacha.h" />
     <ClInclude Include="..\Public\Level_GamePlay.h" />
     <ClInclude Include="..\Public\Level_Loading.h" />
     <ClInclude Include="..\Public\Level_Lobby.h" />
@@ -207,6 +208,7 @@
     <ClInclude Include="..\Public\State.h" />
     <ClInclude Include="..\Public\Student.h" />
     <ClInclude Include="..\Public\Terrain.h" />
+    <ClInclude Include="..\Public\UI.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -236,6 +238,7 @@
     <ClCompile Include="..\Private\Knee_ZoomFire.cpp" />
     <ClCompile Include="..\Private\Knee_ZoomStart.cpp" />
     <ClCompile Include="..\Private\Level_Formation.cpp" />
+    <ClCompile Include="..\Private\Level_Gacha.cpp" />
     <ClCompile Include="..\Private\Level_GamePlay.cpp" />
     <ClCompile Include="..\Private\Level_Loading.cpp" />
     <ClCompile Include="..\Private\Level_Lobby.cpp" />
@@ -252,6 +255,7 @@
     <ClCompile Include="..\Private\State.cpp" />
     <ClCompile Include="..\Private\Student.cpp" />
     <ClCompile Include="..\Private\Terrain.cpp" />
+    <ClCompile Include="..\Private\UI.cpp" />
     <ClCompile Include="..\Public\Run_ToHide.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="stdafx.cpp">

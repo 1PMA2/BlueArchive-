@@ -47,6 +47,9 @@ unsigned int APIENTRY LoadingMain(void* pArg)
 		case LEVEL_FORMATION:
 			hr = pLoader->Loading_ForFormationLevel();
 			break;
+		case LEVEL_GACHA:
+			hr = pLoader->Loading_ForGachaLevel();
+			break;
 		case LEVEL_GAMEPLAY:
 			hr = pLoader->Loading_ForGamePlayLevel();
 			break;
@@ -211,6 +214,19 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 
 HRESULT CLoader::Loading_ForGachaLevel()
 {
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+	Safe_AddRef(pGameInstance);
+
+	if (g_bGacha) //객체 개수, 재생성 막기
+	{
+
+		g_bGacha = false;
+	}
+
+	lstrcpy(m_szLoadingText, TEXT("gacha 로딩 끝 "));
+
+	m_isFinished = true;
+	Safe_Release(pGameInstance);
 
 	return S_OK;
 }

@@ -139,6 +139,12 @@
     <ClInclude Include="..\Public\Mutsuki.h">
       <Filter>02.GameObject\00.Student\01. Mutsuki</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Level_Gacha.h">
+      <Filter>01.Level\Gacha</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\UI.h">
+      <Filter>02.GameObject\05.UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -266,6 +272,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\Mutsuki.cpp">
       <Filter>02.GameObject\00.Student\01. Mutsuki</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Gacha.cpp">
+      <Filter>01.Level\Gacha</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\UI.cpp">
+      <Filter>02.GameObject\05.UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -468,6 +480,9 @@
     </Filter>
     <Filter Include="02.GameObject\01.State\Ex">
       <UniqueIdentifier>{49b0521f-68e1-4d72-9e6f-a17210f48b90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Level\Gacha">
+      <UniqueIdentifier>{36fcee6b-45ca-4e3a-9254-c861d5754cfc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

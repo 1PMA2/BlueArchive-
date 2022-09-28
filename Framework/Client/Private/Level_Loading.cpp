@@ -40,9 +40,9 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 
 	if (true == m_pLoader->is_Finished())
 	{
-		if (KEY(NUM0, TAP))
-		{
-			CLevel*			pLevel = nullptr;
+		CSensei*  pSensei = GET_SENSEI;
+
+		CLevel*			pLevel = nullptr;
 
 			switch (m_eNextLevel)
 			{
@@ -50,7 +50,10 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 				pLevel = CLevel_Logo::Create(m_pDevice, m_pContext);
 				break;
 			case LEVEL_LOBBY:
-				pLevel = CLevel_Lobby::Create(m_pDevice, m_pContext);
+				if ((LEVEL_LOGO == pSensei->Get_CurrentLevel()) || KEY(LBUTTON, AWAY))
+				{
+					pLevel = CLevel_Lobby::Create(m_pDevice, m_pContext);
+				}
 				break;
 			case LEVEL_FORMATION:
 				pLevel = CLevel_Formation::Create(m_pDevice, m_pContext);
@@ -66,13 +69,10 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 			CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 			Safe_AddRef(pGameInstance);
 
-			CSensei* pSensei = GET_SENSEI;
-
 			if (FAILED(pGameInstance->Open_Level(m_eNextLevel, pLevel)))
 				return;
 
 			Safe_Release(pGameInstance);
-		}
 	}
 }
 

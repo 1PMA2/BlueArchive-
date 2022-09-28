@@ -9,6 +9,7 @@
 _bool g_bLobby = true;
 _bool g_bPlay = true;
 _bool g_bFormation = true;
+_bool g_bGacha = true;
 
 CMainApp::CMainApp()
 	: m_pGameInstance(CGameInstance::Get_Instance())
