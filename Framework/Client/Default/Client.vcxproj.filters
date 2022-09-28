@@ -502,6 +502,9 @@
     <Filter Include="02.GameObject\05.UI\Gacha_UI\Recruit_Button">
       <UniqueIdentifier>{0dff3479-2c7a-4aba-a608-8803c0bdd08e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Level\Gacha\Gacha_Scene">
+      <UniqueIdentifier>{414078ec-5cfb-4930-8ead-d1af51ec2dc5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">

@@ -171,28 +171,12 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 			return E_FAIL;
 
 		/* For.Prototype_GameObject_Student */
-
-		
-		lstrcpy(m_szLoadingText, TEXT("model"));
-
-		_matrix			TransformMatrix;
-
-
-		ZeroMemory(&TransformMatrix, sizeof(_matrix));
-		TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Aru"),
-			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru.fbx", TransformMatrix))))
-			return E_FAIL;
-
-		ZeroMemory(&TransformMatrix, sizeof(_matrix));
-		TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Mutsuki"),
-			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Mutsuki/", "Mutsuki.fbx", TransformMatrix))))
-			return E_FAIL;
-
 		g_bLobby = false;
 	}
 #pragma endregion
+
+		lstrcpy(m_szLoadingText, TEXT("model"));
+		_matrix			TransformMatrix;
 
 	CSensei* pSensei = GET_SENSEI;
 
@@ -206,6 +190,12 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 				if (FAILED(pGameInstance->Add_Prototype(pSensei->Get_StudentName(i),
 					pSensei->Get_StudentIndex(i))))
 					return E_FAIL;
+
+				ZeroMemory(&TransformMatrix, sizeof(_matrix));
+				TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+				if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Aru"),
+					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru.fbx", TransformMatrix))))
+					return E_FAIL;
 			}
 
 			if (TEXT("Mutsuki") == pSensei->Get_StudentName(i))
@@ -213,6 +203,12 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 				pSensei->Set_RealStudent(pSensei->Get_StudentName(i), CMutsuki::Create(m_pDevice, m_pContext));
 				if (FAILED(pGameInstance->Add_Prototype(pSensei->Get_StudentName(i),
 					pSensei->Get_StudentIndex(i))))
+					return E_FAIL;
+
+				ZeroMemory(&TransformMatrix, sizeof(_matrix));
+				TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+				if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Mutsuki"),
+					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Mutsuki/", "Mutsuki.fbx", TransformMatrix))))
 					return E_FAIL;
 			}
 		}
