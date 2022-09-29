@@ -212,19 +212,20 @@ void CLevel_Gacha::Gacha()
 {
 	CSensei* pSensei = GET_SENSEI;
 
-	_int iRandom = random(0, 1);
+	_int iRandom = random(1, 100);
 
-	switch (iRandom)
+	if (30.f >= iRandom)
 	{
-	case 0:
 		pSensei->Set_Student(TEXT("Aru"), nullptr);
 		pSensei->Set_NewStudent(TEXT("Aru"));
-		break;
-	case 1:
+	}
+	else
+	{
 		pSensei->Set_Student(TEXT("Mutsuki"), nullptr);
 		pSensei->Set_NewStudent(TEXT("Mutsuki"));
-		break;
 	}
+	
+
 }
 
 

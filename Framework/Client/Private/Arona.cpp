@@ -48,7 +48,7 @@ void CArona::Tick(_float fTimeDelta)
 
 void CArona::LateTick(_float fTimeDelta)
 {
-	if (117 > m_pModelCom->Get_CurrentKeyFrame())
+	if (120 > m_pModelCom->Get_CurrentKeyFrame())
 	{
 		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 	}
