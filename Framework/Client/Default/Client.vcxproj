@@ -181,6 +181,7 @@
     <ClInclude Include="..\Public\Client_Defines.h" />
     <ClInclude Include="..\Public\Ex.h" />
     <ClInclude Include="..\Public\Ex_Cutin.h" />
+    <ClInclude Include="..\Public\Fade_Out.h" />
     <ClInclude Include="..\Public\Fire.h" />
     <ClInclude Include="..\Public\ForkLift.h" />
     <ClInclude Include="..\Public\Formation_Idle.h" />
@@ -234,6 +235,7 @@
     <ClCompile Include="..\Private\City.cpp" />
     <ClCompile Include="..\Private\Ex.cpp" />
     <ClCompile Include="..\Private\Ex_Cutin.cpp" />
+    <ClCompile Include="..\Private\Fade_Out.cpp" />
     <ClCompile Include="..\Private\Fire.cpp" />
     <ClCompile Include="..\Private\ForkLift.cpp" />
     <ClCompile Include="..\Private\Formation_Idle.cpp" />

@@ -35,6 +35,7 @@ private:
 	CModel*					m_pModelCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
 	_bool					m_bSackOpen = false;
+	_bool					m_bFade = false;
 
 public:
 	virtual void OnDisable() override;

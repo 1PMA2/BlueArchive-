@@ -31,9 +31,6 @@
     <ClInclude Include="..\Public\Loader.h">
       <Filter>01.Level\Loading\Loader</Filter>
     </ClInclude>
-    <ClInclude Include="..\public\BackGround.h">
-      <Filter>02.GameObject\04.BackGround</Filter>
-    </ClInclude>
     <ClInclude Include="..\Public\Terrain.h">
       <Filter>02.GameObject\06.Terrain</Filter>
     </ClInclude>
@@ -163,6 +160,12 @@
     <ClInclude Include="..\Public\Arona_Sack.h">
       <Filter>02.GameObject\00.Student\99. Arona\Arona_Sack</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Fade_Out.h">
+      <Filter>02.GameObject\04.BackGround\LoadingImage\FadeImage\OUT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\public\BackGround.h">
+      <Filter>02.GameObject\04.BackGround\LoadingImage\FadeImage\IN</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -185,9 +188,6 @@
     </ClCompile>
     <ClCompile Include="..\Private\Loader.cpp">
       <Filter>01.Level\Loading\Loader</Filter>
-    </ClCompile>
-    <ClCompile Include="..\private\BackGround.cpp">
-      <Filter>02.GameObject\04.BackGround</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Terrain.cpp">
       <Filter>02.GameObject\06.Terrain</Filter>
@@ -314,6 +314,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\Arona_Sack.cpp">
       <Filter>02.GameObject\00.Student\99. Arona\Arona_Sack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Fade_Out.cpp">
+      <Filter>02.GameObject\04.BackGround\LoadingImage\FadeImage\OUT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\BackGround.cpp">
+      <Filter>02.GameObject\04.BackGround\LoadingImage\FadeImage\IN</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -546,6 +552,15 @@
     </Filter>
     <Filter Include="02.GameObject\00.Student\99. Arona\Arona_Sack">
       <UniqueIdentifier>{21ca59ee-0f2e-4175-bb06-326f29998d4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\04.BackGround\BG_Gacha">
+      <UniqueIdentifier>{c8f42a31-163f-4230-8268-1f5ca607bc7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\04.BackGround\LoadingImage\FadeImage\IN">
+      <UniqueIdentifier>{a9f5729f-403b-4b86-8203-82dd16f72e87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\04.BackGround\LoadingImage\FadeImage\OUT">
+      <UniqueIdentifier>{8584ee15-8e34-4510-95c0-02c137dfd983}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

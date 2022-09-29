@@ -36,6 +36,9 @@ HRESULT CBackGround::Initialize(void * pArg)
 	m_fX = g_iWinCX >> 1;
 	m_fY = g_iWinCY >> 1;
 
+	if(nullptr != pArg)
+		memcpy(&m_iImgNum, pArg, sizeof(_int));
+
 	// XMMatrixPerspectiveFovLH()
 	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH(g_iWinCX, g_iWinCY, 0.f, 1.f)));
 
@@ -44,10 +47,14 @@ HRESULT CBackGround::Initialize(void * pArg)
 
 void CBackGround::Tick(_float fTimeDelta)
 {
+
 	if (0.f < m_fFade)
 		m_fFade -= 0.01f;
 	else
+	{
 		m_fFade = 0.f;
+		m_bIsFinished = true;
+	}
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_fX - (g_iWinCX * 0.5f), -m_fY + (g_iWinCY * 0.5f), 0.f, 1.f));
 
@@ -127,10 +134,12 @@ HRESULT CBackGround::SetUp_ShaderResource()
 
 void CBackGround::OnDisable()
 {
+
 }
 
 void CBackGround::OnEnable()
 {
+	m_bIsFinished = false;
 }
 
 CBackGround * CBackGround::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)

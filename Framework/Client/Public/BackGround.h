@@ -20,6 +20,9 @@ public:
 	virtual ~CBackGround() = default;
 
 public:
+	_bool Get_IsFinished() { return m_bIsFinished; }
+
+public:
 	virtual HRESULT Initialize_Prototype();
 	virtual HRESULT Initialize(void* pArg);
 	virtual void Tick(_float fTimeDelta);
@@ -31,6 +34,7 @@ private:
 	CTexture*				m_pTextureCom = nullptr;
 	CRenderer*				m_pRendererCom = nullptr;		
 	CVIBuffer_Rect*			m_pVIBufferCom = nullptr;
+	_bool					m_bIsFinished = false;
 
 private:
 	_float			m_fX, m_fY, m_fSizeX, m_fSizeY, m_fTick = 0;

@@ -2,6 +2,7 @@
 #include "..\Public\Arona_Sack.h"
 
 #include "GameInstance.h"
+#include "Fade_Out.h"
 
 CArona_Sack::CArona_Sack(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -71,9 +72,15 @@ void CArona_Sack::Tick(_float fTimeDelta)
 
 		m_pTransformCom->Go_Up(fTimeDelta * -0.02f);
 
-		if (m_pTransformCom->TurnFor(XMVectorSet(0.f, -1.f, 0.f, 1.f), fTimeDelta, XMConvertToRadians(180.f)))
+		if (m_pTransformCom->TurnFor(XMVectorSet(0.f, -1.f, 0.f, 1.f), fTimeDelta, XMConvertToRadians(150.f)))
 		{
-			this->Set_Enable(false);
+			CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+			CFade_Out* pFadeOut = (CFade_Out*)pGameInstance->Get_GameObject(LEVEL_GACHASCENE, TEXT("Layer_BackGround"), 1);
+
+			if (!pFadeOut->Get_IsFinished())
+				pFadeOut->Set_Enable(true);
+			else
+				this->Set_Enable(false);
 		}
 	}
 }
