@@ -30,7 +30,7 @@ const _tchar * CSensei::Get_StudentName(_int iIndex)
 {
 	auto	iter = m_Student.begin();
 
-	for (_uint i = 0; i < iIndex; ++i)
+	for (_int i = 0; i < iIndex; ++i)
 		++iter;
 
 	return iter->first;

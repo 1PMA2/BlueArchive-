@@ -2,11 +2,20 @@
 
 namespace Engine
 {
-	static int random(_int _min, _int _max)
+	static _int random(_int _min, _int _max)
 	{
 		random_device rd;
 		mt19937 gen(rd());
 		uniform_int_distribution<_int> disx(_min, _max);
+
+		return disx(gen);
+	}
+
+	static _float frandom(_float _min, _float _max)
+	{
+		random_device rd;
+		mt19937 gen(rd());
+		uniform_real_distribution<_float> disx(_min, _max);
 
 		return disx(gen);
 	}

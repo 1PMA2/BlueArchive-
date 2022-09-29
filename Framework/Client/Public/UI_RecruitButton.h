@@ -43,6 +43,9 @@ private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
 
+private:
+	_bool Random(_float fPercent);
+
 public:
 	virtual void OnDisable() override;
 	virtual void OnEnable() override;

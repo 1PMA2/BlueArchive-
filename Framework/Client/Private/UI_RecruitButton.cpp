@@ -77,6 +77,7 @@ void CUI_RecruitButton::Tick(_float fTimeDelta)
 		{
 			CSensei* pSensei = GET_SENSEI;
 			
+			pSensei->Set_OpenGachaScene(true);
 			_int iRandom = random(0, 1);
 
 			switch (iRandom)
@@ -157,6 +158,11 @@ HRESULT CUI_RecruitButton::SetUp_ShaderResource()
 
 
 	return S_OK;
+}
+
+_bool CUI_RecruitButton::Random(_float fPercent)
+{
+	return false;
 }
 
 void CUI_RecruitButton::OnDisable()

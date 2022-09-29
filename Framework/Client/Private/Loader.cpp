@@ -52,6 +52,9 @@ unsigned int APIENTRY LoadingMain(void* pArg)
 		case LEVEL_GACHA:
 			hr = pLoader->Loading_ForGachaLevel();
 			break;
+		case LEVEL_GACHASCENE:
+			hr = pLoader->Loading_ForGachaLevel();
+			break;
 		case LEVEL_GAMEPLAY:
 			hr = pLoader->Loading_ForGamePlayLevel();
 			break;

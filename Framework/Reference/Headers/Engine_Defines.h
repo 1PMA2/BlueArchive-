@@ -41,6 +41,7 @@ using namespace DirectX;
 #include <unordered_map>
 #include <algorithm>
 #include <random>
+#include <typeinfo>
 #include <functional>
 
 using namespace std;

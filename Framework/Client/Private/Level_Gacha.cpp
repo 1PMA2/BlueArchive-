@@ -2,6 +2,7 @@
 #include "..\Public\Level_Gacha.h"
 
 #include "GameInstance.h"
+#include "Loader.h"
 #include "Level_Loading.h"
 #include "Camera_Free.h"
 #include "Camera_Ex.h"
@@ -34,8 +35,6 @@ HRESULT CLevel_Gacha::Initialize()
 
 
 
-
-
 	return S_OK;
 }
 
@@ -47,14 +46,33 @@ void CLevel_Gacha::Tick(_float fTimeDelta)
 	{
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
-		CSensei* pSensei = GET_SENSEI;
 
 
 		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
 			return;
 
+
 		Safe_Release(pGameInstance);
 	}
+
+	CSensei* pSensei = GET_SENSEI;
+
+	if (pSensei->Get_OpenGachaScene())
+	{
+		m_pLoader = CLoader::Create(m_pDevice, m_pContext, LEVEL_LOGO);
+		if (nullptr == m_pLoader)
+			return;
+
+		if (true == m_pLoader->is_Finished())
+		{
+			CLevel*			pLevel = nullptr;
+
+			//pLevel = CLevel_GachaScene::Create(m_pDevice, m_pContext);
+
+			pSensei->Set_OpenGachaScene(false);
+		}
+	}
+
 
 
 }

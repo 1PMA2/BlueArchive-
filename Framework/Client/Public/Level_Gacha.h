@@ -21,6 +21,9 @@ public:
 	HRESULT Ready_Layer_Camera(const _tchar* pLayerTag);
 	HRESULT Ready_Layer_Student(const _tchar* pLayerTag);
 
+private:
+	class CLoader*	m_pLoader = nullptr;
+
 public:
 	static CLevel_Gacha* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
 	virtual void Free() override;
