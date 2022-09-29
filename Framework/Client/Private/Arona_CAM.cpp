@@ -109,7 +109,7 @@ HRESULT CArona_CAM::SetUp_Components()
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, -0.7f);
 
 	/* For.Com_Model */
-	if (FAILED(__super::Add_Component(LEVEL_GACHASCENE, TEXT("Prototype_Component_Model_AronaCAM"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Model_AronaCAM"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
 		return E_FAIL;
 
 	return S_OK;

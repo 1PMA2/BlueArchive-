@@ -169,6 +169,7 @@
     <ClInclude Include="..\Private\Run_ToHide.h" />
     <ClInclude Include="..\Public\Arona.h" />
     <ClInclude Include="..\Public\Arona_CAM.h" />
+    <ClInclude Include="..\Public\Arona_Sack.h" />
     <ClInclude Include="..\Public\Aru.h" />
     <ClInclude Include="..\Public\Aru_Ex.h" />
     <ClInclude Include="..\public\BackGround.h" />
@@ -222,6 +223,7 @@
   <ItemGroup>
     <ClCompile Include="..\Private\Arona.cpp" />
     <ClCompile Include="..\Private\Arona_CAM.cpp" />
+    <ClCompile Include="..\Private\Arona_Sack.cpp" />
     <ClCompile Include="..\Private\Aru.cpp" />
     <ClCompile Include="..\Private\Aru_Ex.cpp" />
     <ClCompile Include="..\private\BackGround.cpp" />

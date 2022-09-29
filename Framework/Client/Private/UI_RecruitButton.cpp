@@ -78,17 +78,6 @@ void CUI_RecruitButton::Tick(_float fTimeDelta)
 			CSensei* pSensei = GET_SENSEI;
 			
 			pSensei->Set_OpenGachaScene(true);
-			_int iRandom = random(0, 1);
-
-			switch (iRandom)
-			{
-			case 0:
-				pSensei->Set_Student(TEXT("Aru"), nullptr);
-				break;
-			case 1:
-				pSensei->Set_Student(TEXT("Mutsuki"), nullptr);
-				break;
-			}
 		}
 	}
 

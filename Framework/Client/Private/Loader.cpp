@@ -22,6 +22,7 @@
 #include "Camera_Gacha.h"
 #include "Arona.h"
 #include "Arona_CAM.h"
+#include "Arona_Sack.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -181,47 +182,6 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 	}
 #pragma endregion
 
-		lstrcpy(m_szLoadingText, TEXT("model"));
-		_matrix			TransformMatrix;
-
-	CSensei* pSensei = GET_SENSEI;
-
-	for (_int i = 0; i < pSensei->Get_StudentNum(); ++i)
-	{
-		if (nullptr == pSensei->Get_StudentIndex(i))
-		{
-			if (TEXT("Aru") == pSensei->Get_StudentName(i))
-			{
-				pSensei->Set_RealStudent(pSensei->Get_StudentName(i), CAru::Create(m_pDevice, m_pContext));
-				if (FAILED(pGameInstance->Add_Prototype(pSensei->Get_StudentName(i),
-					pSensei->Get_StudentIndex(i))))
-					return E_FAIL;
-
-				ZeroMemory(&TransformMatrix, sizeof(_matrix));
-				TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
-				if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Aru"),
-					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru.fbx", TransformMatrix))))
-					return E_FAIL;
-			}
-
-			if (TEXT("Mutsuki") == pSensei->Get_StudentName(i))
-			{
-				pSensei->Set_RealStudent(pSensei->Get_StudentName(i), CMutsuki::Create(m_pDevice, m_pContext));
-				if (FAILED(pGameInstance->Add_Prototype(pSensei->Get_StudentName(i),
-					pSensei->Get_StudentIndex(i))))
-					return E_FAIL;
-
-				ZeroMemory(&TransformMatrix, sizeof(_matrix));
-				TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
-				if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Mutsuki"),
-					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Mutsuki/", "Mutsuki.fbx", TransformMatrix))))
-					return E_FAIL;
-			}
-		}
-
-	}
-	
-
 
 	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
 	if (FAILED(pGameInstance->Add_Prototype(LEVEL_LOBBY, TEXT("Prototype_Component_Texture_BG_Lobby"),
@@ -269,9 +229,33 @@ HRESULT CLoader::Loading_ForGachaLevel()
 			CArona_CAM::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_AronaSack"),
+			CArona_Sack::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		/* For.Prototype_GameObject_Camera_Free*/
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Free"),
 			CCamera_Free::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		_matrix TransformMatrix;
+
+		ZeroMemory(&TransformMatrix, sizeof(_matrix));
+		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Arona"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Arona/", "Arona.fbx", TransformMatrix))))
+			return E_FAIL;
+
+		ZeroMemory(&TransformMatrix, sizeof(_matrix));
+		TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_AronaCAM"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Arona/", "CAM.fbx", TransformMatrix))))
+			return E_FAIL;
+
+		ZeroMemory(&TransformMatrix, sizeof(_matrix));
+		TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_AronaSack"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Arona/", "Sack.fbx", TransformMatrix))))
 			return E_FAIL;
 
 		g_bGacha = false;
@@ -283,6 +267,7 @@ HRESULT CLoader::Loading_ForGachaLevel()
 		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/recruit.png"), 1))))
 		return E_FAIL;
 
+	
 
 
 
@@ -300,23 +285,48 @@ HRESULT CLoader::Loading_ForGachaScene()
 {
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
+	//
+	lstrcpy(m_szLoadingText, TEXT("model"));
+	_matrix			TransformMatrix;
 
-	_matrix TransformMatrix;
+	CSensei* pSensei = GET_SENSEI;
 
-	ZeroMemory(&TransformMatrix, sizeof(_matrix));
-	TransformMatrix = XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
-	if (FAILED(pGameInstance->Add_Prototype(LEVEL_GACHASCENE, TEXT("Prototype_Component_Model_Arona"),
-		CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Arona/", "Arona.fbx", TransformMatrix))))
-		return E_FAIL;
+	for (_int i = 0; i < pSensei->Get_StudentNum(); ++i)
+	{
+		if (nullptr == pSensei->Get_StudentIndex(i))
+		{
+			if (TEXT("Aru") == pSensei->Get_StudentName(i))
+			{
+				pSensei->Set_RealStudent(pSensei->Get_StudentName(i), CAru::Create(m_pDevice, m_pContext));
+				if (FAILED(pGameInstance->Add_Prototype(pSensei->Get_StudentName(i),
+					pSensei->Get_StudentIndex(i))))
+					return E_FAIL;
 
-	ZeroMemory(&TransformMatrix, sizeof(_matrix));
-	TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
-	if (FAILED(pGameInstance->Add_Prototype(LEVEL_GACHASCENE, TEXT("Prototype_Component_Model_AronaCAM"),
-		CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Arona/", "CAM.fbx", TransformMatrix))))
-		return E_FAIL;
+				ZeroMemory(&TransformMatrix, sizeof(_matrix));
+				TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+				if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Aru"),
+					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru.fbx", TransformMatrix))))
+					return E_FAIL;
+			}
 
+			if (TEXT("Mutsuki") == pSensei->Get_StudentName(i))
+			{
+				pSensei->Set_RealStudent(pSensei->Get_StudentName(i), CMutsuki::Create(m_pDevice, m_pContext));
+				if (FAILED(pGameInstance->Add_Prototype(pSensei->Get_StudentName(i),
+					pSensei->Get_StudentIndex(i))))
+					return E_FAIL;
+
+				ZeroMemory(&TransformMatrix, sizeof(_matrix));
+				TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+				if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Mutsuki"),
+					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Mutsuki/", "Mutsuki.fbx", TransformMatrix))))
+					return E_FAIL;
+			}
+		}
+
+	}
 	
-
+	//
 	m_isFinished = true;
 	Safe_Release(pGameInstance);
 

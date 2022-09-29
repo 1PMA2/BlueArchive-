@@ -4,6 +4,7 @@
 #include "GameInstance.h"
 #include "HIerarchyNode.h"
 #include "Sensei.h"
+#include "Arona_Sack.h"
 
 CCamera_Gacha::CCamera_Gacha(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: CCamera(pDevice, pContext)
@@ -64,6 +65,8 @@ HRESULT CCamera_Gacha::Initialize(void * pArg)
 void CCamera_Gacha::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
+	
+
 	_matrix		ParentMatrix = m_pBonePtr->Get_OffsetMatrix() * m_pBonePtr->Get_CombinedMatrix() * m_pBonePtr->Get_TransformMatrix();
 	_float fHeigth;
 	fHeigth = (XMVectorGetY((ParentMatrix.r[3])));
@@ -71,8 +74,21 @@ void CCamera_Gacha::Tick(_float fTimeDelta)
 		MoveCamera();
 	else
 	{
-		this->Set_Fov(XMConvertToRadians(90.f));
-		m_pTransformCom->LookAt(XMVectorSet(0.f, fHeigth, 0.f, 1.f));
+		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+		CArona_Sack* pSack = (CArona_Sack*)pGameInstance->Get_GameObject(LEVEL_GACHASCENE, TEXT("Layer_Arona"), 1);
+		
+		pSack->Set_Enable(true);
+
+		this->Set_Fov(XMConvertToRadians(m_fOpenFov));
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 3.f, 3.f, 1.f));
+		m_pTransformCom->LookAt(XMVectorSet(0.f, 5.15f, 0.f, 1.f));
+
+		
+		if (pSack->Get_SackOpen())
+		{
+			m_fOpenFov -= 0.015f;
+			this->Set_Fov(XMConvertToRadians(m_fOpenFov));
+		}
 	}
 
 	if (FAILED(Bind_PipeLine()))

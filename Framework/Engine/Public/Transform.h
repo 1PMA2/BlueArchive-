@@ -56,6 +56,7 @@ public:
 	HRESULT Go_Backward(_float fTimeDelta);
 	HRESULT Go_Left(_float fTimeDelta);
 	HRESULT Go_Right(_float fTimeDelta);
+	HRESULT Go_Up(_float fTimeDelta);
 
 	_bool TurnFor(_fvector vAxis, _float fTimeDelta, _float fRadian = 0.f);
 	void Turn(_fvector vAxis, _float fTimeDelta);
@@ -66,6 +67,7 @@ public:
 private:
 	_float4x4				m_WorldMatrix;
 	TRANSFORMDESC			m_TransformDesc;
+	_float					m_fRadian = 0.f;
 
 public:
 	static CTransform* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);

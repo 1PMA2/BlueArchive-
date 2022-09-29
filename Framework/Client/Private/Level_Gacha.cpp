@@ -56,12 +56,15 @@ void CLevel_Gacha::Tick(_float fTimeDelta)
 		Safe_Release(pGameInstance);
 	}
 
+
 	CSensei* pSensei = GET_SENSEI;
 
 	if (pSensei->Get_OpenGachaScene())
 	{
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
+
+		Gacha();
 
 		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GACHASCENE))))
 			return;
@@ -199,6 +202,23 @@ HRESULT CLevel_Gacha::Ready_Layer_Student(const _tchar * pLayerTag)
 	Safe_Release(pGameInstance);
 
 	return S_OK;
+}
+
+void CLevel_Gacha::Gacha()
+{
+	CSensei* pSensei = GET_SENSEI;
+
+	_int iRandom = random(0, 1);
+
+	switch (iRandom)
+	{
+	case 0:
+		pSensei->Set_Student(TEXT("Aru"), nullptr);
+		break;
+	case 1:
+		pSensei->Set_Student(TEXT("Mutsuki"), nullptr);
+		break;
+	}
 }
 
 

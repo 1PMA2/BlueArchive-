@@ -48,6 +48,7 @@ private:
 	class CHierarchyNode*	m_pTargetBonePtr = nullptr;
 	class CTransform*		m_pTargetTransform = nullptr;
 	_float m_fFov = 10.f;
+	_float m_fOpenFov = 4.3f;
 
 private:
 	void MoveCamera();

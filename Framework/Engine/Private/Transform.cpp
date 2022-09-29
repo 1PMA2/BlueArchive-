@@ -99,11 +99,23 @@ HRESULT CTransform::Go_Right(_float fTimeDelta)
 	return S_OK;
 }
 
+HRESULT CTransform::Go_Up(_float fTimeDelta)
+{
+	_vector		vPosition = Get_State(CTransform::STATE_TRANSLATION);
+	_vector		vUp = Get_State(CTransform::STATE_UP);
+
+	vPosition += XMVector3Normalize(vUp) * m_TransformDesc.fSpeedPerSec * fTimeDelta;
+
+	Set_State(CTransform::STATE_TRANSLATION, vPosition);
+
+	return S_OK;
+}
+
 _bool CTransform::TurnFor(_fvector vAxis, _float fTimeDelta, _float fRadian)
 {
 	_matrix		RotationMatrix;
-
-	if (fRadian > m_TransformDesc.fRotationPerSec * fTimeDelta)
+	m_fRadian += m_TransformDesc.fRotationPerSec * fTimeDelta;
+	if (fRadian > m_fRadian)
 	{
 		RotationMatrix = XMMatrixRotationAxis(vAxis, m_TransformDesc.fRotationPerSec * fTimeDelta);
 
@@ -121,7 +133,10 @@ _bool CTransform::TurnFor(_fvector vAxis, _float fTimeDelta, _float fRadian)
 		return false;
 	}
 	else
+	{ 
+		m_fRadian = 0;
 		return true;
+	}
 
 }
 
@@ -147,6 +162,7 @@ void CTransform::Turn(_fvector vAxis, _float fTimeDelta)
 
 void CTransform::Rotation(_fvector vAxis, _float fRadian)
 {
+
 	_matrix		RotationMatrix = XMMatrixRotationAxis(vAxis, fRadian);
 
 	_vector		vRight = XMVectorSet(1.f, 0.f, 0.f, 0.f) * Get_Scaled().x;

@@ -160,6 +160,9 @@
     <ClInclude Include="..\Public\Arona_CAM.h">
       <Filter>02.GameObject\00.Student\99. Arona\Arona_Cam</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Arona_Sack.h">
+      <Filter>02.GameObject\00.Student\99. Arona\Arona_Sack</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -308,6 +311,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Arona_CAM.cpp">
       <Filter>02.GameObject\00.Student\99. Arona\Arona_Cam</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Arona_Sack.cpp">
+      <Filter>02.GameObject\00.Student\99. Arona\Arona_Sack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -537,6 +543,9 @@
     </Filter>
     <Filter Include="02.GameObject\00.Student\99. Arona\Arona_Cam">
       <UniqueIdentifier>{d39b5df0-663a-48f5-a297-9a0a07e40937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Student\99. Arona\Arona_Sack">
+      <UniqueIdentifier>{21ca59ee-0f2e-4175-bb06-326f29998d4f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

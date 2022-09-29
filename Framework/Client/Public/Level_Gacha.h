@@ -22,6 +22,9 @@ public:
 	HRESULT Ready_Layer_Student(const _tchar* pLayerTag);
 
 private:
+	void Gacha();
+
+private:
 	class CLoader*	m_pLoader = nullptr;
 
 public:

@@ -88,7 +88,7 @@ HRESULT CGacha_Scene::Ready_Lights()
 	ZeroMemory(&LightDesc, sizeof(LIGHTDESC));
 
 	LightDesc.eType = tagLightDesc::TYPE_DIRECTIONAL;
-	LightDesc.vDirection = _float4(1.f, -1.f, 1.f, 0.f);
+	LightDesc.vDirection = _float4(1.f, 1.f, 1.f, 0.f);
 	LightDesc.vDiffuse = _float4(1.f, 1.f, 1.f, 1.f);
 	LightDesc.vAmbient = _float4(0.4f, 0.4f, 0.4f, 1.f);
 	LightDesc.vSpecular = _float4(1.f, 1.f, 1.f, 1.f);
@@ -177,6 +177,9 @@ HRESULT CGacha_Scene::Ready_Layer_Arona(const _tchar * pLayerTag)
 
 	/* For.Player */
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, pLayerTag, TEXT("Prototype_GameObject_Arona"))))
+		return E_FAIL;
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, pLayerTag, TEXT("Prototype_GameObject_AronaSack"))))
 		return E_FAIL;
 
 	Safe_Release(pGameInstance);

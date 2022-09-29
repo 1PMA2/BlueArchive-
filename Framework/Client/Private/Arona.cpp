@@ -47,7 +47,7 @@ void CArona::Tick(_float fTimeDelta)
 
 void CArona::LateTick(_float fTimeDelta)
 {
-	//if (117 > m_pModelCom->Get_CurrentKeyFrame())
+	if (117 > m_pModelCom->Get_CurrentKeyFrame())
 	{
 		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 	}
@@ -109,7 +109,7 @@ HRESULT CArona::SetUp_Components()
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, -0.7f);
 
 	/* For.Com_Model */
-	if (FAILED(__super::Add_Component(LEVEL_GACHASCENE, TEXT("Prototype_Component_Model_Arona"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Model_Arona"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
 		return E_FAIL;
 
 	return S_OK;
