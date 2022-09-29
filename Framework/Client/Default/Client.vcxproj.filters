@@ -166,6 +166,9 @@
     <ClInclude Include="..\public\BackGround.h">
       <Filter>02.GameObject\04.BackGround\LoadingImage\FadeImage\IN</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Student_Img.h">
+      <Filter>02.GameObject\04.BackGround\BG_Gacha\Student_Img</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -320,6 +323,9 @@
     </ClCompile>
     <ClCompile Include="..\private\BackGround.cpp">
       <Filter>02.GameObject\04.BackGround\LoadingImage\FadeImage\IN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Student_Img.cpp">
+      <Filter>02.GameObject\04.BackGround\BG_Gacha\Student_Img</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -561,6 +567,9 @@
     </Filter>
     <Filter Include="02.GameObject\04.BackGround\LoadingImage\FadeImage\OUT">
       <UniqueIdentifier>{8584ee15-8e34-4510-95c0-02c137dfd983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\04.BackGround\BG_Gacha\Student_Img">
+      <UniqueIdentifier>{1d1e8366-5a75-41b7-8b2e-ed15e97e6163}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

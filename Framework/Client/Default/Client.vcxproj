@@ -213,6 +213,7 @@
     <ClInclude Include="..\Public\Sky.h" />
     <ClInclude Include="..\Public\State.h" />
     <ClInclude Include="..\Public\Student.h" />
+    <ClInclude Include="..\Public\Student_Img.h" />
     <ClInclude Include="..\Public\Terrain.h" />
     <ClInclude Include="..\Public\UI.h" />
     <ClInclude Include="..\Public\UI_RecruitButton.h" />
@@ -267,6 +268,7 @@
     <ClCompile Include="..\Private\Sky.cpp" />
     <ClCompile Include="..\Private\State.cpp" />
     <ClCompile Include="..\Private\Student.cpp" />
+    <ClCompile Include="..\Private\Student_Img.cpp" />
     <ClCompile Include="..\Private\Terrain.cpp" />
     <ClCompile Include="..\Private\UI.cpp" />
     <ClCompile Include="..\Private\UI_RecruitButton.cpp" />

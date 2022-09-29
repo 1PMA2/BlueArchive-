@@ -48,11 +48,15 @@ public:
 	CStudent* Get_Student(_tchar* pStudentTag);
 	CStudent* Get_StudentIndex(_uint iIndex); //studentinfo¿« index æ∆¥‘
 
+	_tchar* Get_NewStudent() { return m_pNewStudent; }
+	void Set_NewStudent(_tchar* pStudentTag) { m_pNewStudent = pStudentTag; }
+
 	_bool Useable_Ex(_float fUseCost);
 	void Use_Ex(_bool bEx, _float fUseCost = 0.f);
 	void Tick_Cost(_float fTimeDelta);
 
 public:
+	_tchar* m_pNewStudent = nullptr;
 	LEVEL m_ePreLevel = LEVEL_END;
 	LEVEL m_eCurrentLevel = LEVEL_END;
 	SENSEIINFO m_tSensei;

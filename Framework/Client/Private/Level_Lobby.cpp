@@ -85,8 +85,10 @@ HRESULT CLevel_Lobby::Ready_Layer_Lobby(const _tchar * pLayerTag)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
+	_int iImgNum = 0;
+
 	/* For.BackGround */
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_BG_Lobby"))))
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_BG"), &iImgNum)))
 		return E_FAIL;
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_GachaButton"))))
 		return E_FAIL;

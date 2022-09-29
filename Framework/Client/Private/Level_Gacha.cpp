@@ -143,6 +143,10 @@ HRESULT CLevel_Gacha::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Terrain"))))
 	//	return E_FAIL;
 
+	_int iImgNum = 1;
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHA, pLayerTag, TEXT("Prototype_GameObject_BG"), &iImgNum)))
+		return E_FAIL;
+
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHA, pLayerTag, TEXT("Prototype_GameObject_RecruitButton"))))
 		return E_FAIL;
 
@@ -214,9 +218,11 @@ void CLevel_Gacha::Gacha()
 	{
 	case 0:
 		pSensei->Set_Student(TEXT("Aru"), nullptr);
+		pSensei->Set_NewStudent(TEXT("Aru"));
 		break;
 	case 1:
 		pSensei->Set_Student(TEXT("Mutsuki"), nullptr);
+		pSensei->Set_NewStudent(TEXT("Mutsuki"));
 		break;
 	}
 }

@@ -51,7 +51,7 @@ void CFade_Out::Tick(_float fTimeDelta)
 {
 
 	if (1.f > m_fFade)
-		m_fFade += 0.05f;
+		m_fFade += 0.1f;
 	else
 	{
 		m_fFade = 1.f;

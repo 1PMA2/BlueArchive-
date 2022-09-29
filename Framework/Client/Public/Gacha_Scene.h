@@ -20,6 +20,8 @@ public:
 	HRESULT Ready_Layer_BackGround(const _tchar* pLayerTag);
 	HRESULT Ready_Layer_Camera(const _tchar* pLayerTag);
 	HRESULT Ready_Layer_Arona(const _tchar* pLayerTag);
+	HRESULT Ready_Layer_Student(const _tchar* pLayerTag);
+
 
 public:
 	static CGacha_Scene* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);

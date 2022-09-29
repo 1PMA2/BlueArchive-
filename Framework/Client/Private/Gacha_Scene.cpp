@@ -34,6 +34,9 @@ HRESULT CGacha_Scene::Initialize()
 	if (FAILED(Ready_Layer_Camera(TEXT("Layer_Camera"))))
 		return E_FAIL;
 
+	if (FAILED(Ready_Layer_Student(TEXT("Layer_Student"))))
+		return E_FAIL;
+
 
 
 
@@ -91,7 +94,7 @@ HRESULT CGacha_Scene::Ready_Lights()
 	LightDesc.vDirection = _float4(1.f, 1.f, 1.f, 0.f);
 	LightDesc.vDiffuse = _float4(1.f, 1.f, 1.f, 1.f);
 	LightDesc.vAmbient = _float4(0.4f, 0.4f, 0.4f, 1.f);
-	LightDesc.vSpecular = _float4(1.f, 1.f, 1.f, 1.f);
+	LightDesc.vSpecular = _float4(0.f, 0.f, 0.f, 0.f);
 
 	if (FAILED(pGameInstance->Add_Light(m_pDevice, m_pContext, LightDesc)))
 		return E_FAIL;
@@ -122,13 +125,12 @@ HRESULT CGacha_Scene::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	/* For.Terrain */
 	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Terrain"))))
 	//	return E_FAIL;
-
-	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, pLayerTag, TEXT("Prototype_GameObject_RecruitButton"))))
-	//	return E_FAIL;
 	_int iImgNum = 1;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, pLayerTag, TEXT("Prototype_GameObject_BackGround"), &iImgNum)))
 		return E_FAIL;
+
+	iImgNum = 2;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, pLayerTag, TEXT("Prototype_GameObject_FadeOut"), &iImgNum)))
 		return E_FAIL;
@@ -176,13 +178,29 @@ HRESULT CGacha_Scene::Ready_Layer_Arona(const _tchar * pLayerTag)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
-	CSensei* pSensei = CSensei::Get_Instance();
-
 	/* For.Player */
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, pLayerTag, TEXT("Prototype_GameObject_Arona"))))
 		return E_FAIL;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, pLayerTag, TEXT("Prototype_GameObject_AronaSack"))))
+		return E_FAIL;
+
+	Safe_Release(pGameInstance);
+
+	return S_OK;
+}
+
+HRESULT CGacha_Scene::Ready_Layer_Student(const _tchar * pLayerTag)
+{
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+	Safe_AddRef(pGameInstance);
+
+	CSensei* pSensei = GET_SENSEI;
+
+	_int iImgNum = pSensei->Get_Student(pSensei->Get_NewStudent())->Get_StudentInfo().iIndex;
+	
+	/* For.Player */
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, pLayerTag, TEXT("Prototype_GameObject_StudentImg"), &iImgNum)))
 		return E_FAIL;
 
 	Safe_Release(pGameInstance);

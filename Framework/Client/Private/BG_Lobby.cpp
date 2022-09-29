@@ -30,6 +30,8 @@ HRESULT CBG_Lobby::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
+	if (nullptr != pArg)
+		memcpy(&m_iImgNum, pArg, sizeof(_int));
 
 	m_fSizeX = 1.f;
 	m_fSizeY = 1.f;
@@ -51,7 +53,7 @@ void CBG_Lobby::Tick(_float fTimeDelta)
 
 void CBG_Lobby::LateTick(_float fTimeDelta)
 {
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_UI, this);
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, this);
 }
 
 HRESULT CBG_Lobby::Render()
@@ -88,7 +90,7 @@ HRESULT CBG_Lobby::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_Texture */
-	if (FAILED(__super::Add_Component(LEVEL_LOBBY, TEXT("Prototype_Component_Texture_BG_Lobby"), TEXT("Com_Texture "), (CComponent**)&m_pTextureCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Texture_BG"), TEXT("Com_Texture "), (CComponent**)&m_pTextureCom)))
 		return E_FAIL;
 
 	/* For.Com_VIBuffer */
@@ -114,7 +116,7 @@ HRESULT CBG_Lobby::SetUp_ShaderResource()
 	if (FAILED(m_pShaderCom->Set_RawValue("g_Fade", &m_fFade, sizeof(_float))))
 		return E_FAIL;
 
-	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 0)))
+	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", m_iImgNum)))
 		return E_FAIL;
 
 
