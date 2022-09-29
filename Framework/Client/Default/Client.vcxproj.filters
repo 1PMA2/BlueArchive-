@@ -148,6 +148,18 @@
     <ClInclude Include="..\Public\UI_RecruitButton.h">
       <Filter>02.GameObject\05.UI\Gacha_UI\Recruit_Button</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Gacha_Scene.h">
+      <Filter>01.Level\Gacha\Gacha_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Arona.h">
+      <Filter>02.GameObject\00.Student\99. Arona</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Camera_Gacha.h">
+      <Filter>02.GameObject\03.Camera\Camera_Gacha</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Arona_CAM.h">
+      <Filter>02.GameObject\00.Student\99. Arona\Arona_Cam</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -284,6 +296,18 @@
     </ClCompile>
     <ClCompile Include="..\Private\UI_RecruitButton.cpp">
       <Filter>02.GameObject\05.UI\Gacha_UI\Recruit_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Gacha_Scene.cpp">
+      <Filter>01.Level\Gacha\Gacha_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Camera_Gacha.cpp">
+      <Filter>02.GameObject\03.Camera\Camera_Gacha</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Arona.cpp">
+      <Filter>02.GameObject\00.Student\99. Arona</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Arona_CAM.cpp">
+      <Filter>02.GameObject\00.Student\99. Arona\Arona_Cam</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -504,6 +528,15 @@
     </Filter>
     <Filter Include="01.Level\Gacha\Gacha_Scene">
       <UniqueIdentifier>{414078ec-5cfb-4930-8ead-d1af51ec2dc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\03.Camera\Camera_Gacha">
+      <UniqueIdentifier>{6872f4f8-2da2-4f00-b3cc-c90fae4434d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Student\99. Arona">
+      <UniqueIdentifier>{a41b7402-27cd-434d-926d-d9e2f3b884a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Student\99. Arona\Arona_Cam">
+      <UniqueIdentifier>{d39b5df0-663a-48f5-a297-9a0a07e40937}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

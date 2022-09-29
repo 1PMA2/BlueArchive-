@@ -25,6 +25,7 @@ HRESULT CLevel_Lobby::Initialize()
 
 	pSensei->Release_FormationStudents();
 
+
 	return S_OK;
 }
 

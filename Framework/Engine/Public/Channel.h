@@ -14,6 +14,9 @@ private:
 	virtual ~CChannel() = default;
 
 public:
+	_uint Get_CurrentKeyFrame() { return m_iCurrentKeyFrame; }
+
+public:
 	HRESULT Initialize(aiNodeAnim* pAIChannel, class CModel* pModel);
 
 	void Update_TransformationMatrices(_float fCurrentTime);

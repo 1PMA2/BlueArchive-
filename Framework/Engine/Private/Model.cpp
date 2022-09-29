@@ -34,6 +34,11 @@ _bool CModel::Get_isFinished()
 	return m_Animations[m_iCurrentAnimationIndex]->Get_isFinished();
 }
 
+_uint CModel::Get_CurrentKeyFrame()
+{
+  return m_Animations[m_iCurrentAnimationIndex]->Get_CurrentKeyFrame();
+}
+
 void CModel::Set_CurrentAnimation(_uint iAnimIndex)
 {
 	m_Animations[m_iCurrentAnimationIndex]->Reset_TransformationMatrices();
@@ -137,7 +142,7 @@ HRESULT CModel::Play_Animation(_float fTimeDelta)
 		return E_FAIL;
 
 	m_Animations[m_iCurrentAnimationIndex]->Update_TransformationMatrices(fTimeDelta);
-
+	
 	for (auto& pHierarchyNode : m_HierarchyNodes)
 		pHierarchyNode->Update_CombinedTransformationMatrix();
 

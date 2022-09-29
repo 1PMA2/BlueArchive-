@@ -13,6 +13,7 @@ private:
 
 public:
 	_bool Get_isFinished() { return m_isFinished; }
+	_uint Get_CurrentKeyFrame();
 
 public:
 	HRESULT Initialize(aiAnimation* pAIAnimation, class CModel* pModel);

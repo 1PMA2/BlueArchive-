@@ -20,6 +20,11 @@ CAnimation::CAnimation(const CAnimation& rhs)
 	strcpy_s(m_szName, rhs.m_szName);
 }
 
+_uint CAnimation::Get_CurrentKeyFrame()
+{
+	return m_Channels[0]->Get_CurrentKeyFrame();
+}
+
 HRESULT CAnimation::Initialize(aiAnimation * pAIAnimation, class CModel* pModel)
 {
 	strcpy_s(m_szName, pAIAnimation->mName.data);

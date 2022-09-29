@@ -30,32 +30,6 @@ HRESULT CCamera_Ex::Initialize(void * pArg)
 		return E_FAIL;
 
 	/* 트랜스폼 컴포넌늩를 추가한다. */
-	m_WeaponDesc.eTargetLevel = LEVEL_GAMEPLAY;
-	m_WeaponDesc.pTargetLayerTag = TEXT("Layer_Student_Ex");
-	m_WeaponDesc.iTargetIndex = 0;
-	m_WeaponDesc.pTargetModelComTag = TEXT("Com_Model");
-	m_WeaponDesc.pBoneName = "Camera001";
-
-	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
-
-	CModel*		pTargetModel = (CModel*)pGameInstance->Get_Component(m_WeaponDesc.eTargetLevel, m_WeaponDesc.pTargetLayerTag, m_WeaponDesc.pTargetModelComTag, m_WeaponDesc.iTargetIndex);
-	if (nullptr == pTargetModel)
-		return E_FAIL;
-
-	m_pBonePtr = pTargetModel->Find_HierarcyNode(m_WeaponDesc.pBoneName);
-	m_pTargetBonePtr = pTargetModel->Find_HierarcyNode("Camera001.Target");
-	if (nullptr == m_pBonePtr)
-		return E_FAIL;
-
-	Safe_AddRef(m_pBonePtr);
-
-	m_pTargetTransform = (CTransform*)pGameInstance->Get_Component(m_WeaponDesc.eTargetLevel, m_WeaponDesc.pTargetLayerTag, TEXT("Com_Transform"));
-	if (nullptr == m_pTargetTransform)
-		return E_FAIL;
-
-	Safe_AddRef(m_pTargetTransform);
-
-	RELEASE_INSTANCE(CGameInstance);
 
 	this->Set_Enable(false);
 
@@ -88,6 +62,34 @@ void CCamera_Ex::OnDisable()
 
 void CCamera_Ex::OnEnable()
 {
+	CSensei* pSensei = GET_SENSEI;
+
+	m_WeaponDesc.eTargetLevel = LEVEL_GAMEPLAY;
+	m_WeaponDesc.pTargetLayerTag = TEXT("Layer_Student_Ex");
+	m_WeaponDesc.iTargetIndex = pSensei->Get_FormationInfo(0).iIndex;
+	m_WeaponDesc.pTargetModelComTag = TEXT("Com_Model");
+	m_WeaponDesc.pBoneName = "Camera001";
+
+	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
+
+	CModel*		pTargetModel = (CModel*)pGameInstance->Get_Component(m_WeaponDesc.eTargetLevel, m_WeaponDesc.pTargetLayerTag, m_WeaponDesc.pTargetModelComTag, m_WeaponDesc.iTargetIndex);
+	if (nullptr == pTargetModel)
+		return ;
+
+	m_pBonePtr = pTargetModel->Find_HierarcyNode(m_WeaponDesc.pBoneName);
+	m_pTargetBonePtr = pTargetModel->Find_HierarcyNode("Camera001.Target");
+	if (nullptr == m_pBonePtr)
+		return ;
+
+	Safe_AddRef(m_pBonePtr);
+
+	m_pTargetTransform = (CTransform*)pGameInstance->Get_Component(m_WeaponDesc.eTargetLevel, m_WeaponDesc.pTargetLayerTag, TEXT("Com_Transform"));
+	if (nullptr == m_pTargetTransform)
+		return ;
+
+	Safe_AddRef(m_pTargetTransform);
+
+	RELEASE_INSTANCE(CGameInstance);
 }
 
 void CCamera_Ex::MoveCamera()

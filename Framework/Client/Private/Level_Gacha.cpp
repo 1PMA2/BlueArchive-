@@ -8,6 +8,7 @@
 #include "Camera_Ex.h"
 #include "Sensei.h"
 #include "Student.h"
+#include "Level_Lobby.h"
 
 
 CLevel_Gacha::CLevel_Gacha(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -59,19 +60,17 @@ void CLevel_Gacha::Tick(_float fTimeDelta)
 
 	if (pSensei->Get_OpenGachaScene())
 	{
-		m_pLoader = CLoader::Create(m_pDevice, m_pContext, LEVEL_LOGO);
-		if (nullptr == m_pLoader)
+		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+		Safe_AddRef(pGameInstance);
+
+		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GACHASCENE))))
 			return;
 
-		if (true == m_pLoader->is_Finished())
-		{
-			CLevel*			pLevel = nullptr;
+		Safe_Release(pGameInstance);
 
-			//pLevel = CLevel_GachaScene::Create(m_pDevice, m_pContext);
-
-			pSensei->Set_OpenGachaScene(false);
-		}
+		pSensei->Set_OpenGachaScene(false);
 	}
+
 
 
 
@@ -79,8 +78,8 @@ void CLevel_Gacha::Tick(_float fTimeDelta)
 
 void CLevel_Gacha::Late_Tick(_float TimeDelta)
 {
-	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-	CSensei* pSensei = GET_SENSEI;
+	//CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+	//CSensei* pSensei = GET_SENSEI;
 
 	
 

@@ -51,7 +51,7 @@ void CLevel_Formation::Tick(_float fTimeDelta)
 
 		pSensei->Set_PreLevel(LEVEL_FORMATION);
 
-		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
+		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GAMEPLAY))))
 			return;
 
 		Safe_Release(pGameInstance);

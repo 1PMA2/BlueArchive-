@@ -19,6 +19,9 @@
 #include "City.h"
 #include "UI.h"
 #include "UI_RecruitButton.h"
+#include "Camera_Gacha.h"
+#include "Arona.h"
+#include "Arona_CAM.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -53,7 +56,7 @@ unsigned int APIENTRY LoadingMain(void* pArg)
 			hr = pLoader->Loading_ForGachaLevel();
 			break;
 		case LEVEL_GACHASCENE:
-			hr = pLoader->Loading_ForGachaLevel();
+			hr = pLoader->Loading_ForGachaScene();
 			break;
 		case LEVEL_GAMEPLAY:
 			hr = pLoader->Loading_ForGamePlayLevel();
@@ -232,7 +235,7 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 	//if (FAILED(pGameInstance->Add_Prototype(LEVEL_LOBBY, TEXT("Prototype_Component_Texture_WorkButton"),
 	//	CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Gacha.png"), 1))))
 	//	return E_FAIL;
-
+	
 	
 
 	lstrcpy(m_szLoadingText, TEXT("lobby로딩 끝 "));
@@ -254,6 +257,23 @@ HRESULT CLoader::Loading_ForGachaLevel()
 			CUI_RecruitButton::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Gacha"),
+			CCamera_Gacha::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Arona"),
+			CArona::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_AronaCAM"),
+			CArona_CAM::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		/* For.Prototype_GameObject_Camera_Free*/
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Free"),
+			CCamera_Free::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		g_bGacha = false;
 	}
 
@@ -265,7 +285,37 @@ HRESULT CLoader::Loading_ForGachaLevel()
 
 
 
+
+
+
 	lstrcpy(m_szLoadingText, TEXT("gacha 로딩 끝 "));
+
+	m_isFinished = true;
+	Safe_Release(pGameInstance);
+
+	return S_OK;
+}
+
+HRESULT CLoader::Loading_ForGachaScene()
+{
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+	Safe_AddRef(pGameInstance);
+
+	_matrix TransformMatrix;
+
+	ZeroMemory(&TransformMatrix, sizeof(_matrix));
+	TransformMatrix = XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_GACHASCENE, TEXT("Prototype_Component_Model_Arona"),
+		CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Arona/", "Arona.fbx", TransformMatrix))))
+		return E_FAIL;
+
+	ZeroMemory(&TransformMatrix, sizeof(_matrix));
+	TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_GACHASCENE, TEXT("Prototype_Component_Model_AronaCAM"),
+		CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Arona/", "CAM.fbx", TransformMatrix))))
+		return E_FAIL;
+
+	
 
 	m_isFinished = true;
 	Safe_Release(pGameInstance);
@@ -292,10 +342,7 @@ HRESULT CLoader::Loading_ForFormationLevel()
 
 		/* For.Prototype_GameObject_Student */
 
-		/* For.Prototype_GameObject_Camera_Free*/
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Free"),
-			CCamera_Free::Create(m_pDevice, m_pContext))))
-			return E_FAIL;
+
 
 
 		lstrcpy(m_szLoadingText, TEXT("콜라이더추가.  "));

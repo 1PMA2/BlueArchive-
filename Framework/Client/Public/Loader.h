@@ -39,6 +39,7 @@ public:
 	HRESULT Loading_ForLogoLevel();
 	HRESULT Loading_ForLobbyLevel();
 	HRESULT Loading_ForGachaLevel();
+	HRESULT Loading_ForGachaScene();
 	HRESULT Loading_ForGamePlayLevel();
 	HRESULT Loading_ForFormationLevel();
 
