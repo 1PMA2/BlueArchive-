@@ -49,6 +49,7 @@ private:
 	class CTransform*		m_pTargetTransform = nullptr;
 	_float m_fFov = 10.f;
 	_float m_fOpenFov = 4.3f;
+	_bool m_bOnce = true;
 
 private:
 	void MoveCamera();

@@ -38,6 +38,12 @@ public:
 	_bool Get_OpenGachaScene() { return m_bOpenGachaScene; }
 	void Set_OpenGachaScene(_bool bGachaScene) { m_bOpenGachaScene = bGachaScene; }
 
+	_bool Get_OpenFormationLevel() { return m_bOpenFormationLevel; }
+	void Set_OpenFormationLevel(_bool bFormationLevel) { m_bOpenFormationLevel = bFormationLevel; }
+
+	_bool Get_OpenLobbyLevel() { return m_bOpenLobbyLevel; }
+	void Set_OpenLobbyLevel(_bool bLobbyLevel) { m_bOpenLobbyLevel = bLobbyLevel; }
+
 	void Set_TimeSpeed();
 	void Set_Camera(CAMERA eCamera) { m_tSensei.eCamera = eCamera; }
 
@@ -63,6 +69,8 @@ public:
 	CStudent::STUDENTINFO m_tStudentInfo = {};
 	_bool m_bOpenGachaLevel = false;
 	_bool m_bOpenGachaScene = false;
+	_bool m_bOpenFormationLevel = false;
+	_bool m_bOpenLobbyLevel = false;
 
 	map<const _tchar*, class CStudent*>					m_Student;
 	typedef map<const _tchar*, class CStudent*>			STUDENTS;

@@ -76,8 +76,11 @@ void CCamera_Gacha::Tick(_float fTimeDelta)
 	{
 		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 		CArona_Sack* pSack = (CArona_Sack*)pGameInstance->Get_GameObject(LEVEL_GACHASCENE, TEXT("Layer_Arona"), 1);
-		
+		if (m_bOnce)
+		{
 		pSack->Set_Enable(true);
+		m_bOnce = false;
+		}
 
 		this->Set_Fov(XMConvertToRadians(m_fOpenFov));
 		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 3.f, 3.f, 1.f));
@@ -88,6 +91,9 @@ void CCamera_Gacha::Tick(_float fTimeDelta)
 		{
 			m_fOpenFov -= 0.015f;
 			this->Set_Fov(XMConvertToRadians(m_fOpenFov));
+
+			if (3.f > m_fOpenFov)
+				this->Set_Enable(false);
 		}
 	}
 

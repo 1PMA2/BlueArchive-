@@ -9,6 +9,7 @@
 #include "Level_GamePlay.h"
 #include "GameInstance.h"
 #include "Sensei.h"
+#include "BackGround.h"
 
 CLevel_Loading::CLevel_Loading(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: CLevel(pDevice, pContext)
@@ -39,6 +40,7 @@ HRESULT CLevel_Loading::Initialize(LEVEL eNextLevel)
 void CLevel_Loading::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);	
+
 
 	if (true == m_pLoader->is_Finished())
 	{

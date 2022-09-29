@@ -3,6 +3,7 @@
 #include "GameInstance.h"
 #include "BackGround.h"
 #include "Fade_Out.h"
+#include "Fade_InOut.h"
 #include "LoadingImage.h"
 #include "BG_Lobby.h"
 #include "BG_Gacha.h"
@@ -21,11 +22,13 @@
 #include "City.h"
 #include "UI.h"
 #include "UI_RecruitButton.h"
+#include "Work_Button.h"
 #include "Camera_Gacha.h"
 #include "Arona.h"
 #include "Arona_CAM.h"
 #include "Arona_Sack.h"
 #include "Student_Img.h"
+#include "Back_Btn.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -113,6 +116,10 @@ HRESULT CLoader::Loading_ForLogoLevel()
 		CFade_Out::Create(m_pDevice, m_pContext))))
 		return E_FAIL;
 
+	if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_FadeInOut"),
+		CFade_InOut::Create(m_pDevice, m_pContext))))
+		return E_FAIL;
+
 	if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_LoadingImage"),
 		CLoadingImage::Create(m_pDevice, m_pContext))))
 		return E_FAIL;
@@ -184,6 +191,10 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 			CUI::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_WorkButton"),
+			CWork_Button::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		/* For.Prototype_GameObject_Camera_Free*/
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Free"),
 			CCamera_Free::Create(m_pDevice, m_pContext))))
@@ -199,7 +210,9 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 	}
 #pragma endregion
 
-
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_LOBBY, TEXT("Prototype_Component_Texture_WorkButton"),
+		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Work.png"), 1))))
+		return E_FAIL;
 
 
 	if (FAILED(pGameInstance->Add_Prototype(LEVEL_LOBBY, TEXT("Prototype_Component_Texture_GachaButton"),
@@ -370,7 +383,9 @@ HRESULT CLoader::Loading_ForFormationLevel()
 			return E_FAIL;
 
 		/* For.Prototype_GameObject_Student */
-
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_BackButton"),
+			CBack_Btn::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
 
 
 
@@ -407,6 +422,10 @@ HRESULT CLoader::Loading_ForFormationLevel()
 
 		g_bFormation = false;
 	}
+
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_FORMATION, TEXT("Prototype_Component_Texture_BackButton"),
+		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Back_Btn.png"), 1))))
+		return E_FAIL;
 #pragma endregion
 
 	lstrcpy(m_szLoadingText, TEXT("편성 로딩 끝 "));

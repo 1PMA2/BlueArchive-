@@ -2,6 +2,8 @@
 #include "..\Public\Student_Img.h"
 
 #include "GameInstance.h"
+#include "BackGround.h"
+#include "Fade_Out.h"
 
 CStudent_Img::CStudent_Img(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -43,20 +45,19 @@ HRESULT CStudent_Img::Initialize(void * pArg)
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-m_fX + 1000.f, m_fY - 500.f, 0.f, 1.f));
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
-	this->Set_Enable(false);
 
 	return S_OK;
 }
 
 void CStudent_Img::Tick(_float fTimeDelta)
 {
-
+	
 
 }
 
 void CStudent_Img::LateTick(_float fTimeDelta)
 {
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_UI, this);
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_ALPHABLEND, this);
 }
 
 HRESULT CStudent_Img::Render()
@@ -123,10 +124,12 @@ HRESULT CStudent_Img::SetUp_ShaderResource()
 
 void CStudent_Img::OnDisable()
 {
+	
 }
 
 void CStudent_Img::OnEnable()
 {
+
 }
 
 CStudent_Img * CStudent_Img::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)

@@ -2,6 +2,7 @@
 #include "..\Public\Arona.h"
 
 #include "GameInstance.h"
+#include "BackGround.h"
 
 CArona::CArona(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -35,13 +36,13 @@ HRESULT CArona::Initialize(void * pArg)
 
 	m_pModelCom->Set_CurrentAnimation(0);
 
-
 	return S_OK;
 }
 
 void CArona::Tick(_float fTimeDelta)
 {
 	m_pModelCom->Play_Animation(fTimeDelta);
+
 
 }
 

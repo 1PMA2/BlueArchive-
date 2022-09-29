@@ -3,6 +3,7 @@
 
 #include "GameInstance.h"
 #include "Fade_Out.h"
+#include "BackGround.h"
 #include "Sensei.h"
 #include "Student_Img.h"
 CArona_Sack::CArona_Sack(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
@@ -69,25 +70,25 @@ void CArona_Sack::Tick(_float fTimeDelta)
 		{
 			m_pModelCom->Play_Animation(fTimeDelta);
 		}
-		
 
 		m_pTransformCom->Go_Up(fTimeDelta * -0.02f);
 
-		if (m_pTransformCom->TurnFor(XMVectorSet(0.f, -1.f, 0.f, 1.f), fTimeDelta, XMConvertToRadians(140.f)))
+		if (m_pTransformCom->TurnFor(XMVectorSet(0.f, -1.f, 0.f, 1.f), fTimeDelta, XMConvertToRadians(180.f)))
 		{
-			CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-			CFade_Out* pFadeOut = (CFade_Out*)pGameInstance->Get_GameObject(LEVEL_GACHASCENE, TEXT("Layer_BackGround"), 1);
+			CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+			Safe_AddRef(pGameInstance);
 
-			if (!pFadeOut->Get_IsFinished())
-				pFadeOut->Set_Enable(true);
-			else
-			{
-				CStudent_Img* pStudentImg = (CStudent_Img*)pGameInstance->Get_GameObject(LEVEL_GACHASCENE, TEXT("Layer_Student"), 0);
+			_int iImgNum = 1;
 
-				pStudentImg->Set_Enable(true);
-				this->Set_Enable(false);
-			}
+			if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, TEXT("Layer_BackGround"), TEXT("Prototype_GameObject_FadeInOut"), &iImgNum)))
+				return;
+
+			Safe_Release(pGameInstance);
+
+			this->Set_Enable(false);
 		}
+
+		
 	}
 }
 

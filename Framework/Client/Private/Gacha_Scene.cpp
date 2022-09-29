@@ -34,8 +34,8 @@ HRESULT CGacha_Scene::Initialize()
 	if (FAILED(Ready_Layer_Camera(TEXT("Layer_Camera"))))
 		return E_FAIL;
 
-	if (FAILED(Ready_Layer_Student(TEXT("Layer_Student"))))
-		return E_FAIL;
+	//if (FAILED(Ready_Layer_Student(TEXT("Layer_Student"))))
+		//return E_FAIL;
 
 
 
@@ -128,11 +128,6 @@ HRESULT CGacha_Scene::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	_int iImgNum = 1;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, pLayerTag, TEXT("Prototype_GameObject_BackGround"), &iImgNum)))
-		return E_FAIL;
-
-	iImgNum = 2;
-
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, pLayerTag, TEXT("Prototype_GameObject_FadeOut"), &iImgNum)))
 		return E_FAIL;
 
 	Safe_Release(pGameInstance);

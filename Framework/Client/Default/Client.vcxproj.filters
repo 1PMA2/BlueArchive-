@@ -68,10 +68,10 @@
       <Filter>02.GameObject\01.State</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Run_Sign.h">
-      <Filter>02.GameObject\01.State\Run_Sign</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Run_Sign</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Run.h">
-      <Filter>02.GameObject\01.State\Run</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Run</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Aru_Ex.h">
       <Filter>02.GameObject\00.Student\00. Aru\Aru_Ex</Filter>
@@ -80,55 +80,55 @@
       <Filter>02.GameObject\02.Obstacle</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Ex_Cutin.h">
-      <Filter>02.GameObject\01.State\EX_Cutin</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\EX_Cutin</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Monster.h">
       <Filter>02.GameObject\00.Monster</Filter>
     </ClInclude>
     <ClInclude Include="..\Private\Run_ToHide.h">
-      <Filter>02.GameObject\01.State\Run_ToHide</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Run_ToHide</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Hide_Idle.h">
-      <Filter>02.GameObject\01.State\Hide_Idle</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Hide_Idle</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Fire.h">
-      <Filter>02.GameObject\01.State\Fire</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Fire</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Hide_FireStart.h">
-      <Filter>02.GameObject\01.State\Hide_FireStart</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Hide_FireStart</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Ex.h">
-      <Filter>02.GameObject\01.State\Ex</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Ex</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Knee_ZoomFire.h">
-      <Filter>02.GameObject\01.State\Knee_ZoomFire</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Knee_ZoomFire</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Knee_ZoomStart.h">
-      <Filter>02.GameObject\01.State\Knee_ZoomStart</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Knee_ZoomStart</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\City.h">
       <Filter>02.GameObject\06.Terrain\Map</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Knee_ZoomEnd.h">
-      <Filter>02.GameObject\01.State\Knee_ZoomEnd</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Knee_ZoomEnd</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Knee_Reload.h">
-      <Filter>02.GameObject\01.State\Knee_Reload</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Knee_Reload</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Hide_ReloadStart.h">
-      <Filter>02.GameObject\01.State\Hide_ReloadStart</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Hide_ReloadStart</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Hide_Reloading.h">
-      <Filter>02.GameObject\01.State\Hide_Reloading</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Hide_Reloading</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Level_Formation.h">
       <Filter>01.Level\Level_Formation</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Formation_Idle.h">
-      <Filter>02.GameObject\01.State\Formation_Idle</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Formation_Idle</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Formation_Pick.h">
-      <Filter>02.GameObject\01.State\Formation_Pick</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Formation_Pick</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Formation_Terrain.h">
       <Filter>02.GameObject\06.Terrain\Formation_Terrain</Filter>
@@ -168,6 +168,15 @@
     </ClInclude>
     <ClInclude Include="..\Public\Student_Img.h">
       <Filter>02.GameObject\04.BackGround\BG_Gacha\Student_Img</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Fade_InOut.h">
+      <Filter>02.GameObject\04.BackGround\LoadingImage\FadeImage\INOUT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Work_Button.h">
+      <Filter>02.GameObject\05.UI\Lobby_UI\Work_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Back_Btn.h">
+      <Filter>02.GameObject\05.UI\Back_Btn</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -226,10 +235,10 @@
       <Filter>02.GameObject\01.State</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Run_Sign.cpp">
-      <Filter>02.GameObject\01.State\Run_Sign</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Run_Sign</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Run.cpp">
-      <Filter>02.GameObject\01.State\Run</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Run</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Aru_Ex.cpp">
       <Filter>02.GameObject\00.Student\00. Aru\Aru_Ex</Filter>
@@ -238,55 +247,55 @@
       <Filter>02.GameObject\02.Obstacle</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Ex_Cutin.cpp">
-      <Filter>02.GameObject\01.State\EX_Cutin</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\EX_Cutin</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Monster.cpp">
       <Filter>02.GameObject\00.Monster</Filter>
     </ClCompile>
     <ClCompile Include="..\Public\Run_ToHide.cpp">
-      <Filter>02.GameObject\01.State\Run_ToHide</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Run_ToHide</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Hide_Idle.cpp">
-      <Filter>02.GameObject\01.State\Hide_Idle</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Hide_Idle</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Fire.cpp">
-      <Filter>02.GameObject\01.State\Fire</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Fire</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Hide_FireStart.cpp">
-      <Filter>02.GameObject\01.State\Hide_FireStart</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Hide_FireStart</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Ex.cpp">
-      <Filter>02.GameObject\01.State\Ex</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Ex</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Knee_ZoomFire.cpp">
-      <Filter>02.GameObject\01.State\Knee_ZoomFire</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Knee_ZoomFire</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Knee_ZoomStart.cpp">
-      <Filter>02.GameObject\01.State\Knee_ZoomStart</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Knee_ZoomStart</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\City.cpp">
       <Filter>02.GameObject\06.Terrain\Map</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Knee_ZoomEnd.cpp">
-      <Filter>02.GameObject\01.State\Knee_ZoomEnd</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Knee_ZoomEnd</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Knee_Reload.cpp">
-      <Filter>02.GameObject\01.State\Knee_Reload</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Knee_Reload</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Hide_ReloadStart.cpp">
-      <Filter>02.GameObject\01.State\Hide_ReloadStart</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Hide_ReloadStart</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Hide_Reloading.cpp">
-      <Filter>02.GameObject\01.State\Hide_Reloading</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Hide_Reloading</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Level_Formation.cpp">
       <Filter>01.Level\Level_Formation</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Formation_Idle.cpp">
-      <Filter>02.GameObject\01.State\Formation_Idle</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Formation_Idle</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Formation_Pick.cpp">
-      <Filter>02.GameObject\01.State\Formation_Pick</Filter>
+      <Filter>02.GameObject\01.State\Aru_State\Formation_Pick</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Formation_Terrain.cpp">
       <Filter>02.GameObject\06.Terrain\Formation_Terrain</Filter>
@@ -326,6 +335,15 @@
     </ClCompile>
     <ClCompile Include="..\Private\Student_Img.cpp">
       <Filter>02.GameObject\04.BackGround\BG_Gacha\Student_Img</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Fade_InOut.cpp">
+      <Filter>02.GameObject\04.BackGround\LoadingImage\FadeImage\INOUT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Work_Button.cpp">
+      <Filter>02.GameObject\05.UI\Lobby_UI\Work_Button</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Back_Btn.cpp">
+      <Filter>02.GameObject\05.UI\Back_Btn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -424,87 +442,6 @@
     <Filter Include="02.GameObject\01.State">
       <UniqueIdentifier>{4a482f13-42f2-42e5-8eb8-9047dc1b6c6f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\01.State\EX_Cutin">
-      <UniqueIdentifier>{0b9da3b3-34fa-4167-a641-28c32f72f75e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Formation_Idle">
-      <UniqueIdentifier>{72e0eb0f-d86c-487a-b1bd-716aa70d6889}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Formation_Pick">
-      <UniqueIdentifier>{57fab7ff-d43b-4f61-ae23-b11c6edf4707}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Knee_Zoom">
-      <UniqueIdentifier>{4bed9ea3-9fb2-46bd-95f4-f000304ecb43}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Hide_ReloadStart">
-      <UniqueIdentifier>{c8033dc8-4e7d-40f8-ab3d-50462cada297}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Fire">
-      <UniqueIdentifier>{9f489b98-593c-4347-93bb-a4481bd8e3e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Hide_Sign">
-      <UniqueIdentifier>{6b764e08-c797-4759-84f6-db7286523d1c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Hide_Idle">
-      <UniqueIdentifier>{d5ff6100-4d90-46d3-b8d6-368f301649b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Hide_Reloading">
-      <UniqueIdentifier>{5de19201-987c-434a-bbbe-e05adaf81e6d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Run_Sign">
-      <UniqueIdentifier>{4df8bf4f-4dd4-45a5-9816-791672149838}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Run_ToHide">
-      <UniqueIdentifier>{be6aab6b-eb17-4ef2-98d3-e429461a3435}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Run_ToKnee">
-      <UniqueIdentifier>{55e6945c-b53c-4d43-9c25-615e2f032bab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Run">
-      <UniqueIdentifier>{a69c54cb-1954-47fa-b6b6-1549ad59a426}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Knee_Zoom2">
-      <UniqueIdentifier>{7424827a-8b52-48e0-8a8c-95ebe56a42c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Knee_ZoomEnd">
-      <UniqueIdentifier>{846862c0-c559-4e1e-84db-1f77840b779b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Knee_ZoomFire">
-      <UniqueIdentifier>{a30eb0c8-7fbb-4805-8329-a09da6d66726}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Knee_ZoomStart">
-      <UniqueIdentifier>{a7082aa4-1b63-4a38-8094-0b1856ce9896}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Knee_Sign">
-      <UniqueIdentifier>{ae15a989-9507-4182-9d1f-3819f03eb6ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Knee_Idle">
-      <UniqueIdentifier>{5b4e355a-296e-44d9-b090-53fa02e6e0f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Knee_Reload">
-      <UniqueIdentifier>{edfe2f9c-a5fa-4138-95fa-6d35768c7bec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Skill">
-      <UniqueIdentifier>{ab52868e-af78-426b-9f3a-e5bbf3335900}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Victory">
-      <UniqueIdentifier>{08493f5d-3d92-4b48-91f7-086c7784cdb5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Victory_Start">
-      <UniqueIdentifier>{1c6a8df8-1e2a-489a-bcf7-50e258bfe91d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Dead">
-      <UniqueIdentifier>{7f77a25c-7bdb-4406-85b9-91027ba4e886}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Fail">
-      <UniqueIdentifier>{df092256-4377-4032-8855-90c12097adbd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Fail_Knee">
-      <UniqueIdentifier>{8fa4e897-5193-477f-87bd-9fdc737542aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Retire">
-      <UniqueIdentifier>{6a97aa19-5036-408e-9fcb-63c2755c227a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.GameObject\03.Camera\Camera_Main">
       <UniqueIdentifier>{9ff315c4-4dd3-4e98-831d-6671cbd76af1}</UniqueIdentifier>
     </Filter>
@@ -517,17 +454,11 @@
     <Filter Include="02.GameObject\00.Monster">
       <UniqueIdentifier>{55185f6b-c8e8-44a3-a0f9-ecb6ddf094ca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\01.State\Hide_FireStart">
-      <UniqueIdentifier>{95363383-2a10-499f-b0e8-f94e1e7c129a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01.Level\Level_Formation">
       <UniqueIdentifier>{4dcbffa4-0c45-4902-bd56-e72df6b4ef97}</UniqueIdentifier>
     </Filter>
     <Filter Include="02.GameObject\06.Terrain\Formation_Terrain">
       <UniqueIdentifier>{bb9eab73-8a60-4965-b126-bc93a136cc2b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\01.State\Ex">
-      <UniqueIdentifier>{49b0521f-68e1-4d72-9e6f-a17210f48b90}</UniqueIdentifier>
     </Filter>
     <Filter Include="01.Level\Gacha">
       <UniqueIdentifier>{36fcee6b-45ca-4e3a-9254-c861d5754cfc}</UniqueIdentifier>
@@ -570,6 +501,102 @@
     </Filter>
     <Filter Include="02.GameObject\04.BackGround\BG_Gacha\Student_Img">
       <UniqueIdentifier>{1d1e8366-5a75-41b7-8b2e-ed15e97e6163}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\04.BackGround\LoadingImage\FadeImage\INOUT">
+      <UniqueIdentifier>{28da6eb4-6ef6-474c-a75e-9adcf7049e0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State">
+      <UniqueIdentifier>{724a10f0-9cca-43fb-bc46-499186ba0659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Dead">
+      <UniqueIdentifier>{7f77a25c-7bdb-4406-85b9-91027ba4e886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Ex">
+      <UniqueIdentifier>{49b0521f-68e1-4d72-9e6f-a17210f48b90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\EX_Cutin">
+      <UniqueIdentifier>{0b9da3b3-34fa-4167-a641-28c32f72f75e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Fail">
+      <UniqueIdentifier>{df092256-4377-4032-8855-90c12097adbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Fail_Knee">
+      <UniqueIdentifier>{8fa4e897-5193-477f-87bd-9fdc737542aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Fire">
+      <UniqueIdentifier>{9f489b98-593c-4347-93bb-a4481bd8e3e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Formation_Idle">
+      <UniqueIdentifier>{72e0eb0f-d86c-487a-b1bd-716aa70d6889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Formation_Pick">
+      <UniqueIdentifier>{57fab7ff-d43b-4f61-ae23-b11c6edf4707}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Hide_FireStart">
+      <UniqueIdentifier>{95363383-2a10-499f-b0e8-f94e1e7c129a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Hide_Idle">
+      <UniqueIdentifier>{d5ff6100-4d90-46d3-b8d6-368f301649b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Hide_Reloading">
+      <UniqueIdentifier>{5de19201-987c-434a-bbbe-e05adaf81e6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Hide_ReloadStart">
+      <UniqueIdentifier>{c8033dc8-4e7d-40f8-ab3d-50462cada297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Hide_Sign">
+      <UniqueIdentifier>{6b764e08-c797-4759-84f6-db7286523d1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Knee_Idle">
+      <UniqueIdentifier>{5b4e355a-296e-44d9-b090-53fa02e6e0f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Knee_Reload">
+      <UniqueIdentifier>{edfe2f9c-a5fa-4138-95fa-6d35768c7bec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Knee_Sign">
+      <UniqueIdentifier>{ae15a989-9507-4182-9d1f-3819f03eb6ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Knee_Zoom">
+      <UniqueIdentifier>{4bed9ea3-9fb2-46bd-95f4-f000304ecb43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Knee_Zoom2">
+      <UniqueIdentifier>{7424827a-8b52-48e0-8a8c-95ebe56a42c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Knee_ZoomEnd">
+      <UniqueIdentifier>{846862c0-c559-4e1e-84db-1f77840b779b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Knee_ZoomFire">
+      <UniqueIdentifier>{a30eb0c8-7fbb-4805-8329-a09da6d66726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Knee_ZoomStart">
+      <UniqueIdentifier>{a7082aa4-1b63-4a38-8094-0b1856ce9896}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Retire">
+      <UniqueIdentifier>{6a97aa19-5036-408e-9fcb-63c2755c227a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Run">
+      <UniqueIdentifier>{a69c54cb-1954-47fa-b6b6-1549ad59a426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Run_Sign">
+      <UniqueIdentifier>{4df8bf4f-4dd4-45a5-9816-791672149838}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Run_ToHide">
+      <UniqueIdentifier>{be6aab6b-eb17-4ef2-98d3-e429461a3435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Run_ToKnee">
+      <UniqueIdentifier>{55e6945c-b53c-4d43-9c25-615e2f032bab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Skill">
+      <UniqueIdentifier>{ab52868e-af78-426b-9f3a-e5bbf3335900}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Victory">
+      <UniqueIdentifier>{08493f5d-3d92-4b48-91f7-086c7784cdb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Victory_Start">
+      <UniqueIdentifier>{1c6a8df8-1e2a-489a-bcf7-50e258bfe91d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\Back_Btn">
+      <UniqueIdentifier>{6800ef5d-3330-4c58-8482-4188cc3e6d1d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

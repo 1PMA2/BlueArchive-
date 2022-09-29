@@ -57,6 +57,23 @@ void CLevel_Formation::Tick(_float fTimeDelta)
 		Safe_Release(pGameInstance);
 	}
 
+	CSensei* pSensei = GET_SENSEI;
+
+	if (pSensei->Get_OpenLobbyLevel())
+	{
+		pSensei->Set_PreLevel(LEVEL_FORMATION);
+
+		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+		Safe_AddRef(pGameInstance);
+
+		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
+			return;
+
+		Safe_Release(pGameInstance);
+
+		pSensei->Set_OpenLobbyLevel(false);
+	}
+
 
 }
 
@@ -193,6 +210,9 @@ HRESULT CLevel_Formation::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	/* For.Terrain */
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Terrain"))))
 	return E_FAIL;
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_BackButton"))))
+		return E_FAIL;
 
 
 	Safe_Release(pGameInstance);

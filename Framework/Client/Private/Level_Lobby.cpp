@@ -35,7 +35,7 @@ void CLevel_Lobby::Tick(_float fTimeDelta)
 
 	CSensei* pSensei = GET_SENSEI;
 
-	if (KEY(ENTER, TAP))
+	if (pSensei->Get_OpenFormationLevel())
 	{
 		pSensei->Set_PreLevel(LEVEL_LOBBY);
 
@@ -46,6 +46,8 @@ void CLevel_Lobby::Tick(_float fTimeDelta)
 			return;
 
 		Safe_Release(pGameInstance);
+
+		pSensei->Set_OpenFormationLevel(false);
 	}
 
 	if (pSensei->Get_OpenGacha())
@@ -91,6 +93,8 @@ HRESULT CLevel_Lobby::Ready_Layer_Lobby(const _tchar * pLayerTag)
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_BG"), &iImgNum)))
 		return E_FAIL;
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_GachaButton"))))
+		return E_FAIL;
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_WorkButton"))))
 		return E_FAIL;
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_LOBBY, pLayerTag, TEXT("Prototype_GameObject_BackGround"))))
 		return E_FAIL;
