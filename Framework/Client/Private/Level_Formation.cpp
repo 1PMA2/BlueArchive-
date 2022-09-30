@@ -82,7 +82,7 @@ void CLevel_Formation::Late_Tick(_float TimeDelta)
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 	CSensei* pSensei = GET_SENSEI;
 
-	pSensei->Set_FormationInfo();
+	pSensei->Set_FormationInfo(); //sensei 유저데이터에서 처리하고 포메이션에서 호출
 
 	for (_uint i = 0; i < pSensei->Get_FormationStudentsNum(); ++i)
 	{
