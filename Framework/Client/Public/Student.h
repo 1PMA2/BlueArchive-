@@ -75,6 +75,7 @@ protected:
 	CCollider*				m_pOBBCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
 	CCollider*				m_pSphereCom_Obstacle = nullptr;
+	CCollider*				m_pPickedCom = nullptr;
 	CState*					m_pState = nullptr;
 	_bool					m_bPicked = false;
 	_bool					m_bFoundMonster = false;

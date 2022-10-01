@@ -27,11 +27,16 @@ private:
 public:
 	SENSEIINFO Get_SenseiInfo() { return m_tSensei; }
 
+	/* Level*/
 	void Set_CurrentLevel(LEVEL eLevelID) { m_eCurrentLevel = eLevelID; }
 	LEVEL Get_CurrentLevel() { return m_eCurrentLevel; }
 	void Set_PreLevel(LEVEL eLevelID) { m_ePreLevel = eLevelID; }
 	LEVEL Get_PreLevel() { return m_ePreLevel; }
 
+	/**/
+	void Formation_Level(_float fTimeDelta);
+
+	/*event manager*/
 	_bool Get_OpenGacha() { return m_bOpenGachaLevel; }
 	void Set_OpenGacha(_bool bGachaLevel) { m_bOpenGachaLevel = bGachaLevel; }
 
@@ -43,10 +48,16 @@ public:
 
 	_bool Get_OpenLobbyLevel() { return m_bOpenLobbyLevel; }
 	void Set_OpenLobbyLevel(_bool bLobbyLevel) { m_bOpenLobbyLevel = bLobbyLevel; }
+	//
 
+	/*ingame set*/
+	void Tick_Cost(_float fTimeDelta);
 	void Set_TimeSpeed();
 	void Set_Camera(CAMERA eCamera) { m_tSensei.eCamera = eCamera; }
+	void Use_Ex(_bool bEx, _float fUseCost = 0.f);
+	_bool Useable_Ex(_float fUseCost);
 
+	/*student*/
 	void Set_Student(const _tchar* pStudentTag, CStudent* pStudent);
 	void Set_RealStudent(const _tchar* pStudentTag, CStudent* pStudent);
 	const _tchar* Get_StudentName(_int iIndex);
@@ -57,34 +68,44 @@ public:
 	_tchar* Get_NewStudent() { return m_pNewStudent; }
 	void Set_NewStudent(_tchar* pStudentTag) { m_pNewStudent = pStudentTag; }
 
-	_bool Useable_Ex(_float fUseCost);
-	void Use_Ex(_bool bEx, _float fUseCost = 0.f);
-	void Tick_Cost(_float fTimeDelta);
+
+
+	
 
 public:
 	_tchar* m_pNewStudent = nullptr;
 	LEVEL m_ePreLevel = LEVEL_END;
 	LEVEL m_eCurrentLevel = LEVEL_END;
 	SENSEIINFO m_tSensei;
-	CStudent::STUDENTINFO m_tStudentInfo = {};
 	_bool m_bOpenGachaLevel = false;
 	_bool m_bOpenGachaScene = false;
 	_bool m_bOpenFormationLevel = false;
 	_bool m_bOpenLobbyLevel = false;
+	_bool m_bFormationOnce = true;
 
 	map<const _tchar*, class CStudent*>					m_Student;
 	typedef map<const _tchar*, class CStudent*>			STUDENTS;
 
-	vector<CStudent*>	m_Formations;
+	vector<CStudent*>	m_Formations; //포메이션 레벨에서만 사용하는 정보
 	typedef vector<CStudent*> FORMATIONS;
 
-	vector<CStudent::STUDENTINFO>	m_FormationsInfo;
+	vector<CStudent::STUDENTINFO>	m_FormationsInfo; //다른 레벨로 넘겨주는 정보
 	typedef vector<CStudent::STUDENTINFO> FORMATIONS_C;
+
+	CStudent::STUDENTINFO m_tFirst = {};
+	CStudent::STUDENTINFO m_tSecond = {};
+	CStudent::STUDENTINFO m_tThird = {};
+	CStudent::STUDENTINFO m_tFourth = {};
 
 public:
 	void Set_FormationStudents(CStudent* pStudents);
 	CStudent* Get_FormationStudents(_uint iIndex);
-	_uint Get_FormationStudentsNum() { return (_uint)m_Formations.size(); }
+	_uint Get_FormationStudentsNum() { 
+		if (4 < (_uint)m_Formations.size())
+			return 4;
+		else
+			return (_uint)m_Formations.size();
+	} //최대 4
 	void Release_FormationStudents() { m_Formations.clear(); }
 
 public:

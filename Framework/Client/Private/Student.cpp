@@ -44,9 +44,14 @@ void CStudent::Tick(_float fTimeDelta)
 		m_pState = pNewState;
 		m_pState->Enter();
 	}
+	
+	_matrix NoneScaleWorldMatrix;
+	NoneScaleWorldMatrix.r[0] = XMVector3Normalize(m_pTransformCom->Get_WorldMatrix().r[0]);
+	NoneScaleWorldMatrix.r[1] = XMVector3Normalize(m_pTransformCom->Get_WorldMatrix().r[1]);
+	NoneScaleWorldMatrix.r[2] = XMVector3Normalize(m_pTransformCom->Get_WorldMatrix().r[2]);
+	NoneScaleWorldMatrix.r[3] = m_pTransformCom->Get_WorldMatrix().r[3];
 
-
-	m_pAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
+	m_pAABBCom->Update(NoneScaleWorldMatrix);
 	m_pOBBCom->Update(m_pTransformCom->Get_WorldMatrix());
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 }
@@ -154,11 +159,35 @@ HRESULT CStudent::FormationLevel_Collision()
 		if (KEY(LBUTTON, TAP))
 		{
 			m_bPicked = true;
+			m_pPickedCom = m_pAABBCom;
 		}
 
 	}
 	if (KEY(LBUTTON, AWAY))
+	{
 		m_bPicked = false;
+		m_pPickedCom = nullptr;
+	}
+
+	CSensei* pSensei = GET_SENSEI;
+
+	if (nullptr != m_pPickedCom)
+	{
+		for (_uint i = 0; i < pSensei->Get_FormationStudentsNum(); ++i)
+		{
+			CStudent* pTargetStudent = pSensei->Get_FormationStudents(i);
+			if (m_tStudentInfo.iIndex != pTargetStudent->Get_StudentInfo().iIndex)
+			{
+				if (m_pPickedCom->Collision(pTargetStudent->m_pAABBCom))
+				{
+					pTargetStudent->m_pTransformCom->Set_Scaled({ 0.8f, 0.8f, 0.8f });
+				}
+				else
+					pTargetStudent->m_pTransformCom->Set_Scaled({ 1.f, 1.f, 1.f });
+			}
+		}
+	}
+
 
 	return S_OK;
 }

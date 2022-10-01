@@ -61,72 +61,9 @@ HRESULT CArona::Render()
 	if (FAILED(SetUp_ShaderResource()))
 		return E_FAIL;
 
-
-	if (58 >= m_pModelCom->Get_CurrentKeyFrame())
-	{
-		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 0, aiTextureType_DIFFUSE)))
-			return E_FAIL;
-		m_pModelCom->Render(0, m_pShaderCom, 0, "g_Bones");
-	}
-	else
-	{
-		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 3, aiTextureType_DIFFUSE)))
-			return E_FAIL;
-		m_pModelCom->Render(3, m_pShaderCom, 0, "g_Bones");
-		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 4, aiTextureType_DIFFUSE)))
-			return E_FAIL;
-		m_pModelCom->Render(4, m_pShaderCom, 0, "g_Bones");
-	}
-
-	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 1, aiTextureType_DIFFUSE)))
+	if (FAILED(RenderArona()))
 		return E_FAIL;
-	m_pModelCom->Render(1, m_pShaderCom, 0, "g_Bones");
-
-	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 2, aiTextureType_DIFFUSE)))
-		return E_FAIL;
-	m_pModelCom->Render(2, m_pShaderCom, 0, "g_Bones");
-
-	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 5, aiTextureType_DIFFUSE)))
-		return E_FAIL;
-	m_pModelCom->Render(5, m_pShaderCom, 0, "g_Bones");
-
-	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 6, aiTextureType_DIFFUSE)))
-		return E_FAIL;
-	m_pModelCom->Render(6, m_pShaderCom, 0, "g_Bones");
-
-	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 7, aiTextureType_DIFFUSE)))
-		return E_FAIL;
-	m_pModelCom->Render(7, m_pShaderCom, 0, "g_Bones");
-
-	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 8, aiTextureType_DIFFUSE)))
-		return E_FAIL;
-	m_pModelCom->Render(8, m_pShaderCom, 0, "g_Bones");
-
-	if (42 < m_pModelCom->Get_CurrentKeyFrame() && 59 > m_pModelCom->Get_CurrentKeyFrame())
-	{
-		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 9, aiTextureType_DIFFUSE)))
-			return E_FAIL;
-		m_pModelCom->Render(9, m_pShaderCom, 0, "g_Bones");
-	}
-	else if (42 >= m_pModelCom->Get_CurrentKeyFrame())
-	{
-		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 10, aiTextureType_DIFFUSE)))
-			return E_FAIL;
-		m_pModelCom->Render(10, m_pShaderCom, 0, "g_Bones");
-	}
-
-
-	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 11, aiTextureType_DIFFUSE)))
-		return E_FAIL;
-	m_pModelCom->Render(11, m_pShaderCom, 0, "g_Bones");
-
 	
-	// 0 ¹ø emoface
-	// 3 ¹ø ´«¾Ë
-	// 4 ¹ø ´«¾Ë
-	// 9 ¹ø ><
-	// 10¹ø - -
-
 	return S_OK;
 }
 
@@ -201,6 +138,76 @@ HRESULT CArona::SetUp_ShaderResource()
 
 
 	RELEASE_INSTANCE(CGameInstance);
+
+	return S_OK;
+}
+
+HRESULT CArona::RenderArona()
+{
+	if (58 >= m_pModelCom->Get_CurrentKeyFrame())
+	{
+		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 0, aiTextureType_DIFFUSE)))
+			return E_FAIL;
+		m_pModelCom->Render(0, m_pShaderCom, 0, "g_Bones");
+	}
+	else
+	{
+		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 3, aiTextureType_DIFFUSE)))
+			return E_FAIL;
+		m_pModelCom->Render(3, m_pShaderCom, 0, "g_Bones");
+		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 4, aiTextureType_DIFFUSE)))
+			return E_FAIL;
+		m_pModelCom->Render(4, m_pShaderCom, 0, "g_Bones");
+	}
+
+	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 1, aiTextureType_DIFFUSE)))
+		return E_FAIL;
+	m_pModelCom->Render(1, m_pShaderCom, 0, "g_Bones");
+
+	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 2, aiTextureType_DIFFUSE)))
+		return E_FAIL;
+	m_pModelCom->Render(2, m_pShaderCom, 0, "g_Bones");
+
+	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 5, aiTextureType_DIFFUSE)))
+		return E_FAIL;
+	m_pModelCom->Render(5, m_pShaderCom, 0, "g_Bones");
+
+	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 6, aiTextureType_DIFFUSE)))
+		return E_FAIL;
+	m_pModelCom->Render(6, m_pShaderCom, 0, "g_Bones");
+
+	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 7, aiTextureType_DIFFUSE)))
+		return E_FAIL;
+	m_pModelCom->Render(7, m_pShaderCom, 0, "g_Bones");
+
+	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 8, aiTextureType_DIFFUSE)))
+		return E_FAIL;
+	m_pModelCom->Render(8, m_pShaderCom, 0, "g_Bones");
+
+	if (42 < m_pModelCom->Get_CurrentKeyFrame() && 59 > m_pModelCom->Get_CurrentKeyFrame())
+	{
+		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 9, aiTextureType_DIFFUSE)))
+			return E_FAIL;
+		m_pModelCom->Render(9, m_pShaderCom, 0, "g_Bones");
+	}
+	else if (42 >= m_pModelCom->Get_CurrentKeyFrame())
+	{
+		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 10, aiTextureType_DIFFUSE)))
+			return E_FAIL;
+		m_pModelCom->Render(10, m_pShaderCom, 0, "g_Bones");
+	}
+
+
+	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 11, aiTextureType_DIFFUSE)))
+		return E_FAIL;
+	m_pModelCom->Render(11, m_pShaderCom, 0, "g_Bones");
+
+
+	// 0 ¹ø emoface
+	// 3 ¹ø ´«¾Ë
+	// 4 ¹ø ´«¾Ë
+	// 9 ¹ø ><
+	// 10¹ø - -
 
 	return S_OK;
 }

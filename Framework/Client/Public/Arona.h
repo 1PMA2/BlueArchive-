@@ -40,6 +40,9 @@ private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
 
+private:
+	HRESULT RenderArona();
+
 
 public:
 	static CArona* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);

@@ -96,6 +96,89 @@ void CSensei::Set_TimeSpeed()
 
 }
 
+void CSensei::Formation_Level(_float fTimeDelta)
+{
+
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+	CSensei* pSensei = GET_SENSEI;
+
+	_vector vPreTranslation;
+
+	////////////////////////////////////////////////////////////
+	pSensei->Set_FormationInfo();
+
+	for (_uint i = 0; i < pSensei->Get_FormationStudentsNum(); ++i)
+	{
+		CStudent* pStudent = pSensei->Get_FormationStudents(i);
+
+		CTransform* pTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));
+
+		if (0 < pSensei->Get_FormationInfoSize())
+		{
+			for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
+			{
+				if (pSensei->Get_FormationInfo(i).iIndex == pStudent->Get_StudentInfo().iIndex)
+				{
+					switch (pSensei->Get_FormationInfo(i).eFormation)
+					{
+					case FORMATION_FIRST:
+						vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+						break;
+					case FORMATION_SECOND:
+						vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+						break;
+					case FORMATION_THIRD:
+						vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+						break;
+					case FORMATION_FOURTH:
+						vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+						break;
+					}
+				}
+			}
+		}
+
+		if (pStudent->Is_Picked())
+		{
+			_float4 fOut;
+			pGameInstance->Picking((CVIBuffer*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_VIBuffer"), 0),
+				(CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 0), &fOut);
+
+			fOut.y -= 0.5f; // offset
+			pTransform->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4(&fOut));
+
+			if (-0.5f < fOut.y && 1.f > fOut.y)
+			{
+				if (1.f <= fOut.x)
+				{
+					pStudent->Set_Formation(FORMATION_FIRST);
+					vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+				}
+				else if (1.f > fOut.x && 0.f <= fOut.x)
+				{
+					pStudent->Set_Formation(FORMATION_SECOND);
+					vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+				}
+				else if (0.f > fOut.x && -1.f <= fOut.x)
+				{
+					pStudent->Set_Formation(FORMATION_THIRD);
+					vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+				}
+				else if (-1.f > fOut.x && -2.f <= fOut.x)
+				{
+					pStudent->Set_Formation(FORMATION_FOURTH);
+					vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+				}
+			}  //포메이션 위치
+
+		}
+		else
+			pTransform->Set_State(CTransform::STATE_TRANSLATION, vPreTranslation); //이전위치로
+
+	}
+
+}
+
 void CSensei::Tick_Cost(_float fTimeDelta)
 {
 	if (10.f > m_tSensei.fCost)
@@ -107,7 +190,6 @@ void CSensei::Tick_Cost(_float fTimeDelta)
 void CSensei::Set_FormationStudents(CStudent* pStudents)
 {
 	m_Formations.push_back(pStudents);
-
 }
 
 CStudent * CSensei::Get_FormationStudents(_uint iIndex)
