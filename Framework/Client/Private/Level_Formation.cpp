@@ -39,7 +39,11 @@ HRESULT CLevel_Formation::Initialize()
 void CLevel_Formation::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
-
+	if (KEY(M, TAP))
+	{
+		CSensei* pSensei = GET_SENSEI;
+		ENABLE(pSensei->Get_FormationStudents(0));
+	}
 	if (KEY(ENTER,TAP))
 	{
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();

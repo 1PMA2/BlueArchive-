@@ -51,6 +51,8 @@ HRESULT CMutsuki::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;	
 
+	DISABLE(this);
+
 	return S_OK;
 }
 
