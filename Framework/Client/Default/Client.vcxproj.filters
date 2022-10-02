@@ -178,6 +178,9 @@
     <ClInclude Include="..\Public\Back_Btn.h">
       <Filter>02.GameObject\05.UI\Back_Btn</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Camera_Main.h">
+      <Filter>02.GameObject\03.Camera\Camera_Main</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -344,6 +347,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Back_Btn.cpp">
       <Filter>02.GameObject\05.UI\Back_Btn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Camera_Main.cpp">
+      <Filter>02.GameObject\03.Camera\Camera_Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

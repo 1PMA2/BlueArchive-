@@ -178,6 +178,7 @@
     <ClInclude Include="..\Public\Camera_Ex.h" />
     <ClInclude Include="..\Public\Camera_Free.h" />
     <ClInclude Include="..\Public\Camera_Gacha.h" />
+    <ClInclude Include="..\Public\Camera_Main.h" />
     <ClInclude Include="..\Public\City.h" />
     <ClInclude Include="..\Public\Client_Defines.h" />
     <ClInclude Include="..\Public\Ex.h" />
@@ -237,6 +238,7 @@
     <ClCompile Include="..\Private\Camera_Ex.cpp" />
     <ClCompile Include="..\Private\Camera_Free.cpp" />
     <ClCompile Include="..\Private\Camera_Gacha.cpp" />
+    <ClCompile Include="..\Private\Camera_Main.cpp" />
     <ClCompile Include="..\Private\City.cpp" />
     <ClCompile Include="..\Private\Ex.cpp" />
     <ClCompile Include="..\Private\Ex_Cutin.cpp" />
