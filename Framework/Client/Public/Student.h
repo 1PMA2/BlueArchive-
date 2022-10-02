@@ -67,6 +67,9 @@ public:
 	
 
 protected:
+	class CAru*					m_pAru = nullptr;
+	class CMutsuki*				m_pMustuki = nullptr;
+
 	STUDENTINFO				m_tStudentInfo = {};
 	CShader*				m_pShaderCom = nullptr;
 	CRenderer*				m_pRendererCom = nullptr;
@@ -80,6 +83,7 @@ protected:
 	_bool					m_bPicked = false;
 	_bool					m_bFoundMonster = false;
 	_bool					m_bFoundObstacle = false;
+	_bool					m_bSetted = false;
 	_vector					m_vPreTranslation = {};
 
 protected:

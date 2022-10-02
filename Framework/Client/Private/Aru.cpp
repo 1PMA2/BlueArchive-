@@ -36,6 +36,8 @@ HRESULT CAru::Initialize_Prototype()
 	m_tStudentInfo.iShield = 0;
 	m_tStudentInfo.iIndex = 0;
 
+	
+
 	return S_OK;
 }
 
@@ -51,6 +53,9 @@ HRESULT CAru::Initialize(void * pArg)
 
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;	
+
+	m_pAru = this;
+	this->Set_Enable(false);
 
 	return S_OK;
 }

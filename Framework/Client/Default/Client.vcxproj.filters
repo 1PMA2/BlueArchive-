@@ -598,6 +598,15 @@
     <Filter Include="02.GameObject\05.UI\Back_Btn">
       <UniqueIdentifier>{6800ef5d-3330-4c58-8482-4188cc3e6d1d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.GameObject\05.UI\Formation_UI">
+      <UniqueIdentifier>{ae787c1b-5794-4a5a-94e3-b4653422cb4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\Formation_UI\Formation_Btn">
+      <UniqueIdentifier>{d7c3387c-0074-460f-8d59-41a73f2efde0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\Formation_UI\Formation_Window">
+      <UniqueIdentifier>{7c93bcf5-56b1-4049-8358-fba0666a46fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">

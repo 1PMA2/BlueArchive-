@@ -7,6 +7,7 @@
 #include "Sensei.h"
 #include "Ex_Cutin.h"
 #include "Formation_Idle.h"
+#include "Aru.h"
 
 CStudent::CStudent(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -33,6 +34,7 @@ HRESULT CStudent::Initialize(void * pArg)
 
 void CStudent::Tick(_float fTimeDelta)
 {
+
 	if (false == m_tStudentInfo.bExModel) //스킬모델이 아닐시 재생 안함
 	{
 		m_pModelCom->Play_Animation(fTimeDelta);
@@ -60,6 +62,10 @@ void CStudent::LateTick(_float fTimeDelta)
 {
 
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+
+	if (KEY(P, TAP))
+		m_pAru->Set_Enable(true);
+
 }
 
 HRESULT CStudent::Render()
