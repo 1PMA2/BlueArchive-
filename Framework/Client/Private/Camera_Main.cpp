@@ -37,6 +37,7 @@ void CCamera_Main::Tick(_float fTimeDelta)
 	Safe_AddRef(pGameInstance);
 
 	CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), 0);
+
 	if (nullptr != pStudent)
 	{
 		CTransform* pTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));

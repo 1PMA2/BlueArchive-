@@ -56,6 +56,7 @@ HRESULT CCamera_Ex::Render()
 
 void CCamera_Ex::OnDisable()
 {
+	
 }
 
 void CCamera_Ex::OnEnable()
