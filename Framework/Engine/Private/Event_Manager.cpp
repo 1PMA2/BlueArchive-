@@ -18,7 +18,10 @@ void CEvent_Manager::Tick()
 	for (size_t i = 0; i < m_vecDead.size(); ++i)
 	{
 		if (nullptr != m_vecDead[i])
+		{
+			m_vecDead[i]->Free();
 			delete m_vecDead[i];
+		}
 	}
 	m_vecDead.clear();
 

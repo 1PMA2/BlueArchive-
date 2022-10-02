@@ -85,7 +85,7 @@ void CArona_Sack::Tick(_float fTimeDelta)
 
 			Safe_Release(pGameInstance);
 
-			this->Set_Enable(false);
+			DELETE(this);
 		}
 
 		
