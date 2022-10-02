@@ -8,6 +8,7 @@
 #include "BG_Lobby.h"
 #include "BG_Gacha.h"
 #include "Camera_Free.h"
+#include "Camera_Main.h"
 #include "Camera_Ex.h"
 #include "Monster.h"
 #include "Formation_Terrain.h"
@@ -472,10 +473,16 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CAru_Ex::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Main"),
+			CCamera_Main::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		/* For.Prototype_GameObject_Camera_Ex*/
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Ex"),
 			CCamera_Ex::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
+
+
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_ForkLift"),
 			CForkLift::Create(m_pDevice, m_pContext))))

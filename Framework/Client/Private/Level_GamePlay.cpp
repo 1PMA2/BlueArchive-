@@ -54,7 +54,6 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 
 	pSensei->Tick_Cost(fTimeDelta);
 
-	Change_Camera();
 
 	if (GetKeyState(VK_RETURN) & 0x8000)
 	{
@@ -68,6 +67,8 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 	
 		Safe_Release(pGameInstance);
 	}
+
+	Change_Camera();
 }
 
 void CLevel_GamePlay::Late_Tick(_float TimeDelta)
@@ -92,20 +93,20 @@ void CLevel_GamePlay::Change_Camera()
 
 	CSensei* pSensei = CSensei::Get_Instance();
 
-	CCamera* pCameraFree = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
+	CCamera* pCameraMain = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
 	CCamera* pCameraEx = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_EX);
 
 	if (nullptr != pCameraEx)
 	{
 		if (pSensei->Get_SenseiInfo().bEx)
 		{
-			DISABLE(pCameraFree);
 			ENABLE(pCameraEx);
+			DISABLE(pCameraMain);
 		}
 		else
 		{
+			ENABLE(pCameraMain);
 			DISABLE(pCameraEx);
-			ENABLE(pCameraFree);
 		}
 	}
 }
@@ -163,7 +164,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_Camera(const _tchar * pLayerTag)
 	CameraDesc.fNear = 0.2f;
 	CameraDesc.fFar = 300.f;
 
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Camera_Free"), &CameraDesc)))
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Camera_Main"), &CameraDesc)))
 		return E_FAIL;
 	
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Camera_Ex"), &CameraDesc)))

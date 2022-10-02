@@ -31,8 +31,6 @@ HRESULT CCamera_Ex::Initialize(void * pArg)
 
 	/* 트랜스폼 컴포넌늩를 추가한다. */
 
-	this->Set_Enable(false);
-
 	return S_OK;
 }
 
@@ -92,7 +90,6 @@ void CCamera_Ex::OnEnable()
 void CCamera_Ex::MoveCamera()
 {
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-	Safe_AddRef(pGameInstance);
 
 	if (nullptr == m_pBonePtr)
 		return;
@@ -120,8 +117,6 @@ void CCamera_Ex::MoveCamera()
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_TRANSLATION]);
 
 	m_pTransformCom->LookAt(XMLoadFloat4x4(&m_TargetWorldMatrix).r[CTransform::STATE_TRANSLATION]);
-
-	Safe_Release(pGameInstance);
 }
 
 CCamera_Ex * CCamera_Ex::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)

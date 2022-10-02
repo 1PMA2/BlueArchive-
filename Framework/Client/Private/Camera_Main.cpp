@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "..\Public\Camera_Main.h"
-
+#include "Student.h"
 #include "GameInstance.h"
 
 CCamera_Main::CCamera_Main(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -36,7 +36,19 @@ void CCamera_Main::Tick(_float fTimeDelta)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
+	CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), 0);
+	if (nullptr != pStudent)
+	{
+		CTransform* pTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));
 
+		_vector vCamera = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
+
+		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION);
+
+		_vector vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vTarget), XMVectorGetW(vCamera));
+
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vMainCamera);
+	}
 
 
 	Safe_Release(pGameInstance);
