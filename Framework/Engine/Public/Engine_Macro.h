@@ -69,3 +69,9 @@ unsigned long ClassName::Destroy_Instance()				\
 
 // Key_Manager
 #define KEY(key, state) CGameInstance::Get_Instance()->Get_KeyState(KEY::key) == KEY_STATE::state
+
+/* Event_Manager */
+#define DELETE(GameObject) CGameInstance::Get_Instance()->Delete_GameObject(GameObject);
+#define ENABLE(GameObject) CGameInstance::Get_Instance()->Enable_GameObject(GameObject)
+#define DISABLE(GameObject) CGameInstance::Get_Instance()->Disable_GameObject(GameObject)
+#define CHANGE_LEVEL(iLevelID, pLevel) CGameInstance::Get_Instance()->Change_Level(iLevelID, pLevel);

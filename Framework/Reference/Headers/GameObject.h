@@ -62,6 +62,11 @@ private:
 	_bool				m_bEnable = true;
 	_bool				m_bAlive = true;
 
+private:
+	/* Only Event_Manager can set this dead. */
+	friend class CEvent_Manager;
+	void	Set_Dead() { m_bAlive = false; }
+
 public:
 	virtual CGameObject* Clone(void* pArg) = 0;
 	virtual void Free() override;

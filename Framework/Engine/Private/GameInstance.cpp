@@ -14,10 +14,12 @@ CGameInstance::CGameInstance()
 	, m_pPipeLine(CPipeLine::Get_Instance())
 	, m_pFont_Manager(CFont_Manager::Get_Instance())
 	, m_pLight_Manager(CLight_Manager::Get_Instance())
+	, m_pEvent_Manager(CEvent_Manager::Get_Instance())
 	, m_pPicking(CPicking::Get_Instance())
 	
 {	
 	Safe_AddRef(m_pPicking);
+	Safe_AddRef(m_pEvent_Manager);
 	Safe_AddRef(m_pLight_Manager);
 	Safe_AddRef(m_pFont_Manager);
 	Safe_AddRef(m_pPipeLine);
@@ -68,8 +70,11 @@ HRESULT CGameInstance::Tick_Engine(_float fTimeDelta)
 		nullptr == m_pLevel_Manager ||
 		nullptr == m_pInput_Device ||
 		nullptr == m_pPipeLine || 
-		nullptr == m_pObject_Manager)
+		nullptr == m_pObject_Manager ||
+		nullptr == m_pEvent_Manager)
 		return E_FAIL;
+
+	m_pEvent_Manager->Tick();
 
 	m_pInput_Device->SetUp_DeviceState();
 
@@ -320,6 +325,26 @@ const LIGHTDESC * CGameInstance::Get_LightDesc(_uint iIndex)
 	return m_pLight_Manager->Get_LightDesc(iIndex);
 }
 
+void CGameInstance::Delete_GameObject(CGameObject * pGameObject)
+{
+	m_pEvent_Manager->Delete_GameObject(pGameObject);
+}
+
+void CGameInstance::Enable_GameObject(CGameObject * pGameObject)
+{
+	m_pEvent_Manager->Enable_GameObject(pGameObject);
+}
+
+void CGameInstance::Disable_GameObject(CGameObject * pGameObject)
+{
+	m_pEvent_Manager->Disable_GameObject(pGameObject);
+}
+
+void CGameInstance::Change_Level(_uint iLevelID, CLevel * pLevel)
+{
+	m_pEvent_Manager->Change_Level(iLevelID, pLevel);
+}
+
 _bool CGameInstance::Picking(CVIBuffer * pVIBuffer, CTransform * pTransform, _float4 * pOut)
 {
 	if (nullptr == m_pPicking)
@@ -356,6 +381,8 @@ void CGameInstance::Release_Engine()
 
 	CPicking::Get_Instance()->Destroy_Instance();
 
+	CEvent_Manager::Get_Instance()->Destroy_Instance();
+
 	CGraphic_Device::Get_Instance()->Destroy_Instance();
 
 }
@@ -363,6 +390,7 @@ void CGameInstance::Release_Engine()
 void CGameInstance::Free()
 {
 	Safe_Release(m_pPicking);
+	Safe_Release(m_pEvent_Manager);
 	Safe_Release(m_pLight_Manager);
 	Safe_Release(m_pFont_Manager);
 	Safe_Release(m_pPipeLine);

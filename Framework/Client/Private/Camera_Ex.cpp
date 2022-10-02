@@ -81,13 +81,10 @@ void CCamera_Ex::OnEnable()
 	if (nullptr == m_pBonePtr)
 		return ;
 
-	Safe_AddRef(m_pBonePtr);
-
 	m_pTargetTransform = (CTransform*)pGameInstance->Get_Component(m_WeaponDesc.eTargetLevel, m_WeaponDesc.pTargetLayerTag, TEXT("Com_Transform"));
 	if (nullptr == m_pTargetTransform)
 		return ;
 
-	Safe_AddRef(m_pTargetTransform);
 
 	RELEASE_INSTANCE(CGameInstance);
 }
@@ -156,7 +153,4 @@ CGameObject * CCamera_Ex::Clone(void * pArg)
 void CCamera_Ex::Free()
 {
 	__super::Free();
-
-	Safe_Release(m_pBonePtr);
-	Safe_Release(m_pTargetTransform);
 }

@@ -54,8 +54,6 @@ HRESULT CAru::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;	
 
-	m_pAru = this;
-	this->Set_Enable(false);
 
 	return S_OK;
 }

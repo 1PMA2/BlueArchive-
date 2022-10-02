@@ -72,7 +72,7 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 
 void CLevel_GamePlay::Late_Tick(_float TimeDelta)
 {
-
+	
 }
 
 HRESULT CLevel_GamePlay::Render()
@@ -99,15 +99,13 @@ void CLevel_GamePlay::Change_Camera()
 	{
 		if (pSensei->Get_SenseiInfo().bEx)
 		{
-			{
-				pCameraFree->Set_Enable(false);
-				pCameraEx->Set_Enable(true);
-			}
+			DISABLE(pCameraFree);
+			ENABLE(pCameraEx);
 		}
 		else
 		{
-			pCameraEx->Set_Enable(false);
-			pCameraFree->Set_Enable(true);
+			DISABLE(pCameraEx);
+			ENABLE(pCameraFree);
 		}
 	}
 }

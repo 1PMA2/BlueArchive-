@@ -63,8 +63,6 @@ void CStudent::LateTick(_float fTimeDelta)
 
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 
-	if (KEY(P, TAP))
-		m_pAru->Set_Enable(true);
 
 }
 
