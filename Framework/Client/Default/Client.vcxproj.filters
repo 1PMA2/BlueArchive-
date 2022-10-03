@@ -77,7 +77,7 @@
       <Filter>02.GameObject\00.Student\00. Aru\Aru_Ex</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\ForkLift.h">
-      <Filter>02.GameObject\02.Obstacle</Filter>
+      <Filter>02.GameObject\02.Cover</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Ex_Cutin.h">
       <Filter>02.GameObject\01.State\Aru_State\EX_Cutin</Filter>
@@ -247,7 +247,7 @@
       <Filter>02.GameObject\00.Student\00. Aru\Aru_Ex</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\ForkLift.cpp">
-      <Filter>02.GameObject\02.Obstacle</Filter>
+      <Filter>02.GameObject\02.Cover</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Ex_Cutin.cpp">
       <Filter>02.GameObject\01.State\Aru_State\EX_Cutin</Filter>
@@ -454,9 +454,6 @@
     <Filter Include="02.GameObject\06.Terrain\Map">
       <UniqueIdentifier>{cee214cd-7ee1-4f09-8656-e17646f93fec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\02.Obstacle">
-      <UniqueIdentifier>{7b947462-f795-4a94-b48b-f37e9288c354}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.GameObject\00.Monster">
       <UniqueIdentifier>{55185f6b-c8e8-44a3-a0f9-ecb6ddf094ca}</UniqueIdentifier>
     </Filter>
@@ -612,6 +609,9 @@
     </Filter>
     <Filter Include="02.GameObject\05.UI\Formation_UI\Formation_Window">
       <UniqueIdentifier>{7c93bcf5-56b1-4049-8358-fba0666a46fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\02.Cover">
+      <UniqueIdentifier>{7b947462-f795-4a94-b48b-f37e9288c354}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

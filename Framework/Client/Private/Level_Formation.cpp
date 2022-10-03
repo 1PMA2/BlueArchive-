@@ -78,7 +78,7 @@ void CLevel_Formation::Late_Tick(_float TimeDelta)
 {
 	CSensei* pSensei = GET_SENSEI;
 
-	pSensei->Formation_Level(TimeDelta);
+	//pSensei->Formation_Level(TimeDelta);
 
 }
 

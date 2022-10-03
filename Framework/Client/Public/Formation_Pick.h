@@ -16,6 +16,9 @@ public:
 	virtual CState * Loop(_float fTimeDelta) override;
 	virtual void Exit() override;
 
+private:
+	_vector m_vPreTranslation = {};
+
 public:
 	static CFormation_Pick* Create(CStudent* pOwner);
 };

@@ -13,6 +13,7 @@ private:
 public:
 	class CComponent* Get_Component(const _tchar* pComponentTag, _uint iIndex);
 	class CGameObject* Get_GameObject(_uint iIndex);
+	_uint Get_GameObjectSize() { return (_uint)m_GameObjects.size(); }
 
 
 public:

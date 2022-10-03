@@ -207,6 +207,11 @@ CGameObject * CGameInstance::Get_GameObject(_uint iLevelIndex, const _tchar * pL
 	return m_pObject_Manager->Get_GameObject(iLevelIndex, pLayerTag, iIndex);
 }
 
+_uint CGameInstance::Get_GameObjectSize(_uint iLevelIndex, const _tchar * pLayerTag)
+{
+	return m_pObject_Manager->Get_GameObjcetSize(iLevelIndex, pLayerTag);
+}
+
 CComponent * CGameInstance::Get_Component(_uint iLevelIndex, const _tchar * pLayerTag, const _tchar * pComponentTag, _uint iIndex)
 {
 	if (nullptr == m_pObject_Manager)

@@ -17,7 +17,13 @@ public:
 	virtual void Exit() override;
 
 private:
-	void Find_Monster();
+	CState* Find_Monster(_float fTimeDelta);
+
+private:
+	class CMonster* m_pTargetMonster = nullptr;
+	class CForkLift* m_pTargetCover = nullptr;
+	_float m_fMin = 9999.f;
+	_float m_fCoverMin = 9999.f;
 
 public:
 	static CRun* Create(CStudent* pOwner);

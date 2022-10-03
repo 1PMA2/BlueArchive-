@@ -93,6 +93,9 @@ HRESULT CGameObject::Add_Component(_uint iLevelIndex, const _tchar * pPrototypeT
 
 CComponent * CGameObject::Find_Components(const _tchar * pComponentTag)
 {
+	if (0 >= m_Components.size())
+		return nullptr;
+
 	auto	iter = find_if(m_Components.begin(), m_Components.end(), CTag_Finder(pComponentTag));
 
 	if (iter == m_Components.end())

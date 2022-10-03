@@ -28,6 +28,16 @@ CGameObject * CObject_Manager::Get_GameObject(_uint iLevelIndex, const _tchar * 
 	return pLayer->Get_GameObject(iIndex);
 }
 
+_uint CObject_Manager::Get_GameObjcetSize(_uint iLevelIndex, const _tchar * pLayerTag)
+{
+	CLayer*		pLayer = Find_Layer(iLevelIndex, pLayerTag);
+
+	if (nullptr == pLayer)
+		return 0;
+
+	return pLayer->Get_GameObjectSize();
+}
+
 HRESULT CObject_Manager::Reserve_Container(_uint iNumLevels)
 {
 	if (nullptr != m_pLayers)

@@ -30,7 +30,12 @@ HRESULT CForkLift::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-2.f, 0.f, 6.f, 1.f));
+
+
+	if (nullptr != pArg)
+		memcpy(&m_vTranslation, pArg, sizeof(_vector));
+
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vTranslation);
 
 
 

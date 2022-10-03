@@ -37,7 +37,7 @@ HRESULT CLevel_GamePlay::Initialize()
 	if (FAILED(Ready_Layer_Monster(TEXT("Layer_Monster"))))
 		return E_FAIL;
 
-	if (FAILED(Ready_Layer_Obstacle(TEXT("Layer_Obstacle"))))
+	if (FAILED(Ready_Layer_Cover(TEXT("Layer_Cover"))))
 		return E_FAIL;
 
 	//if (FAILED(Ready_Layer_Effect(TEXT("Layer_Effect"))))
@@ -159,13 +159,15 @@ HRESULT CLevel_GamePlay::Ready_Layer_Camera(const _tchar * pLayerTag)
 	CameraDesc.TransformDesc.fSpeedPerSec = 5.f;
 	CameraDesc.TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	CameraDesc.fFovy = XMConvertToRadians(25.0f);
+	CameraDesc.fFovy = XMConvertToRadians(40.0f);
 	CameraDesc.fAspect = (_float)g_iWinCX / g_iWinCY;
 	CameraDesc.fNear = 0.2f;
 	CameraDesc.fFar = 300.f;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Camera_Main"), &CameraDesc)))
 		return E_FAIL;
+
+	CameraDesc.fFovy = XMConvertToRadians(25.0f);
 	
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Camera_Ex"), &CameraDesc)))
 		return E_FAIL;
@@ -252,12 +254,19 @@ HRESULT CLevel_GamePlay::Ready_Layer_Monster(const _tchar * pLayerTag)
 	return S_OK;
 }
 
-HRESULT CLevel_GamePlay::Ready_Layer_Obstacle(const _tchar * pLayerTag)
+HRESULT CLevel_GamePlay::Ready_Layer_Cover(const _tchar * pLayerTag)
 {
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"))))
+	_vector vTranslation = XMVectorSet(-2.f, 0.f, 15.f, 1.f);
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
+		return E_FAIL;
+
+	vTranslation = XMVectorSet(1.5f, 0.f, 15.f, 1.f);
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
 		return E_FAIL;
 
 	Safe_Release(pGameInstance);

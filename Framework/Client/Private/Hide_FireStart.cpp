@@ -5,6 +5,7 @@
 #include "Student.h"
 #include "Model.h"
 #include "Fire.h"
+#include "Run.h"
 
 CHide_FireStart::CHide_FireStart(CStudent* pOwner)
 	:CState(pOwner)
@@ -33,8 +34,15 @@ CState * CHide_FireStart::Loop(_float fTimeDelta)
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
 	CTransform* pTTransform;
-	pTTransform = (CTransform*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), 0)->Get_Component(TEXT("Com_Transform"));
+	CGameObject* pMonster = pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), 0);
 
+	if(nullptr != pMonster)
+		pTTransform = (CTransform*)pMonster->Get_Component(TEXT("Com_Transform"));
+	else
+	{
+		pState = CRun::Create(m_pOwner);
+		return pState;
+	}
 
 	_vector		vTarget = pTTransform->Get_State(CTransform::STATE_TRANSLATION);
 

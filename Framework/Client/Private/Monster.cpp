@@ -30,10 +30,7 @@ HRESULT CMonster::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 10.f, 1.f));
-
-
-
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 20.f, 1.f));
 
 
 	return S_OK;
@@ -47,6 +44,14 @@ void CMonster::Tick(_float fTimeDelta)
 void CMonster::LateTick(_float fTimeDelta)
 {
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+
+	static float i = 0;
+
+	i += fTimeDelta;
+
+	if (i > 20)
+		DELETE(this);
+
 }
 
 HRESULT CMonster::Render()

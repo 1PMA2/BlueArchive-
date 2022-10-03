@@ -8,6 +8,7 @@
 #include "Ex_Cutin.h"
 #include "Formation_Idle.h"
 #include "Aru.h"
+#include "Monster.h"
 
 CStudent::CStudent(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -158,20 +159,6 @@ HRESULT CStudent::SetUp_ShaderResource()
 
 HRESULT CStudent::FormationLevel_Collision()
 {
-	if (m_pAABBCom->CollisionRay())
-	{
-		if (KEY(LBUTTON, TAP))
-		{
-			m_bPicked = true;
-			m_pPickedCom = m_pAABBCom;
-		}
-
-	}
-	if (KEY(LBUTTON, AWAY))
-	{
-		m_bPicked = false;
-		m_pPickedCom = nullptr;
-	}
 
 	CSensei* pSensei = GET_SENSEI;
 
@@ -198,7 +185,33 @@ HRESULT CStudent::FormationLevel_Collision()
 
 HRESULT CStudent::GamePlayLevel_Collision()
 {
-	return E_NOTIMPL;
+	/*CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+	_uint iMonsterCount = pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Monster"));
+
+	for (_uint i = 0; i < iMonsterCount; ++i)
+	{
+		CMonster* pMonster = (CMonster*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), i);
+		m_Monsters.push_back(pMonster);
+	}*/
+
+	/*CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Com_SPHERE"), 0);
+	if (nullptr == pMonsterCollider)
+	{
+		m_bFoundMonster = false;
+		return S_OK;
+		
+	}
+
+	m_bFoundMonster = m_pSphereCom->Collision(pMonsterCollider);
+
+
+	CCollider* pTargetCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Obstacle"), TEXT("Com_SPHERE"));
+	if (nullptr == pTargetCollider)
+		return E_FAIL;
+
+	m_bFoundObstacle = m_pSphereCom->Collision(pTargetCollider);*/
+
+	return S_OK;
 }
 
 void CStudent::InitializeStudentState()

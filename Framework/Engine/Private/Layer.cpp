@@ -7,12 +7,17 @@ CLayer::CLayer()
 
 CComponent * CLayer::Get_Component(const _tchar * pComponentTag, _uint iIndex)
 {
-	auto	iter = m_GameObjects.begin();
+	if (0 == m_GameObjects.size())
+		return nullptr;
+	else
+	{
+		auto	iter = m_GameObjects.begin();
 
-	for (_uint i = 0; i < iIndex; ++i)
-		++iter;
+		for (_uint i = 0; i < iIndex; ++i)
+			++iter;
 
-	return (*iter)->Get_Component(pComponentTag);	
+		return (*iter)->Get_Component(pComponentTag);
+	}
 }
 
 HRESULT CLayer::Initialize()
@@ -29,12 +34,17 @@ HRESULT CLayer::Add_GameObject(CGameObject * pGameObject)
 
 CGameObject * CLayer::Get_GameObject(_uint iIndex)
 {
-	auto	iter = m_GameObjects.begin();
+	if (0 == m_GameObjects.size())
+		return nullptr;
+	else
+	{
+		auto	iter = m_GameObjects.begin();
 
-	for (_uint i = 0; i < iIndex; ++i)
-		++iter;
+		for (_uint i = 0; i < iIndex; ++i)
+			++iter;
 
-	return *iter;
+		return *iter;
+	}
 }
 
 void CLayer::Tick(_float fTimeDelta)

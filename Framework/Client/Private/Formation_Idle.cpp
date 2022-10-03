@@ -29,14 +29,18 @@ CState * CFormation_Idle::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	if (m_pOwner->Is_Picked())
+	CCollider* pAABBcom = (CCollider*)m_pOwner->Get_Component(TEXT("Com_AABB"));
+
+	if (pAABBcom->CollisionRay())
 	{
-		pState = CFormation_Pick::Create(m_pOwner);
+		if (KEY(LBUTTON, TAP))
+		{
+			pState = CFormation_Pick::Create(m_pOwner);
+			return pState;
+		}
 	}
-	else
-	{
-		pState = CFormation_Idle::Create(m_pOwner);
-	}
+
+	pState = CFormation_Idle::Create(m_pOwner);
 
 	return pState;
 }

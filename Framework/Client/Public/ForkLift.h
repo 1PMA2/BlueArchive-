@@ -20,6 +20,10 @@ public:
 	virtual ~CForkLift() = default;
 
 public:
+	_bool Get_Use() { return m_bUsed; }
+	void Set_Use(_bool bUse) { m_bUsed = bUse; }
+
+public:
 	virtual HRESULT Initialize_Prototype();
 	virtual HRESULT Initialize(void* pArg);
 	virtual void Tick(_float fTimeDelta);
@@ -31,6 +35,8 @@ private:
 	CRenderer*				m_pRendererCom = nullptr;		
 	CModel*					m_pModelCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
+	_bool					m_bUsed = false;
+	_vector					m_vTranslation = {};
 
 public:
 	virtual void OnDisable() override;
