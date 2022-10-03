@@ -32,7 +32,7 @@ HRESULT CAru::Initialize_Prototype()
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 5;
 	m_tStudentInfo.iBullet = 5;
-	m_tStudentInfo.iRange = 12;
+	m_tStudentInfo.iRange = 6;
 	m_tStudentInfo.iShield = 0;
 	m_tStudentInfo.iIndex = 0;
 
@@ -118,7 +118,7 @@ HRESULT CAru::SetUp_Components()
 	/* For.Com_SPHERE */
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(m_tStudentInfo.iRange, m_tStudentInfo.iRange, m_tStudentInfo.iRange);
+	ColliderDesc.vScale = _float3(12.f, 12.f, 12.f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 

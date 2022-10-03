@@ -38,7 +38,7 @@ CState * CHide_Idle::Loop(_float fTimeDelta)
 	
 	
 	{
-		pState = CHide_FireStart::Create(m_pOwner);
+		pState = CHide_Idle::Create(m_pOwner);
 	}
 
 

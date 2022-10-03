@@ -2,8 +2,10 @@
 #include "..\Public\State.h"
 
 #include "Student.h"
-CState::CState(CStudent* pOwner)
-	:m_pOwner(pOwner)
+#include "Monster.h"
+
+CState::CState(CStudent* pOwner, CMonster* pTarget)
+	:m_pOwner(pOwner), m_pTarget(pTarget)
 {
 }
 

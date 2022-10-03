@@ -264,6 +264,8 @@ void CStudent::Free()
 		m_pState = nullptr;
 	}
 
+	m_Monsters.clear();
+
 	Safe_Release(m_pSphereCom);
 	Safe_Release(m_pOBBCom);
 	Safe_Release(m_pAABBCom);

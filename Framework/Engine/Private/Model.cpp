@@ -158,7 +158,12 @@ HRESULT CModel::Render(_uint iMeshContainerIndex, CShader* pShader, _uint iPassI
 	/* 그리고자하는 메시컨테이너에 영향을 주는 뼈들의 행렬을 담아준다. */
 	_float4x4			BoneMatrices[256];
 
-	m_MeshContainers[iMeshContainerIndex]->SetUp_BoneMatices(BoneMatrices, XMLoadFloat4x4(&m_TransformMatrix));
+	_matrix OffsetMatrix = XMLoadFloat4x4(&m_TransformMatrix);
+
+	OffsetMatrix = OffsetMatrix * XMMatrixTranslation(m_fOffSetX, m_fOffSetY, m_fOffSetZ);
+	//XMStoreFloat4x4(&m_TransformMatrix, OffsetMatrix);
+
+	m_MeshContainers[iMeshContainerIndex]->SetUp_BoneMatices(BoneMatrices, OffsetMatrix);
 
 	if (0 != m_iNumAnimations)
 		pShader->Set_RawValue(pConstantBoneName, BoneMatrices, sizeof(_float4x4) * 256);	

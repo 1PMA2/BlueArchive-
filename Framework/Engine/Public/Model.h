@@ -21,6 +21,7 @@ public:
 	}
 
 	void Set_CurrentAnimation(_uint iAnimIndex);
+	void Set_OffSet(_float fX, _float fY, _float fZ) { m_fOffSetX = fX; m_fOffSetY = fY; m_fOffSetZ = fZ; }
 
 	class CHierarchyNode* Find_HierarcyNode(const char* pBoneName);
 	
@@ -39,6 +40,10 @@ private:
 	Assimp::Importer			m_Importer;
 	MODELTYPE					m_eModelType = TYPE_END;
 	_float4x4					m_TransformMatrix;
+	_float						m_fOffSetX = 0.f;
+	_float						m_fOffSetY = 0.f;
+	_float						m_fOffSetZ = 0.f;
+
 
 private:
 	vector<class CMeshContainer*>			m_MeshContainers;

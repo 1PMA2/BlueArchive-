@@ -45,58 +45,19 @@ CState * CRun::Loop(_float fTimeDelta)
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
+	
 	CSensei* pSensei = CSensei::Get_Instance();
 
 
-	m_pOwner->Reset_Monsters();
-
-	Find_Monster(fTimeDelta);
-	//if (m_pOwner->FoundMonster())
-	//{
-	//	if (m_pOwner->FoundObstacle())
-	//	{
-	//		CTransform* pTTransform;
-	//		pTTransform = (CTransform*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Obstacle"), 0)->Get_Component(TEXT("Com_Transform"));
-
-	//		_float4 f;
-
-	//		XMStoreFloat4(&f, pTTransform->Get_WorldMatrix().r[3]);
-
-	//		_vector		vTarget;
-
-	//		vTarget = XMVectorSet(f.x, f.y, f.z - 0.7f, f.w);
-
-	//		_vector		vPosition = pTransform->Get_State(CTransform::STATE_TRANSLATION);
-
-	//		_vector		vLook = vTarget - vPosition;
-
-	//		_float		fAngle;
-
-	//		fAngle = (acosf(XMVectorGetX(XMVector3Dot(XMVector3Normalize(vLook),
-	//			XMVector3Normalize(pTransform->Get_State(CTransform::STATE_LOOK))))));
-
-	//		if (0 > XMVectorGetX(vLook))
-	//			pTransform->TurnFor(XMVectorSet(0.f, -1.f, 0.f, 0.f), fTimeDelta, fAngle);
-	//		else
-	//			pTransform->TurnFor(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta, fAngle);
-	//
-
-
-
-	//		if (0.35f < XMVectorGetX(XMVector3Length(vLook)))
-	//			pTransform->Chase(vTarget, fTimeDelta);
-	//		else
-	//		{
-	//			pState = CRun_ToHide::Create(m_pOwner);
-	//		}
-	//	}
-	//	
-	//}
-
-	//else
-
 	if (pModel->Get_isFinished())
-		pState = CRun::Create(m_pOwner);
+	{
+		return CRun::Create(m_pOwner);
+	}
+
+	
+	pState = Find_Monster(fTimeDelta);
+
+	
 
 	return pState;
 }
@@ -108,6 +69,8 @@ void CRun::Exit()
 
 CState* CRun::Find_Monster(_float fTimeDelta)
 {
+	m_pOwner->Reset_Monsters();
+
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 
 	CTransform* pStudentTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
@@ -141,11 +104,6 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 			}
 			m_pOwner->In_RangeMonsters(pMonster);
 		}
-		else
-		{
-			pStudentTransform->Go_Straight(fTimeDelta);
-			return nullptr;
-		}
 	}
 
 	if (0 < m_pOwner->Get_InRangeMonsters())
@@ -155,8 +113,8 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 		_uint iCoverCount = pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Cover"));
 
-		if (0 >= iCoverCount)
-			return nullptr; // run to knee
+		//if (0 >= iCoverCount)
+		//	return nullptr; // run to knee
 
 		for (_uint i = 0; i < iCoverCount; ++i)
 		{
@@ -185,12 +143,12 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 					}
 
 				}
-				
+
 			}
 
 		}//for
 
-		if (false == m_pTargetCover->Get_Use()) //엄폐물이 사용중이 아님
+		if (nullptr != m_pTargetCover) //엄폐물이 사용중이 아님
 		{
 			CTransform* pTargetTransform = (CTransform*)m_pTargetCover->Get_Component(TEXT("Com_Transform"));
 
@@ -200,7 +158,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 			_vector		vTarget;
 
-			vTarget = XMVectorSet(f.x, f.y, f.z - 0.7f, f.w);
+			vTarget = XMVectorSet(f.x, f.y, f.z - 0.7f, f.w); // 콜라이더 위치 모델 수정 필요
 
 			_vector		vPosition = pStudentTransform->Get_State(CTransform::STATE_TRANSLATION);
 
@@ -219,16 +177,25 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 
 
-			if (0.35f < XMVectorGetX(XMVector3Length(vLook)))
+			if (1.f < XMVectorGetX(XMVector3Length(vLook)))
+			{
 				pStudentTransform->Chase(vTarget, fTimeDelta);
+				return nullptr;
+			}
 			else
 			{
-				return nullptr;//CRun_ToHide::Create(m_pOwner);
+				return CRun_ToHide::Create(m_pOwner, m_pTargetMonster);
 			}
 
 		}
+		else
+			return nullptr; //엄폐물이 없음 run to knee
 	}
-	//pStudentTransform->Go_Straight(fTimeDelta);
+
+	pStudentTransform->Go_Straight(fTimeDelta); //범위 내 몬스터 없을시
+
+
+
 	return nullptr;
 }
 

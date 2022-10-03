@@ -7,7 +7,7 @@ class CRun_ToHide final : public
 	CState
 {
 private:
-	CRun_ToHide(CStudent* pOwner);
+	CRun_ToHide(CStudent* pOwner, CMonster* pTarget);
 	virtual ~CRun_ToHide();
 
 public:
@@ -17,7 +17,7 @@ public:
 	virtual void Exit() override;
 
 public:
-	static CRun_ToHide* Create(CStudent* pOwner);
+	static CRun_ToHide* Create(CStudent* pOwner, CMonster* pTarget);
 };
 
 END
