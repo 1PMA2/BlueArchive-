@@ -23,6 +23,46 @@ CStudent::CStudent(const CStudent & rhs)
 {
 }
 
+CMonster* CStudent::FoundMonster()
+{
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+
+	_uint iMonsterCount = pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Monster"));
+
+	_vector vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
+
+	if (0 >= iMonsterCount)
+	{
+		return nullptr;
+	}
+
+	for (_uint i = 0; i < iMonsterCount; ++i)
+	{
+		CMonster* pMonster = (CMonster*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), i);
+
+		CTransform* pMonsterTransform = (CTransform*)pMonster->Get_Component(TEXT("Com_Transform"));
+
+		_vector vMonsterTranslation = pMonsterTransform->Get_State(CTransform::STATE_TRANSLATION);
+
+		_float fLength = XMVectorGetX(XMVector3Length(vMonsterTranslation - vTranslation)); //학생과 모든 몬스터 사이의 거리 
+
+		if ((_float)m_tStudentInfo.iRange > fLength) //레이어의 몬스터 검사 후 범위 내 몬스터 
+		{
+			if (m_fMin > fLength)
+			{
+				m_fMin = fLength;
+				m_pTargetMonster = pMonster; //가장 가까운 몬스터
+			}
+		}
+		else
+			m_pTargetMonster = nullptr;
+	}
+
+	m_fMin = 9999.f;
+
+	return m_pTargetMonster;
+}
+
 HRESULT CStudent::Initialize(void * pArg)
 {
 	if (FAILED(__super::Initialize(pArg)))
@@ -180,31 +220,7 @@ HRESULT CStudent::FormationLevel_Collision()
 
 HRESULT CStudent::GamePlayLevel_Collision()
 {
-	/*CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-	_uint iMonsterCount = pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Monster"));
-
-	for (_uint i = 0; i < iMonsterCount; ++i)
-	{
-		CMonster* pMonster = (CMonster*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), i);
-		m_Monsters.push_back(pMonster);
-	}*/
-
-	/*CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Com_SPHERE"), 0);
-	if (nullptr == pMonsterCollider)
-	{
-		m_bFoundMonster = false;
-		return S_OK;
-		
-	}
-
-	m_bFoundMonster = m_pSphereCom->Collision(pMonsterCollider);
-
-
-	CCollider* pTargetCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Obstacle"), TEXT("Com_SPHERE"));
-	if (nullptr == pTargetCollider)
-		return E_FAIL;
-
-	m_bFoundObstacle = m_pSphereCom->Collision(pTargetCollider);*/
+	
 
 	return S_OK;
 }

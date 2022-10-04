@@ -416,7 +416,7 @@ HRESULT CLoader::Loading_ForFormationLevel()
 
 		/* For.Prototype_Component_VIBuffer_Terrain */
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Terrain"),
-			CVIBuffer_Terrain::Create(m_pDevice, m_pContext, 10, 10))))
+			CVIBuffer_Terrain::Create(m_pDevice, m_pContext, 50, 100))))
 			return E_FAIL;
 		
 
@@ -536,7 +536,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		_matrix			TransformMatrix;
 
 		/* For.Prototype_Component_Model_ForkLift*/
-		TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationY(XMConvertToRadians(00.0f));
+		TransformMatrix = XMMatrixScaling(0.7f, 0.7f, 0.7f) * XMMatrixRotationY(XMConvertToRadians(00.0f));
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_ForkLift"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/Cover/", "cover.fbx", TransformMatrix))))
@@ -548,11 +548,11 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru_Ex.fbx", TransformMatrix))))
 			return E_FAIL;
 
-		ZeroMemory(&TransformMatrix, sizeof(_matrix));
-		TransformMatrix = XMMatrixRotationY(XMConvertToRadians(180.0f));
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_City"),
-			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/map/", "City.fbx", TransformMatrix))))
-			return E_FAIL;
+		//ZeroMemory(&TransformMatrix, sizeof(_matrix));
+		//TransformMatrix = XMMatrixRotationY(XMConvertToRadians(180.0f));
+		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_City"),
+		//	CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/map/", "City.fbx", TransformMatrix))))
+		//	return E_FAIL;
 
 
 		

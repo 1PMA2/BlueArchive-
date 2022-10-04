@@ -613,6 +613,12 @@
     <Filter Include="02.GameObject\02.Cover">
       <UniqueIdentifier>{7b947462-f795-4a94-b48b-f37e9288c354}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.GameObject\01.State\Monster_State">
+      <UniqueIdentifier>{68e3a05c-8330-434d-8bb6-9b46c5cbcd7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\08.Bullet">
+      <UniqueIdentifier>{4b951edb-6ca2-4824-a334-62f7ce75d8cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">

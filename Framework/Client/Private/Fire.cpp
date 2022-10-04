@@ -7,6 +7,7 @@
 #include "Ex_Cutin.h"
 #include "Hide_ReloadStart.h"
 #include "Sensei.h"
+#include "Run.h"
 
 CFire::CFire(CStudent* pOwner)
 	:CState(pOwner)
@@ -32,9 +33,13 @@ CState * CFire::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
+	pModel->Play_Animation(fTimeDelta);
+
 	if (pModel->Get_isFinished())
 	{
-		if(0 < m_pOwner->Get_StudentInfo().iBullet)
+		if (nullptr == m_pOwner->FoundMonster())
+			pState = CRun::Create(m_pOwner);
+		else if(0 < m_pOwner->Get_StudentInfo().iBullet)
 			pState = CFire::Create(m_pOwner);
 		else
 			pState = CHide_ReloadStart::Create(m_pOwner);

@@ -54,7 +54,7 @@ HRESULT CTerrain::Render()
 	if (FAILED(SetUp_ShaderResource()))
 		return E_FAIL;
 
-	m_pShaderCom->Begin(1);
+	m_pShaderCom->Begin(0);
 	 
 	m_pVIBufferCom->Render();
 
@@ -100,8 +100,8 @@ HRESULT CTerrain::SetUp_ShaderResource()
 	if (FAILED(m_pTextureCom[TYPE_DIFFUSE]->Set_ShaderResourceView(m_pShaderCom, "g_DestDiffTexture", 1)))
 		return E_FAIL;
 
-	if (FAILED(m_pShaderCom->Set_ShaderResourceView("g_FilterTexture", m_pFilterTexture)))
-		return E_FAIL;	
+	/*if (FAILED(m_pShaderCom->Set_ShaderResourceView("g_FilterTexture", m_pFilterTexture)))
+		return E_FAIL;	*/
 	
 
 	const LIGHTDESC* pLightDesc = pGameInstance->Get_LightDesc(0);

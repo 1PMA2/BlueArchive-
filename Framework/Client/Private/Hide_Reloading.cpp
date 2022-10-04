@@ -34,7 +34,7 @@ CState * CHide_Reloading::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
-		pState = CHide_FireStart::Create(m_pOwner);
+		pState = CHide_FireStart::Create(m_pOwner, m_pTarget, m_pCover);
 	}
 
 	return pState;

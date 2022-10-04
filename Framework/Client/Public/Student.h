@@ -63,7 +63,7 @@ public:
 
 
 	_bool		Is_Picked() { return m_bPicked; }
-	_bool		FoundMonster() { return m_bFoundMonster; }
+	CMonster*		FoundMonster();
 	_bool		FoundObstacle() { return m_bFoundObstacle; }
 
 public:
@@ -88,7 +88,9 @@ protected:
 	CCollider*				m_pPickedCom = nullptr;
 	CState*					m_pState = nullptr;
 	_bool					m_bPicked = false;
-	_bool					m_bFoundMonster = false;
+	CMonster*				m_pTargetMonster = nullptr;
+	_float					m_fMin = 9999.f;
+
 	_bool					m_bFoundObstacle = false;
 	_bool					m_bSetted = false;
 	_vector					m_vPreTranslation = {};

@@ -15,6 +15,14 @@ BEGIN(Client)
 class CMonster final : public CGameObject
 {
 public:
+	typedef struct tagMonsterDesc
+	{
+		_int iHp;
+		_int iAtk;
+		_float fRange;
+	}MONSTERINFO;
+
+public:
 	CMonster(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
 	CMonster(const CMonster& rhs);
 	virtual ~CMonster() = default;
@@ -31,6 +39,7 @@ private:
 	CRenderer*				m_pRendererCom = nullptr;
 	CModel*					m_pModelCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
+	MONSTERINFO				m_tMonsterInfo = {};
 
 public:
 	virtual void OnDisable() override;

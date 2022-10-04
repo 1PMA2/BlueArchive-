@@ -52,6 +52,11 @@ void CMonster::LateTick(_float fTimeDelta)
 	//if (i > 13)
 	//	DELETE(this);
 
+	if (KEY(D, TAP))
+	{
+		DELETE(this);
+	}
+
 }
 
 HRESULT CMonster::Render()

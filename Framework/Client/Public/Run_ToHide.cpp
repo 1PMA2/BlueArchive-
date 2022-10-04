@@ -47,7 +47,7 @@ CState * CRun_ToHide::Loop(_float fTimeDelta)
 	
 	if (pModel->Get_isFinished())
 	{
-		pState = CHide_Idle::Create(m_pOwner);
+		pState = CHide_Idle::Create(m_pOwner, m_pTarget, m_pCover);
 	}
 	
 

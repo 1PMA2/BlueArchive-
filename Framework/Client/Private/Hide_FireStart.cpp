@@ -6,9 +6,10 @@
 #include "Model.h"
 #include "Fire.h"
 #include "Run.h"
+#include "Monster.h"
 
-CHide_FireStart::CHide_FireStart(CStudent* pOwner)
-	:CState(pOwner)
+CHide_FireStart::CHide_FireStart(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
+	:CState(pOwner, pTarget, pCover)
 {
 	m_eAnim = ANIM_HIDEFIRESTART;
 	pOwner->Set_State(m_eAnim);
@@ -31,13 +32,14 @@ CState * CHide_FireStart::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
+	pModel->Play_Animation(fTimeDelta);
+
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
 	CTransform* pTTransform;
-	CGameObject* pMonster = pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), 0);
 
-	if(nullptr != pMonster)
-		pTTransform = (CTransform*)pMonster->Get_Component(TEXT("Com_Transform"));
+	if(nullptr != m_pOwner->FoundMonster())
+		pTTransform = (CTransform*)m_pOwner->FoundMonster()->Get_Component(TEXT("Com_Transform"));
 	else
 	{
 		pState = CRun::Create(m_pOwner);
@@ -75,7 +77,7 @@ void CHide_FireStart::Exit()
 	Destroy_Instance();
 }
 
-CHide_FireStart * CHide_FireStart::Create(CStudent * pOwner)
+CHide_FireStart * CHide_FireStart::Create(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
 {
-	return new CHide_FireStart(pOwner);
+	return new CHide_FireStart(pOwner, pTarget, pCover);
 }

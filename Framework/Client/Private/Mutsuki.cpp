@@ -151,24 +151,7 @@ HRESULT CMutsuki::FormationLevel_Collision()
 
 HRESULT CMutsuki::GamePlayLevel_Collision()
 {
-	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 
-
-	CCollider*			pMonsterCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Com_SPHERE"));
-	if (nullptr == pMonsterCollider)
-		return E_FAIL;
-	
-	m_bFoundMonster = m_pSphereCom->Collision(pMonsterCollider);
-
-
-	CCollider* pTargetCollider = (CCollider*)pGameInstance->Get_Component(LEVEL_GAMEPLAY, TEXT("Layer_Obstacle"), TEXT("Com_SPHERE"));
-	if (nullptr == pTargetCollider)
-		return E_FAIL;
-	
-	m_bFoundObstacle = m_pSphereCom->Collision(pTargetCollider);
-
-
-	RELEASE_INSTANCE(CGameInstance);
 	
 	return S_OK;
 }
