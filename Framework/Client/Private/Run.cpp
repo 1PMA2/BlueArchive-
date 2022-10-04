@@ -47,7 +47,7 @@ CState * CRun::Loop(_float fTimeDelta)
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
 	pModel->Repeat_Animation(fTimeDelta);
-	
+
 	pState = Find_Monster(fTimeDelta);
 
 	return pState;
@@ -73,6 +73,8 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 	if (0 >= iMonsterCount)
 	{
 		pStudentTransform->Go_Straight(fTimeDelta);
+		_vector vXY = pStudentTransform->Get_WorldMatrix().r[3];
+		pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), 1.f, fTimeDelta);
 		return nullptr;
 	}
 
@@ -151,16 +153,6 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 			_vector		vLook = vTarget - vPosition;
 
-			/*_float		fAngle;
-
-			fAngle = (acosf(XMVectorGetX(XMVector3Dot(XMVector3Normalize(vLook),
-				XMVector3Normalize(pStudentTransform->Get_State(CTransform::STATE_LOOK))))));
-
-			if (0 > XMVectorGetX(vLook))
-				pStudentTransform->TurnFor(XMVectorSet(0.f, -1.f, 0.f, 0.f), fTimeDelta, fAngle);
-			else
-				pStudentTransform->TurnFor(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta, fAngle);*/
-
 			pStudentTransform->LookAtLerp(vTarget, 0.5f, fTimeDelta);
 
 
@@ -178,9 +170,10 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 		else
 			return nullptr; //엄폐물이 없음 run to knee
 	}
-
+	
 	pStudentTransform->Go_Straight(fTimeDelta); //범위 내 몬스터 없을시
-
+	_vector vXY = pStudentTransform->Get_WorldMatrix().r[3];
+	pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), 1.f, fTimeDelta);
 
 
 	return nullptr;
@@ -188,5 +181,6 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 CRun * CRun::Create(CStudent * pOwner)
 {
+
 	return new CRun(pOwner);
 }

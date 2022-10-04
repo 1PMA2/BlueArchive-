@@ -38,7 +38,7 @@ CState * CHide_FireStart::Loop(_float fTimeDelta)
 
 	CTransform* pTTransform;
 
-	if(nullptr != m_pOwner->FoundMonster())
+	if(nullptr != m_pOwner->Get_InRangeMonster(0))//m_pOwner->FoundMonster()
 		pTTransform = (CTransform*)m_pOwner->FoundMonster()->Get_Component(TEXT("Com_Transform"));
 	else
 	{
@@ -47,24 +47,8 @@ CState * CHide_FireStart::Loop(_float fTimeDelta)
 	}
 
 	_vector		vTarget = pTTransform->Get_State(CTransform::STATE_TRANSLATION);
-
-	_vector		vPosition = pTransform->Get_State(CTransform::STATE_TRANSLATION);
-
-	_vector		vMyLook = pTransform->Get_State(CTransform::STATE_LOOK);
-
-	_vector		vLook = vTarget - vPosition;
-
-	_vector		vLerpLook = XMVectorLerp(vMyLook, vLook, fTimeDelta * 2.f);
-
-	_vector		vRight = XMVector3Cross(XMVectorSet(0.f, 1.f, 0.f, 0.f), vLerpLook);
-
-	_vector		vUp = XMVector3Cross(vLerpLook, vRight);
-
-
-	pTransform->Set_State(CTransform::STATE_RIGHT, XMVector3Normalize(vRight));
-	pTransform->Set_State(CTransform::STATE_UP, XMVector3Normalize(vUp));
-	pTransform->Set_State(CTransform::STATE_LOOK, XMVector3Normalize(vLerpLook));
-
+	
+	pTransform->LookAtLerp(vTarget, 2.f, fTimeDelta);
 
 	if (pModel->Get_isFinished())
 	{ 

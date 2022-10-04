@@ -30,7 +30,7 @@ CState * CHide_Reloading::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	//pModel->Play_Animation(fTimeDelta);
+	pModel->Play_Animation(fTimeDelta);
 
 	if (pModel->Get_isFinished())
 	{

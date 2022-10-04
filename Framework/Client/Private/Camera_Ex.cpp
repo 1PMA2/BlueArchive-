@@ -65,7 +65,7 @@ void CCamera_Ex::OnEnable()
 
 	m_WeaponDesc.eTargetLevel = LEVEL_GAMEPLAY;
 	m_WeaponDesc.pTargetLayerTag = TEXT("Layer_Student_Ex");
-	m_WeaponDesc.iTargetIndex = pSensei->Get_FormationInfo(0).iIndex;
+	m_WeaponDesc.iTargetIndex = 0;
 	m_WeaponDesc.pTargetModelComTag = TEXT("Com_Model");
 	m_WeaponDesc.pBoneName = "Camera001";
 

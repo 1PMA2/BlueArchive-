@@ -73,6 +73,8 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 
 	else
 	{
+		pModel->Play_Animation(fTimeDelta);
+
 		if (pModel->Get_isFinished())
 		{
 			pState = CEx::Create(m_pOwner);
