@@ -277,8 +277,8 @@ HRESULT CLevel_GamePlay::Ready_Layer_Cover(const _tchar * pLayerTag)
 
 	vTranslation = XMVectorSet(-1.f, 0.f, 15.f, 1.f);
 
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
-		return E_FAIL;
+	/*if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
+		return E_FAIL;*/
 
 	Safe_Release(pGameInstance);
 

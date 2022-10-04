@@ -36,6 +36,7 @@ CRun::~CRun()
 void CRun::Enter()
 {
 	m_bOnce = true;
+	m_iIndex = 0;
 }
 
 CState * CRun::Loop(_float fTimeDelta)
@@ -104,45 +105,62 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 	if (nullptr != m_pTargetMonster)
 	{
-		
+
 		Find_Cover();
 
-		for (_int i = 0; i < 4; ++i)
+		CStudent* pStudent;
+
+		if(m_bOnce)
+		{ 
+		for (int i = 0; i < 2; ++i)
 		{
-			if (nullptr != m_pTargetCover[i] && !m_pTargetCover[i]->Get_Use()) //엄폐물이 사용중이 아님
+			pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
+
+			if (m_pOwner != pStudent)
 			{
-
-				CTransform* pTargetTransform = (CTransform*)m_pTargetCover[i]->Get_Component(TEXT("Com_Transform"));
-
-				_vector		vTarget = pTargetTransform->Get_State(CTransform::STATE_TRANSLATION);
-
-				_vector		vPosition = pStudentTransform->Get_State(CTransform::STATE_TRANSLATION);
-
-				_vector		vLook = vTarget - vPosition;
-
-				pStudentTransform->LookAtLerp(vTarget, 3.f, fTimeDelta);
-
-
-				if (0.5f < XMVectorGetX(XMVector3Length(vLook)))
+				if (pStudent->FoundObstacle())
 				{
-					pStudentTransform->Go_Straight(fTimeDelta); //Chase(vTarget, fTimeDelta);
-					return nullptr;
+					++m_iIndex;
+					break;
 				}
-				else
-				{
-					m_pTargetCover[i]->Set_Use(true);
-					return CRun_ToHide::Create(m_pOwner, m_pTargetMonster, m_pTargetCover[i]);
-				}
-
 			}
-			else if (nullptr == m_pTargetCover)
+		}
+		m_bOnce = false;
+		}
+
+		
+
+		if (nullptr != m_pTargetCover[m_iIndex])
+		{
+			m_pOwner->Set_Cover(true);
+
+			CTransform* pTargetTransform = (CTransform*)m_pTargetCover[m_iIndex]->Get_Component(TEXT("Com_Transform"));
+
+			_vector		vTarget = pTargetTransform->Get_State(CTransform::STATE_TRANSLATION);
+
+			_vector		vPosition = pStudentTransform->Get_State(CTransform::STATE_TRANSLATION);
+
+			_vector		vLook = vTarget - vPosition;
+
+			pStudentTransform->LookAtLerp(vTarget, 3.f, fTimeDelta);
+
+
+			if (0.5f < XMVectorGetX(XMVector3Length(vLook)))
 			{
-				return CRun_ToKnee::Create(m_pOwner); //엄폐물이 없음 run to knee
+				pStudentTransform->Go_Straight(fTimeDelta); //Chase(vTarget, fTimeDelta);
+				return nullptr;
 			}
-
+			else
+			{
+				return CRun_ToHide::Create(m_pOwner, m_pTargetMonster, m_pTargetCover[m_iIndex]);
+			}
 
 		}
-		
+		else
+		{
+			return CRun_ToKnee::Create(m_pOwner); //엄폐물이 없음 run to knee
+		}
+
 	}
 	
 

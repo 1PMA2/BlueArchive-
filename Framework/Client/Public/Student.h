@@ -65,6 +65,7 @@ public:
 	_bool		Is_Picked() { return m_bPicked; }
 	CMonster*		FoundMonster();
 	_bool		FoundObstacle() { return m_bFoundObstacle; }
+	void		Set_Cover(_bool bCover) { m_bFoundObstacle = bCover; }
 
 public:
 	virtual HRESULT Initialize(void* pArg);
