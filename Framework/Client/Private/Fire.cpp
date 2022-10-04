@@ -13,11 +13,21 @@
 CFire::CFire(CStudent* pOwner)
 	:CState(pOwner)
 {
-	m_eAnim = ANIM_FIRE;
-	pOwner->Set_State(m_eAnim);
+	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
-	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
-	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+	switch (pOwner->Get_StudentInfo().iIndex)
+	{
+	case 0:
+		m_eAnim = ANIM_FIRE;
+		pOwner->Set_State(m_eAnim);
+		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		break;
+	case 1:
+		pModel->Set_CurrentAnimation(18);
+		break;
+	case 2:
+		break;
+	}
 }
 
 
@@ -45,7 +55,10 @@ CState * CFire::Loop(_float fTimeDelta)
 	if (pModel->Get_isFinished())
 	{
 		if (nullptr == pMonster)
+		{
+			m_pOwner->Set_Cover(false);
 			pState = CRun::Create(m_pOwner);
+		}
 		else if(0 < m_pOwner->Get_StudentInfo().iBullet)
 			pState = CFire::Create(m_pOwner);
 		else

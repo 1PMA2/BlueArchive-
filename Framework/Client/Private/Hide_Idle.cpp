@@ -9,11 +9,24 @@
 CHide_Idle::CHide_Idle(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
 	:CState(pOwner, pTarget, pCover)
 {
-	m_eAnim = ANIM_HIDEIDLE;
-	pOwner->Set_State(m_eAnim);
+	
 
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
-	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+
+	switch (pOwner->Get_StudentInfo().iIndex)
+	{
+	case 0:
+		m_eAnim = ANIM_HIDEIDLE;
+		pOwner->Set_State(m_eAnim);
+		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		break;
+	case 1:
+		pModel->Set_CurrentAnimation(21);
+		break;
+	case 2:
+		break;
+
+	}
 }
 
 

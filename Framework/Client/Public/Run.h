@@ -25,6 +25,7 @@ private:
 	class CForkLift* m_pTargetCover[4] = { nullptr };
 	_bool m_bOnce = true;
 	_uint m_iIndex = 0;
+	_float m_fHideLength = 0.f;
 	_float m_fMin = 9999.f;
 	_float m_fCoverMin = 9999.f;
 

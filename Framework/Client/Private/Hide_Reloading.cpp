@@ -10,11 +10,22 @@
 CHide_Reloading::CHide_Reloading(CStudent* pOwner)
 	:CState(pOwner)
 {
-	m_eAnim = ANIM_HIDERELOADING;
-	pOwner->Set_State(m_eAnim);
+	
+	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
-	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
-	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+	switch (pOwner->Get_StudentInfo().iIndex)
+	{
+	case 0:
+		m_eAnim = ANIM_HIDERELOADING;
+		pOwner->Set_State(m_eAnim);
+		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		break;
+	case 1:
+		pModel->Set_CurrentAnimation(22);
+		break;
+	case 2:
+		break;
+	}
 }
 
 void CHide_Reloading::Enter()

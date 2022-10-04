@@ -14,17 +14,24 @@
 CRun::CRun(CStudent* pOwner)
 	:CState(pOwner)
 {
-	if (TEXT("Aru") == pOwner->Get_StudentInfo().pName)
-	{
-		int i = 10;
-	}
-
-	m_eAnim = ANIM_RUN;
-	pOwner->Set_State(m_eAnim);
-
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
-	
-	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+
+	switch (pOwner->Get_StudentInfo().iIndex)
+	{
+	case 0:
+		m_eAnim = ANIM_RUN;
+		pOwner->Set_State(m_eAnim);
+		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		m_fHideLength = 0.5f;
+		break;
+	case 1:
+		pModel->Set_CurrentAnimation(7);
+		m_fHideLength = 0.1f;
+		break;
+	case 2:
+		break;
+
+	}
 	
 }
 
@@ -112,7 +119,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 		if(m_bOnce)
 		{ 
-		for (int i = 0; i < 2; ++i)
+		for (int i = 0; i < 1; ++i)
 		{
 			pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
 
@@ -145,7 +152,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 			pStudentTransform->LookAtLerp(vTarget, 3.f, fTimeDelta);
 
 
-			if (0.5f < XMVectorGetX(XMVector3Length(vLook)))
+			if (m_fHideLength <= XMVectorGetX(XMVector3Length(vLook)))
 			{
 				pStudentTransform->Go_Straight(fTimeDelta); //Chase(vTarget, fTimeDelta);
 				return nullptr;

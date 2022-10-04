@@ -45,7 +45,10 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 	if (pModel->Get_isFinished())
 	{
 		if (nullptr == pMonster)
+		{
 			pState = CRun::Create(m_pOwner);
+			m_pOwner->Set_Cover(false);
+		}
 		else if (0 < m_pOwner->Get_StudentInfo().iBullet)
 			pState = CKnee_ZoomFire::Create(m_pOwner);
 		else

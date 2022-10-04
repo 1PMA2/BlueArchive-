@@ -159,7 +159,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_Camera(const _tchar * pLayerTag)
 	CameraDesc.TransformDesc.fSpeedPerSec = 5.f;
 	CameraDesc.TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	CameraDesc.fFovy = XMConvertToRadians(30.0f);
+	CameraDesc.fFovy = XMConvertToRadians(25.0f);
 	CameraDesc.fAspect = (_float)g_iWinCX / g_iWinCY;
 	CameraDesc.fNear = 0.2f;
 	CameraDesc.fFar = 300.f;
@@ -211,9 +211,9 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student(const _tchar * pLayerTag)
 	CSensei* pSensei = CSensei::Get_Instance();
 
 	/* For.Player */
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag,
-		pSensei->Get_Student(TEXT("Aru"))->Get_StudentInfo().pName)))
-		return E_FAIL;
+	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag,
+	//	pSensei->Get_Student(TEXT("Aru"))->Get_StudentInfo().pName)))
+	//	return E_FAIL;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag,
 		pSensei->Get_Student(TEXT("Mutsuki"))->Get_StudentInfo().pName)))
@@ -277,8 +277,8 @@ HRESULT CLevel_GamePlay::Ready_Layer_Cover(const _tchar * pLayerTag)
 
 	vTranslation = XMVectorSet(-1.f, 0.f, 15.f, 1.f);
 
-	/*if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
-		return E_FAIL;*/
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
+		return E_FAIL;
 
 	Safe_Release(pGameInstance);
 

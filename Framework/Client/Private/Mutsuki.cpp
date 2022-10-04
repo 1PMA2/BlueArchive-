@@ -30,8 +30,8 @@ HRESULT CMutsuki::Initialize_Prototype()
 	m_tStudentInfo.iEx = 30;
 	m_tStudentInfo.fExCost = 4.f;
 	m_tStudentInfo.iHp = 100;
-	m_tStudentInfo.iMagazine = 30;
-	m_tStudentInfo.iBullet = 30;
+	m_tStudentInfo.iMagazine = 10;
+	m_tStudentInfo.iBullet = 10;
 	m_tStudentInfo.iRange = 5;
 	m_tStudentInfo.iShield = 0;
 	m_tStudentInfo.iIndex = 1;

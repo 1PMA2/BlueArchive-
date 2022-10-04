@@ -11,11 +11,22 @@
 CHide_FireStart::CHide_FireStart(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
 	:CState(pOwner, pTarget, pCover)
 {
-	m_eAnim = ANIM_HIDEFIRESTART;
-	pOwner->Set_State(m_eAnim);
+	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
-	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
-	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+	switch (pOwner->Get_StudentInfo().iIndex)
+	{
+	case 0:
+		m_eAnim = ANIM_HIDEFIRESTART;
+		pOwner->Set_State(m_eAnim);
+		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		break;
+	case 1:
+		pModel->Set_CurrentAnimation(19);
+		break;
+	case 2:
+		break;
+
+	}
 }
 
 
