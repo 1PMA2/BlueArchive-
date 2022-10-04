@@ -29,6 +29,8 @@ CState * CFormation_Idle::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
+	pModel->Repeat_Animation(fTimeDelta);
+
 	CCollider* pAABBcom = (CCollider*)m_pOwner->Get_Component(TEXT("Com_AABB"));
 
 	if (pAABBcom->CollisionRay())

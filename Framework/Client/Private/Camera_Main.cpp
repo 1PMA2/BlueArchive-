@@ -46,7 +46,9 @@ void CCamera_Main::Tick(_float fTimeDelta)
 
 		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION);
 
-		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 1.5f);
+		vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 0.5f, 1.f);
+
+		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 1.f);
 
 		_vector vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vLerp), XMVectorGetW(vCamera));
 

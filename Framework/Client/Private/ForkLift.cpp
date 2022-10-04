@@ -67,16 +67,16 @@ HRESULT CForkLift::Render()
 
 	
 
-	//_uint iNumMeshContainers = m_pModelCom->Get_NumMeshContainers();
+	_uint iNumMeshContainers = m_pModelCom->Get_NumMeshContainers();
 
-	//for (_uint i = 0; i < iNumMeshContainers; ++i)
-	//{
-	//	if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", i, aiTextureType_DIFFUSE)))
-	//		return E_FAIL;
-	//	/*if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_NormalTexture", i, aiTextureType_NORMALS)))
-	//		return E_FAIL;*/
-	//	m_pModelCom->Render(i, m_pShaderCom);
-	//}
+	for (_uint i = 0; i < iNumMeshContainers; ++i)
+	{
+		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", i, aiTextureType_DIFFUSE)))
+			return E_FAIL;
+		/*if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_NormalTexture", i, aiTextureType_NORMALS)))
+			return E_FAIL;*/
+		m_pModelCom->Render(i, m_pShaderCom);
+	}
 
 #ifdef _DEBUG
 	m_pSphereCom->Render();
@@ -109,7 +109,7 @@ HRESULT CForkLift::SetUp_Components()
 
 	ColliderDesc.vScale = _float3(2.f, 2.f, 2.f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
-	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, -0.7f);
+	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
 	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
 		return E_FAIL;

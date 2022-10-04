@@ -22,8 +22,8 @@ CRun::CRun(CStudent* pOwner)
 	pOwner->Set_State(m_eAnim);
 
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
+	
 	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
-
 	
 }
 
@@ -45,19 +45,10 @@ CState * CRun::Loop(_float fTimeDelta)
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
-	
-	CSensei* pSensei = CSensei::Get_Instance();
 
-
-	if (pModel->Get_isFinished())
-	{
-		return CRun::Create(m_pOwner);
-	}
-
+	pModel->Repeat_Animation(fTimeDelta);
 	
 	pState = Find_Monster(fTimeDelta);
-
-	
 
 	return pState;
 }
@@ -104,9 +95,11 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 			}
 			m_pOwner->In_RangeMonsters(pMonster);
 		}
+		else
+			m_pTargetMonster = nullptr;
 	}
 
-	if (0 < m_pOwner->Get_InRangeMonsters())
+	if (nullptr != m_pTargetMonster)
 	{
 
 		//장애물 검사 > 범위 안에 장애물이 있으며 장애물과 가장 가까운몬스터의 거리가 irange 이내일 경우 장애물로 이동함

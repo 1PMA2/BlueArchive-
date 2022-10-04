@@ -155,7 +155,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_Camera(const _tchar * pLayerTag)
 	ZeroMemory(&CameraDesc, sizeof(CCamera::CAMERADESC));
 
 	CameraDesc.vEye = _float4(10.f, 5.f, 0.f, 1.f);
-	CameraDesc.vAt = _float4(0.f, 0.f, 0.f, 1.f);
+	CameraDesc.vAt = _float4(0.f, 0.f, 3.f, 1.f);
 	CameraDesc.TransformDesc.fSpeedPerSec = 5.f;
 	CameraDesc.TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 

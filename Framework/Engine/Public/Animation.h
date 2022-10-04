@@ -18,6 +18,7 @@ public:
 public:
 	HRESULT Initialize(aiAnimation* pAIAnimation, class CModel* pModel);
 	void Update_TransformationMatrices(_float fTimeDelta);
+	void Repeat_TransformationMatrices(_float fTimeDelta);
 	void Reset_TransformationMatrices();
 
 public:

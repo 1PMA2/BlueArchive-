@@ -31,6 +31,8 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
+	pModel->Repeat_Animation(fTimeDelta);
+
 	_float4 fOut;
 
 	pGameInstance->Picking((CVIBuffer*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_VIBuffer"), 0),

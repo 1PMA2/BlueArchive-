@@ -35,12 +35,6 @@ HRESULT CStudent::Initialize(void * pArg)
 
 void CStudent::Tick(_float fTimeDelta)
 {
-
-	if (false == m_tStudentInfo.bExModel) //스킬모델이 아닐시 재생 안함
-	{
-		m_pModelCom->Play_Animation(fTimeDelta);
-	}
-
 	if (CState*	pNewState = m_pState->Loop(fTimeDelta))
 	{
 		m_pState->Exit();

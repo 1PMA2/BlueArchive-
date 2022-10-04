@@ -30,6 +30,7 @@ public:
 	HRESULT Initialize_Prototype(MODELTYPE eType, const char* pModelFilePath, const char* pModelFileName, _fmatrix TransformMatrix);
 	HRESULT Initialize(void* pArg, CModel* pPrototype);
 	HRESULT Play_Animation(_float fTimeDelta);
+	HRESULT Repeat_Animation(_float fTimeDelta);
 	HRESULT Render(_uint iMeshContainerIndex, class CShader* pShader, _uint iPassIndex = 0, const char* pConstantBoneName = nullptr);
 
 public:

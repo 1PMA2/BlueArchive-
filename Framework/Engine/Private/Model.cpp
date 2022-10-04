@@ -149,6 +149,19 @@ HRESULT CModel::Play_Animation(_float fTimeDelta)
 	return S_OK;
 }
 
+HRESULT CModel::Repeat_Animation(_float fTimeDelta)
+{
+	if (m_iCurrentAnimationIndex >= m_iNumAnimations)
+		return E_FAIL;
+
+	m_Animations[m_iCurrentAnimationIndex]->Repeat_TransformationMatrices(fTimeDelta);
+
+	for (auto& pHierarchyNode : m_HierarchyNodes)
+		pHierarchyNode->Update_CombinedTransformationMatrix();
+
+	return S_OK;
+}
+
 
 HRESULT CModel::Render(_uint iMeshContainerIndex, CShader* pShader, _uint iPassIndex, const char* pConstantBoneName)
 {
