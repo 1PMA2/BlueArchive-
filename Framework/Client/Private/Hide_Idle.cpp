@@ -5,7 +5,7 @@
 #include "Student.h"
 #include "Model.h"
 #include "Hide_FireStart.h"
-
+#include "Run.h"
 CHide_Idle::CHide_Idle(CStudent* pOwner)
 	:CState(pOwner)
 {
@@ -37,12 +37,20 @@ CState * CHide_Idle::Loop(_float fTimeDelta)
 
 	
 	
+	
+
+	if (KEY(Q, TAP))
+	{
+		pTransform->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 10.f, 1.f));
+		pTransform->Set_State(CTransform::STATE_RIGHT, XMVectorSet(1.f, 0.f, 0.f, 0.f));
+		pTransform->Set_State(CTransform::STATE_UP, XMVectorSet(0.f, 1.f, 0.f, 0.f));
+		pTransform->Set_State(CTransform::STATE_LOOK, XMVectorSet(0.f, 0.f, 1.f, 0.f));
+		pState = CRun::Create(m_pOwner);
+	}
+	else
 	{
 		pState = CHide_Idle::Create(m_pOwner);
 	}
-
-
-
 	
 
 	

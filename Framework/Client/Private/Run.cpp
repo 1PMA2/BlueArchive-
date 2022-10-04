@@ -158,7 +158,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 			_vector		vTarget;
 
-			vTarget = XMVectorSet(f.x, f.y, f.z - 0.7f, f.w); // 콜라이더 위치 모델 수정 필요
+			vTarget = XMVectorSet(f.x, f.y, f.z, f.w); // 콜라이더 위치 모델 수정 필요
 
 			_vector		vPosition = pStudentTransform->Get_State(CTransform::STATE_TRANSLATION);
 
@@ -177,14 +177,14 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 
 
-			if (1.f < XMVectorGetX(XMVector3Length(vLook)))
+			if (0.5f < XMVectorGetX(XMVector3Length(vLook)))
 			{
 				pStudentTransform->Chase(vTarget, fTimeDelta);
 				return nullptr;
 			}
 			else
 			{
-				return CRun_ToHide::Create(m_pOwner, m_pTargetMonster);
+				return CRun_ToHide::Create(m_pOwner, m_pTargetMonster, m_pTargetCover);
 			}
 
 		}

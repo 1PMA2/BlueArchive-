@@ -46,11 +46,15 @@ void CCamera_Main::Tick(_float fTimeDelta)
 
 		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION);
 
-		_vector vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vTarget), XMVectorGetW(vCamera));
+		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 1.5f);
+
+		_vector vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vLerp), XMVectorGetW(vCamera));
 
 		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vMainCamera);
 	}
 
+
+	
 
 	Safe_Release(pGameInstance);
 

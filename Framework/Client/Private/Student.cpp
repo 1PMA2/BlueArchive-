@@ -57,6 +57,7 @@ void CStudent::Tick(_float fTimeDelta)
 	m_pAABBCom->Update(NoneScaleWorldMatrix);
 	m_pOBBCom->Update(m_pTransformCom->Get_WorldMatrix());
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
+
 }
 
 void CStudent::LateTick(_float fTimeDelta)

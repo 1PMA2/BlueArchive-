@@ -6,11 +6,12 @@ BEGIN(Client)
 
 class CStudent;
 class CMonster;
+class CForkLift;
 
 class CState abstract
 {
 protected:
-	CState(CStudent*	pOwner, CMonster* pTarget = nullptr);
+	CState(CStudent*	pOwner, CMonster* pTarget = nullptr, CForkLift* = nullptr);
 	virtual ~CState();
 public:
 	ANIM	Get_State() { return m_eAnim; }
@@ -22,6 +23,7 @@ public:
 protected:
 	CStudent*		m_pOwner;
 	CMonster*		m_pTarget;
+	CForkLift*		m_pCover;
 	ANIM			m_eAnim = ANIM_RUNSIGN;
 
 protected:

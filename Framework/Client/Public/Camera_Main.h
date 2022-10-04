@@ -23,6 +23,9 @@ public:
 	virtual void OnDisable() override;
 	virtual void OnEnable() override;
 
+private:
+	_float m_fZ = 0.f;
+
 public:
 	static CCamera_Main* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
 	virtual CGameObject* Clone(void* pArg) override;

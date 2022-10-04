@@ -45,12 +45,12 @@ void CMonster::LateTick(_float fTimeDelta)
 {
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 
-	/*static float i = 0;
+	//static float i = 0;
 
-	i += fTimeDelta;
+	//i += fTimeDelta;
 
-	if (i > 20)
-		DELETE(this);*/
+	//if (i > 13)
+	//	DELETE(this);
 
 }
 
