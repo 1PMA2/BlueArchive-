@@ -30,7 +30,13 @@ HRESULT CMonster::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 20.f, 1.f));
+	_vector vTranslation;
+
+	if (nullptr != pArg)
+		memcpy(&vTranslation, pArg, sizeof(_vector));
+
+
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
 
 
 	return S_OK;

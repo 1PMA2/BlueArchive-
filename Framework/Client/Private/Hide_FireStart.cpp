@@ -50,18 +50,21 @@ CState * CHide_FireStart::Loop(_float fTimeDelta)
 
 	_vector		vPosition = pTransform->Get_State(CTransform::STATE_TRANSLATION);
 
+	_vector		vMyLook = pTransform->Get_State(CTransform::STATE_LOOK);
+
 	_vector		vLook = vTarget - vPosition;
 
-	_float		fAngle;
+	_vector		vLerpLook = XMVectorLerp(vMyLook, vLook, fTimeDelta * 2.f);
 
-	fAngle = (acosf(XMVectorGetX(XMVector3Dot(XMVector3Normalize(vLook),
-		XMVector3Normalize(pTransform->Get_State(CTransform::STATE_LOOK))))));
+	_vector		vRight = XMVector3Cross(XMVectorSet(0.f, 1.f, 0.f, 0.f), vLerpLook);
 
-	if (0 > XMVectorGetX(vLook))
-		pTransform->TurnFor(XMVectorSet(0.f, -1.f, 0.f, 0.f), fTimeDelta, fAngle);
-	else
-		pTransform->TurnFor(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta, fAngle);
-	
+	_vector		vUp = XMVector3Cross(vLerpLook, vRight);
+
+
+	pTransform->Set_State(CTransform::STATE_RIGHT, XMVector3Normalize(vRight));
+	pTransform->Set_State(CTransform::STATE_UP, XMVector3Normalize(vUp));
+	pTransform->Set_State(CTransform::STATE_LOOK, XMVector3Normalize(vLerpLook));
+
 
 	if (pModel->Get_isFinished())
 	{ 

@@ -196,6 +196,26 @@ void CTransform::LookAt(_fvector vTargetPos)
 	Set_State(CTransform::STATE_LOOK, XMVector3Normalize(vLook) * vScale.z);
 }
 
+void CTransform::LookAtLerp(_fvector vTargetPos, _float fSpeed, _float fTimeDelta)
+{
+	_vector		vPosition = Get_State(CTransform::STATE_TRANSLATION);
+
+	_vector		vMyLook = Get_State(CTransform::STATE_LOOK);
+
+	_vector		vLook = vTargetPos - vPosition;
+
+	_vector		vLerpLook = XMVectorLerp(vMyLook, vLook, fTimeDelta * fSpeed);
+
+	_vector		vRight = XMVector3Cross(XMVectorSet(0.f, 1.f, 0.f, 0.f), vLerpLook);
+
+	_vector		vUp = XMVector3Cross(vLerpLook, vRight);
+
+
+	Set_State(CTransform::STATE_RIGHT, XMVector3Normalize(vRight));
+	Set_State(CTransform::STATE_UP, XMVector3Normalize(vUp));
+	Set_State(CTransform::STATE_LOOK, XMVector3Normalize(vLerpLook));
+}
+
 void CTransform::Chase(_fvector vTargetPos, _float fTimeDelta)
 {
 	_vector		vPosition = Get_State(CTransform::STATE_TRANSLATION);

@@ -145,19 +145,13 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 		{
 			CTransform* pTargetTransform = (CTransform*)m_pTargetCover->Get_Component(TEXT("Com_Transform"));
 
-			_float4 f;
-
-			XMStoreFloat4(&f, pTargetTransform->Get_WorldMatrix().r[3]);
-
-			_vector		vTarget;
-
-			vTarget = XMVectorSet(f.x, f.y, f.z, f.w); // 콜라이더 위치 모델 수정 필요
+			_vector		vTarget = pTargetTransform->Get_State(CTransform::STATE_TRANSLATION);
 
 			_vector		vPosition = pStudentTransform->Get_State(CTransform::STATE_TRANSLATION);
 
 			_vector		vLook = vTarget - vPosition;
 
-			_float		fAngle;
+			/*_float		fAngle;
 
 			fAngle = (acosf(XMVectorGetX(XMVector3Dot(XMVector3Normalize(vLook),
 				XMVector3Normalize(pStudentTransform->Get_State(CTransform::STATE_LOOK))))));
@@ -165,9 +159,9 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 			if (0 > XMVectorGetX(vLook))
 				pStudentTransform->TurnFor(XMVectorSet(0.f, -1.f, 0.f, 0.f), fTimeDelta, fAngle);
 			else
-				pStudentTransform->TurnFor(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta, fAngle);
+				pStudentTransform->TurnFor(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta, fAngle);*/
 
-
+			pStudentTransform->LookAtLerp(vTarget, 0.5f, fTimeDelta);
 
 
 			if (0.5f < XMVectorGetX(XMVector3Length(vLook)))
