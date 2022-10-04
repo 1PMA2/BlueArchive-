@@ -87,7 +87,7 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 
 	if (KEY(LBUTTON, HOLD))
 	{
-		pState = CFormation_Pick::Create(m_pOwner);
+		
 	}
 	else
 	{

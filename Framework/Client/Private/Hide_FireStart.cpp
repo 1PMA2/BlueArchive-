@@ -38,7 +38,7 @@ CState * CHide_FireStart::Loop(_float fTimeDelta)
 
 	CTransform* pTTransform;
 
-	if(nullptr != m_pOwner->Get_InRangeMonster(0))//m_pOwner->FoundMonster()
+	if(nullptr != m_pOwner->FoundMonster())
 		pTTransform = (CTransform*)m_pOwner->FoundMonster()->Get_Component(TEXT("Com_Transform"));
 	else
 	{

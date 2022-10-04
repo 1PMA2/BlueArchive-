@@ -27,6 +27,28 @@ CState * CFormation_Idle::Loop(_float fTimeDelta)
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
+	FORMATION eFormation = m_pOwner->Get_StudentInfo().eFormation;
+
+	_vector m_vPreTranslation;
+
+	switch (eFormation)
+	{
+	case FORMATION_FIRST:
+		m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+		break;
+	case FORMATION_SECOND:
+		m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+		break;
+	case FORMATION_THIRD:
+		m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+		break;
+	case FORMATION_FOURTH:
+		m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+		break;
+	}
+
+	pTransform->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation);
+
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
 	pModel->Repeat_Animation(fTimeDelta);
@@ -41,8 +63,6 @@ CState * CFormation_Idle::Loop(_float fTimeDelta)
 			return pState;
 		}
 	}
-
-	pState = CFormation_Idle::Create(m_pOwner);
 
 	return pState;
 }

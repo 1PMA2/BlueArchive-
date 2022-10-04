@@ -181,6 +181,9 @@
     <ClInclude Include="..\Public\Camera_Main.h">
       <Filter>02.GameObject\03.Camera\Camera_Main</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Run_ToKnee.h">
+      <Filter>02.GameObject\01.State\Aru_State\Run_ToKnee</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -350,6 +353,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Camera_Main.cpp">
       <Filter>02.GameObject\03.Camera\Camera_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Run_ToKnee.cpp">
+      <Filter>02.GameObject\01.State\Aru_State\Run_ToKnee</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

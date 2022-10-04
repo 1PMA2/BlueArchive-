@@ -31,6 +31,7 @@ public:
 private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
+	_tchar					m_szFPS[MAX_PATH] = TEXT("");
 
 private:
 	HRESULT FormationLevel_Collision() override;

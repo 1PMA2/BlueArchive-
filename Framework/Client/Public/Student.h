@@ -35,7 +35,7 @@ public:
 		_float	fExCost;
 
 		_uint	iMagazine;
-		_uint	iBullet;
+		_int	iBullet;
 		_uint	iRange;
 
 		_float	fFireSpeed;

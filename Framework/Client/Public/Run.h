@@ -18,10 +18,12 @@ public:
 
 private:
 	CState* Find_Monster(_float fTimeDelta);
+	void Find_Cover();
 
 private:
 	class CMonster* m_pTargetMonster = nullptr;
-	class CForkLift* m_pTargetCover = nullptr;
+	class CForkLift* m_pTargetCover[4] = { nullptr };
+	_bool  m_bOnce = true;
 	_float m_fMin = 9999.f;
 	_float m_fCoverMin = 9999.f;
 

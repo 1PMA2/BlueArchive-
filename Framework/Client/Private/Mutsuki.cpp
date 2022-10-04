@@ -32,7 +32,7 @@ HRESULT CMutsuki::Initialize_Prototype()
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 30;
 	m_tStudentInfo.iBullet = 30;
-	m_tStudentInfo.iRange = 12;
+	m_tStudentInfo.iRange = 5;
 	m_tStudentInfo.iShield = 0;
 	m_tStudentInfo.iIndex = 1;
 	return S_OK;
@@ -50,8 +50,6 @@ HRESULT CMutsuki::Initialize(void * pArg)
 
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;	
-
-	DISABLE(this);
 
 	return S_OK;
 }

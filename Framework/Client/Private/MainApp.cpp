@@ -95,19 +95,19 @@ HRESULT CMainApp::Render()
 	m_pGameInstance->Render_Engine();
 
 
-	++m_iNumRender;
+	//++m_iNumRender;
 
-	swprintf_s(m_szFPS, TEXT("cost:%.1f"), CSensei::Get_Instance()->Get_SenseiInfo().fCost);
+	//swprintf_s(m_szFPS, TEXT("cost:%.1f"), CSensei::Get_Instance()->Get_SenseiInfo().fCost);
 
-	if (m_fTimeAcc >= 1.f)
-	{
-		//wsprintf(m_szFPS, TEXT("에프피에스 : %d"), m_iNumRender);
-		m_fTimeAcc = 0.f;
-		m_iNumRender = 0;
-	}
+	//if (m_fTimeAcc >= 1.f)
+	//{
+	//	//wsprintf(m_szFPS, TEXT("에프피에스 : %d"), m_iNumRender);
+	//	m_fTimeAcc = 0.f;
+	//	m_iNumRender = 0;
+	//}
 
-	// MakeSpriteFont "폰트이름" /FontSize:32 /FastPack /CharacterRegion:0x0020-0x00FF /CharacterRegion:0x3131-0x3163 /CharacterRegion:0xAC00-0xD800 /DefaultCharacter:0xAC00 출력파일이름.spritefont
-	m_pGameInstance->Render_Font(TEXT("Font_Dream"), m_szFPS, _float2(0.f, 0.f), XMVectorSet(1.f, 1.f, 1.f, 1.f));
+	//// MakeSpriteFont "폰트이름" /FontSize:32 /FastPack /CharacterRegion:0x0020-0x00FF /CharacterRegion:0x3131-0x3163 /CharacterRegion:0xAC00-0xD800 /DefaultCharacter:0xAC00 출력파일이름.spritefont
+	//m_pGameInstance->Render_Font(TEXT("Font_Dream"), m_szFPS, _float2(0.f, 0.f), XMVectorSet(1.f, 1.f, 1.f, 1.f));
 
 
 	m_pGameInstance->Present();

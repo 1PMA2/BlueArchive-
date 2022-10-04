@@ -214,7 +214,7 @@ void CLevel_Gacha::Gacha()
 
 	_int iRandom = random(1, 100);
 
-	if (100.f >= iRandom)
+	if (30.f >= iRandom)
 	{
 		pSensei->Set_Student(TEXT("Aru"), nullptr);
 		pSensei->Set_NewStudent(TEXT("Aru"));

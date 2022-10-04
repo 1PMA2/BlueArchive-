@@ -87,6 +87,16 @@ HRESULT CAru::Render()
 {
 	__super::Render();
 
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	swprintf_s(m_szFPS, TEXT("cost:%d"), m_tStudentInfo.iBullet);
+
+	// MakeSpriteFont "폰트이름" /FontSize:32 /FastPack /CharacterRegion:0x0020-0x00FF /CharacterRegion:0x3131-0x3163 /CharacterRegion:0xAC00-0xD800 /DefaultCharacter:0xAC00 출력파일이름.spritefont
+	pGameInstance->Render_Font(TEXT("Font_Dream"), m_szFPS, _float2(0.f, 0.f), XMVectorSet(1.f, 1.f, 1.f, 1.f));
+
+
+	pGameInstance->Present();
+
 	return S_OK;
 }
 

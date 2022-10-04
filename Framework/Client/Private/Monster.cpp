@@ -45,6 +45,18 @@ HRESULT CMonster::Initialize(void * pArg)
 void CMonster::Tick(_float fTimeDelta)
 {
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
+
+	if(KEY(W, HOLD))
+		m_pTransformCom->Go_Left(fTimeDelta);
+
+	if(KEY(S, HOLD))
+		m_pTransformCom->Go_Right(fTimeDelta);
+
+	if (KEY(D, HOLD))
+		m_pTransformCom->Go_Straight(fTimeDelta);
+
+	if (KEY(A, HOLD))
+		m_pTransformCom->Go_Straight(-fTimeDelta);
 }
 
 void CMonster::LateTick(_float fTimeDelta)
@@ -58,7 +70,7 @@ void CMonster::LateTick(_float fTimeDelta)
 	//if (i > 13)
 	//	DELETE(this);
 
-	if (KEY(D, TAP))
+	if (KEY(X, TAP))
 	{
 		DELETE(this);
 	}

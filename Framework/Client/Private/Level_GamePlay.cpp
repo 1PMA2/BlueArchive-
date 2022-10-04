@@ -215,6 +215,10 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student(const _tchar * pLayerTag)
 		pSensei->Get_Student(TEXT("Aru"))->Get_StudentInfo().pName)))
 		return E_FAIL;
 
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag,
+		pSensei->Get_Student(TEXT("Mutsuki"))->Get_StudentInfo().pName)))
+		return E_FAIL;
+
 	Safe_Release(pGameInstance);
 
 	return S_OK;
@@ -245,15 +249,15 @@ HRESULT CLevel_GamePlay::Ready_Layer_Monster(const _tchar * pLayerTag)
 	//	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Monster"))))
 	//		return E_FAIL;
 	//}
-	_vector vTranslation = XMVectorSet(0.f, 0.f, 25.f, 1.f);
+	_vector vTranslation = XMVectorSet(0.f, 0.f, 18.f, 1.f);
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Monster"), &vTranslation)))
 		return E_FAIL;
 
 	vTranslation = XMVectorSet(0.f, 0.f, 18.f, 1.f);
 
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Monster"), &vTranslation)))
-		return E_FAIL;
+	/*if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Monster"), &vTranslation)))
+		return E_FAIL;*/
 
 
 	Safe_Release(pGameInstance);
@@ -271,10 +275,10 @@ HRESULT CLevel_GamePlay::Ready_Layer_Cover(const _tchar * pLayerTag)
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
 		return E_FAIL;
 
-	vTranslation = XMVectorSet(1.5f, 0.f, 15.f, 1.f);
+	vTranslation = XMVectorSet(-1.f, 0.f, 15.f, 1.f);
 
-	/*if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
-		return E_FAIL;*/
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
+		return E_FAIL;
 
 	Safe_Release(pGameInstance);
 
