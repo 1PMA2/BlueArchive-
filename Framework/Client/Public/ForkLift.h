@@ -36,6 +36,7 @@ private:
 	CModel*					m_pModelCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
 	_bool					m_bUsed = false;
+	_bool					m_bExit = false;
 	_vector					m_vTranslation = {};
 
 public:
@@ -45,6 +46,7 @@ public:
 private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
+	void Collision_ToPlayer();
 	
 
 public:

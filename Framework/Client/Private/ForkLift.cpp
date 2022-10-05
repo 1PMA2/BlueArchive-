@@ -2,6 +2,8 @@
 #include "..\Public\ForkLift.h"
 
 #include "GameInstance.h"
+#include "Student.h"
+#include "Collider.h"
 
 CForkLift::CForkLift(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -52,6 +54,9 @@ void CForkLift::Tick(_float fTimeDelta)
 void CForkLift::LateTick(_float fTimeDelta)
 {
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+	
+	Collision_ToPlayer();
+
 }
 
 HRESULT CForkLift::Render()
@@ -77,6 +82,7 @@ HRESULT CForkLift::Render()
 			return E_FAIL;*/
 		m_pModelCom->Render(i, m_pShaderCom);
 	}
+
 
 #ifdef _DEBUG
 	m_pSphereCom->Render();
@@ -107,7 +113,7 @@ HRESULT CForkLift::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(2.f, 2.f, 2.f);
+	ColliderDesc.vScale = _float3(1.f, 1.f, 1.f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
@@ -161,6 +167,27 @@ HRESULT CForkLift::SetUp_ShaderResource()
 	RELEASE_INSTANCE(CGameInstance);
 
 	return S_OK;
+}
+
+void CForkLift::Collision_ToPlayer()
+{
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	for (int i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
+	{
+		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
+
+		CCollider* pCollider = (CCollider*)pStudent->Get_Component(TEXT("Com_SPHERE"));
+
+		if (m_pSphereCom->Collision(pCollider))
+			m_bExit = true; //나갈 준비
+
+		if (m_bExit)
+		{
+			if (!m_pSphereCom->Collision(pCollider))
+				m_bUsed = false;
+		}
+	}
 }
 
 CForkLift * CForkLift::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)

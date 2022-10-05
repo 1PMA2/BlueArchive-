@@ -12,6 +12,8 @@ END
 
 BEGIN(Client)
 
+class CMonster_State;
+
 class CMonster final : public CGameObject
 {
 public:
@@ -39,11 +41,12 @@ public:
 	virtual HRESULT Render();
 
 private:
+	MONSTERINFO				m_tMonsterInfo = {};
 	CShader*				m_pShaderCom = nullptr;
 	CRenderer*				m_pRendererCom = nullptr;
 	CModel*					m_pModelCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
-	MONSTERINFO				m_tMonsterInfo = {};
+	CMonster_State*			m_pState = nullptr;
 
 public:
 	virtual void OnDisable() override;

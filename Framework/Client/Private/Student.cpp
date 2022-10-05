@@ -56,7 +56,21 @@ CMonster* CStudent::FoundMonster()
 	if (0 >= m_Monsters.size())
 		return nullptr;
 
-	return m_Monsters.at(0);
+	m_fMin = 9999.f;
+
+	for (_uint i = 0; i < m_Monsters.size(); ++i)
+	{
+		_vector vMonsterTranslation = m_Monsters.at(i)->Get_MonsterTranslation();
+
+		_float fLength = XMVectorGetX(XMVector3Length(vMonsterTranslation - vTranslation));
+
+		if (m_fMin > fLength)
+		{
+			m_pTargetMonster = m_Monsters.at(i);
+		}
+	}
+
+	return m_pTargetMonster;
 }
 
 HRESULT CStudent::Initialize(void * pArg)
@@ -85,7 +99,6 @@ void CStudent::Tick(_float fTimeDelta)
 	NoneScaleWorldMatrix.r[3] = m_pTransformCom->Get_WorldMatrix().r[3];
 
 	m_pAABBCom->Update(NoneScaleWorldMatrix);
-	m_pOBBCom->Update(m_pTransformCom->Get_WorldMatrix());
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 
 }
@@ -94,7 +107,6 @@ void CStudent::LateTick(_float fTimeDelta)
 {
 
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
-
 
 }
 
@@ -126,7 +138,6 @@ HRESULT CStudent::Render()
 
 #ifdef _DEBUG
 	m_pAABBCom->Render();
-	m_pOBBCom->Render();
 	m_pSphereCom->Render();
 #endif // _DEBUG
 
@@ -295,10 +306,8 @@ void CStudent::Free()
 	m_Monsters.clear();
 
 	Safe_Release(m_pSphereCom);
-	Safe_Release(m_pOBBCom);
 	Safe_Release(m_pAABBCom);
 	Safe_Release(m_pShaderCom);
-	Safe_Release(m_pSphereCom_Obstacle);
 	Safe_Release(m_pRendererCom);
 	Safe_Release(m_pModelCom);
 }

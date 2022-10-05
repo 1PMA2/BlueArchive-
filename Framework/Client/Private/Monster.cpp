@@ -2,6 +2,7 @@
 #include "..\Public\Monster.h"
 
 #include "GameInstance.h"
+#include "Monster_State.h"
 
 CMonster::CMonster(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -60,23 +61,19 @@ void CMonster::Tick(_float fTimeDelta)
 
 	if (KEY(A, HOLD))
 		m_pTransformCom->Go_Straight(-fTimeDelta);
+
+	if (0 >= m_tMonsterInfo.iHp)
+	{
+		DELETE(this);
+	}
 }
 
 void CMonster::LateTick(_float fTimeDelta)
 {
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 
-	//static float i = 0;
 
-	//i += fTimeDelta;
-
-	//if (i > 13)
-	//	DELETE(this);
-
-	if (0 >= m_tMonsterInfo.iHp)
-	{
-		DELETE(this);
-	}
+	
 
 }
 

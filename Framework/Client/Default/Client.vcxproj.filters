@@ -193,6 +193,9 @@
     <ClInclude Include="..\Public\Rifle_Delay.h">
       <Filter>02.GameObject\01.State\Aru_State\Fire\Rifle\Fire_Delay</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Monster_State.h">
+      <Filter>02.GameObject\01.State\Monster_State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -374,6 +377,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Rifle_Delay.cpp">
       <Filter>02.GameObject\01.State\Aru_State\Fire\Rifle\Fire_Delay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Monster_State.cpp">
+      <Filter>02.GameObject\01.State\Monster_State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -648,6 +654,27 @@
     </Filter>
     <Filter Include="02.GameObject\01.State\Aru_State\Fire\Rifle\Fire_Delay">
       <UniqueIdentifier>{6e33b6aa-b144-4265-88f3-b37e7935da3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Monster_State\M_Run">
+      <UniqueIdentifier>{6c4f0a0c-2e88-48f8-b66b-8eb9a86919d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Monster_State\M_Landing">
+      <UniqueIdentifier>{0f1a21c0-efba-4a1e-885a-4a8977ea838b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Monster_State\M_AtkStart">
+      <UniqueIdentifier>{67970675-6825-4dab-8547-901b08400115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Monster_State\M_AtkIng">
+      <UniqueIdentifier>{33c4c2b5-0e1a-4c87-9a4c-0498c3c03064}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Monster_State\M_AtkEnd">
+      <UniqueIdentifier>{492c1127-2232-40fb-96d7-29a95314e6c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Monster_State\M_Dead">
+      <UniqueIdentifier>{1b5671e9-578c-4788-8304-5b53e9d7685a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Monster_State\M_Reload">
+      <UniqueIdentifier>{9c3b39cf-7c1a-4da1-bc40-abb05b500054}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

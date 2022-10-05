@@ -74,17 +74,13 @@ public:
 	
 
 protected:
-	class CAru*					m_pAru = nullptr;
-	class CMutsuki*				m_pMustuki = nullptr;
-
 	STUDENTINFO				m_tStudentInfo = {};
 	CShader*				m_pShaderCom = nullptr;
 	CRenderer*				m_pRendererCom = nullptr;
 	CModel*					m_pModelCom = nullptr;
 	CCollider*				m_pAABBCom = nullptr;
-	CCollider*				m_pOBBCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
-	CCollider*				m_pSphereCom_Obstacle = nullptr;
+
 	CCollider*				m_pPickedCom = nullptr;
 	CState*					m_pState = nullptr;
 	_bool					m_bPicked = false;

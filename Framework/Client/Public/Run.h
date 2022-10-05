@@ -22,6 +22,7 @@ private:
 
 private:
 	class CMonster* m_pTargetMonster = nullptr;
+	class CForkLift* m_pTargetCover = nullptr;
 
 	vector <class CForkLift*> m_TargetCovers;
 	vector <class CMonster*> m_TargetMonsters;

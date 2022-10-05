@@ -210,6 +210,7 @@
     <ClInclude Include="..\Public\LoadingImage.h" />
     <ClInclude Include="..\Public\MainApp.h" />
     <ClInclude Include="..\Public\Monster.h" />
+    <ClInclude Include="..\Public\Monster_State.h" />
     <ClInclude Include="..\Public\Mutsuki.h" />
     <ClInclude Include="..\Public\Rifle_Delay.h" />
     <ClInclude Include="..\Public\Rifle_Fire.h" />
@@ -273,6 +274,7 @@
     <ClCompile Include="..\Private\LoadingImage.cpp" />
     <ClCompile Include="..\Private\MainApp.cpp" />
     <ClCompile Include="..\Private\Monster.cpp" />
+    <ClCompile Include="..\Private\Monster_State.cpp" />
     <ClCompile Include="..\Private\Mutsuki.cpp" />
     <ClCompile Include="..\Private\Rifle_Delay.cpp" />
     <ClCompile Include="..\Private\Rifle_Fire.cpp" />

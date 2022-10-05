@@ -32,7 +32,7 @@ HRESULT CAru::Initialize_Prototype()
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 5;
 	m_tStudentInfo.iBullet = 5;
-	m_tStudentInfo.iRange = 8;
+	m_tStudentInfo.iRange = 6;
 	m_tStudentInfo.iShield = 0;
 	m_tStudentInfo.eStudent = ARU;
 
@@ -107,24 +107,14 @@ HRESULT CAru::SetUp_Components()
 	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"), TEXT("Com_AABB"), (CComponent**)&m_pAABBCom, &ColliderDesc)))
 		return E_FAIL;
 
-	/* For.Com_OBB */
-	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
-
-	ColliderDesc.vScale = _float3(11.2f, 11.2f, 11.2f);
-	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
-	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
-
-	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE_Obstacle"), (CComponent**)&m_pOBBCom, &ColliderDesc)))
-		return E_FAIL;
-
 	/* For.Com_SPHERE */
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(12.f, 12.f, 12.f);
+	ColliderDesc.vScale = _float3(1.f, 1.f, 1.f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
-	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE_Monster"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
 		return E_FAIL;
 
 	/* For.Com_Model */

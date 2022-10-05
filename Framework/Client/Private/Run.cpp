@@ -110,32 +110,20 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 		Find_Cover();
 
-		CStudent* pStudent;
-
-		if(m_bOnce)
-		{ 
-			for (int i = 0; i < 2; ++i) // formationstudent.size();
-			{
-				pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i); //최대 4명 등록이기때문에 ㄱㅊ
-
-				if (m_pOwner != pStudent)
-				{
-					if (pStudent->FoundObstacle())
-					{
-						++m_iIndex;
-						break;
-					}
-				}
-			}
-			m_bOnce = false;
-		}
-		
-
-		if(0 < m_TargetCovers.size() && m_iIndex + 1 <= m_TargetCovers.size())
+		if (0 < m_TargetCovers.size())
 		{
-			m_pOwner->Set_Cover(true);
+			if (m_bOnce)
+				{
+					m_pTargetCover = m_TargetCovers.at(0);
+					m_pTargetCover->Set_Use(true);
+					m_bOnce = false;
+				}
+		}
 
-			CTransform* pTargetTransform = (CTransform*)m_TargetCovers.at(m_iIndex)->Get_Component(TEXT("Com_Transform"));
+		if(nullptr != m_pTargetCover)
+		{
+
+			CTransform* pTargetTransform = (CTransform*)m_pTargetCover->Get_Component(TEXT("Com_Transform"));
 
 			_vector		vTarget = pTargetTransform->Get_State(CTransform::STATE_TRANSLATION);
 
@@ -153,7 +141,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 			}
 			else
 			{
-				return CRun_ToHide::Create(m_pOwner, m_TargetMonsters.at(0), m_TargetCovers.at(m_iIndex));
+				return CRun_ToHide::Create(m_pOwner, m_TargetMonsters.at(0), m_pTargetCover);
 			}
 
 		}
@@ -207,9 +195,8 @@ void CRun::Find_Cover()
 
 			if ((_float)m_pOwner->Get_StudentInfo().iRange > (fLength)) //가까운 몬스터와 엄폐물 사이의 거리가 인식 범위 내
 			{
-
-				m_TargetCovers.push_back(pCover); //가장 가까운 엄폐물 탐색,사용중이 아닌
-
+				if(!pCover->Get_Use())
+					m_TargetCovers.push_back(pCover); //가장 가까운 엄폐물 탐색,사용중이 아닌
 			}
 
 		}
