@@ -53,7 +53,7 @@ void CMonster::Tick(_float fTimeDelta)
 
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 
-	if(KEY(W, HOLD))
+	/*if(KEY(W, HOLD))
 		m_pTransformCom->Go_Left(fTimeDelta);
 
 	if(KEY(S, HOLD))
@@ -63,12 +63,9 @@ void CMonster::Tick(_float fTimeDelta)
 		m_pTransformCom->Go_Straight(fTimeDelta);
 
 	if (KEY(A, HOLD))
-		m_pTransformCom->Go_Straight(-fTimeDelta);
+		m_pTransformCom->Go_Straight(-fTimeDelta);*/
 
-	if (0 >= m_tMonsterInfo.iHp)
-	{
-		DELETE(this);
-	}
+
 }
 
 void CMonster::LateTick(_float fTimeDelta)
@@ -76,7 +73,10 @@ void CMonster::LateTick(_float fTimeDelta)
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 
 
-	
+	if (0 >= m_tMonsterInfo.iHp)
+	{
+		DELETE(this);
+	}
 
 }
 

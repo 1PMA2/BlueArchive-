@@ -53,9 +53,10 @@ void CForkLift::Tick(_float fTimeDelta)
 
 void CForkLift::LateTick(_float fTimeDelta)
 {
+	Collision_ToPlayer();
+	
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 	
-	Collision_ToPlayer();
 
 }
 
@@ -113,7 +114,7 @@ HRESULT CForkLift::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(0.5f, 0.5f, 0.5f);
+	ColliderDesc.vScale = _float3(0.3f, 0.3f, 0.3f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
