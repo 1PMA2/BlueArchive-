@@ -548,10 +548,16 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru_Ex.fbx", TransformMatrix))))
 			return E_FAIL;
 
-		ZeroMemory(&TransformMatrix, sizeof(_matrix));
+	/*	ZeroMemory(&TransformMatrix, sizeof(_matrix));
 		TransformMatrix = XMMatrixRotationY(XMConvertToRadians(180.0f));
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_City"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/map/", "City.fbx", TransformMatrix))))
+			return E_FAIL;*/
+
+		ZeroMemory(&TransformMatrix, sizeof(_matrix));
+		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.f));
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Droid"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Monster/Droid/", "Droid.fbx", TransformMatrix))))
 			return E_FAIL;
 
 

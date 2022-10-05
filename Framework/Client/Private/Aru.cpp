@@ -42,7 +42,8 @@ HRESULT CAru::Initialize(void * pArg)
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 5;
 	m_tStudentInfo.iBullet = 5;
-	m_tStudentInfo.iRange = 5;
+	m_tStudentInfo.fRange = 5.f;
+	m_tStudentInfo.fReConRange = 5.f;
 	m_tStudentInfo.iShield = 0;
 
 	if (FAILED(SetUp_Components()))

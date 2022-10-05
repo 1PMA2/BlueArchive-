@@ -40,7 +40,7 @@ HRESULT CAru_Ex::Initialize(void * pArg)
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 5;
 	m_tStudentInfo.iBullet = 5;
-	m_tStudentInfo.iRange = 10;
+	m_tStudentInfo.fRange = 10;
 	m_tStudentInfo.iShield = 0;
 
 

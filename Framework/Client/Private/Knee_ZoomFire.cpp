@@ -86,7 +86,6 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 				break;
 			}
 			
-
 		}
 		else
 			pState = CKnee_ZoomEnd::Create(m_pOwner);

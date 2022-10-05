@@ -42,12 +42,15 @@ HRESULT CMonster::Initialize(void * pArg)
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
 
+	m_pModelCom->Set_CurrentAnimation(1);
 
 	return S_OK;
 }
 
 void CMonster::Tick(_float fTimeDelta)
 {
+	m_pModelCom->Repeat_Animation(fTimeDelta);
+
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 
 	if(KEY(W, HOLD))
@@ -98,7 +101,8 @@ HRESULT CMonster::Render()
 			return E_FAIL;
 		/*if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_NormalTexture", i, aiTextureType_NORMALS)))
 		return E_FAIL;*/
-		m_pModelCom->Render(i, m_pShaderCom);
+
+		m_pModelCom->Render(i, m_pShaderCom, 0, "g_Bones");
 	}
 
 #ifdef _DEBUG
@@ -119,7 +123,7 @@ void CMonster::OnEnable()
 HRESULT CMonster::SetUp_Components()
 {
 	/* For.Com_Shader */
-	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Shader_VtxModel"), TEXT("Com_Shader"), (CComponent**)&m_pShaderCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Shader_VtxAnimModel"), TEXT("Com_Shader"), (CComponent**)&m_pShaderCom)))
 		return E_FAIL;
 
 	/* For.Com_Renderer */
@@ -138,7 +142,7 @@ HRESULT CMonster::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_Model */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_ForkLift"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
+	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Droid"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
 		return E_FAIL;
 
 	return S_OK;

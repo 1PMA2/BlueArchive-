@@ -185,8 +185,8 @@ HRESULT CLevel_GamePlay::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_City"))))
-		return E_FAIL;
+	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_City"))))
+	//	return E_FAIL;
 
 	/* For.Terrain */
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Terrain"))))
@@ -306,30 +306,30 @@ HRESULT CLevel_GamePlay::Ready_Layer_Cover(const _tchar * pLayerTag)
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
 		return E_FAIL;
 
-	vTranslation = XMVectorSet(-1.f, 0.f, 16.f, 1.f);
+	//vTranslation = XMVectorSet(-1.f, 0.f, 16.f, 1.f);
 
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
-		return E_FAIL;
-
-
-	vTranslation = XMVectorSet(-2.f, 0.f, 20.f, 1.f);
-
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
-		return E_FAIL;
+	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
+	//	return E_FAIL;
 
 
-	vTranslation = XMVectorSet(1.f, 0.f, 26.f, 1.f);
+	//vTranslation = XMVectorSet(-2.f, 0.f, 20.f, 1.f);
 
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
-		return E_FAIL;
+	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
+	//	return E_FAIL;
 
 
-	vTranslation = XMVectorSet(-0.5f, 0.f, 28.f, 1.f);
+	//vTranslation = XMVectorSet(1.f, 0.f, 26.5f, 1.f);
 
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
-		return E_FAIL;
+	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
+	//	return E_FAIL;
 
-	vTranslation = XMVectorSet(1.5f, 0.f, 34.f, 1.f);
+
+	//vTranslation = XMVectorSet(-0.5f, 0.f, 27.f, 1.f);
+
+	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
+	//	return E_FAIL;
+
+	vTranslation = XMVectorSet(2.f, 0.f, 34.f, 1.f);
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_ForkLift"), &vTranslation)))
 		return E_FAIL;

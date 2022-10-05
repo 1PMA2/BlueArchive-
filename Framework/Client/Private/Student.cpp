@@ -48,7 +48,7 @@ CMonster* CStudent::FoundMonster()
 
 		_float fLength = XMVectorGetX(XMVector3Length(vMonsterTranslation - vTranslation)); //학생과 모든 몬스터 사이의 거리 
 
-		if ((_float)m_tStudentInfo.iRange > fLength) //레이어의 몬스터 검사 후 범위 내 몬스터 
+		if (m_tStudentInfo.fRange > fLength) //레이어의 몬스터 검사 후 범위 내 몬스터 
 		{
 			m_Monsters.push_back(pMonster);
 		}

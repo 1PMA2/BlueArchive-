@@ -58,6 +58,7 @@ CState * CRun::Loop(_float fTimeDelta)
 
 	pModel->Repeat_Animation(fTimeDelta);
 
+	//pTransform->Go_Straight(fTimeDelta);
 	pState = Find_Monster(fTimeDelta);
 
 	return pState;
@@ -98,7 +99,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 		_float fLength = XMVectorGetX(XMVector3Length(vMonsterTranslation - vTranslation)); //학생과 모든 몬스터 사이의 거리 
 
-		if ((_float)m_pOwner->Get_StudentInfo().iRange > fLength) //레이어의 몬스터 검사 후 범위 내 몬스터 
+		if (m_pOwner->Get_StudentInfo().fReConRange > fLength) //레이어의 몬스터 검사 후 인식범위 내 몬스터 
 		{
 			m_TargetMonsters.push_back(pMonster); //범위 내 몬스터
 		}
@@ -131,7 +132,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 			_vector		vLook = vTarget - vPosition;
 
-			pStudentTransform->LookAtLerp(vTarget, 10.f, fTimeDelta);
+			pStudentTransform->LookAtLerp(vTarget, 8.f, fTimeDelta);
 
 
 			if (m_fHideLength <= XMVectorGetX(XMVector3Length(vLook)))
@@ -147,7 +148,17 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 		}
 		else
 		{
-			return CRun_ToKnee::Create(m_pOwner);
+			_vector		vTarget = m_TargetMonsters.at(0)->Get_MonsterTranslation();
+
+			pStudentTransform->LookAtLerp(vTarget, 6.f, fTimeDelta);
+
+			if (m_pOwner->Get_StudentInfo().fRange > XMVectorGetX(XMVector3Length(vTarget - vTranslation)))
+				return CRun_ToKnee::Create(m_pOwner);
+			else
+			{
+				pStudentTransform->Go_Straight(fTimeDelta);
+				return nullptr;
+			}
 		}
 
 	}
@@ -189,11 +200,11 @@ void CRun::Find_Cover()
 
 		_float fToCover = XMVectorGetX(XMVector3Length(vCoverTranslation - vTranslation)); //학생와 엄폐물 사이의 거리
 
-		if ((_float)m_pOwner->Get_StudentInfo().iRange > fToCover) //학생 인식범위 내에 엄폐물 있을 경우
+		if (m_pOwner->Get_StudentInfo().fRange > fToCover) //학생 공격범위 내에 엄폐물 있을 경우
 		{
 			_float fLength = XMVectorGetX(XMVector3Length(vMonsterTranslation - vCoverTranslation)); //가까운 몬스터와 엄폐물 사이의 거리 
 
-			if ((_float)m_pOwner->Get_StudentInfo().iRange > (fLength)) //가까운 몬스터와 엄폐물 사이의 거리가 인식 범위 내
+			if (m_pOwner->Get_StudentInfo().fRange > (fLength)) //가까운 몬스터와 엄폐물 사이의 거리가 인식 범위 내
 			{
 				if(!pCover->Get_Use())
 					m_TargetCovers.push_back(pCover); //가장 가까운 엄폐물 탐색,사용중이 아닌

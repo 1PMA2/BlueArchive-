@@ -41,7 +41,7 @@ CState * CKnee_Idle::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	pModel->Play_Animation(fTimeDelta);
+	pModel->Play_Animation(fTimeDelta * 2.f);
 
 	if (pModel->Get_isFinished())
 	{

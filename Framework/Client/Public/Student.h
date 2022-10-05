@@ -35,7 +35,8 @@ public:
 
 		_uint	iMagazine;
 		_int	iBullet;
-		_uint	iRange;
+		_float	fRange; //공격범위
+		_float	fReConRange; //인식범위
 
 		_float	fFireSpeed;
 
