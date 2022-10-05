@@ -2,6 +2,7 @@
 #include "..\Public\Camera_Main.h"
 #include "Student.h"
 #include "GameInstance.h"
+#include "Monster.h"
 
 CCamera_Main::CCamera_Main(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: CCamera(pDevice, pContext)
@@ -35,8 +36,24 @@ void CCamera_Main::Tick(_float fTimeDelta)
 
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
+	
+	CStudent* pStudent = nullptr;
 
-	CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), 0);
+	//for (_int i = 0; i < 2; ++i)
+	//{
+	//	pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
+
+	//}
+
+	CMonster* pMonster = (CMonster*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), 0);
+	
+	if (0 == (CMonster*)pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Monster")))
+	{
+		int i = 0;
+	}
+
+
+	pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), 0);
 
 	if (nullptr != pStudent)
 	{
@@ -44,7 +61,7 @@ void CCamera_Main::Tick(_float fTimeDelta)
 
 		_vector vCamera = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
 
-		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION);
+		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION); //ÇÐ»ýÀ» º½
 
 		vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 0.5f, 1.f);
 

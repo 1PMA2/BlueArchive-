@@ -21,6 +21,7 @@ public:
 	}
 
 	void Set_CurrentAnimation(_uint iAnimIndex);
+	void Lerp_Anim(CAnimation* pStart, CAnimation* pGoal);
 	void Set_OffSet(_float fX, _float fY, _float fZ) { m_fOffSetX = fX; m_fOffSetY = fY; m_fOffSetZ = fZ; }
 
 	class CHierarchyNode* Find_HierarcyNode(const char* pBoneName);

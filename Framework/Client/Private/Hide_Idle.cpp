@@ -13,14 +13,14 @@ CHide_Idle::CHide_Idle(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
 
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
-	switch (pOwner->Get_StudentInfo().iIndex)
+	switch (pOwner->Get_StudentInfo().eStudent)
 	{
-	case 0:
+	case ARU:
 		m_eAnim = ANIM_HIDEIDLE;
 		pOwner->Set_State(m_eAnim);
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 		break;
-	case 1:
+	case MUTSUKI:
 		pModel->Set_CurrentAnimation(21);
 		break;
 	case 2:

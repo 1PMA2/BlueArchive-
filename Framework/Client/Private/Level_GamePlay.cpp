@@ -211,9 +211,9 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student(const _tchar * pLayerTag)
 	CSensei* pSensei = CSensei::Get_Instance();
 
 	/* For.Player */
-	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag,
-	//	pSensei->Get_Student(TEXT("Aru"))->Get_StudentInfo().pName)))
-	//	return E_FAIL;
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag,
+		pSensei->Get_Student(TEXT("Aru"))->Get_StudentInfo().pName)))
+		return E_FAIL;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag,
 		pSensei->Get_Student(TEXT("Mutsuki"))->Get_StudentInfo().pName)))

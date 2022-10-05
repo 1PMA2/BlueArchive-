@@ -13,7 +13,7 @@ CHide_Reloading::CHide_Reloading(CStudent* pOwner)
 	
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
-	switch (pOwner->Get_StudentInfo().iIndex)
+	switch (pOwner->Get_StudentInfo().eStudent)
 	{
 	case 0:
 		m_eAnim = ANIM_HIDERELOADING;

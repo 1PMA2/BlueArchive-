@@ -29,6 +29,7 @@ public:
 
 public:
 	_vector Get_MonsterTranslation() { return m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION); }
+	void Set_MinusHp(_int iAtk) { m_tMonsterInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1)); }
 
 public:
 	virtual HRESULT Initialize_Prototype();

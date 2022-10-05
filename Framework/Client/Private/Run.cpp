@@ -16,7 +16,7 @@ CRun::CRun(CStudent* pOwner)
 {
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
-	switch (pOwner->Get_StudentInfo().iIndex)
+	switch (pOwner->Get_StudentInfo().eStudent)
 	{
 	case 0:
 		m_eAnim = ANIM_RUN;
@@ -83,7 +83,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 	{
 		pStudentTransform->Go_Straight(fTimeDelta);
 		_vector vXY = pStudentTransform->Get_WorldMatrix().r[3];
-		pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), 1.f, fTimeDelta);
+		pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), 5.f, fTimeDelta);
 		return nullptr;
 	}
 
@@ -109,6 +109,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 		else
 			m_pTargetMonster = nullptr;
 	}
+	m_fMin = 9999.f;
 
 	if (nullptr != m_pTargetMonster)
 	{
@@ -119,20 +120,20 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 		if(m_bOnce)
 		{ 
-		for (int i = 0; i < 1; ++i)
-		{
-			pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
-
-			if (m_pOwner != pStudent)
+			for (int i = 0; i < 2; ++i) // formationstudent.size();
 			{
-				if (pStudent->FoundObstacle())
+				pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i); //최대 4명 등록이기때문에 ㄱㅊ
+
+				if (m_pOwner != pStudent)
 				{
-					++m_iIndex;
-					break;
+					if (pStudent->FoundObstacle())
+					{
+						++m_iIndex;
+						break;
+					}
 				}
 			}
-		}
-		m_bOnce = false;
+			m_bOnce = false;
 		}
 
 		
@@ -149,7 +150,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 			_vector		vLook = vTarget - vPosition;
 
-			pStudentTransform->LookAtLerp(vTarget, 3.f, fTimeDelta);
+			pStudentTransform->LookAtLerp(vTarget, 5.f, fTimeDelta);
 
 
 			if (m_fHideLength <= XMVectorGetX(XMVector3Length(vLook)))

@@ -55,7 +55,7 @@ void CFade_InOut::Tick(_float fTimeDelta)
 
 		CSensei* pSensei = GET_SENSEI;
 
-		_int iImgNum = pSensei->Get_Student(pSensei->Get_NewStudent())->Get_StudentInfo().iIndex;
+		_int iImgNum = pSensei->Get_Student(pSensei->Get_NewStudent())->Get_StudentInfo().eStudent;
 
 		/* For.Player */
 		if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, TEXT("Layer_Student"), TEXT("Prototype_GameObject_StudentImg"), &iImgNum)))

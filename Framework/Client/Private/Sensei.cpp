@@ -117,7 +117,7 @@ void CSensei::Formation_Level(_float fTimeDelta)
 		{
 			for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
 			{
-				if (pSensei->Get_FormationInfo(i).iIndex == pStudent->Get_StudentInfo().iIndex)
+				if (pSensei->Get_FormationInfo(i).eStudent == pStudent->Get_StudentInfo().eStudent)
 				{
 					switch (pSensei->Get_FormationInfo(i).eFormation)
 					{
@@ -193,9 +193,6 @@ void CSensei::Free()
 	m_Formations.clear();
 
 	m_FormationsInfo.clear();
-
-	for (auto& Pair : m_Student)
-		Safe_Release(Pair.second);
 
 	m_Student.clear();
 

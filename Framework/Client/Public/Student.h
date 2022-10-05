@@ -22,11 +22,10 @@ public:
 	typedef struct tagStudentDesc
 	{
 		_tchar*	pName;
-
+		STUDENT eStudent;
 		FORMATION eFormation;
 
 		_bool	bExModel;
-		_uint	iIndex;
 		_uint	iHp;
 		_uint	iShield;
 		_uint	iAtk;

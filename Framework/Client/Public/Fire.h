@@ -19,6 +19,10 @@ public:
 private:
 	_bool Ex();
 
+private:
+	_uint m_iAtkFrame = 0;
+	_bool m_bOnce = true;
+
 public:
 	static CFire* Create(CStudent* pOwner);
 };

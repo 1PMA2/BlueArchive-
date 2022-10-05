@@ -202,7 +202,7 @@ HRESULT CStudent::FormationLevel_Collision()
 		for (_uint i = 0; i < pSensei->Get_FormationStudentsNum(); ++i)
 		{
 			CStudent* pTargetStudent = pSensei->Get_FormationStudents(i);
-			if (m_tStudentInfo.iIndex != pTargetStudent->Get_StudentInfo().iIndex)
+			if (m_tStudentInfo.eStudent != pTargetStudent->Get_StudentInfo().eStudent)
 			{
 				if (m_pPickedCom->Collision(pTargetStudent->m_pAABBCom))
 				{

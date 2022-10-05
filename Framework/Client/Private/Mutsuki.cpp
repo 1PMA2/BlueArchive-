@@ -32,9 +32,9 @@ HRESULT CMutsuki::Initialize_Prototype()
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 10;
 	m_tStudentInfo.iBullet = 10;
-	m_tStudentInfo.iRange = 5;
+	m_tStudentInfo.iRange = 4;
 	m_tStudentInfo.iShield = 0;
-	m_tStudentInfo.iIndex = 1;
+	m_tStudentInfo.eStudent = MUTSUKI;
 	return S_OK;
 }
 
@@ -85,6 +85,16 @@ void CMutsuki::LateTick(_float fTimeDelta)
 HRESULT CMutsuki::Render()
 {
 	__super::Render();
+
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	swprintf_s(m_szFPS, TEXT("cost:%d"), m_tStudentInfo.iBullet);
+
+	// MakeSpriteFont "폰트이름" /FontSize:32 /FastPack /CharacterRegion:0x0020-0x00FF /CharacterRegion:0x3131-0x3163 /CharacterRegion:0xAC00-0xD800 /DefaultCharacter:0xAC00 출력파일이름.spritefont
+	pGameInstance->Render_Font(TEXT("Font_Dream"), m_szFPS, _float2(0.f, 0.f), XMVectorSet(1.f, 1.f, 1.f, 1.f));
+
+
+	pGameInstance->Present();
 
 	return S_OK;
 }

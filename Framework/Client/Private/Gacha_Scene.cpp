@@ -192,7 +192,7 @@ HRESULT CGacha_Scene::Ready_Layer_Student(const _tchar * pLayerTag)
 
 	CSensei* pSensei = GET_SENSEI;
 
-	_int iImgNum = pSensei->Get_Student(pSensei->Get_NewStudent())->Get_StudentInfo().iIndex;
+	_int iImgNum = pSensei->Get_Student(pSensei->Get_NewStudent())->Get_StudentInfo().eStudent;
 	
 	/* For.Player */
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, pLayerTag, TEXT("Prototype_GameObject_StudentImg"), &iImgNum)))

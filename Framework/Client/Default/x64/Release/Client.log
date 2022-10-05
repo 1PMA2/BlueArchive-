@@ -1,0 +1,111 @@
+﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\Shader_VtxAnimModel.cso
+FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\Shader_VtxCubeTex.cso
+FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\Shader_VtxModel.cso
+FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\Shader_VtxNorTex.cso
+FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\Shader_VtxTex.cso
+  stdafx.cpp
+  Arona.cpp
+  Arona_CAM.cpp
+  Arona_Sack.cpp
+  Aru.cpp
+  Aru_Ex.cpp
+  BackGround.cpp
+..\private\BackGround.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\private\BackGround.cpp(79): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\private\BackGround.cpp(80): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Back_Btn.cpp
+..\Private\Back_Btn.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  BG_Lobby.cpp
+..\Private\BG_Lobby.cpp(42): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Private\BG_Lobby.cpp(69): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Private\BG_Lobby.cpp(70): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Camera_Ex.cpp
+  Camera_Free.cpp
+  Camera_Gacha.cpp
+  Camera_Main.cpp
+C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Public\Monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+..\Private\Camera_Main.cpp(50): warning C4312: '형식 캐스팅': 'Engine::_uint'에서 더 큰 'Client::CMonster *'(으)로의 변환입니다.
+  City.cpp
+  Ex.cpp
+  Ex_Cutin.cpp
+  Fade_InOut.cpp
+..\Private\Fade_InOut.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Private\Fade_InOut.cpp(104): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Private\Fade_InOut.cpp(105): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Fade_Out.cpp
+..\Private\Fade_Out.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Private\Fade_Out.cpp(78): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Private\Fade_Out.cpp(79): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Fire.cpp
+C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Public\Monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  ForkLift.cpp
+  Formation_Idle.cpp
+  컴파일하고 있습니다...
+  Formation_Pick.cpp
+  Formation_Terrain.cpp
+  Gacha_Scene.cpp
+  Hide_FireStart.cpp
+C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Public\Monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Hide_Idle.cpp
+  Hide_Reloading.cpp
+  Hide_ReloadStart.cpp
+  Knee_Reload.cpp
+  Knee_ZoomEnd.cpp
+  Knee_ZoomFire.cpp
+C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Public\Monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Knee_ZoomStart.cpp
+C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Public\Monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Level_Formation.cpp
+  Level_Gacha.cpp
+  Level_GamePlay.cpp
+  Level_Loading.cpp
+  Level_Lobby.cpp
+  Level_Logo.cpp
+  Loader.cpp
+C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Public\Monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  LoadingImage.cpp
+..\Private\LoadingImage.cpp(40): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Private\LoadingImage.cpp(133): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+..\Private\LoadingImage.cpp(134): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MainApp.cpp
+  컴파일하고 있습니다...
+  Monster.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\private\..\Public\Monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Mutsuki.cpp
+..\Private\Mutsuki.cpp(120): warning C4244: '인수': 'Engine::_uint'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Run.cpp
+C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Public\Monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Run_Sign.cpp
+  Run_ToKnee.cpp
+  Sensei.cpp
+  Sky.cpp
+  State.cpp
+C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Public\Monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Student.cpp
+C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Public\Monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Student_Img.cpp
+..\Private\Student_Img.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Terrain.cpp
+  UI.cpp
+..\Private\UI.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  UI_RecruitButton.cpp
+..\Private\UI_RecruitButton.cpp(42): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Work_Button.cpp
+..\Private\Work_Button.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Run_ToHide.cpp
+  Client.cpp
+  코드를 생성하고 있습니다.
+  All 1308 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  코드를 생성했습니다.
+  Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
+  Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

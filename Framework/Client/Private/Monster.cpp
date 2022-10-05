@@ -24,6 +24,9 @@ HRESULT CMonster::Initialize(void * pArg)
 	TransformDesc.fSpeedPerSec = 5.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
+	m_tMonsterInfo.iAtk = 10;
+	m_tMonsterInfo.iHp = 100;
+
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;
 
@@ -70,7 +73,7 @@ void CMonster::LateTick(_float fTimeDelta)
 	//if (i > 13)
 	//	DELETE(this);
 
-	if (KEY(X, TAP))
+	if (0 >= m_tMonsterInfo.iHp)
 	{
 		DELETE(this);
 	}

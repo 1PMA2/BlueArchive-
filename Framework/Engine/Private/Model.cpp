@@ -46,6 +46,11 @@ void CModel::Set_CurrentAnimation(_uint iAnimIndex)
 	m_iCurrentAnimationIndex = iAnimIndex;
 }
 
+void CModel::Lerp_Anim(CAnimation * pStart, CAnimation * pGoal)
+{
+	
+}
+
 CHierarchyNode * CModel::Find_HierarcyNode(const char * pBoneName)
 {
 	auto	iter = find_if(m_HierarchyNodes.begin(), m_HierarchyNodes.end(), [&](CHierarchyNode* pNode) 
