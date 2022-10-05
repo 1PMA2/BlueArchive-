@@ -22,7 +22,9 @@ private:
 
 private:
 	class CMonster* m_pTargetMonster = nullptr;
-	class CForkLift* m_pTargetCover[4] = { nullptr };
+
+	vector <class CForkLift*> m_TargetCovers;
+
 	_bool m_bOnce = true;
 	_uint m_iIndex = 0;
 	_float m_fHideLength = 0.f;

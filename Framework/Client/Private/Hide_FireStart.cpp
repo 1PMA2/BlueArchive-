@@ -5,6 +5,7 @@
 #include "Student.h"
 #include "Model.h"
 #include "Fire.h"
+#include "Rifle_Fire.h"
 #include "Run.h"
 #include "Monster.h"
 
@@ -15,12 +16,12 @@ CHide_FireStart::CHide_FireStart(CStudent* pOwner, CMonster* pTarget, CForkLift*
 
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
-	case 0:
+	case ARU:
 		m_eAnim = ANIM_HIDEFIRESTART;
 		pOwner->Set_State(m_eAnim);
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 		break;
-	case 1:
+	case MUTSUKI:
 		pModel->Set_CurrentAnimation(19);
 		break;
 	case 2:
@@ -64,7 +65,17 @@ CState * CHide_FireStart::Loop(_float fTimeDelta)
 	if (pModel->Get_isFinished())
 	{ 
 		pTransform->LookAt(pTTransform->Get_WorldMatrix().r[3]);
-		pState = CFire::Create(m_pOwner);
+		
+		switch (m_pOwner->Get_StudentInfo().eStudent)
+		{
+		case ARU:
+			pState = CFire::Create(m_pOwner);
+			break;
+		case MUTSUKI:
+			pState = CRifle_Fire::Create(m_pOwner);
+			break;
+		}
+
 	}
 
 	return pState;

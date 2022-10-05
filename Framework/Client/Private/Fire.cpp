@@ -57,7 +57,7 @@ CState * CFire::Loop(_float fTimeDelta)
 	{
 		pTransform->LookAtLerp(pMonster->Get_MonsterTranslation(), 5.f, fTimeDelta);
 
-		if (2 < pModel->Get_CurrentKeyFrame())
+		if (8 < pModel->Get_CurrentKeyFrame())
 		{
 			if (m_bOnce)
 			{

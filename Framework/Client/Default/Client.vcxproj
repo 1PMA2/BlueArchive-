@@ -195,6 +195,7 @@
     <ClInclude Include="..\Public\Hide_Idle.h" />
     <ClInclude Include="..\Public\Hide_Reloading.h" />
     <ClInclude Include="..\Public\Hide_ReloadStart.h" />
+    <ClInclude Include="..\Public\Knee_Idle.h" />
     <ClInclude Include="..\Public\Knee_Reload.h" />
     <ClInclude Include="..\Public\Knee_ZoomEnd.h" />
     <ClInclude Include="..\Public\Knee_ZoomFire.h" />
@@ -210,6 +211,8 @@
     <ClInclude Include="..\Public\MainApp.h" />
     <ClInclude Include="..\Public\Monster.h" />
     <ClInclude Include="..\Public\Mutsuki.h" />
+    <ClInclude Include="..\Public\Rifle_Delay.h" />
+    <ClInclude Include="..\Public\Rifle_Fire.h" />
     <ClInclude Include="..\Public\Run.h" />
     <ClInclude Include="..\Public\Run_Sign.h" />
     <ClInclude Include="..\Public\Run_ToKnee.h" />
@@ -255,6 +258,7 @@
     <ClCompile Include="..\Private\Hide_Idle.cpp" />
     <ClCompile Include="..\Private\Hide_Reloading.cpp" />
     <ClCompile Include="..\Private\Hide_ReloadStart.cpp" />
+    <ClCompile Include="..\Private\Knee_Idle.cpp" />
     <ClCompile Include="..\Private\Knee_Reload.cpp" />
     <ClCompile Include="..\Private\Knee_ZoomEnd.cpp" />
     <ClCompile Include="..\Private\Knee_ZoomFire.cpp" />
@@ -270,6 +274,8 @@
     <ClCompile Include="..\Private\MainApp.cpp" />
     <ClCompile Include="..\Private\Monster.cpp" />
     <ClCompile Include="..\Private\Mutsuki.cpp" />
+    <ClCompile Include="..\Private\Rifle_Delay.cpp" />
+    <ClCompile Include="..\Private\Rifle_Fire.cpp" />
     <ClCompile Include="..\Private\Run.cpp" />
     <ClCompile Include="..\Private\Run_Sign.cpp" />
     <ClCompile Include="..\Private\Run_ToKnee.cpp" />

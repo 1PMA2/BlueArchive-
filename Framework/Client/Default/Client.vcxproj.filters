@@ -184,6 +184,15 @@
     <ClInclude Include="..\Public\Run_ToKnee.h">
       <Filter>02.GameObject\01.State\Aru_State\Run_ToKnee</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Knee_Idle.h">
+      <Filter>02.GameObject\01.State\Aru_State\Knee_Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Rifle_Fire.h">
+      <Filter>02.GameObject\01.State\Aru_State\Fire\Rifle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Rifle_Delay.h">
+      <Filter>02.GameObject\01.State\Aru_State\Fire\Rifle\Fire_Delay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -356,6 +365,15 @@
     </ClCompile>
     <ClCompile Include="..\Private\Run_ToKnee.cpp">
       <Filter>02.GameObject\01.State\Aru_State\Run_ToKnee</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Knee_Idle.cpp">
+      <Filter>02.GameObject\01.State\Aru_State\Knee_Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Rifle_Fire.cpp">
+      <Filter>02.GameObject\01.State\Aru_State\Fire\Rifle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Rifle_Delay.cpp">
+      <Filter>02.GameObject\01.State\Aru_State\Fire\Rifle\Fire_Delay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -624,6 +642,12 @@
     </Filter>
     <Filter Include="02.GameObject\08.Bullet">
       <UniqueIdentifier>{4b951edb-6ca2-4824-a334-62f7ce75d8cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Fire\Rifle">
+      <UniqueIdentifier>{3e6f9773-f2ee-463c-92e6-828c80b06db5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Aru_State\Fire\Rifle\Fire_Delay">
+      <UniqueIdentifier>{6e33b6aa-b144-4265-88f3-b37e7935da3f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

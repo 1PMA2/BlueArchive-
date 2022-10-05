@@ -50,20 +50,8 @@ CState * CHide_Idle::Loop(_float fTimeDelta)
 
 	pModel->Play_Animation(fTimeDelta);
 	
-	
 
-	if (KEY(Q, TAP))
-	{
-		pTransform->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 10.f, 1.f));
-		pTransform->Set_State(CTransform::STATE_RIGHT, XMVectorSet(1.f, 0.f, 0.f, 0.f));
-		pTransform->Set_State(CTransform::STATE_UP, XMVectorSet(0.f, 1.f, 0.f, 0.f));
-		pTransform->Set_State(CTransform::STATE_LOOK, XMVectorSet(0.f, 0.f, 1.f, 0.f));
-		pState = CRun::Create(m_pOwner);
-	}
-	else 
-	{
-		pState = CHide_FireStart::Create(m_pOwner, m_pTarget, m_pCover);
-	}
+	pState = CHide_FireStart::Create(m_pOwner, m_pTarget, m_pCover);
 	
 
 	

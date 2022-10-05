@@ -1,95 +1,27 @@
-﻿  Client.cpp
-  BackGround.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\background.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\background.cpp(79): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\background.cpp(80): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Run_ToHide.cpp
-  Work_Button.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\work_button.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  UI_RecruitButton.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\ui_recruitbutton.cpp(42): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  UI.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\ui.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Terrain.cpp
-  Student_Img.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\student_img.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  Run_ToHide.cpp
   Student.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-  State.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-  Sky.cpp
-  Sensei.cpp
   Run_ToKnee.cpp
   Run_Sign.cpp
   Run.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Rifle_Fire.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Rifle_Delay.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
   Mutsuki.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\private\mutsuki.cpp(130): warning C4244: '인수': 'Engine::_uint'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Monster.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-  MainApp.cpp
-  LoadingImage.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\loadingimage.cpp(40): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\loadingimage.cpp(133): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\loadingimage.cpp(134): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Loader.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-  코드를 생성하고 있습니다...
-  컴파일하고 있습니다...
-  Level_Logo.cpp
-  Level_Lobby.cpp
-  Level_Loading.cpp
   Level_GamePlay.cpp
-  Level_Gacha.cpp
-  Level_Formation.cpp
   Knee_ZoomStart.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
   Knee_ZoomFire.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-  Knee_ZoomEnd.cpp
-  Knee_Reload.cpp
-  Hide_Reloading.cpp
-  Hide_ReloadStart.cpp
   Hide_Idle.cpp
   Hide_FireStart.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-  Gacha_Scene.cpp
-  Formation_Terrain.cpp
-  Formation_Pick.cpp
-  Formation_Idle.cpp
-  ForkLift.cpp
   Fire.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-  코드를 생성하고 있습니다...
-  컴파일하고 있습니다...
-  Fade_Out.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\fade_out.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\fade_out.cpp(78): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\fade_out.cpp(79): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Fade_InOut.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\fade_inout.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\fade_inout.cpp(104): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\fade_inout.cpp(105): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Ex_Cutin.cpp
-  Ex.cpp
-  City.cpp
-  Camera_Main.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(32): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\camera_main.cpp(50): warning C4312: '형식 캐스팅': 'Engine::_uint'에서 더 큰 'Client::CMonster *'(으)로의 변환입니다.
-  Camera_Gacha.cpp
-  Camera_Free.cpp
-  Camera_Ex.cpp
-  Back_Btn.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\back_btn.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  BG_Lobby.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\bg_lobby.cpp(42): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\bg_lobby.cpp(69): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\bg_lobby.cpp(70): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Aru_Ex.cpp
   Aru.cpp
-  Arona_Sack.cpp
-  Arona_CAM.cpp
-  Arona.cpp
   코드를 생성하고 있습니다...
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

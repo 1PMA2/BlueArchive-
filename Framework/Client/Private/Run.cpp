@@ -135,14 +135,13 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 			}
 			m_bOnce = false;
 		}
-
 		
 
-		if (nullptr != m_pTargetCover[m_iIndex])
+		if(0 < m_TargetCovers.size())
 		{
 			m_pOwner->Set_Cover(true);
 
-			CTransform* pTargetTransform = (CTransform*)m_pTargetCover[m_iIndex]->Get_Component(TEXT("Com_Transform"));
+			CTransform* pTargetTransform = (CTransform*)m_TargetCovers.at(m_iIndex)->Get_Component(TEXT("Com_Transform"));
 
 			_vector		vTarget = pTargetTransform->Get_State(CTransform::STATE_TRANSLATION);
 
@@ -160,13 +159,13 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 			}
 			else
 			{
-				return CRun_ToHide::Create(m_pOwner, m_pTargetMonster, m_pTargetCover[m_iIndex]);
+				return CRun_ToHide::Create(m_pOwner, m_pTargetMonster, m_TargetCovers.at(m_iIndex));
 			}
 
 		}
 		else
 		{
-			return CRun_ToKnee::Create(m_pOwner); //엄폐물이 없음 run to knee
+			return CRun_ToKnee::Create(m_pOwner);
 		}
 
 	}
@@ -182,6 +181,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 void CRun::Find_Cover()
 {
+	m_TargetCovers.clear();
 
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 
@@ -214,7 +214,7 @@ void CRun::Find_Cover()
 			if ((_float)m_pOwner->Get_StudentInfo().iRange > (fLength)) //가까운 몬스터와 엄폐물 사이의 거리가 인식 범위 내
 			{
 
-				m_pTargetCover[i] = pCover; //가장 가까운 엄폐물 탐색,사용중이 아닌
+				m_TargetCovers.push_back(pCover); //가장 가까운 엄폐물 탐색,사용중이 아닌
 
 			}
 

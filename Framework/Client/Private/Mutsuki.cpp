@@ -32,7 +32,7 @@ HRESULT CMutsuki::Initialize_Prototype()
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 10;
 	m_tStudentInfo.iBullet = 10;
-	m_tStudentInfo.iRange = 4;
+	m_tStudentInfo.iRange = 3;
 	m_tStudentInfo.iShield = 0;
 	m_tStudentInfo.eStudent = MUTSUKI;
 	return S_OK;
@@ -117,7 +117,7 @@ HRESULT CMutsuki::SetUp_Components()
 	/* For.Com_OBB */
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(11.2f, 11.2f, 11.2f);
+	ColliderDesc.vScale = _float3(3.2f, 3.2f, 3.2f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
