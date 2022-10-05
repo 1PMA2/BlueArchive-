@@ -47,11 +47,9 @@ CState * CRifle_Fire::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	CMonster* pMonster = m_pOwner->FoundMonster();
-
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-
+	CMonster* pMonster = m_pOwner->FoundMonster();
 
 	pModel->Play_Animation(fTimeDelta);
 	if (nullptr != pMonster)
@@ -107,7 +105,7 @@ _bool CRifle_Fire::Ex()
 }
 
 
-CRifle_Fire * CRifle_Fire::Create(CStudent * pOwner)
+CRifle_Fire * CRifle_Fire::Create(CStudent* pOwner)
 {
 	return new CRifle_Fire(pOwner);
 }

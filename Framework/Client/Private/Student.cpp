@@ -36,6 +36,8 @@ CMonster* CStudent::FoundMonster()
 		return nullptr;
 	}
 
+	m_Monsters.clear();
+
 	for (_uint i = 0; i < iMonsterCount; ++i)
 	{
 		CMonster* pMonster = (CMonster*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), i);
@@ -48,19 +50,13 @@ CMonster* CStudent::FoundMonster()
 
 		if ((_float)m_tStudentInfo.iRange > fLength) //레이어의 몬스터 검사 후 범위 내 몬스터 
 		{
-			if (m_fMin > fLength)
-			{
-				m_fMin = fLength;
-				m_pTargetMonster = pMonster; //가장 가까운 몬스터
-			}
+			m_Monsters.push_back(pMonster);
 		}
-		else
-			m_pTargetMonster = nullptr;
 	}
+	if (0 >= m_Monsters.size())
+		return nullptr;
 
-	m_fMin = 9999.f;
-
-	return m_pTargetMonster;
+	return m_Monsters.at(0);
 }
 
 HRESULT CStudent::Initialize(void * pArg)

@@ -7,7 +7,7 @@ class CHide_Idle final : public
 	CState
 {
 private:
-	CHide_Idle(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover);
+	CHide_Idle(CStudent* pOwner);
 	virtual ~CHide_Idle();
 
 public:
@@ -17,7 +17,7 @@ public:
 	virtual void Exit() override;
 
 public:
-	static CHide_Idle* Create(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover);
+	static CHide_Idle* Create(CStudent* pOwner);
 };
 
 END

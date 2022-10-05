@@ -43,6 +43,7 @@ CRun::~CRun()
 void CRun::Enter()
 {
 	m_bOnce = true;
+	m_bCheck = true;
 	m_iIndex = 0;
 }
 
@@ -69,7 +70,6 @@ void CRun::Exit()
 
 CState* CRun::Find_Monster(_float fTimeDelta)
 {
-	m_pOwner->Reset_Monsters();
 
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 
@@ -86,6 +86,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 		pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), 5.f, fTimeDelta);
 		return nullptr;
 	}
+	m_TargetMonsters.clear();
 
 	for (_uint i = 0; i < iMonsterCount; ++i)
 	{
@@ -99,19 +100,12 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 		if ((_float)m_pOwner->Get_StudentInfo().iRange > fLength) //레이어의 몬스터 검사 후 범위 내 몬스터 
 		{
-			if (m_fMin > fLength)
-			{
-				m_fMin = fLength;
-				m_pTargetMonster = pMonster; //가장 가까운 몬스터
-			}
-			m_pOwner->In_RangeMonsters(pMonster);
+			m_TargetMonsters.push_back(pMonster); //범위 내 몬스터
 		}
-		else
-			m_pTargetMonster = nullptr;
 	}
-	m_fMin = 9999.f;
 
-	if (nullptr != m_pTargetMonster)
+
+	if (0 < m_TargetMonsters.size())
 	{
 
 		Find_Cover();
@@ -137,7 +131,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 		}
 		
 
-		if(0 < m_TargetCovers.size())
+		if(0 < m_TargetCovers.size() && m_iIndex + 1 <= m_TargetCovers.size())
 		{
 			m_pOwner->Set_Cover(true);
 
@@ -159,7 +153,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 			}
 			else
 			{
-				return CRun_ToHide::Create(m_pOwner, m_pTargetMonster, m_TargetCovers.at(m_iIndex));
+				return CRun_ToHide::Create(m_pOwner, m_TargetMonsters.at(0), m_TargetCovers.at(m_iIndex));
 			}
 
 		}
@@ -200,7 +194,7 @@ void CRun::Find_Cover()
 
 		CTransform* pCoverTransform = (CTransform*)pCover->Get_Component(TEXT("Com_Transform"));
 
-		CTransform* pMonsterTransform = (CTransform*)m_pTargetMonster->Get_Component(TEXT("Com_Transform"));
+		CTransform* pMonsterTransform = (CTransform*)m_TargetMonsters.at(0)->Get_Component(TEXT("Com_Transform"));
 
 		_vector vCoverTranslation = pCoverTransform->Get_State(CTransform::STATE_TRANSLATION); //엄폐물
 		_vector vMonsterTranslation = pMonsterTransform->Get_State(CTransform::STATE_TRANSLATION); //몬스터

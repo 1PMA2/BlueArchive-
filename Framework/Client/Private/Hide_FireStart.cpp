@@ -9,8 +9,8 @@
 #include "Run.h"
 #include "Monster.h"
 
-CHide_FireStart::CHide_FireStart(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
-	:CState(pOwner, pTarget, pCover)
+CHide_FireStart::CHide_FireStart(CStudent* pOwner)
+	:CState(pOwner)
 {
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
@@ -48,10 +48,12 @@ CState * CHide_FireStart::Loop(_float fTimeDelta)
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-	CTransform* pTTransform;
+	CMonster* pMonster = m_pOwner->FoundMonster();
 
-	if(nullptr != m_pOwner->FoundMonster())
-		pTTransform = (CTransform*)m_pOwner->FoundMonster()->Get_Component(TEXT("Com_Transform"));
+	CTransform* pTTransform;
+	
+	if(nullptr != pMonster)
+		pTTransform = (CTransform*)pMonster->Get_Component(TEXT("Com_Transform"));
 	else
 	{
 		pState = CRun::Create(m_pOwner);
@@ -86,7 +88,7 @@ void CHide_FireStart::Exit()
 	Destroy_Instance();
 }
 
-CHide_FireStart * CHide_FireStart::Create(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
+CHide_FireStart * CHide_FireStart::Create(CStudent* pOwner)
 {
-	return new CHide_FireStart(pOwner, pTarget, pCover);
+	return new CHide_FireStart(pOwner);
 }

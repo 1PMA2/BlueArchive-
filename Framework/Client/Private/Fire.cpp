@@ -57,15 +57,13 @@ CState * CFire::Loop(_float fTimeDelta)
 	{
 		pTransform->LookAtLerp(pMonster->Get_MonsterTranslation(), 5.f, fTimeDelta);
 
-		if (8 < pModel->Get_CurrentKeyFrame())
+		if (m_bOnce)
 		{
-			if (m_bOnce)
-			{
-				m_pOwner->Use_Bullet();
-				pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
-				m_bOnce = false;
-			}
+			m_pOwner->Use_Bullet();
+			pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
+			m_bOnce = false;
 		}
+
 	}
 
 	if (pModel->Get_isFinished())

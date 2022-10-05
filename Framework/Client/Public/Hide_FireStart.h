@@ -7,7 +7,7 @@ class CHide_FireStart final : public
 	CState
 {
 private:
-	CHide_FireStart(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover);
+	CHide_FireStart(CStudent* pOwner);
 	virtual ~CHide_FireStart() = default;
 
 public:
@@ -17,7 +17,7 @@ public:
 	virtual void Exit() override;
 
 public:
-	static CHide_FireStart* Create(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover);
+	static CHide_FireStart* Create(CStudent* pOwner);
 };
 
 END

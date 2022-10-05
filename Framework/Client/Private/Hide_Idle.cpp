@@ -6,8 +6,8 @@
 #include "Model.h"
 #include "Hide_FireStart.h"
 #include "Run.h"
-CHide_Idle::CHide_Idle(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
-	:CState(pOwner, pTarget, pCover)
+CHide_Idle::CHide_Idle(CStudent* pOwner)
+	:CState(pOwner)
 {
 	
 
@@ -51,7 +51,7 @@ CState * CHide_Idle::Loop(_float fTimeDelta)
 	pModel->Play_Animation(fTimeDelta);
 	
 
-	pState = CHide_FireStart::Create(m_pOwner, m_pTarget, m_pCover);
+	pState = CHide_FireStart::Create(m_pOwner);
 	
 
 	
@@ -64,7 +64,7 @@ void CHide_Idle::Exit()
 	Destroy_Instance();
 }
 
-CHide_Idle * CHide_Idle::Create(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
+CHide_Idle * CHide_Idle::Create(CStudent* pOwner)
 {
-	return new CHide_Idle(pOwner, pTarget, pCover);
+	return new CHide_Idle(pOwner);
 }

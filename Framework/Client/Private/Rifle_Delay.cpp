@@ -47,11 +47,9 @@ CState * CRifle_Delay::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	CMonster* pMonster = m_pOwner->FoundMonster();
-
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-
+	CMonster* pMonster = m_pOwner->FoundMonster();
 
 	pModel->Play_Animation(fTimeDelta);
 
@@ -87,7 +85,7 @@ _bool CRifle_Delay::Ex()
 }
 
 
-CRifle_Delay * CRifle_Delay::Create(CStudent * pOwner)
+CRifle_Delay * CRifle_Delay::Create(CStudent* pOwner)
 {
 	return new CRifle_Delay(pOwner);
 }

@@ -56,7 +56,7 @@ void CHide_ReloadStart::Exit()
 	Destroy_Instance();
 }
 
-CHide_ReloadStart * CHide_ReloadStart::Create(CStudent * pOwner)
+CHide_ReloadStart * CHide_ReloadStart::Create(CStudent* pOwner)
 {
 	return new CHide_ReloadStart(pOwner);
 }

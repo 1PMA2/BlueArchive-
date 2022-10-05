@@ -45,7 +45,7 @@ CState * CHide_Reloading::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
-		pState = CHide_FireStart::Create(m_pOwner, m_pTarget, m_pCover);
+		pState = CHide_FireStart::Create(m_pOwner);
 	}
 
 	return pState;
@@ -56,7 +56,7 @@ void CHide_Reloading::Exit()
 	Destroy_Instance();
 }
 
-CHide_Reloading * CHide_Reloading::Create(CStudent * pOwner)
+CHide_Reloading * CHide_Reloading::Create(CStudent* pOwner)
 {
 	return new CHide_Reloading(pOwner);
 }
