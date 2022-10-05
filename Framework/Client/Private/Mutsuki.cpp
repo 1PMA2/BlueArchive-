@@ -20,20 +20,8 @@ CMutsuki::CMutsuki(const CMutsuki & rhs)
 HRESULT CMutsuki::Initialize_Prototype()
 {
 	m_tStudentInfo.pName = TEXT("Mutsuki");
-
 	m_tStudentInfo.bExModel = false;
 	m_tStudentInfo.fFireSpeed = 0.2f;
-	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
-	m_tStudentInfo.eFormation = FORMATION_SECOND;
-	m_tStudentInfo.iAtk = 5;
-	m_tStudentInfo.iDef = 0;
-	m_tStudentInfo.iEx = 30;
-	m_tStudentInfo.fExCost = 4.f;
-	m_tStudentInfo.iHp = 100;
-	m_tStudentInfo.iMagazine = 10;
-	m_tStudentInfo.iBullet = 10;
-	m_tStudentInfo.iRange = 3.5;
-	m_tStudentInfo.iShield = 0;
 	m_tStudentInfo.eStudent = MUTSUKI;
 	return S_OK;
 }
@@ -44,6 +32,17 @@ HRESULT CMutsuki::Initialize(void * pArg)
 	TransformDesc.fSpeedPerSec = 2.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
 	
+	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
+	m_tStudentInfo.eFormation = FORMATION_SECOND;
+	m_tStudentInfo.iAtk = 5;
+	m_tStudentInfo.iDef = 0;
+	m_tStudentInfo.iEx = 30;
+	m_tStudentInfo.fExCost = 4.f;
+	m_tStudentInfo.iHp = 100;
+	m_tStudentInfo.iMagazine = 10;
+	m_tStudentInfo.iBullet = 10;
+	m_tStudentInfo.iRange = 4;
+	m_tStudentInfo.iShield = 0;
 
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;

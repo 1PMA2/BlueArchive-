@@ -14,12 +14,23 @@
 CRun_ToKnee::CRun_ToKnee(CStudent* pOwner)
 	:CState(pOwner)
 {
-	m_eAnim = ANIM_RUNTOKNEE;
-	pOwner->Set_State(m_eAnim);
-
+	
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
-	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+	switch (pOwner->Get_StudentInfo().eStudent)
+	{
+	case ARU:
+		m_eAnim = ANIM_RUNTOKNEE;
+		pOwner->Set_State(m_eAnim);
+		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		break;
+	case MUTSUKI:
+		pModel->Set_CurrentAnimation(5);
+		break;
+	case 2:
+		break;
+
+	}
 }
 
 

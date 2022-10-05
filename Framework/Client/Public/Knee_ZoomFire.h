@@ -18,6 +18,7 @@ public:
 
 private:
 	_bool Ex();
+	_bool m_bOnce = true;
 
 public:
 	static CKnee_ZoomFire* Create(CStudent* pOwner);

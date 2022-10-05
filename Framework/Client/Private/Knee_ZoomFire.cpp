@@ -6,6 +6,7 @@
 #include "Model.h"
 #include "Fire.h"
 #include "Knee_ZoomEnd.h"
+#include "Knee_Idle.h"
 #include "Ex_Cutin.h"
 #include "Sensei.h"
 #include "Monster.h"
@@ -14,16 +15,28 @@
 CKnee_ZoomFire::CKnee_ZoomFire(CStudent* pOwner)
 	:CState(pOwner)
 {
-	m_eAnim = ANIM_KNEEZOOMFIRE;
-	pOwner->Set_State(m_eAnim);
+	
+	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
-	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
-	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+	switch (pOwner->Get_StudentInfo().eStudent)
+	{
+	case ARU:
+		m_eAnim = ANIM_KNEEZOOMFIRE;
+		pOwner->Set_State(m_eAnim);
+		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		break;
+	case MUTSUKI:
+		pModel->Set_CurrentAnimation(10);
+		break;
+	case 2:
+		break;
+
+	}
 }
 
 void CKnee_ZoomFire::Enter()
 {
-	m_pOwner->Use_Bullet();
+	m_bOnce = true;
 }
 
 CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
@@ -40,17 +53,41 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 
 	pModel->Play_Animation(fTimeDelta);
 	if (nullptr != pMonster)
+	{
 		pTransform->LookAtLerp(pMonster->Get_MonsterTranslation(), 5.f, fTimeDelta);
+
+		if (m_bOnce)
+		{
+			m_pOwner->Use_Bullet();
+			pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
+			m_bOnce = false;
+		}
+
+	}
 
 	if (pModel->Get_isFinished())
 	{
 		if (nullptr == pMonster)
 		{
 			pState = CRun::Create(m_pOwner);
-			m_pOwner->Set_Cover(false);
 		}
 		else if (0 < m_pOwner->Get_StudentInfo().iBullet)
-			pState = CKnee_ZoomFire::Create(m_pOwner);
+		{
+			switch (m_pOwner->Get_StudentInfo().eStudent)
+			{
+			case ARU:
+				pState = CKnee_ZoomFire::Create(m_pOwner);
+				break;
+			case MUTSUKI:
+				pState = CKnee_Idle::Create(m_pOwner);
+				break;
+			case 3:
+
+				break;
+			}
+			
+
+		}
 		else
 			pState = CKnee_ZoomEnd::Create(m_pOwner);
 

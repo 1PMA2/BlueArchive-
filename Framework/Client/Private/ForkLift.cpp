@@ -173,19 +173,25 @@ void CForkLift::Collision_ToPlayer()
 {
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-	for (int i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
+	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
 	{
 		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
 
 		CCollider* pCollider = (CCollider*)pStudent->Get_Component(TEXT("Com_SPHERE"));
 
 		if (m_pSphereCom->Collision(pCollider))
+		{
+			m_bUsed = true;
 			m_bExit = true; //나갈 준비
+		}
 
 		if (m_bExit)
 		{
 			if (!m_pSphereCom->Collision(pCollider))
+			{
+				m_bExit = false;
 				m_bUsed = false;
+			}
 		}
 	}
 }

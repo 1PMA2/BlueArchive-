@@ -16,6 +16,10 @@ CAru_Ex::CAru_Ex(const CAru_Ex & rhs)
 
 HRESULT CAru_Ex::Initialize_Prototype()
 {
+	m_tStudentInfo.pName = TEXT("Aru_Ex");
+	m_tStudentInfo.bExModel = true;
+	m_tStudentInfo.eStudent = ARU;
+
 	return S_OK;
 }
 
@@ -25,8 +29,7 @@ HRESULT CAru_Ex::Initialize(void * pArg)
 	TransformDesc.fSpeedPerSec = 1.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	m_tStudentInfo.pName = TEXT("Aru_Ex");
-	m_tStudentInfo.bExModel = true;
+	
 	m_tStudentInfo.fFireSpeed = 0.5f;
 	m_tStudentInfo.eAnim = ANIM_EX;
 	m_tStudentInfo.eFormation = FORMATION_FIRST;
@@ -39,7 +42,7 @@ HRESULT CAru_Ex::Initialize(void * pArg)
 	m_tStudentInfo.iBullet = 5;
 	m_tStudentInfo.iRange = 10;
 	m_tStudentInfo.iShield = 0;
-	m_tStudentInfo.eStudent = ARU;
+
 
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;

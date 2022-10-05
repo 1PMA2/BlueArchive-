@@ -20,23 +20,8 @@ CAru::CAru(const CAru & rhs)
 HRESULT CAru::Initialize_Prototype()
 {
 	m_tStudentInfo.pName = TEXT("Aru");
-
 	m_tStudentInfo.bExModel = false;
-	m_tStudentInfo.fFireSpeed = 0.5f;
-	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
-	m_tStudentInfo.eFormation = FORMATION_FIRST;
-	m_tStudentInfo.iAtk = 10;
-	m_tStudentInfo.iDef = 0;
-	m_tStudentInfo.iEx = 50;
-	m_tStudentInfo.fExCost = 4.f;
-	m_tStudentInfo.iHp = 100;
-	m_tStudentInfo.iMagazine = 5;
-	m_tStudentInfo.iBullet = 5;
-	m_tStudentInfo.iRange = 6;
-	m_tStudentInfo.iShield = 0;
 	m_tStudentInfo.eStudent = ARU;
-
-	
 
 	return S_OK;
 }
@@ -44,9 +29,21 @@ HRESULT CAru::Initialize_Prototype()
 HRESULT CAru::Initialize(void * pArg)
 {
 	CTransform::TRANSFORMDESC		TransformDesc;
-	TransformDesc.fSpeedPerSec = 2.f;
+	TransformDesc.fSpeedPerSec = 2.1f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
 	
+	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
+	m_tStudentInfo.eFormation = FORMATION_FIRST;
+	m_tStudentInfo.fFireSpeed = 0.5f;
+	m_tStudentInfo.iAtk = 10;
+	m_tStudentInfo.iDef = 0;
+	m_tStudentInfo.iEx = 50;
+	m_tStudentInfo.fExCost = 4.f;
+	m_tStudentInfo.iHp = 100;
+	m_tStudentInfo.iMagazine = 5;
+	m_tStudentInfo.iBullet = 5;
+	m_tStudentInfo.iRange = 5;
+	m_tStudentInfo.iShield = 0;
 
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;

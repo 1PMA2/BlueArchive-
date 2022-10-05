@@ -3,6 +3,7 @@
 #include "Student.h"
 #include "GameInstance.h"
 #include "Monster.h"
+#include "Student.h"
 
 CCamera_Main::CCamera_Main(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: CCamera(pDevice, pContext)
@@ -36,38 +37,47 @@ void CCamera_Main::Tick(_float fTimeDelta)
 
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
-	
-	CStudent* pStudent = nullptr;
 
-	//for (_int i = 0; i < 2; ++i)
-	//{
-	//	pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
-
-	//}
-
-	CMonster* pMonster = (CMonster*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), 0);
-	
-	if (0 == (CMonster*)pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Monster")))
+	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
 	{
-		int i = 0;
+		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
+		
+		CTransform* pTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));
+
+		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION);
+
+		_float fZLength = XMVectorGetZ(vTarget);
+
+		if (m_fMax < fZLength)
+		{
+			m_fMax = fZLength;
+			m_pStudent = pStudent;
+		}
+
+		if (m_fMin > fZLength)
+		{
+			m_fMin = fZLength;
+		}
 	}
 
+	m_fFovRatio = m_fMax - m_fMin;
 
-	pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), 0);
-
-	if (nullptr != pStudent)
+	m_fMax = 0.f;
+	m_fMin = 999.f;
+	if (nullptr != m_pStudent)
 	{
-		CTransform* pTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));
+		CTransform* pTransform = (CTransform*)m_pStudent->Get_Component(TEXT("Com_Transform"));
 
 		_vector vCamera = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
 
 		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION); //ÇÐ»ýÀ» º½
 
-		vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 0.5f, 1.f);
+		vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 2.f, 1.f);
 
-		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 1.f);
+		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 2.f);
 
 		_vector vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vLerp), XMVectorGetW(vCamera));
+
 
 		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vMainCamera);
 	}

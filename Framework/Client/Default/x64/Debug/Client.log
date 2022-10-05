@@ -1,13 +1,8 @@
-﻿  Run_ToHide.cpp
-  State.cpp
+﻿  Monster.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-  Run_ToKnee.cpp
-  Run.cpp
+  Knee_ZoomFire.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-  Loader.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-  ForkLift.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\forklift.cpp(176): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Knee_Idle.cpp
   코드를 생성하고 있습니다...
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

@@ -131,7 +131,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 			_vector		vLook = vTarget - vPosition;
 
-			pStudentTransform->LookAtLerp(vTarget, 5.f, fTimeDelta);
+			pStudentTransform->LookAtLerp(vTarget, 10.f, fTimeDelta);
 
 
 			if (m_fHideLength <= XMVectorGetX(XMVector3Length(vLook)))

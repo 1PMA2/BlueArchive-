@@ -10,11 +10,23 @@
 CKnee_Reload::CKnee_Reload(CStudent* pOwner)
 	:CState(pOwner)
 {
-	m_eAnim = ANIM_KNEERELOAD;
-	pOwner->Set_State(m_eAnim);
+	
+	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
-	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
-	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+	switch (pOwner->Get_StudentInfo().eStudent)
+	{
+	case ARU:
+		m_eAnim = ANIM_KNEERELOAD;
+		pOwner->Set_State(m_eAnim);
+		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		break;
+	case MUTSUKI:
+		pModel->Set_CurrentAnimation(14);
+		break;
+	case 2:
+		break;
+
+	}
 }
 
 void CKnee_Reload::Enter()

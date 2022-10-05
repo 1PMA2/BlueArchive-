@@ -24,7 +24,10 @@ public:
 	virtual void OnEnable() override;
 
 private:
-	_float m_fZ = 0.f;
+	class CStudent* m_pStudent = nullptr;
+	_float m_fFovRatio = 0.f;
+	_float m_fMin = 999.f;
+	_float m_fMax = 0.f;
 
 public:
 	static CCamera_Main* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);

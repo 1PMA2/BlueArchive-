@@ -12,11 +12,23 @@
 CKnee_ZoomStart::CKnee_ZoomStart(CStudent* pOwner)
 	:CState(pOwner)
 {
-	m_eAnim = ANIM_KNEEZOOMSTART;
-	pOwner->Set_State(m_eAnim);
 
-	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
-	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
+
+	switch (pOwner->Get_StudentInfo().eStudent)
+	{
+	case ARU:
+		m_eAnim = ANIM_KNEEZOOMSTART;
+		pOwner->Set_State(m_eAnim);
+		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		break;
+	case MUTSUKI:
+		pModel->Set_CurrentAnimation(11);
+		break;
+	case 2:
+		break;
+
+	}
 }
 
 void CKnee_ZoomStart::Enter()
