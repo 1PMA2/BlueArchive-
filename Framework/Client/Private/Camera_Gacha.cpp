@@ -71,7 +71,7 @@ void CCamera_Gacha::Tick(_float fTimeDelta)
 	_float fHeigth;
 	fHeigth = (XMVectorGetY((ParentMatrix.r[3])));
 	if (fHeigth < 2.2f)
-		MoveCamera();
+		MoveCamera(fTimeDelta);
 	else
 	{
 		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
@@ -93,7 +93,7 @@ void CCamera_Gacha::Tick(_float fTimeDelta)
 			this->Set_Fov(XMConvertToRadians(m_fOpenFov));
 
 			if (3.f > m_fOpenFov)
-				this->Set_Enable(false);
+				DISABLE(this);
 		}
 	}
 
@@ -121,7 +121,7 @@ void CCamera_Gacha::OnEnable()
 	
 }
 
-void CCamera_Gacha::MoveCamera()
+void CCamera_Gacha::MoveCamera(_float fTimeDelta)
 {
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
@@ -147,7 +147,7 @@ void CCamera_Gacha::MoveCamera()
 
 	if(fHeigth > 0.7f && fHeigth < 0.8f)
 	{
-		m_fFov -= 0.13f;
+		m_fFov -= 8.f * fTimeDelta;
 		this->Set_Fov(XMConvertToRadians(m_fFov));
 	}
 

@@ -41,7 +41,7 @@ HRESULT CMutsuki::Initialize(void * pArg)
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 10;
 	m_tStudentInfo.iBullet = 10;
-	m_tStudentInfo.fRange = 3.f;
+	m_tStudentInfo.fRange = 3.5f;
 	m_tStudentInfo.fReConRange = 5.f;
 	m_tStudentInfo.iShield = 0;
 

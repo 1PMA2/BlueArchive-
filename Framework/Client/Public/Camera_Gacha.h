@@ -52,7 +52,7 @@ private:
 	_bool m_bOnce = true;
 
 private:
-	void MoveCamera();
+	void MoveCamera(_float fTimeDelta);
 
 
 public:
