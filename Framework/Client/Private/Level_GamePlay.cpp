@@ -37,6 +37,9 @@ HRESULT CLevel_GamePlay::Initialize()
 	if (FAILED(Ready_Layer_Monster(TEXT("Layer_Monster"))))
 		return E_FAIL;
 
+	if (FAILED(Ready_Layer_Trigger(TEXT("Layer_Trigger"))))
+		return E_FAIL;
+
 	if (FAILED(Ready_Layer_Cover(TEXT("Layer_Cover"))))
 		return E_FAIL;
 
@@ -274,6 +277,16 @@ HRESULT CLevel_GamePlay::Ready_Layer_Monster(const _tchar * pLayerTag)
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Monster"), &vTranslation)))
 		return E_FAIL;
+
+
+	Safe_Release(pGameInstance);
+	return S_OK;
+}
+
+HRESULT CLevel_GamePlay::Ready_Layer_Trigger(const _tchar * pLayerTag)
+{
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+	Safe_AddRef(pGameInstance);
 
 
 	Safe_Release(pGameInstance);

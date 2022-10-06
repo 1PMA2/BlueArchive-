@@ -32,6 +32,8 @@ public:
 public:
 	_vector Get_MonsterTranslation() { return m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION); }
 	void Set_MinusHp(_int iAtk) { m_tMonsterInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1)); }
+	class CStudent*		FoundStudent();
+
 
 public:
 	virtual HRESULT Initialize_Prototype();
@@ -41,6 +43,11 @@ public:
 	virtual HRESULT Render();
 
 private:
+	vector<CStudent*>	m_Students;
+	typedef vector<CStudent*> STUDENTS;
+	CStudent* m_pTargetStudent = nullptr;
+	_float m_fMin = 9999.f;
+
 	MONSTERINFO				m_tMonsterInfo = {};
 	CShader*				m_pShaderCom = nullptr;
 	CRenderer*				m_pRendererCom = nullptr;

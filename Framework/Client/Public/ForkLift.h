@@ -35,6 +35,7 @@ private:
 	CRenderer*				m_pRendererCom = nullptr;		
 	CModel*					m_pModelCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
+	CCollider*				m_pMSphereCom = nullptr;
 	_bool					m_bUsed = false;
 	_bool					m_bExit = false;
 	_vector					m_vTranslation = {};
@@ -47,6 +48,7 @@ private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
 	void Collision_ToPlayer();
+	void Collision_ToMonster();
 	
 
 public:

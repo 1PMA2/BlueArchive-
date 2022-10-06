@@ -5,6 +5,7 @@
 #include "Monster_State.h"
 #include "M_Landing.h"
 #include "Sensei.h"
+#include "Student.h"
 
 CMonster::CMonster(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -16,6 +17,59 @@ CMonster::CMonster(const CMonster & rhs)
 {
 }
 
+CStudent * CMonster::FoundStudent()
+{
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+
+	_uint iStudentCount = pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student"));
+
+	_vector vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
+
+	if (0 >= iStudentCount)
+	{
+		return nullptr;
+	}
+
+	m_Students.clear();
+
+	for (_uint i = 0; i < iStudentCount; ++i)
+	{
+		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
+
+		CTransform* pStudentTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));
+
+		_vector vStudentTranslation = pStudentTransform->Get_State(CTransform::STATE_TRANSLATION);
+
+		_float fLength = XMVectorGetX(XMVector3Length(vStudentTranslation - vTranslation)); //학생과 모든 몬스터 사이의 거리 
+
+		if (m_tMonsterInfo.fRange > fLength) //레이어의 몬스터 검사 후 범위 내 몬스터 
+		{
+			m_Students.push_back(pStudent);
+		}
+	}
+	if (0 >= m_Students.size())
+		return nullptr;
+
+	m_fMin = 9999.f;
+
+	for (_uint i = 0; i < m_Students.size(); ++i)
+	{
+		CTransform* pStudentTransform = (CTransform*)m_Students.at(i)->Get_Component(TEXT("Com_Transform"));
+
+		_vector vMonsterTranslation = pStudentTransform->Get_State(CTransform::STATE_TRANSLATION);
+
+		_float fLength = XMVectorGetX(XMVector3Length(vMonsterTranslation - vTranslation));
+
+		if (m_fMin > fLength)
+		{
+			m_fMin = fLength;
+			m_pTargetStudent = m_Students.at(i);
+		}
+	}
+
+	return m_pTargetStudent;
+}
+
 HRESULT CMonster::Initialize_Prototype()
 {
 	return S_OK;
@@ -24,12 +78,12 @@ HRESULT CMonster::Initialize_Prototype()
 HRESULT CMonster::Initialize(void * pArg)
 {
 	CTransform::TRANSFORMDESC		TransformDesc;
-	TransformDesc.fSpeedPerSec = 5.f;
+	TransformDesc.fSpeedPerSec = 1.5f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
 	m_tMonsterInfo.iAtk = 10;
 	m_tMonsterInfo.iHp = 50;
-
+	m_tMonsterInfo.fRange = 4.f;
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;
 

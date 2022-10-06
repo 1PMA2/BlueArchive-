@@ -197,6 +197,10 @@ void CForkLift::Collision_ToPlayer()
 	}
 }
 
+void CForkLift::Collision_ToMonster()
+{
+}
+
 CForkLift * CForkLift::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 {
 	CForkLift*		pInstance = new CForkLift(pDevice, pContext);

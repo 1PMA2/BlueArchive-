@@ -28,6 +28,15 @@ CMonster_State * CM_Run::Loop(_float fTimeDelta)
 
 	pModel->Repeat_Animation(fTimeDelta);
 
+	
+
+	if (m_pOwner->FoundStudent()) //학생을 찾았음
+	{
+		
+	}
+	else
+		pTransform->Go_Backward(fTimeDelta);
+
 
 	return pState;
 }

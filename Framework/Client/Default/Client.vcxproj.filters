@@ -688,6 +688,9 @@
     <Filter Include="02.GameObject\01.State\Monster_State\M_Reload">
       <UniqueIdentifier>{9c3b39cf-7c1a-4da1-bc40-abb05b500054}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.GameObject\00.Monster\Monster_Trigger">
+      <UniqueIdentifier>{dd256fcf-fd15-450d-bceb-639328961f80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
