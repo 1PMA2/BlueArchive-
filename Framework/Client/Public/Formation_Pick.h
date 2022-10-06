@@ -17,8 +17,10 @@ public:
 	virtual void Exit() override;
 
 private:
+	FORMATION m_eCurrentFormation = FORMATION_END;
+	FORMATION m_ePreFormation = FORMATION_END;
 	_vector m_vPreTranslation = {};
-
+	_vector m_vCurrentTranslation = {};
 public:
 	static CFormation_Pick* Create(CStudent* pOwner);
 };

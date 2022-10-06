@@ -202,13 +202,12 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student(const _tchar * pLayerTag)
 	CSensei* pSensei = CSensei::Get_Instance();
 
 	/* For.Player */
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag,
-		pSensei->Get_Student(TEXT("Aru"))->Get_StudentInfo().pName)))
-		return E_FAIL;
-
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag,
-		pSensei->Get_Student(TEXT("Mutsuki"))->Get_StudentInfo().pName)))
-		return E_FAIL;
+	for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
+	{
+		if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag,
+			pSensei->Get_FormationInfo(i).pName)))
+			return E_FAIL;
+	}
 
 	Safe_Release(pGameInstance);
 
@@ -223,6 +222,9 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student_Ex(const _tchar * pLayerTag)
 	/* For.Player */
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Aru_Ex"))))
 		return E_FAIL;
+
+	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Mutsuki_Ex"))))
+	//	return E_FAIL;
 
 	Safe_Release(pGameInstance);
 

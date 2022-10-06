@@ -21,9 +21,7 @@ CEx::CEx(CStudent* pOwner)
 
 void CEx::Enter()
 {
-	CSensei* pSensei = GET_SENSEI;
-
-	pSensei->Use_Ex(false);
+	
 }
 
 CState * CEx::Loop(_float fTimeDelta)

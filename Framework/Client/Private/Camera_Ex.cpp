@@ -100,17 +100,15 @@ void CCamera_Ex::MoveCamera(_float fTimeDelta)
 	ParentMatrix.r[1] = XMVector3Normalize(ParentMatrix.r[1]);
 	ParentMatrix.r[2] = XMVector3Normalize(ParentMatrix.r[2]);
 
-
 	_matrix		ParentTargetMatrix = m_pTargetBonePtr->Get_OffsetMatrix() * m_pTargetBonePtr->Get_CombinedMatrix() * m_pTargetBonePtr->Get_TransformMatrix();
 	ParentTargetMatrix.r[0] = XMVector3Normalize(ParentTargetMatrix.r[0]);
 	ParentTargetMatrix.r[1] = XMVector3Normalize(ParentTargetMatrix.r[1]);
 	ParentTargetMatrix.r[2] = XMVector3Normalize(ParentTargetMatrix.r[2]);
 
 	_float fFov;
-	fFov = XMVectorGetX(XMVector3Length(ParentMatrix.r[3]));
-	fFov = 0.65f / fFov;
-	this->Set_Fov(fFov);
-
+	fFov = XMConvertToRadians(fabs(XMVectorGetX(XMVector3Length((ParentMatrix.r[3] - ParentTargetMatrix.r[3])))) + 20.f);
+	
+	m_CameraDesc.fFovy = fFov * 0.85f;
 
 	XMStoreFloat4x4(&m_WorldMatrix, ParentMatrix * m_pTargetTransform->Get_WorldMatrix());
 	XMStoreFloat4x4(&m_TargetWorldMatrix, ParentTargetMatrix * m_pTargetTransform->Get_WorldMatrix());
@@ -118,6 +116,8 @@ void CCamera_Ex::MoveCamera(_float fTimeDelta)
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_TRANSLATION]);
 
 	m_pTransformCom->LookAt(XMLoadFloat4x4(&m_TargetWorldMatrix).r[CTransform::STATE_TRANSLATION]);
+
+	//m_pTransformCom->LookAtLerp(XMLoadFloat4x4(&m_TargetWorldMatrix).r[CTransform::STATE_TRANSLATION], 3.f, fTimeDelta);
 }
 
 CCamera_Ex * CCamera_Ex::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)

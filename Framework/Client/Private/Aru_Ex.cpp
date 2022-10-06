@@ -29,19 +29,8 @@ HRESULT CAru_Ex::Initialize(void * pArg)
 	TransformDesc.fSpeedPerSec = 1.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	
-	m_tStudentInfo.fFireSpeed = 0.5f;
 	m_tStudentInfo.eAnim = ANIM_EX;
 	m_tStudentInfo.eFormation = FORMATION_FIRST;
-	m_tStudentInfo.iAtk = 10;
-	m_tStudentInfo.iDef = 0;
-	m_tStudentInfo.iEx = 50;
-	m_tStudentInfo.fExCost = 4.f;
-	m_tStudentInfo.iHp = 100;
-	m_tStudentInfo.iMagazine = 5;
-	m_tStudentInfo.iBullet = 5;
-	m_tStudentInfo.fRange = 10;
-	m_tStudentInfo.iShield = 0;
 
 
 	if (FAILED(SetUp_Components()))

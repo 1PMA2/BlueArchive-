@@ -50,8 +50,6 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	
-
 	if (m_pOwner->Get_StudentInfo().bExModel)
 	{
 		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), m_pOwner->Get_StudentInfo().eFormation);
@@ -64,6 +62,7 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 				
 				if (pModel->Get_isFinished())
 				{
+					pSensei->Use_Ex(false);
 					pState = CEx_Cutin::Create(m_pOwner);
 				}
 			}

@@ -214,6 +214,7 @@
     <ClInclude Include="..\Public\Monster_State.h" />
     <ClInclude Include="..\Public\Monster_Trigger.h" />
     <ClInclude Include="..\Public\Mutsuki.h" />
+    <ClInclude Include="..\Public\Mutsuki_Ex.h" />
     <ClInclude Include="..\Public\M_AtkIng.h" />
     <ClInclude Include="..\Public\M_AtkStart.h" />
     <ClInclude Include="..\Public\M_Landing.h" />
@@ -285,6 +286,7 @@
     <ClCompile Include="..\Private\Monster_State.cpp" />
     <ClCompile Include="..\Private\Monster_Trigger.cpp" />
     <ClCompile Include="..\Private\Mutsuki.cpp" />
+    <ClCompile Include="..\Private\Mutsuki_Ex.cpp" />
     <ClCompile Include="..\Private\M_AtkIng.cpp" />
     <ClCompile Include="..\Private\M_AtkStart.cpp" />
     <ClCompile Include="..\Private\M_Landing.cpp" />

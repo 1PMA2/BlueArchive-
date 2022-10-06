@@ -16,6 +16,7 @@
 #include "Aru.h"
 #include "Aru_Ex.h"
 #include "Mutsuki.h"
+#include "Mutsuki_Ex.h"
 //#include "Effect.h"
 #include "Sky.h"
 #include "Sensei.h"
@@ -474,13 +475,12 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CSky::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
-		///* For.Prototype_GameObject_Student */
-		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Aru"),
-		//	CAru::Create(m_pDevice, m_pContext))))
-		//	return E_FAIL;
-
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Aru_Ex"),
 			CAru_Ex::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Mutsuki_Ex"),
+			CMutsuki_Ex::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Main"),
@@ -556,6 +556,12 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru_Ex"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru_Ex.fbx", TransformMatrix))))
+			return E_FAIL;
+
+		ZeroMemory(&TransformMatrix, sizeof(_matrix));
+		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Mutsuki_Ex"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Mutsuki/", "Mutsuki_Ex.fbx", TransformMatrix))))
 			return E_FAIL;
 
 		ZeroMemory(&TransformMatrix, sizeof(_matrix));

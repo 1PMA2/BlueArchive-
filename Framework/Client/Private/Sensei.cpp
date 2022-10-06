@@ -100,47 +100,7 @@ void CSensei::Set_TimeSpeed()
 void CSensei::Formation_Level(_float fTimeDelta)
 {
 
-	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-	CSensei* pSensei = GET_SENSEI;
-
-	_vector vPreTranslation;
-
-	////////////////////////////////////////////////////////////
-	pSensei->Set_FormationInfo();
-
-	for (_uint i = 0; i < pSensei->Get_FormationStudentsNum(); ++i)
-	{
-		CStudent* pStudent = pSensei->Get_FormationStudents(i);
-
-		CTransform* pTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));
-
-		if (0 < pSensei->Get_FormationInfoSize())
-		{
-			for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
-			{
-				if (pSensei->Get_FormationInfo(i).eStudent == pStudent->Get_StudentInfo().eStudent)
-				{
-					switch (pSensei->Get_FormationInfo(i).eFormation)
-					{
-					case FORMATION_FIRST:
-						vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
-						break;
-					case FORMATION_SECOND:
-						vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
-						break;
-					case FORMATION_THIRD:
-						vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
-						break;
-					case FORMATION_FOURTH:
-						vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
-						break;
-					}
-				}
-			}
-		}
-
-
-	}
+	
 }
 
 void CSensei::Tick_Cost(_float fTimeDelta)
@@ -166,9 +126,15 @@ CStudent * CSensei::Get_FormationStudents(_uint iIndex)
 	return (*iter);
 }
 
-void CSensei::Set_FormationInfo()
+void CSensei::Clear_FormationInfo()
 {
 	m_FormationsInfo.clear();
+}
+
+void CSensei::Set_FormationInfo(CStudent* pStudent)
+{
+	m_FormationsInfo.push_back(pStudent->Get_StudentInfo());
+	/*m_FormationsInfo.clear();
 
 	auto	iter = m_Formations.begin();
 
@@ -176,7 +142,7 @@ void CSensei::Set_FormationInfo()
 	{
 		m_FormationsInfo.push_back((*iter)->Get_StudentInfo());
 		++iter;
-	}
+	}*/
 }
 
 CStudent::STUDENTINFO CSensei::Get_FormationInfo(_uint iIndex)

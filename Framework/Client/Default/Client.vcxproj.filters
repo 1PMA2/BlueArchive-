@@ -217,6 +217,9 @@
     <ClInclude Include="..\Public\Droid_Dead.h">
       <Filter>02.GameObject\00.Monster\Monster_Droid\Droid_Dead</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Mutsuki_Ex.h">
+      <Filter>02.GameObject\00.Student\01. Mutsuki\Mutsuki_Ex</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -422,6 +425,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Droid_Dead.cpp">
       <Filter>02.GameObject\00.Monster\Monster_Droid\Droid_Dead</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Mutsuki_Ex.cpp">
+      <Filter>02.GameObject\00.Student\01. Mutsuki\Mutsuki_Ex</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -729,6 +735,9 @@
     </Filter>
     <Filter Include="02.GameObject\00.Monster\Monster_Droid\Monster_Trigger">
       <UniqueIdentifier>{dd256fcf-fd15-450d-bceb-639328961f80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Student\01. Mutsuki\Mutsuki_Ex">
+      <UniqueIdentifier>{1922aa6c-b6ce-4b32-affc-60b151a2a082}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

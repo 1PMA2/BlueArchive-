@@ -109,7 +109,8 @@ public:
 	void Release_FormationStudents() { m_Formations.clear(); }
 
 public:
-	void Set_FormationInfo();
+	void Clear_FormationInfo();
+	void Set_FormationInfo(CStudent* pStudent);
 	_uint Get_FormationInfoSize() { return (_uint)m_FormationsInfo.size(); }
 	CStudent::STUDENTINFO Get_FormationInfo(_uint iIndex);
 

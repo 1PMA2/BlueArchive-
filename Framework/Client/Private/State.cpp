@@ -4,6 +4,7 @@
 #include "Student.h"
 #include "Monster.h"
 #include "ForkLift.h"
+#include "Collider.h"
 
 CState::CState(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
 	:m_pOwner(pOwner), m_pTarget(pTarget), m_pCover(pCover)
@@ -22,5 +23,7 @@ void CState::Set_State(ANIM eState)
 
 CState * CState::Loop(_float fTimeDelta)
 {
+	
+
 	return nullptr;
 }

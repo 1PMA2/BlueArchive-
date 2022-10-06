@@ -40,33 +40,51 @@ void CLevel_Formation::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
 
+	CSensei* pSensei = GET_SENSEI;
+
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+
+
+
 	if (KEY(ENTER,TAP))
 	{
-		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-		Safe_AddRef(pGameInstance);
-		CSensei* pSensei = GET_SENSEI;
 
 		pSensei->Set_PreLevel(LEVEL_FORMATION);
+
+		pSensei->Clear_FormationInfo();
+		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_FORMATION, TEXT("Layer_Formation_Student")); ++i)
+		{
+			CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_Student"), i);
+
+			if (FORMATION_END != pStudent->Get_StudentInfo().eFormation)
+			{
+				pSensei->Set_FormationInfo(pStudent);
+			}
+		}
 
 		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GAMEPLAY))))
 			return;
 
-		Safe_Release(pGameInstance);
 	}
 
-	CSensei* pSensei = GET_SENSEI;
 
 	if (pSensei->Get_OpenLobbyLevel())
 	{
 		pSensei->Set_PreLevel(LEVEL_FORMATION);
 
-		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-		Safe_AddRef(pGameInstance);
+		pSensei->Clear_FormationInfo();
+		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_FORMATION, TEXT("Layer_Formation_Student")); ++i)
+		{
+			CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_Student"), i);
+
+			if (FORMATION_END != pStudent->Get_StudentInfo().eFormation)
+			{
+				pSensei->Set_FormationInfo(pStudent);
+			}
+		}
 
 		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
 			return;
-
-		Safe_Release(pGameInstance);
 
 		pSensei->Set_OpenLobbyLevel(false);
 	}

@@ -15,6 +15,26 @@ CFormation_Pick::CFormation_Pick(CStudent* pOwner)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+
+	switch (m_pOwner->Get_StudentInfo().eFormation)
+	{
+	case FORMATION_FIRST:
+		m_ePreFormation = FORMATION_FIRST;
+		m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+		break;
+	case FORMATION_SECOND:
+		m_ePreFormation = FORMATION_SECOND;
+		m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+		break;
+	case FORMATION_THIRD:
+		m_ePreFormation = FORMATION_THIRD;
+		m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+		break;
+	case FORMATION_FOURTH:
+		m_ePreFormation = FORMATION_FOURTH;
+		m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+		break;
+	}
 }
 
 void CFormation_Pick::Enter()
@@ -25,73 +45,84 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 {
 	CState* pState = nullptr;
 
-	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-
-	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
-
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
 	pModel->Repeat_Animation(fTimeDelta);
 
-	_float4 fOut;
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-	pGameInstance->Picking((CVIBuffer*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_VIBuffer"), 0),
-		(CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 0), &fOut);
-
-	fOut.y -= 0.5f; // offset
-	pTransform->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4(&fOut));
-
-	if (-0.5f < fOut.y && 1.f > fOut.y)
-	{
-		if (1.f <= fOut.x)
-		{
-			m_pOwner->Set_Formation(FORMATION_FIRST);
-			m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
-		}
-		else if (1.f > fOut.x && 0.f <= fOut.x)
-		{
-			m_pOwner->Set_Formation(FORMATION_SECOND);
-			m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
-		}
-		else if (0.f > fOut.x && -1.f <= fOut.x)
-		{
-			m_pOwner->Set_Formation(FORMATION_THIRD);
-			m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
-		}
-		else if (-1.f > fOut.x)
-		{
-			m_pOwner->Set_Formation(FORMATION_FOURTH);
-			m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
-		}
-	}  //포메이션 위치
-	else
-	{
-		FORMATION eFormation = m_pOwner->Get_StudentInfo().eFormation;
-		
-		switch (eFormation)
-		{
-		case FORMATION_FIRST:
-			m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_SECOND:
-			m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_THIRD:
-			m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_FOURTH:
-			m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
-			break;
-		}
-	}
+	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
 	if (KEY(LBUTTON, HOLD))
 	{
-		
+		_float4 fOut;
+
+		pGameInstance->Picking((CVIBuffer*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_VIBuffer"), 0),
+			(CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 0), &fOut);
+
+		fOut.y -= 0.5f; // offset
+		pTransform->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4(&fOut));
+
+		if (-0.5f < fOut.y && 1.f > fOut.y)
+		{
+			if (1.f <= fOut.x)
+			{
+				m_pOwner->Set_Formation(FORMATION_FIRST);
+				m_eCurrentFormation = FORMATION_FIRST;
+				m_vCurrentTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+			}
+			else if (1.f > fOut.x && 0.f <= fOut.x)
+			{
+				m_pOwner->Set_Formation(FORMATION_SECOND);
+				m_eCurrentFormation = FORMATION_SECOND;
+				m_vCurrentTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+			}
+			else if (0.f > fOut.x && -1.f <= fOut.x)
+			{
+				m_pOwner->Set_Formation(FORMATION_THIRD);
+				m_eCurrentFormation = FORMATION_THIRD;
+				m_vCurrentTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+			}
+			else if (-1.f > fOut.x)
+			{
+				m_pOwner->Set_Formation(FORMATION_FOURTH);
+				m_eCurrentFormation = FORMATION_FOURTH;
+				m_vCurrentTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+			}
+
+
+		}  //포메이션 위치
+		else
+		{
+			m_vCurrentTranslation = m_vPreTranslation;
+		}
 	}
 	else
 	{
-		pTransform->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation);
+
+		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_FORMATION, TEXT("Layer_Formation_Student")); ++i)
+		{
+			CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_Student"), i);
+			if (pStudent != m_pOwner)
+			{
+				CCollider* pAABB = (CCollider*)pStudent->Get_Component(TEXT("Com_AABB"));
+				CCollider* pOwnerAABB = (CCollider*)m_pOwner->Get_Component(TEXT("Com_AABB"));
+
+				if (pOwnerAABB->Collision(pAABB))
+				{
+					CTransform* pTargetTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));
+					pStudent->Set_Formation(m_ePreFormation);
+					pTargetTransform->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation);
+					break;
+				}
+
+			}
+		}
+		CSensei* pSensei = GET_SENSEI;
+
+		pSensei->Clear_FormationInfo();
+
+		pTransform->Set_State(CTransform::STATE_TRANSLATION, m_vCurrentTranslation);
 		pState = CFormation_Idle::Create(m_pOwner);
 	}
 
