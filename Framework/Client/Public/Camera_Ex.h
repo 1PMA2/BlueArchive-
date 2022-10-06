@@ -51,7 +51,7 @@ private:
 	class CTransform*		m_pTargetTransform = nullptr;
 
 private:
-	void MoveCamera();
+	void MoveCamera(_float fTimeDelta);
 
 
 public:

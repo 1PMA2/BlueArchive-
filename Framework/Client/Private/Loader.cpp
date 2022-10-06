@@ -320,7 +320,7 @@ HRESULT CLoader::Loading_ForGachaScene()
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 	//
-	lstrcpy(m_szLoadingText, TEXT("model"));
+	lstrcpy(m_szLoadingText, TEXT("New Student!!"));
 	_matrix			TransformMatrix;
 
 	CSensei* pSensei = GET_SENSEI;

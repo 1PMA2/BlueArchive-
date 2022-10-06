@@ -25,9 +25,15 @@ public:
 
 private:
 	class CStudent* m_pStudent = nullptr;
+	_vector m_vMaxFov = {};
+	_vector m_vCurrentFov = {};
 	_float m_fFovRatio = 0.f;
 	_float m_fMin = 999.f;
 	_float m_fMax = 0.f;
+
+private:
+	void Move_Camera(_float fTimeDelta);
+	void Set_Fov(_float fTimeDelta);
 
 public:
 	static CCamera_Main* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);

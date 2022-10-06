@@ -49,7 +49,7 @@ HRESULT CMonster_Trigger::Initialize(void * pArg)
 
 void CMonster_Trigger::Tick(_float fTimeDelta)
 {
-	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
+	m_pAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
 }
 
 void CMonster_Trigger::LateTick(_float fTimeDelta)
@@ -65,7 +65,7 @@ HRESULT CMonster_Trigger::Render()
 
 
 #ifdef _DEBUG
-	m_pSphereCom->Render();
+	m_pAABBCom->Render();
 #endif // _DEBUG
 
 	return S_OK;
@@ -94,7 +94,7 @@ HRESULT CMonster_Trigger::SetUp_Components()
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
-	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"), TEXT("Com_AABB"), (CComponent**)&m_pAABBCom, &ColliderDesc)))
 		return E_FAIL;
 
 	return S_OK;
@@ -131,7 +131,7 @@ void CMonster_Trigger::Free()
 	__super::Free();
 
 
-	Safe_Release(m_pSphereCom);
+	Safe_Release(m_pAABBCom);
 	Safe_Release(m_pRendererCom);
 
 

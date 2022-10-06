@@ -38,7 +38,7 @@ void CCamera_Ex::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
 
-	MoveCamera();
+	MoveCamera(fTimeDelta);
 
 	if (FAILED(Bind_PipeLine()))
 		return;
@@ -88,7 +88,7 @@ void CCamera_Ex::OnEnable()
 	RELEASE_INSTANCE(CGameInstance);
 }
 
-void CCamera_Ex::MoveCamera()
+void CCamera_Ex::MoveCamera(_float fTimeDelta)
 {
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 

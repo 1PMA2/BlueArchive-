@@ -28,6 +28,9 @@ HRESULT CCamera_Main::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(pArg)))
 		return E_FAIL;
 
+	m_vMaxFov = XMVectorSet(0.f, 0.f, m_CameraDesc.fFovy, 1.f);
+	m_vCurrentFov = XMVectorSet(0.f, 0.f, m_CameraDesc.fFovy, 1.f);
+
 	return S_OK;
 }
 
@@ -35,57 +38,7 @@ void CCamera_Main::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
 
-	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-	Safe_AddRef(pGameInstance);
-
-	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
-	{
-		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
-		
-		CTransform* pTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));
-
-		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION);
-
-		_float fZLength = XMVectorGetZ(vTarget);
-
-		if (m_fMax < fZLength)
-		{
-			m_fMax = fZLength;
-			m_pStudent = pStudent;
-		}
-
-		if (m_fMin > fZLength)
-		{
-			m_fMin = fZLength;
-		}
-	}
-
-	m_fFovRatio = m_fMax - m_fMin;
-
-	m_fMax = 0.f;
-	m_fMin = 999.f;
-	if (nullptr != m_pStudent)
-	{
-		CTransform* pTransform = (CTransform*)m_pStudent->Get_Component(TEXT("Com_Transform"));
-
-		_vector vCamera = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
-
-		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION); //학생을 봄
-
-		vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 2.f, 1.f);
-
-		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 2.f);
-
-		_vector vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vLerp), XMVectorGetW(vCamera));
-
-
-		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vMainCamera);
-	}
-
-
-	
-
-	Safe_Release(pGameInstance);
+	Move_Camera(fTimeDelta);
 
 	if (FAILED(Bind_PipeLine()))
 		return;
@@ -107,6 +60,83 @@ void CCamera_Main::OnDisable()
 
 void CCamera_Main::OnEnable()
 {
+}
+
+void CCamera_Main::Move_Camera(_float fTimeDelta)
+{
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+	Safe_AddRef(pGameInstance);
+
+	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
+	{
+		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
+
+		CTransform* pTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));
+
+		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION);
+
+		_float fZLength = XMVectorGetZ(vTarget);
+
+		if (m_fMax < fZLength)
+		{
+			m_fMax = fZLength;
+			m_pStudent = pStudent;
+		}
+
+		if (m_fMin > fZLength)
+		{
+			m_fMin = fZLength;
+		}
+	}
+
+	m_fFovRatio = fabs(m_fMax - m_fMin);
+
+
+
+	m_fMax = 0.f;
+	m_fMin = 999.f;
+
+	if (nullptr != m_pStudent)
+	{
+		Set_Fov(fTimeDelta);
+
+		CTransform* pTransform = (CTransform*)m_pStudent->Get_Component(TEXT("Com_Transform"));
+
+		_vector vCamera = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
+
+		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION); //학생을 봄
+
+		vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 4.f, 1.f);
+
+		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 2.f);
+
+		_vector vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vLerp), XMVectorGetW(vCamera));
+
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vMainCamera);
+	}
+
+
+
+
+	Safe_Release(pGameInstance);
+}
+
+void CCamera_Main::Set_Fov(_float fTimeDelta)
+{
+	if (2.f < m_fFovRatio)//맨앞, 맨뒤 사이의 거리
+	{
+		_vector vFovy = XMVectorSet(0.f, 0.f, XMConvertToRadians(35.f), 1.f); //목표
+
+		m_vCurrentFov = XMVectorLerp(m_vCurrentFov, vFovy, fTimeDelta);
+
+		Set_Fov((XMVectorGetZ(m_vCurrentFov)));
+	}
+	else
+	{
+		m_vCurrentFov = XMVectorLerp(m_vCurrentFov, m_vMaxFov, fTimeDelta);
+
+		Set_Fov((XMVectorGetZ(m_vCurrentFov)));
+	}
 }
 
 CCamera_Main * CCamera_Main::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)

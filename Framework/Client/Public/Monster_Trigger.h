@@ -27,7 +27,7 @@ public:
 
 private:
 	CRenderer*				m_pRendererCom = nullptr;
-	CCollider*				m_pSphereCom = nullptr;
+	CCollider*				m_pAABBCom = nullptr;
 
 public:
 	virtual void OnDisable() override;
@@ -35,7 +35,6 @@ public:
 
 private:
 	HRESULT SetUp_Components();
-	HRESULT SetUp_ShaderResource();
 
 
 public:
