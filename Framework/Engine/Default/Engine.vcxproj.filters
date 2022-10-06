@@ -131,6 +131,12 @@
     <ClInclude Include="..\public\Collider.h">
       <Filter>01.Utility\03.Component\05.Collider</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\RenderTarget.h">
+      <Filter>01.Utility\08.RenderTarget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Target_Manager.h">
+      <Filter>01.Utility\08.RenderTarget\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Base.cpp">
@@ -246,6 +252,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\Event_Manager.cpp">
       <Filter>01.Utility\07.Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\RenderTarget.cpp">
+      <Filter>01.Utility\08.RenderTarget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Target_Manager.cpp">
+      <Filter>01.Utility\08.RenderTarget\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -369,8 +381,22 @@
     <Filter Include="01.Utility\07.Event">
       <UniqueIdentifier>{03b8a611-dca5-4c83-806b-4d6ec7d46e65}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Utility\08.RenderTarget">
+      <UniqueIdentifier>{ffc0d9ea-413d-45a9-b1dd-2939f1bc7a5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\08.RenderTarget\Manager">
+      <UniqueIdentifier>{d6e42a65-2e98-477f-8db5-a8a25f587695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\03.Component\00.Renderer\Shader">
+      <UniqueIdentifier>{8555b8e0-6ba5-45d4-8a14-192bc7783775}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\..\Client\Bin\ShaderFiles\Shader_Deferred.hlsl">
+      <Filter>01.Utility\03.Component\00.Renderer\Shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

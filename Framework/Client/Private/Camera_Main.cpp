@@ -108,7 +108,7 @@ void CCamera_Main::Move_Camera(_float fTimeDelta)
 
 		vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 4.f, 1.f);
 
-		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 2.f);
+		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 1.f);
 
 		_vector vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vLerp), XMVectorGetW(vCamera));
 

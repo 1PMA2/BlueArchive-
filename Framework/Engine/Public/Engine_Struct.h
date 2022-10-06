@@ -22,7 +22,7 @@ namespace Engine
 		XMFLOAT4		vDirection;
 
 		XMFLOAT4		vPosition;
-		float			fRange;		
+		float			fRange;
 
 		XMFLOAT4		vDiffuse;
 		XMFLOAT4		vAmbient;
@@ -58,7 +58,7 @@ namespace Engine
 	}FACEINDICES16;
 
 	typedef struct tagModelMaterial
-	{		
+	{
 		class CTexture*		pTextures[AI_TEXTURE_TYPE_MAX];
 	}MODEL_MATERIAL;
 
@@ -77,18 +77,59 @@ namespace Engine
 
 
 	typedef struct tagVertex_Texture
-	{		
+	{
 		XMFLOAT3		vPosition;
-		XMFLOAT2		vTexUV;				
-	}VTXTEX;	
-
+		XMFLOAT2		vTexUV;
+	}VTXTEX;
 
 	typedef struct ENGINE_DLL tagVertex_Texture_Declaration
 	{
 		static const unsigned int		iNumElements = 2;
 		static const D3D11_INPUT_ELEMENT_DESC	Element[iNumElements];
 	} VTXTEX_DECLARATION;
-	
+
+	typedef struct tagVertex_Point
+	{
+		XMFLOAT3		vPosition;
+		XMFLOAT2		vPSize;
+	}VTXPOINT;
+
+	typedef struct tagVertex_Instance
+	{
+		XMFLOAT4			vRight;
+		XMFLOAT4			vUp;
+		XMFLOAT4			vLook;
+		XMFLOAT4			vTranslation;
+	}VTXINSTANCE;
+
+	typedef struct ENGINE_DLL tagVertex_Point_Instance_Declaration
+	{
+		static const unsigned int		iNumElements = 6;
+		static const D3D11_INPUT_ELEMENT_DESC	Element[iNumElements];
+	}VTXPOINT_INSTANCE_DECLARATION;
+
+	typedef struct ENGINE_DLL tagVertex_Texture_Instance_Declaration
+	{
+		static const unsigned int		iNumElements = 6;
+		static const D3D11_INPUT_ELEMENT_DESC	Element[iNumElements];
+	} VTXTEX_INSTANCE_DECLARATION;
+
+
+
+	typedef struct tagVertex_Position
+	{
+		XMFLOAT3		vPosition;
+	}VTXPOS;
+
+	typedef struct ENGINE_DLL tagVertex_Position_Declaration
+	{
+		static const unsigned int		iNumElements = 1;
+		static const D3D11_INPUT_ELEMENT_DESC	Element[iNumElements];
+	} VTXPOS_DECLARATION;
+
+
+
+
 	typedef struct tagVertex_Model
 	{
 		XMFLOAT3		vPosition;
@@ -137,7 +178,7 @@ namespace Engine
 	{
 		enum WINMODE { MODE_FULL, MODE_WIN, MODE_END };
 
-		unsigned int iWinCX, iWinCY; 
+		unsigned int iWinCX, iWinCY;
 		HWND	hWnd;
 		WINMODE	isWindowMode;
 	}GRAPHICDESC;

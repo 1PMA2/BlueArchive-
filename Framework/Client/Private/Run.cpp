@@ -182,6 +182,8 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 void CRun::Find_Cover()
 {
+	if (nullptr != m_pTargetCover)
+		return;
 
 	m_TargetCovers.clear();
 

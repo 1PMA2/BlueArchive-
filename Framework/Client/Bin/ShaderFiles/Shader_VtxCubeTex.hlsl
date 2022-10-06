@@ -70,7 +70,7 @@ PS_OUT PS_MAIN_SKY(PS_IN In)
 
 	Out.vColor = g_DiffuseTexture.Sample(DefaultSampler, In.vTexUV);
 
-	Out.vColor.a = 0.5f;
+	//Out.vColor.a = 0.5f;
 
 	return Out;	
 }
