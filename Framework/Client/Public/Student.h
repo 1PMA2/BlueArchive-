@@ -57,16 +57,7 @@ public:
 	void		Set_State(ANIM eANIM) { m_tStudentInfo.eAnim = eANIM; }
 	void		Set_Formation(FORMATION eFormation) { m_tStudentInfo.eFormation = eFormation; }
 
-	void		Reset_Monsters() { m_Monsters.clear(); }
-	void		In_RangeMonsters(CMonster* pMonster) { m_Monsters.push_back(pMonster); }
-	_uint		Get_InRangeMonsters() { return (_uint)m_Monsters.size(); }
-	CMonster*		Get_InRangeMonster(_uint iIndex) { return m_Monsters.at((size_t)iIndex); }
-
-
-	_bool		Is_Picked() { return m_bPicked; }
 	CMonster*		FoundMonster();
-	_bool		FoundObstacle() { return m_bFoundObstacle; }
-	void		Set_Cover(_bool bCover) { m_bFoundObstacle = bCover; }
 
 public:
 	virtual HRESULT Initialize(void* pArg);
@@ -90,7 +81,6 @@ protected:
 	_float					m_fMin = 9999.f;
 
 	_bool					m_bFoundObstacle = false;
-	_bool					m_bSetted = false;
 	_vector					m_vPreTranslation = {};
 
 	vector<CMonster*>	m_Monsters;

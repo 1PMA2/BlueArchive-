@@ -70,8 +70,12 @@ public:
 	_tchar* Get_NewStudent() { return m_pNewStudent; }
 	void Set_NewStudent(_tchar* pStudentTag) { m_pNewStudent = pStudentTag; }
 
+public:
+	void Set_ExReady() { m_bExReady = (m_bExReady) ? (false) : (true); }
+	_bool Get_ExReady() { return m_bExReady; }
 
-
+private:
+	_bool m_bExReady = false;
 	
 
 private:

@@ -71,7 +71,6 @@ CState * CRifle_Fire::Loop(_float fTimeDelta)
 	{
 		if (nullptr == pMonster)
 		{
-			m_pOwner->Set_Cover(false);
 			pState = CRun::Create(m_pOwner);
 		}
 		else if (0 < m_pOwner->Get_StudentInfo().iBullet)

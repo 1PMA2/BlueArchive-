@@ -63,7 +63,7 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 		fOut.y -= 0.5f; // offset
 		pTransform->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4(&fOut));
 
-		if (-0.5f < fOut.y && 1.f > fOut.y)
+		if (-1.0f <= fOut.y && 1.f > fOut.y)
 		{
 			if (1.f <= fOut.x)
 			{
@@ -105,8 +105,8 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 			CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_Student"), i);
 			if (pStudent != m_pOwner)
 			{
-				CCollider* pAABB = (CCollider*)pStudent->Get_Component(TEXT("Com_AABB"));
 				CCollider* pOwnerAABB = (CCollider*)m_pOwner->Get_Component(TEXT("Com_AABB"));
+				CCollider* pAABB = (CCollider*)pStudent->Get_Component(TEXT("Com_AABB"));
 
 				if (pOwnerAABB->Collision(pAABB))
 				{

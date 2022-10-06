@@ -106,15 +106,6 @@ void CStudent::Tick(_float fTimeDelta)
 
 void CStudent::LateTick(_float fTimeDelta)
 {
-	/*if (m_pAABBCom->CollisionRay())
-	{
-		if(KEY(LBUTTON, TAP))
-		{
-			CSensei* pSensei = GET_SENSEI;
-			pSensei->
-		}
-	}*/
-
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 }
 
@@ -195,6 +186,7 @@ HRESULT CStudent::FormationLevel_Collision()
 
 HRESULT CStudent::GamePlayLevel_Collision()
 {
+	
 	
 
 	return S_OK;

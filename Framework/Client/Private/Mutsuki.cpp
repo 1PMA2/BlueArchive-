@@ -34,7 +34,7 @@ HRESULT CMutsuki::Initialize(void * pArg)
 	
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
 	m_tStudentInfo.eFormation = FORMATION_SECOND;
-	m_tStudentInfo.iAtk = 5;
+	m_tStudentInfo.iAtk = 15;
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.iEx = 30;
 	m_tStudentInfo.fExCost = 4.f;
@@ -45,6 +45,7 @@ HRESULT CMutsuki::Initialize(void * pArg)
 	m_tStudentInfo.fReConRange = 10.f;
 	m_tStudentInfo.iShield = 0;
 
+	m_bExReady = false;
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
@@ -117,7 +118,7 @@ HRESULT CMutsuki::SetUp_Components()
 	/* For.Com_SPHERE */
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(1.f, 1.f, 1.f);
+	ColliderDesc.vScale = _float3(0.5f, 0.5f, 0.5f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
@@ -149,8 +150,18 @@ HRESULT CMutsuki::FormationLevel_Collision()
 
 HRESULT CMutsuki::GamePlayLevel_Collision()
 {
-
+	__super::GamePlayLevel_Collision();
 	
+
+	if (m_pAABBCom->CollisionRay())
+	{
+		CSensei* pSensei = GET_SENSEI;
+		if (KEY(LBUTTON, TAP))
+		{
+			pSensei->Set_ExReady();
+		}
+	}
+
 	return S_OK;
 }
 

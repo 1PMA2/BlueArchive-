@@ -517,9 +517,6 @@
     <Filter Include="02.GameObject\07.Sky">
       <UniqueIdentifier>{3e4f58c9-22e0-4a53-9a6e-3405a181b217}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\00.Student\01. Mutsuki">
-      <UniqueIdentifier>{7f0f99de-01ee-4a24-a50a-e69aa70b4f30}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.GameObject\00.Student\00. Aru\Aru_Ex">
       <UniqueIdentifier>{cf4c17e5-260f-48ba-a8f8-ea177813a7ea}</UniqueIdentifier>
     </Filter>
@@ -735,6 +732,12 @@
     </Filter>
     <Filter Include="02.GameObject\00.Monster\Monster_Droid\Monster_Trigger">
       <UniqueIdentifier>{dd256fcf-fd15-450d-bceb-639328961f80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI">
+      <UniqueIdentifier>{94d762d6-bc08-405a-a83c-88e2a66147ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Student\01. Mutsuki">
+      <UniqueIdentifier>{7f0f99de-01ee-4a24-a50a-e69aa70b4f30}</UniqueIdentifier>
     </Filter>
     <Filter Include="02.GameObject\00.Student\01. Mutsuki\Mutsuki_Ex">
       <UniqueIdentifier>{1922aa6c-b6ce-4b32-affc-60b151a2a082}</UniqueIdentifier>

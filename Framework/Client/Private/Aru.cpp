@@ -29,13 +29,13 @@ HRESULT CAru::Initialize_Prototype()
 HRESULT CAru::Initialize(void * pArg)
 {
 	CTransform::TRANSFORMDESC		TransformDesc;
-	TransformDesc.fSpeedPerSec = 2.1f;
+	TransformDesc.fSpeedPerSec = 2.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
 	
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
 	m_tStudentInfo.eFormation = FORMATION_FIRST;
 	m_tStudentInfo.fFireSpeed = 0.5f;
-	m_tStudentInfo.iAtk = 10;
+	m_tStudentInfo.iAtk = 25;
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.iEx = 50;
 	m_tStudentInfo.fExCost = 4.f;
@@ -46,6 +46,7 @@ HRESULT CAru::Initialize(void * pArg)
 	m_tStudentInfo.fReConRange = 10.f;
 	m_tStudentInfo.iShield = 0;
 
+	m_bExReady = false;
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
@@ -65,6 +66,7 @@ void CAru::Tick(_float fTimeDelta)
 
 void CAru::LateTick(_float fTimeDelta)
 {
+	__super::LateTick(fTimeDelta);
 
 	CSensei* pSensei = CSensei::Get_Instance();
 
@@ -78,7 +80,6 @@ void CAru::LateTick(_float fTimeDelta)
 		break;
 	}
 
-	__super::LateTick(fTimeDelta);
 }
 
 HRESULT CAru::Render()
@@ -98,7 +99,7 @@ HRESULT CAru::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(0.5f, 1.f, 0.5f);
+	ColliderDesc.vScale = _float3(0.5f, 0.1f, 0.5f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.5f, 0.f);
 
@@ -108,7 +109,7 @@ HRESULT CAru::SetUp_Components()
 	/* For.Com_SPHERE */
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(1.f, 1.f, 1.f);
+	ColliderDesc.vScale = _float3(0.5f, 0.5f, 0.5f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
@@ -131,15 +132,25 @@ HRESULT CAru::SetUp_ShaderResource()
 
 HRESULT CAru::FormationLevel_Collision()
 {
-	__super::FormationLevel_Collision();
-
+	
 	return S_OK;
 }
 
 HRESULT CAru::GamePlayLevel_Collision()
 {
 	__super::GamePlayLevel_Collision();
-	
+
+
+	if (m_pAABBCom->CollisionRay())
+	{
+		CSensei* pSensei = GET_SENSEI;
+		if (KEY(LBUTTON, TAP))
+		{
+			pSensei->Set_ExReady();
+		}
+	}
+
+
 	return S_OK;
 }
 

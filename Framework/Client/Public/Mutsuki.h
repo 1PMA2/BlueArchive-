@@ -41,6 +41,9 @@ public:
 	virtual void OnDisable() override;
 	virtual void OnEnable() override;
 
+private:
+	_bool					m_bExReady = false;
+
 public:
 	static CMutsuki* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
 	virtual CGameObject* Clone(void* pArg) override;
