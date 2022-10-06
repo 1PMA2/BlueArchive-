@@ -62,9 +62,9 @@ CState * CRun::Loop(_float fTimeDelta)
 
 	pModel->Repeat_Animation(fTimeDelta);
 
+	//CollisionCover(fTimeDelta); //보류
 	pState = Find_Monster(fTimeDelta);
 
-	//CollisionCover(fTimeDelta); 보류
 
 	return pState;
 }
@@ -228,18 +228,41 @@ void CRun::Find_Cover()
 
 void CRun::CollisionCover(_float fTimeDelta)
 {
-	if (nullptr == m_pTargetMonster)
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+
+	CTransform* pStudentTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
+
+	_vector vTranslation = pStudentTransform->Get_State(CTransform::STATE_TRANSLATION);
+
+	_uint iCoverCount = pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Cover"));
+
+	if (0 >= iCoverCount)
 		return;
 
-	if (nullptr == m_pTargetCover)
+	for (_uint i = 0; i < iCoverCount; ++i)
+	{
+		CForkLift* pCover = (CForkLift*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Cover"), i);
+
+		CTransform* pCoverTransform = (CTransform*)pCover->Get_Component(TEXT("Com_Transform"));
+
+		CCollider* pCoverSphere = (CCollider*)pCover->Get_Component(TEXT("Com_SPHERE"));
+
+		CCollider* pSphere = (CCollider*)m_pOwner->Get_Component(TEXT("Com_SPHERE"));
+		_vector vCoverTranslation = pCoverTransform->Get_State(CTransform::STATE_TRANSLATION); //엄폐물
+
+		if (pCover->Get_Exit())
+		{
+			m_pCollisionCover = pCover;
+			break;
+		}
+
+	}
+
+	if (nullptr == m_pCollisionCover)
 		return;
-
-	CCollider* pSphere = (CCollider*)m_pOwner->Get_Component(TEXT("Com_SPHERE"));
-
-	if(pSphere->Collision((CCollider*)m_pTargetCover->Get_Component(TEXT("Com_SPHERE"))))
+	else if (false == m_pCollisionCover->Get_Exit())
 	{
 		CTransform* pStudentTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
-		pStudentTransform->Go_Straight(fTimeDelta);
 		_vector vXY = pStudentTransform->Get_WorldMatrix().r[3];
 		pStudentTransform->LookAtLerp(XMVectorSet(10.f, XMVectorGetY(vXY), XMVectorGetY(vXY), 1.f), 10.f, fTimeDelta);
 	}

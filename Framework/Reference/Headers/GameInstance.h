@@ -80,6 +80,7 @@ public: /* For.Font_Manager */
 	
 public: /* For.Light_Manager */
 	HRESULT Add_Light(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, const LIGHTDESC & LightDesc);
+	HRESULT Delete_Light();
 	const LIGHTDESC* Get_LightDesc(_uint iIndex);
 
 public: /* For.Event_Manager */

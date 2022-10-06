@@ -21,6 +21,7 @@ public:
 
 public:
 	void Set_Use() { m_bUsed = true; }
+	_bool Get_Exit() { return m_bExit; }
 	_bool Get_Use() { return m_bUsed; }
 
 public:

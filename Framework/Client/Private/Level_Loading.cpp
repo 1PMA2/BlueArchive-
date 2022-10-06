@@ -34,6 +34,13 @@ HRESULT CLevel_Loading::Initialize(LEVEL eNextLevel)
 			return E_FAIL;
 	}
 
+	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
+
+	if (FAILED(pGameInstance->Delete_Light()))
+		return E_FAIL;
+
+	RELEASE_INSTANCE(CGameInstance);
+
 	return S_OK;
 }
 
