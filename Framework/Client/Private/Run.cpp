@@ -65,6 +65,8 @@ CState * CRun::Loop(_float fTimeDelta)
 
 void CRun::Exit()
 {
+	m_TargetCovers.clear();
+	m_TargetMonsters.clear();
 	Destroy_Instance();
 }
 

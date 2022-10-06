@@ -66,6 +66,7 @@ CMonster* CStudent::FoundMonster()
 
 		if (m_fMin > fLength)
 		{
+			m_fMin = fLength;
 			m_pTargetMonster = m_Monsters.at(i);
 		}
 	}

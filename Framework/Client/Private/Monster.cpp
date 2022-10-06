@@ -3,6 +3,7 @@
 
 #include "GameInstance.h"
 #include "Monster_State.h"
+#include "M_Landing.h"
 
 CMonster::CMonster(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -26,7 +27,7 @@ HRESULT CMonster::Initialize(void * pArg)
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
 	m_tMonsterInfo.iAtk = 10;
-	m_tMonsterInfo.iHp = 40;
+	m_tMonsterInfo.iHp = 50;
 
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;
@@ -42,30 +43,22 @@ HRESULT CMonster::Initialize(void * pArg)
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
 
-	m_pModelCom->Set_CurrentAnimation(1);
+	m_pState = CM_Landing::Create(this);
 
 	return S_OK;
 }
 
 void CMonster::Tick(_float fTimeDelta)
 {
-	m_pModelCom->Repeat_Animation(fTimeDelta);
+
+	if (CMonster_State*	pNewState = m_pState->Loop(fTimeDelta))
+	{
+		m_pState->Exit();
+		m_pState = pNewState;
+		m_pState->Enter();
+	}
 
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
-
-	/*if(KEY(W, HOLD))
-		m_pTransformCom->Go_Left(fTimeDelta);
-
-	if(KEY(S, HOLD))
-		m_pTransformCom->Go_Right(fTimeDelta);
-
-	if (KEY(D, HOLD))
-		m_pTransformCom->Go_Straight(fTimeDelta);
-
-	if (KEY(A, HOLD))
-		m_pTransformCom->Go_Straight(-fTimeDelta);*/
-
-
 }
 
 void CMonster::LateTick(_float fTimeDelta)
@@ -219,6 +212,12 @@ CGameObject * CMonster::Clone(void * pArg)
 void CMonster::Free()
 {
 	__super::Free();
+
+	if (m_pState)
+	{
+		m_pState->Destroy_Instance();
+		m_pState = nullptr;
+	}
 
 	Safe_Release(m_pSphereCom);
 	Safe_Release(m_pShaderCom);
