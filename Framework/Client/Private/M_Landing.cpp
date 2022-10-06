@@ -5,12 +5,14 @@
 #include "Monster.h"
 #include "Model.h"
 
+#include "M_Run.h"
+
 CM_Landing::CM_Landing(CMonster* pOwner)
 	:CMonster_State(pOwner)
 {
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
-	pModel->Set_CurrentAnimation(0);
+	pModel->Set_CurrentAnimation(3);
 }
 
 void CM_Landing::Enter()
@@ -26,19 +28,13 @@ CMonster_State * CM_Landing::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	if (KEY(W, TAP))
+	pModel->Play_Animation(fTimeDelta);
+
+
+	if (pModel->Get_isFinished())
 	{
-		++i;
-		pModel->Set_CurrentAnimation(i);
+		pState = CM_Run::Create(m_pOwner);
 	}
-
-	pModel->Repeat_Animation(fTimeDelta);
-
-
-	/*if (pModel->Get_isFinished())
-	{
-		pState = CM_Landing::Create(m_pOwner);
-	}*/
 
 	return pState;
 }
