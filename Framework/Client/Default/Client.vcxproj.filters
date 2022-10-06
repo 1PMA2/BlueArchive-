@@ -203,7 +203,19 @@
       <Filter>02.GameObject\01.State\Monster_State\M_Run</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Monster_Trigger.h">
-      <Filter>02.GameObject\00.Monster\Monster_Trigger</Filter>
+      <Filter>02.GameObject\00.Monster\Monster_Droid\Monster_Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\M_Runend.h">
+      <Filter>02.GameObject\01.State\Monster_State\M_RunEnd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\M_AtkStart.h">
+      <Filter>02.GameObject\01.State\Monster_State\M_AtkStart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\M_AtkIng.h">
+      <Filter>02.GameObject\01.State\Monster_State\M_AtkIng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Droid_Dead.h">
+      <Filter>02.GameObject\00.Monster\Monster_Droid\Droid_Dead</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -397,7 +409,19 @@
       <Filter>02.GameObject\01.State\Monster_State\M_Run</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Monster_Trigger.cpp">
-      <Filter>02.GameObject\00.Monster\Monster_Trigger</Filter>
+      <Filter>02.GameObject\00.Monster\Monster_Droid\Monster_Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\M_Runend.cpp">
+      <Filter>02.GameObject\01.State\Monster_State\M_RunEnd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\M_AtkStart.cpp">
+      <Filter>02.GameObject\01.State\Monster_State\M_AtkStart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\M_AtkIng.cpp">
+      <Filter>02.GameObject\01.State\Monster_State\M_AtkIng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Droid_Dead.cpp">
+      <Filter>02.GameObject\00.Monster\Monster_Droid\Droid_Dead</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -694,7 +718,16 @@
     <Filter Include="02.GameObject\01.State\Monster_State\M_Reload">
       <UniqueIdentifier>{9c3b39cf-7c1a-4da1-bc40-abb05b500054}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\00.Monster\Monster_Trigger">
+    <Filter Include="02.GameObject\01.State\Monster_State\M_RunEnd">
+      <UniqueIdentifier>{5976475d-f579-4f30-b279-b19500d6820c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Monster\Monster_Droid">
+      <UniqueIdentifier>{fd26c745-d6a1-4b15-989d-53d265be3451}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Monster\Monster_Droid\Droid_Dead">
+      <UniqueIdentifier>{8a837547-05ac-467f-9cb9-c83b1054df7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Monster\Monster_Droid\Monster_Trigger">
       <UniqueIdentifier>{dd256fcf-fd15-450d-bceb-639328961f80}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

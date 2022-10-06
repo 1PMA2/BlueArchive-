@@ -13,13 +13,14 @@
 CFire::CFire(CStudent* pOwner)
 	:CState(pOwner)
 {
+	m_eAnim = ANIM_FIRE;
+	pOwner->Set_State(m_eAnim);
+
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
 	case ARU:
-		m_eAnim = ANIM_FIRE;
-		pOwner->Set_State(m_eAnim);
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 		m_iAtkFrame = 24;
 		break;

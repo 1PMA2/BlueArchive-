@@ -51,6 +51,7 @@ public:
 
 public:
 	STUDENTINFO Get_StudentInfo() { return m_tStudentInfo; }
+	_vector		Get_StudentTranslation() { return m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION); }
 	void		Use_Bullet() { m_tStudentInfo.iBullet -= 1; }
 	void		Reload() { m_tStudentInfo.iBullet = m_tStudentInfo.iMagazine; }
 	void		Set_State(ANIM eANIM) { m_tStudentInfo.eAnim = eANIM; }

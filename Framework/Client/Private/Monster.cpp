@@ -83,7 +83,7 @@ HRESULT CMonster::Initialize(void * pArg)
 
 	m_tMonsterInfo.iAtk = 10;
 	m_tMonsterInfo.iHp = 50;
-	m_tMonsterInfo.fRange = 4.f;
+	m_tMonsterInfo.fRange = 3.f;
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;
 
@@ -129,6 +129,12 @@ void CMonster::LateTick(_float fTimeDelta)
 
 	if (0 >= m_tMonsterInfo.iHp)
 	{
+		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+		_matrix WorldMatrix = m_pTransformCom->Get_WorldMatrix();
+
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Dead"), TEXT("Prototype_GameObject_Dead"), &WorldMatrix);
+
 		DELETE(this);
 	}
 

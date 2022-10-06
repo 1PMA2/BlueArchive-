@@ -91,7 +91,7 @@ HRESULT CGacha_Scene::Ready_Lights()
 	ZeroMemory(&LightDesc, sizeof(LIGHTDESC));
 
 	LightDesc.eType = tagLightDesc::TYPE_DIRECTIONAL;
-	LightDesc.vDirection = _float4(1.f, 1.f, 1.f, 0.f);
+	LightDesc.vDirection = _float4(0.f, 0.5f, 1.f, 0.f);
 	LightDesc.vDiffuse = _float4(1.f, 1.f, 1.f, 1.f);
 	LightDesc.vAmbient = _float4(0.8f, 0.8f, 0.8f, 1.f);
 	LightDesc.vSpecular = _float4(0.f, 0.f, 0.f, 0.f);

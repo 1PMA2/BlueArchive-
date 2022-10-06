@@ -39,6 +39,9 @@ private:
 private:
 	HRESULT SetUp_Components();
 
+private:
+	_vector m_vTranslation = {};
+
 
 public:
 	static CMonster_Trigger* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);

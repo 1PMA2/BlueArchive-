@@ -4,6 +4,7 @@
 #include "GameInstance.h"
 #include "Monster.h"
 #include "Model.h"
+#include "M_Runend.h"
 
 CM_Run::CM_Run(CMonster* pOwner)
 	:CMonster_State(pOwner)
@@ -28,14 +29,14 @@ CMonster_State * CM_Run::Loop(_float fTimeDelta)
 
 	pModel->Repeat_Animation(fTimeDelta);
 
-	
+	pTransform->Go_Backward(fTimeDelta);
 
 	if (m_pOwner->FoundStudent()) //학생을 찾았음
 	{
-		
+		pState = CM_Runend::Create(m_pOwner);
 	}
-	//else
-		//pTransform->Go_Backward(fTimeDelta);
+
+		
 
 
 	return pState;

@@ -35,13 +35,11 @@ HRESULT CMonster_Trigger::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-	_vector vTranslation;
-
 	if (nullptr != pArg)
-		memcpy(&vTranslation, pArg, sizeof(_vector));
+		memcpy(&m_vTranslation, pArg, sizeof(_vector));
 
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vTranslation);
 
 
 	return S_OK;
@@ -95,12 +93,7 @@ HRESULT CMonster_Trigger::Collision_ToStudent()
 		
 		if(m_pAABBCom->Collision(pSphere))
 		{
-			_vector vTranslation = XMVectorSet(0.f, 0.f, 19.f, 1.f);
-
-			if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Prototype_GameObject_Monster"), &vTranslation)))
-				return E_FAIL;
-
-			vTranslation = XMVectorSet(0.f, 0.f, 22.f, 1.f);
+			_vector vTranslation = XMVectorSet(XMVectorGetX(m_vTranslation), XMVectorGetY(m_vTranslation), XMVectorGetZ(m_vTranslation) + 5.f, 1.f);
 
 			if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Prototype_GameObject_Monster"), &vTranslation)))
 				return E_FAIL;
@@ -125,7 +118,7 @@ HRESULT CMonster_Trigger::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(5.f, 0.5f, 0.5f);
+	ColliderDesc.vScale = _float3(15.f, 0.5f, 0.5f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
