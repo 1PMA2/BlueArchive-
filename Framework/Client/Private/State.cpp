@@ -19,3 +19,8 @@ void CState::Set_State(ANIM eState)
 {
 	 m_pOwner->Set_State(eState);
 }
+
+CState * CState::Loop(_float fTimeDelta)
+{
+	return nullptr;
+}

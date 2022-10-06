@@ -18,7 +18,7 @@ public:
 	void	Set_State(ANIM eState); 
 public:
 	virtual	void	Enter() PURE;
-	virtual CState*	Loop(_float fTimeDelta) PURE;
+	virtual CState*	Loop(_float fTimeDelta);
 	virtual void	Exit() PURE;
 protected:
 	CStudent*		m_pOwner;

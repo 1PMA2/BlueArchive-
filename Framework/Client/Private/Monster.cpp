@@ -4,6 +4,7 @@
 #include "GameInstance.h"
 #include "Monster_State.h"
 #include "M_Landing.h"
+#include "Sensei.h"
 
 CMonster::CMonster(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -65,6 +66,12 @@ void CMonster::LateTick(_float fTimeDelta)
 {
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 
+	if (m_pSphereCom->CollisionRay())
+	{
+		/*CSensei* pSensei = GET_SENSEI;
+
+		pSensei->Ex_Lockon(Get_MonsterTranslation());*/
+	}
 
 	if (0 >= m_tMonsterInfo.iHp)
 	{
@@ -127,7 +134,7 @@ HRESULT CMonster::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(2.f, 2.f, 2.f);
+	ColliderDesc.vScale = _float3(0.5f, 0.5f, 0.5f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 

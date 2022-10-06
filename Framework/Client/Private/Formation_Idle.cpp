@@ -15,23 +15,14 @@ CFormation_Idle::CFormation_Idle(CStudent* pOwner)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
-}
 
-void CFormation_Idle::Enter()
-{
-}
+	CSensei* pSensei = GET_SENSEI;
 
-CState * CFormation_Idle::Loop(_float fTimeDelta)
-{
-	CState* pState = nullptr;
+	if (0 >= pSensei->Get_FormationInfoSize())
+	{
 
-	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
-
-	FORMATION eFormation = m_pOwner->Get_StudentInfo().eFormation;
-
-	_vector m_vPreTranslation;
-
-	switch (eFormation)
+	}
+	switch (m_pOwner->Get_StudentInfo().eFormation)
 	{
 	case FORMATION_FIRST:
 		m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
@@ -46,14 +37,26 @@ CState * CFormation_Idle::Loop(_float fTimeDelta)
 		m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
 		break;
 	}
+}
 
-	pTransform->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation);
+void CFormation_Idle::Enter()
+{
+
+}
+
+CState * CFormation_Idle::Loop(_float fTimeDelta)
+{
+	CState* pState = nullptr;
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	pModel->Repeat_Animation(fTimeDelta);
-
 	CCollider* pAABBcom = (CCollider*)m_pOwner->Get_Component(TEXT("Com_AABB"));
+
+	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
+
+	pTransform->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation);
+
+	pModel->Repeat_Animation(fTimeDelta);
 
 	if (pAABBcom->CollisionRay())
 	{

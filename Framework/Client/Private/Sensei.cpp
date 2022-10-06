@@ -2,6 +2,7 @@
 #include "..\Public\Sensei.h"
 #include "GameInstance.h"
 #include "Student.h"
+#include "Monster.h"
 
 IMPLEMENT_SINGLETON(CSensei)
 

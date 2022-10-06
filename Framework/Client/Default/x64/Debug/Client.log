@@ -1,4 +1,5 @@
-﻿  M_Landing.cpp
+﻿  Run.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\run.cpp(122): warning C4267: '인수': 'size_t'에서 'Engine::_int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

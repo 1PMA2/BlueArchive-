@@ -49,7 +49,10 @@ void CRun::Enter()
 
 CState * CRun::Loop(_float fTimeDelta)
 {
-	CState* pState = nullptr;
+	CState* pState = __super::Loop(fTimeDelta);
+
+	if (nullptr != pState)
+		return pState;
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));

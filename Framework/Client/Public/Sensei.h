@@ -56,6 +56,8 @@ public:
 	void Set_Camera(CAMERA eCamera) { m_tSensei.eCamera = eCamera; }
 	void Use_Ex(_bool bEx, _float fUseCost = 0.f);
 	_bool Useable_Ex(_float fUseCost);
+	void Ex_Lockon(_vector vTarget) { m_vTargetMonster = vTarget; }
+	_vector Get_LockonMonster() { return m_vTargetMonster; }
 
 	/*student*/
 	void Set_Student(const _tchar* pStudentTag, CStudent* pStudent);
@@ -72,7 +74,8 @@ public:
 
 	
 
-public:
+private:
+	_vector m_vTargetMonster = {};
 	_tchar* m_pNewStudent = nullptr;
 	LEVEL m_ePreLevel = LEVEL_END;
 	LEVEL m_eCurrentLevel = LEVEL_END;
@@ -92,20 +95,17 @@ public:
 	vector<CStudent::STUDENTINFO>	m_FormationsInfo; //다른 레벨로 넘겨주는 정보
 	typedef vector<CStudent::STUDENTINFO> FORMATIONS_C;
 
-	CStudent::STUDENTINFO m_tFirst = {};
-	CStudent::STUDENTINFO m_tSecond = {};
-	CStudent::STUDENTINFO m_tThird = {};
-	CStudent::STUDENTINFO m_tFourth = {};
-
 public:
 	void Set_FormationStudents(CStudent* pStudents);
 	CStudent* Get_FormationStudents(_uint iIndex);
+
 	_uint Get_FormationStudentsNum() { 
 		if (4 < (_uint)m_Formations.size())
 			return 4;
 		else
 			return (_uint)m_Formations.size();
 	} //최대 4
+
 	void Release_FormationStudents() { m_Formations.clear(); }
 
 public:
