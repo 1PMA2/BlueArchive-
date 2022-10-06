@@ -10,6 +10,7 @@
 #include "Monster.h"
 #include "ForkLift.h"
 #include "Run_ToKnee.h"
+#include "Collider.h"
 
 CRun::CRun(CStudent* pOwner)
 	:CState(pOwner)
@@ -62,6 +63,8 @@ CState * CRun::Loop(_float fTimeDelta)
 	pModel->Repeat_Animation(fTimeDelta);
 
 	pState = Find_Monster(fTimeDelta);
+
+	//CollisionCover(fTimeDelta); º¸·ù
 
 	return pState;
 }
@@ -220,6 +223,25 @@ void CRun::Find_Cover()
 
 		}
 
+	}
+}
+
+void CRun::CollisionCover(_float fTimeDelta)
+{
+	if (nullptr == m_pTargetMonster)
+		return;
+
+	if (nullptr == m_pTargetCover)
+		return;
+
+	CCollider* pSphere = (CCollider*)m_pOwner->Get_Component(TEXT("Com_SPHERE"));
+
+	if(pSphere->Collision((CCollider*)m_pTargetCover->Get_Component(TEXT("Com_SPHERE"))))
+	{
+		CTransform* pStudentTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
+		pStudentTransform->Go_Straight(fTimeDelta);
+		_vector vXY = pStudentTransform->Get_WorldMatrix().r[3];
+		pStudentTransform->LookAtLerp(XMVectorSet(10.f, XMVectorGetY(vXY), XMVectorGetY(vXY), 1.f), 10.f, fTimeDelta);
 	}
 }
 

@@ -30,6 +30,7 @@
 #include "Arona_Sack.h"
 #include "Student_Img.h"
 #include "Back_Btn.h"
+#include "Monster_Trigger.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -450,6 +451,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 #pragma region PROTOTYPE_GAMEOBJECT
 
 		lstrcpy(m_szLoadingText, TEXT("객체를 생성중입니다."));
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Trigger"),
+			CMonster_Trigger::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Terrain"),
 			CTerrain::Create(m_pDevice, m_pContext))))

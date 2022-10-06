@@ -19,6 +19,7 @@ public:
 private:
 	CState* Find_Monster(_float fTimeDelta);
 	void Find_Cover();
+	void CollisionCover(_float fTimeDelta);
 
 private:
 	class CMonster* m_pTargetMonster = nullptr;

@@ -202,6 +202,9 @@
     <ClInclude Include="..\Public\M_Run.h">
       <Filter>02.GameObject\01.State\Monster_State\M_Run</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Monster_Trigger.h">
+      <Filter>02.GameObject\00.Monster\Monster_Trigger</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -392,6 +395,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\M_Run.cpp">
       <Filter>02.GameObject\01.State\Monster_State\M_Run</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Monster_Trigger.cpp">
+      <Filter>02.GameObject\00.Monster\Monster_Trigger</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

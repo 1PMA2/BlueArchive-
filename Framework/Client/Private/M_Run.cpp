@@ -34,8 +34,8 @@ CMonster_State * CM_Run::Loop(_float fTimeDelta)
 	{
 		
 	}
-	else
-		pTransform->Go_Backward(fTimeDelta);
+	//else
+		//pTransform->Go_Backward(fTimeDelta);
 
 
 	return pState;

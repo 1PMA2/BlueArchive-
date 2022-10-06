@@ -289,6 +289,11 @@ HRESULT CLevel_GamePlay::Ready_Layer_Trigger(const _tchar * pLayerTag)
 	Safe_AddRef(pGameInstance);
 
 
+	_vector vTranslation = XMVectorSet(0.f, 0.f, 8.f, 1.f);
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Trigger"), &vTranslation)))
+		return E_FAIL;
+
 	Safe_Release(pGameInstance);
 
 	return S_OK;
