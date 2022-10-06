@@ -98,7 +98,7 @@ void CCamera_Main::Move_Camera(_float fTimeDelta)
 
 	if (nullptr != m_pStudent)
 	{
-		Set_Fov(fTimeDelta);
+		Set_FovZ(fTimeDelta);
 
 		CTransform* pTransform = (CTransform*)m_pStudent->Get_Component(TEXT("Com_Transform"));
 
@@ -121,22 +121,20 @@ void CCamera_Main::Move_Camera(_float fTimeDelta)
 	Safe_Release(pGameInstance);
 }
 
-void CCamera_Main::Set_Fov(_float fTimeDelta)
+void CCamera_Main::Set_FovZ(_float fTimeDelta)
 {
 	if (2.f < m_fFovRatio)//맨앞, 맨뒤 사이의 거리
 	{
 		_vector vFovy = XMVectorSet(0.f, 0.f, XMConvertToRadians(35.f), 1.f); //목표
 
 		m_vCurrentFov = XMVectorLerp(m_vCurrentFov, vFovy, fTimeDelta);
-
-		Set_Fov((XMVectorGetZ(m_vCurrentFov)));
 	}
 	else
 	{
 		m_vCurrentFov = XMVectorLerp(m_vCurrentFov, m_vMaxFov, fTimeDelta);
-
-		Set_Fov((XMVectorGetZ(m_vCurrentFov)));
 	}
+
+	Set_Fov((XMVectorGetZ(m_vCurrentFov)));
 }
 
 CCamera_Main * CCamera_Main::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)

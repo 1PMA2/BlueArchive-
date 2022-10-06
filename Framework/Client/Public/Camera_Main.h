@@ -33,7 +33,7 @@ private:
 
 private:
 	void Move_Camera(_float fTimeDelta);
-	void Set_Fov(_float fTimeDelta);
+	void Set_FovZ(_float fTimeDelta);
 
 public:
 	static CCamera_Main* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);

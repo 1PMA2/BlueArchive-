@@ -2,10 +2,10 @@ c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\c
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\vc140.pdb
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\vc140.idb
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\stdafx.obj
-c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\mainapp.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\monster.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\monster_state.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\mutsuki.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\m_landing.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\rifle_delay.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\rifle_fire.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\run.obj
@@ -22,7 +22,6 @@ c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\u
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\work_button.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\run_tohide.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.obj
-c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\formation_pick.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\formation_terrain.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\gacha_scene.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\hide_firestart.obj
@@ -42,7 +41,7 @@ c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\l
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\level_logo.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\loader.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\loadingimage.obj
-c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\arona.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\mainapp.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\arona_cam.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\arona_sack.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\aru.obj
@@ -62,7 +61,10 @@ c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\f
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\fire.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\forklift.obj
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\formation_idle.obj
-c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\m_landing.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\formation_pick.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\arona.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\m_run.obj
+c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\monster_trigger.obj
 c:\users\slave\documents\github\bluearchive\framework\client\bin\shader_vtxanimmodel.cso
 c:\users\slave\documents\github\bluearchive\framework\client\bin\shader_vtxcubetex.cso
 c:\users\slave\documents\github\bluearchive\framework\client\bin\shader_vtxmodel.cso
@@ -72,8 +74,6 @@ c:\users\slave\documents\github\bluearchive\framework\client\bin\client.ilk
 c:\users\slave\documents\github\bluearchive\framework\client\bin\client.exe
 c:\users\slave\documents\github\bluearchive\framework\client\bin\client.pdb
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.res
-c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\forklift.obj.enc
-c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\run.obj.enc
 c:\users\slave\documents\github\bluearchive\framework\client\default\..\bin\client.exe
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\cl.command.1.tlog
 c:\users\slave\documents\github\bluearchive\framework\client\default\x64\debug\client.tlog\cl.read.1.tlog
