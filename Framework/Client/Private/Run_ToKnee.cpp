@@ -45,7 +45,10 @@ void CRun_ToKnee::Enter()
 
 CState * CRun_ToKnee::Loop(_float fTimeDelta)
 {
-	CState* pState = nullptr;
+	CState* pState = __super::Loop(fTimeDelta);
+
+	if (nullptr != pState)
+		return pState;
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 

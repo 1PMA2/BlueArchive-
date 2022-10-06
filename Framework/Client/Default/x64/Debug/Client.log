@@ -1,8 +1,22 @@
-﻿cl : 명령줄 warning D9028: 최소 다시 빌드에 실패했습니다. 정상 빌드로 되돌립니다.
-  Droid_Dead.cpp
-  Loader.cpp
+﻿  Run_ToHide.cpp
+  Run_ToKnee.cpp
+  Rifle_Fire.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-  Monster.cpp
+  Rifle_Delay.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Knee_ZoomStart.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Knee_ZoomFire.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Knee_ZoomEnd.cpp
+  Knee_Reload.cpp
+  Knee_Idle.cpp
+  Hide_Reloading.cpp
+  Hide_ReloadStart.cpp
+  Hide_Idle.cpp
+  Hide_FireStart.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Fire.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
   코드를 생성하고 있습니다...
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe

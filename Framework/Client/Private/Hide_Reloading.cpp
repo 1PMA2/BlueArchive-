@@ -35,7 +35,10 @@ void CHide_Reloading::Enter()
 
 CState * CHide_Reloading::Loop(_float fTimeDelta)
 {
-	CState* pState = nullptr;
+	CState* pState = __super::Loop(fTimeDelta);
+
+	if (nullptr != pState)
+		return pState;
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 

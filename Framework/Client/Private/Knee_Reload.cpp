@@ -35,7 +35,10 @@ void CKnee_Reload::Enter()
 
 CState * CKnee_Reload::Loop(_float fTimeDelta)
 {
-	CState* pState = nullptr;
+	CState* pState = __super::Loop(fTimeDelta);
+
+	if (nullptr != pState)
+		return pState;
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 

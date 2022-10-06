@@ -42,7 +42,10 @@ void CRun_ToHide::Enter()
 
 CState * CRun_ToHide::Loop(_float fTimeDelta)
 {
-	CState* pState = nullptr;
+	CState* pState = __super::Loop(fTimeDelta);
+
+	if (nullptr != pState)
+		return pState;
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
