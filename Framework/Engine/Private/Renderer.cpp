@@ -5,6 +5,7 @@
 #include "Shader.h"
 #include "VIBuffer_Rect.h"
 #include "PipeLine.h"
+#include "GameInstance.h"
 
 
 CRenderer::CRenderer(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -140,8 +141,11 @@ HRESULT CRenderer::Draw_RenderGroup()
 		return E_FAIL;
 
 #ifdef _DEBUG
-	if (FAILED(Render_Debug()))
-		return E_FAIL;
+	if (KEY(TAB, HOLD))
+	{
+		if (FAILED(Render_Debug()))
+			return E_FAIL;
+	}
 #endif // _DEBUG
 
 	return S_OK;
