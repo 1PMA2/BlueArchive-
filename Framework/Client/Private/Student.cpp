@@ -236,16 +236,16 @@ void CStudent::InitializeStudentState()
 			switch (eFormation)
 			{
 			case FORMATION_FIRST:
-				m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+				m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
 				break;
 			case FORMATION_SECOND:
-				m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
-				break;
-			case FORMATION_THIRD:
 				m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
 				break;
+			case FORMATION_THIRD:
+				m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+				break;
 			case FORMATION_FOURTH:
-				m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+				m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
 				break;
 			}
 
