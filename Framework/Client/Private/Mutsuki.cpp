@@ -29,7 +29,7 @@ HRESULT CMutsuki::Initialize_Prototype()
 HRESULT CMutsuki::Initialize(void * pArg)
 {
 	CTransform::TRANSFORMDESC		TransformDesc;
-	TransformDesc.fSpeedPerSec = 2.2f;
+	TransformDesc.fSpeedPerSec = 2.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
 	
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
@@ -41,8 +41,8 @@ HRESULT CMutsuki::Initialize(void * pArg)
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 10;
 	m_tStudentInfo.iBullet = 10;
-	m_tStudentInfo.fRange = 3.5f;
-	m_tStudentInfo.fReConRange = 5.f;
+	m_tStudentInfo.fRange = 5.f;
+	m_tStudentInfo.fReConRange = 10.f;
 	m_tStudentInfo.iShield = 0;
 
 	if (FAILED(SetUp_Components()))

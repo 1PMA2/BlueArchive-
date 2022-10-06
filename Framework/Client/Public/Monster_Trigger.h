@@ -34,6 +34,9 @@ public:
 	virtual void OnEnable() override;
 
 private:
+	HRESULT Collision_ToStudent();
+
+private:
 	HRESULT SetUp_Components();
 
 

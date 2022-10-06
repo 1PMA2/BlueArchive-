@@ -20,8 +20,8 @@ public:
 	virtual ~CForkLift() = default;
 
 public:
+	void Set_Use() { m_bUsed = true; }
 	_bool Get_Use() { return m_bUsed; }
-	void Set_Use(_bool bUse) { m_bUsed = bUse; }
 
 public:
 	virtual HRESULT Initialize_Prototype();

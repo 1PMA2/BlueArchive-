@@ -127,11 +127,11 @@ void CCamera_Main::Set_FovZ(_float fTimeDelta)
 	{
 		_vector vFovy = XMVectorSet(0.f, 0.f, XMConvertToRadians(35.f), 1.f); //∏Ò«•
 
-		m_vCurrentFov = XMVectorLerp(m_vCurrentFov, vFovy, fTimeDelta);
+		m_vCurrentFov = XMVectorLerp(m_vCurrentFov, vFovy, fTimeDelta * 0.7f);
 	}
 	else
 	{
-		m_vCurrentFov = XMVectorLerp(m_vCurrentFov, m_vMaxFov, fTimeDelta);
+		m_vCurrentFov = XMVectorLerp(m_vCurrentFov, m_vMaxFov, fTimeDelta * 0.7f);
 	}
 
 	Set_Fov((XMVectorGetZ(m_vCurrentFov)));

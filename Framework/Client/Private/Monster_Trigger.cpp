@@ -54,6 +54,8 @@ void CMonster_Trigger::Tick(_float fTimeDelta)
 
 void CMonster_Trigger::LateTick(_float fTimeDelta)
 {
+	Collision_ToStudent();
+
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 
 }
@@ -77,6 +79,39 @@ void CMonster_Trigger::OnDisable()
 
 void CMonster_Trigger::OnEnable()
 {
+}
+
+HRESULT CMonster_Trigger::Collision_ToStudent()
+{
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	_uint iStudentCount = pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student"));
+
+	for (_uint i = 0; i < iStudentCount; ++i)
+	{
+		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
+
+		CCollider* pSphere = (CCollider*)pStudent->Get_Component(TEXT("Com_SPHERE"));
+		
+		if(m_pAABBCom->Collision(pSphere))
+		{
+			_vector vTranslation = XMVectorSet(0.f, 0.f, 19.f, 1.f);
+
+			if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Prototype_GameObject_Monster"), &vTranslation)))
+				return E_FAIL;
+
+			vTranslation = XMVectorSet(0.f, 0.f, 22.f, 1.f);
+
+			if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Prototype_GameObject_Monster"), &vTranslation)))
+				return E_FAIL;
+
+			DELETE(this);
+			break;
+		}
+
+	}
+
+	return S_OK;
 }
 
 HRESULT CMonster_Trigger::SetUp_Components()

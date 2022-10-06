@@ -184,11 +184,13 @@ void CForkLift::Collision_ToPlayer()
 		{
 			m_bUsed = true;
 			m_bExit = true; //나갈 준비
+
+			break;
 		}
 
-		if (m_bExit)
+		else
 		{
-			if (!m_pSphereCom->Collision(pCollider))
+			if (m_bExit)
 			{
 				m_bExit = false;
 				m_bUsed = false;

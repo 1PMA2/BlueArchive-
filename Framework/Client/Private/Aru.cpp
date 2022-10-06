@@ -29,7 +29,7 @@ HRESULT CAru::Initialize_Prototype()
 HRESULT CAru::Initialize(void * pArg)
 {
 	CTransform::TRANSFORMDESC		TransformDesc;
-	TransformDesc.fSpeedPerSec = 2.f;
+	TransformDesc.fSpeedPerSec = 2.1f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
 	
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
@@ -42,8 +42,8 @@ HRESULT CAru::Initialize(void * pArg)
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 5;
 	m_tStudentInfo.iBullet = 5;
-	m_tStudentInfo.fRange = 5.f;
-	m_tStudentInfo.fReConRange = 5.f;
+	m_tStudentInfo.fRange = 7.f;
+	m_tStudentInfo.fReConRange = 10.f;
 	m_tStudentInfo.iShield = 0;
 
 	if (FAILED(SetUp_Components()))
