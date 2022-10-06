@@ -80,7 +80,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 		fTimeAcc += pGameInstance->Compute_Timer(TEXT("Timer_Default"));
 
-		if (fTimeAcc > 1.f / 120.0f)
+		if (/*fTimeAcc > 1.f / 120.0f*/1)
 		{
 			pMainApp->Tick();
 			pMainApp->Render();

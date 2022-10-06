@@ -22,7 +22,7 @@ CRun::CRun(CStudent* pOwner)
 		m_eAnim = ANIM_RUN;
 		pOwner->Set_State(m_eAnim);
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
-		m_fHideLength = 0.5f;
+		m_fHideLength = 0.35f;
 		break;
 	case 1:
 		pModel->Set_CurrentAnimation(7);
@@ -58,7 +58,6 @@ CState * CRun::Loop(_float fTimeDelta)
 
 	pModel->Repeat_Animation(fTimeDelta);
 
-	//pTransform->Go_Straight(fTimeDelta);
 	pState = Find_Monster(fTimeDelta);
 
 	return pState;
@@ -111,11 +110,12 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 		Find_Cover();
 
-		if (0 < m_TargetCovers.size())
+		if (0 < m_TargetCovers.size()) //¾öÆó¹° Å½»ö ¼º°ø½Ã
 		{
 			if (m_bOnce)
 				{
-					m_pTargetCover = m_TargetCovers.at(0);
+					_uint iRandom = random(0, m_TargetCovers.size() - 1);
+					m_pTargetCover = m_TargetCovers.at(iRandom); 
 					m_pTargetCover->Set_Use(true);
 					m_bOnce = false;
 				}
