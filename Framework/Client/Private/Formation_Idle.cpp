@@ -101,7 +101,6 @@ CState * CFormation_Idle::Loop(_float fTimeDelta)
 	{
 		if (KEY(LBUTTON, TAP))
 		{
-			pSensei->Pop_back();
 			pState = CFormation_Pick::Create(m_pOwner);
 			return pState;
 		}

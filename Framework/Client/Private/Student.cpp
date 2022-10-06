@@ -188,25 +188,7 @@ HRESULT CStudent::SetUp_ShaderResource()
 HRESULT CStudent::FormationLevel_Collision()
 {
 
-	CSensei* pSensei = GET_SENSEI;
-
-	if (nullptr != m_pPickedCom)
-	{
-		for (_uint i = 0; i < pSensei->Get_FormationStudentsNum(); ++i)
-		{
-			CStudent* pTargetStudent = pSensei->Get_FormationStudents(i);
-			if (m_tStudentInfo.eStudent != pTargetStudent->Get_StudentInfo().eStudent)
-			{
-				if (m_pPickedCom->Collision(pTargetStudent->m_pAABBCom))
-				{
-					pTargetStudent->m_pTransformCom->Set_Scaled({ 0.8f, 0.8f, 0.8f });
-				}
-				else
-					pTargetStudent->m_pTransformCom->Set_Scaled({ 1.f, 1.f, 1.f });
-			}
-		}
-	}
-
+	
 
 	return S_OK;
 }
@@ -237,6 +219,16 @@ void CStudent::InitializeStudentState()
 			break;
 		case LEVEL_GAMEPLAY:
 			m_pState = CRun::Create(this);
+
+			for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
+			{
+				if (pSensei->Get_FormationInfo(i).eStudent == m_tStudentInfo.eStudent)
+				{
+					m_tStudentInfo.eFormation = pSensei->Get_FormationInfo(i).eFormation;
+					break;
+				}
+			}
+
 			FORMATION eFormation = m_tStudentInfo.eFormation;
 
 			_vector m_vPreTranslation;
