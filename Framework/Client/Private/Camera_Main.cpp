@@ -116,7 +116,14 @@ void CCamera_Main::Move_Camera(_float fTimeDelta)
 	}
 
 
-
+	if (KEY(UP, TAP))
+	{
+		m_CameraDesc.fNear += 0.001f;
+	}
+	if (KEY(DOWN, TAP))
+	{
+		m_CameraDesc.fNear -= 0.001f;
+	}
 
 	Safe_Release(pGameInstance);
 }
