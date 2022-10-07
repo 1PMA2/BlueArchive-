@@ -116,7 +116,7 @@ HRESULT CForkLift::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(0.15f, 0.15f, 0.15f);
+	ColliderDesc.vScale = _float3(0.2f, 0.2f, 0.2f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
@@ -125,9 +125,9 @@ HRESULT CForkLift::SetUp_Components()
 
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(0.8f, 0.8f, 0.8f);
+	ColliderDesc.vScale = _float3(0.78f, 0.78f, 0.78f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
-	ColliderDesc.vTranslation = _float3(-0.3f, ColliderDesc.vScale.y * 0.f, 0.5f);
+	ColliderDesc.vTranslation = _float3(-0.32f, ColliderDesc.vScale.y * 0.f, 0.5f);
 
 	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SlideSPHERE"), (CComponent**)&m_pSlideSphereCom, &ColliderDesc)))
 		return E_FAIL;
