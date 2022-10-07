@@ -57,6 +57,7 @@ CState * CFire::Loop(_float fTimeDelta)
 	
 
 	pModel->Play_Animation(fTimeDelta);
+
 	if (nullptr != pMonster)
 	{
 		pTransform->LookAtLerp(pMonster->Get_MonsterTranslation(), 5.f, fTimeDelta);

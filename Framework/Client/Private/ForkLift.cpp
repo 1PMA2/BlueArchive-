@@ -127,7 +127,7 @@ HRESULT CForkLift::SetUp_Components()
 
 	ColliderDesc.vScale = _float3(0.8f, 0.8f, 0.8f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
-	ColliderDesc.vTranslation = _float3(-0.2f, ColliderDesc.vScale.y * 0.f, 0.6f);
+	ColliderDesc.vTranslation = _float3(-0.3f, ColliderDesc.vScale.y * 0.f, 0.5f);
 
 	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SlideSPHERE"), (CComponent**)&m_pSlideSphereCom, &ColliderDesc)))
 		return E_FAIL;

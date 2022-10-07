@@ -93,7 +93,7 @@ HRESULT CMonster_Trigger::Collision_ToStudent()
 		
 		if(m_pAABBCom->Collision(pSphere))
 		{
-			_vector vTranslation = XMVectorSet(XMVectorGetX(m_vTranslation), XMVectorGetY(m_vTranslation), XMVectorGetZ(m_vTranslation) + 5.f, 1.f);
+			_vector vTranslation = XMVectorSet(XMVectorGetX(m_vTranslation), XMVectorGetY(m_vTranslation), XMVectorGetZ(m_vTranslation) + 5.5f, 1.f);
 
 			if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Prototype_GameObject_Monster"), &vTranslation)))
 				return E_FAIL;

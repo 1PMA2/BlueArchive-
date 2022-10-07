@@ -118,7 +118,7 @@ HRESULT CMutsuki::SetUp_Components()
 	/* For.Com_SPHERE */
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(0.2f, 0.2f, 0.2f);
+	ColliderDesc.vScale = _float3(0.1f, 0.1f, 0.1f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
