@@ -36,7 +36,7 @@ private:
 	CRenderer*				m_pRendererCom = nullptr;		
 	CModel*					m_pModelCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
-	CCollider*				m_pMSphereCom = nullptr;
+	CCollider*				m_pSlideSphereCom = nullptr;
 	_bool					m_bUsed = false;
 	_bool					m_bExit = false;
 	_vector					m_vTranslation = {};

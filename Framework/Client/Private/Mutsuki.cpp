@@ -71,10 +71,10 @@ void CMutsuki::LateTick(_float fTimeDelta)
 	switch (pSensei->Get_CurrentLevel())
 	{
 	case LEVEL_FORMATION:
-		FormationLevel_Collision();
+		FormationLevel_Collision(fTimeDelta);
 		break;
 	case LEVEL_GAMEPLAY:
-		GamePlayLevel_Collision();
+		GamePlayLevel_Collision(fTimeDelta);
 		break;
 	}
 
@@ -118,7 +118,7 @@ HRESULT CMutsuki::SetUp_Components()
 	/* For.Com_SPHERE */
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(0.5f, 0.5f, 0.5f);
+	ColliderDesc.vScale = _float3(0.2f, 0.2f, 0.2f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
@@ -139,18 +139,18 @@ HRESULT CMutsuki::SetUp_ShaderResource()
 	return S_OK;
 }
 
-HRESULT CMutsuki::FormationLevel_Collision()
+HRESULT CMutsuki::FormationLevel_Collision(_float fTimeDelta)
 {
 
 
-	__super::FormationLevel_Collision();
+	__super::FormationLevel_Collision(fTimeDelta);
 
 	return S_OK;
 }
 
-HRESULT CMutsuki::GamePlayLevel_Collision()
+HRESULT CMutsuki::GamePlayLevel_Collision(_float fTimeDelta)
 {
-	__super::GamePlayLevel_Collision();
+	__super::GamePlayLevel_Collision(fTimeDelta);
 	
 
 	if (m_pAABBCom->CollisionRay())

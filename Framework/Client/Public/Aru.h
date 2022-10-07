@@ -34,8 +34,8 @@ private:
 	_tchar					m_szFPS[MAX_PATH] = TEXT("");
 
 private:
-	HRESULT FormationLevel_Collision() override;
-	HRESULT GamePlayLevel_Collision() override;
+	HRESULT FormationLevel_Collision(_float fTimeDelta) override;
+	HRESULT GamePlayLevel_Collision(_float fTimeDelta) override;
 	
 public:
 	virtual void OnDisable() override;

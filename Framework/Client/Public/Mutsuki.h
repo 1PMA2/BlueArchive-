@@ -33,8 +33,8 @@ private:
 	HRESULT SetUp_ShaderResource();
 
 private:
-	HRESULT FormationLevel_Collision() override;
-	HRESULT GamePlayLevel_Collision() override;
+	HRESULT FormationLevel_Collision(_float fTimeDelta) override;
+	HRESULT GamePlayLevel_Collision(_float fTimeDelta) override;
 	_tchar					m_szFPS[MAX_PATH] = TEXT("");
 	
 public:

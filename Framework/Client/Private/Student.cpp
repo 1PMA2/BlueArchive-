@@ -9,6 +9,7 @@
 #include "Formation_Idle.h"
 #include "Aru.h"
 #include "Monster.h"
+#include "ForkLift.h"
 
 CStudent::CStudent(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -176,7 +177,7 @@ HRESULT CStudent::SetUp_ShaderResource()
 	return S_OK;
 }
 
-HRESULT CStudent::FormationLevel_Collision()
+HRESULT CStudent::FormationLevel_Collision(_float fTimeDelta)
 {
 
 	
@@ -184,8 +185,29 @@ HRESULT CStudent::FormationLevel_Collision()
 	return S_OK;
 }
 
-HRESULT CStudent::GamePlayLevel_Collision()
+HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 {
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+
+	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Cover")); ++i)
+	{
+		CForkLift* pCover = (CForkLift*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Cover"), i);
+		CCollider* pSilde = (CCollider*)pCover->Get_Component(TEXT("Com_SlideSPHERE"));
+
+		if (m_pSphereCom->Collision(pSilde))
+		{
+			CTransform* pSlideTransform = (CTransform*)pCover->Get_Component(TEXT("Com_Transform"));
+			_vector vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
+			_vector vSlide = pSlideTransform->Get_State(CTransform::STATE_TRANSLATION);
+			_vector vLook = vTranslation - vSlide;
+			if(0 < XMVectorGetX(vLook))
+				m_pTransformCom->LookAtLerp(XMVectorSet(10.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation), 1.f), 4.5f, fTimeDelta);
+			else
+				m_pTransformCom->LookAtLerp(XMVectorSet(-10.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation), 1.f), 4.5f, fTimeDelta);
+			break;
+		}
+	}
 	
 	
 

@@ -98,8 +98,8 @@ public:
 	virtual void OnEnable() {}
 
 protected:
-	virtual HRESULT FormationLevel_Collision();
-	virtual HRESULT GamePlayLevel_Collision();
+	virtual HRESULT FormationLevel_Collision(_float fTimeDelta);
+	virtual HRESULT GamePlayLevel_Collision(_float fTimeDelta);
 
 private:
 	void InitializeStudentState();
