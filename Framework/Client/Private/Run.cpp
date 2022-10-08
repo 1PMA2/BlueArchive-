@@ -140,7 +140,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 			_vector		vLook = vTarget - vPosition;
 
-			pStudentTransform->LookAtLerp(vTarget, 6.f, fTimeDelta); // 엄폐물 방향 look
+			pStudentTransform->LookAtLerp(vTarget, 5.f, fTimeDelta); // 엄폐물 방향 look
 
 
 			if (m_fHideLength <= XMVectorGetX(XMVector3Length(vLook)))
@@ -158,9 +158,9 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 		{
 			_vector		vTarget = m_TargetMonsters.at(0)->Get_MonsterTranslation(); 
 
-			pStudentTransform->LookAtLerp(vTarget, 6.f, fTimeDelta);
+			pStudentTransform->LookAtLerp(vTarget, 5.f, fTimeDelta);
 
-			if (m_pOwner->Get_StudentInfo().fRange > XMVectorGetX(XMVector3Length(vTarget - vTranslation))) //몬스터 방향으로 공격범위까지 이동완료
+			if (m_pOwner->Get_StudentInfo().fRange > XMVectorGetX(XMVector3Length(vTarget - vTranslation)) &&  (false == m_pOwner->Get_IsColl())) //몬스터 방향으로 공격범위까지 이동완료
 				return CRun_ToKnee::Create(m_pOwner);
 			else
 			{
@@ -174,7 +174,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 	pStudentTransform->Go_Straight(fTimeDelta); //범위 내 몬스터 없을시 앞으로 전진
 	_vector vXY = pStudentTransform->Get_WorldMatrix().r[3];
-	pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), 1.f, fTimeDelta);
+	pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), 5.f, fTimeDelta);
 
 
 	return nullptr;

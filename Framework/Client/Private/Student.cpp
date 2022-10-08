@@ -197,16 +197,21 @@ HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 
 		if (m_pSphereCom->Collision(pSilde))
 		{
+			m_bColled = true;
 			CTransform* pSlideTransform = (CTransform*)pCover->Get_Component(TEXT("Com_Transform"));
 			_vector vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
 			_vector vSlide = pSlideTransform->Get_State(CTransform::STATE_TRANSLATION);
 			_vector vLook = vTranslation - vSlide;
-			if(-1.f < XMVectorGetX(vLook))
-				m_pTransformCom->LookAtLerp(XMVectorSet(10.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation) + 1.f, 1.f), 4.4f, fTimeDelta);
+
+			_float fDir = XMVectorGetX(vLook);
+			if (-0.5f < fDir)
+				m_pTransformCom->LookAtLerp(XMVectorSet(10.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation), 1.f), 5.f, fTimeDelta);
 			else
-				m_pTransformCom->LookAtLerp(XMVectorSet(-10.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation) - 1.f, 1.f), 4.4f, fTimeDelta);
+				m_pTransformCom->LookAtLerp(XMVectorSet(-10.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation), 1.f), 5.f, fTimeDelta);
 			break;
 		}
+		else
+			m_bColled = false;
 	}
 	
 	

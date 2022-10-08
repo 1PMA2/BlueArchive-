@@ -56,6 +56,7 @@ public:
 	void		Reload() { m_tStudentInfo.iBullet = m_tStudentInfo.iMagazine; }
 	void		Set_State(ANIM eANIM) { m_tStudentInfo.eAnim = eANIM; }
 	void		Set_Formation(FORMATION eFormation) { m_tStudentInfo.eFormation = eFormation; }
+	_bool		Get_IsColl() { return m_bColled; }
 
 	CMonster*		FoundMonster();
 
@@ -80,14 +81,11 @@ protected:
 	CMonster*				m_pTargetMonster = nullptr;
 	_float					m_fMin = 9999.f;
 
-	_bool					m_bFoundObstacle = false;
+	_bool					m_bColled = false;
 	_vector					m_vPreTranslation = {};
 
 	vector<CMonster*>	m_Monsters;
 	typedef vector<CMonster*> MONSTERS;
-
-	//vector<class CCover*>	m_Covers;
-	//typedef vector<CCover*> COVERS;
 
 protected:
 	HRESULT SetUp_Components();
