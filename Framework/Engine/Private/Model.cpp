@@ -39,6 +39,11 @@ _uint CModel::Get_CurrentKeyFrame()
   return m_Animations[m_iCurrentAnimationIndex]->Get_CurrentKeyFrame();
 }
 
+void CModel::ResetAnimation()
+{
+	m_Animations[m_iCurrentAnimationIndex]->Reset_Must();
+}
+
 void CModel::Set_CurrentAnimation(_uint iAnimIndex)
 {
 	m_Animations[m_iCurrentAnimationIndex]->Reset_TransformationMatrices();

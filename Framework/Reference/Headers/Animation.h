@@ -20,6 +20,7 @@ public:
 	void Update_TransformationMatrices(_float fTimeDelta);
 	void Repeat_TransformationMatrices(_float fTimeDelta);
 	void Reset_TransformationMatrices();
+	void Reset_Must();
 
 public:
 	HRESULT Clone_Channel(CAnimation* pPrototype, class CModel* pModel);

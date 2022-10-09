@@ -16,6 +16,7 @@ private:
 public:
 	_bool Get_isFinished();
 	_uint Get_CurrentKeyFrame();
+	void ResetAnimation();
 	_uint Get_NumMeshContainers() const {
 		return m_iNumMeshContainers;
 	}

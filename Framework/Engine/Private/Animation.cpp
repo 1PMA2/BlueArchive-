@@ -103,6 +103,17 @@ void CAnimation::Reset_TransformationMatrices()
 	}
 }
 
+void CAnimation::Reset_Must()
+{
+	m_fTimeAcc = 0.f;
+	m_isFinished = false;
+	for (_uint i = 0; i < m_iNumChannels; ++i)
+	{
+		m_Channels[i]->Reset_KeyFrame();
+		m_Channels[i]->Update_TransformationMatrices(0.f);
+	}
+}
+
 HRESULT CAnimation::Clone_Channel(CAnimation * pPrototype, CModel * pModel)
 {
 	for (auto& pPrototypeChannel : pPrototype->m_Channels)

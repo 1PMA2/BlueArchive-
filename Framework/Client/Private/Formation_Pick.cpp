@@ -35,6 +35,8 @@ CFormation_Pick::CFormation_Pick(CStudent* pOwner)
 		m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
 		break;
 	}
+
+	pModel->ResetAnimation();
 }
 
 void CFormation_Pick::Enter()
@@ -123,6 +125,7 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 		pSensei->Clear_FormationInfo();
 
 		pTransform->Set_State(CTransform::STATE_TRANSLATION, m_vCurrentTranslation);
+
 		pState = CFormation_Idle::Create(m_pOwner);
 	}
 
