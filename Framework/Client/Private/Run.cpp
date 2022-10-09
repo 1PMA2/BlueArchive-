@@ -16,12 +16,12 @@ CRun::CRun(CStudent* pOwner)
 	:CState(pOwner)
 {
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
+	m_eAnim = ANIM_RUN;
+		pOwner->Set_State(m_eAnim);
 
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
 	case 0:
-		m_eAnim = ANIM_RUN;
-		pOwner->Set_State(m_eAnim);
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 		m_fHideLength = 0.35f;
 		break;
@@ -78,6 +78,7 @@ void CRun::Exit()
 
 CState* CRun::Find_Monster(_float fTimeDelta)
 {
+	m_TargetMonsters.clear();
 
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 
@@ -94,7 +95,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 		pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), 5.f, fTimeDelta);
 		return nullptr;
 	}
-	m_TargetMonsters.clear();
+	
 
 	for (_uint i = 0; i < iMonsterCount; ++i)
 	{
@@ -123,7 +124,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 			if (m_bOnce)
 				{
 					_uint iRandom = random(0, m_TargetCovers.size() - 1);
-					m_pTargetCover = m_TargetCovers.at(iRandom); 
+					m_pTargetCover = m_TargetCovers.at(iRandom);
 					m_pTargetCover->Set_Use();
 					m_bOnce = false;
 				}
@@ -139,6 +140,13 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 			_vector		vPosition = pStudentTransform->Get_State(CTransform::STATE_TRANSLATION);
 
 			_vector		vLook = vTarget - vPosition;
+
+			if (-1.f > XMVectorGetZ(vLook))
+			{
+				m_pTargetCover = nullptr;
+				m_bOnce = true;
+				return nullptr;
+			}
 
 			pStudentTransform->LookAtLerp(vTarget, 5.f, fTimeDelta); // 决企拱 规氢 look
 
@@ -186,7 +194,9 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 void CRun::Find_Cover()
 {
 	if (nullptr != m_pTargetCover)
+	{
 		return;
+	}
 
 	m_TargetCovers.clear();
 
@@ -226,48 +236,6 @@ void CRun::Find_Cover()
 
 		}
 
-	}
-}
-
-void CRun::CollisionCover(_float fTimeDelta)
-{
-	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-
-	CTransform* pStudentTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
-
-	_vector vTranslation = pStudentTransform->Get_State(CTransform::STATE_TRANSLATION);
-
-	_uint iCoverCount = pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Cover"));
-
-	if (0 >= iCoverCount)
-		return;
-
-	for (_uint i = 0; i < iCoverCount; ++i)
-	{
-		CForkLift* pCover = (CForkLift*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Cover"), i);
-
-		CTransform* pCoverTransform = (CTransform*)pCover->Get_Component(TEXT("Com_Transform"));
-
-		CCollider* pCoverSphere = (CCollider*)pCover->Get_Component(TEXT("Com_SPHERE"));
-
-		CCollider* pSphere = (CCollider*)m_pOwner->Get_Component(TEXT("Com_SPHERE"));
-		_vector vCoverTranslation = pCoverTransform->Get_State(CTransform::STATE_TRANSLATION); //决企拱
-
-		if (pCover->Get_Exit())
-		{
-			m_pCollisionCover = pCover;
-			break;
-		}
-
-	}
-
-	if (nullptr == m_pCollisionCover)
-		return;
-	else if (false == m_pCollisionCover->Get_Exit())
-	{
-		CTransform* pStudentTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
-		_vector vXY = pStudentTransform->Get_WorldMatrix().r[3];
-		pStudentTransform->LookAtLerp(XMVectorSet(10.f, XMVectorGetY(vXY), XMVectorGetY(vXY), 1.f), 10.f, fTimeDelta);
 	}
 }
 

@@ -13,12 +13,12 @@ CRun_ToHide::CRun_ToHide(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
 {
 
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
+	m_eAnim = ANIM_RUNTOHIDE;
+		pOwner->Set_State(m_eAnim);
 
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
 	case ARU:
-		m_eAnim = ANIM_RUNTOHIDE;
-		pOwner->Set_State(m_eAnim);
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 		break;
 	case MUTSUKI:

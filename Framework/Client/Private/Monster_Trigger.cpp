@@ -54,7 +54,16 @@ void CMonster_Trigger::LateTick(_float fTimeDelta)
 {
 	Collision_ToStudent();
 
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+
+	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
+
+
+	if (true == pGameInstance->isIn_Frustum_InWorldSpace(m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION), 2.f))
+	{
+		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+	}
+
+	RELEASE_INSTANCE(CGameInstance);
 
 }
 

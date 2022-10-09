@@ -63,11 +63,12 @@ void CForkLift::LateTick(_float fTimeDelta)
 	{
 		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 
-#ifdef _DEBUG
-		m_pRendererCom->Add_DebugRenderGroup(m_pSphereCom);
-		m_pRendererCom->Add_DebugRenderGroup(m_pSlideAABBCom);
-#endif // _DEBUG
+//#ifdef _DEBUG
+//		m_pRendererCom->Add_DebugRenderGroup(m_pSphereCom);
+//		m_pRendererCom->Add_DebugRenderGroup(m_pSlideAABBCom);
+//#endif // _DEBUG
 	}
+
 	
 	RELEASE_INSTANCE(CGameInstance);
 }
@@ -95,6 +96,11 @@ HRESULT CForkLift::Render()
 			return E_FAIL;*/
 		m_pModelCom->Render(i, m_pShaderCom);
 	}
+
+	#ifdef _DEBUG
+	m_pSphereCom->Render();
+	m_pSlideAABBCom->Render();
+	#endif // _DEBUG
 
 	return S_OK;
 }

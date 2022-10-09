@@ -12,12 +12,12 @@ CHide_ReloadStart::CHide_ReloadStart(CStudent* pOwner)
 {
 	
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
+		m_eAnim = ANIM_HIDERELOADSTART;
+		pOwner->Set_State(m_eAnim);
 
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
 	case 0:
-		m_eAnim = ANIM_HIDERELOADSTART;
-		pOwner->Set_State(m_eAnim);
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 		break;
 	case 1:

@@ -14,12 +14,12 @@ CKnee_ZoomEnd::CKnee_ZoomEnd(CStudent* pOwner)
 
 
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
+		m_eAnim = ANIM_KNEEZOOMEND;
+		pOwner->Set_State(m_eAnim);
 
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
 	case ARU:
-		m_eAnim = ANIM_KNEEZOOMEND;
-		pOwner->Set_State(m_eAnim);
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 		break;
 	case MUTSUKI:

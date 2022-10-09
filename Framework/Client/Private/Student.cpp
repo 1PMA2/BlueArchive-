@@ -225,10 +225,10 @@ HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 			_vector vLook = vTranslation - vSlide;
 
 			_float fDir = XMVectorGetX(vLook);
-			if (-0.5f < fDir)
-				m_pTransformCom->LookAtLerp(XMVectorSet(5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation), 1.f), 10.f, fTimeDelta);
+			if (-0.1f < fDir)
+				m_pTransformCom->LookAtLerp(XMVectorSet(5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation) - 2.f, 1.f), 10.f, fTimeDelta);
 			else
-				m_pTransformCom->LookAtLerp(XMVectorSet(-5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation), 1.f), 10.f, fTimeDelta);
+				m_pTransformCom->LookAtLerp(XMVectorSet(-5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation) - 2.f, 1.f), 10.f, fTimeDelta);
 			break;
 		}
 		else
