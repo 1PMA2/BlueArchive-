@@ -380,6 +380,10 @@ HRESULT CLoader::Loading_ForFormationLevel()
 
 		lstrcpy(m_szLoadingText, TEXT("객체를 생성중입니다."));
 
+		/* For.Prototype_GameObject_Sky */
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Sky"),
+			CSky::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
 
 		/* For.Prototype_GameObject_Terrain*/
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Formation_Terrain"),
@@ -421,11 +425,21 @@ HRESULT CLoader::Loading_ForFormationLevel()
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Terrain"),
 			CVIBuffer_Terrain::Create(m_pDevice, m_pContext, 50, 100))))
 			return E_FAIL;
-		
 
+		/* For.Prototype_Component_VIBuffer_Cube*/
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Cube"),
+			CVIBuffer_Cube::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+		
+		lstrcpy(m_szLoadingText, TEXT("sky tex. "));
+		/* For.Prototype_Component_Texture_Sky */
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Sky"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/SkyBox/Sky_%d.dds"), 4))))
+			return E_FAIL;
 
 		g_bFormation = false;
 	}
+
 
 	if (FAILED(pGameInstance->Add_Prototype(LEVEL_FORMATION, TEXT("Prototype_Component_Texture_BackButton"),
 		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Back_Btn.png"), 1))))
@@ -468,11 +482,6 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_City"),
 			CCity::Create(m_pDevice, m_pContext))))
-			return E_FAIL;
-
-		/* For.Prototype_GameObject_Sky */
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Sky"),
-			CSky::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Aru_Ex"),
@@ -518,13 +527,6 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
 
 
-
-		/* For.Prototype_Component_Texture_Sky */
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Sky"),
-			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/SkyBox/Sky_%d.dds"), 4))))
-			return E_FAIL;
-
-
 		///* For.Prototype_Component_Texture_Filter */
 		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Filter"),
 		//	CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Filter.bmp"), 1))))
@@ -536,12 +538,6 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		//	return E_FAIL;
 
 		lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
-
-		/* For.Prototype_Component_VIBuffer_Cube*/
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_VIBuffer_Cube"),
-			CVIBuffer_Cube::Create(m_pDevice, m_pContext))))
-			return E_FAIL;
-
 
 		_matrix			TransformMatrix;
 

@@ -151,6 +151,10 @@ HRESULT CLevel_Formation::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
+	_uint iSkyNum = 2;
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Sky"), &iSkyNum)))
+		return E_FAIL;
+
 	/* For.Terrain */
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Terrain"))))
 	return E_FAIL;

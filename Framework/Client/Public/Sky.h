@@ -31,6 +31,7 @@ private:
 	CTexture*				m_pTextureCom = nullptr;
 	CRenderer*				m_pRendererCom = nullptr;		
 	CVIBuffer_Cube*			m_pVIBufferCom = nullptr;
+	_uint m_iSkyNum;
 
 
 

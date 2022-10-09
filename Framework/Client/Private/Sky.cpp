@@ -24,6 +24,9 @@ HRESULT CSky::Initialize(void * pArg)
 	TransformDesc.fSpeedPerSec = 5.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
+	if (nullptr != pArg)
+		memcpy(&m_iSkyNum, pArg, sizeof(_uint));
+
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;
 
@@ -77,11 +80,11 @@ HRESULT CSky::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_Texture */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Sky"), TEXT("Com_Texture "), (CComponent**)&m_pTextureCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Sky"), TEXT("Com_Texture "), (CComponent**)&m_pTextureCom)))
 		return E_FAIL;
 
 	/* For.Com_VIBuffer */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_VIBuffer_Cube"), TEXT("Com_VIBuffer"), (CComponent**)&m_pVIBufferCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Cube"), TEXT("Com_VIBuffer"), (CComponent**)&m_pVIBufferCom)))
 		return E_FAIL;
 
 	return S_OK;
@@ -100,7 +103,7 @@ HRESULT CSky::SetUp_ShaderResource()
 		return E_FAIL;
 	if (FAILED(m_pShaderCom->Set_RawValue("g_ProjMatrix", pGameInstance->Get_Transform_TP(CPipeLine::D3DTS_PROJ), sizeof(_float4x4))))
 		return E_FAIL;
-	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 2)))
+	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", m_iSkyNum)))
 		return E_FAIL;
 	
 	RELEASE_INSTANCE(CGameInstance);
