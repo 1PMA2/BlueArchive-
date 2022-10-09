@@ -48,7 +48,7 @@ HRESULT CForkLift::Initialize(void * pArg)
 
 void CForkLift::Tick(_float fTimeDelta)
 {
-	m_pSlideSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
+	m_pSlideAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 }
 
@@ -56,9 +56,20 @@ void CForkLift::LateTick(_float fTimeDelta)
 {
 	Collision_ToPlayer();
 	
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
-	
+	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 
+
+	if (true == pGameInstance->isIn_Frustum_InWorldSpace(m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION), 2.f))
+	{
+		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+
+#ifdef _DEBUG
+		m_pRendererCom->Add_DebugRenderGroup(m_pSphereCom);
+		m_pRendererCom->Add_DebugRenderGroup(m_pSlideAABBCom);
+#endif // _DEBUG
+	}
+	
+	RELEASE_INSTANCE(CGameInstance);
 }
 
 HRESULT CForkLift::Render()
@@ -84,12 +95,6 @@ HRESULT CForkLift::Render()
 			return E_FAIL;*/
 		m_pModelCom->Render(i, m_pShaderCom);
 	}
-
-
-#ifdef _DEBUG
-	m_pSphereCom->Render();
-	m_pSlideSphereCom->Render();
-#endif // _DEBUG
 
 	return S_OK;
 }
@@ -129,7 +134,7 @@ HRESULT CForkLift::SetUp_Components()
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(-0.2f, ColliderDesc.vScale.y * 0.f, 0.4f);
 
-	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"), TEXT("Com_SlideSPHERE"), (CComponent**)&m_pSlideSphereCom, &ColliderDesc)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"), TEXT("Com_SlideAABB"), (CComponent**)&m_pSlideAABBCom, &ColliderDesc)))
 		return E_FAIL;
 
 	/* For.Com_Model */
@@ -221,7 +226,7 @@ void CForkLift::Free()
 	__super::Free();
 
 	Safe_Release(m_pSphereCom);
-	Safe_Release(m_pSlideSphereCom);
+	Safe_Release(m_pSlideAABBCom);
 	Safe_Release(m_pShaderCom);
 	Safe_Release(m_pRendererCom);
 	Safe_Release(m_pModelCom);

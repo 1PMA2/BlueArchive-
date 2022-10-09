@@ -16,10 +16,12 @@ CGameInstance::CGameInstance()
 	, m_pLight_Manager(CLight_Manager::Get_Instance())
 	, m_pEvent_Manager(CEvent_Manager::Get_Instance())
 	, m_pPicking(CPicking::Get_Instance())
+	, m_pFrustum(CFrustum::Get_Instance())
 	, m_pTarget_Manager(CTarget_Manager::Get_Instance())
 	
 {	
 	Safe_AddRef(m_pTarget_Manager);
+	Safe_AddRef(m_pFrustum);
 	Safe_AddRef(m_pPicking);
 	Safe_AddRef(m_pEvent_Manager);
 	Safe_AddRef(m_pLight_Manager);
@@ -36,8 +38,14 @@ CGameInstance::CGameInstance()
 
 HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInst, _uint iNumLevels, const GRAPHICDESC& GraphicDesc, ID3D11Device** ppDeviceOut, ID3D11DeviceContext** ppDeviceContextOut)
 {
-	if (nullptr == m_pGraphic_Device)
-		return E_FAIL;	
+	if (nullptr == m_pGraphic_Device ||
+		nullptr == m_pInput_Device ||
+		nullptr == m_pKey_Manager ||
+		nullptr == m_pObject_Manager ||
+		nullptr == m_pComponent_Manager ||
+		nullptr == m_pPicking ||
+		nullptr == m_pFrustum)
+		return E_FAIL;
 
 	/* 그래픽디바이스. */
 	if (FAILED(m_pGraphic_Device->Ready_Graphic_Device(GraphicDesc.hWnd, GraphicDesc.isWindowMode, GraphicDesc.iWinCX, GraphicDesc.iWinCY, ppDeviceOut, ppDeviceContextOut)))
@@ -62,6 +70,9 @@ HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInst, _uint iNumLevels, cons
 	/* 컴포넌트 매니져의 예약. */
 	if (FAILED(m_pComponent_Manager->Reserve_Container(iNumLevels)))
 		return E_FAIL;
+
+	if (FAILED(m_pFrustum->Initialize()))
+		return E_FAIL;
 	
 	return S_OK;	
 }
@@ -73,6 +84,7 @@ HRESULT CGameInstance::Tick_Engine(_float fTimeDelta)
 		nullptr == m_pInput_Device ||
 		nullptr == m_pPipeLine || 
 		nullptr == m_pObject_Manager ||
+		nullptr == m_pPicking ||
 		nullptr == m_pEvent_Manager)
 		return E_FAIL;
 
@@ -87,6 +99,8 @@ HRESULT CGameInstance::Tick_Engine(_float fTimeDelta)
 	m_pObject_Manager->Tick(fTimeDelta);
 
 	m_pPipeLine->Tick();
+
+	m_pFrustum->Update();
 
 	m_pPicking->Compute_RayInWorldSpace();
 
@@ -368,6 +382,14 @@ _bool CGameInstance::Picking(CVIBuffer * pVIBuffer, CTransform * pTransform, _fl
 	return m_pPicking->Picking(pVIBuffer, pTransform, pOut);
 }
 
+_bool CGameInstance::isIn_Frustum_InWorldSpace(_fvector vWorldPoint, _float fRange)
+{
+	if (nullptr == m_pFrustum)
+		return false;
+
+	return m_pFrustum->Isin_Frustum_InWorldSpace(vWorldPoint, fRange);
+}
+
 ID3D11ShaderResourceView * CGameInstance::Get_RenderTarget_SRV(const _tchar * pTargetTag)
 {
 	if (nullptr == m_pTarget_Manager)
@@ -403,6 +425,8 @@ void CGameInstance::Release_Engine()
 
 	CEvent_Manager::Get_Instance()->Destroy_Instance();
 
+	CFrustum::Get_Instance()->Destroy_Instance();
+
 	CTarget_Manager::Get_Instance()->Destroy_Instance();
 
 	CInput_Device::Get_Instance()->Destroy_Instance();	
@@ -414,6 +438,7 @@ void CGameInstance::Release_Engine()
 void CGameInstance::Free()
 {
 	Safe_Release(m_pTarget_Manager);
+	Safe_Release(m_pFrustum);
 	Safe_Release(m_pPicking);
 	Safe_Release(m_pEvent_Manager);
 	Safe_Release(m_pLight_Manager);

@@ -12,6 +12,7 @@
 #include "Light_Manager.h"
 #include "Picking.h"
 #include "Event_Manager.h"
+#include "Frustum.h"
 #include "Target_Manager.h"
 
 /* 1. 게임내에 필요한 객체(매니져등)들을 모아서 보관한다. */
@@ -95,6 +96,9 @@ public: /* For.Picking */
 	_float4 Get_RayDir() { return m_pPicking->Get_RayDir(); }
 	_bool Picking(CVIBuffer* pVIBuffer, CTransform* pTransform, _float4* pOut);
 
+public: /* For.Frustum */
+	_bool isIn_Frustum_InWorldSpace(_fvector vWorldPoint, _float fRange = 0.f);
+
 
 public: /* For.Target_Manager */
 	ID3D11ShaderResourceView* Get_RenderTarget_SRV(const _tchar* pTargetTag);
@@ -119,6 +123,7 @@ private:
 	CLight_Manager*					m_pLight_Manager = nullptr;
 	CEvent_Manager*					m_pEvent_Manager = nullptr;
 	CPicking*						m_pPicking = nullptr;
+	CFrustum*						m_pFrustum = nullptr;
 	CTarget_Manager*				m_pTarget_Manager = nullptr;
 
 

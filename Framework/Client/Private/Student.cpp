@@ -154,6 +154,27 @@ HRESULT CStudent::SetUp_Components()
 	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Renderer"), TEXT("Com_Renderer"), (CComponent**)&m_pRendererCom)))
 		return E_FAIL;
 
+	/* For.Com_AABB */
+	CCollider::COLLIDERDESC			ColliderDesc;
+	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
+
+	ColliderDesc.vScale = _float3(0.5f, 1.f, 0.5f);
+	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
+	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.5f, 0.f);
+
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"), TEXT("Com_AABB"), (CComponent**)&m_pAABBCom, &ColliderDesc)))
+		return E_FAIL;
+
+	/* For.Com_SPHERE */
+	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
+
+	ColliderDesc.vScale = _float3(0.4f, 0.4f, 0.4f);
+	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
+	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
+
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
+		return E_FAIL;
+
 	return S_OK;
 }
 
@@ -193,7 +214,7 @@ HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Cover")); ++i)
 	{
 		CForkLift* pCover = (CForkLift*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Cover"), i);
-		CCollider* pSilde = (CCollider*)pCover->Get_Component(TEXT("Com_SlideSPHERE"));
+		CCollider* pSilde = (CCollider*)pCover->Get_Component(TEXT("Com_SlideAABB"));
 
 		if (m_pSphereCom->Collision(pSilde))
 		{
@@ -205,13 +226,14 @@ HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 
 			_float fDir = XMVectorGetX(vLook);
 			if (-0.5f < fDir)
-				m_pTransformCom->LookAtLerp(XMVectorSet(10.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation), 1.f), 5.f, fTimeDelta);
+				m_pTransformCom->LookAtLerp(XMVectorSet(5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation), 1.f), 10.f, fTimeDelta);
 			else
-				m_pTransformCom->LookAtLerp(XMVectorSet(-10.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation), 1.f), 5.f, fTimeDelta);
+				m_pTransformCom->LookAtLerp(XMVectorSet(-5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation), 1.f), 10.f, fTimeDelta);
 			break;
 		}
 		else
 			m_bColled = false;
+
 	}
 	
 	

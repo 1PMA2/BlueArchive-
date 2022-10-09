@@ -160,12 +160,15 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 			pStudentTransform->LookAtLerp(vTarget, 5.f, fTimeDelta);
 
-			if (m_pOwner->Get_StudentInfo().fRange > XMVectorGetX(XMVector3Length(vTarget - vTranslation)) &&  (false == m_pOwner->Get_IsColl())) //몬스터 방향으로 공격범위까지 이동완료
-				return CRun_ToKnee::Create(m_pOwner);
-			else
+			if(false == m_pOwner->Get_IsColl())
 			{
-				pStudentTransform->Go_Straight(fTimeDelta); //몬스터 방향으로 공격범위까지 이동
-				return nullptr;
+				if (m_pOwner->Get_StudentInfo().fRange > XMVectorGetX(XMVector3Length(vTarget - vTranslation))) //몬스터 방향으로 공격범위까지 이동완료
+					return CRun_ToKnee::Create(m_pOwner);
+				else
+				{
+					pStudentTransform->Go_Straight(fTimeDelta); //몬스터 방향으로 공격범위까지 이동
+					return nullptr;
+				}
 			}
 		}
 
@@ -215,9 +218,9 @@ void CRun::Find_Cover()
 		{
 			_float fLength = XMVectorGetX(XMVector3Length(vMonsterTranslation - vCoverTranslation)); //가까운 몬스터와 엄폐물 사이의 거리 
 
-			if (m_pOwner->Get_StudentInfo().fRange > (fLength)) //가까운 몬스터와 엄폐물 사이의 거리가 인식 범위 내
+			if (m_pOwner->Get_StudentInfo().fRange > (fLength)) //가까운 몬스터와 엄폐물 사이의 거리가 공격 범위 내
 			{
-				if (!pCover->Get_Use())
+				if (false == pCover->Get_Use())
 					m_TargetCovers.push_back(pCover); //가장 가까운 엄폐물 탐색,사용중이 아닌
 			}
 
