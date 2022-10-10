@@ -223,16 +223,19 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student_Ex(const _tchar * pLayerTag)
 
 	CSensei* pSensei = CSensei::Get_Instance();
 	/* For.Player */
-	_tchar*			pName = pSensei->Get_FormationInfo(0).pName;
+
+	for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
+	{
+		_tchar*			pName = pSensei->Get_FormationInfo(i).pName;
+		_tchar buffer[20] = {};
+
+		wcscpy_s(buffer, pName);
+		wcscat_s(buffer, TEXT("_Ex"));
+
+		if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, buffer)))
+			return E_FAIL;
+	}
 	
-	_tchar buffer[20] = {};
-
-	wcscpy_s(buffer, pName);
-	wcscat_s(buffer, TEXT("_Ex"));
-
-
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, buffer)))
-		return E_FAIL;
 
 	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Mutsuki_Ex"))))
 	//	return E_FAIL;
