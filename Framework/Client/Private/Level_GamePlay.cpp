@@ -123,7 +123,7 @@ HRESULT CLevel_GamePlay::Ready_Lights()
 	ZeroMemory(&LightDesc, sizeof(LIGHTDESC));
 
 	LightDesc.eType = tagLightDesc::TYPE_DIRECTIONAL;
-	LightDesc.vDirection = _float4(1.f, 1.f, 1.f, 0.f);
+	LightDesc.vDirection = _float4(0.f, 1.f, 1.f, 0.f);
 	LightDesc.vDiffuse = _float4(1.f, 1.f, 1.f, 1.f);
 	LightDesc.vAmbient = _float4(0.8f, 0.8f, 0.8f, 1.f);
 	LightDesc.vSpecular = _float4(1.f, 1.f, 1.f, 1.f);
@@ -221,8 +221,17 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student_Ex(const _tchar * pLayerTag)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
+	CSensei* pSensei = CSensei::Get_Instance();
 	/* For.Player */
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Aru_Ex"))))
+	_tchar*			pName = pSensei->Get_FormationInfo(0).pName;
+	
+	_tchar buffer[20] = {};
+
+	wcscpy_s(buffer, pName);
+	wcscat_s(buffer, TEXT("_Ex"));
+
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, buffer)))
 		return E_FAIL;
 
 	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Mutsuki_Ex"))))

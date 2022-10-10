@@ -345,7 +345,7 @@ HRESULT CLoader::Loading_ForGachaScene()
 					return E_FAIL;
 			}
 
-			if (TEXT("Mutsuki") == pSensei->Get_StudentName(i))
+			else if (TEXT("Mutsuki") == pSensei->Get_StudentName(i))
 			{
 				pSensei->Set_RealStudent(pSensei->Get_StudentName(i), CMutsuki::Create(m_pDevice, m_pContext));
 				if (FAILED(pGameInstance->Add_Prototype(pSensei->Get_StudentName(i),
@@ -358,6 +358,8 @@ HRESULT CLoader::Loading_ForGachaScene()
 					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Mutsuki/", "Mutsuki.fbx", TransformMatrix))))
 					return E_FAIL;
 			}
+
+
 		}
 
 	}
@@ -484,14 +486,6 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CCity::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Aru_Ex"),
-			CAru_Ex::Create(m_pDevice, m_pContext))))
-			return E_FAIL;
-
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Mutsuki_Ex"),
-			CMutsuki_Ex::Create(m_pDevice, m_pContext))))
-			return E_FAIL;
-
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Main"),
 			CCamera_Main::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
@@ -513,6 +507,16 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CMonster::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		lstrcpy(m_szLoadingText, TEXT("ex obj."));
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Aru_Ex"),
+			CAru_Ex::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Mutsuki_Ex"),
+			CMutsuki_Ex::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		///* For.Prototype_GameObject_Effect */
 		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Effect"),
 		//	CEffect::Create(m_pGraphic_Device))))
@@ -527,37 +531,15 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
 
 
-		///* For.Prototype_Component_Texture_Filter */
-		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Filter"),
-		//	CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Filter.bmp"), 1))))
-		//	return E_FAIL;
-
-		///* For.Prototype_Component_Texture_Brush */
-		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Brush"),
-		//	CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Terrain/Brush.png"), 1))))
-		//	return E_FAIL;
-
 		lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
 
 		_matrix			TransformMatrix;
 
 		/* For.Prototype_Component_Model_ForkLift*/
-		TransformMatrix = XMMatrixScaling(0.7f, 0.7f, 0.7f) * XMMatrixRotationY(XMConvertToRadians(00.0f));
+		TransformMatrix = XMMatrixScaling(0.7f, 0.7f, 0.7f) * XMMatrixRotationY(XMConvertToRadians(0.f));
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_ForkLift"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/Cover/", "cover.fbx", TransformMatrix))))
-			return E_FAIL;
-		
-		ZeroMemory(&TransformMatrix, sizeof(_matrix));
-		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru_Ex"),
-			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru_Ex.fbx", TransformMatrix))))
-			return E_FAIL;
-
-		ZeroMemory(&TransformMatrix, sizeof(_matrix));
-		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Mutsuki_Ex"),
-			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Mutsuki/", "Mutsuki_Ex.fbx", TransformMatrix))))
 			return E_FAIL;
 
 		ZeroMemory(&TransformMatrix, sizeof(_matrix));
@@ -573,6 +555,31 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			return E_FAIL;
 
 
+
+		lstrcpy(m_szLoadingText, TEXT("EX모델을 로딩중. "));
+
+		for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
+		{
+			switch (pSensei->Get_FormationInfo(i).eStudent)
+			{
+			case ARU:
+				ZeroMemory(&TransformMatrix, sizeof(_matrix));
+				TransformMatrix = XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+				if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Aru_Ex"),
+					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru_Ex.fbx", TransformMatrix))))
+					return E_FAIL;
+				break;
+
+			case MUTSUKI:
+				ZeroMemory(&TransformMatrix, sizeof(_matrix));
+				TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+				if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Mutsuki_Ex"),
+					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Mutsuki/", "Mutsuki_Ex.fbx", TransformMatrix))))
+					return E_FAIL;
+				break;
+
+			}
+		}
 		
 
 		lstrcpy(m_szLoadingText, TEXT("로딩 끝 "));

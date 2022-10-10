@@ -742,6 +742,9 @@
     <Filter Include="02.GameObject\00.Student\01. Mutsuki\Mutsuki_Ex">
       <UniqueIdentifier>{1922aa6c-b6ce-4b32-affc-60b151a2a082}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.GameObject\00.Student\02. Kayoko">
+      <UniqueIdentifier>{34050e05-56d0-4843-adf0-52dda025007e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">

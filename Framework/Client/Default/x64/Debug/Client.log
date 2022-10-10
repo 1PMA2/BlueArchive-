@@ -1,3 +1,7 @@
-﻿  Sky.cpp
+﻿  Mutsuki_Ex.cpp
+  Loader.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Aru_Ex.cpp
+  코드를 생성하고 있습니다...
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

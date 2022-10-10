@@ -16,7 +16,7 @@ BEGIN(Client)
 class CCamera_Ex final : public CCamera
 {
 public:
-	typedef struct tagWeaponDesc
+	typedef struct tagExCameraDesc
 	{
 		LEVEL			eTargetLevel;
 		const _tchar*	pTargetLayerTag;
@@ -24,7 +24,7 @@ public:
 		const _tchar*	pTargetModelComTag;
 
 		const char*		pBoneName;
-	}WEAPONDESC;
+	}EXCAMERADESC;
 
 public:
 	CCamera_Ex(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
@@ -37,7 +37,7 @@ public:
 	virtual void Tick(_float fTimeDelta) override;
 	virtual void LateTick(_float fTimeDelta) override;
 	virtual HRESULT Render() override;
-	WEAPONDESC				m_WeaponDesc;
+	EXCAMERADESC				m_ExDesc;
 	_float4x4				m_WorldMatrix;
 	_float4x4				m_TargetWorldMatrix;
 

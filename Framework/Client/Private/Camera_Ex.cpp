@@ -63,24 +63,24 @@ void CCamera_Ex::OnEnable()
 {
 	CSensei* pSensei = GET_SENSEI;
 
-	m_WeaponDesc.eTargetLevel = LEVEL_GAMEPLAY;
-	m_WeaponDesc.pTargetLayerTag = TEXT("Layer_Student_Ex");
-	m_WeaponDesc.iTargetIndex = 0;
-	m_WeaponDesc.pTargetModelComTag = TEXT("Com_Model");
-	m_WeaponDesc.pBoneName = "Camera001";
+	m_ExDesc.eTargetLevel = LEVEL_GAMEPLAY;
+	m_ExDesc.pTargetLayerTag = TEXT("Layer_Student_Ex");
+	m_ExDesc.iTargetIndex = 0;
+	m_ExDesc.pTargetModelComTag = TEXT("Com_Model");
+	m_ExDesc.pBoneName = "Camera001";
 
 	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 
-	CModel*		pTargetModel = (CModel*)pGameInstance->Get_Component(m_WeaponDesc.eTargetLevel, m_WeaponDesc.pTargetLayerTag, m_WeaponDesc.pTargetModelComTag, m_WeaponDesc.iTargetIndex);
+	CModel*		pTargetModel = (CModel*)pGameInstance->Get_Component(m_ExDesc.eTargetLevel, m_ExDesc.pTargetLayerTag, m_ExDesc.pTargetModelComTag, m_ExDesc.iTargetIndex);
 	if (nullptr == pTargetModel)
 		return ;
 
-	m_pBonePtr = pTargetModel->Find_HierarcyNode(m_WeaponDesc.pBoneName);
+	m_pBonePtr = pTargetModel->Find_HierarcyNode(m_ExDesc.pBoneName);
 	m_pTargetBonePtr = pTargetModel->Find_HierarcyNode("Camera001.Target");
 	if (nullptr == m_pBonePtr)
 		return ;
 
-	m_pTargetTransform = (CTransform*)pGameInstance->Get_Component(m_WeaponDesc.eTargetLevel, m_WeaponDesc.pTargetLayerTag, TEXT("Com_Transform"));
+	m_pTargetTransform = (CTransform*)pGameInstance->Get_Component(m_ExDesc.eTargetLevel, m_ExDesc.pTargetLayerTag, TEXT("Com_Transform"));
 	if (nullptr == m_pTargetTransform)
 		return ;
 
