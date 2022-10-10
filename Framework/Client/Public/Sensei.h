@@ -26,6 +26,8 @@ private:
 
 public:
 	SENSEIINFO Get_SenseiInfo() { return m_tSensei; }
+	_float Get_Cost() { return m_tSensei.fCost; }
+	void ReSet_Cost() { m_tSensei.fCost = 0.f; }
 
 	/* Level*/
 	void Set_CurrentLevel(LEVEL eLevelID) { m_eCurrentLevel = eLevelID; }

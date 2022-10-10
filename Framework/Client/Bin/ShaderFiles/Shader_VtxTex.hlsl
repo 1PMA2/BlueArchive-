@@ -7,6 +7,7 @@ texture2D	g_DiffuseTexture;
 texture2D	g_DepthTexture;
 
 float g_Fade;
+float g_Cost;
 
 sampler DefaultSampler = sampler_state 
 {		
@@ -141,7 +142,7 @@ struct VS_OUT_COST
 	float2		vTexUV : TEXCOORD0;
 };
 
-VS_OUT VS_COST(VS_IN In)
+VS_OUT_COST VS_COST(VS_IN_COST In)
 {
 	VS_OUT		Out = (VS_OUT)0;
 
@@ -152,6 +153,8 @@ VS_OUT VS_COST(VS_IN In)
 
 	Out.vPosition = mul(vector(In.vPosition, 1.f), matWVP);
 	Out.vTexUV = In.vTexUV;
+
+	Out.vTexUV.x = In.vTexUV.x * g_Cost;
 
 	return Out;
 }

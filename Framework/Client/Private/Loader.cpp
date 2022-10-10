@@ -33,6 +33,8 @@
 #include "Back_Btn.h"
 #include "Monster_Trigger.h"
 #include "Droid_Dead.h"
+#include "Cost_Gauge.h"
+
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -470,6 +472,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		lstrcpy(m_szLoadingText, TEXT("객체를 생성중입니다."));
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_CostGauge"),
+			CCost_Gauge::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Trigger"),
 			CMonster_Trigger::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
@@ -530,6 +536,9 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
 
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_CostGauge"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Cost_Gauge%d.png"), 2))))
+			return E_FAIL;
 
 		lstrcpy(m_szLoadingText, TEXT("모델을 로딩중이비낟. "));
 

@@ -55,8 +55,7 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 
 	CSensei* pSensei = CSensei::Get_Instance();
 
-	pSensei->Tick_Cost(fTimeDelta);
-
+	//pSensei->Tick_Cost(fTimeDelta);
 
 	if (GetKeyState(VK_RETURN) & 0x8000)
 	{
@@ -189,6 +188,8 @@ HRESULT CLevel_GamePlay::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Sky"), &iSkyNum)))
 		return E_FAIL;
 
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_CostGauge"))))
+		return E_FAIL;
 
 
 	Safe_Release(pGameInstance);

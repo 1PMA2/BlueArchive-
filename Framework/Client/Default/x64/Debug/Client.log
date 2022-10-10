@@ -1,3 +1,4 @@
-﻿  Cost_Gauge.cpp
+﻿  Sensei.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(34): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)
