@@ -7,12 +7,13 @@ CVIBuffer_Cube::CVIBuffer_Cube(ID3D11Device * pDevice, ID3D11DeviceContext * pCo
 }
 
 CVIBuffer_Cube::CVIBuffer_Cube(const CVIBuffer_Cube & rhs)
-	: CVIBuffer(rhs)
+	: CVIBuffer(rhs),
+	m_fSize(rhs.m_fSize)
 {
 
 }
 
-HRESULT CVIBuffer_Cube::Initialize_Prototype()
+HRESULT CVIBuffer_Cube::Initialize_Prototype(_float fSize)
 {
 #pragma region VERTEXBUFFER
 	m_iStride = sizeof(VTXCUBETEX);
@@ -30,36 +31,36 @@ HRESULT CVIBuffer_Cube::Initialize_Prototype()
 	m_pVerticesPos = new _float4[m_iNumVertices];
 	VTXCUBETEX*			pVertices = new VTXCUBETEX[m_iNumVertices];
 
-	m_pVerticesPos[0] = _float4(-0.5f, 0.5f, -0.5f, 1.f);
-	pVertices[0].vPosition = _float3(-0.5f, 0.5f, -0.5f);
+	m_pVerticesPos[0] = _float4(-0.5f * fSize, 0.5f * fSize, -0.5f * fSize, 1.f);
+	pVertices[0].vPosition = _float3(-0.5f * fSize, 0.5f * fSize, -0.5f * fSize);
 	pVertices[0].vTexUV = pVertices[0].vPosition;
 
-	m_pVerticesPos[1] = _float4(0.5f, 0.5f, -0.5f, 1.f);
-	pVertices[1].vPosition = _float3(0.5f, 0.5f, -0.5f);
+	m_pVerticesPos[1] = _float4(0.5f * fSize, 0.5f * fSize, -0.5f * fSize, 1.f);
+	pVertices[1].vPosition = _float3(0.5f * fSize, 0.5f * fSize, -0.5f * fSize);
 	pVertices[1].vTexUV = pVertices[1].vPosition;
 
-	m_pVerticesPos[2] = _float4(0.5f, -0.5f, -0.5f, 1.f);
-	pVertices[2].vPosition = _float3(0.5f, -0.5f, -0.5f);
+	m_pVerticesPos[2] = _float4(0.5f * fSize, -0.5f * fSize, -0.5f * fSize, 1.f);
+	pVertices[2].vPosition = _float3(0.5f * fSize, -0.5f * fSize, -0.5f * fSize);
 	pVertices[2].vTexUV = pVertices[2].vPosition;
 
-	m_pVerticesPos[3] = _float4(-0.5f, -0.5f, -0.5f, 1.f);
-	pVertices[3].vPosition = _float3(-0.5f, -0.5f, -0.5f);
+	m_pVerticesPos[3] = _float4(-0.5f * fSize, -0.5f * fSize, -0.5f * fSize, 1.f);
+	pVertices[3].vPosition = _float3(-0.5f * fSize, -0.5f * fSize, -0.5f * fSize);
 	pVertices[3].vTexUV = pVertices[3].vPosition;
 
-	m_pVerticesPos[4] = _float4(-0.5f, 0.5f, 0.5f, 1.f);
-	pVertices[4].vPosition = _float3(-0.5f, 0.5f, 0.5f);
+	m_pVerticesPos[4] = _float4(-0.5f * fSize, 0.5f * fSize, 0.5f * fSize, 1.f);
+	pVertices[4].vPosition = _float3(-0.5f * fSize, 0.5f * fSize, 0.5f * fSize);
 	pVertices[4].vTexUV = pVertices[4].vPosition;
 
-	m_pVerticesPos[5] = _float4(0.5f, 0.5f, 0.5f, 1.f);
-	pVertices[5].vPosition = _float3(0.5f, 0.5f, 0.5f);
+	m_pVerticesPos[5] = _float4(0.5f * fSize, 0.5f * fSize, 0.5f * fSize, 1.f);
+	pVertices[5].vPosition = _float3(0.5f * fSize, 0.5f * fSize, 0.5f * fSize);
 	pVertices[5].vTexUV = pVertices[5].vPosition;
 
-	m_pVerticesPos[6] = _float4(0.5f, -0.5f, 0.5f, 1.f);
-	pVertices[6].vPosition = _float3(0.5f, -0.5f, 0.5f);
+	m_pVerticesPos[6] = _float4(0.5f * fSize, -0.5f * fSize, 0.5f * fSize, 1.f);
+	pVertices[6].vPosition = _float3(0.5f * fSize, -0.5f * fSize, 0.5f * fSize);
 	pVertices[6].vTexUV = pVertices[6].vPosition;
 
-	m_pVerticesPos[7] = _float4(-0.5f, -0.5f, 0.5f, 1.f);
-	pVertices[7].vPosition = _float3(-0.5f, -0.5f, 0.5f);
+	m_pVerticesPos[7] = _float4(-0.5f * fSize, -0.5f * fSize, 0.5f * fSize, 1.f);
+	pVertices[7].vPosition = _float3(-0.5f * fSize, -0.5f * fSize, 0.5f * fSize);
 	pVertices[7].vTexUV = pVertices[7].vPosition;
 
 	ZeroMemory(&m_SubResourceData, sizeof(D3D11_SUBRESOURCE_DATA));
@@ -135,11 +136,11 @@ HRESULT CVIBuffer_Cube::Initialize(void * pArg)
 	return S_OK;
 }
 
-CVIBuffer_Cube * CVIBuffer_Cube::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
+CVIBuffer_Cube * CVIBuffer_Cube::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext, _float fSize)
 {
 	CVIBuffer_Cube*		pInstance = new CVIBuffer_Cube(pDevice, pContext);
 
-	if (FAILED(pInstance->Initialize_Prototype()))
+	if (FAILED(pInstance->Initialize_Prototype(fSize)))
 	{
 		MSG_BOX("Failed to Created : CBackGround");
 		Safe_Release(pInstance);

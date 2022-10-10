@@ -45,7 +45,14 @@ void CSky::LateTick(_float fTimeDelta)
 {
 	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4(&pGameInstance->Get_CamPosition()));
+	_vector vCampos = XMLoadFloat4(&pGameInstance->Get_CamPosition());
+
+
+	if (4 == m_iSkyNum)
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(XMVectorGetX(vCampos),
+			XMVectorGetY(vCampos) - 0.5f, XMVectorGetZ(vCampos) - 470.f, XMVectorGetW(vCampos)));
+	else
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vCampos);
 
 	RELEASE_INSTANCE(CGameInstance);
 

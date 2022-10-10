@@ -428,13 +428,13 @@ HRESULT CLoader::Loading_ForFormationLevel()
 
 		/* For.Prototype_Component_VIBuffer_Cube*/
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Cube"),
-			CVIBuffer_Cube::Create(m_pDevice, m_pContext))))
+			CVIBuffer_Cube::Create(m_pDevice, m_pContext, 15.f))))
 			return E_FAIL;
 		
 		lstrcpy(m_szLoadingText, TEXT("sky tex. "));
 		/* For.Prototype_Component_Texture_Sky */
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Sky"),
-			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/SkyBox/Sky_%d.dds"), 4))))
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/SkyBox/Sky_%d.dds"), 5))))
 			return E_FAIL;
 
 		g_bFormation = false;

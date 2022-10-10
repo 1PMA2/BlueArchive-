@@ -93,8 +93,6 @@ CState * CFormation_Idle::Loop(_float fTimeDelta)
 
 	pTransform->Set_Scaled({ 1.f, 1.f, 1.f });
 
-	//pTransform->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation);
-
 	pModel->Repeat_Animation(fTimeDelta);
 
 	if (pAABBcom->CollisionRay())

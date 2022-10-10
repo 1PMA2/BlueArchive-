@@ -120,10 +120,10 @@ HRESULT CLevel_Formation::Ready_Lights()
 	ZeroMemory(&LightDesc, sizeof(LIGHTDESC));
 
 	LightDesc.eType = tagLightDesc::TYPE_DIRECTIONAL;
-	LightDesc.vDirection = _float4(1.f, 1.f, 1.f, 0.f);
+	LightDesc.vDirection = _float4(0.f, 1.f, 1.f, 0.f);
 	LightDesc.vDiffuse = _float4(1.f, 1.f, 1.f, 1.f);
 	LightDesc.vAmbient = _float4(0.8f, 0.8f, 0.8f, 1.f);
-	LightDesc.vSpecular = _float4(1.f, 1.f, 1.f, 1.f);
+	LightDesc.vSpecular = _float4(0.f, 0.f, 0.f, 0.f);
 
 	if (FAILED(pGameInstance->Add_Light(m_pDevice, m_pContext, LightDesc)))
 		return E_FAIL;
@@ -151,7 +151,7 @@ HRESULT CLevel_Formation::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
-	_uint iSkyNum = 2;
+	_uint iSkyNum = 4;
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Sky"), &iSkyNum)))
 		return E_FAIL;
 
@@ -177,15 +177,15 @@ HRESULT CLevel_Formation::Ready_Layer_Camera(const _tchar * pLayerTag)
 	CCamera::CAMERADESC			CameraDesc;
 	ZeroMemory(&CameraDesc, sizeof(CCamera::CAMERADESC));
 
-	CameraDesc.vEye = _float4(0.f, 0.3f, 5.5f, 1.f);
-	CameraDesc.vAt = _float4(0.f, 0.3f, 0.f, 1.f);
+	CameraDesc.vEye = _float4(0.f, 0.5f, 140.f, 1.f);
+	CameraDesc.vAt = _float4(0.f, 0.5f, 0.f, 1.f);
 	CameraDesc.TransformDesc.fSpeedPerSec = 5.f;
 	CameraDesc.TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	CameraDesc.fFovy = XMConvertToRadians(23.0f);
+	CameraDesc.fFovy = XMConvertToRadians(1.f);
 	CameraDesc.fAspect = (_float)g_iWinCX / g_iWinCY;
-	CameraDesc.fNear = 0.1f;
-	CameraDesc.fFar = 300.f;
+	CameraDesc.fNear = 10.f;
+	CameraDesc.fFar = 600.f;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Camera_Free"), &CameraDesc)))
 		return E_FAIL;

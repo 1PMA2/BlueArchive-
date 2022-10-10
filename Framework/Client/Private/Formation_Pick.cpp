@@ -59,8 +59,8 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 	{
 		_float4 fOut;
 
-		pGameInstance->Picking((CVIBuffer*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_VIBuffer"), 0),
-			(CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 0), &fOut);
+		pGameInstance->Picking((CVIBuffer*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_VIBuffer"), 1),
+			(CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 1), &fOut);
 
 		fOut.y -= 0.5f; // offset
 		pTransform->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4(&fOut));
