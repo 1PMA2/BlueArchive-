@@ -76,10 +76,17 @@ void CWork_Button::Tick(_float fTimeDelta)
 	{
 		if (KEY(LBUTTON, TAP))
 		{
+			m_pTransformCom->Set_Scaled(_float3(vSize.x * 1.1f, vSize.y * 1.1f, 0.f));
+		}
+		else if (KEY(LBUTTON, AWAY))
+		{
+			m_pTransformCom->Set_Scaled(_float3(vSize.x, vSize.y, 0.f));
+
 			CSensei* pSensei = GET_SENSEI;
 
 			pSensei->Set_OpenFormationLevel(true);
 		}
+
 	}
 
 }

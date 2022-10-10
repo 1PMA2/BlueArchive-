@@ -127,6 +127,34 @@ PS_OUT PS_MAIN_SOFT(PS_IN_SOFT In)
 	return Out;
 
 }
+//cost gauge
+
+struct VS_IN_COST
+{
+	float3		vPosition : POSITION;
+	float2		vTexUV : TEXCOORD0;
+};
+
+struct VS_OUT_COST
+{
+	float4		vPosition : SV_POSITION;
+	float2		vTexUV : TEXCOORD0;
+};
+
+VS_OUT VS_COST(VS_IN In)
+{
+	VS_OUT		Out = (VS_OUT)0;
+
+	matrix			matWV, matWVP;
+
+	matWV = mul(g_WorldMatrix, g_ViewMatrix);
+	matWVP = mul(matWV, g_ProjMatrix);
+
+	Out.vPosition = mul(vector(In.vPosition, 1.f), matWVP);
+	Out.vTexUV = In.vTexUV;
+
+	return Out;
+}
 
 
 technique11 DefaultTechnique
@@ -150,6 +178,16 @@ technique11 DefaultTechnique
 		VertexShader = compile vs_5_0 VS_MAIN_SOFT();
 		GeometryShader = NULL;
 		PixelShader = compile ps_5_0 PS_MAIN_SOFT();
+	}
+	pass CostGauge
+	{
+		SetBlendState(BS_AlphaBlending, float4(0.f, 0.f, 0.f, 1.f), 0xffffffff);
+		SetDepthStencilState(DSS_Default, 0);
+		SetRasterizerState(RS_Default);
+
+		VertexShader = compile vs_5_0 VS_COST();
+		GeometryShader = NULL;
+		PixelShader = compile ps_5_0 PS_MAIN();
 	}
 	/*pass Default
 	{

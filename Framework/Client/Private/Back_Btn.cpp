@@ -58,7 +58,7 @@ void CBack_Btn::Tick(_float fTimeDelta)
 	vPos.x += (g_iWinCX >> 1);
 	vPos.y = -vPos.y + (g_iWinCY >> 1);
 
-	_float3 vSize = _float3(m_fSizeX, m_fSizeY, 1.f);
+	_float3 vSize = _float3(m_fSizeX, m_fSizeY, 0.f);
 
 	RECT rcButton;
 
@@ -76,6 +76,12 @@ void CBack_Btn::Tick(_float fTimeDelta)
 	{
 		if (KEY(LBUTTON, TAP))
 		{
+			m_pTransformCom->Set_Scaled(_float3(vSize.x * 1.1f, vSize.y * 1.1f, 0.f));
+		}
+		else if (KEY(LBUTTON, AWAY))
+		{
+			//m_pTransformCom->Set_Scaled({ 1.f, 1.f, 0.f });
+
 			CSensei* pSensei = GET_SENSEI;
 
 			pSensei->Set_OpenLobbyLevel(true);

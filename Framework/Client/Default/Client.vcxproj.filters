@@ -220,6 +220,9 @@
     <ClInclude Include="..\Public\Mutsuki_Ex.h">
       <Filter>02.GameObject\00.Student\01. Mutsuki\Mutsuki_Ex</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Cost_Gauge.h">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\Cost_Gauge</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -428,6 +431,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Mutsuki_Ex.cpp">
       <Filter>02.GameObject\00.Student\01. Mutsuki\Mutsuki_Ex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Cost_Gauge.cpp">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\Cost_Gauge</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -745,6 +751,21 @@
     <Filter Include="02.GameObject\00.Student\02. Kayoko">
       <UniqueIdentifier>{34050e05-56d0-4843-adf0-52dda025007e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Cost_Gauge">
+      <UniqueIdentifier>{e763f0ea-9051-415b-be5f-39b00ca5fc01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\Cost_Gauge_Back">
+      <UniqueIdentifier>{98af1dff-2bd2-4278-8fb5-e893dd5f20c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\Cost_Gauge">
+      <UniqueIdentifier>{dca9c079-b69e-43aa-b101-e2109c568509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\CostBg">
+      <UniqueIdentifier>{10017f3c-49e0-44f0-a87d-a35c21ae4a73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\CostBg\Cost_Num">
+      <UniqueIdentifier>{4a391bd3-50be-4b22-ab46-3ddf84064de6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -757,9 +778,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxTex.hlsl">
-      <Filter>03.ShaderFiles</Filter>
-    </FxCompile>
     <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxNorTex.hlsl">
       <Filter>03.ShaderFiles</Filter>
     </FxCompile>
@@ -770,6 +788,9 @@
       <Filter>03.ShaderFiles</Filter>
     </FxCompile>
     <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxAnimModel.hlsl">
+      <Filter>03.ShaderFiles</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxTex.hlsl">
       <Filter>03.ShaderFiles</Filter>
     </FxCompile>
   </ItemGroup>
