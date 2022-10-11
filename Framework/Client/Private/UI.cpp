@@ -87,7 +87,8 @@ void CUI::Tick(_float fTimeDelta)
 			pSensei->Set_OpenGacha(true);
 		}
 	}
-
+	else
+		m_pTransformCom->Set_Scaled(_float3(vSize.x, vSize.y, 0.f));
 }
 
 void CUI::LateTick(_float fTimeDelta)

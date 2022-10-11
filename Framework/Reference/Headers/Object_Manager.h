@@ -28,6 +28,7 @@ public:
 	/* 원형객체르ㅏㅣㄹ 복사하여 사본객체를 추가한다. */
 	HRESULT Add_GameObject(_uint iLevelIndex, const _tchar* pLayerTag, const _tchar* pPrototypeTag, void* pArg = nullptr);
 
+	void UI(_float fTimeDelta);
 	void Tick(_float fTimeDelta);
 	void LateTick(_float fTimeDelta);
 

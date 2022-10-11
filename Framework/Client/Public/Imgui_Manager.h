@@ -31,7 +31,7 @@ private:
 	CGameInstance*			m_pGameInstance = nullptr;
 	ID3D11Device*			m_pDevice = nullptr;
 	ID3D11DeviceContext*	m_pContext = nullptr;
-	bool show_demo_window = true;
+	bool show_arrange_window = true;
 	bool show_another_window = false;
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
