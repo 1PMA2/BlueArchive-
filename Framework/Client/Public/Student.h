@@ -57,6 +57,10 @@ public:
 	void		Set_State(ANIM eANIM) { m_tStudentInfo.eAnim = eANIM; }
 	void		Set_Formation(FORMATION eFormation) { m_tStudentInfo.eFormation = eFormation; }
 	_bool		Get_IsColl() { return m_bColled; }
+	_bool		Get_ExReady() { return m_bExReady; }
+	void		Set_ExReady(_bool bEx) { m_bExReady = bEx; }
+	_bool		Get_Ex() { return m_bEx; }
+	void		Set_Ex(_bool bEx) { m_bEx = bEx; }
 
 	CMonster*		FoundMonster();
 
@@ -82,6 +86,8 @@ protected:
 	_float					m_fMin = 9999.f;
 
 	_bool					m_bColled = false;
+	_bool					m_bExReady = false;
+	_bool					m_bEx = false;
 	_vector					m_vPreTranslation = {};
 
 	vector<CMonster*>	m_Monsters;

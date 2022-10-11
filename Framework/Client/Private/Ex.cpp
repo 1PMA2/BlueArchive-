@@ -8,6 +8,7 @@
 #include "Knee_ZoomStart.h"
 #include "Knee_Reload.h"
 #include "Sensei.h"
+#include "Run.h"
 
 CEx::CEx(CStudent* pOwner)
 	:CState(pOwner)
@@ -21,7 +22,9 @@ CEx::CEx(CStudent* pOwner)
 
 void CEx::Enter()
 {
-	
+	CSensei* pSensei = GET_SENSEI;
+
+	pSensei->Use_Ex(false);
 }
 
 CState * CEx::Loop(_float fTimeDelta)

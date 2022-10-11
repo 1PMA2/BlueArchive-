@@ -120,13 +120,15 @@ HRESULT CAru::GamePlayLevel_Collision(_float fTimeDelta)
 {
 	__super::GamePlayLevel_Collision(fTimeDelta);
 
-
+	if(false == m_bExReady)
 	if (m_pAABBCom->CollisionRay())
 	{
 		CSensei* pSensei = GET_SENSEI;
 		if (KEY(LBUTTON, TAP))
 		{
 			pSensei->Set_ExReady();
+			pSensei->Set_ExStudent(this);
+			Set_ExReady(true);
 		}
 	}
 

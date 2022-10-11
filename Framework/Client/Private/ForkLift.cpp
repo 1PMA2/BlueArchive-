@@ -50,6 +50,15 @@ void CForkLift::Tick(_float fTimeDelta)
 {
 	m_pSlideAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
+
+	if (m_bUsed && !m_bExit)
+	{
+		m_fTime += fTimeDelta;
+
+		if (5.f < m_fTime)
+			m_bUsed = false;
+	}
+	
 }
 
 void CForkLift::LateTick(_float fTimeDelta)

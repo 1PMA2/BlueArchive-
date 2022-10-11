@@ -30,6 +30,11 @@ HRESULT CTerrain::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
+	if (nullptr != pArg)
+		memcpy(&m_vTranslation, pArg, sizeof(_vector));
+
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vTranslation);
+
 	return S_OK;
 }
 

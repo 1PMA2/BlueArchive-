@@ -58,8 +58,9 @@ public:
 	void Set_Camera(CAMERA eCamera) { m_tSensei.eCamera = eCamera; }
 	void Use_Ex(_bool bEx, _float fUseCost = 0.f);
 	_bool Useable_Ex(_float fUseCost);
-	void Ex_Lockon(_vector vTarget) { m_vTargetMonster = vTarget; }
-	_vector Get_LockonMonster() { return m_vTargetMonster; }
+	void Ex_Lockon(CMonster* pTarget) { m_pTargetMonster = pTarget; }
+	CMonster* Get_LockonMonster() { return m_pTargetMonster; }
+	_vector Get_LockonVector();
 
 	/*student*/
 	void Set_Student(const _tchar* pStudentTag, CStudent* pStudent);
@@ -74,6 +75,9 @@ public:
 
 public:
 	void Set_ExReady() { m_bExReady = (m_bExReady) ? (false) : (true); }
+	void Set_ExStudent(CStudent* pStudent) { m_pExStudent = pStudent; }
+	CStudent* Get_ExStudent() { return m_pExStudent; }
+	void Ex_Fire() { m_bExReady = false; }
 	_bool Get_ExReady() { return m_bExReady; }
 
 private:
@@ -81,7 +85,9 @@ private:
 	
 
 private:
-	_vector m_vTargetMonster = {};
+	CStudent* m_pExStudent = nullptr;
+	CMonster* m_pTargetMonster = nullptr;
+	_vector vExTarget = {};
 	_tchar* m_pNewStudent = nullptr;
 	LEVEL m_ePreLevel = LEVEL_END;
 	LEVEL m_eCurrentLevel = LEVEL_END;

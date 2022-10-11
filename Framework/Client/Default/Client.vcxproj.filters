@@ -227,31 +227,31 @@
       <Filter>02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\Cost_Gauge_Back</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Imgui_Manager.h">
-      <Filter>97.imgui_manager</Filter>
+      <Filter>97.Imgui_Manager</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\imgui_internal.h">
-      <Filter>97.imgui_manager\imgui</Filter>
+      <Filter>97.Imgui_Manager\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\imstb_rectpack.h">
-      <Filter>97.imgui_manager\imgui</Filter>
+      <Filter>97.Imgui_Manager\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\imstb_textedit.h">
-      <Filter>97.imgui_manager\imgui</Filter>
+      <Filter>97.Imgui_Manager\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\imstb_truetype.h">
-      <Filter>97.imgui_manager\imgui</Filter>
+      <Filter>97.Imgui_Manager\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\imconfig.h">
-      <Filter>97.imgui_manager\imgui</Filter>
+      <Filter>97.Imgui_Manager\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\imgui.h">
-      <Filter>97.imgui_manager\imgui</Filter>
+      <Filter>97.Imgui_Manager\imgui</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\imgui_impl_win32.h">
-      <Filter>97.imgui_manager\sources</Filter>
+      <Filter>97.Imgui_Manager\sources</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\imgui_impl_dx11.h">
-      <Filter>97.imgui_manager\sources</Filter>
+      <Filter>97.Imgui_Manager\sources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -469,28 +469,28 @@
       <Filter>02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\Cost_Gauge_Back</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Imgui_Manager.cpp">
-      <Filter>97.imgui_manager</Filter>
+      <Filter>97.Imgui_Manager</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\imgui.cpp">
-      <Filter>97.imgui_manager\imgui</Filter>
+      <Filter>97.Imgui_Manager\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\imgui_demo.cpp">
-      <Filter>97.imgui_manager\imgui</Filter>
+      <Filter>97.Imgui_Manager\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\imgui_draw.cpp">
-      <Filter>97.imgui_manager\imgui</Filter>
+      <Filter>97.Imgui_Manager\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\imgui_tables.cpp">
-      <Filter>97.imgui_manager\imgui</Filter>
+      <Filter>97.Imgui_Manager\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\imgui_widgets.cpp">
-      <Filter>97.imgui_manager\imgui</Filter>
+      <Filter>97.Imgui_Manager\imgui</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\imgui_impl_dx11.cpp">
-      <Filter>97.imgui_manager\sources</Filter>
+      <Filter>97.Imgui_Manager\sources</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\imgui_impl_win32.cpp">
-      <Filter>97.imgui_manager\sources</Filter>
+      <Filter>97.Imgui_Manager\sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -835,13 +835,13 @@
     <Filter Include="02.GameObject\05.UI\GamePlay_UI\Student_Ex\Kayoko">
       <UniqueIdentifier>{f5d79082-a065-4a49-9b7c-2d0be25cc02f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="97.imgui_manager">
+    <Filter Include="97.Imgui_Manager">
       <UniqueIdentifier>{d2bab8cc-8252-4a7b-80e3-58648f640b17}</UniqueIdentifier>
     </Filter>
-    <Filter Include="97.imgui_manager\sources">
+    <Filter Include="97.Imgui_Manager\sources">
       <UniqueIdentifier>{f7c203fc-11cf-4a3a-9dc9-31f9b0c4dce6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="97.imgui_manager\imgui">
+    <Filter Include="97.Imgui_Manager\imgui">
       <UniqueIdentifier>{364e65fd-900c-4d99-8255-3234a337afcc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

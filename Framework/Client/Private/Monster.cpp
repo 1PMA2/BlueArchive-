@@ -122,9 +122,13 @@ void CMonster::LateTick(_float fTimeDelta)
 
 	if (m_pSphereCom->CollisionRay())
 	{
-		/*CSensei* pSensei = GET_SENSEI;
+		if (KEY(LBUTTON, TAP))
+		{
+			CSensei* pSensei = GET_SENSEI;
 
-		pSensei->Ex_Lockon(Get_MonsterTranslation());*/
+			pSensei->Ex_Lockon(this);
+		}
+
 	}
 
 	if (0 >= m_tMonsterInfo.iHp)

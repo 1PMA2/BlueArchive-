@@ -25,6 +25,8 @@ CEx_Cutin::CEx_Cutin(CStudent* pOwner)
 		pSensei->Use_Ex(true, m_pOwner->Get_StudentInfo().fExCost);
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 	}
+
+	pModel->ResetAnimation();
 }
 
 
@@ -34,7 +36,13 @@ CEx_Cutin::~CEx_Cutin()
 
 void CEx_Cutin::Enter()
 {
-	
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
+
+	_vector vTarget = pSensei->Get_LockonVector();
+
+	pTransform->LookAt(vTarget);
 
 }
 
@@ -52,33 +60,36 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 
 	if (m_pOwner->Get_StudentInfo().bExModel)
 	{
-		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), m_pOwner->Get_StudentInfo().eFormation);
-
-		if (m_pOwner->Get_StudentInfo().eFormation == pStudent->Get_StudentInfo().eFormation)
+		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
 		{
-			if (ANIM_EXCUTIN == pStudent->Get_StudentInfo().eAnim)
+			CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
+
+			if (pStudent->Get_Ex())
 			{
+				pSensei->Use_Ex(true, m_pOwner->Get_StudentInfo().fExCost);
 				pModel->Play_Animation(fTimeDelta);
-				
-				if (pModel->Get_isFinished())
-				{
-					pSensei->Use_Ex(false);
-					pState = CEx_Cutin::Create(m_pOwner);
-				}
+				break;
+			}
+			else
+			{
+				pModel->ResetAnimation();
 			}
 		}
 	}
-
-
 	else
 	{
 		pModel->Play_Animation(fTimeDelta);
 
 		if (pModel->Get_isFinished())
 		{
+			pSensei->Use_Ex(false);
+			m_pOwner->Set_Ex(false);
 			pState = CEx::Create(m_pOwner);
 		}
 	}
+
+
+	
 
 	
 

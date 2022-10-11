@@ -39,6 +39,7 @@ private:
 	CCollider*				m_pSlideAABBCom = nullptr;
 	_bool					m_bUsed = false;
 	_bool					m_bExit = false;
+	_float					m_fTime = 0.f;
 	_vector					m_vTranslation = {};
 
 public:

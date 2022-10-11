@@ -36,6 +36,7 @@ private:
 	CVIBuffer_Terrain*		m_pVIBufferCom = nullptr;
 
 	ID3D11ShaderResourceView*		m_pFilterTexture = nullptr;
+	_vector m_vTranslation = {};
 
 private:
 	HRESULT SetUp_Components();
