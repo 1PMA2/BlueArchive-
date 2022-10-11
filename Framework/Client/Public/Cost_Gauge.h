@@ -37,8 +37,10 @@ private:
 	_float4x4		m_ProjMatrix;
 
 	_int			m_iImgNum = 0;
+	_float			m_fMaxSize = 0;
 	_float			m_fCost = 0.f;
 	_float			m_fFade = -1.f;
+	_float			m_fLocationX, m_fLocationY;
 
 private:
 	HRESULT SetUp_Components();

@@ -223,6 +223,9 @@
     <ClInclude Include="..\Public\Cost_Gauge.h">
       <Filter>02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\Cost_Gauge</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Cost_GaugeBg.h">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\Cost_Gauge_Back</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -434,6 +437,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Cost_Gauge.cpp">
       <Filter>02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\Cost_Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Cost_GaugeBg.cpp">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\Cost_Gauge_Back</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -765,6 +771,18 @@
     </Filter>
     <Filter Include="02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\CostBg\Cost_Num">
       <UniqueIdentifier>{4a391bd3-50be-4b22-ab46-3ddf84064de6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Student_Ex">
+      <UniqueIdentifier>{40eff17e-cf5f-4261-beae-a8b691dd27a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Student_Ex\Aru">
+      <UniqueIdentifier>{93fe4877-0997-4729-a17b-05c848ed7732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Student_Ex\Mutsuki">
+      <UniqueIdentifier>{4a0adfef-27ad-4999-94a3-73e2fc5bccfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Student_Ex\Kayoko">
+      <UniqueIdentifier>{f5d79082-a065-4a49-9b7c-2d0be25cc02f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

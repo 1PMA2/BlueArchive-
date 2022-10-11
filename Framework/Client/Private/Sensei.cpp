@@ -59,7 +59,7 @@ CStudent * CSensei::Get_StudentIndex(_uint iIndex)
 
 _bool CSensei::Useable_Ex(_float fUseCost) //사용할 코스트
 {
-	if ((fUseCost * 0.1f) <= m_tSensei.fCost)
+	if (fUseCost <= m_tSensei.fCost)
 		return true;
 	else
 		return false;
@@ -67,10 +67,10 @@ _bool CSensei::Useable_Ex(_float fUseCost) //사용할 코스트
 
 void CSensei::Use_Ex(_bool bEx, _float fCost)
 {
-	if ((fCost * 0.1f) <= m_tSensei.fCost)
+	if (fCost <= m_tSensei.fCost)
 	{
 		m_tSensei.bEx = bEx;
-		m_tSensei.fCost -= (fCost * 0.1f);
+		m_tSensei.fCost -= fCost;
 	}
 }
 
@@ -97,10 +97,10 @@ void CSensei::Formation_Level(_float fTimeDelta)
 
 void CSensei::Tick_Cost(_float fTimeDelta)
 {
-	if (1.f > m_tSensei.fCost)
-		m_tSensei.fCost += (fTimeDelta * 0.05f);
+	if (10.f > m_tSensei.fCost)
+		m_tSensei.fCost += (fTimeDelta * 0.2f);
 	else
-		m_tSensei.fCost = 1.f;
+		m_tSensei.fCost = 10.f;
 }
 
 void CSensei::Set_FormationStudents(CStudent* pStudents)

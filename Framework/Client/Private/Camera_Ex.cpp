@@ -56,11 +56,12 @@ HRESULT CCamera_Ex::Render()
 
 void CCamera_Ex::OnDisable()
 {
-	
+	m_bIsEx = false;
 }
 
 void CCamera_Ex::OnEnable()
 {
+	m_bIsEx = true;
 	CSensei* pSensei = GET_SENSEI;
 
 	m_ExDesc.eTargetLevel = LEVEL_GAMEPLAY;

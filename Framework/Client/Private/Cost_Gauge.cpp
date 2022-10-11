@@ -4,6 +4,7 @@
 #include "GameInstance.h"
 #include "Level_Loading.h"
 #include "Sensei.h"
+#include "Camera_Ex.h"
 
 CCost_Gauge::CCost_Gauge(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -32,8 +33,11 @@ HRESULT CCost_Gauge::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-	m_fSizeX = 210.f;
-	m_fSizeY = 10.f;
+	m_fMaxSize = 315.f;
+	m_fSizeX = 315.f;
+	m_fSizeY = 15.f;
+	m_fLocationX = 900.f;
+	m_fLocationY = 705.f;
 	m_fX = g_iWinCX >> 1;
 	m_fY = g_iWinCY >> 1;
 
@@ -54,20 +58,18 @@ void CCost_Gauge::Tick(_float fTimeDelta)
 
 	pSensei->Tick_Cost(fTimeDelta);
 
-	m_fCost = pSensei->Get_Cost();
+	m_fCost = pSensei->Get_Cost() * 0.1f;
 
-	m_fSizeX = 210.f * m_fCost;
+	m_fSizeX = m_fMaxSize * m_fCost;
 
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-m_fX + 800.f + (m_fSizeX * 0.5f), m_fY - 600.f, 0.f, 1.f));  //임시 > 부모만들어서 컷신일대 렌더하지말것
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-m_fX + m_fLocationX + (m_fSizeX * 0.5f), m_fY - m_fLocationY, 0.f, 1.f));  //임시 > 부모만들어서 컷신일대 렌더하지말것
 }
 
 void CCost_Gauge::LateTick(_float fTimeDelta)
 {
-	
-
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_UI, this);
+		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_UI, this);
 }
 
 HRESULT CCost_Gauge::Render()

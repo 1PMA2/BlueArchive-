@@ -182,6 +182,7 @@
     <ClInclude Include="..\Public\City.h" />
     <ClInclude Include="..\Public\Client_Defines.h" />
     <ClInclude Include="..\Public\Cost_Gauge.h" />
+    <ClInclude Include="..\Public\Cost_GaugeBg.h" />
     <ClInclude Include="..\Public\Droid_Dead.h" />
     <ClInclude Include="..\Public\Ex.h" />
     <ClInclude Include="..\Public\Ex_Cutin.h" />
@@ -255,6 +256,7 @@
     <ClCompile Include="..\Private\Camera_Main.cpp" />
     <ClCompile Include="..\Private\City.cpp" />
     <ClCompile Include="..\Private\Cost_Gauge.cpp" />
+    <ClCompile Include="..\Private\Cost_GaugeBg.cpp" />
     <ClCompile Include="..\Private\Droid_Dead.cpp" />
     <ClCompile Include="..\Private\Ex.cpp" />
     <ClCompile Include="..\Private\Ex_Cutin.cpp" />

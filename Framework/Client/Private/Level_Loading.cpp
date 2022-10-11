@@ -63,7 +63,7 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 			case LEVEL_LOBBY:
 				if ((LEVEL_LOGO == pSensei->Get_PreLevel()))
 				{
-					if(KEY(LBUTTON, AWAY))
+					if(KEY(LBUTTON, TAP))
 						pLevel = CLevel_Lobby::Create(m_pDevice, m_pContext);
 				}
 				else
