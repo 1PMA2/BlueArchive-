@@ -39,7 +39,7 @@ private:
 
 	_int			m_iImgNum = 0;
 	_int			m_iOne = 1;
-	_float			m_fFade = 1.f;
+	_float			m_fFade = -1.f;
 
 private:
 	HRESULT SetUp_Components();

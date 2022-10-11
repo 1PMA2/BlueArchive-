@@ -23,6 +23,7 @@
 
 #include <DirectXCollision.h>
 
+#include <Windows.h>
 
 #include <d3dcompiler.h>
 
@@ -59,14 +60,12 @@ using namespace std;
 #include <stdlib.h>
 #include <crtdbg.h>
 
-#ifndef DBG_NEW 
-
-#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ ) 
-#define new DBG_NEW 
+//#ifndef DBG_NEW 
+//
+//#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ ) 
+//#define new DBG_NEW 
 
 #endif
-
-#endif // _DEBUG
 
 using namespace Engine;
 

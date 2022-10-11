@@ -5,6 +5,7 @@
 #include "Camera_Free.h"
 #include "Camera_Ex.h"
 #include "Sensei.h"
+#include "Imgui_Manager.h"
 
 _bool g_bLobby = true;
 _bool g_bPlay = true;
@@ -48,6 +49,9 @@ HRESULT CMainApp::Initialize()
 	GraphicDesc.isWindowMode = GRAPHICDESC::MODE_WIN;
 
 	if (FAILED(m_pGameInstance->Initialize_Engine(g_hInst, LEVEL_END, GraphicDesc, &m_pDevice, &m_pContext)))
+		return E_FAIL;
+
+	if (FAILED(CImgui_Manager::Get_Instance()->Initialize(m_pDevice, m_pContext)))
 		return E_FAIL;
 
 	if (FAILED(m_pGameInstance->Add_Font(m_pDevice, m_pContext, TEXT("Font_Dream"), TEXT("../Bin/Resources/Fonts/128.spriteFont"))))
@@ -94,23 +98,25 @@ HRESULT CMainApp::Render()
 
 	m_pGameInstance->Render_Engine();
 
+	CImgui_Manager::Get_Instance()->Render();
 
-	++m_iNumRender;
+	//++m_iNumRender;
 
-	//swprintf_s(m_szFPS, TEXT("cost:%.1f"), CSensei::Get_Instance()->Get_SenseiInfo().fCost);
+	////swprintf_s(m_szFPS, TEXT("cost:%.1f"), CSensei::Get_Instance()->Get_SenseiInfo().fCost);
 
-	if (m_fTimeAcc >= 1.f)
-	{
-		wsprintf(m_szFPS, TEXT("에프피에스 : %d"), m_iNumRender);
-		m_fTimeAcc = 0.f;
-		m_iNumRender = 0;
-	}
+	//if (m_fTimeAcc >= 1.f)
+	//{
+	//	wsprintf(m_szFPS, TEXT("에프피에스 : %d"), m_iNumRender);
+	//	m_fTimeAcc = 0.f;
+	//	m_iNumRender = 0;
+	//}
 
-	// MakeSpriteFont "폰트이름" /FontSize:32 /FastPack /CharacterRegion:0x0020-0x00FF /CharacterRegion:0x3131-0x3163 /CharacterRegion:0xAC00-0xD800 /DefaultCharacter:0xAC00 출력파일이름.spritefont
-	m_pGameInstance->Render_Font(TEXT("Font_Dream"), m_szFPS, _float2(0.f, 0.f), XMVectorSet(1.f, 1.f, 1.f, 1.f));
+	//// MakeSpriteFont "폰트이름" /FontSize:32 /FastPack /CharacterRegion:0x0020-0x00FF /CharacterRegion:0x3131-0x3163 /CharacterRegion:0xAC00-0xD800 /DefaultCharacter:0xAC00 출력파일이름.spritefont
+	//m_pGameInstance->Render_Font(TEXT("Font_Dream"), m_szFPS, _float2(0.f, 0.f), XMVectorSet(1.f, 1.f, 1.f, 1.f));
 
 
-	m_pGameInstance->Present();
+	//m_pGameInstance->Present();
+
 
 	return S_OK;
 }
@@ -176,6 +182,7 @@ CMainApp * CMainApp::Create()
 
 void CMainApp::Free()
 {
+	CImgui_Manager::Get_Instance()->Destroy_Instance();
 
 	Safe_Release(m_pRenderer);
 	Safe_Release(m_pDevice);

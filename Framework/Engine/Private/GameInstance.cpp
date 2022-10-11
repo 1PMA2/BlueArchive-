@@ -135,6 +135,22 @@ HRESULT CGameInstance::Clear(_uint iLevelID)
 	return S_OK;
 }
 
+ID3D11RenderTargetView* CGameInstance::Get_RTV()
+{
+	if (nullptr == m_pGraphic_Device)
+		return nullptr;
+
+	return m_pGraphic_Device->Get_RTV();
+}
+
+IDXGISwapChain* CGameInstance::Get_SwapChain()
+{
+	if (nullptr == m_pGraphic_Device)
+		return nullptr;
+
+	return m_pGraphic_Device->Get_SwapChain();
+}
+
 HRESULT CGameInstance::Clear_BackBuffer_View(_float4 vClearColor)
 {
 	if (nullptr == m_pGraphic_Device)

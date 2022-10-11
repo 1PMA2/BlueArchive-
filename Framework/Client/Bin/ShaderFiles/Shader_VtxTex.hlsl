@@ -159,6 +159,8 @@ VS_OUT_COST VS_COST(VS_IN_COST In)
 	return Out;
 }
 
+//cost num
+
 
 technique11 DefaultTechnique
 {

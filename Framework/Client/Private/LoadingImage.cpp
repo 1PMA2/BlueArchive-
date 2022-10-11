@@ -30,21 +30,22 @@ HRESULT CLoadingImage::Initialize(void * pArg)
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
-
-	m_fSizeX = 100.f;
-	m_fSizeY = 100.f;
+	
+	m_fSizeX = 1600;
+	m_fSizeY = 1124;
 	m_fX = g_iWinCX >> 1;
 	m_fY = g_iWinCY >> 1;
 
 	// XMMatrixPerspectiveFovLH()
 	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH(g_iWinCX, g_iWinCY, 0.f, 1.f)));
+	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
+	
 
 	return S_OK;
 }
 
 void CLoadingImage::Tick(_float fTimeDelta)
 {
-	
 	m_fTick += fTimeDelta;
 
 	m_pTransformCom->Go_Left(fTimeDelta);
@@ -52,6 +53,8 @@ void CLoadingImage::Tick(_float fTimeDelta)
 
 void CLoadingImage::LateTick(_float fTimeDelta)
 {
+	Change_Img();
+
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, this);
 }
 
@@ -64,8 +67,6 @@ HRESULT CLoadingImage::Render()
 	/* 셰이더 전역변수에 값을 던진다. */
 	if (FAILED(SetUp_ShaderResource()))
 		return E_FAIL;
-
-	Change_Img();
 
 	m_pShaderCom->Begin(0);
 
@@ -114,6 +115,9 @@ HRESULT CLoadingImage::SetUp_ShaderResource()
 	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", m_iImgNum)))
 		return E_FAIL;
 
+	m_fSizeX = (_uint)m_pTextureCom->Get_TextureSize(m_iImgNum).Width;
+	m_fSizeY = (_uint)m_pTextureCom->Get_TextureSize(m_iImgNum).Height;
+
 
 	return S_OK;
 }
@@ -124,16 +128,17 @@ HRESULT CLoadingImage::Change_Img()
 
 	if (3.f < m_fTick)
 	{
-		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_fX - (g_iWinCX * 0.5f), -m_fY + (g_iWinCY * 0.5f), 0.f, 1.f));
 		m_iImgNum += m_iOne;
 		m_iOne *= -1;
 		m_fTick = 0.f;
+
+		m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_fX - (g_iWinCX * 0.5f), -m_fY + (g_iWinCY * 0.5f), 0.f, 1.f));
 	}
 
-	m_fSizeX = m_pTextureCom->Get_TextureSize(m_iImgNum).Width;
-	m_fSizeY = m_pTextureCom->Get_TextureSize(m_iImgNum).Height;
+	
 
-	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
+	
 
 	return S_OK;
 }

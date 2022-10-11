@@ -35,6 +35,8 @@ public: /* 엔진 라이브럴를 사용할때 필요한 초기화 과정으르 거칠거야. */
 	HRESULT Clear(_uint iLevelID);
 
 public: /* For.Graphic_Device */	
+	ID3D11RenderTargetView* Get_RTV();
+	IDXGISwapChain* Get_SwapChain();
 	HRESULT Clear_BackBuffer_View(_float4 vClearColor);
 	HRESULT Clear_DepthStencil_View();
 	HRESULT Present();
