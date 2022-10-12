@@ -30,6 +30,7 @@ private:
 	_bool m_bOnce = true;
 	_bool m_bCheck = true;
 	_uint m_iIndex = 0;
+	_float m_fTurnSpeed = 0.f;
 	_float m_fHideLength = 0.f;
 	_float m_fMin = 9999.f;
 	_float m_fCoverMin = 9999.f;

@@ -34,13 +34,13 @@ private:
 	class CTarget_Manager*					m_pTarget_Manager = nullptr;
 	class CLight_Manager*					m_pLight_Manager = nullptr;
 
-#ifdef _DEBUG
 	/* 직교투영을 위한 정보이다. */
 private:
 	_float4x4					m_WorldMatrix, m_ViewMatrix, m_ProjMatrix;
 	class CShader*				m_pShader = nullptr;
 	class CVIBuffer_Rect*		m_pVIBuffer = nullptr;
 
+#ifdef _DEBUG
 private:
 	vector<class CComponent*>	m_DebugComponents;
 #endif // _DEBUG

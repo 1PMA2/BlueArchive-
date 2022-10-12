@@ -16,6 +16,20 @@ CFormation_Pick::CFormation_Pick(CStudent* pOwner)
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 
+	switch (pOwner->Get_StudentInfo().eStudent)
+	{
+	case ARU:
+		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		break;
+	case MUTSUKI:
+		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		break;
+	case KAYOKO:
+		pModel->Set_CurrentAnimation(26);
+		break;
+
+	}
+
 	switch (m_pOwner->Get_StudentInfo().eFormation)
 	{
 	case FORMATION_FIRST:

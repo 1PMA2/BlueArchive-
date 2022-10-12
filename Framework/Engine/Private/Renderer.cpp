@@ -106,14 +106,14 @@ HRESULT CRenderer::Initialize_Prototype()
 
 	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH(ViewPortDesc.Width, ViewPortDesc.Height, 0.f, 1.f)));
 
-	m_pShader = CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/Shaderfiles/Shader_Deferred.hlsl"), VTXTEX_DECLARATION::Element, VTXTEX_DECLARATION::iNumElements);
-	if (nullptr == m_pShader)
-		return E_FAIL;
 
 	m_pVIBuffer = CVIBuffer_Rect::Create(m_pDevice, m_pContext);
 	if (nullptr == m_pVIBuffer)
 		return E_FAIL;
 
+	m_pShader = CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/Shaderfiles/Shader_Deferred.hlsl"), VTXTEX_DECLARATION::Element, VTXTEX_DECLARATION::iNumElements);
+	if (nullptr == m_pShader)
+		return E_FAIL;
 
 	return S_OK;
 }
@@ -373,11 +373,12 @@ void CRenderer::Free()
 		m_RenderObjects[i].clear();
 	}
 
+#ifdef _DEBUG
 	for (auto& pComponent : m_DebugComponents)
 		Safe_Release(pComponent);
 
 	m_DebugComponents.clear();
-
+#endif
 
 	Safe_Release(m_pShader);
 	Safe_Release(m_pVIBuffer);

@@ -74,7 +74,8 @@ void CAru_Ex::Tick(_float fTimeDelta)
 	}
 
 
-	
+	m_pAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
+	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 
 }
 

@@ -75,6 +75,8 @@ void CMutsuki_Ex::Tick(_float fTimeDelta)
 		m_pModelCom->ResetAnimation();
 	}
 
+	m_pAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
+	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 }
 
 void CMutsuki_Ex::LateTick(_float fTimeDelta)

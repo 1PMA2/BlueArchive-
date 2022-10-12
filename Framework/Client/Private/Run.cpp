@@ -17,7 +17,7 @@ CRun::CRun(CStudent* pOwner)
 {
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 	m_eAnim = ANIM_RUN;
-		pOwner->Set_State(m_eAnim);
+	pOwner->Set_State(m_eAnim);
 
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
@@ -30,12 +30,13 @@ CRun::CRun(CStudent* pOwner)
 		m_fHideLength = 0.1f;
 		break;
 	case 2:
-		pModel->Set_CurrentAnimation(7);
+		pModel->Set_CurrentAnimation(36);
 		m_fHideLength = 0.1f;
 		break;
 
 	}
 	
+	m_fTurnSpeed = 7.f;
 }
 
 
@@ -94,7 +95,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 	{
 		pStudentTransform->Go_Straight(fTimeDelta);
 		_vector vXY = pStudentTransform->Get_WorldMatrix().r[3];
-		pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), 5.f, fTimeDelta);
+		pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), m_fTurnSpeed, fTimeDelta);
 		return nullptr;
 	}
 	
@@ -150,7 +151,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 				return nullptr;
 			}
 
-			pStudentTransform->LookAtLerp(vTarget, 5.f, fTimeDelta); // 엄폐물 방향 look
+			pStudentTransform->LookAtLerp(vTarget, m_fTurnSpeed, fTimeDelta); // 엄폐물 방향 look
 
 
 			if (m_fHideLength <= XMVectorGetX(XMVector3Length(vLook)))
@@ -168,7 +169,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 		{
 			_vector		vTarget = m_TargetMonsters.at(0)->Get_MonsterTranslation(); 
 
-			pStudentTransform->LookAtLerp(vTarget, 5.f, fTimeDelta);
+			pStudentTransform->LookAtLerp(vTarget, m_fTurnSpeed, fTimeDelta);
 
 			if(false == m_pOwner->Get_IsColl())
 			{
@@ -187,7 +188,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 	pStudentTransform->Go_Straight(fTimeDelta); //범위 내 몬스터 없을시 앞으로 전진
 	_vector vXY = pStudentTransform->Get_WorldMatrix().r[3];
-	pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), 5.f, fTimeDelta);
+	pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), m_fTurnSpeed, fTimeDelta);
 
 
 	return nullptr;

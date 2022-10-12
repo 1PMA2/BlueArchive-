@@ -51,13 +51,13 @@ void CForkLift::Tick(_float fTimeDelta)
 	m_pSlideAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 
-	if (m_bUsed && !m_bExit)
+	/*if (m_bUsed && !m_bExit)
 	{
 		m_fTime += fTimeDelta;
 
 		if (5.f < m_fTime)
 			m_bUsed = false;
-	}
+	}*/
 	
 }
 
@@ -71,12 +71,12 @@ void CForkLift::LateTick(_float fTimeDelta)
 	if (true == pGameInstance->isIn_Frustum_InWorldSpace(m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION), 2.f))
 	{
 		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+	}
 
 //#ifdef _DEBUG
 //		m_pRendererCom->Add_DebugRenderGroup(m_pSphereCom);
 //		m_pRendererCom->Add_DebugRenderGroup(m_pSlideAABBCom);
 //#endif // _DEBUG
-	}
 
 	
 	RELEASE_INSTANCE(CGameInstance);

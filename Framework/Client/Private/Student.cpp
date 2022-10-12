@@ -226,9 +226,9 @@ HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 
 			_float fDir = XMVectorGetX(vLook);
 			if (-0.2f < fDir)
-				m_pTransformCom->LookAtLerp(XMVectorSet(5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation) - 1.5f, 1.f), 10.f, fTimeDelta);
+				m_pTransformCom->LookAtLerp(XMVectorSet(5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation) - 2.5f, 1.f), 7.f, fTimeDelta);
 			else
-				m_pTransformCom->LookAtLerp(XMVectorSet(-5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation) - 1.5f, 1.f), 10.f, fTimeDelta);
+				m_pTransformCom->LookAtLerp(XMVectorSet(-5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation) - 2.5f, 1.f), 7.f, fTimeDelta);
 			break;
 		}
 		else

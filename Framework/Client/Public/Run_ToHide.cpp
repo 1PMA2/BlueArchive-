@@ -24,7 +24,8 @@ CRun_ToHide::CRun_ToHide(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(6);
 		break;
-	case 2:
+	case KAYOKO:
+		pModel->Set_CurrentAnimation(30);
 		break;
 
 	}
