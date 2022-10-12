@@ -45,6 +45,9 @@ HRESULT CLevel_GamePlay::Initialize()
 
 	//if (FAILED(Ready_Layer_Effect(TEXT("Layer_Effect"))))
 	//	return E_FAIL;
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	pSensei->ReSet_Ex();
 
 	return S_OK;
 }
@@ -70,7 +73,7 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 		Safe_Release(pGameInstance);
 	}
 
-	Change_Camera();
+	//Change_Camera();
 }
 
 void CLevel_GamePlay::Late_Tick(_float TimeDelta)
@@ -156,11 +159,6 @@ HRESULT CLevel_GamePlay::Ready_Layer_Camera(const _tchar * pLayerTag)
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Camera_Main"), &CameraDesc)))
 		return E_FAIL;
-
-	CameraDesc.fFovy = XMConvertToRadians(25.0f);
-	
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Camera_Ex"), &CameraDesc)))
-		return E_FAIL;
 	
 
 
@@ -226,20 +224,20 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student_Ex(const _tchar * pLayerTag)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
-	CSensei* pSensei = CSensei::Get_Instance();
-	/* For.Player */
+	//CSensei* pSensei = CSensei::Get_Instance();
+	///* For.Player */
 
-	for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
-	{
-		_tchar*			pName = pSensei->Get_FormationInfo(i).pName;
-		_tchar szBuffer[20] = {};
+	//for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
+	//{
+	//	_tchar*			pName = pSensei->Get_FormationInfo(i).pName;
+	//	_tchar szBuffer[20] = {};
 
-		wcscpy_s(szBuffer, pName);
-		wcscat_s(szBuffer, TEXT("_Ex"));
+	//	wcscpy_s(szBuffer, pName);
+	//	wcscat_s(szBuffer, TEXT("_Ex"));
 
-		if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, szBuffer)))
-			return E_FAIL;
-	}
+	//	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, szBuffer)))
+	//		return E_FAIL;
+	//}
 
 	Safe_Release(pGameInstance);
 

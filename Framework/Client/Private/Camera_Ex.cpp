@@ -24,9 +24,22 @@ HRESULT CCamera_Ex::Initialize_Prototype()
 
 HRESULT CCamera_Ex::Initialize(void * pArg)
 {
+	CCamera::CAMERADESC			CameraDesc;
+	ZeroMemory(&CameraDesc, sizeof(CCamera::CAMERADESC));
+
+	CameraDesc.vEye = _float4(10.f, 5.f, 0.f, 1.f);
+	CameraDesc.vAt = _float4(0.f, 0.f, 5.5f, 1.f);
+	CameraDesc.TransformDesc.fSpeedPerSec = 5.f;
+	CameraDesc.TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
+
+	CameraDesc.fFovy = XMConvertToRadians(25.0f);
+	CameraDesc.fAspect = (_float)g_iWinCX / g_iWinCY;
+	CameraDesc.fNear = 0.01f;
+	CameraDesc.fFar = 300.f;
+
 
 	/* 내가 원하는 카메라의 초기상태를 동기화하낟. */
-	if (FAILED(__super::Initialize(pArg)))
+	if (FAILED(__super::Initialize(&CameraDesc)))
 		return E_FAIL;
 
 	/* 트랜스폼 컴포넌늩를 추가한다. */
@@ -37,8 +50,6 @@ HRESULT CCamera_Ex::Initialize(void * pArg)
 void CCamera_Ex::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
-
-	MoveCamera(fTimeDelta);
 
 	if (FAILED(Bind_PipeLine()))
 		return;
@@ -56,95 +67,11 @@ HRESULT CCamera_Ex::Render()
 
 void CCamera_Ex::OnDisable()
 {
-	m_bIsEx = false;
 }
 
 void CCamera_Ex::OnEnable()
 {
-	m_bIsEx = true;
-	CSensei* pSensei = GET_SENSEI;
-
-	m_ExDesc.eTargetLevel = LEVEL_GAMEPLAY;
-	m_ExDesc.pTargetLayerTag = TEXT("Layer_Student_Ex");
-	m_ExDesc.iTargetIndex = 0;
-	m_ExDesc.pTargetModelComTag = TEXT("Com_Model");
-	m_ExDesc.pBoneName = "Camera001";
-
-	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
-
-	CModel*		pTargetModel = (CModel*)pGameInstance->Get_Component(m_ExDesc.eTargetLevel, m_ExDesc.pTargetLayerTag, m_ExDesc.pTargetModelComTag, m_ExDesc.iTargetIndex);
-	if (nullptr == pTargetModel)
-		return ;
-
-	m_pBonePtr = pTargetModel->Find_HierarcyNode(m_ExDesc.pBoneName);
-	m_pTargetBonePtr = pTargetModel->Find_HierarcyNode("Camera001.Target");
-	if (nullptr == m_pBonePtr)
-		return ;
-
-	m_pTargetTransform = (CTransform*)pGameInstance->Get_Component(m_ExDesc.eTargetLevel, m_ExDesc.pTargetLayerTag, TEXT("Com_Transform"));
-	if (nullptr == m_pTargetTransform)
-		return ;
-
-
-	RELEASE_INSTANCE(CGameInstance);
-}
-
-void CCamera_Ex::MoveCamera(_float fTimeDelta)
-{
-	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-
-	if (nullptr == m_pBonePtr)
-		return;
-
-	_matrix		ParentMatrix = m_pBonePtr->Get_OffsetMatrix() * m_pBonePtr->Get_CombinedMatrix() * m_pBonePtr->Get_TransformMatrix();
-	ParentMatrix.r[0] = XMVector3Normalize(ParentMatrix.r[0]);
-	ParentMatrix.r[1] = XMVector3Normalize(ParentMatrix.r[1]);
-	ParentMatrix.r[2] = XMVector3Normalize(ParentMatrix.r[2]);
-
-	_matrix		ParentTargetMatrix = m_pTargetBonePtr->Get_OffsetMatrix() * m_pTargetBonePtr->Get_CombinedMatrix() * m_pTargetBonePtr->Get_TransformMatrix();
-	ParentTargetMatrix.r[0] = XMVector3Normalize(ParentTargetMatrix.r[0]);
-	ParentTargetMatrix.r[1] = XMVector3Normalize(ParentTargetMatrix.r[1]);
-	ParentTargetMatrix.r[2] = XMVector3Normalize(ParentTargetMatrix.r[2]);
-
-	_float fFov;
-	fFov = XMConvertToRadians(fabs(XMVectorGetX(XMVector3Length((ParentMatrix.r[3] - ParentTargetMatrix.r[3])))) + 20.f);
 	
-	m_CameraDesc.fFovy = fFov * 0.85f;
-
-	XMStoreFloat4x4(&m_WorldMatrix, ParentMatrix * m_pTargetTransform->Get_WorldMatrix());
-	XMStoreFloat4x4(&m_TargetWorldMatrix, ParentTargetMatrix * m_pTargetTransform->Get_WorldMatrix());
-
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_TRANSLATION]);
-
-	m_pTransformCom->LookAt(XMLoadFloat4x4(&m_TargetWorldMatrix).r[CTransform::STATE_TRANSLATION]);
-
-	//m_pTransformCom->LookAtLerp(XMLoadFloat4x4(&m_TargetWorldMatrix).r[CTransform::STATE_TRANSLATION], 3.f, fTimeDelta);
-}
-
-CCamera_Ex * CCamera_Ex::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
-{
-	CCamera_Ex*		pInstance = new CCamera_Ex(pDevice, pContext);
-
-	if (FAILED(pInstance->Initialize_Prototype()))
-	{
-		MSG_BOX("Failed to Created : CCamera_Ex");
-		Safe_Release(pInstance);
-	}
-
-	return pInstance;
-}
-
-CGameObject * CCamera_Ex::Clone(void * pArg)
-{
-	CCamera_Ex*		pInstance = new CCamera_Ex(*this);
-
-	if (FAILED(pInstance->Initialize(pArg)))
-	{
-		MSG_BOX("Failed to Cloned : CCamera_Ex");
-		Safe_Release(pInstance);
-	}
-
-	return pInstance;
 }
 
 void CCamera_Ex::Free()

@@ -43,13 +43,15 @@ HRESULT CMutsuki_Ex::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;
 
+	if (nullptr != pArg)
+		m_pMutsuki = (CStudent*)pArg;
+
 	return S_OK;
 }
 
 void CMutsuki_Ex::Tick(_float fTimeDelta)
 {
 
-	__super::Tick(fTimeDelta);
 
 }
 

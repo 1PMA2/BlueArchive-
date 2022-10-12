@@ -36,6 +36,9 @@ public:
 	virtual void OnDisable() override;
 	virtual void OnEnable() override;
 
+private:
+	CStudent* m_pAru = nullptr;
+
 public:
 	static CAru_Ex* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
 	virtual CGameObject* Clone(void* pArg) override;

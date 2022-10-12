@@ -175,10 +175,12 @@
     <ClInclude Include="..\public\BackGround.h" />
     <ClInclude Include="..\Public\Back_Btn.h" />
     <ClInclude Include="..\Public\BG_Lobby.h" />
+    <ClInclude Include="..\Public\Camera_Aru.h" />
     <ClInclude Include="..\Public\Camera_Ex.h" />
     <ClInclude Include="..\Public\Camera_Free.h" />
     <ClInclude Include="..\Public\Camera_Gacha.h" />
     <ClInclude Include="..\Public\Camera_Main.h" />
+    <ClInclude Include="..\Public\Camera_Mutsuki.h" />
     <ClInclude Include="..\Public\City.h" />
     <ClInclude Include="..\Public\Client_Defines.h" />
     <ClInclude Include="..\Public\Cost_Gauge.h" />
@@ -244,6 +246,7 @@
     <ClInclude Include="..\Public\Terrain.h" />
     <ClInclude Include="..\Public\UI.h" />
     <ClInclude Include="..\Public\UI_RecruitButton.h" />
+    <ClInclude Include="..\Public\UI_Student.h" />
     <ClInclude Include="..\Public\Work_Button.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Resource.h" />
@@ -259,10 +262,12 @@
     <ClCompile Include="..\private\BackGround.cpp" />
     <ClCompile Include="..\Private\Back_Btn.cpp" />
     <ClCompile Include="..\Private\BG_Lobby.cpp" />
+    <ClCompile Include="..\Private\Camera_Aru.cpp" />
     <ClCompile Include="..\Private\Camera_Ex.cpp" />
     <ClCompile Include="..\Private\Camera_Free.cpp" />
     <ClCompile Include="..\Private\Camera_Gacha.cpp" />
     <ClCompile Include="..\Private\Camera_Main.cpp" />
+    <ClCompile Include="..\Private\Camera_Mutsuki.cpp" />
     <ClCompile Include="..\Private\City.cpp" />
     <ClCompile Include="..\Private\Cost_Gauge.cpp" />
     <ClCompile Include="..\Private\Cost_GaugeBg.cpp" />
@@ -326,6 +331,7 @@
     <ClCompile Include="..\Private\Terrain.cpp" />
     <ClCompile Include="..\Private\UI.cpp" />
     <ClCompile Include="..\Private\UI_RecruitButton.cpp" />
+    <ClCompile Include="..\Private\UI_Student.cpp" />
     <ClCompile Include="..\Private\Work_Button.cpp" />
     <ClCompile Include="..\Public\Run_ToHide.cpp" />
     <ClCompile Include="Client.cpp" />

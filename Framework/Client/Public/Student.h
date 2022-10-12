@@ -15,7 +15,8 @@ BEGIN(Client)
 
 class CState;
 class CMonster;
-class CStudent : public CGameObject
+
+class CStudent abstract : public CGameObject
 {	
 	friend class CSensei;
 public:
@@ -112,7 +113,7 @@ private:
 
 public:
 	virtual void Free() override;
-	virtual CGameObject* Clone(void* pArg) { return nullptr; }
+	//virtual CGameObject* Clone(void* pArg) { return nullptr; }
 
 };
 

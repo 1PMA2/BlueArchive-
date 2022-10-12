@@ -3,6 +3,8 @@
 
 #include "GameInstance.h"
 #include "Ex_Cutin.h"
+#include "Sensei.h"
+#include "Camera.h"
 
 CAru_Ex::CAru_Ex(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CStudent(pDevice, pContext)
@@ -32,14 +34,22 @@ HRESULT CAru_Ex::Initialize(void * pArg)
 	m_tStudentInfo.eAnim = ANIM_EX;
 	m_tStudentInfo.eFormation = FORMATION_FIRST;
 
+	if(nullptr != pArg)
+		m_pAru = (CStudent*)pArg;
 
 	if (FAILED(SetUp_Components()))
 		return E_FAIL;
 
 
-
-
 	if (FAILED(__super::Initialize(&TransformDesc)))
+		return E_FAIL;
+
+	m_pModelCom->Set_CurrentAnimation(0);
+
+	
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), TEXT("Prototype_GameObject_Camera_Aru"), this)))
 		return E_FAIL;
 
 	return S_OK;
@@ -47,8 +57,27 @@ HRESULT CAru_Ex::Initialize(void * pArg)
 
 void CAru_Ex::Tick(_float fTimeDelta)
 {
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+	CSensei* pSensei = GET_SENSEI;
 
-	__super::Tick(fTimeDelta);
+	CCamera* pCameraMain = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
+	CCamera* pCameraEx = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_EX);
+
+	if (m_pAru->Get_Ex())
+	{
+		m_pModelCom->Play_Animation(fTimeDelta);
+		ENABLE(pCameraEx);
+		DISABLE(pCameraMain);
+	}
+	else
+	{
+		DISABLE(pCameraEx);
+		ENABLE(pCameraMain);
+		m_pModelCom->ResetAnimation();
+	}
+
+
+	
 
 }
 

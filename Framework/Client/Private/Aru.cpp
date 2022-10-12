@@ -53,6 +53,12 @@ HRESULT CAru::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;	
 
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+	CSensei* pSensei = GET_SENSEI;
+
+	if(LEVEL_GAMEPLAY == pSensei->Get_CurrentLevel())
+		if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student_Ex"), TEXT("Aru_Ex"), this)))
+			return E_FAIL;
 
 	return S_OK;
 }
@@ -112,7 +118,8 @@ HRESULT CAru::SetUp_ShaderResource()
 
 HRESULT CAru::FormationLevel_Collision(_float fTimeDelta)
 {
-	
+
+
 	return S_OK;
 }
 
@@ -120,17 +127,16 @@ HRESULT CAru::GamePlayLevel_Collision(_float fTimeDelta)
 {
 	__super::GamePlayLevel_Collision(fTimeDelta);
 
-	if(false == m_bExReady)
-	if (m_pAABBCom->CollisionRay())
+	CSensei* pSensei = GET_SENSEI;
+	
+	if (KEY(NUM1, TAP) && pSensei->Get_SenseiInfo().fCost >= m_tStudentInfo.fExCost)
 	{
-		CSensei* pSensei = GET_SENSEI;
-		if (KEY(LBUTTON, TAP))
-		{
-			pSensei->Set_ExReady();
-			pSensei->Set_ExStudent(this);
-			Set_ExReady(true);
-		}
+		pSensei->Set_ExReady();
+		pSensei->Set_ExStudent(this);
+		Set_ExReady(true);
 	}
+
+
 
 
 	return S_OK;

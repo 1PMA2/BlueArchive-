@@ -35,6 +35,8 @@
 #include "Droid_Dead.h"
 #include "Cost_Gauge.h"
 #include "Cost_GaugeBg.h"
+#include "Camera_Aru.h"
+//#include "Camera_Mutsuki"
 
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -341,11 +343,17 @@ HRESULT CLoader::Loading_ForGachaScene()
 					pSensei->Get_StudentIndex(i))))
 					return E_FAIL;
 
+				if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Aru"),
+					CCamera_Aru::Create(m_pDevice, m_pContext))))
+					return E_FAIL;
+
 				ZeroMemory(&TransformMatrix, sizeof(_matrix));
 				TransformMatrix = XMMatrixScaling(100.f, 100.f, 100.f) * XMMatrixRotationX(XMConvertToRadians(90.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 				if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Aru"),
 					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Aru/", "Aru.fbx", TransformMatrix))))
 					return E_FAIL;
+
+
 			}
 
 			else if (TEXT("Mutsuki") == pSensei->Get_StudentName(i))
@@ -354,6 +362,10 @@ HRESULT CLoader::Loading_ForGachaScene()
 				if (FAILED(pGameInstance->Add_Prototype(pSensei->Get_StudentName(i),
 					pSensei->Get_StudentIndex(i))))
 					return E_FAIL;
+
+				/*if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Mutsuki"),
+					CCamera_Mutsuki::Create(m_pDevice, m_pContext))))
+					return E_FAIL;*/
 
 				ZeroMemory(&TransformMatrix, sizeof(_matrix));
 				TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
@@ -500,13 +512,6 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Main"),
 			CCamera_Main::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
-
-		/* For.Prototype_GameObject_Camera_Ex*/
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Ex"),
-			CCamera_Ex::Create(m_pDevice, m_pContext))))
-			return E_FAIL;
-
-
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_ForkLift"),
 			CForkLift::Create(m_pDevice, m_pContext))))

@@ -236,7 +236,6 @@ HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 
 	}
 	
-	
 
 	return S_OK;
 }
@@ -297,15 +296,13 @@ void CStudent::InitializeStudentState()
 	}
 	else
 	{
-		m_pState = CEx_Cutin::Create(this);
-
 		switch (m_tStudentInfo.eFormation)
 		{
 		case FORMATION_FIRST:
 			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -20.f, -5.f, 1.f));
 			break;
 		case FORMATION_SECOND:
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 0.f, 0.f, 1.f));
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -20.f, 0.f, 1.f));
 			break;
 		}
 	}

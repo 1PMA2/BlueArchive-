@@ -8,6 +8,7 @@
 CWork_Button::CWork_Button(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
 {
+	
 }
 
 CWork_Button::CWork_Button(const CWork_Button & rhs)

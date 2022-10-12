@@ -67,12 +67,19 @@ _bool CSensei::Useable_Ex(_float fUseCost) //사용할 코스트
 
 _vector CSensei::Get_LockonVector()
 {
-	vExTarget = m_pTargetMonster->Get_MonsterTranslation();
+	m_vExTarget = m_pTargetMonster->Get_MonsterTranslation();
 
 	m_pTargetMonster = nullptr;
 
-	return vExTarget;
+	return m_vExTarget;
 	
+}
+
+void CSensei::ReSet_Ex()
+{
+	m_bExReady = false;
+	m_vExTarget = {};
+	m_pTargetMonster = nullptr;
 }
 
 void CSensei::Use_Ex(_bool bEx, _float fCost)

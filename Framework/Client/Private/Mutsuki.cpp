@@ -52,6 +52,13 @@ HRESULT CMutsuki::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;	
 
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+	CSensei* pSensei = GET_SENSEI;
+
+	if (LEVEL_GAMEPLAY == pSensei->Get_CurrentLevel())
+		if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student_Ex"), TEXT("Mutsuki_Ex"), this)))
+			return E_FAIL;
+
 	return S_OK;
 }
 
@@ -87,15 +94,7 @@ HRESULT CMutsuki::Render()
 {
 	__super::Render();
 
-	//CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-	//swprintf_s(m_szFPS, TEXT("cost:%d"), m_tStudentInfo.iBullet);
-
-	//// MakeSpriteFont "폰트이름" /FontSize:32 /FastPack /CharacterRegion:0x0020-0x00FF /CharacterRegion:0x3131-0x3163 /CharacterRegion:0xAC00-0xD800 /DefaultCharacter:0xAC00 출력파일이름.spritefont
-	//pGameInstance->Render_Font(TEXT("Font_Dream"), m_szFPS, _float2(0.f, 0.f), XMVectorSet(1.f, 1.f, 1.f, 1.f));
-
-
-	//pGameInstance->Present();
 
 	return S_OK;
 }
@@ -131,15 +130,17 @@ HRESULT CMutsuki::GamePlayLevel_Collision(_float fTimeDelta)
 {
 	__super::GamePlayLevel_Collision(fTimeDelta);
 	
+	
+	CSensei* pSensei = GET_SENSEI;
 
-	if (m_pAABBCom->CollisionRay())
+	if (KEY(NUM2, TAP) && pSensei->Get_SenseiInfo().fCost >= m_tStudentInfo.fExCost)
 	{
-		CSensei* pSensei = GET_SENSEI;
-		if (KEY(LBUTTON, TAP))
-		{
-			pSensei->Set_ExReady();
-		}
+		pSensei->Set_ExReady();
+		pSensei->Set_ExStudent(this);
+		Set_ExReady(true);
 	}
+
+
 
 	return S_OK;
 }

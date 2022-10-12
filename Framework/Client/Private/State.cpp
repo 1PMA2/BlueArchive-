@@ -39,6 +39,7 @@ CState * CState::Loop(_float fTimeDelta)
 		{
 			m_pOwner->Set_ExReady(false);
 			m_pOwner->Set_Ex(true);
+			pSensei->Use_Ex(true, m_pOwner->Get_StudentInfo().fExCost);
 			pState = CEx_Cutin::Create(m_pOwner);
 		}
 		else

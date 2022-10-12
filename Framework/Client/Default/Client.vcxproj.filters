@@ -253,6 +253,15 @@
     <ClInclude Include="..\Public\imgui_impl_dx11.h">
       <Filter>97.Imgui_Manager\sources</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\UI_Student.h">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Student_Ex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Camera_Aru.h">
+      <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Aru</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Camera_Mutsuki.h">
+      <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Mutsuki</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -491,6 +500,15 @@
     </ClCompile>
     <ClCompile Include="..\Private\imgui_impl_win32.cpp">
       <Filter>97.Imgui_Manager\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\UI_Student.cpp">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Student_Ex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Camera_Aru.cpp">
+      <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Aru</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Camera_Mutsuki.cpp">
+      <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Mutsuki</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -843,6 +861,12 @@
     </Filter>
     <Filter Include="97.Imgui_Manager\imgui">
       <UniqueIdentifier>{364e65fd-900c-4d99-8255-3234a337afcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\03.Camera\Camera_Ex\Camera_Aru">
+      <UniqueIdentifier>{2103d22b-c201-48a7-8244-3e4d66275dd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\03.Camera\Camera_Ex\Camera_Mutsuki">
+      <UniqueIdentifier>{47bdce17-725b-4cd1-91b9-12cf695683bc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

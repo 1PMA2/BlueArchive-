@@ -14,17 +14,13 @@ CEx_Cutin::CEx_Cutin(CStudent* pOwner)
 	m_eAnim = ANIM_EXCUTIN;
 	pOwner->Set_State(m_eAnim);
 
-	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
+	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
-	CSensei* pSensei = CSensei::Get_Instance();
 
-	if (true == m_pOwner->Get_StudentInfo().bExModel)
-		pModel->Set_CurrentAnimation(0);
-	else
-	{
-		pSensei->Use_Ex(true, m_pOwner->Get_StudentInfo().fExCost);
-		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
-	}
+
+	
+	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+	
 
 	pModel->ResetAnimation();
 }
@@ -58,25 +54,6 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	if (m_pOwner->Get_StudentInfo().bExModel)
-	{
-		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
-		{
-			CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
-
-			if (pStudent->Get_Ex())
-			{
-				pSensei->Use_Ex(true, m_pOwner->Get_StudentInfo().fExCost);
-				pModel->Play_Animation(fTimeDelta);
-				break;
-			}
-			else
-			{
-				pModel->ResetAnimation();
-			}
-		}
-	}
-	else
 	{
 		pModel->Play_Animation(fTimeDelta);
 

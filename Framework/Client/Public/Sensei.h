@@ -61,6 +61,7 @@ public:
 	void Ex_Lockon(CMonster* pTarget) { m_pTargetMonster = pTarget; }
 	CMonster* Get_LockonMonster() { return m_pTargetMonster; }
 	_vector Get_LockonVector();
+	void ReSet_Ex();
 
 	/*student*/
 	void Set_Student(const _tchar* pStudentTag, CStudent* pStudent);
@@ -87,7 +88,7 @@ private:
 private:
 	CStudent* m_pExStudent = nullptr;
 	CMonster* m_pTargetMonster = nullptr;
-	_vector vExTarget = {};
+	_vector m_vExTarget = {};
 	_tchar* m_pNewStudent = nullptr;
 	LEVEL m_ePreLevel = LEVEL_END;
 	LEVEL m_eCurrentLevel = LEVEL_END;
