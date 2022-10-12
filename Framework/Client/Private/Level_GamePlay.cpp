@@ -60,8 +60,18 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 
 	pSensei->Tick_Cost(fTimeDelta);
 
+	Change_Camera();
+
+	
+
+}
+
+void CLevel_GamePlay::Late_Tick(_float TimeDelta)
+{
 	if (GetKeyState(VK_RETURN) & 0x8000)
 	{
+		CSensei* pSensei = CSensei::Get_Instance();
+
 		pSensei->Set_PreLevel(LEVEL_GAMEPLAY);
 
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
@@ -69,16 +79,9 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 
 		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
 			return;
-	
+
 		Safe_Release(pGameInstance);
 	}
-
-	Change_Camera();
-}
-
-void CLevel_GamePlay::Late_Tick(_float TimeDelta)
-{
-	
 }
 
 HRESULT CLevel_GamePlay::Render()

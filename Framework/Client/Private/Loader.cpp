@@ -17,6 +17,8 @@
 #include "Aru_Ex.h"
 #include "Mutsuki.h"
 #include "Mutsuki_Ex.h"
+#include "Kayoko.h"
+#include "Kayoko_Ex.h"
 //#include "Effect.h"
 #include "Sky.h"
 #include "Sensei.h"
@@ -37,6 +39,7 @@
 #include "Cost_GaugeBg.h"
 #include "Camera_Aru.h"
 #include "Camera_Mutsuki.h"
+#include "Camera_Kayoko.h"
 
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -276,7 +279,7 @@ HRESULT CLoader::Loading_ForGachaLevel()
 		lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
 		/* For.Prototype_Component_Texture_Default */
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Student"),
-			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Student/spr%d.png"), 2))))
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Student/sqr%d.png"), 3))))
 			return E_FAIL;
 
 		_matrix TransformMatrix;
@@ -371,6 +374,24 @@ HRESULT CLoader::Loading_ForGachaScene()
 				TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 				if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Mutsuki"),
 					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Mutsuki/", "Mutsuki.fbx", TransformMatrix))))
+					return E_FAIL;
+			}
+
+			else if (TEXT("Kayoko") == pSensei->Get_StudentName(i))
+			{
+				pSensei->Set_RealStudent(pSensei->Get_StudentName(i), CKayoko::Create(m_pDevice, m_pContext));
+				if (FAILED(pGameInstance->Add_Prototype(pSensei->Get_StudentName(i),
+					pSensei->Get_StudentIndex(i))))
+					return E_FAIL;
+
+				if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Kayoko"),
+					CCamera_Kayoko::Create(m_pDevice, m_pContext))))
+					return E_FAIL;
+
+				ZeroMemory(&TransformMatrix, sizeof(_matrix));
+				TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+				if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Kayoko"),
+					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Kayoko/", "Kayoko.fbx", TransformMatrix))))
 					return E_FAIL;
 			}
 
@@ -533,6 +554,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CMutsuki_Ex::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Kayoko_Ex"),
+			CKayoko_Ex::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		///* For.Prototype_GameObject_Effect */
 		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Effect"),
 		//	CEffect::Create(m_pGraphic_Device))))
@@ -594,6 +619,14 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 				TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 				if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Mutsuki_Ex"),
 					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Mutsuki/", "Mutsuki_Ex.fbx", TransformMatrix))))
+					return E_FAIL;
+				break;
+
+			case KAYOKO:
+				ZeroMemory(&TransformMatrix, sizeof(_matrix));
+				TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+				if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Kayoko_Ex"),
+					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Kayoko/", "Kayoko_Ex.fbx", TransformMatrix))))
 					return E_FAIL;
 				break;
 

@@ -22,6 +22,10 @@ public:
 	virtual ~CAru() = default;
 
 public:
+	_bool Get_Card() { return m_bCardSelect; }
+	void Set_Card(_bool bCard) { m_bCardSelect = bCard; }
+
+public:
 	virtual HRESULT Initialize_Prototype();
 	virtual HRESULT Initialize(void* pArg);
 	virtual void Tick(_float fTimeDelta);
@@ -43,6 +47,7 @@ public:
 
 private:
 	_bool	m_bExReady = false;
+	_bool	m_bCardSelect = false;
 
 public:
 	static CAru* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);

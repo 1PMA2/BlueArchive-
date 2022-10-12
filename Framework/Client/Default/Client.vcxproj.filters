@@ -262,6 +262,15 @@
     <ClInclude Include="..\Public\Camera_Mutsuki.h">
       <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Mutsuki</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Kayoko.h">
+      <Filter>02.GameObject\00.Student\02. Kayoko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Kayoko_Ex.h">
+      <Filter>02.GameObject\00.Student\02. Kayoko\Kayoko_Ex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Camera_Kayoko.h">
+      <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Kayoko</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -509,6 +518,15 @@
     </ClCompile>
     <ClCompile Include="..\Private\Camera_Mutsuki.cpp">
       <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Mutsuki</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Kayoko.cpp">
+      <Filter>02.GameObject\00.Student\02. Kayoko</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Kayoko_Ex.cpp">
+      <Filter>02.GameObject\00.Student\02. Kayoko\Kayoko_Ex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Camera_Kayoko.cpp">
+      <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Kayoko</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -867,6 +885,12 @@
     </Filter>
     <Filter Include="02.GameObject\03.Camera\Camera_Ex\Camera_Mutsuki">
       <UniqueIdentifier>{47bdce17-725b-4cd1-91b9-12cf695683bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Student\02. Kayoko\Kayoko_Ex">
+      <UniqueIdentifier>{6e71d75d-762c-486c-973f-4f0a8644f78c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\03.Camera\Camera_Ex\Camera_Kayoko">
+      <UniqueIdentifier>{607636d1-3f3c-4328-b27b-3a71bb85f9be}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

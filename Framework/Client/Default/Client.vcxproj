@@ -179,6 +179,7 @@
     <ClInclude Include="..\Public\Camera_Ex.h" />
     <ClInclude Include="..\Public\Camera_Free.h" />
     <ClInclude Include="..\Public\Camera_Gacha.h" />
+    <ClInclude Include="..\Public\Camera_Kayoko.h" />
     <ClInclude Include="..\Public\Camera_Main.h" />
     <ClInclude Include="..\Public\Camera_Mutsuki.h" />
     <ClInclude Include="..\Public\City.h" />
@@ -209,6 +210,8 @@
     <ClInclude Include="..\Public\imstb_rectpack.h" />
     <ClInclude Include="..\Public\imstb_textedit.h" />
     <ClInclude Include="..\Public\imstb_truetype.h" />
+    <ClInclude Include="..\Public\Kayoko.h" />
+    <ClInclude Include="..\Public\Kayoko_Ex.h" />
     <ClInclude Include="..\Public\Knee_Idle.h" />
     <ClInclude Include="..\Public\Knee_Reload.h" />
     <ClInclude Include="..\Public\Knee_ZoomEnd.h" />
@@ -266,6 +269,7 @@
     <ClCompile Include="..\Private\Camera_Ex.cpp" />
     <ClCompile Include="..\Private\Camera_Free.cpp" />
     <ClCompile Include="..\Private\Camera_Gacha.cpp" />
+    <ClCompile Include="..\Private\Camera_Kayoko.cpp" />
     <ClCompile Include="..\Private\Camera_Main.cpp" />
     <ClCompile Include="..\Private\Camera_Mutsuki.cpp" />
     <ClCompile Include="..\Private\City.cpp" />
@@ -294,6 +298,8 @@
     <ClCompile Include="..\Private\Imgui_Manager.cpp" />
     <ClCompile Include="..\Private\imgui_tables.cpp" />
     <ClCompile Include="..\Private\imgui_widgets.cpp" />
+    <ClCompile Include="..\Private\Kayoko.cpp" />
+    <ClCompile Include="..\Private\Kayoko_Ex.cpp" />
     <ClCompile Include="..\Private\Knee_Idle.cpp" />
     <ClCompile Include="..\Private\Knee_Reload.cpp" />
     <ClCompile Include="..\Private\Knee_ZoomEnd.cpp" />

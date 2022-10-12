@@ -106,23 +106,13 @@ void CCamera_Main::Move_Camera(_float fTimeDelta)
 
 		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION); //ÇÐ»ýÀ» º½
 
-		vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 4.f, 1.f);
+		vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 4.f, 1.f); //offset
 
 		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 1.f);
 
 		_vector vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vLerp), XMVectorGetW(vCamera));
 
 		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vMainCamera);
-	}
-
-
-	if (KEY(UP, TAP))
-	{
-		m_CameraDesc.fNear += 0.001f;
-	}
-	if (KEY(DOWN, TAP))
-	{
-		m_CameraDesc.fNear -= 0.001f;
 	}
 
 	Safe_Release(pGameInstance);

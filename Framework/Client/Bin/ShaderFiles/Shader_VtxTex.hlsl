@@ -8,6 +8,7 @@ texture2D	g_DepthTexture;
 
 float g_Fade;
 float g_Cost;
+float g_DNum;
 
 sampler DefaultSampler = sampler_state 
 {		
@@ -161,6 +162,35 @@ VS_OUT_COST VS_COST(VS_IN_COST In)
 
 //cost num
 
+struct VS_IN_NUM
+{
+	float3		vPosition : POSITION;
+	float2		vTexUV : TEXCOORD0;
+};
+
+struct VS_OUT_NUM
+{
+	float4		vPosition : SV_POSITION;
+	float2		vTexUV : TEXCOORD0;
+};
+
+VS_OUT_NUM VS_NUM(VS_IN_NUM In)
+{
+	VS_OUT		Out = (VS_OUT)0;
+
+	matrix			matWV, matWVP;
+
+	matWV = mul(g_WorldMatrix, g_ViewMatrix);
+	matWVP = mul(matWV, g_ProjMatrix);
+
+	Out.vPosition = mul(vector(In.vPosition, 1.f), matWVP);
+	Out.vTexUV = In.vTexUV;
+
+	Out.vTexUV.x = In.vTexUV.x * 0.2f * ((g_DNum % 5) + 1.f);
+	Out.vTexUV.y = In.vTexUV.y * 0.5f * ((g_DNum / 5) + 1.f);
+
+	return Out;
+}
 
 technique11 DefaultTechnique
 {
@@ -191,6 +221,16 @@ technique11 DefaultTechnique
 		SetRasterizerState(RS_Default);
 
 		VertexShader = compile vs_5_0 VS_COST();
+		GeometryShader = NULL;
+		PixelShader = compile ps_5_0 PS_MAIN();
+	}
+	pass CostNumber
+	{
+		SetBlendState(BS_AlphaBlending, float4(0.f, 0.f, 0.f, 1.f), 0xffffffff);
+		SetDepthStencilState(DSS_Default, 0);
+		SetRasterizerState(RS_Default);
+
+		VertexShader = compile vs_5_0 VS_NUM();
 		GeometryShader = NULL;
 		PixelShader = compile ps_5_0 PS_MAIN();
 	}

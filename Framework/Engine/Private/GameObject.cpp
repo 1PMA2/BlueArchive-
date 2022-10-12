@@ -1,6 +1,7 @@
 #include "..\Public\GameObject.h"
 #include "GameInstance.h"
 #include "Transform.h"
+#include "Event_Manager.h"
 
 const _tchar*		CGameObject::m_pTransformTag = TEXT("Com_Transform");
 

@@ -1,6 +1,7 @@
 #include "..\Public\Level_Manager.h"
 #include "Level.h"
 #include "GameInstance.h"
+#include "Event_Manager.h"
 
 IMPLEMENT_SINGLETON(CLevel_Manager)
 
@@ -18,6 +19,10 @@ HRESULT CLevel_Manager::Open_Level(_uint iLevelID, CLevel * pLevel)
 
 		if (FAILED(pGameInstance->Clear(m_iCurrentLevelID)))
 			return E_FAIL;
+
+		CEvent_Manager* pEventManager = CEvent_Manager::Get_Instance();
+
+		pEventManager->m_vecEvent.clear();
 
 		Safe_Release(pGameInstance);
 	}

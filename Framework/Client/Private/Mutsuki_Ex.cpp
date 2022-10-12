@@ -62,13 +62,12 @@ void CMutsuki_Ex::Tick(_float fTimeDelta)
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 	CSensei* pSensei = GET_SENSEI;
 
-	CCamera* pCameraMain = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
 	CCamera* pCameraEx = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Mutsuki"));
 
 	if (m_pMutsuki->Get_Ex())
 	{
-		m_pModelCom->Play_Animation(fTimeDelta);
 		ENABLE(pCameraEx);
+		m_pModelCom->Play_Animation(fTimeDelta);
 	}
 	else
 	{

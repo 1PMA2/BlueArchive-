@@ -11,6 +11,8 @@ class CEvent_Manager final
 {
 	DECLARE_SINGLETON(CEvent_Manager);
 
+	friend class CLevel_Manager;
+
 public:
 	CEvent_Manager();
 	virtual ~CEvent_Manager() = default;

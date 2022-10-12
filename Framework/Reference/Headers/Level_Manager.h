@@ -24,6 +24,7 @@ public:
 private:
 	class CLevel*			m_pCurrentLevel = nullptr;
 	_uint					m_iCurrentLevelID = 0;
+	_bool					m_bChangeLevel = false;
 
 public:
 	virtual void Free() override;
