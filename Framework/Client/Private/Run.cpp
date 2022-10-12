@@ -30,6 +30,8 @@ CRun::CRun(CStudent* pOwner)
 		m_fHideLength = 0.1f;
 		break;
 	case 2:
+		pModel->Set_CurrentAnimation(7);
+		m_fHideLength = 0.1f;
 		break;
 
 	}
