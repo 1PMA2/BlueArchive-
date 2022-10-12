@@ -96,7 +96,7 @@ void CCamera_Mutsuki::MoveCamera(_float fTimeDelta)
 	ParentTargetMatrix.r[2] = XMVector3Normalize(ParentTargetMatrix.r[2]);
 
 	_float fFov;
-	fFov = XMConvertToRadians(fabs(XMVectorGetX(XMVector3Length((ParentMatrix.r[3] - ParentTargetMatrix.r[3])))) + 10.f);
+	fFov = XMConvertToRadians(fabs(XMVectorGetX(XMVector3Length((ParentMatrix.r[3] - ParentTargetMatrix.r[3])))) + 5.f);
 
 	m_CameraDesc.fFovy = fFov;
 
