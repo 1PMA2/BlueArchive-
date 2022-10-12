@@ -73,7 +73,7 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 		Safe_Release(pGameInstance);
 	}
 
-	//Change_Camera();
+	Change_Camera();
 }
 
 void CLevel_GamePlay::Late_Tick(_float TimeDelta)
@@ -98,22 +98,17 @@ void CLevel_GamePlay::Change_Camera()
 
 	CSensei* pSensei = CSensei::Get_Instance();
 
-	CCamera* pCameraMain = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
-	CCamera* pCameraEx = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_EX);
+	CCamera* pCameraMain = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"));
 
-	if (nullptr != pCameraEx)
-	{
-		if (pSensei->Get_SenseiInfo().bEx)
+	if (pSensei->Get_SenseiInfo().bEx)
 		{
-			ENABLE(pCameraEx);
 			DISABLE(pCameraMain);
 		}
-		else
+	else
 		{
 			ENABLE(pCameraMain);
-			DISABLE(pCameraEx);
 		}
-	}
+
 }
 
 

@@ -36,7 +36,7 @@
 #include "Cost_Gauge.h"
 #include "Cost_GaugeBg.h"
 #include "Camera_Aru.h"
-//#include "Camera_Mutsuki"
+#include "Camera_Mutsuki.h"
 
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -363,9 +363,9 @@ HRESULT CLoader::Loading_ForGachaScene()
 					pSensei->Get_StudentIndex(i))))
 					return E_FAIL;
 
-				/*if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Mutsuki"),
+				if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Mutsuki"),
 					CCamera_Mutsuki::Create(m_pDevice, m_pContext))))
-					return E_FAIL;*/
+					return E_FAIL;
 
 				ZeroMemory(&TransformMatrix, sizeof(_matrix));
 				TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));

@@ -49,7 +49,7 @@ HRESULT CAru_Ex::Initialize(void * pArg)
 	
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), TEXT("Prototype_GameObject_Camera_Aru"), this)))
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Aru"), TEXT("Prototype_GameObject_Camera_Aru"), this)))
 		return E_FAIL;
 
 	return S_OK;
@@ -61,18 +61,16 @@ void CAru_Ex::Tick(_float fTimeDelta)
 	CSensei* pSensei = GET_SENSEI;
 
 	CCamera* pCameraMain = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
-	CCamera* pCameraEx = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_EX);
+	CCamera* pCameraEx = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Aru"));
 
 	if (m_pAru->Get_Ex())
 	{
 		m_pModelCom->Play_Animation(fTimeDelta);
 		ENABLE(pCameraEx);
-		DISABLE(pCameraMain);
 	}
 	else
 	{
 		DISABLE(pCameraEx);
-		ENABLE(pCameraMain);
 		m_pModelCom->ResetAnimation();
 	}
 

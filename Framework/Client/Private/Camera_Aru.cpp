@@ -30,10 +30,6 @@ HRESULT CCamera_Aru::Initialize(void * pArg)
 	if (nullptr != pArg)
 		m_pAruEx = (CStudent*)pArg;
 
-	/* 내가 원하는 카메라의 초기상태를 동기화하낟. */
-	if (FAILED(__super::Initialize(pArg))) //cameradesc
-		return E_FAIL;
-
 	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 
 	CModel*		pTargetModel = (CModel*)m_pAruEx->Get_Component(TEXT("Com_Model"));
@@ -46,11 +42,19 @@ HRESULT CCamera_Aru::Initialize(void * pArg)
 
 	RELEASE_INSTANCE(CGameInstance);
 
+	/* 내가 원하는 카메라의 초기상태를 동기화하낟. */
+	if (FAILED(__super::Initialize(pArg))) //cameradesc
+		return E_FAIL;
+
+	DISABLE(this);
+
 	return S_OK;
 }
 
 void CCamera_Aru::Tick(_float fTimeDelta)
 {
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
 	MoveCamera(fTimeDelta);
 	
 	__super::Tick(fTimeDelta);
@@ -74,6 +78,7 @@ void CCamera_Aru::OnDisable()
 void CCamera_Aru::OnEnable()
 {
 
+	
 }
 
 void CCamera_Aru::MoveCamera(_float fTimeDelta)

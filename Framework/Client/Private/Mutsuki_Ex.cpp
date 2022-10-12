@@ -3,7 +3,8 @@
 
 #include "GameInstance.h"
 #include "Ex_Cutin.h"
-
+#include "Camera.h"
+#include "Sensei.h"
 
 CMutsuki_Ex::CMutsuki_Ex(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CStudent(pDevice, pContext)
@@ -46,12 +47,34 @@ HRESULT CMutsuki_Ex::Initialize(void * pArg)
 	if (nullptr != pArg)
 		m_pMutsuki = (CStudent*)pArg;
 
+	m_pModelCom->Set_CurrentAnimation(1);
+
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Mutsuki"), TEXT("Prototype_GameObject_Camera_Mutsuki"), this)))
+		return E_FAIL;
+
 	return S_OK;
 }
 
 void CMutsuki_Ex::Tick(_float fTimeDelta)
 {
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+	CSensei* pSensei = GET_SENSEI;
 
+	CCamera* pCameraMain = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"), CAMERA_FREE);
+	CCamera* pCameraEx = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Mutsuki"));
+
+	if (m_pMutsuki->Get_Ex())
+	{
+		m_pModelCom->Play_Animation(fTimeDelta);
+		ENABLE(pCameraEx);
+	}
+	else
+	{
+		DISABLE(pCameraEx);
+		m_pModelCom->ResetAnimation();
+	}
 
 }
 
