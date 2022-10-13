@@ -274,6 +274,9 @@
     <ClInclude Include="..\Public\Aru_ExBullet.h">
       <Filter>02.GameObject\08.Bullet\Aru_ExBullet</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Mutsuki_ExBullet.h">
+      <Filter>02.GameObject\08.Bullet\Mutsuki_ExBullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -533,6 +536,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Aru_ExBullet.cpp">
       <Filter>02.GameObject\08.Bullet\Aru_ExBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Mutsuki_ExBullet.cpp">
+      <Filter>02.GameObject\08.Bullet\Mutsuki_ExBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

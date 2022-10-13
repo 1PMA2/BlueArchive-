@@ -57,11 +57,12 @@ void CAru_ExBullet::Tick(_float fTimeDelta)
 	{
 		if (m_bOnce)
 		{
-			m_pTarget->Set_MinusHp(1);
+			m_pTarget->Set_MinusHp(100);
 			m_bOnce = false;
 		}
-		m_vTranslation = pSensei->Get_LockonVector();
 	}
+
+	m_vTranslation = pSensei->Get_LockonVector();
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vTranslation);
 
