@@ -158,7 +158,7 @@ HRESULT CStudent::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(0.5f, 1.f, 0.5f);
+	ColliderDesc.vScale = _float3(0.52f, 1.f, 0.52f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.5f, 0.f);
 
@@ -208,8 +208,9 @@ HRESULT CStudent::FormationLevel_Collision(_float fTimeDelta)
 
 HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 {
-	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+	m_bColled = false;
 
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
 	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Cover")); ++i)
 	{
@@ -219,22 +220,22 @@ HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 		if (m_pSphereCom->Collision(pSilde))
 		{
 			m_bColled = true;
-			CTransform* pSlideTransform = (CTransform*)pCover->Get_Component(TEXT("Com_Transform"));
+
+			CTransform* m_pSlideTransform = (CTransform*)pCover->Get_Component(TEXT("Com_Transform"));
 			_vector vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
-			_vector vSlide = pSlideTransform->Get_State(CTransform::STATE_TRANSLATION);
+			_vector vSlide = m_pSlideTransform->Get_State(CTransform::STATE_TRANSLATION);
 			_vector vLook = vTranslation - vSlide;
 
 			_float fDir = XMVectorGetX(vLook);
-			if (-0.2f < fDir)
-				m_pTransformCom->LookAtLerp(XMVectorSet(5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation) - 2.5f, 1.f), 7.f, fTimeDelta);
+			if (-0.2f <= fDir)
+				m_pTransformCom->LookAtLerp(XMVectorSet(5.f, 0.f, XMVectorGetZ(vSlide) - 1.f, 1.f), 7.f, fTimeDelta);
 			else
-				m_pTransformCom->LookAtLerp(XMVectorSet(-5.f, XMVectorGetY(vTranslation), XMVectorGetZ(vTranslation) - 2.5f, 1.f), 7.f, fTimeDelta);
+				m_pTransformCom->LookAtLerp(XMVectorSet(-5.f, 0.f, XMVectorGetZ(vSlide) - 1.f, 1.f), 7.f, fTimeDelta);
 			break;
 		}
-		else
-			m_bColled = false;
 
 	}
+
 	ToStudentCollision(fTimeDelta);
 
 	return S_OK;
@@ -316,25 +317,37 @@ void CStudent::ToStudentCollision(_float fTimeDelta)
 {
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-
-	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
+	if (!m_bOther)
 	{
-		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
-
-		if (pStudent == this)
-			continue;
-
-		CCollider* pSilde = (CCollider*)pStudent->Get_Component(TEXT("Com_AABB"));
-
-		if (m_pAABBCom->Collision(pSilde))
+		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
 		{
-			m_bColled = true;
-			break;
-		}
-		else
-			m_bColled = false;
+			CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
 
+			if (pStudent == this)
+				continue;
+
+			CCollider* pOther = (CCollider*)pStudent->Get_Component(TEXT("Com_AABB"));
+
+			if (m_pAABBCom->Collision(pOther))
+			{
+				m_bOther = true;
+				break;
+			}
+		}
 	}
+
+	else
+	{
+		m_fTimeAcc += fTimeDelta;
+
+		if (1.f < m_fTimeAcc)
+		{
+			m_bOther = false;
+			m_fTimeAcc = 0.f;
+		}
+	}
+
+
 }
 
 void CStudent::Free()

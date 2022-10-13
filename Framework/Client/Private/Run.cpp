@@ -171,7 +171,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 			pStudentTransform->LookAtLerp(vTarget, m_fTurnSpeed, fTimeDelta);
 
-			if(false == m_pOwner->Get_IsColl())
+			if(false == m_pOwner->Get_IsColl() && false == m_pOwner->Get_Other())
 			{
 				if (m_pOwner->Get_StudentInfo().fRange > XMVectorGetX(XMVector3Length(vTarget - vTranslation))) //몬스터 방향으로 공격범위까지 이동완료
 					return CRun_ToKnee::Create(m_pOwner);
