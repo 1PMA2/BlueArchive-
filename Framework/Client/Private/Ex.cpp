@@ -16,11 +16,15 @@ CEx::CEx(CStudent* pOwner)
 {
 	m_eAnim = ANIM_EX;
 	pOwner->Set_State(m_eAnim);
-
+	CSensei* pSensei = GET_SENSEI;
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+
+	pSensei->Use_Ex(false);
+
+	m_bOnce = true;
+	m_bMutsukli = true;
 
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
@@ -31,6 +35,7 @@ CEx::CEx(CStudent* pOwner)
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 		break;
 	case KAYOKO:
+		pSensei->ReSet_Ex();
 		pModel->Set_CurrentAnimation(33);
 		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Monster")); ++i)
 		{
@@ -45,17 +50,9 @@ CEx::CEx(CStudent* pOwner)
 
 void CEx::Enter()
 {
-	CSensei* pSensei = GET_SENSEI;
 
-	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
-	pSensei->Use_Ex(false);
-
-	m_vTarget = pSensei->Get_LockonVector();
-
-	pTransform->LookAt(m_vTarget);
-
-	m_bOnce = true;
+	
 }
 
 CState * CEx::Loop(_float fTimeDelta)
@@ -87,12 +84,12 @@ CState * CEx::Loop(_float fTimeDelta)
 		}
 		break;
 	case MUTSUKI:
-			if (m_bOnce)
-			{
-				m_pMonster = pSensei->Get_LockonMonster();
-				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Mutsuki_ExBullet"), &m_pMonster);
-				m_bOnce = false;
-			}
+		if (m_bMutsukli)
+		{
+			m_pMonster = pSensei->Get_LockonMonster();
+			pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Mutsuki_ExBullet"), &m_pMonster);
+			m_bMutsukli = false;
+		}
 		break;
 	default:
 		break;

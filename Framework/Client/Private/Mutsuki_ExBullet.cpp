@@ -42,32 +42,45 @@ HRESULT CMutsuki_ExBullet::Initialize(void * pArg)
 	if (nullptr != pArg)
 		memcpy(&m_pTarget, pArg, sizeof(CMonster*));
 
+	m_bOnce = true;
+	m_fBoomAcc = 0.f;
 
 	return S_OK;
 }
 
 void CMutsuki_ExBullet::Tick(_float fTimeDelta)
 {
-	m_pSphereACom->Update(m_pTransformCom->Get_WorldMatrix());
-	m_pSphereBCom->Update(m_pTransformCom->Get_WorldMatrix());
-	m_pSphereCCom->Update(m_pTransformCom->Get_WorldMatrix());
-
 	CSensei* pSensei = GET_SENSEI;
 
 	m_vTranslation = pSensei->Get_LockonVector();
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vTranslation);
 
+	m_pSphereACom->Update(m_pTransformCom->Get_WorldMatrix());
+	m_pSphereBCom->Update(m_pTransformCom->Get_WorldMatrix());
+	m_pSphereCCom->Update(m_pTransformCom->Get_WorldMatrix());
+
 	m_fBoomAcc += fTimeDelta;
+
+
 
 }
 
 void CMutsuki_ExBullet::LateTick(_float fTimeDelta)
 {
+
+#ifdef _DEBUG
+	//m_pRendererCom->Add_DebugRenderGroup(m_pSphereACom);
+	//m_pRendererCom->Add_DebugRenderGroup(m_pSphereBCom);
+	//m_pRendererCom->Add_DebugRenderGroup(m_pSphereCCom);
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+#endif // _DEBUG
+
 	if (2.5f < m_fBoomAcc)
 	{
 		m_fBoomAcc = 0.f;
 		Collision_ToMonster();
+		DELETE(this);
 	}
 
 }
@@ -76,8 +89,6 @@ HRESULT CMutsuki_ExBullet::Render()
 {
 
 	/* 셰이더 전역변수에 값을 던진다. */
-
-
 #ifdef _DEBUG
 	m_pSphereACom->Render();
 	m_pSphereBCom->Render();
@@ -109,26 +120,21 @@ HRESULT CMutsuki_ExBullet::Collision_ToMonster()
 
 		if (m_pSphereACom->Collision(pSphere))
 		{
-			_vector vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
-			pMonster->Set_MinusHp(200);
-
+			pMonster->Set_MinusHp(220);
+			continue;
 		}
 		if (m_pSphereBCom->Collision(pSphere))
 		{
-			_vector vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
-			pMonster->Set_MinusHp(200);
-
+			pMonster->Set_MinusHp(220);
+			continue;
 		}
 		if (m_pSphereCCom->Collision(pSphere))
 		{
-			_vector vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
-			pMonster->Set_MinusHp(200);
-
+			pMonster->Set_MinusHp(220);
+			continue;
 		}
 
 	}
-
-	DELETE(this);
 
 	return S_OK;
 }
@@ -144,7 +150,7 @@ HRESULT CMutsuki_ExBullet::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(2.f, 2.f, 2.f);
+	ColliderDesc.vScale = _float3(1.5f, 1.5f, 1.5f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(-ColliderDesc.vScale.x, ColliderDesc.vScale.y * 0.f, 0.f);
 
@@ -155,7 +161,7 @@ HRESULT CMutsuki_ExBullet::SetUp_Components()
 	/* For.Com_AABB */
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(2.f, 2.f, 2.f);
+	ColliderDesc.vScale = _float3(1.5f, 1.5f, 1.5f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
@@ -166,7 +172,7 @@ HRESULT CMutsuki_ExBullet::SetUp_Components()
 	/* For.Com_AABB */
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(2.f, 2.f, 2.f);
+	ColliderDesc.vScale = _float3(1.5f, 1.5f, 1.5f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(ColliderDesc.vScale.x, ColliderDesc.vScale.y * 0.f, 0.f);
 

@@ -51,6 +51,11 @@ CState * CRun_ToKnee::Loop(_float fTimeDelta)
 	if (nullptr != pState)
 		return pState;
 
+	if (m_pOwner->Get_Other())
+	{
+		return CRun::Create(m_pOwner);
+	}
+
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));

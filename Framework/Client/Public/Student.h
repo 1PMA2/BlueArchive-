@@ -62,6 +62,7 @@ public:
 	void		Set_Other(_bool bOther) { m_bOther = bOther; }
 	_bool		Get_ExReady() { return m_bExReady; }
 	void		Set_ExReady(_bool bEx) { m_bExReady = bEx; }
+	//void		Set_ExReady () { m_bExReady = (m_bExReady) ? (false) : (true); }
 	_bool		Get_Ex() { return m_bEx; }
 	void		Set_Ex(_bool bEx) { m_bEx = bEx; }
 

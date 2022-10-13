@@ -19,6 +19,7 @@ public:
 private:
 	class CMonster* m_pMonster = nullptr;
 	_bool	m_bOnce = true;
+	_bool	m_bMutsukli = true;
 	_vector m_vTarget = {};
 
 public:

@@ -28,8 +28,6 @@ CMonster_State * CM_Run::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	CStudent* pStudent = m_pOwner->FoundStudent();
-
 	_vector vFear = pTransform->Get_State(CTransform::STATE_TRANSLATION);
 
 	pModel->Repeat_Animation(fTimeDelta);
@@ -47,7 +45,7 @@ CMonster_State * CM_Run::Loop(_float fTimeDelta)
 		pTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vFear), 0.f, XMVectorGetZ(vFear) + 1.f, 1.f), 5.f, fTimeDelta);
 	}
 
-	if (pStudent) //학생을 찾았음
+	if (m_pOwner->FoundStudent()) //학생을 찾았음
 	{
 
 		pState = CM_Runend::Create(m_pOwner);

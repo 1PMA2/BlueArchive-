@@ -340,7 +340,7 @@ void CStudent::ToStudentCollision(_float fTimeDelta)
 	{
 		m_fTimeAcc += fTimeDelta;
 
-		if (1.f < m_fTimeAcc)
+		if (0.5f < m_fTimeAcc)
 		{
 			m_bOther = false;
 			m_fTimeAcc = 0.f;

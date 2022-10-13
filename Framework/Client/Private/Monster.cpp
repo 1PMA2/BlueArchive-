@@ -127,14 +127,16 @@ void CMonster::Tick(_float fTimeDelta)
 
 
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
+
+	SelectMonster();
+
+	
 }
 
 void CMonster::LateTick(_float fTimeDelta)
 {
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 	
-	SelectMonster();
-
 	DeleteMonster();
 }
 
@@ -230,17 +232,19 @@ void CMonster::SelectMonster()
 {
 	CSensei* pSensei = GET_SENSEI;
 
-	if (pSensei->Get_ExReady())
+
+	if (m_pSphereCom->CollisionRay())
 	{
-		if (m_pSphereCom->CollisionRay())
+		if (pSensei->Get_ExReady())
 		{
 			if (KEY(LBUTTON, TAP))
 			{
 				pSensei->Ex_Lockon(this);
 			}
-
 		}
 	}
+	pSensei->Get_LockonVector();
+	
 }
 
 void CMonster::DeleteMonster()

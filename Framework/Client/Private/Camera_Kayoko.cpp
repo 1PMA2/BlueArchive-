@@ -96,18 +96,18 @@ void CCamera_Kayoko::MoveCamera(_float fTimeDelta)
 	ParentTargetMatrix.r[2] = XMVector3Normalize(ParentTargetMatrix.r[2]);
 
 	_float fFov;
-	fFov = XMConvertToRadians(fabs(XMVectorGetX(XMVector3Length((ParentMatrix.r[3] - ParentTargetMatrix.r[3])))) + 5.f);
+	fFov = XMConvertToRadians(fabs(XMVectorGetX(XMVector3Length((ParentMatrix.r[3] - ParentTargetMatrix.r[3])))) + 0.1f);
 
 	m_CameraDesc.fFovy = fFov;
 
 	XMStoreFloat4x4(&m_WorldMatrix, ParentMatrix * m_pTargetTransform->Get_WorldMatrix());
 	XMStoreFloat4x4(&m_TargetWorldMatrix, ParentTargetMatrix * m_pTargetTransform->Get_WorldMatrix());
 
+	//m_pTransformCom->Rotation(XMVectorSet(0.f, 0.f, 1.f, 1.f), XMConvertToRadians(-30.f));
+
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_TRANSLATION]);
 
 	m_pTransformCom->LookAt(XMLoadFloat4x4(&m_TargetWorldMatrix).r[CTransform::STATE_TRANSLATION]);
-
-	//m_pTransformCom->LookAtLerp(XMLoadFloat4x4(&m_TargetWorldMatrix).r[CTransform::STATE_TRANSLATION], 3.f, fTimeDelta);
 }
 
 CCamera_Kayoko * CCamera_Kayoko::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)

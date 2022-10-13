@@ -29,7 +29,6 @@ HRESULT CAru_ExBullet::Initialize(void * pArg)
 	TransformDesc.fSpeedPerSec = 1.5f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	m_bOnce = true;
 
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;
@@ -42,13 +41,14 @@ HRESULT CAru_ExBullet::Initialize(void * pArg)
 	if (nullptr != pArg)
 		memcpy(&m_pTarget, pArg, sizeof(CMonster*));
 
+	m_bOnce = true;
+	m_fBoomAcc = 0.f;
 
 	return S_OK;
 }
 
 void CAru_ExBullet::Tick(_float fTimeDelta)
 {
-	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 
 	CSensei* pSensei = GET_SENSEI;
 
@@ -57,7 +57,7 @@ void CAru_ExBullet::Tick(_float fTimeDelta)
 	{
 		if (m_bOnce)
 		{
-			m_pTarget->Set_MinusHp(200);
+			m_pTarget->Set_MinusHp(220);
 			m_bOnce = false;
 		}
 	}
@@ -66,18 +66,24 @@ void CAru_ExBullet::Tick(_float fTimeDelta)
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vTranslation);
 
+	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
+
 	m_fBoomAcc += fTimeDelta;
+
 
 }
 
 void CAru_ExBullet::LateTick(_float fTimeDelta)
 {
+#ifdef _DEBUG
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+#endif // _DEBUG
+
 	if (1.5f < m_fBoomAcc)
 	{
 		m_fBoomAcc = 0.f;
 		Collision_ToMonster();
 	}
-
 
 }
 
@@ -116,12 +122,11 @@ HRESULT CAru_ExBullet::Collision_ToMonster()
 
 		if (m_pSphereCom->Collision(pSphere))
 		{
-			_vector vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
-			pMonster->Set_MinusHp(200);
-
+			pMonster->Set_MinusHp(220);
 		}
 
 	}
+
 
 	DELETE(this);
 

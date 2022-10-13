@@ -75,7 +75,7 @@ public:
 	void Set_NewStudent(_tchar* pStudentTag) { m_pNewStudent = pStudentTag; }
 
 public:
-	void Set_ExReady() { m_bExReady = (m_bExReady) ? (false) : (true); }
+	void Set_ExReady(_bool bExReady) { m_bExReady = bExReady; }
 	void Set_ExStudent(CStudent* pStudent) { m_pExStudent = pStudent; }
 	CStudent* Get_ExStudent() { return m_pExStudent; }
 	void Ex_Fire() { m_bExReady = false; }
