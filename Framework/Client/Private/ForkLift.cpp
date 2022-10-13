@@ -106,10 +106,10 @@ HRESULT CForkLift::Render()
 		m_pModelCom->Render(i, m_pShaderCom);
 	}
 
-	#ifdef _DEBUG
-	m_pSphereCom->Render();
-	m_pSlideAABBCom->Render();
-	#endif // _DEBUG
+	//#ifdef _DEBUG
+	//m_pSphereCom->Render();
+	//m_pSlideAABBCom->Render();
+	//#endif // _DEBUG
 
 	return S_OK;
 }

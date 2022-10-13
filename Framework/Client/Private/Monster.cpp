@@ -82,7 +82,7 @@ HRESULT CMonster::Initialize(void * pArg)
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
 	m_tMonsterInfo.iAtk = 10;
-	m_tMonsterInfo.iHp = 55;
+	m_tMonsterInfo.iHp = 200;
 	m_tMonsterInfo.fRange = 4.f;
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;

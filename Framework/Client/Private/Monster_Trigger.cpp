@@ -72,10 +72,10 @@ HRESULT CMonster_Trigger::Render()
 
 	/* 셰이더 전역변수에 값을 던진다. */
 
-
-#ifdef _DEBUG
-	m_pAABBCom->Render();
-#endif // _DEBUG
+//
+//#ifdef _DEBUG
+//	m_pAABBCom->Render();
+//#endif // _DEBUG
 
 	return S_OK;
 }

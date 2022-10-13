@@ -18,6 +18,7 @@
 #include "Aru_ExBullet.h"
 #include "Mutsuki.h"
 #include "Mutsuki_Ex.h"
+#include "Mutsuki_ExBullet.h"
 #include "Kayoko.h"
 #include "Kayoko_Ex.h"
 //#include "Effect.h"
@@ -373,6 +374,10 @@ HRESULT CLoader::Loading_ForGachaScene()
 
 				if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Mutsuki"),
 					CCamera_Mutsuki::Create(m_pDevice, m_pContext))))
+					return E_FAIL;
+
+				if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Mutsuki_ExBullet"),
+					CMutsuki_ExBullet::Create(m_pDevice, m_pContext))))
 					return E_FAIL;
 
 				ZeroMemory(&TransformMatrix, sizeof(_matrix));

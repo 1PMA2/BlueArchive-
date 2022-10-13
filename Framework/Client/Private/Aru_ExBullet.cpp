@@ -57,7 +57,7 @@ void CAru_ExBullet::Tick(_float fTimeDelta)
 	{
 		if (m_bOnce)
 		{
-			m_pTarget->Set_MinusHp(100);
+			m_pTarget->Set_MinusHp(200);
 			m_bOnce = false;
 		}
 	}
@@ -78,15 +78,6 @@ void CAru_ExBullet::LateTick(_float fTimeDelta)
 		Collision_ToMonster();
 	}
 
-	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
-
-
-	if (true == pGameInstance->isIn_Frustum_InWorldSpace(m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION), 2.f))
-	{
-		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
-	}
-
-	RELEASE_INSTANCE(CGameInstance);
 
 }
 
@@ -126,7 +117,7 @@ HRESULT CAru_ExBullet::Collision_ToMonster()
 		if (m_pSphereCom->Collision(pSphere))
 		{
 			_vector vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
-			pMonster->Set_MinusHp(100);
+			pMonster->Set_MinusHp(200);
 
 		}
 
@@ -148,7 +139,7 @@ HRESULT CAru_ExBullet::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(3.f, 3.f, 3.f);
+	ColliderDesc.vScale = _float3(4.f, 4.f, 4.f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
