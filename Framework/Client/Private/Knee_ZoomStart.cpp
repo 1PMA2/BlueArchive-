@@ -25,7 +25,8 @@ CKnee_ZoomStart::CKnee_ZoomStart(CStudent* pOwner)
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(11);
 		break;
-	case 2:
+	case KAYOKO:
+		pModel->Set_CurrentAnimation(25);
 		break;
 
 	}

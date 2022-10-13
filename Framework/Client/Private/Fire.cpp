@@ -28,7 +28,8 @@ CFire::CFire(CStudent* pOwner)
 		pModel->Set_CurrentAnimation(18);
 		//m_iAtkFrame = 
 		break;
-	case 2:
+	case KAYOKO:
+		pModel->Set_CurrentAnimation(10);
 		break;
 	}
 }

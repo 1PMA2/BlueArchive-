@@ -23,7 +23,8 @@ CHide_Idle::CHide_Idle(CStudent* pOwner)
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(21);
 		break;
-	case 2:
+	case KAYOKO:
+		pModel->Set_CurrentAnimation(17);
 		break;
 
 	}

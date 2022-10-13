@@ -24,7 +24,8 @@ CHide_FireStart::CHide_FireStart(CStudent* pOwner)
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(19);
 		break;
-	case 2:
+	case KAYOKO:
+		pModel->Set_CurrentAnimation(18);
 		break;
 
 	}
@@ -78,6 +79,9 @@ CState * CHide_FireStart::Loop(_float fTimeDelta)
 			break;
 		case MUTSUKI:
 			pState = CRifle_Fire::Create(m_pOwner);
+			break;
+		case KAYOKO:
+			pState = CFire::Create(m_pOwner);
 			break;
 		}
 

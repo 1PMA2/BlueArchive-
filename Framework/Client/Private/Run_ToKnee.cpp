@@ -27,7 +27,8 @@ CRun_ToKnee::CRun_ToKnee(CStudent* pOwner)
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(5);
 		break;
-	case 2:
+	case KAYOKO:
+		pModel->Set_CurrentAnimation(21);
 		break;
 
 	}

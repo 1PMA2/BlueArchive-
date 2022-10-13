@@ -28,7 +28,7 @@ CEx::CEx(CStudent* pOwner)
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 		break;
 	case KAYOKO:
-		pModel->Set_CurrentAnimation(34);
+		pModel->Set_CurrentAnimation(33);
 		break;
 
 	}

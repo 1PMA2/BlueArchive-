@@ -83,7 +83,7 @@ HRESULT CMonster::Initialize(void * pArg)
 
 	m_tMonsterInfo.iAtk = 10;
 	m_tMonsterInfo.iHp = 55;
-	m_tMonsterInfo.fRange = 3.8f;
+	m_tMonsterInfo.fRange = 4.f;
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;
 

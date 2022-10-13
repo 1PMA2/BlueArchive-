@@ -235,7 +235,7 @@ HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 			m_bColled = false;
 
 	}
-	
+	ToStudentCollision(fTimeDelta);
 
 	return S_OK;
 }
@@ -299,14 +299,42 @@ void CStudent::InitializeStudentState()
 		switch (m_tStudentInfo.eFormation)
 		{
 		case FORMATION_FIRST:
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -20.f, -5.f, 1.f));
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -20.f, 0.f, 1.f));
 			break;
 		case FORMATION_SECOND:
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -20.f, 0.f, 1.f));
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -40.f, 0.f, 1.f));
+			break;
+		case FORMATION_THIRD:
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -60.f, 0.f, 1.f));
 			break;
 		}
 	}
 	RELEASE_INSTANCE(CSensei);
+}
+
+void CStudent::ToStudentCollision(_float fTimeDelta)
+{
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+
+	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
+	{
+		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
+
+		if (pStudent == this)
+			continue;
+
+		CCollider* pSilde = (CCollider*)pStudent->Get_Component(TEXT("Com_AABB"));
+
+		if (m_pAABBCom->Collision(pSilde))
+		{
+			m_bColled = true;
+			break;
+		}
+		else
+			m_bColled = false;
+
+	}
 }
 
 void CStudent::Free()

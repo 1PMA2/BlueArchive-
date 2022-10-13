@@ -17,13 +17,14 @@ CHide_ReloadStart::CHide_ReloadStart(CStudent* pOwner)
 
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
-	case 0:
+	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 		break;
-	case 1:
+	case MUTSUKI:
 		pModel->Set_CurrentAnimation(17);
 		break;
-	case 2:
+	case KAYOKO:
+		pModel->Set_CurrentAnimation(13);
 		break;
 	}
 }

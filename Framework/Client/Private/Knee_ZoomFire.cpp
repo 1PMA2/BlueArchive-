@@ -28,7 +28,8 @@ CKnee_ZoomFire::CKnee_ZoomFire(CStudent* pOwner)
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(10);
 		break;
-	case 2:
+	case KAYOKO:
+		pModel->Set_CurrentAnimation(3);
 		break;
 
 	}
@@ -84,8 +85,8 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 			case MUTSUKI:
 				pState = CKnee_Idle::Create(m_pOwner);
 				break;
-			case 3:
-
+			case KAYOKO:
+				pState = CKnee_ZoomFire::Create(m_pOwner);
 				break;
 			}
 			

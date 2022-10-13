@@ -28,8 +28,6 @@ CRifle_Fire::CRifle_Fire(CStudent* pOwner)
 		pModel->Set_CurrentAnimation(18);
 		//m_iAtkFrame = 
 		break;
-	case 2:
-		break;
 	}
 }
 

@@ -23,7 +23,8 @@ CKnee_Reload::CKnee_Reload(CStudent* pOwner)
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(14);
 		break;
-	case 2:
+	case KAYOKO:
+		pModel->Set_CurrentAnimation(9);
 		break;
 
 	}

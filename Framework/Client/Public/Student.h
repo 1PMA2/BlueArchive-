@@ -108,6 +108,7 @@ protected:
 
 private:
 	void InitializeStudentState();
+	void ToStudentCollision(_float fTimeDelta);
 
 
 
