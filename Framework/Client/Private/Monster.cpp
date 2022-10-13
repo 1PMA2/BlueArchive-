@@ -42,7 +42,7 @@ CStudent * CMonster::FoundStudent()
 
 		_float fLength = XMVectorGetX(XMVector3Length(vStudentTranslation - vTranslation)); //학생과 모든 몬스터 사이의 거리 
 
-		if (m_tMonsterInfo.fRange > fLength) //레이어의 몬스터 검사 후 범위 내 몬스터 
+		if (m_tMonsterInfo.fRange > fLength) //레이어의 몬스터 검사 후 범위 내 학생 
 		{
 			m_Students.push_back(pStudent);
 		}
@@ -113,35 +113,29 @@ void CMonster::Tick(_float fTimeDelta)
 		m_pState->Enter();
 	}
 
+
+	if (m_bFear)
+	{
+		m_fFearAcc += fTimeDelta;
+
+		if (1.f < m_fFearAcc)
+		{
+			m_bFear = false;
+			m_fFearAcc = 0.f;
+		}
+	}
+
+
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 }
 
 void CMonster::LateTick(_float fTimeDelta)
 {
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+	
+	SelectMonster();
 
-	if (m_pSphereCom->CollisionRay())
-	{
-		if (KEY(LBUTTON, TAP))
-		{
-			CSensei* pSensei = GET_SENSEI;
-
-			pSensei->Ex_Lockon(this);
-		}
-
-	}
-
-	if (0 >= m_tMonsterInfo.iHp)
-	{
-		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-
-		_matrix WorldMatrix = m_pTransformCom->Get_WorldMatrix();
-
-		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Dead"), TEXT("Prototype_GameObject_Dead"), &WorldMatrix);
-
-		DELETE(this);
-	}
-
+	DeleteMonster();
 }
 
 HRESULT CMonster::Render()
@@ -230,6 +224,37 @@ HRESULT CMonster::SetUp_ShaderResource()
 	RELEASE_INSTANCE(CGameInstance);
 
 	return S_OK;
+}
+
+void CMonster::SelectMonster()
+{
+	CSensei* pSensei = GET_SENSEI;
+
+	if (pSensei->Get_ExReady())
+	{
+		if (m_pSphereCom->CollisionRay())
+		{
+			if (KEY(LBUTTON, TAP))
+			{
+				pSensei->Ex_Lockon(this);
+			}
+
+		}
+	}
+}
+
+void CMonster::DeleteMonster()
+{
+	if (0 >= m_tMonsterInfo.iHp)
+	{
+		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+		_matrix WorldMatrix = m_pTransformCom->Get_WorldMatrix();
+
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Dead"), TEXT("Prototype_GameObject_Dead"), &WorldMatrix);
+
+		DELETE(this);
+	}
 }
 
 CMonster * CMonster::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)

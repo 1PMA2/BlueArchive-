@@ -29,14 +29,14 @@ CState * CState::Loop(_float fTimeDelta)
 	CState* pState = nullptr;
 
 	CSensei* pSensei = GET_SENSEI;
-
-	CMonster* pLockonMonster = pSensei->Get_LockonMonster();
+	if (m_pOwner->Get_ExReady())
+	{
+		CMonster* pLockonMonster = pSensei->Get_LockonMonster();
 
 	if (nullptr != pLockonMonster)
 	{
 		pSensei->Ex_Fire(); // ½Ã°£
-		if (m_pOwner->Get_ExReady())
-		{
+		
 			m_pOwner->Set_ExReady(false);
 			m_pOwner->Set_Ex(true);
 			pSensei->Use_Ex(true, m_pOwner->Get_StudentInfo().fExCost);

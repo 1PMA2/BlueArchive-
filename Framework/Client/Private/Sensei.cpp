@@ -65,14 +65,16 @@ _bool CSensei::Useable_Ex(_float fUseCost) //사용할 코스트
 		return false;
 }
 
+void CSensei::Ex_Lockon(CMonster * pTarget)
+{
+	m_pTargetMonster = pTarget;
+
+	m_vExTarget = m_pTargetMonster->Get_MonsterTranslation();
+}
+
 _vector CSensei::Get_LockonVector()
 {
-	m_vExTarget = m_pTargetMonster->Get_MonsterTranslation();
-
-	m_pTargetMonster = nullptr;
-
 	return m_vExTarget;
-	
 }
 
 void CSensei::ReSet_Ex()

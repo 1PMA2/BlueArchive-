@@ -135,6 +135,7 @@ HRESULT CKayoko::GamePlayLevel_Collision(_float fTimeDelta)
 
 	if (KEY(NUM3, TAP) && pSensei->Get_SenseiInfo().fCost >= m_tStudentInfo.fExCost)
 	{
+		pSensei->ReSet_Ex();
 		pSensei->Set_ExReady();
 		pSensei->Set_ExStudent(this);
 		Set_ExReady(true);

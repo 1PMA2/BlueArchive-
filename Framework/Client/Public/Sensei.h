@@ -58,7 +58,7 @@ public:
 	void Set_Camera(CAMERA eCamera) { m_tSensei.eCamera = eCamera; }
 	void Use_Ex(_bool bEx, _float fUseCost = 0.f);
 	_bool Useable_Ex(_float fUseCost);
-	void Ex_Lockon(CMonster* pTarget) { m_pTargetMonster = pTarget; }
+	void Ex_Lockon(CMonster* pTarget);
 	CMonster* Get_LockonMonster() { return m_pTargetMonster; }
 	_vector Get_LockonVector();
 	void ReSet_Ex();

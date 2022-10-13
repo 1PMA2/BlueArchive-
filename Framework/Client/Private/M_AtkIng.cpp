@@ -35,6 +35,10 @@ CMonster_State * CM_AtkIng::Loop(_float fTimeDelta)
 
 	pModel->Play_Animation(fTimeDelta);
 
+	if (m_pOwner->Get_Fear())
+	{
+		return CM_Run::Create(m_pOwner);
+	}
 
 	if (nullptr != pStudent)
 	{

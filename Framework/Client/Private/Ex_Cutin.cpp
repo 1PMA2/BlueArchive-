@@ -63,16 +63,16 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	{
-		pModel->Play_Animation(fTimeDelta);
+	
+	pModel->Play_Animation(fTimeDelta);
 
-		if (pModel->Get_isFinished())
-		{
-			pSensei->Use_Ex(false);
-			m_pOwner->Set_Ex(false);
-			pState = CEx::Create(m_pOwner);
-		}
+	if (pModel->Get_isFinished())
+	{
+		pSensei->Use_Ex(false);
+		m_pOwner->Set_Ex(false);
+		pState = CEx::Create(m_pOwner);
 	}
+
 
 
 	

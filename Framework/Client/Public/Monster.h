@@ -32,6 +32,8 @@ public:
 public:
 	_vector Get_MonsterTranslation() { return m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION); }
 	void Set_MinusHp(_int iAtk) { m_tMonsterInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1)); }
+	_bool Get_Fear() { return m_bFear; }
+	void Set_Fear(_bool bFear) { m_bFear = bFear; }
 	class CStudent*		FoundStudent();
 
 
@@ -54,6 +56,8 @@ private:
 	CModel*					m_pModelCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
 	CMonster_State*			m_pState = nullptr;
+	_bool					m_bFear = false;
+	_float					m_fFearAcc = 0.f;
 
 public:
 	virtual void OnDisable() override;
@@ -62,6 +66,10 @@ public:
 private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
+
+private:
+	void SelectMonster();
+	void DeleteMonster();
 
 
 public:

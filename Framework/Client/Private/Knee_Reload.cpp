@@ -24,7 +24,7 @@ CKnee_Reload::CKnee_Reload(CStudent* pOwner)
 		pModel->Set_CurrentAnimation(14);
 		break;
 	case KAYOKO:
-		pModel->Set_CurrentAnimation(9);
+		pModel->Set_CurrentAnimation(7);
 		break;
 
 	}

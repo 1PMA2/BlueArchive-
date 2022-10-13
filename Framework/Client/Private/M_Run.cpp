@@ -5,6 +5,7 @@
 #include "Monster.h"
 #include "Model.h"
 #include "M_Runend.h"
+#include "Student.h"
 
 CM_Run::CM_Run(CMonster* pOwner)
 	:CMonster_State(pOwner)
@@ -27,12 +28,28 @@ CMonster_State * CM_Run::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
+	CStudent* pStudent = m_pOwner->FoundStudent();
+
+	_vector vFear = pTransform->Get_State(CTransform::STATE_TRANSLATION);
+
 	pModel->Repeat_Animation(fTimeDelta);
 
 	pTransform->Go_Backward(fTimeDelta);
 
-	if (m_pOwner->FoundStudent()) //학생을 찾았음
+	if (m_pOwner->Get_Fear())
 	{
+		
+		pTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vFear), 0.f, XMVectorGetZ(vFear) - 1.f, 1.f), 5.f, fTimeDelta);
+		return pState;
+	}
+	else
+	{
+		pTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vFear), 0.f, XMVectorGetZ(vFear) + 1.f, 1.f), 5.f, fTimeDelta);
+	}
+
+	if (pStudent) //학생을 찾았음
+	{
+
 		pState = CM_Runend::Create(m_pOwner);
 	}
 

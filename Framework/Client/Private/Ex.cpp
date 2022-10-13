@@ -8,6 +8,7 @@
 #include "Knee_ZoomStart.h"
 #include "Knee_Reload.h"
 #include "Sensei.h"
+#include "Monster.h"
 #include "Run.h"
 
 CEx::CEx(CStudent* pOwner)
@@ -15,6 +16,8 @@ CEx::CEx(CStudent* pOwner)
 {
 	m_eAnim = ANIM_EX;
 	pOwner->Set_State(m_eAnim);
+
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
@@ -29,6 +32,12 @@ CEx::CEx(CStudent* pOwner)
 		break;
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(33);
+		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Monster")); ++i)
+		{
+			CMonster* pMonster = (CMonster*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), i);
+
+			pMonster->Set_Fear(true);
+		}
 		break;
 
 	}
@@ -38,12 +47,19 @@ void CEx::Enter()
 {
 	CSensei* pSensei = GET_SENSEI;
 
+	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
+
 	pSensei->Use_Ex(false);
+
+	_vector vTarget = pSensei->Get_LockonVector();
+
+	pTransform->LookAt(vTarget);
 }
 
 CState * CEx::Loop(_float fTimeDelta)
 {
 	CState* pState = nullptr;
+
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
@@ -51,10 +67,10 @@ CState * CEx::Loop(_float fTimeDelta)
 
 	pModel->Play_Animation(fTimeDelta);
 
+
+
 	if (pModel->Get_isFinished())
 	{ 
-
-
 		if (0 < m_pOwner->Get_StudentInfo().iBullet)
 			pState = CKnee_ZoomStart::Create(m_pOwner);
 		else
