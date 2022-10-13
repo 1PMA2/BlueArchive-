@@ -59,7 +59,7 @@ public:
 	void Use_Ex(_bool bEx, _float fUseCost = 0.f);
 	_bool Useable_Ex(_float fUseCost);
 	void Ex_Lockon(CMonster* pTarget);
-	CMonster* Get_LockonMonster() { return m_pTargetMonster; }
+	CMonster* Get_LockonMonster() const { return m_pTargetMonster; }
 	_vector Get_LockonVector();
 	void ReSet_Ex();
 

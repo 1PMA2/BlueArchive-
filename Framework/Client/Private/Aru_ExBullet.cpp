@@ -60,25 +60,22 @@ void CAru_ExBullet::Tick(_float fTimeDelta)
 			m_pTarget->Set_MinusHp(1);
 			m_bOnce = false;
 		}
-		_vector vTarget = pSensei->Get_LockonVector();
-			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTarget);
+		m_vTranslation = pSensei->Get_LockonVector();
 	}
+
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vTranslation);
 
 	m_fBoomAcc += fTimeDelta;
-
-	if (1.5f < m_fBoomAcc)
-	{
-		m_fBoomAcc = 0.f;
-		Collision_ToMonster();
-	}
-
 
 }
 
 void CAru_ExBullet::LateTick(_float fTimeDelta)
 {
-	//Collision_ToMonster();
-
+	if (1.5f < m_fBoomAcc)
+	{
+		m_fBoomAcc = 0.f;
+		Collision_ToMonster();
+	}
 
 	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
 

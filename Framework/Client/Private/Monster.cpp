@@ -255,9 +255,10 @@ void CMonster::DeleteMonster()
 
 		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Dead"), TEXT("Prototype_GameObject_Dead"), &WorldMatrix);
 
-		DELETE(this);
+		if(this == pSensei->Get_LockonMonster())
+			pSensei->Ex_Lockon(nullptr);
 
-		pSensei->Ex_Lockon(nullptr);
+		DELETE(this);
 	}
 }
 
