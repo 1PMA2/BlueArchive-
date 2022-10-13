@@ -172,6 +172,7 @@
     <ClInclude Include="..\Public\Arona_Sack.h" />
     <ClInclude Include="..\Public\Aru.h" />
     <ClInclude Include="..\Public\Aru_Ex.h" />
+    <ClInclude Include="..\Public\Aru_ExBullet.h" />
     <ClInclude Include="..\public\BackGround.h" />
     <ClInclude Include="..\Public\Back_Btn.h" />
     <ClInclude Include="..\Public\BG_Lobby.h" />
@@ -262,6 +263,7 @@
     <ClCompile Include="..\Private\Arona_Sack.cpp" />
     <ClCompile Include="..\Private\Aru.cpp" />
     <ClCompile Include="..\Private\Aru_Ex.cpp" />
+    <ClCompile Include="..\Private\Aru_ExBullet.cpp" />
     <ClCompile Include="..\private\BackGround.cpp" />
     <ClCompile Include="..\Private\Back_Btn.cpp" />
     <ClCompile Include="..\Private\BG_Lobby.cpp" />

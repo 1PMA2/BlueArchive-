@@ -247,6 +247,8 @@ void CMonster::DeleteMonster()
 {
 	if (0 >= m_tMonsterInfo.iHp)
 	{
+		CSensei* pSensei = GET_SENSEI;
+
 		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
 		_matrix WorldMatrix = m_pTransformCom->Get_WorldMatrix();
@@ -254,6 +256,8 @@ void CMonster::DeleteMonster()
 		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Dead"), TEXT("Prototype_GameObject_Dead"), &WorldMatrix);
 
 		DELETE(this);
+
+		pSensei->Ex_Lockon(nullptr);
 	}
 }
 

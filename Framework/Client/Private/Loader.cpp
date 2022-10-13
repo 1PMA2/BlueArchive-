@@ -15,6 +15,7 @@
 #include "Terrain.h"
 #include "Aru.h"
 #include "Aru_Ex.h"
+#include "Aru_ExBullet.h"
 #include "Mutsuki.h"
 #include "Mutsuki_Ex.h"
 #include "Kayoko.h"
@@ -348,6 +349,10 @@ HRESULT CLoader::Loading_ForGachaScene()
 
 				if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Aru"),
 					CCamera_Aru::Create(m_pDevice, m_pContext))))
+					return E_FAIL;
+
+				if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Aru_ExBullet"),
+					CAru_ExBullet::Create(m_pDevice, m_pContext))))
 					return E_FAIL;
 
 				ZeroMemory(&TransformMatrix, sizeof(_matrix));

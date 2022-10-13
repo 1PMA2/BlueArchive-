@@ -51,15 +51,20 @@ void CEx::Enter()
 
 	pSensei->Use_Ex(false);
 
-	_vector vTarget = pSensei->Get_LockonVector();
+	m_vTarget = pSensei->Get_LockonVector();
 
-	pTransform->LookAt(vTarget);
+	m_pMonster = pSensei->Get_LockonMonster();
+
+	pTransform->LookAt(m_vTarget);
+
+	m_bOnce = true;
 }
 
 CState * CEx::Loop(_float fTimeDelta)
 {
 	CState* pState = nullptr;
 
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
@@ -67,6 +72,28 @@ CState * CEx::Loop(_float fTimeDelta)
 
 	pModel->Play_Animation(fTimeDelta);
 
+	switch (m_pOwner->Get_StudentInfo().eStudent)
+	{
+	case ARU:
+		if (20 < pModel->Get_CurrentKeyFrame())
+		{
+			if (m_bOnce)
+			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Aru_ExBullet"), &m_pMonster);
+				m_bOnce = false;
+			}
+
+		}
+		break;
+	case MUTSUKI:
+		if (20 < pModel->Get_CurrentKeyFrame())
+		{
+			
+		}
+		break;
+	default:
+		break;
+	}
 
 
 	if (pModel->Get_isFinished())

@@ -16,6 +16,11 @@ public:
 	virtual CState * Loop(_float fTimeDelta) override;
 	virtual void Exit() override;
 
+private:
+	class CMonster* m_pMonster = nullptr;
+	_bool	m_bOnce = true;
+	_vector m_vTarget = {};
+
 public:
 	static CEx* Create(CStudent* pOwner);
 };
