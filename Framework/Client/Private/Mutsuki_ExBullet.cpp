@@ -121,17 +121,14 @@ HRESULT CMutsuki_ExBullet::Collision_ToMonster()
 		if (m_pSphereACom->Collision(pSphere))
 		{
 			pMonster->Set_MinusHp(220);
-			continue;
 		}
 		if (m_pSphereBCom->Collision(pSphere))
 		{
 			pMonster->Set_MinusHp(220);
-			continue;
 		}
 		if (m_pSphereCCom->Collision(pSphere))
 		{
 			pMonster->Set_MinusHp(220);
-			continue;
 		}
 
 	}

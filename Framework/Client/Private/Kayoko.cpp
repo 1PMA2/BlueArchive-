@@ -37,7 +37,7 @@ HRESULT CKayoko::Initialize(void * pArg)
 	m_tStudentInfo.iAtk = 10;
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.iEx = 30;
-	m_tStudentInfo.fExCost = 1.f;
+	m_tStudentInfo.fExCost = 6.f;
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 10;
 	m_tStudentInfo.iBullet = 10;
