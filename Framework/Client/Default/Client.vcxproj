@@ -228,6 +228,8 @@
     <ClInclude Include="..\Public\LoadingImage.h" />
     <ClInclude Include="..\Public\MainApp.h" />
     <ClInclude Include="..\Public\Monster.h" />
+    <ClInclude Include="..\Public\Monster_Boss.h" />
+    <ClInclude Include="..\Public\Monster_Droid.h" />
     <ClInclude Include="..\Public\Monster_State.h" />
     <ClInclude Include="..\Public\Monster_Trigger.h" />
     <ClInclude Include="..\Public\Mutsuki.h" />
@@ -318,6 +320,8 @@
     <ClCompile Include="..\Private\LoadingImage.cpp" />
     <ClCompile Include="..\Private\MainApp.cpp" />
     <ClCompile Include="..\Private\Monster.cpp" />
+    <ClCompile Include="..\Private\Monster_Boss.cpp" />
+    <ClCompile Include="..\Private\Monster_Droid.cpp" />
     <ClCompile Include="..\Private\Monster_State.cpp" />
     <ClCompile Include="..\Private\Monster_Trigger.cpp" />
     <ClCompile Include="..\Private\Mutsuki.cpp" />

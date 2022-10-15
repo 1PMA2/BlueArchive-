@@ -77,28 +77,9 @@ HRESULT CMonster::Initialize_Prototype()
 
 HRESULT CMonster::Initialize(void * pArg)
 {
-	CTransform::TRANSFORMDESC		TransformDesc;
-	TransformDesc.fSpeedPerSec = 1.5f;
-	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	m_tMonsterInfo.iAtk = 10;
-	m_tMonsterInfo.iHp = 200;
-	m_tMonsterInfo.fRange = 4.f;
-	if (FAILED(__super::Initialize(&TransformDesc)))
+	if (FAILED(__super::Initialize(&m_tTransformDesc)))
 		return E_FAIL;
-
-	if (FAILED(SetUp_Components()))
-		return E_FAIL;
-
-	_vector vTranslation;
-
-	if (nullptr != pArg)
-		memcpy(&vTranslation, pArg, sizeof(_vector));
-
-
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
-
-	m_pState = CM_Landing::Create(this);
 
 	return S_OK;
 }
@@ -190,21 +171,6 @@ HRESULT CMonster::SetUp_Components()
 	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Renderer"), TEXT("Com_Renderer"), (CComponent**)&m_pRendererCom)))
 		return E_FAIL;
 
-	/* For.Com_AABB */
-	CCollider::COLLIDERDESC			ColliderDesc;
-	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
-
-	ColliderDesc.vScale = _float3(0.5f, 0.5f, 0.5f);
-	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
-	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
-
-	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Collider_SPHERE"), TEXT("Com_SPHERE"), (CComponent**)&m_pSphereCom, &ColliderDesc)))
-		return E_FAIL;
-
-	/* For.Com_Model */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Droid"), TEXT("Com_Model"), (CComponent**)&m_pModelCom)))
-		return E_FAIL;
-
 	return S_OK;
 }
 
@@ -232,6 +198,8 @@ void CMonster::SelectMonster()
 {
 	CSensei* pSensei = GET_SENSEI;
 
+	if (this == pSensei->Get_LockonMonster())
+		pSensei->Get_LockonVector();
 
 	if (m_pSphereCom->CollisionRay())
 	{
@@ -243,7 +211,6 @@ void CMonster::SelectMonster()
 			}
 		}
 	}
-	pSensei->Get_LockonVector();
 	
 }
 
@@ -266,31 +233,31 @@ void CMonster::DeleteMonster()
 	}
 }
 
-CMonster * CMonster::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
-{
-	CMonster*		pInstance = new CMonster(pDevice, pContext);
-
-	if (FAILED(pInstance->Initialize_Prototype()))
-	{
-		MSG_BOX("Failed to Created : CMonster");
-		Safe_Release(pInstance);
-	}
-
-	return pInstance;
-}
-
-CGameObject * CMonster::Clone(void * pArg)
-{
-	CMonster*		pInstance = new CMonster(*this);
-
-	if (FAILED(pInstance->Initialize(pArg)))
-	{
-		MSG_BOX("Failed to Cloned : CMonster");
-		Safe_Release(pInstance);
-	}
-
-	return pInstance;
-}
+//CMonster * CMonster::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
+//{
+//	CMonster*		pInstance = new CMonster(pDevice, pContext);
+//
+//	if (FAILED(pInstance->Initialize_Prototype()))
+//	{
+//		MSG_BOX("Failed to Created : CMonster");
+//		Safe_Release(pInstance);
+//	}
+//
+//	return pInstance;
+//}
+//
+//CGameObject * CMonster::Clone(void * pArg)
+//{
+//	CMonster*		pInstance = new CMonster(*this);
+//
+//	if (FAILED(pInstance->Initialize(pArg)))
+//	{
+//		MSG_BOX("Failed to Cloned : CMonster");
+//		Safe_Release(pInstance);
+//	}
+//
+//	return pInstance;
+//}
 
 void CMonster::Free()
 {

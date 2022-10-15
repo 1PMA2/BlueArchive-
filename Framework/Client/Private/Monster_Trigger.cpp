@@ -104,7 +104,7 @@ HRESULT CMonster_Trigger::Collision_ToStudent()
 		{
 			_vector vTranslation = XMVectorSet(XMVectorGetX(m_vTranslation), XMVectorGetY(m_vTranslation), XMVectorGetZ(m_vTranslation) + 6.f, 1.f);
 
-			if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Prototype_GameObject_Monster"), &vTranslation)))
+			if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Prototype_GameObject_Droid"), &vTranslation)))
 				return E_FAIL;
 
 			DELETE(this);

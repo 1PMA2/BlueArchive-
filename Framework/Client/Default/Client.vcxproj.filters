@@ -82,9 +82,6 @@
     <ClInclude Include="..\Public\Ex_Cutin.h">
       <Filter>02.GameObject\01.State\Aru_State\EX_Cutin</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Monster.h">
-      <Filter>02.GameObject\00.Monster</Filter>
-    </ClInclude>
     <ClInclude Include="..\Private\Run_ToHide.h">
       <Filter>02.GameObject\01.State\Aru_State\Run_ToHide</Filter>
     </ClInclude>
@@ -277,6 +274,15 @@
     <ClInclude Include="..\Public\Mutsuki_ExBullet.h">
       <Filter>02.GameObject\08.Bullet\Mutsuki_ExBullet</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Monster_Boss.h">
+      <Filter>02.GameObject\00.Monster\Monster_TankHihumi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Monster.h">
+      <Filter>02.GameObject\00.Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Monster_Droid.h">
+      <Filter>02.GameObject\00.Monster\Monster_Droid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -347,9 +353,6 @@
     </ClCompile>
     <ClCompile Include="..\Private\Ex_Cutin.cpp">
       <Filter>02.GameObject\01.State\Aru_State\EX_Cutin</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Private\Monster.cpp">
-      <Filter>02.GameObject\00.Monster</Filter>
     </ClCompile>
     <ClCompile Include="..\Public\Run_ToHide.cpp">
       <Filter>02.GameObject\01.State\Aru_State\Run_ToHide</Filter>
@@ -539,6 +542,15 @@
     </ClCompile>
     <ClCompile Include="..\Private\Mutsuki_ExBullet.cpp">
       <Filter>02.GameObject\08.Bullet\Mutsuki_ExBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Monster_Boss.cpp">
+      <Filter>02.GameObject\00.Monster\Monster_TankHihumi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Monster.cpp">
+      <Filter>02.GameObject\00.Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Monster_Droid.cpp">
+      <Filter>02.GameObject\00.Monster\Monster_Droid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -909,6 +921,21 @@
     </Filter>
     <Filter Include="02.GameObject\08.Bullet\Mutsuki_ExBullet">
       <UniqueIdentifier>{b888f55c-a49d-4260-a9ce-c4e60507d6fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Monster\Monster_TankHihumi">
+      <UniqueIdentifier>{f2dce71d-6518-496b-aba1-67803140c32b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Monster\Monster_TankHihumi\Boss_Trigger">
+      <UniqueIdentifier>{9d1e8f42-fc87-4c4d-a18d-209f47325db2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Monster\Monster_TankHihumi\Boss_Dead">
+      <UniqueIdentifier>{f67eeafd-6412-43bc-8d5a-89927a0e3b30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Warning">
+      <UniqueIdentifier>{748eb4b4-9c1d-413b-9a1c-10e20406d069}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Victory">
+      <UniqueIdentifier>{13089fee-53ff-47f0-ab7d-09b116c7c575}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

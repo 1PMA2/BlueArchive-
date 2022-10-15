@@ -10,7 +10,8 @@
 #include "Camera_Free.h"
 #include "Camera_Main.h"
 #include "Camera_Ex.h"
-#include "Monster.h"
+#include "Monster_Droid.h"
+#include "Monster_Boss.h"
 #include "Formation_Terrain.h"
 #include "Terrain.h"
 #include "Aru.h"
@@ -547,8 +548,12 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 
 		///* For.Prototype_GameObject_Monster */
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Monster"),
-			CMonster::Create(m_pDevice, m_pContext))))
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Droid"),
+			CMonster_Droid::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Boss"),
+			CMonster_Boss::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 		lstrcpy(m_szLoadingText, TEXT("ex obj."));
@@ -603,6 +608,12 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.f));
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Droid"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Monster/Droid/", "Droid.fbx", TransformMatrix))))
+			return E_FAIL;
+
+		ZeroMemory(&TransformMatrix, sizeof(_matrix));
+		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.f));
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_TankHihumi"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Monster/Boss/", "Boss.fbx", TransformMatrix))))
 			return E_FAIL;
 
 

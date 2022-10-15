@@ -67,7 +67,7 @@ _bool CSensei::Useable_Ex(_float fUseCost) //사용할 코스트
 
 void CSensei::Ex_Lockon(CMonster * pTarget)
 {
-	m_pTargetMonster = pTarget;
+		m_pTargetMonster = pTarget;
 }
 
 _vector CSensei::Get_LockonVector()

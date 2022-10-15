@@ -14,14 +14,17 @@ BEGIN(Client)
 
 class CMonster_State;
 
-class CMonster final : public CGameObject
+class CMonster abstract : public CGameObject
 {
 public:
 	typedef struct tagMonsterDesc
 	{
+		MONSTER eMonster;
+
 		_int iHp;
 		_int iAtk;
 		_float fRange;
+
 	}MONSTERINFO;
 
 public:
@@ -30,6 +33,7 @@ public:
 	virtual ~CMonster() = default;
 
 public:
+	MONSTER Get_Monster() { return m_tMonsterInfo.eMonster; }
 	_vector Get_MonsterTranslation() { return m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION); }
 	void Set_MinusHp(_int iAtk) { m_tMonsterInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1)); }
 	_bool Get_Fear() { return m_bFear; }
@@ -44,12 +48,13 @@ public:
 	virtual void LateTick(_float fTimeDelta);
 	virtual HRESULT Render();
 
-private:
+protected:
 	vector<CStudent*>	m_Students;
 	typedef vector<CStudent*> STUDENTS;
 	CStudent* m_pTargetStudent = nullptr;
 	_float m_fMin = 9999.f;
 
+	CTransform::TRANSFORMDESC		m_tTransformDesc;
 	MONSTERINFO				m_tMonsterInfo = {};
 	CShader*				m_pShaderCom = nullptr;
 	CRenderer*				m_pRendererCom = nullptr;
@@ -63,18 +68,16 @@ public:
 	virtual void OnDisable() override;
 	virtual void OnEnable() override;
 
-private:
+protected:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
 
-private:
+protected:
 	void SelectMonster();
 	void DeleteMonster();
 
 
 public:
-	static CMonster* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
-	virtual CGameObject* Clone(void* pArg) override;
 	virtual void Free() override;
 };
 
