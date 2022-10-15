@@ -22,6 +22,8 @@ public:
 	HRESULT Ready_Layer_Student(const _tchar* pLayerTag);
 
 private:
+	void Open_GachaScene();
+	void Open_Lobby();
 	void Gacha();
 
 private:

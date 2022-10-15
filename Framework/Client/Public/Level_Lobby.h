@@ -18,6 +18,10 @@ public:
 	virtual HRESULT Render();
 
 private:
+	void Open_Formation();
+	void Open_Gacha();
+
+private:
 	HRESULT Ready_Layer_Lobby(const _tchar* pLayerTag);
 
 public:

@@ -33,37 +33,9 @@ void CLevel_Lobby::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
 
-	CSensei* pSensei = GET_SENSEI;
-
-	if (pSensei->Get_OpenFormationLevel())
-	{
-		pSensei->Set_PreLevel(LEVEL_LOBBY);
-
-		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-		Safe_AddRef(pGameInstance);
-
-		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_FORMATION))))
-			return;
-
-		Safe_Release(pGameInstance);
-
-		pSensei->Set_OpenFormationLevel(false);
-	}
-
-	if (pSensei->Get_OpenGacha())
-	{
-		pSensei->Set_PreLevel(LEVEL_LOBBY);
-
-		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-		Safe_AddRef(pGameInstance);
-
-		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GACHA))))
-			return;
-
-		Safe_Release(pGameInstance);
-
-		pSensei->Set_OpenGacha(false);
-	}
+	Open_Formation();
+	
+	Open_Gacha();
 
 }
 
@@ -80,6 +52,46 @@ HRESULT CLevel_Lobby::Render()
 	SetWindowText(g_hWnd, TEXT("Lobby"));
 
 	return S_OK;
+}
+
+void CLevel_Lobby::Open_Formation()
+{
+	CSensei* pSensei = GET_SENSEI;
+
+	if (pSensei->Get_OpenFormationLevel())
+	{
+		pSensei->Set_PreLevel(LEVEL_LOBBY);
+
+		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+		Safe_AddRef(pGameInstance);
+
+		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_FORMATION))))
+			return;
+
+		Safe_Release(pGameInstance);
+
+		pSensei->Set_OpenFormationLevel(false);
+	}
+}
+
+void CLevel_Lobby::Open_Gacha()
+{
+	CSensei* pSensei = GET_SENSEI;
+
+	if (pSensei->Get_OpenGacha())
+	{
+		pSensei->Set_PreLevel(LEVEL_LOBBY);
+
+		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+		Safe_AddRef(pGameInstance);
+
+		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GACHA))))
+			return;
+
+		Safe_Release(pGameInstance);
+
+		pSensei->Set_OpenGacha(false);
+	}
 }
 
 HRESULT CLevel_Lobby::Ready_Layer_Lobby(const _tchar * pLayerTag)

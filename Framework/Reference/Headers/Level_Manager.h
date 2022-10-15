@@ -16,13 +16,16 @@ public:
 	virtual ~CLevel_Manager() = default;
 
 public:
+	const class CLevel* Get_CurrentLevel() { return m_pCurrentLevel; }
+
+public:
 	HRESULT Open_Level(_uint iLevelID, class CLevel* pLevel);
 	void Tick(_float fTimeDelta);
 	void Late_Tick(_float fTimeDelta);
 	HRESULT Render();
 
 private:
-	class CLevel*			m_pCurrentLevel = nullptr;
+	CLevel*			m_pCurrentLevel = nullptr;
 	_uint					m_iCurrentLevelID = 0;
 	_bool					m_bChangeLevel = false;
 

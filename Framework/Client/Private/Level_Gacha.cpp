@@ -43,39 +43,10 @@ void CLevel_Gacha::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
 
-	if (KEY(ENTER, AWAY))
-	{
-		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-		Safe_AddRef(pGameInstance);
 
+	Open_GachaScene();
 
-		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
-			return;
-
-
-		Safe_Release(pGameInstance);
-	}
-
-
-	CSensei* pSensei = GET_SENSEI;
-
-	if (pSensei->Get_OpenGachaScene())
-	{
-		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-		Safe_AddRef(pGameInstance);
-
-		Gacha();
-
-		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GACHASCENE))))
-			return;
-
-		Safe_Release(pGameInstance);
-
-		pSensei->Set_OpenGachaScene(false);
-	}
-
-
-
+	Open_Lobby();
 
 }
 
@@ -147,6 +118,9 @@ HRESULT CLevel_Gacha::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHA, pLayerTag, TEXT("Prototype_GameObject_BG"), &iImgNum)))
 		return E_FAIL;
 
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHA, pLayerTag, TEXT("Prototype_GameObject_BackButton"))))
+		return E_FAIL;
+
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHA, pLayerTag, TEXT("Prototype_GameObject_RecruitButton"))))
 		return E_FAIL;
 
@@ -206,6 +180,44 @@ HRESULT CLevel_Gacha::Ready_Layer_Student(const _tchar * pLayerTag)
 	Safe_Release(pGameInstance);
 
 	return S_OK;
+}
+
+void CLevel_Gacha::Open_GachaScene()
+{
+	CSensei* pSensei = GET_SENSEI;
+
+	if (pSensei->Get_OpenGachaScene())
+	{
+		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+		Safe_AddRef(pGameInstance);
+
+		Gacha();
+
+		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GACHASCENE))))
+			return;
+
+		Safe_Release(pGameInstance);
+
+		pSensei->Set_OpenGachaScene(false);
+	}
+}
+
+void CLevel_Gacha::Open_Lobby()
+{
+	CSensei* pSensei = GET_SENSEI;
+
+	if (pSensei->Get_OpenLobbyLevel())
+	{
+		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+		Safe_AddRef(pGameInstance);
+
+		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
+			return;
+
+		Safe_Release(pGameInstance);
+
+		pSensei->Set_OpenLobbyLevel(false);
+	}
 }
 
 void CLevel_Gacha::Gacha()

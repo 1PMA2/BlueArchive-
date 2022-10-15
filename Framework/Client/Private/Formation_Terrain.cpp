@@ -43,7 +43,9 @@ void CFormation_Terrain::Tick(_float fTimeDelta)
 
 void CFormation_Terrain::LateTick(_float fTimeDelta)
 {
+#ifdef _DEBUG
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+#endif // _DEBUG
 }
 
 HRESULT CFormation_Terrain::Render()

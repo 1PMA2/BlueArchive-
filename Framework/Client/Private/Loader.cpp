@@ -209,6 +209,10 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 			CWork_Button::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_BackButton"),
+			CBack_Btn::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		/* For.Prototype_GameObject_Camera_Free*/
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Free"),
 			CCamera_Free::Create(m_pDevice, m_pContext))))
@@ -217,6 +221,10 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 		lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_BG"),
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/BG%d.png"), 2))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_BackButton"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Back_Btn.png"), 1))))
 			return E_FAIL;
 
 		/* For.Prototype_GameObject_Student */
@@ -438,13 +446,6 @@ HRESULT CLoader::Loading_ForFormationLevel()
 			CFormation_Terrain::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
-		/* For.Prototype_GameObject_Student */
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_BackButton"),
-			CBack_Btn::Create(m_pDevice, m_pContext))))
-			return E_FAIL;
-
-
-
 		lstrcpy(m_szLoadingText, TEXT("콜라이더추가.  "));
 		/* For.Prototype_Component_Collider_AABB */
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"),
@@ -488,10 +489,6 @@ HRESULT CLoader::Loading_ForFormationLevel()
 		g_bFormation = false;
 	}
 
-
-	if (FAILED(pGameInstance->Add_Prototype(LEVEL_FORMATION, TEXT("Prototype_Component_Texture_BackButton"),
-		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Back_Btn.png"), 1))))
-		return E_FAIL;
 #pragma endregion
 
 	lstrcpy(m_szLoadingText, TEXT("편성 로딩 끝 "));
