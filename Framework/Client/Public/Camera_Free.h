@@ -23,6 +23,11 @@ public:
 	virtual void OnDisable() override;
 	virtual void OnEnable() override;
 
+private:
+	_bool m_bShake = false;
+	_float m_fShakeTime = 0.f;
+	_vector m_vOriginal = {};
+
 public:
 	static CCamera_Free* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);
 	virtual CGameObject* Clone(void* pArg) override;

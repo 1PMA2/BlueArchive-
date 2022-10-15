@@ -13,6 +13,9 @@ public:
 	virtual ~CCamera_Main() = default;
 
 public:
+	void Shaking_Camera(_bool bShake) { m_bShake = bShake; }
+
+public:
 	virtual HRESULT Initialize_Prototype() override;
 	virtual HRESULT Initialize(void* pArg) override;
 	virtual void Tick(_float fTimeDelta) override;
@@ -30,8 +33,12 @@ private:
 	_float m_fFovRatio = 0.f;
 	_float m_fMin = 999.f;
 	_float m_fMax = 0.f;
+	_vector m_vMainCamera = {};
+	_float m_fShakeTime = 0.f;
+	_bool m_bShake = false;
 
 private:
+	void Shake_Camera(_float fTimeDelta);
 	void Move_Camera(_float fTimeDelta);
 	void Set_FovZ(_float fTimeDelta);
 

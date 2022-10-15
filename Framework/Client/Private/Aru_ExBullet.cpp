@@ -7,6 +7,7 @@
 #include "Sensei.h"
 #include "Student.h"
 #include "Monster.h"
+#include "Camera_Main.h"
 
 CAru_ExBullet::CAru_ExBullet(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -79,11 +80,7 @@ void CAru_ExBullet::LateTick(_float fTimeDelta)
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 #endif // _DEBUG
 
-	if (1.5f < m_fBoomAcc)
-	{
-		m_fBoomAcc = 0.f;
-		Collision_ToMonster();
-	}
+	Boom();
 
 }
 
@@ -106,6 +103,21 @@ void CAru_ExBullet::OnDisable()
 
 void CAru_ExBullet::OnEnable()
 {
+}
+
+void CAru_ExBullet::Boom()
+{
+	
+
+	if (1.5f < m_fBoomAcc)
+	{
+		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+		dynamic_cast<CCamera_Main*>(pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera")))->Shaking_Camera(true);
+
+		m_fBoomAcc = 0.f;
+		Collision_ToMonster();
+	}
 }
 
 HRESULT CAru_ExBullet::Collision_ToMonster()

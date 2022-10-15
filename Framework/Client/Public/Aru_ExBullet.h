@@ -35,6 +35,7 @@ public:
 	virtual void OnEnable() override;
 
 private:
+	void Boom();
 	HRESULT Collision_ToMonster();
 
 private:

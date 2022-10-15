@@ -31,12 +31,15 @@ HRESULT CCamera_Main::Initialize(void * pArg)
 	m_vMaxFov = XMVectorSet(0.f, 0.f, m_CameraDesc.fFovy, 1.f);
 	m_vCurrentFov = XMVectorSet(0.f, 0.f, m_CameraDesc.fFovy, 1.f);
 
+	m_bShake = false;
 	return S_OK;
 }
 
 void CCamera_Main::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
+
+	Shake_Camera(fTimeDelta);
 
 	Move_Camera(fTimeDelta);
 
@@ -60,6 +63,30 @@ void CCamera_Main::OnDisable()
 
 void CCamera_Main::OnEnable()
 {
+}
+
+void CCamera_Main::Shake_Camera(_float fTimeDelta)
+{
+	if (m_bShake)
+	{
+		m_fShakeTime += fTimeDelta;
+
+		_float4 vTranslation;
+
+		XMStoreFloat4(&vTranslation, m_vMainCamera);
+
+		_float fShakeX = frandom(-0.1f, 0.1f);
+		_float fShakeY = frandom(-0.1f, 0.1f);
+
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(vTranslation.x + fShakeX, vTranslation.y + fShakeY, vTranslation.z, vTranslation.w));
+	}
+
+	if (0.2f < m_fShakeTime)
+	{
+		m_bShake = false;
+		m_fShakeTime = 0.f;
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vMainCamera);
+	}
 }
 
 void CCamera_Main::Move_Camera(_float fTimeDelta)
@@ -110,9 +137,9 @@ void CCamera_Main::Move_Camera(_float fTimeDelta)
 
 		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 1.f);
 
-		_vector vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vLerp), XMVectorGetW(vCamera));
+		m_vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vLerp), XMVectorGetW(vCamera));
 
-		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vMainCamera);
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vMainCamera);
 	}
 
 	Safe_Release(pGameInstance);

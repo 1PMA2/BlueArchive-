@@ -27,7 +27,7 @@ HRESULT CCamera_Free::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(pArg)))
 		return E_FAIL;
 
-	
+	m_vOriginal = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
 
 	return S_OK;
 }
@@ -35,8 +35,6 @@ HRESULT CCamera_Free::Initialize(void * pArg)
 void CCamera_Free::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
-
-	
 
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);		
@@ -59,19 +57,7 @@ void CCamera_Free::Tick(_float fTimeDelta)
 	if (KEY(D, HOLD))
 	{
 		m_pTransformCom->Go_Right(fTimeDelta);
-	}
-
-	//_long		MouseMove = 0;
-
-	//if (MouseMove = pGameInstance->Get_DIMouseMoveState(MMS_X))
-	//{
-	//	m_pTransformCom->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta * MouseMove * 0.1f);
-	//}
-
-	//if (MouseMove = pGameInstance->Get_DIMouseMoveState(MMS_Y))
-	//{
-	//	m_pTransformCom->Turn(m_pTransformCom->Get_State(CTransform::STATE_RIGHT), fTimeDelta * MouseMove * 0.1f);
-	//}
+	}	
 
 	Safe_Release(pGameInstance);
 
@@ -91,6 +77,17 @@ HRESULT CCamera_Free::Render()
 
 void CCamera_Free::OnDisable()
 {
+	//_long		MouseMove = 0;
+
+	//if (MouseMove = pGameInstance->Get_DIMouseMoveState(MMS_X))
+	//{
+	//	m_pTransformCom->Turn(XMVectorSet(0.f, 1.f, 0.f, 0.f), fTimeDelta * MouseMove * 0.1f);
+	//}
+
+	//if (MouseMove = pGameInstance->Get_DIMouseMoveState(MMS_Y))
+	//{
+	//	m_pTransformCom->Turn(m_pTransformCom->Get_State(CTransform::STATE_RIGHT), fTimeDelta * MouseMove * 0.1f);
+	//}
 }
 
 void CCamera_Free::OnEnable()
