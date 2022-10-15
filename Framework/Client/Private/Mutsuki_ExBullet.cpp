@@ -7,6 +7,7 @@
 #include "Sensei.h"
 #include "Student.h"
 #include "Monster.h"
+#include "Camera_Main.h"
 
 CMutsuki_ExBullet::CMutsuki_ExBullet(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
@@ -76,12 +77,7 @@ void CMutsuki_ExBullet::LateTick(_float fTimeDelta)
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 #endif // _DEBUG
 
-	if (2.5f < m_fBoomAcc)
-	{
-		m_fBoomAcc = 0.f;
-		Collision_ToMonster();
-		DELETE(this);
-	}
+	Boom();
 
 }
 
@@ -177,6 +173,21 @@ HRESULT CMutsuki_ExBullet::SetUp_Components()
 		return E_FAIL;
 
 	return S_OK;
+}
+
+void CMutsuki_ExBullet::Boom()
+{
+	if (2.5f < m_fBoomAcc)
+	{
+		m_fBoomAcc = 0.f;
+		Collision_ToMonster();
+
+		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+		dynamic_cast<CCamera_Main*>(pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera")))->Shaking_Camera(true);
+
+		DELETE(this);
+	}
+	
 }
 
 CMutsuki_ExBullet * CMutsuki_ExBullet::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)

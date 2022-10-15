@@ -13,7 +13,10 @@ public:
 	virtual ~CCamera_Main() = default;
 
 public:
-	void Shaking_Camera(_bool bShake) { m_bShake = bShake; }
+	void Shaking_Camera(_bool bShake) { 
+		m_fShakeTime = 0.f;
+		m_bShake = bShake; 
+	}
 
 public:
 	virtual HRESULT Initialize_Prototype() override;
@@ -34,6 +37,7 @@ private:
 	_float m_fMin = 999.f;
 	_float m_fMax = 0.f;
 	_vector m_vMainCamera = {};
+	_vector m_vTarget = {};
 	_float m_fShakeTime = 0.f;
 	_bool m_bShake = false;
 

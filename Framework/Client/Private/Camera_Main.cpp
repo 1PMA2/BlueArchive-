@@ -75,17 +75,18 @@ void CCamera_Main::Shake_Camera(_float fTimeDelta)
 
 		XMStoreFloat4(&vTranslation, m_vMainCamera);
 
-		_float fShakeX = frandom(-0.1f, 0.1f);
-		_float fShakeY = frandom(-0.1f, 0.1f);
+		_float fShakeY = frandom(-0.05f, 0.05f);
+		_float fShakeZ = frandom(-0.05f, 0.05f);
 
-		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(vTranslation.x + fShakeX, vTranslation.y + fShakeY, vTranslation.z, vTranslation.w));
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(vTranslation.x, vTranslation.y + fShakeY, vTranslation.z + fShakeZ, 1.f));
 	}
 
 	if (0.2f < m_fShakeTime)
 	{
+		
 		m_bShake = false;
 		m_fShakeTime = 0.f;
-		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vMainCamera);
+		//m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_CameraDesc.vEye.x, m_CameraDesc.vEye.y, XMVectorGetZ(m_vTarget), 1.f));
 	}
 }
 
@@ -133,11 +134,13 @@ void CCamera_Main::Move_Camera(_float fTimeDelta)
 
 		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION); //ÇÐ»ýÀ» º½
 
-		vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 4.f, 1.f); //offset
+		m_vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 4.f, 1.f); //offset
 
-		_vector vLerp = XMVectorLerp(vCamera, vTarget, fTimeDelta * 1.f);
+		_vector vLerp = XMVectorLerp(vCamera, m_vTarget, fTimeDelta * 1.f);
 
-		m_vMainCamera = XMVectorSet(XMVectorGetX(vCamera), XMVectorGetY(vCamera), XMVectorGetZ(vLerp), XMVectorGetW(vCamera));
+		_vector vLerpXY = XMVectorLerp(vCamera, XMLoadFloat4(&m_CameraDesc.vEye), fTimeDelta);
+
+		m_vMainCamera = XMVectorSet(XMVectorGetX(vLerpXY), XMVectorGetY(vLerpXY), XMVectorGetZ(vLerp), 1.f);
 
 		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vMainCamera);
 	}

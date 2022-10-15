@@ -44,6 +44,9 @@ private:
 	HRESULT SetUp_Components();
 
 private:
+	void Boom();
+
+private:
 	_vector m_vTranslation = {};
 	_bool m_bOnce = true;
 	_float m_fBoomAcc = 0.f;
