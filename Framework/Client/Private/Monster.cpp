@@ -81,6 +81,7 @@ HRESULT CMonster::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(&m_tTransformDesc)))
 		return E_FAIL;
 
+
 	return S_OK;
 }
 

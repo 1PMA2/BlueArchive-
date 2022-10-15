@@ -145,7 +145,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_Camera(const _tchar * pLayerTag)
 	CCamera::CAMERADESC			CameraDesc;
 	ZeroMemory(&CameraDesc, sizeof(CCamera::CAMERADESC));
 
-	CameraDesc.vEye = _float4(10.f, 5.f, 0.f, 1.f);
+	CameraDesc.vEye = _float4(10.f, 6.f, 0.f, 1.f);
 	CameraDesc.vAt = _float4(0.f, 0.f, 5.5f, 1.f);
 	CameraDesc.TransformDesc.fSpeedPerSec = 5.f;
 	CameraDesc.TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
@@ -270,6 +270,10 @@ HRESULT CLevel_GamePlay::Ready_Layer_Trigger(const _tchar * pLayerTag)
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Trigger"), &vTranslation)))
 		return E_FAIL;
 
+
+	vTranslation = XMVectorSet(0.f, 0.f, 5.f, 1.f);
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_BossTrigger"), &vTranslation)))
+		return E_FAIL;
 
 	vTranslation = XMVectorSet(0.f, 0.f, 17.f, 1.f);
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Trigger"), &vTranslation)))

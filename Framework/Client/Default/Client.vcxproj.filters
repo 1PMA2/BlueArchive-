@@ -283,6 +283,12 @@
     <ClInclude Include="..\Public\Monster_Droid.h">
       <Filter>02.GameObject\00.Monster\Monster_Droid</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Boss_Trigger.h">
+      <Filter>02.GameObject\00.Monster\Monster_TankHihumi\Boss_Trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Boss_Landing.h">
+      <Filter>02.GameObject\01.State\Boss_State\Boss_Landing</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -551,6 +557,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\Monster_Droid.cpp">
       <Filter>02.GameObject\00.Monster\Monster_Droid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_Trigger.cpp">
+      <Filter>02.GameObject\00.Monster\Monster_TankHihumi\Boss_Trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_Landing.cpp">
+      <Filter>02.GameObject\01.State\Boss_State\Boss_Landing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -936,6 +948,12 @@
     </Filter>
     <Filter Include="02.GameObject\05.UI\GamePlay_UI\Victory">
       <UniqueIdentifier>{13089fee-53ff-47f0-ab7d-09b116c7c575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Boss_State">
+      <UniqueIdentifier>{b3f39c1a-de2a-44b5-a846-032cd1f48072}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Boss_State\Boss_Landing">
+      <UniqueIdentifier>{32625162-ca85-4885-bdf7-7223f48e0a48}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

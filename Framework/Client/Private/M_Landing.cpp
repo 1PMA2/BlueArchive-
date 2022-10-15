@@ -11,8 +11,11 @@ CM_Landing::CM_Landing(CMonster* pOwner)
 	:CMonster_State(pOwner)
 {
 
-	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
+	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
+
 	pModel->Set_CurrentAnimation(3);
+	
+		
 }
 
 void CM_Landing::Enter()

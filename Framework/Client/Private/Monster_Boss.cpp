@@ -3,7 +3,7 @@
 
 #include "GameInstance.h"
 #include "Monster_State.h"
-#include "M_Landing.h"
+#include "Boss_Landing.h"
 #include "Sensei.h"
 #include "Student.h"
 
@@ -42,12 +42,12 @@ HRESULT CMonster_Boss::Initialize(void * pArg)
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
 
-	m_pState = CM_Landing::Create(this);
-
 	m_tMonsterInfo.eMonster = BOSS;
 	m_tMonsterInfo.iAtk = 20;
 	m_tMonsterInfo.iHp = 2000;
 	m_tMonsterInfo.fRange = 6.f;
+
+	m_pState = CBoss_Landing::Create(this);
 
 	return S_OK;
 }

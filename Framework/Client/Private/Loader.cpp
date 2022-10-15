@@ -37,6 +37,7 @@
 #include "Student_Img.h"
 #include "Back_Btn.h"
 #include "Monster_Trigger.h"
+#include "Boss_Trigger.h"
 #include "Droid_Dead.h"
 #include "Cost_Gauge.h"
 #include "Cost_GaugeBg.h"
@@ -526,6 +527,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CMonster_Trigger::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_BossTrigger"),
+			CBoss_Trigger::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Dead"),
 			CDroid_Dead::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
@@ -552,7 +557,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CMonster_Droid::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Boss"),
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_TankHihumi"),
 			CMonster_Boss::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
@@ -611,7 +616,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			return E_FAIL;
 
 		ZeroMemory(&TransformMatrix, sizeof(_matrix));
-		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.f));
+		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(90.f));
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_TankHihumi"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Monster/Boss/", "Boss.fbx", TransformMatrix))))
 			return E_FAIL;

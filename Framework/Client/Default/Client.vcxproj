@@ -176,6 +176,8 @@
     <ClInclude Include="..\public\BackGround.h" />
     <ClInclude Include="..\Public\Back_Btn.h" />
     <ClInclude Include="..\Public\BG_Lobby.h" />
+    <ClInclude Include="..\Public\Boss_Landing.h" />
+    <ClInclude Include="..\Public\Boss_Trigger.h" />
     <ClInclude Include="..\Public\Camera_Aru.h" />
     <ClInclude Include="..\Public\Camera_Ex.h" />
     <ClInclude Include="..\Public\Camera_Free.h" />
@@ -270,6 +272,8 @@
     <ClCompile Include="..\private\BackGround.cpp" />
     <ClCompile Include="..\Private\Back_Btn.cpp" />
     <ClCompile Include="..\Private\BG_Lobby.cpp" />
+    <ClCompile Include="..\Private\Boss_Landing.cpp" />
+    <ClCompile Include="..\Private\Boss_Trigger.cpp" />
     <ClCompile Include="..\Private\Camera_Aru.cpp" />
     <ClCompile Include="..\Private\Camera_Ex.cpp" />
     <ClCompile Include="..\Private\Camera_Free.cpp" />
