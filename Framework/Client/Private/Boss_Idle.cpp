@@ -36,27 +36,31 @@ CMonster_State * CBoss_Idle::Loop(_float fTimeDelta)
 
 	CStudent* pStudent = m_pOwner->Get_FoundStudent();
 
-	pTransform->LookAtLerp(pStudent->Get_StudentTranslation(), 5.f, -fTimeDelta); //반대편을 바라봐야 하므로 마이너스
+	if(pStudent)
+		pTransform->LookAtLerp(pStudent->Get_StudentTranslation(), 5.f, -fTimeDelta); //반대편을 바라봐야 하므로 마이너스
 
 	pModel->Play_Animation(fTimeDelta * 1.2f);
 
 	if (pModel->Get_isFinished())
 	{
-		_uint iRandom = random(0, 5);
+		_uint iRandom = random(0, 4);
 
 		switch (iRandom)
 		{
 		case 0:
 			pState = CBoss_Skill::Create(m_pOwner);
 			break;
-		case 1:
-			pState = CBoss_Shield::Create(m_pOwner);
-			break;
+		//case 1:
+		//	pState = CBoss_Shield::Create(m_pOwner);
+		//	break;
 		default:
 			pState = CBoss_IdleToAtk::Create(m_pOwner);
 			break;
 		}
 	}
+
+	if (nullptr == pStudent)
+		int i = 10;
 
 	return pState;
 }

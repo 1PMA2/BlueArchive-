@@ -44,11 +44,16 @@ CStudent * CMonster::FoundStudent()
 
 		if (m_tMonsterInfo.fRange > fLength) //레이어의 몬스터 검사 후 범위 내 학생 
 		{
-			m_Students.push_back(pStudent);
+			if(false == pStudent->Is_Retire())
+				m_Students.push_back(pStudent);
 		}
 	}
 	if (0 >= m_Students.size())
+	{
+		m_pTargetStudent = nullptr;
+
 		return nullptr;
+	}
 
 	m_fMin = 9999.f;
 

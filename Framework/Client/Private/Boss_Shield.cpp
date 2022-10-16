@@ -15,7 +15,6 @@ CBoss_Shield::CBoss_Shield(CMonster* pOwner)
 
 	pModel->Set_CurrentAnimation(13);
 
-
 }
 
 void CBoss_Shield::Enter()
@@ -31,7 +30,7 @@ CMonster_State * CBoss_Shield::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	pModel->Play_Animation(fTimeDelta);
+	
 
 	if (pModel->Get_isFinished())
 	{

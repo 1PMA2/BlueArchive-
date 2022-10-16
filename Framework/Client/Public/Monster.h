@@ -52,6 +52,7 @@ protected:
 	vector<CStudent*>	m_Students;
 	typedef vector<CStudent*> STUDENTS;
 	CStudent* m_pTargetStudent = nullptr;
+	CStudent* m_pRandomStudent = nullptr;
 	_float m_fMin = 9999.f;
 
 	CTransform::TRANSFORMDESC		m_tTransformDesc;

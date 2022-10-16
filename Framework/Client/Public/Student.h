@@ -17,7 +17,7 @@ class CState;
 class CMonster;
 
 class CStudent abstract : public CGameObject
-{	
+{
 	friend class CSensei;
 public:
 	typedef struct tagStudentDesc
@@ -65,6 +65,7 @@ public:
 	//void		Set_ExReady () { m_bExReady = (m_bExReady) ? (false) : (true); }
 	_bool		Get_Ex() { return m_bEx; }
 	void		Set_Ex(_bool bEx) { m_bEx = bEx; }
+	_bool		Is_Retire() { return m_bRetire; }
 
 	CMonster*		FoundMonster();
 
@@ -97,6 +98,8 @@ protected:
 	_bool					m_bExReady = false;
 	_bool					m_bEx = false;
 	_vector					m_vPreTranslation = {};
+
+	_bool					m_bRetire = false;
 
 	vector<CMonster*>	m_Monsters;
 	typedef vector<CMonster*> MONSTERS;

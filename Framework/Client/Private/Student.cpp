@@ -82,6 +82,8 @@ HRESULT CStudent::Initialize(void * pArg)
 
 	InitializeStudentState();
 
+	m_bRetire = false;
+
 	return S_OK;
 }
 
@@ -108,6 +110,12 @@ void CStudent::Tick(_float fTimeDelta)
 void CStudent::LateTick(_float fTimeDelta)
 {
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+
+	if (KEY(L, TAP))
+	{
+		m_bRetire = true;
+		DISABLE(this);
+	}
 }
 
 HRESULT CStudent::Render()
