@@ -184,6 +184,8 @@
     <ClInclude Include="..\Public\Boss_Landing.h" />
     <ClInclude Include="..\Public\Boss_Move.h" />
     <ClInclude Include="..\Public\Boss_MoveEnd.h" />
+    <ClInclude Include="..\Public\Boss_Shield.h" />
+    <ClInclude Include="..\Public\Boss_ShieldToIdle.h" />
     <ClInclude Include="..\Public\Boss_Skill.h" />
     <ClInclude Include="..\Public\Boss_Trigger.h" />
     <ClInclude Include="..\Public\Camera_Aru.h" />
@@ -288,6 +290,8 @@
     <ClCompile Include="..\Private\Boss_Landing.cpp" />
     <ClCompile Include="..\Private\Boss_Move.cpp" />
     <ClCompile Include="..\Private\Boss_MoveEnd.cpp" />
+    <ClCompile Include="..\Private\Boss_Shield.cpp" />
+    <ClCompile Include="..\Private\Boss_ShieldToIdle.cpp" />
     <ClCompile Include="..\Private\Boss_Skill.cpp" />
     <ClCompile Include="..\Private\Boss_Trigger.cpp" />
     <ClCompile Include="..\Private\Camera_Aru.cpp" />

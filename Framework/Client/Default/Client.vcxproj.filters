@@ -313,6 +313,12 @@
     <ClInclude Include="..\Public\Boss_Dead.h">
       <Filter>02.GameObject\00.Monster\Monster_TankHihumi\Boss_Dead</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Boss_Shield.h">
+      <Filter>02.GameObject\01.State\Boss_State\13 hard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Boss_ShieldToIdle.h">
+      <Filter>02.GameObject\01.State\Boss_State\13 hardtoidle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -611,6 +617,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\Boss_Dead.cpp">
       <Filter>02.GameObject\00.Monster\Monster_TankHihumi\Boss_Dead</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_Shield.cpp">
+      <Filter>02.GameObject\01.State\Boss_State\13 hard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_ShieldToIdle.cpp">
+      <Filter>02.GameObject\01.State\Boss_State\13 hardtoidle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1026,6 +1038,9 @@
     </Filter>
     <Filter Include="02.GameObject\01.State\Boss_State\13 hard">
       <UniqueIdentifier>{6b602d97-bbab-4e06-9700-dcafda02e4f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Boss_State\13 hardtoidle">
+      <UniqueIdentifier>{6a0e6e43-f7ad-47c4-bf15-522854f23698}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
