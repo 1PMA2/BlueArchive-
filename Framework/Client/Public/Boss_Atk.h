@@ -1,8 +1,26 @@
 #pragma once
-class CBoss_Atk
+#include "Monster_State.h"
+
+BEGIN(Client)
+
+class CBoss_Atk final : public
+	CMonster_State
 {
+private:
+	CBoss_Atk(CMonster* pOwner);
+	virtual ~CBoss_Atk() = default;
+
 public:
-	CBoss_Atk();
-	~CBoss_Atk();
+	// CState을(를) 통해 상속됨
+	virtual void Enter() override;
+	virtual CMonster_State * Loop(_float fTimeDelta) override;
+	virtual void Exit() override;
+
+private:
+	int i = 0;
+
+public:
+	static CBoss_Atk* Create(CMonster* pOwner);
 };
 
+END

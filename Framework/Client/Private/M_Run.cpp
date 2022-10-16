@@ -45,7 +45,7 @@ CMonster_State * CM_Run::Loop(_float fTimeDelta)
 		pTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vFear), 0.f, XMVectorGetZ(vFear) + 1.f, 1.f), 5.f, fTimeDelta);
 	}
 
-	if (m_pOwner->FoundStudent()) //학생을 찾았음
+	if (m_pOwner->Get_FoundStudent()) //학생을 찾았음
 	{
 
 		pState = CM_Runend::Create(m_pOwner);

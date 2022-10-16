@@ -7,6 +7,7 @@
 #include "Sensei.h"
 #include "Student.h"
 
+
 CMonster_Boss::CMonster_Boss(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CMonster(pDevice, pContext)
 {
@@ -56,11 +57,6 @@ void CMonster_Boss::Tick(_float fTimeDelta)
 {
 
 	__super::Tick(fTimeDelta);
-
-	if (m_pTargetStudent)
-	{
-
-	}
 
 }
 

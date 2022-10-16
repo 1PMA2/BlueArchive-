@@ -87,6 +87,7 @@ HRESULT CMonster::Initialize(void * pArg)
 
 void CMonster::Tick(_float fTimeDelta)
 {
+	FoundStudent();
 
 	if (CMonster_State*	pNewState = m_pState->Loop(fTimeDelta))
 	{

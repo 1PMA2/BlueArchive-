@@ -33,7 +33,7 @@ CMonster_State * CM_AtkStart::Loop(_float fTimeDelta)
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-	CStudent* pStudent = m_pOwner->FoundStudent();
+	CStudent* pStudent = m_pOwner->Get_FoundStudent();
 
 	CTransform* pTTransform;
 

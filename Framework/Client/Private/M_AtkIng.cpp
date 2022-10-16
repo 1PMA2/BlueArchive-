@@ -29,7 +29,7 @@ CMonster_State * CM_AtkIng::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	CStudent* pStudent = m_pOwner->FoundStudent();
+	CStudent* pStudent = m_pOwner->Get_FoundStudent();
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 

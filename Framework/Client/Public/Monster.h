@@ -38,7 +38,7 @@ public:
 	void Set_MinusHp(_int iAtk) { m_tMonsterInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1)); }
 	_bool Get_Fear() { return m_bFear; }
 	void Set_Fear(_bool bFear) { m_bFear = bFear; }
-	class CStudent*		FoundStudent();
+	class CStudent* Get_FoundStudent() { return m_pTargetStudent; }
 
 
 public:
@@ -71,6 +71,7 @@ public:
 protected:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
+	class CStudent*		FoundStudent();
 
 protected:
 	void SelectMonster();

@@ -6,6 +6,7 @@
 #include "Model.h"
 
 #include "Boss_MoveEnd.h"
+#include "Boss_Idle.h"
 
 CBoss_Move::CBoss_Move(CMonster* pOwner)
 	:CMonster_State(pOwner)
@@ -35,9 +36,9 @@ CMonster_State * CBoss_Move::Loop(_float fTimeDelta)
 
 	pTransform->Go_Backward(fTimeDelta);
 
-	if (m_pOwner->FoundStudent()) //학생을 찾았음
+	if (m_pOwner->Get_FoundStudent()) //학생을 찾았음
 	{
-		pState = CBoss_MoveEnd::Create(m_pOwner);
+		pState = CBoss_Idle::Create(m_pOwner);
 	}
 
 	return pState;

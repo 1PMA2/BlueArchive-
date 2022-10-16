@@ -393,7 +393,7 @@ HRESULT CLoader::Loading_ForGachaScene()
 				ZeroMemory(&TransformMatrix, sizeof(_matrix));
 				TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 				if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Mutsuki"),
-					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Haruka/", "Haruka.fbx", TransformMatrix))))
+					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Mutsuki/", "Mutsuki.fbx", TransformMatrix))))
 					return E_FAIL;
 			}
 
