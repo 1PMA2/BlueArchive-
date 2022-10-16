@@ -60,8 +60,6 @@ HRESULT CCity::Render()
 		return E_FAIL;
 
 
-
-
 	_uint iNumMeshContainers = m_pModelCom->Get_NumMeshContainers();
 
 	for (_uint i = 0; i < iNumMeshContainers; ++i)

@@ -57,6 +57,10 @@ void CMonster_Boss::Tick(_float fTimeDelta)
 
 	__super::Tick(fTimeDelta);
 
+	if (m_pTargetStudent)
+	{
+
+	}
 
 }
 

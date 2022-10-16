@@ -289,6 +289,30 @@
     <ClInclude Include="..\Public\Boss_Landing.h">
       <Filter>02.GameObject\01.State\Boss_State\Boss_Landing</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Boss_MoveEnd.h">
+      <Filter>02.GameObject\01.State\Boss_State\1Moveend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Boss_Move.h">
+      <Filter>02.GameObject\01.State\Boss_State\2Move</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Boss_Idle.h">
+      <Filter>02.GameObject\01.State\Boss_State\3idle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Boss_AtkToIdle.h">
+      <Filter>02.GameObject\01.State\Boss_State\4atk to idle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Boss_Atk.h">
+      <Filter>02.GameObject\01.State\Boss_State\5 atk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Boss_IdleToAtk.h">
+      <Filter>02.GameObject\01.State\Boss_State\6 idle to atk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Boss_Skill.h">
+      <Filter>02.GameObject\01.State\Boss_State\9skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Boss_Dead.h">
+      <Filter>02.GameObject\00.Monster\Monster_TankHihumi\Boss_Dead</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -563,6 +587,30 @@
     </ClCompile>
     <ClCompile Include="..\Private\Boss_Landing.cpp">
       <Filter>02.GameObject\01.State\Boss_State\Boss_Landing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_MoveEnd.cpp">
+      <Filter>02.GameObject\01.State\Boss_State\1Moveend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_Move.cpp">
+      <Filter>02.GameObject\01.State\Boss_State\2Move</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_Idle.cpp">
+      <Filter>02.GameObject\01.State\Boss_State\3idle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_AtkToIdle.cpp">
+      <Filter>02.GameObject\01.State\Boss_State\4atk to idle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_Atk.cpp">
+      <Filter>02.GameObject\01.State\Boss_State\5 atk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_IdleToAtk.cpp">
+      <Filter>02.GameObject\01.State\Boss_State\6 idle to atk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_Skill.cpp">
+      <Filter>02.GameObject\01.State\Boss_State\9skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_Dead.cpp">
+      <Filter>02.GameObject\00.Monster\Monster_TankHihumi\Boss_Dead</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -954,6 +1002,30 @@
     </Filter>
     <Filter Include="02.GameObject\01.State\Boss_State\Boss_Landing">
       <UniqueIdentifier>{32625162-ca85-4885-bdf7-7223f48e0a48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Boss_State\1Moveend">
+      <UniqueIdentifier>{9580ed42-4fbe-4388-aa67-65038af88de7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Boss_State\2Move">
+      <UniqueIdentifier>{deb38938-b997-40d1-8139-d3fe5872c170}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Boss_State\3idle">
+      <UniqueIdentifier>{1baca3c2-f838-4a8b-b511-005a5d154f55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Boss_State\4atk to idle">
+      <UniqueIdentifier>{47ae1b61-21a6-4577-9207-ffa76725635c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Boss_State\5 atk">
+      <UniqueIdentifier>{95f7ddd6-c472-4a99-94b1-b7255aa590d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Boss_State\6 idle to atk">
+      <UniqueIdentifier>{1dc9ae97-5f9f-47cd-9259-46872bd85f3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Boss_State\9skill">
+      <UniqueIdentifier>{fc72f3e7-34cd-4c0c-8232-26ce7263bd26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\01.State\Boss_State\13 hard">
+      <UniqueIdentifier>{6b602d97-bbab-4e06-9700-dcafda02e4f2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

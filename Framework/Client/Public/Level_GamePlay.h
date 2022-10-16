@@ -29,6 +29,7 @@ public:
 	HRESULT Ready_Layer_Monster(const _tchar* pLayerTag);
 	HRESULT	Ready_Layer_Trigger(const _tchar* pLayerTag);
 	HRESULT Ready_Layer_Cover(const _tchar* pLayerTag);
+	HRESULT Ready_Layer_UI(const _tchar* pLayerTag);
 	HRESULT Ready_Layer_Effect(const _tchar* pLayerTag);
 
 public:

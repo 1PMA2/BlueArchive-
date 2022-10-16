@@ -5,7 +5,7 @@
 #include "Monster.h"
 #include "Model.h"
 
-#include "M_Run.h"
+#include "Boss_Move.h"
 
 CBoss_Landing::CBoss_Landing(CMonster* pOwner)
 	:CMonster_State(pOwner)
@@ -36,7 +36,7 @@ CMonster_State * CBoss_Landing::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
-		pState = CM_Run::Create(m_pOwner);
+		pState = CBoss_Move::Create(m_pOwner);
 	}
 
 	return pState;

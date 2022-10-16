@@ -39,9 +39,25 @@ void CCamera_Main::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
 
-	Shake_Camera(fTimeDelta);
+	
 
-	Move_Camera(fTimeDelta);
+	if (KEY(D, HOLD))
+	{
+		_float fZposition = XMVectorGetZ(m_pTransformCom->Get_WorldMatrix().r[3]);
+		fZposition += fTimeDelta * 5.f;
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_CameraDesc.vEye.x, m_CameraDesc.vEye.y, fZposition, 1.f));
+
+		if (KEY(S, HOLD))
+		{
+			Set_Fov(XMConvertToRadians(25.f));
+		}
+	} //map 확인용
+	else
+	{
+		Shake_Camera(fTimeDelta);
+
+		Move_Camera(fTimeDelta);
+	}
 
 	if (FAILED(Bind_PipeLine()))
 		return;
@@ -82,11 +98,9 @@ void CCamera_Main::Shake_Camera(_float fTimeDelta)
 	}
 
 	if (0.2f < m_fShakeTime)
-	{
-		
+	{		
 		m_bShake = false;
 		m_fShakeTime = 0.f;
-		//m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_CameraDesc.vEye.x, m_CameraDesc.vEye.y, XMVectorGetZ(m_vTarget), 1.f));
 	}
 }
 
@@ -134,7 +148,7 @@ void CCamera_Main::Move_Camera(_float fTimeDelta)
 
 		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION); //학생을 봄
 
-		m_vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 4.f, 1.f); //offset
+		m_vTarget = XMVectorSet(XMVectorGetX(vTarget), XMVectorGetY(vTarget), XMVectorGetZ(vTarget) - 5.f, 1.f); //offset
 
 		_vector vLerp = XMVectorLerp(vCamera, m_vTarget, fTimeDelta * 1.f);
 
@@ -152,7 +166,7 @@ void CCamera_Main::Set_FovZ(_float fTimeDelta)
 {
 	if (2.5f < m_fFovRatio)//맨앞, 맨뒤 사이의 거리
 	{
-		_vector vFovy = XMVectorSet(0.f, 0.f, XMConvertToRadians(37.f), 1.f); //목표
+		_vector vFovy = XMVectorSet(0.f, 0.f, XMConvertToRadians(25.f), 1.f); //목표
 
 		m_vCurrentFov = XMVectorLerp(m_vCurrentFov, vFovy, fTimeDelta * 0.7f);
 	}
