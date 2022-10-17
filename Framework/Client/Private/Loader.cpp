@@ -39,6 +39,7 @@
 #include "Monster_Trigger.h"
 #include "Boss_Trigger.h"
 #include "Droid_Dead.h"
+#include "Boss_Dead.h"
 #include "Cost_Gauge.h"
 #include "Cost_GaugeBg.h"
 #include "Camera_Aru.h"
@@ -545,6 +546,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Dead"),
 			CDroid_Dead::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_BossDead"),
+			CBoss_Dead::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Terrain"),

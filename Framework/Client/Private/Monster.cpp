@@ -270,7 +270,17 @@ void CMonster::DeleteMonster()
 
 		_matrix WorldMatrix = m_pTransformCom->Get_WorldMatrix();
 
-		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Dead"), TEXT("Prototype_GameObject_Dead"), &WorldMatrix);
+		switch (m_tMonsterInfo.eMonster)
+		{
+		case DROID:
+			pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Dead"), TEXT("Prototype_GameObject_Dead"), &WorldMatrix);
+			break;
+
+		case BOSS:
+			pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Dead"), TEXT("Prototype_GameObject_BossDead"), &WorldMatrix);
+			break;
+
+		}
 
 		if(this == pSensei->Get_LockonMonster())
 			pSensei->Ex_Lockon(nullptr);

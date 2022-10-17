@@ -271,7 +271,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_Trigger(const _tchar * pLayerTag)
 		return E_FAIL;
 
 	//55
-	vTranslation = XMVectorSet(1.2f, 0.f, 12.f, 1.f);
+	vTranslation = XMVectorSet(1.2f, 0.f, 55.f, 1.f);
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_BossTrigger"), &vTranslation)))
 		return E_FAIL;
 
