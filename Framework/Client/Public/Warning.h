@@ -49,7 +49,7 @@ private:
 	HRESULT SetUp_ShaderResource();
 
 private:
-	void Deletethis();
+	void Deletethis(_float fTimeDelta);
 
 public:
 	virtual void OnDisable() override;

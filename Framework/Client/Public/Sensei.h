@@ -80,10 +80,12 @@ public:
 	CStudent* Get_ExStudent() { return m_pExStudent; }
 	void Ex_Fire() { m_bExReady = false; }
 	_bool Get_ExReady() { return m_bExReady; }
+	_bool Get_End() { return m_bEnd; }
+	void Set_End(_bool bEnd) { m_bEnd = bEnd; }
 
 private:
 	_bool m_bExReady = false;
-	
+	_bool m_bEnd = false;
 
 private:
 	CStudent* m_pExStudent = nullptr;

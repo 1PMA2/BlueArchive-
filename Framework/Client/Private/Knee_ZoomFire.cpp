@@ -24,6 +24,7 @@ CKnee_ZoomFire::CKnee_ZoomFire(CStudent* pOwner)
 	{
 	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		m_fAtkTime = 0.8f;
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(10);
@@ -38,6 +39,7 @@ CKnee_ZoomFire::CKnee_ZoomFire(CStudent* pOwner)
 void CKnee_ZoomFire::Enter()
 {
 	m_bOnce = true;
+	m_fTimeAcc = 0.f;
 }
 
 CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
@@ -46,6 +48,8 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 
 	if (nullptr != pState)
 		return pState;
+
+	m_fTimeAcc += fTimeDelta;
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
@@ -59,12 +63,14 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 	if (nullptr != pMonster)
 	{
 		pTransform->LookAtLerp(pMonster->Get_MonsterTranslation(), 5.f, fTimeDelta);
-
-		if (m_bOnce)
+		if (m_fAtkTime < m_fTimeAcc)
 		{
-			m_pOwner->Use_Bullet();
-			pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
-			m_bOnce = false;
+			if (m_bOnce)
+			{
+				m_pOwner->Use_Bullet();
+				pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
+				m_bOnce = false;
+			}
 		}
 
 	}
@@ -97,29 +103,12 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 		return pState;
 	}
 
-	if (Ex())
-	{
-		pState = CEx_Cutin::Create(m_pOwner);
-	}
-
 	return pState;
 }
 
 void CKnee_ZoomFire::Exit()
 {
 	Destroy_Instance();
-}
-
-_bool CKnee_ZoomFire::Ex()
-{
-	CSensei* pSensei = CSensei::Get_Instance();
-
-	if (pSensei->Useable_Ex(m_pOwner->Get_StudentInfo().fExCost))
-	{
-		if (KEY(SPACE, HOLD))
-			return true;
-	}
-	return false;
 }
 
 CKnee_ZoomFire * CKnee_ZoomFire::Create(CStudent * pOwner)

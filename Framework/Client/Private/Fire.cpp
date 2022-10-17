@@ -22,7 +22,7 @@ CFire::CFire(CStudent* pOwner)
 	{
 	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
-		m_iAtkFrame = 24;
+		m_fAtkTime = 0.8f;
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(18);
@@ -38,6 +38,7 @@ CFire::CFire(CStudent* pOwner)
 void CFire::Enter()
 {
 	m_bOnce = true;
+	m_fTimeAcc = 0.f;
 }
 
 CState * CFire::Loop(_float fTimeDelta)
@@ -46,6 +47,8 @@ CState * CFire::Loop(_float fTimeDelta)
 
 	if (nullptr != pState)
 		return pState;
+
+	m_fTimeAcc += fTimeDelta;
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
@@ -63,11 +66,14 @@ CState * CFire::Loop(_float fTimeDelta)
 	{
 		pTransform->LookAtLerp(pMonster->Get_MonsterTranslation(), 5.f, fTimeDelta);
 
-		if (m_bOnce)
+		if (m_fAtkTime < m_fTimeAcc)
 		{
-			m_pOwner->Use_Bullet();
-			pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
-			m_bOnce = false;
+			if (m_bOnce)
+			{
+				m_pOwner->Use_Bullet();
+				pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
+				m_bOnce = false;
+			}
 		}
 
 	}
@@ -78,17 +84,14 @@ CState * CFire::Loop(_float fTimeDelta)
 		{
 			pState = CRun::Create(m_pOwner);
 		}
-		else if(0 < m_pOwner->Get_StudentInfo().iBullet)
+		else if (0 < m_pOwner->Get_StudentInfo().iBullet)
+		{
 			pState = CFire::Create(m_pOwner);
+		}
 		else
 			pState = CHide_ReloadStart::Create(m_pOwner);
 
 		return pState;
-	}
-
-	if (Ex())
-	{
-		pState = CEx_Cutin::Create(m_pOwner);
 	}
 
 	return pState;
@@ -99,17 +102,7 @@ void CFire::Exit()
 	Destroy_Instance();
 }
 
-_bool CFire::Ex()
-{
-	CSensei* pSensei = CSensei::Get_Instance();
 
-	if (pSensei->Useable_Ex(m_pOwner->Get_StudentInfo().fExCost))
-	{
-		if (KEY(SPACE, HOLD))
-			return true;
-	}
-	return false;
-}
 
 
 CFire * CFire::Create(CStudent * pOwner)

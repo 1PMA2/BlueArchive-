@@ -68,7 +68,7 @@ void CWarning::Tick(_float fTimeDelta)
 
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
 
-	Deletethis();
+	Deletethis(fTimeDelta);
 	
 }
 
@@ -147,11 +147,11 @@ HRESULT CWarning::SetUp_ShaderResource()
 	return S_OK;
 }
 
-void CWarning::Deletethis()
+void CWarning::Deletethis(_float fTimeDelta)
 {
 	if (4.f < m_fCos)
 	{
-		m_fSizeY -= 10.f;
+		m_fSizeY -= 800.f * fTimeDelta;
 
 		if (5.f > m_fSizeY)
 		{

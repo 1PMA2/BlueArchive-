@@ -99,6 +99,7 @@ protected:
 	_bool					m_bEx = false;
 	_vector					m_vPreTranslation = {};
 
+	_bool					m_bDamaged = false;
 	_bool					m_bRetire = false;
 
 	vector<CMonster*>	m_Monsters;

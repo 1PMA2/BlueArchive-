@@ -5,6 +5,8 @@ matrix	g_WorldMatrix, g_ViewMatrix, g_ProjMatrix;
 
 texture2D	g_DiffuseTexture;
 
+bool g_Damaged;
+
 struct		tagBoneMatrix
 {
 	matrix		BoneMatrices[256];
@@ -97,6 +99,11 @@ PS_OUT PS_MAIN(PS_IN In)
 
 	if (Out.vDiffuse.a < 0.1f)
 		discard;
+
+	if (g_Damaged)
+		Out.vDiffuse += 0.3f;
+	else
+		Out.vDiffuse += 0.f;
 
 	return Out;
 }

@@ -17,10 +17,8 @@ public:
 	virtual void Exit() override;
 
 private:
-	_bool Ex();
-
-private:
-	_uint m_iAtkFrame = 0;
+	_float m_fAtkTime = 0.f;
+	_float m_fTimeAcc = 0.f;
 	_bool m_bOnce = true;
 
 public:

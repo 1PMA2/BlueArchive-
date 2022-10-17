@@ -39,6 +39,11 @@ _uint CModel::Get_CurrentKeyFrame()
   return m_Animations[m_iCurrentAnimationIndex]->Get_CurrentKeyFrame();
 }
 
+_float CModel::Get_TimeAcc()
+{
+	return m_Animations[m_iCurrentAnimationIndex]->Get_TimeAcc();
+}
+
 void CModel::ResetAnimation()
 {
 	m_Animations[m_iCurrentAnimationIndex]->Reset_Must();

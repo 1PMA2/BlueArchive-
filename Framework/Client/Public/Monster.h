@@ -35,7 +35,7 @@ public:
 public:
 	MONSTER Get_Monster() { return m_tMonsterInfo.eMonster; }
 	_vector Get_MonsterTranslation() { return m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION); }
-	void Set_MinusHp(_int iAtk) { m_tMonsterInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1)); }
+	void Set_MinusHp(_int iAtk);
 	_bool Get_Fear() { return m_bFear; }
 	void Set_Fear(_bool bFear) { m_bFear = bFear; }
 	class CStudent* Get_FoundStudent() { return m_pTargetStudent; }
@@ -71,6 +71,8 @@ protected:
 	_float					m_fFearAcc = 0.f;
 	_vector					m_vTargetTranslation = {};
 	_vector					m_vRandomTarget = {};
+	_bool					m_bDamaged = false;
+	_float					m_fDamagedAcc = 0.f;
 
 public:
 	virtual void OnDisable() override;

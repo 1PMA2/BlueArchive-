@@ -79,6 +79,12 @@ CStudent * CMonster::FoundStudent()
 	return m_pTargetStudent;
 }
 
+void CMonster::Set_MinusHp(_int iAtk)
+{
+	m_bDamaged = true;
+	m_tMonsterInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1));
+}
+
 CStudent * CMonster::Get_RandomStudent()
 {
 
@@ -130,6 +136,18 @@ void CMonster::Tick(_float fTimeDelta)
 		{
 			m_bFear = false;
 			m_fFearAcc = 0.f;
+		}
+	}
+
+
+	if (m_bDamaged)
+	{
+		m_fDamagedAcc += fTimeDelta;
+
+		if (0.05f < m_fDamagedAcc)
+		{
+			m_bDamaged = false;
+			m_fDamagedAcc = 0.f;
 		}
 	}
 
@@ -214,7 +232,8 @@ HRESULT CMonster::SetUp_ShaderResource()
 		return E_FAIL;
 	if (FAILED(m_pShaderCom->Set_RawValue("g_ProjMatrix", pGameInstance->Get_Transform_TP(CPipeLine::D3DTS_PROJ), sizeof(_float4x4))))
 		return E_FAIL;
-
+	if (FAILED(m_pShaderCom->Set_RawValue("g_Damaged", &m_bDamaged, sizeof(_bool))))
+		return E_FAIL;
 
 	RELEASE_INSTANCE(CGameInstance);
 

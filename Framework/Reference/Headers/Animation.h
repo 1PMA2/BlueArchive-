@@ -13,6 +13,7 @@ private:
 
 public:
 	_bool Get_isFinished() { return m_isFinished; }
+	_float Get_TimeAcc() { return m_fTimeAcc; }
 	_uint Get_CurrentKeyFrame();
 
 public:
