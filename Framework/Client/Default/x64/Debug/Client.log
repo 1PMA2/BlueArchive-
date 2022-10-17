@@ -1,2 +1,5 @@
-﻿  Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
+﻿  Level_GamePlay.cpp
+  Monster_Boss.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Monster_Boss.cpp)
+  Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)
