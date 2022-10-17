@@ -27,6 +27,8 @@ CStudent * CMonster::FoundStudent()
 
 	if (0 >= iStudentCount)
 	{
+		m_pTargetStudent = nullptr;
+
 		return nullptr;
 	}
 
@@ -72,7 +74,23 @@ CStudent * CMonster::FoundStudent()
 		}
 	}
 
+
 	return m_pTargetStudent;
+}
+
+CStudent * CMonster::Get_RandomStudent()
+{
+
+	if (0 < m_Students.size())
+	{
+		_uint iRand = random(0, m_Students.size() - 1);
+
+		return m_Students.at(iRand);
+	}
+
+	else
+		return nullptr;
+
 }
 
 HRESULT CMonster::Initialize_Prototype()

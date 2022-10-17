@@ -18,7 +18,9 @@ CBoss_Idle::CBoss_Idle(CMonster* pOwner)
 
 	pModel->Set_CurrentAnimation(3);
 
+	m_iRandom = random(0, 1);
 
+	m_pRandomStudent = m_pOwner->Get_RandomStudent();
 }
 
 void CBoss_Idle::Enter()
@@ -36,16 +38,26 @@ CMonster_State * CBoss_Idle::Loop(_float fTimeDelta)
 
 	CStudent* pStudent = m_pOwner->Get_FoundStudent();
 
-	if(pStudent)
-		pTransform->LookAtLerp(pStudent->Get_StudentTranslation(), 5.f, -fTimeDelta); //반대편을 바라봐야 하므로 마이너스
+
+
+
+	if(m_pRandomStudent)
+		switch (m_iRandom)
+		{
+			case 0:
+				pTransform->LookAtLerp(m_pRandomStudent->Get_StudentTranslation(), 2.f, -fTimeDelta); //반대편을 바라봐야 하므로 마이너스
+				break;
+			case 1:
+				pTransform->LookAtLerp(pStudent->Get_StudentTranslation(), 2.f, -fTimeDelta); //반대편을 바라봐야 하므로 마이너스
+				break;
+		}
+
 
 	pModel->Play_Animation(fTimeDelta * 1.2f);
 
 	if (pModel->Get_isFinished())
 	{
-		_uint iRandom = random(0, 4);
-
-		switch (iRandom)
+		switch (m_iRandom)
 		{
 		case 0:
 			pState = CBoss_Skill::Create(m_pOwner);

@@ -6,6 +6,7 @@
 #include "Boss_Landing.h"
 #include "Sensei.h"
 #include "Student.h"
+#include "HIerarchyNode.h"
 
 
 CMonster_Boss::CMonster_Boss(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
@@ -45,11 +46,13 @@ HRESULT CMonster_Boss::Initialize(void * pArg)
 
 	m_tMonsterInfo.eMonster = BOSS;
 	m_tMonsterInfo.iAtk = 20;
-	m_tMonsterInfo.iHp = 2000;
-	m_tMonsterInfo.fRange = 4.f;
+	m_tMonsterInfo.iHp = 20000;
+	m_tMonsterInfo.fRange = 6.f;
 
 	m_pState = CBoss_Landing::Create(this);
-
+	
+	m_pBone = m_pModelCom->Find_HierarcyNode("Head_sp");
+	
 	return S_OK;
 }
 
@@ -57,6 +60,7 @@ void CMonster_Boss::Tick(_float fTimeDelta)
 {
 
 	__super::Tick(fTimeDelta);
+
 
 }
 

@@ -9,6 +9,7 @@ class CShader;
 class CRenderer;
 class CCollider;
 class CModel;
+class CHierarchyNode;
 END
 
 BEGIN(Client)
@@ -36,6 +37,9 @@ public:
 private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
+
+private:
+	class CHierarchyNode* m_pBone = nullptr;
 
 public:
 	static CMonster_Boss* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);

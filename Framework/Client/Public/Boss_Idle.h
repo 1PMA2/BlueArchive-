@@ -17,7 +17,8 @@ public:
 	virtual void Exit() override;
 
 private:
-	int i = 0;
+	_uint m_iRandom = 0;
+	CStudent* m_pRandomStudent = nullptr;
 
 public:
 	static CBoss_Idle* Create(CMonster* pOwner);

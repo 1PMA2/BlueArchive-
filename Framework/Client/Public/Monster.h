@@ -39,7 +39,9 @@ public:
 	_bool Get_Fear() { return m_bFear; }
 	void Set_Fear(_bool bFear) { m_bFear = bFear; }
 	class CStudent* Get_FoundStudent() { return m_pTargetStudent; }
-
+	class CStudent* Get_RandomStudent();
+	_uint Get_StudentSize() { return m_Students.size(); }
+	
 
 public:
 	virtual HRESULT Initialize_Prototype();

@@ -164,7 +164,7 @@ void CCamera_Main::Move_Camera(_float fTimeDelta)
 
 void CCamera_Main::Set_FovZ(_float fTimeDelta)
 {
-	if (2.5f < m_fFovRatio)//맨앞, 맨뒤 사이의 거리
+	if (2.4f < m_fFovRatio)//맨앞, 맨뒤 사이의 거리
 	{
 		_vector vFovy = XMVectorSet(0.f, 0.f, XMConvertToRadians(25.f), 1.f); //목표
 
