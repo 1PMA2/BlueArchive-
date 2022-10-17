@@ -48,7 +48,7 @@ CMonster_State * CBoss_Idle::Loop(_float fTimeDelta)
 			case 0:
 				pTransform->LookAtLerp(m_pRandomStudent->Get_StudentTranslation(), 1.f, -fTimeDelta); //반대편을 바라봐야 하므로 마이너스
 				break;
-			case 1:
+			default:
 				pTransform->LookAtLerp(pStudent->Get_StudentTranslation(), 1.f, -fTimeDelta); //반대편을 바라봐야 하므로 마이너스
 				break;
 		}

@@ -13,9 +13,10 @@ public:
 	virtual ~CCamera_Main() = default;
 
 public:
-	void Shaking_Camera(_bool bShake) { 
+	void Shaking_Camera(_bool bShake, _float fShakePower = 0.05f) {
 		m_fShakeTime = 0.f;
 		m_bShake = bShake; 
+		m_fShakePower = fShakePower;
 	}
 
 public:
@@ -40,6 +41,7 @@ private:
 	_vector m_vTarget = {};
 	_float m_fShakeTime = 0.f;
 	_bool m_bShake = false;
+	_float m_fShakePower = 0.05f;
 
 private:
 	void Shake_Camera(_float fTimeDelta);

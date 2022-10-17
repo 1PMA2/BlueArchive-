@@ -91,13 +91,13 @@ void CCamera_Main::Shake_Camera(_float fTimeDelta)
 
 		XMStoreFloat4(&vTranslation, m_vMainCamera);
 
-		_float fShakeY = frandom(-0.05f, 0.05f);
-		_float fShakeZ = frandom(-0.05f, 0.05f);
+		_float fShakeY = frandom(-m_fShakePower, m_fShakePower);
+		_float fShakeZ = frandom(-m_fShakePower, m_fShakePower);
 
 		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(vTranslation.x, vTranslation.y + fShakeY, vTranslation.z + fShakeZ, 1.f));
 	}
 
-	if (0.2f < m_fShakeTime)
+	if (m_fShakePower * 4.f < m_fShakeTime)
 	{		
 		m_bShake = false;
 		m_fShakeTime = 0.f;
