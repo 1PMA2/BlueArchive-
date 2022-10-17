@@ -82,6 +82,7 @@ public:
 	_bool Get_ExReady() { return m_bExReady; }
 	_bool Get_End() { return m_bEnd; }
 	void Set_End(_bool bEnd) { m_bEnd = bEnd; }
+	void Victory();
 
 private:
 	_bool m_bExReady = false;

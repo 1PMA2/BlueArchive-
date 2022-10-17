@@ -71,8 +71,11 @@ PS_OUT PS_MAIN(PS_IN In)
 
 	Out.vColor = g_DiffuseTexture.Sample(DefaultSampler, In.vTexUV);
 
-	if(-1.f != g_Fade)
-		Out.vColor.a = g_Fade;
+	if (-1.f != g_Fade)
+	{
+		if(0.1f < Out.vColor.a)
+			Out.vColor.a = g_Fade;
+	}
 
 	
 	return Out;	

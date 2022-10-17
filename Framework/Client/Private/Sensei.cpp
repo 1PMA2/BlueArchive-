@@ -57,6 +57,11 @@ CStudent * CSensei::Get_StudentIndex(_uint iIndex)
 	return iter->second;
 }
 
+void CSensei::Victory()
+{
+	m_bEnd = true;
+}
+
 _bool CSensei::Useable_Ex(_float fUseCost) //사용할 코스트
 {
 	if (fUseCost <= m_tSensei.fCost)
@@ -98,15 +103,13 @@ void CSensei::Use_Ex(_bool bEx, _float fCost)
 void CSensei::Set_TimeSpeed()
 {
 
-	if (m_bExReady)
+	if (m_bExReady || m_bEnd)
 	{
 		m_tSensei.fTimeSpeed = 0.1f;
-	}
-	else
-	{
-		m_tSensei.fTimeSpeed = 1.f;
+		return;
 	}
 
+	m_tSensei.fTimeSpeed = 1.f;
 }
 
 void CSensei::Formation_Level(_float fTimeDelta)

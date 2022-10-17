@@ -76,7 +76,7 @@ HRESULT CImgui_Manager::Render()
 
 		if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
 		{
-			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"), TEXT("Prototype_GameObject_WarningBar"));
+			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"), TEXT("Prototype_GameObject_Victory"));
 		}
 
 		if(0 < m_pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_W")))
@@ -84,10 +84,10 @@ HRESULT CImgui_Manager::Render()
 
 		if (nullptr != pObj)
 		{
-			CTransform* pTransform = (CTransform*)pObj->Get_Component(TEXT("Com_Transform"));
+			//CTransform* pTransform = (CTransform*)pObj->Get_Component(TEXT("Com_Transform"));
 
-			pTransform->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(fTranslationX, fTranslationY, 0.f, 1.f));
-			pTransform->Set_Scaled(_float3(fScaleX, fScaleY, 0.f));
+			//pTransform->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(fTranslationX, fTranslationY, 0.f, 1.f));
+			//pTransform->Set_Scaled(_float3(fScaleX, fScaleY, 0.f));
 		}
 
 		ImGui::SameLine();

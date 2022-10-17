@@ -8,7 +8,7 @@
 #include "Sensei.h"
 #include "Ex_Cutin.h"
 #include "Run.h"
-
+#include "Hide_Idle.h"
 CState::CState(CStudent* pOwner, CMonster* pTarget, CForkLift* pCover)
 	:m_pOwner(pOwner), m_pTarget(pTarget), m_pCover(pCover)
 {
@@ -46,6 +46,8 @@ CState * CState::Loop(_float fTimeDelta)
 			pState = nullptr;
 	}
 	
+	if (pSensei->Get_End())
+		pState = CHide_Idle::Create(m_pOwner);
 
 	return pState;
 }

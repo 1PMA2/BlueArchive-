@@ -270,6 +270,8 @@
     <ClInclude Include="..\Public\UI.h" />
     <ClInclude Include="..\Public\UI_RecruitButton.h" />
     <ClInclude Include="..\Public\UI_Student.h" />
+    <ClInclude Include="..\Public\Victory.h" />
+    <ClInclude Include="..\Public\Victory_Bg.h" />
     <ClInclude Include="..\Public\Warning.h" />
     <ClInclude Include="..\Public\Warning_Bar.h" />
     <ClInclude Include="..\Public\Work_Button.h" />
@@ -378,6 +380,8 @@
     <ClCompile Include="..\Private\UI.cpp" />
     <ClCompile Include="..\Private\UI_RecruitButton.cpp" />
     <ClCompile Include="..\Private\UI_Student.cpp" />
+    <ClCompile Include="..\Private\Victory.cpp" />
+    <ClCompile Include="..\Private\Victory_Bg.cpp" />
     <ClCompile Include="..\Private\Warning.cpp" />
     <ClCompile Include="..\Private\Warning_Bar.cpp" />
     <ClCompile Include="..\Private\Work_Button.cpp" />

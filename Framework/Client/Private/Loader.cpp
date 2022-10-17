@@ -49,7 +49,8 @@
 #include "Warning_Bar.h"
 #include "Boss_Bullet.h"
 #include "Boss_SBullet.h"
-
+#include "Victory_Bg.h"
+#include "Victory.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -600,6 +601,14 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CWarning_Bar::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_VictoryBg"),
+			CVictory_Bg::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Victory"),
+			CVictory::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		///* For.Prototype_GameObject_Effect */
 		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Effect"),
 		//	CEffect::Create(m_pGraphic_Device))))
@@ -619,6 +628,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Warning"),
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Warning/Warning%d.png"), 3))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Victory"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Victory.png"), 1))))
 			return E_FAIL;
 
 		lstrcpy(m_szLoadingText, TEXT("¸ðµ¨À» ·ÎµùÁßÀÌºñ³®. "));

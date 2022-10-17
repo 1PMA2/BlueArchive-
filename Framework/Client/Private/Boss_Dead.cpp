@@ -47,6 +47,16 @@ HRESULT CBoss_Dead::Initialize(void * pArg)
 
 	m_pModelCom->Set_CurrentAnimation(10);
 
+	CSensei* pSensei = GET_SENSEI;
+
+	pSensei->Victory();
+
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"), TEXT("Prototype_GameObject_VictoryBg"));
+
+	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"), TEXT("Prototype_GameObject_Victory"));
+
 	return S_OK;
 }
 

@@ -331,6 +331,12 @@
     <ClInclude Include="..\Public\Boss_SBullet.h">
       <Filter>02.GameObject\08.Bullet\Boss_Bullet\Skill</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Victory_Bg.h">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Victory\Black_Bg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Victory.h">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Victory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -647,6 +653,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\Boss_SBullet.cpp">
       <Filter>02.GameObject\08.Bullet\Boss_Bullet\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Victory_Bg.cpp">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Victory\Black_Bg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Victory.cpp">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Victory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1080,6 +1092,9 @@
     </Filter>
     <Filter Include="02.GameObject\08.Bullet\Boss_Bullet\Skill">
       <UniqueIdentifier>{931a5fd3-2083-46a8-85a7-752c645a6942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\Victory\Black_Bg">
+      <UniqueIdentifier>{db0c45e1-8d96-41b4-b692-3cdefbb86654}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
