@@ -9,6 +9,9 @@ texture2D	g_DepthTexture;
 float g_Fade;
 float g_Cost;
 float g_DNum;
+float g_UVx;
+int g_Dir;
+int g_Warning;
 
 sampler DefaultSampler = sampler_state 
 {		
@@ -71,6 +74,7 @@ PS_OUT PS_MAIN(PS_IN In)
 	if(-1.f != g_Fade)
 		Out.vColor.a = g_Fade;
 
+	
 	return Out;	
 }
 
@@ -191,6 +195,55 @@ VS_OUT_NUM VS_NUM(VS_IN_NUM In)
 
 	return Out;
 }
+//warning
+
+VS_OUT VS_WARNING(VS_IN In)
+{
+	VS_OUT		Out = (VS_OUT)0;
+
+	matrix			matWV, matWVP;
+
+	matWV = mul(g_WorldMatrix, g_ViewMatrix);
+	matWVP = mul(matWV, g_ProjMatrix);
+
+	Out.vPosition = mul(vector(In.vPosition, 1.f), matWVP);
+	Out.vTexUV = In.vTexUV;
+
+	if(0 < g_Dir)
+		Out.vTexUV.x = In.vTexUV.x + g_UVx;
+	else
+		Out.vTexUV.x = In.vTexUV.x - g_UVx;
+
+	return Out;
+}
+
+PS_OUT PS_WARNING(PS_IN In)
+{
+	PS_OUT		Out = (PS_OUT)0;
+
+	Out.vColor = g_DiffuseTexture.Sample(DefaultSampler, In.vTexUV);
+
+	/*if (0.5 < Out.vColor.a)
+		Out.vColor.a = g_Fade;*/
+
+	switch (g_Warning)
+	{
+	case 0: //Áß¾Ó ±Û¾¾
+		Out.vColor.b = 0.f;
+		Out.vColor.r = 0.9f;
+		Out.vColor.g = g_Fade;
+		break;
+	case 1:
+		Out.vColor += 0.1f;
+		if(0.5f < Out.vColor.a)
+			Out.vColor.a = g_Fade;
+
+		break;
+	}
+
+
+	return Out;
+}
 
 technique11 DefaultTechnique
 {
@@ -233,6 +286,16 @@ technique11 DefaultTechnique
 		VertexShader = compile vs_5_0 VS_NUM();
 		GeometryShader = NULL;
 		PixelShader = compile ps_5_0 PS_MAIN();
+	}
+	pass Warning
+	{
+		SetBlendState(BS_AlphaBlending, float4(0.f, 0.f, 0.f, 1.f), 0xffffffff);
+		SetDepthStencilState(DSS_Default, 0);
+		SetRasterizerState(RS_Default);
+
+		VertexShader = compile vs_5_0 VS_WARNING();
+		GeometryShader = NULL;
+		PixelShader = compile ps_5_0 PS_WARNING();
 	}
 	/*pass Default
 	{

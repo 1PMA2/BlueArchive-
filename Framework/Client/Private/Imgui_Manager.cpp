@@ -57,7 +57,10 @@ HRESULT CImgui_Manager::Render()
 		static float f = 0.0f;
 		static float fTranslationX = {};
 		static float fTranslationY = {};
+		static float fScaleX = 0.1f;
+		static float fScaleY = 0.1f;
 		static int counter = 0;
+		CGameObject* pObj = nullptr;
 
 		ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
@@ -68,10 +71,25 @@ HRESULT CImgui_Manager::Render()
 		//ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
 		ImGui::SliderFloat("X Translation", &fTranslationX, -640.f, 640.f);  // Edit 1 float using a slider from 0.0f to 1.0f
 		ImGui::SliderFloat("Y Translation", &fTranslationY, -360.f, 360.f);
+		ImGui::SliderFloat("X Scale", &fScaleX, 10.f, 1280.f);  // Edit 1 float using a slider from 0.0f to 1.0f
+		ImGui::SliderFloat("Y Scale", &fScaleY, 10.f, 1280.f);
+
 		if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
 		{
-			m_pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_FORMATION));
+			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"), TEXT("Prototype_GameObject_WarningBar"));
 		}
+
+		if(0 < m_pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_W")))
+			pObj = m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"));
+
+		if (nullptr != pObj)
+		{
+			CTransform* pTransform = (CTransform*)pObj->Get_Component(TEXT("Com_Transform"));
+
+			pTransform->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(fTranslationX, fTranslationY, 0.f, 1.f));
+			pTransform->Set_Scaled(_float3(fScaleX, fScaleY, 0.f));
+		}
+
 		ImGui::SameLine();
 		ImGui::Text("counter = %d", counter);
 

@@ -102,7 +102,10 @@ HRESULT CBoss_Trigger::Collision_ToStudent()
 
 		if (m_pAABBCom->Collision(pSphere))
 		{
-			_vector vTranslation = XMVectorSet(XMVectorGetX(m_vTranslation), XMVectorGetY(m_vTranslation), XMVectorGetZ(m_vTranslation) + 7.f, 1.f);
+			if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_BackGround"), TEXT("Prototype_GameObject_Warning"))))
+				return E_FAIL;
+
+			_vector vTranslation = XMVectorSet(XMVectorGetX(m_vTranslation), XMVectorGetY(m_vTranslation), XMVectorGetZ(m_vTranslation) + 8.f, 1.f);
 
 			if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), TEXT("Prototype_GameObject_TankHihumi"), &vTranslation)))
 				return E_FAIL;

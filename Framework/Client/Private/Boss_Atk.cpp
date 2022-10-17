@@ -15,6 +15,10 @@ CBoss_Atk::CBoss_Atk(CMonster* pOwner)
 
 	pModel->Set_CurrentAnimation(5);
 
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_BossBullet"), TEXT("Prototype_GameObject_Boss_Bullet"), &m_pOwner);
+
 }
 
 void CBoss_Atk::Enter()

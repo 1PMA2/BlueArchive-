@@ -44,6 +44,9 @@
 #include "Camera_Aru.h"
 #include "Camera_Mutsuki.h"
 #include "Camera_Kayoko.h"
+#include "Warning.h"
+#include "Warning_Bar.h"
+#include "Boss_Bullet.h"
 
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -531,6 +534,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CBoss_Trigger::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Boss_Bullet"),
+			CBoss_Bullet::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Dead"),
 			CDroid_Dead::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
@@ -575,6 +582,14 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CKayoko_Ex::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Warning"),
+			CWarning::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_WarningBar"),
+			CWarning_Bar::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		///* For.Prototype_GameObject_Effect */
 		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Effect"),
 		//	CEffect::Create(m_pGraphic_Device))))
@@ -590,6 +605,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_CostGauge"),
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Cost_Gauge%d.png"), 2))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Warning"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Warning/Warning%d.png"), 3))))
 			return E_FAIL;
 
 		lstrcpy(m_szLoadingText, TEXT("¸ðµ¨À» ·ÎµùÁßÀÌºñ³®. "));

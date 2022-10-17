@@ -51,8 +51,8 @@ HRESULT CMainApp::Initialize()
 	if (FAILED(m_pGameInstance->Initialize_Engine(g_hInst, LEVEL_END, GraphicDesc, &m_pDevice, &m_pContext)))
 		return E_FAIL;
 
-	//if (FAILED(CImgui_Manager::Get_Instance()->Initialize(m_pDevice, m_pContext)))
-	//	return E_FAIL;
+	if (FAILED(CImgui_Manager::Get_Instance()->Initialize(m_pDevice, m_pContext)))
+		return E_FAIL;
 
 	if (FAILED(m_pGameInstance->Add_Font(m_pDevice, m_pContext, TEXT("Font_Dream"), TEXT("../Bin/Resources/Fonts/128.spriteFont"))))
 		return E_FAIL;
@@ -182,7 +182,7 @@ CMainApp * CMainApp::Create()
 
 void CMainApp::Free()
 {
-	//CImgui_Manager::Get_Instance()->Destroy_Instance();
+	CImgui_Manager::Get_Instance()->Destroy_Instance();
 
 	Safe_Release(m_pRenderer);
 	Safe_Release(m_pGameInstance);		

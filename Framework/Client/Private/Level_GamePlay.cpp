@@ -150,7 +150,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_Camera(const _tchar * pLayerTag)
 	CameraDesc.TransformDesc.fSpeedPerSec = 5.f;
 	CameraDesc.TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
-	CameraDesc.fFovy = XMConvertToRadians(17.0f);
+	CameraDesc.fFovy = XMConvertToRadians(18.0f);
 	CameraDesc.fAspect = (_float)g_iWinCX / g_iWinCY;
 	CameraDesc.fNear = 0.01f;
 	CameraDesc.fFar = 300.f;
