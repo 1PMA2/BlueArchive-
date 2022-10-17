@@ -71,6 +71,7 @@ CStudent * CMonster::FoundStudent()
 		{
 			m_fMin = fLength;
 			m_pTargetStudent = m_Students.at(i);
+			m_vTargetTranslation = m_pTargetStudent->Get_StudentTranslation();
 		}
 	}
 
@@ -84,8 +85,9 @@ CStudent * CMonster::Get_RandomStudent()
 	if (0 < m_Students.size())
 	{
 		_uint iRand = random(0, m_Students.size() - 1);
-
-		return m_Students.at(iRand);
+		m_pRandomStudent = m_Students.at(iRand);
+		m_vRandomTarget = m_pRandomStudent->Get_StudentTranslation();
+		return m_pRandomStudent;
 	}
 
 	else

@@ -45,6 +45,13 @@ HRESULT CBoss_Bullet::Initialize(void * pArg)
 	m_bOnce = true;
 	m_fBoomAcc = 0.f;
 
+	CStudent* pTarget = m_pOwner->Get_FoundStudent();
+
+	if (pTarget)
+		m_vTranslation = pTarget->Get_StudentTranslation();
+	else
+		m_vTranslation = m_pOwner->Get_TargetTranslation();
+
 	return S_OK;
 }
 
@@ -62,9 +69,9 @@ void CBoss_Bullet::Tick(_float fTimeDelta)
 			m_bOnce = false;
 		}
 	}*/
-	CStudent* pTarget = m_pOwner->Get_FoundStudent();
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, pTarget->Get_StudentTranslation());
+
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vTranslation);
 
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 
@@ -132,7 +139,6 @@ HRESULT CBoss_Bullet::Collision_ToMonster()
 
 		if (m_pSphereCom->Collision(pSphere))
 		{
-			
 			int i = 0;
 		}
 
@@ -155,7 +161,7 @@ HRESULT CBoss_Bullet::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(4.f, 4.f, 4.f);
+	ColliderDesc.vScale = _float3(2.f, 2.f, 2.f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 

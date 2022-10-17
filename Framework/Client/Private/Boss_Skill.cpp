@@ -16,6 +16,9 @@ CBoss_Skill::CBoss_Skill(CMonster* pOwner)
 
 	pModel->Set_CurrentAnimation(9);
 
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_BossBullet"), TEXT("Prototype_GameObject_Boss_SBullet"), &m_pOwner);
 
 }
 

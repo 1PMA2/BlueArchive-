@@ -18,9 +18,10 @@ CBoss_Idle::CBoss_Idle(CMonster* pOwner)
 
 	pModel->Set_CurrentAnimation(3);
 
-	m_iRandom = random(0, 1);
+	m_iRandom = random(0, 3);
 
 	m_pRandomStudent = m_pOwner->Get_RandomStudent();
+
 }
 
 void CBoss_Idle::Enter()

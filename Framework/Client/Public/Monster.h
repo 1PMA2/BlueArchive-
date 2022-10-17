@@ -40,7 +40,10 @@ public:
 	void Set_Fear(_bool bFear) { m_bFear = bFear; }
 	class CStudent* Get_FoundStudent() { return m_pTargetStudent; }
 	class CStudent* Get_RandomStudent();
+	CStudent* Get_RandomTarget() { return m_pRandomStudent; }
 	_uint Get_StudentSize() { return m_Students.size(); }
+	_vector Get_TargetTranslation() { return m_vTargetTranslation; }
+	_vector Get_RandomTargetTranslation() { return m_vRandomTarget; }
 	
 
 public:
@@ -66,6 +69,8 @@ protected:
 	CMonster_State*			m_pState = nullptr;
 	_bool					m_bFear = false;
 	_float					m_fFearAcc = 0.f;
+	_vector					m_vTargetTranslation = {};
+	_vector					m_vRandomTarget = {};
 
 public:
 	virtual void OnDisable() override;

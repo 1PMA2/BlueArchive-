@@ -267,15 +267,15 @@ HRESULT CLevel_GamePlay::Ready_Layer_Trigger(const _tchar * pLayerTag)
 
 	_vector vTranslation = XMVectorSet(0.f, 0.f, 14.5f, 1.f);
 
-	/*if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Trigger"), &vTranslation)))
-		return E_FAIL;*/
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Trigger"), &vTranslation)))
+		return E_FAIL;
 
 	//55
-	vTranslation = XMVectorSet(1.f, 0.f, 14.f, 1.f);
+	vTranslation = XMVectorSet(1.2f, 0.f, 12.f, 1.f);
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_BossTrigger"), &vTranslation)))
 		return E_FAIL;
 
-	/*vTranslation = XMVectorSet(0.f, 0.f, 17.f, 1.f);
+	vTranslation = XMVectorSet(0.f, 0.f, 17.f, 1.f);
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Trigger"), &vTranslation)))
 		return E_FAIL;
 
@@ -329,7 +329,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_Trigger(const _tchar * pLayerTag)
 
 	vTranslation = XMVectorSet(1.6f, 0.f, 44.8f, 1.f);
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Trigger"), &vTranslation)))
-		return E_FAIL;*/
+		return E_FAIL;
 
 
 

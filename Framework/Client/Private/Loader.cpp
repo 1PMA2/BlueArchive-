@@ -47,6 +47,7 @@
 #include "Warning.h"
 #include "Warning_Bar.h"
 #include "Boss_Bullet.h"
+#include "Boss_SBullet.h"
 
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
@@ -536,6 +537,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Boss_Bullet"),
 			CBoss_Bullet::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Boss_SBullet"),
+			CBoss_SBullet::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Dead"),
