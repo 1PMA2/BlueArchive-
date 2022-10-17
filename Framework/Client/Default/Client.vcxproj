@@ -399,6 +399,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Client.ico" />
+    <Image Include="icon1.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>

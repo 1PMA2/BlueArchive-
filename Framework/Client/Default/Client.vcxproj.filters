@@ -668,6 +668,7 @@
     <Image Include="small.ico">
       <Filter>98.Default</Filter>
     </Image>
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="00.MainApp">
