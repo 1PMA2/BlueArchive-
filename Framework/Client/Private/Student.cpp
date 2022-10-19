@@ -210,12 +210,12 @@ HRESULT CStudent::SetUp_ShaderResource()
 
 void CStudent::OnDisable()
 {
-	m_bRetire = true;
+	Set_Retire(true);
 }
 
 void CStudent::OnEnable()
 {
-	m_bRetire = false;
+	Set_Retire(false);
 }
 
 HRESULT CStudent::FormationLevel_Collision(_float fTimeDelta)

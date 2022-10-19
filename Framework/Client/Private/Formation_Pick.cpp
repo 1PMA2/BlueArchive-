@@ -124,7 +124,7 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 		{
 			CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_Student"), i);
 			if (pStudent->Is_Retire())
-				break;
+				continue;
 			if (pStudent != m_pOwner)
 			{
 				CCollider* pOwnerAABB = (CCollider*)m_pOwner->Get_Component(TEXT("Com_AABB"));

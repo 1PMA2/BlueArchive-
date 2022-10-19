@@ -649,7 +649,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CKayoko_Ex::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
-		if (FAILED(pGameInstance->Add_Prototype(TEXT("Kayoko_Ex"),
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Haruka_Ex"),
 			CHaruka_Ex::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 

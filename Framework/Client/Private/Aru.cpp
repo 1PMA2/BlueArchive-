@@ -151,6 +151,7 @@ void CAru::OnDisable()
 
 void CAru::OnEnable()
 {
+	__super::OnEnable();
 }
 
 CAru * CAru::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)

@@ -154,6 +154,7 @@ void CHaruka::OnDisable()
 
 void CHaruka::OnEnable()
 {
+	__super::OnEnable();
 }
 
 CHaruka * CHaruka::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)

@@ -215,7 +215,6 @@ void CStudent_Portrait::ClickPortrait()
 			pSensei->Set_FormationAry(m_iEmptyNum, true);
 			m_pStudent->Set_Formation((FORMATION)m_iEmptyNum);
 			m_iPickedNum = m_iEmptyNum;
-			m_pStudent->Set_Retire(false);
 			ENABLE(m_pStudent);
 		}
 	}
@@ -224,7 +223,6 @@ void CStudent_Portrait::ClickPortrait()
 		m_bOnce = true;
 		pSensei->Set_FormationAry(m_iPickedNum, false);
 		m_pStudent->Set_Formation(FORMATION_END);
-		m_pStudent->Set_Retire(true);
 		DISABLE(m_pStudent);
 	}
 

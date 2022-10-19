@@ -154,6 +154,7 @@ void CKayoko::OnDisable()
 
 void CKayoko::OnEnable()
 {
+	__super::OnEnable();
 }
 
 CKayoko * CKayoko::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)

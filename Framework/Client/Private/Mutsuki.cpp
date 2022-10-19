@@ -154,6 +154,7 @@ void CMutsuki::OnDisable()
 
 void CMutsuki::OnEnable()
 {
+	__super::OnEnable();
 }
 
 CMutsuki * CMutsuki::Create(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
