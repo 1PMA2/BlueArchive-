@@ -70,7 +70,7 @@ void CStudent_Portrait::Tick(_float fTimeDelta)
 
 	CTransform* pTarget = (CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 4);
 
-	_float fY = XMVectorGetY(pTarget->Get_State(CTransform::STATE_TRANSLATION)) + 340.f - m_fLocationY;
+	_float fY = XMVectorGetY(pTarget->Get_State(CTransform::STATE_TRANSLATION)) + 300.f - m_fLocationY;
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-m_fX + m_fLocationX, m_fY + fY, 0.f, 1.f));
 
@@ -222,6 +222,7 @@ void CStudent_Portrait::ClickPortrait()
 		m_bOnce = true;
 		pSensei->Set_FormationAry(m_iPickedNum, false);
 		m_pStudent->Set_Formation(FORMATION_END);
+		m_pStudent->Set_Retire(true);
 		DISABLE(m_pStudent);
 	}
 

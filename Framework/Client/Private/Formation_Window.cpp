@@ -35,15 +35,15 @@ HRESULT CFormation_Window::Initialize(void * pArg)
 
 
 
-	m_fSizeX = 1100.f;
-	m_fSizeY = 1500.f;
+	m_fSizeX = 1050.f;
+	m_fSizeY = 1300.f;
 	m_fX = g_iWinCX >> 1;
 	m_fY = g_iWinCY >> 1;
 
 	// XMMatrixPerspectiveFovLH()
 	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH(g_iWinCX, g_iWinCY, 0.f, 1.f)));
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, m_fY - 1400, 0.f, 1.f));
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, m_fY - 1300, 0.f, 1.f));
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
