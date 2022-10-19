@@ -76,15 +76,16 @@ void CFormaton_Btn::Tick(_float fTimeDelta)
 	GetCursorPos(&ptMouse);
 	ScreenToClient(g_hWnd, &ptMouse);
 
+	m_pTransformCom->Set_Scaled(_float3(vSize.x, vSize.y, 0.f));
+
 	if (PtInRect(&rcButton, ptMouse))
 	{
-		if (KEY(LBUTTON, TAP))
+		if (KEY(LBUTTON, HOLD))
 		{
 			m_pTransformCom->Set_Scaled(_float3(vSize.x * 1.1f, vSize.y * 1.1f, 0.f));
 		}
 		else if (KEY(LBUTTON, AWAY))
 		{
-			m_pTransformCom->Set_Scaled(_float3(vSize.x, vSize.y, 0.f));
 			m_bOpenwindow = !m_bOpenwindow;
 		}
 	}
