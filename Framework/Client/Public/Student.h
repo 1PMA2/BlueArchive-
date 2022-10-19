@@ -66,6 +66,7 @@ public:
 	_bool		Get_Ex() { return m_bEx; }
 	void		Set_Ex(_bool bEx) { m_bEx = bEx; }
 	_bool		Is_Retire() { return m_bRetire; }
+	void		Set_Retire(_bool bRetire) { m_bRetire = bRetire; }
 
 	CMonster*		FoundMonster();
 
@@ -110,8 +111,8 @@ protected:
 	HRESULT SetUp_ShaderResource();
 
 public:
-	virtual void OnDisable() {}
-	virtual void OnEnable() {}
+	virtual void OnDisable();
+	virtual void OnEnable();
 
 protected:
 	virtual HRESULT FormationLevel_Collision(_float fTimeDelta);

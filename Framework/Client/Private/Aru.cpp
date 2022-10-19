@@ -33,7 +33,8 @@ HRESULT CAru::Initialize(void * pArg)
 	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
 	
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
-	m_tStudentInfo.eFormation = FORMATION_FIRST;
+	//m_tStudentInfo.eFormation = FORMATION_FIRST;
+	m_tStudentInfo.eFormation = FORMATION_END;
 	m_tStudentInfo.fFireSpeed = 0.5f;
 	m_tStudentInfo.iAtk = 25;
 	m_tStudentInfo.iDef = 0;
@@ -145,6 +146,7 @@ HRESULT CAru::GamePlayLevel_Collision(_float fTimeDelta)
 
 void CAru::OnDisable()
 {
+	__super::OnDisable();
 }
 
 void CAru::OnEnable()

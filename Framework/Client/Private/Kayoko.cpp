@@ -33,7 +33,8 @@ HRESULT CKayoko::Initialize(void * pArg)
 	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
 
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
-	m_tStudentInfo.eFormation = FORMATION_THIRD;
+	//m_tStudentInfo.eFormation = FORMATION_THIRD;
+	m_tStudentInfo.eFormation = FORMATION_END;
 	m_tStudentInfo.iAtk = 10;
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.iEx = 30;
@@ -58,7 +59,7 @@ HRESULT CKayoko::Initialize(void * pArg)
 	if (LEVEL_GAMEPLAY == pSensei->Get_CurrentLevel())
 		if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student_Ex"), TEXT("Kayoko_Ex"), this)))
 			return E_FAIL;
-
+		
 	return S_OK;
 }
 
@@ -148,6 +149,7 @@ HRESULT CKayoko::GamePlayLevel_Collision(_float fTimeDelta)
 
 void CKayoko::OnDisable()
 {
+	__super::OnDisable();
 }
 
 void CKayoko::OnEnable()

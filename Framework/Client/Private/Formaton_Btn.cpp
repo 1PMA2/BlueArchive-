@@ -34,16 +34,20 @@ HRESULT CFormaton_Btn::Initialize(void * pArg)
 
 
 
-	m_fSizeX = 80.f;
-	m_fSizeY = 80.f;
+	m_fSizeX = 90.f;
+	m_fSizeY = 75.f;
 	m_fX = g_iWinCX >> 1;
 	m_fY = g_iWinCY >> 1;
 
 	// XMMatrixPerspectiveFovLH()
 	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH(g_iWinCX, g_iWinCY, 0.f, 1.f)));
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-m_fX + 80.f, m_fY - 100.f, 0.f, 1.f));
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-m_fX + 1200.f, m_fY - 100.f, 0.f, 1.f));
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
+
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+
 
 	return S_OK;
 }
@@ -80,11 +84,8 @@ void CFormaton_Btn::Tick(_float fTimeDelta)
 		}
 		else if (KEY(LBUTTON, AWAY))
 		{
-			//m_pTransformCom->Set_Scaled({ 1.f, 1.f, 0.f });
-
-			CSensei* pSensei = GET_SENSEI;
-
-			pSensei->Set_OpenLobbyLevel(true);
+			m_pTransformCom->Set_Scaled(_float3(vSize.x, vSize.y, 0.f));
+			m_bOpenwindow = !m_bOpenwindow;
 		}
 	}
 
@@ -123,7 +124,7 @@ HRESULT CFormaton_Btn::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_Texture */
-	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Texture_BackButton"), TEXT("Com_Texture "), (CComponent**)&m_pTextureCom)))
+	if (FAILED(__super::Add_Component(LEVEL_FORMATION, TEXT("Prototype_Component_Texture_FormationBtn"), TEXT("Com_Texture "), (CComponent**)&m_pTextureCom)))
 		return E_FAIL;
 
 	/* For.Com_VIBuffer */

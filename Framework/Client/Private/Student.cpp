@@ -80,9 +80,10 @@ HRESULT CStudent::Initialize(void * pArg)
 	if (FAILED(__super::Initialize(pArg)))
 		return E_FAIL;
 
+	m_bRetire = false;
+
 	InitializeStudentState();
 
-	m_bRetire = false;
 
 	return S_OK;
 }
@@ -207,6 +208,16 @@ HRESULT CStudent::SetUp_ShaderResource()
 	return S_OK;
 }
 
+void CStudent::OnDisable()
+{
+	m_bRetire = true;
+}
+
+void CStudent::OnEnable()
+{
+	m_bRetire = false;
+}
+
 HRESULT CStudent::FormationLevel_Collision(_float fTimeDelta)
 {
 
@@ -303,6 +314,11 @@ void CStudent::InitializeStudentState()
 			break;
 		}
 
+		if (FORMATION_END == m_tStudentInfo.eFormation)
+		{
+			Set_Enable(false);
+			m_bRetire = true;
+		}
 	}
 	else
 	{

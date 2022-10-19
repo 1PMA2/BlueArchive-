@@ -111,6 +111,11 @@ private:
 	vector<CStudent::STUDENTINFO>	m_FormationsInfo; //다른 레벨로 넘겨주는 정보
 	typedef vector<CStudent::STUDENTINFO> FORMATIONS_C;
 
+	_bool m_eFormation[4] = { false, false ,false ,false };
+public:
+	_bool Get_FormationAry(_uint iIdex) { return m_eFormation[iIdex]; }
+	void Set_FormationAry(_uint iIdex, _bool eFormation) { m_eFormation[iIdex] = eFormation; }
+	void Reset_FormationAry();
 public:
 	void Set_FormationStudents(CStudent* pStudents);
 	CStudent* Get_FormationStudents(_uint iIndex);

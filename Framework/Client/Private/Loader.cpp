@@ -51,6 +51,10 @@
 #include "Boss_SBullet.h"
 #include "Victory_Bg.h"
 #include "Victory.h"
+#include "Formaton_Btn.h"
+#include "Formation_Window.h"
+#include "Student_Portrait.h"
+
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -459,6 +463,19 @@ HRESULT CLoader::Loading_ForFormationLevel()
 			CFormation_Terrain::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Formation_Btn"),
+			CFormaton_Btn::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Formation_Window"),
+			CFormation_Window::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Portrait"),
+			CStudent_Portrait::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+
 		lstrcpy(m_szLoadingText, TEXT("콜라이더추가.  "));
 		/* For.Prototype_Component_Collider_AABB */
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Collider_AABB"),
@@ -499,6 +516,10 @@ HRESULT CLoader::Loading_ForFormationLevel()
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/SkyBox/Sky_%d.dds"), 5))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Portrait"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Portrait%d.png"), 3))))
+			return E_FAIL;
+
 
 		g_bFormation = false;
 	}
@@ -509,7 +530,7 @@ HRESULT CLoader::Loading_ForFormationLevel()
 		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/FormationBtn.png"), 1))))
 		return E_FAIL;
 
-	if (FAILED(pGameInstance->Add_Prototype(LEVEL_FORMATION, TEXT("Prototype_Component_Texture_FormationSet"),
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_FORMATION, TEXT("Prototype_Component_Texture_FormationWindow"),
 		CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/FormationSet.png"), 1))))
 		return E_FAIL;
 

@@ -157,9 +157,15 @@ HRESULT CLevel_Formation::Ready_Layer_BackGround(const _tchar * pLayerTag)
 
 	/* For.Terrain */
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Terrain"))))
-	return E_FAIL;
+		return E_FAIL;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_BackButton"))))
+		return E_FAIL;
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Btn"))))
+		return E_FAIL;
+
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Window"))))
 		return E_FAIL;
 
 

@@ -17,7 +17,11 @@ public:
 	virtual void Exit() override;
 
 private:
-	_vector m_vPreTranslation = {};
+	class CFormaton_Btn*		m_pBtn = nullptr;
+	_vector m_vPreTranslation = {-5, 0, 0, 1};
+
+private:
+	void Get_Btn();
 
 public:
 	static CFormation_Idle* Create(CStudent* pOwner);

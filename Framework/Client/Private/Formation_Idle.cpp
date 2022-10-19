@@ -6,10 +6,13 @@
 #include "Model.h"
 #include "Formation_Pick.h"
 #include "Sensei.h"
+#include "Formaton_Btn.h"
 
 CFormation_Idle::CFormation_Idle(CStudent* pOwner)
 	:CState(pOwner)
 {
+	Get_Btn();
+
 	m_eAnim = ANIM_FORMATIONIDLE;
 	pOwner->Set_State(m_eAnim);
 
@@ -32,30 +35,30 @@ CFormation_Idle::CFormation_Idle(CStudent* pOwner)
 
 	CSensei* pSensei = GET_SENSEI;
 
-	if (0 >= pSensei->Get_FormationInfoSize())
-	{
-		switch (m_pOwner->Get_StudentInfo().eFormation)
-		{
-		case FORMATION_FIRST:
-			m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_SECOND:
-			m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_THIRD:
-			m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_FOURTH:
-			m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
-			break;
-		case FORMATION_END:
-			DISABLE(m_pOwner);
-			break;
-		}
-	}
+	//if (0 >= pSensei->Get_FormationInfoSize())
+	//{
+	//	switch (m_pOwner->Get_StudentInfo().eFormation)
+	//	{
+	//	case FORMATION_FIRST:
+	//		m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+	//		break;
+	//	case FORMATION_SECOND:
+	//		m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+	//		break;
+	//	case FORMATION_THIRD:
+	//		m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+	//		break;
+	//	case FORMATION_FOURTH:
+	//		m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+	//		break;
+	//	case FORMATION_END:
+	//		DISABLE(m_pOwner);
+	//		break;
+	//	}
+	//}
 
-	else
-	{
+	//else
+	//{
 		for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
 		{
 			if (pSensei->Get_FormationInfo(i).eStudent == m_pOwner->Get_StudentInfo().eStudent)
@@ -76,12 +79,15 @@ CFormation_Idle::CFormation_Idle(CStudent* pOwner)
 				case FORMATION_FOURTH:
 					m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
 					break;
+				default:
+					m_vPreTranslation = XMVectorSet(-5.f, 0.f, 0.f, 1.f);
+					break;
 				}
 				
 				break;
 			}
 		}
-	}
+	//}
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 	pTransform->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation);
 }
@@ -109,18 +115,49 @@ CState * CFormation_Idle::Loop(_float fTimeDelta)
 
 	pModel->Repeat_Animation(fTimeDelta);
 
-	if (pAABBcom->CollisionRay())
+	pSensei->Set_FormationAry(m_pOwner->Get_StudentInfo().eFormation, true);
+
+	switch (m_pOwner->Get_StudentInfo().eFormation)
 	{
-		if (KEY(LBUTTON, TAP))
+	case FORMATION_FIRST:
+		m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+		break;
+	case FORMATION_SECOND:
+		m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+		break;
+	case FORMATION_THIRD:
+		m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+		break;
+	case FORMATION_FOURTH:
+		m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+		break;
+	default:
+		m_vPreTranslation = XMVectorSet(-5.f, 0.f, 0.f, 1.f);
+		break;
+	}
+
+	pTransform->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation);
+
+
+	if (!m_pBtn->Get_Openwindow())
+	{
+		if (pAABBcom->CollisionRay())
 		{
-			pState = CFormation_Pick::Create(m_pOwner);
-			return pState;
+			if (KEY(LBUTTON, TAP))
+			{
+				pSensei->Set_FormationAry(m_pOwner->Get_StudentInfo().eFormation, false);
+				pState = CFormation_Pick::Create(m_pOwner);
+				return pState;
+			}
 		}
 	}
 	
 	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_FORMATION, TEXT("Layer_Formation_Student")); ++i)
 	{
 		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_Student"), i);
+		if (pStudent->Is_Retire())
+			break;
+
 		if (pStudent != m_pOwner)
 		{
 			CCollider* pAABB = (CCollider*)pStudent->Get_Component(TEXT("Com_AABB"));
@@ -141,6 +178,13 @@ CState * CFormation_Idle::Loop(_float fTimeDelta)
 void CFormation_Idle::Exit()
 {
 	Destroy_Instance();
+}
+
+void CFormation_Idle::Get_Btn()
+{
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	m_pBtn = (CFormaton_Btn*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), 3);
 }
 
 CFormation_Idle * CFormation_Idle::Create(CStudent * pOwner)

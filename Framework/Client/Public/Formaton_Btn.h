@@ -20,6 +20,9 @@ public:
 	virtual ~CFormaton_Btn() = default;
 
 public:
+	_bool Get_Openwindow() { return m_bOpenwindow; }
+
+public:
 	virtual HRESULT Initialize_Prototype();
 	virtual HRESULT Initialize(void* pArg);
 	virtual void Tick(_float fTimeDelta);
@@ -38,6 +41,7 @@ private:
 
 	_int			m_iImgNum = 0;
 	_float			m_fFade = -1.f;
+	_bool			m_bOpenwindow = false;
 
 private:
 	HRESULT SetUp_Components();

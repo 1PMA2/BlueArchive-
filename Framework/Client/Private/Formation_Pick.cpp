@@ -86,6 +86,7 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 				m_pOwner->Set_Formation(FORMATION_FIRST);
 				m_eCurrentFormation = FORMATION_FIRST;
 				m_vCurrentTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+				
 			}
 			else if (1.f > fOut.x && 0.f <= fOut.x)
 			{
@@ -119,6 +120,8 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_FORMATION, TEXT("Layer_Formation_Student")); ++i)
 		{
 			CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_Student"), i);
+			if (pStudent->Is_Retire())
+				break;
 			if (pStudent != m_pOwner)
 			{
 				CCollider* pOwnerAABB = (CCollider*)m_pOwner->Get_Component(TEXT("Com_AABB"));

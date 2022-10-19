@@ -33,7 +33,8 @@ HRESULT CMutsuki::Initialize(void * pArg)
 	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
 	
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
-	m_tStudentInfo.eFormation = FORMATION_SECOND;
+	//m_tStudentInfo.eFormation = FORMATION_SECOND;
+	m_tStudentInfo.eFormation = FORMATION_END;
 	m_tStudentInfo.iAtk = 15;
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.iEx = 30;
@@ -148,6 +149,7 @@ HRESULT CMutsuki::GamePlayLevel_Collision(_float fTimeDelta)
 
 void CMutsuki::OnDisable()
 {
+	__super::OnDisable();
 }
 
 void CMutsuki::OnEnable()

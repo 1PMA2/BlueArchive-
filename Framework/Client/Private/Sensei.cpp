@@ -130,6 +130,14 @@ void CSensei::Tick_Cost(_float fTimeDelta)
 		m_tSensei.fCost = 10.f;
 }
 
+void CSensei::Reset_FormationAry()
+{
+	m_eFormation[0] = false;
+	m_eFormation[1] = false;
+	m_eFormation[2] = false;
+	m_eFormation[3] = false;
+}
+
 void CSensei::Set_FormationStudents(CStudent* pStudents)
 {
 	m_Formations.push_back(pStudents);

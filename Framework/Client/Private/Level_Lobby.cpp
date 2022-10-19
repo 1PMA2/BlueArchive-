@@ -60,6 +60,18 @@ void CLevel_Lobby::Open_Formation()
 {
 	CSensei* pSensei = GET_SENSEI;
 
+	pSensei->Reset_FormationAry();
+
+	if (0 < pSensei->Get_FormationInfoSize())
+	{
+		for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
+		{
+			pSensei->Set_FormationAry(pSensei->Get_FormationInfo(i).eFormation, true);
+		}
+	}
+	
+	
+
 	if (pSensei->Get_OpenFormationLevel())
 	{
 		pSensei->Set_PreLevel(LEVEL_LOBBY);
