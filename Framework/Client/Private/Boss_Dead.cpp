@@ -51,11 +51,7 @@ HRESULT CBoss_Dead::Initialize(void * pArg)
 
 	pSensei->Victory();
 
-	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-
-	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"), TEXT("Prototype_GameObject_VictoryBg"));
-
-	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"), TEXT("Prototype_GameObject_Victory"));
+	
 
 	return S_OK;
 }
@@ -72,6 +68,11 @@ void CBoss_Dead::LateTick(_float fTimeDelta)
 
 	if (m_pModelCom->Get_isFinished())
 	{
+		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"), TEXT("Prototype_GameObject_VictoryBg"));
+
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"), TEXT("Prototype_GameObject_Victory"));
 		DELETE(this);
 	}
 

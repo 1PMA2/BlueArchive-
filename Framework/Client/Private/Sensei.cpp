@@ -102,8 +102,12 @@ void CSensei::Use_Ex(_bool bEx, _float fCost)
 
 void CSensei::Set_TimeSpeed()
 {
-
-	if (m_bExReady || m_bEnd)
+	if (m_bEnd)
+	{
+		m_tSensei.fTimeSpeed = 0.3f;
+		return;
+	}
+	if (m_bExReady)
 	{
 		m_tSensei.fTimeSpeed = 0.1f;
 		return;

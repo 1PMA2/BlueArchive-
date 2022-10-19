@@ -46,7 +46,7 @@ HRESULT CMonster_Boss::Initialize(void * pArg)
 
 	m_tMonsterInfo.eMonster = BOSS;
 	m_tMonsterInfo.iAtk = 20;
-	m_tMonsterInfo.iHp = 3500;
+	m_tMonsterInfo.iHp = 1000;
 	m_tMonsterInfo.fRange = 6.f;
 
 	m_pState = CBoss_Landing::Create(this);
@@ -67,6 +67,7 @@ void CMonster_Boss::Tick(_float fTimeDelta)
 void CMonster_Boss::LateTick(_float fTimeDelta)
 {
 	__super::LateTick(fTimeDelta);
+
 }
 
 HRESULT CMonster_Boss::Render()

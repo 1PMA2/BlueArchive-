@@ -33,6 +33,9 @@ private:
 	ID3D11DeviceContext*	m_pContext = nullptr;
 	bool show_arrange_window = true;
 	bool show_another_window = false;
+	CGameObject* pObj = nullptr;
+	bool costbar = false;
+	bool costbg = false;
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
 public:

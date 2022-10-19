@@ -34,6 +34,8 @@ HRESULT CImgui_Manager::Initialize(ID3D11Device * pDevice, ID3D11DeviceContext *
 	ImGui_ImplWin32_Init(g_hWnd);
 	ImGui_ImplDX11_Init(m_pDevice, m_pContext);
 
+	ImGuiIO& io = ImGui::GetIO();
+	io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\malgun.ttf", 18.0f, NULL, io.Fonts->GetGlyphRangesKorean());
 	return S_OK;
 }
 
@@ -43,7 +45,6 @@ void CImgui_Manager::Tick(_float fTimeDelta)
 
 HRESULT CImgui_Manager::Render()
 {
-
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
@@ -60,13 +61,13 @@ HRESULT CImgui_Manager::Render()
 		static float fScaleX = 0.1f;
 		static float fScaleY = 0.1f;
 		static int counter = 0;
-		CGameObject* pObj = nullptr;
+		
 
-		ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+		ImGui::Begin(u8"µûÈåÈæ");                          // Create a window called "Hello, world!" and append into it.
 
 		ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-		//ImGui::Checkbox("Demo Window", &show_arrange_window);      // Edit bools storing our window open/close state
-		ImGui::Checkbox("Another Window", &show_another_window);
+		ImGui::Checkbox("costbar", &costbar);      // Edit bools storing our window open/close state
+		ImGui::Checkbox("costwindow", &costbg);
 
 		//ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
 		ImGui::SliderFloat("X Translation", &fTranslationX, -640.f, 640.f);  // Edit 1 float using a slider from 0.0f to 1.0f
@@ -74,20 +75,20 @@ HRESULT CImgui_Manager::Render()
 		ImGui::SliderFloat("X Scale", &fScaleX, 10.f, 1280.f);  // Edit 1 float using a slider from 0.0f to 1.0f
 		ImGui::SliderFloat("Y Scale", &fScaleY, 10.f, 1280.f);
 
-		if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-		{
-			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"), TEXT("Prototype_GameObject_Victory"));
-		}
+		//if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+		//{
+		//	m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"), TEXT("Prototype_GameObject_Victory"));
+		//}
 
-		if(0 < m_pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_W")))
-			pObj = m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"));
+		//if(0 < m_pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_W")))
+		//	pObj = m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"));
 
 		if (nullptr != pObj)
 		{
-			//CTransform* pTransform = (CTransform*)pObj->Get_Component(TEXT("Com_Transform"));
+			CTransform* pTransform = (CTransform*)pObj->Get_Component(TEXT("Com_Transform"));
 
-			//pTransform->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(fTranslationX, fTranslationY, 0.f, 1.f));
-			//pTransform->Set_Scaled(_float3(fScaleX, fScaleY, 0.f));
+			pTransform->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(fTranslationX, fTranslationY, 0.f, 1.f));
+			pTransform->Set_Scaled(_float3(fScaleX, fScaleY, 0.f));
 		}
 
 		ImGui::SameLine();
@@ -101,6 +102,17 @@ HRESULT CImgui_Manager::Render()
 		ImGui::End();
 	}
 
+	if (costbar)
+	{
+		pObj = m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_BackGround"), 4);
+	}
+
+
+	if (costbg)
+	{
+		pObj = m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_BackGround"), 3);
+	}
+
 	// 3. Show another simple window.
 	if (show_another_window)
 	{
@@ -110,19 +122,13 @@ HRESULT CImgui_Manager::Render()
 			show_another_window = false;
 		ImGui::End();
 	}
+
+	
 	// Rendering
 	ImGui::Render();
-	//const float clear_color_with_alpha[4] = { clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w };
-	
-	//ID3D11RenderTargetView* pRTV = m_pGameInstance->Get_RTV();
-	//
-	//m_pContext->OMSetRenderTargets(1, &pRTV, NULL);
-	//m_pContext->ClearRenderTargetView(pRTV, clear_color_with_alpha);
-
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	//const float clear_color_with_alpha[4] = { clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w };
 
-	m_pGameInstance->Get_SwapChain()->Present(1, 0); // Present with vsync
-								 //g_pSwapChain->Present(0, 0); // Present without vsync
 
 	return S_OK;
 }

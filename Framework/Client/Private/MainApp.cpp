@@ -91,14 +91,18 @@ HRESULT CMainApp::Render()
 		nullptr == m_pRenderer)
 		return E_FAIL;
 
+	
+
 	m_pGameInstance->Clear_BackBuffer_View(_float4(0.5f, 0.5f, 0.5f, 1.f));
 	m_pGameInstance->Clear_DepthStencil_View();
 	
 	m_pRenderer->Draw_RenderGroup();
 
+	CImgui_Manager::Get_Instance()->Render();
+
 	m_pGameInstance->Render_Engine();
 
-	//CImgui_Manager::Get_Instance()->Render();
+	
 
 	++m_iNumRender;
 
@@ -117,6 +121,7 @@ HRESULT CMainApp::Render()
 
 	m_pGameInstance->Present();
 
+	
 
 	return S_OK;
 }

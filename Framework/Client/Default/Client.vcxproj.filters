@@ -337,6 +337,15 @@
     <ClInclude Include="..\Public\Victory.h">
       <Filter>02.GameObject\05.UI\GamePlay_UI\Victory</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Cost_Num.h">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\CostBg\Cost_Num</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Formaton_Btn.h">
+      <Filter>02.GameObject\05.UI\Formation_UI\Formation_Btn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Formation_Window.h">
+      <Filter>02.GameObject\05.UI\Formation_UI\Formation_Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -660,6 +669,15 @@
     <ClCompile Include="..\Private\Victory.cpp">
       <Filter>02.GameObject\05.UI\GamePlay_UI\Victory</Filter>
     </ClCompile>
+    <ClCompile Include="..\Private\Cost_Num.cpp">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\Cost_Gauge\CostBg\Cost_Num</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Formaton_Btn.cpp">
+      <Filter>02.GameObject\05.UI\Formation_UI\Formation_Btn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Formation_Window.cpp">
+      <Filter>02.GameObject\05.UI\Formation_UI\Formation_Window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Client.ico">
@@ -668,7 +686,6 @@
     <Image Include="small.ico">
       <Filter>98.Default</Filter>
     </Image>
-    <Image Include="icon1.ico" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="00.MainApp">
@@ -1097,6 +1114,9 @@
     <Filter Include="02.GameObject\05.UI\GamePlay_UI\Victory\Black_Bg">
       <UniqueIdentifier>{db0c45e1-8d96-41b4-b692-3cdefbb86654}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.GameObject\09Effect">
+      <UniqueIdentifier>{3a94f209-0509-41aa-aed2-d5fa1145d453}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -1122,6 +1142,9 @@
       <Filter>03.ShaderFiles</Filter>
     </FxCompile>
     <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxTex.hlsl">
+      <Filter>03.ShaderFiles</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_Effect.hlsl">
       <Filter>03.ShaderFiles</Filter>
     </FxCompile>
   </ItemGroup>

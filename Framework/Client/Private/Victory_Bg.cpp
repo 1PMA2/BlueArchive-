@@ -52,7 +52,7 @@ void CVictory_Bg::Tick(_float fTimeDelta)
 {
 
 	
-	m_fFade += fTimeDelta * 10.f;
+	m_fFade += fTimeDelta * 5.f;
 
 	if (0.7f < m_fFade)
 		m_fFade = 0.7f;

@@ -52,6 +52,8 @@ HRESULT CBoss_SBullet::Initialize(void * pArg)
 	else
 		m_vTranslation = m_pOwner->Get_RandomTargetTranslation();
 
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_pOwner->Get_MonsterTranslation());
+
 	return S_OK;
 }
 
@@ -71,7 +73,6 @@ void CBoss_SBullet::Tick(_float fTimeDelta)
 	}*/
 
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_pOwner->Get_MonsterTranslation());
 	m_pTransformCom->LookAt(m_vTranslation);
 
 	m_pAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
