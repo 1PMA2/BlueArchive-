@@ -333,6 +333,9 @@ void CStudent::InitializeStudentState()
 		case FORMATION_THIRD:
 			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -60.f, 0.f, 1.f));
 			break;
+		case FORMATION_FOURTH:
+			m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, 40.f, 0.f, 1.f));
+			break;
 		}
 	}
 	RELEASE_INSTANCE(CSensei);

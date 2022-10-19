@@ -27,6 +27,9 @@ CFormation_Pick::CFormation_Pick(CStudent* pOwner)
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(26);
 		break;
+	case HARUKA:
+		pModel->Set_CurrentAnimation(8);
+		break;
 
 	}
 

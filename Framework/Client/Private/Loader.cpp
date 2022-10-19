@@ -22,6 +22,8 @@
 #include "Mutsuki_ExBullet.h"
 #include "Kayoko.h"
 #include "Kayoko_Ex.h"
+#include "Haruka.h"
+#include "Haruka_Ex.h"
 //#include "Effect.h"
 #include "Sky.h"
 #include "Sensei.h"
@@ -45,6 +47,7 @@
 #include "Camera_Aru.h"
 #include "Camera_Mutsuki.h"
 #include "Camera_Kayoko.h"
+#include "Camera_Haruka.h"
 #include "Warning.h"
 #include "Warning_Bar.h"
 #include "Boss_Bullet.h"
@@ -430,6 +433,24 @@ HRESULT CLoader::Loading_ForGachaScene()
 					return E_FAIL;
 			}
 
+			else if (TEXT("Haruka") == pSensei->Get_StudentName(i))
+			{
+				pSensei->Set_RealStudent(pSensei->Get_StudentName(i), CHaruka::Create(m_pDevice, m_pContext));
+				if (FAILED(pGameInstance->Add_Prototype(pSensei->Get_StudentName(i),
+					pSensei->Get_StudentIndex(i))))
+					return E_FAIL;
+
+				if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Haruka"),
+					CCamera_Haruka::Create(m_pDevice, m_pContext))))
+					return E_FAIL;
+
+				ZeroMemory(&TransformMatrix, sizeof(_matrix));
+				TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+				if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_Haruka"),
+					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Haruka/", "Haruka.fbx", TransformMatrix))))
+					return E_FAIL;
+			}
+
 
 		}
 
@@ -517,7 +538,7 @@ HRESULT CLoader::Loading_ForFormationLevel()
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Portrait"),
-			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Portrait%d.png"), 3))))
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Portrait%d.png"), 4))))
 			return E_FAIL;
 
 
@@ -628,6 +649,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CKayoko_Ex::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Kayoko_Ex"),
+			CHaruka_Ex::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Warning"),
 			CWarning::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
@@ -727,6 +752,14 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 				TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 				if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Kayoko_Ex"),
 					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Kayoko/", "Kayoko_Ex.fbx", TransformMatrix))))
+					return E_FAIL;
+				break;
+
+			case HARUKA:
+				ZeroMemory(&TransformMatrix, sizeof(_matrix));
+				TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.0f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
+				if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Haruka_Ex"),
+					CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Haruka/", "Haruka_Ex.fbx", TransformMatrix))))
 					return E_FAIL;
 				break;
 

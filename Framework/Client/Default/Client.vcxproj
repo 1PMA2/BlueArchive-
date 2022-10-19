@@ -196,6 +196,7 @@
     <ClInclude Include="..\Public\Camera_Ex.h" />
     <ClInclude Include="..\Public\Camera_Free.h" />
     <ClInclude Include="..\Public\Camera_Gacha.h" />
+    <ClInclude Include="..\Public\Camera_Haruka.h" />
     <ClInclude Include="..\Public\Camera_Kayoko.h" />
     <ClInclude Include="..\Public\Camera_Main.h" />
     <ClInclude Include="..\Public\Camera_Mutsuki.h" />
@@ -217,6 +218,8 @@
     <ClInclude Include="..\Public\Formation_Window.h" />
     <ClInclude Include="..\Public\Formaton_Btn.h" />
     <ClInclude Include="..\Public\Gacha_Scene.h" />
+    <ClInclude Include="..\Public\Haruka.h" />
+    <ClInclude Include="..\Public\Haruka_Ex.h" />
     <ClInclude Include="..\Public\Hide_FireStart.h" />
     <ClInclude Include="..\Public\Hide_Idle.h" />
     <ClInclude Include="..\Public\Hide_Reloading.h" />
@@ -312,6 +315,7 @@
     <ClCompile Include="..\Private\Camera_Ex.cpp" />
     <ClCompile Include="..\Private\Camera_Free.cpp" />
     <ClCompile Include="..\Private\Camera_Gacha.cpp" />
+    <ClCompile Include="..\Private\Camera_Haruka.cpp" />
     <ClCompile Include="..\Private\Camera_Kayoko.cpp" />
     <ClCompile Include="..\Private\Camera_Main.cpp" />
     <ClCompile Include="..\Private\Camera_Mutsuki.cpp" />
@@ -332,6 +336,8 @@
     <ClCompile Include="..\Private\Formation_Window.cpp" />
     <ClCompile Include="..\Private\Formaton_Btn.cpp" />
     <ClCompile Include="..\Private\Gacha_Scene.cpp" />
+    <ClCompile Include="..\Private\Haruka.cpp" />
+    <ClCompile Include="..\Private\Haruka_Ex.cpp" />
     <ClCompile Include="..\Private\Hide_FireStart.cpp" />
     <ClCompile Include="..\Private\Hide_Idle.cpp" />
     <ClCompile Include="..\Private\Hide_Reloading.cpp" />

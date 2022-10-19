@@ -57,7 +57,7 @@ HRESULT CStudent_Portrait::Initialize(void * pArg)
 		}
 	}
 	m_fLocationX = ((m_iSequence % 3) + 1.f) * 320;
-	m_fLocationY = ((m_iSequence / 3) + 1.f) * 200;
+	m_fLocationY = ((m_iSequence / 3) + 1.f) * 250;
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-m_fX + m_fLocationX, m_fY - m_fLocationY, 0.f, 1.f));
 

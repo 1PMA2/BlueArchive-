@@ -30,7 +30,9 @@ CFormation_Idle::CFormation_Idle(CStudent* pOwner)
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(0);
 		break;
-
+	case HARUKA:
+		pModel->Set_CurrentAnimation(21);
+		break;
 	}
 
 	CSensei* pSensei = GET_SENSEI;
