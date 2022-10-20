@@ -17,6 +17,9 @@ public:
 	virtual void Exit() override;
 
 private:
+	_float4 m_vOut = {};
+
+private:
 	FORMATION m_eCurrentFormation = FORMATION_END;
 	FORMATION m_ePreFormation = FORMATION_END;
 	_vector m_vPreTranslation = {};

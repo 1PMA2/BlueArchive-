@@ -1,5 +1,3 @@
-﻿  Student_Portrait.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\student_portrait.cpp(45): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\student_portrait.cpp(51): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+﻿  LINK : ..\Bin\Client.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

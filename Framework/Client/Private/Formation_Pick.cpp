@@ -74,36 +74,36 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 
 	if (KEY(LBUTTON, HOLD))
 	{
-		_float4 fOut;
-
 		pGameInstance->Picking((CVIBuffer*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_VIBuffer"), 1),
-			(CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 1), &fOut);
+			(CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 1), &m_vOut);
 
-		fOut.y -= 0.5f; // offset
-		pTransform->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4(&fOut));
-
-		if (-1.0f <= fOut.y && 1.f > fOut.y)
+		m_vOut.y -= 0.5f; // offset
+		pTransform->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4(&m_vOut));
+	}
+	else
+	{
+		if (-1.0f <= m_vOut.y && 1.f > m_vOut.y)
 		{
-			if (1.f <= fOut.x)
+			if (1.f <= m_vOut.x)
 			{
 				m_pOwner->Set_Formation(FORMATION_FIRST);
 				m_eCurrentFormation = FORMATION_FIRST;
 				m_vCurrentTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
-				
+
 			}
-			else if (1.f > fOut.x && 0.f <= fOut.x)
+			else if (1.f > m_vOut.x && 0.f <= m_vOut.x)
 			{
 				m_pOwner->Set_Formation(FORMATION_SECOND);
 				m_eCurrentFormation = FORMATION_SECOND;
 				m_vCurrentTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
 			}
-			else if (0.f > fOut.x && -1.f <= fOut.x)
+			else if (0.f > m_vOut.x && -1.f <= m_vOut.x)
 			{
 				m_pOwner->Set_Formation(FORMATION_THIRD);
 				m_eCurrentFormation = FORMATION_THIRD;
 				m_vCurrentTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
 			}
-			else if (-1.f > fOut.x)
+			else if (-1.f > m_vOut.x)
 			{
 				m_pOwner->Set_Formation(FORMATION_FOURTH);
 				m_eCurrentFormation = FORMATION_FOURTH;
@@ -116,10 +116,6 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 		{
 			m_vCurrentTranslation = m_vPreTranslation;
 		}
-	}
-	else
-	{
-
 		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_FORMATION, TEXT("Layer_Formation_Student")); ++i)
 		{
 			CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_Student"), i);
