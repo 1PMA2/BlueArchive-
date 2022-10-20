@@ -24,6 +24,7 @@ public:
 	{
 		_tchar*	pName;
 		STUDENT eStudent;
+		WEAPON eWeapon;
 		FORMATION eFormation;
 
 		_bool	bExModel;

@@ -1,3 +1,176 @@
-﻿  LINK : ..\Bin\Client.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+﻿  Arona.cpp
+  Arona_CAM.cpp
+  Arona_Sack.cpp
+  Aru.cpp
+  Aru_Ex.cpp
+  Aru_ExBullet.cpp
+  BG_Lobby.cpp
+  Back_Btn.cpp
+  Boss_Atk.cpp
+  Boss_AtkToIdle.cpp
+  Boss_Bullet.cpp
+  Boss_Dead.cpp
+  Boss_Idle.cpp
+  Boss_IdleToAtk.cpp
+  Boss_Landing.cpp
+  Boss_Move.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Boss_Idle.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Boss_Landing.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Boss_Move.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Boss_Atk.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Boss_IdleToAtk.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\private\bg_lobby.cpp(42): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\bg_lobby.cpp(69): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\bg_lobby.cpp(70): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Boss_AtkToIdle.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Boss_Bullet.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\private\back_btn.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Aru_ExBullet.cpp)
+  Boss_MoveEnd.cpp
+  Boss_SBullet.cpp
+  Boss_Shield.cpp
+  Boss_Skill.cpp
+  Boss_Trigger.cpp
+  Camera_Aru.cpp
+  Camera_Ex.cpp
+  Camera_Free.cpp
+  Camera_Gacha.cpp
+  Camera_Haruka.cpp
+  Camera_Kayoko.cpp
+  Camera_Main.cpp
+  Camera_Mutsuki.cpp
+  City.cpp
+  Cost_Gauge.cpp
+  Cost_GaugeBg.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Boss_Skill.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Boss_MoveEnd.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Boss_Shield.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Boss_SBullet.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Camera_Main.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\private\cost_gaugebg.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\cost_gauge.cpp(45): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Cost_Num.cpp
+  Droid_Dead.cpp
+  Ex.cpp
+  Ex_Cutin.cpp
+  Fade_InOut.cpp
+  Fade_Out.cpp
+  Fire.cpp
+  ForkLift.cpp
+  Formation_Idle.cpp
+  Formation_Pick.cpp
+  Formation_Terrain.cpp
+  Formation_Window.cpp
+  Formaton_Btn.cpp
+  Gacha_Scene.cpp
+  Haruka.cpp
+  Haruka_Ex.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Ex.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\private\cost_num.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\fade_out.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\fade_out.cpp(78): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\fade_out.cpp(79): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\fade_inout.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\fade_inout.cpp(104): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\fade_inout.cpp(105): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Fire.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\private\formation_window.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\formaton_btn.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Hide_FireStart.cpp
+  Hide_Idle.cpp
+  Hide_ReloadStart.cpp
+  Hide_Reloading.cpp
+  Imgui_Manager.cpp
+  Kayoko.cpp
+  Kayoko_Ex.cpp
+  Knee_Idle.cpp
+  Knee_Reload.cpp
+  Knee_ZoomEnd.cpp
+  Knee_ZoomFire.cpp
+  Knee_ZoomStart.cpp
+  Level_Formation.cpp
+  Level_Gacha.cpp
+  Level_GamePlay.cpp
+  Level_Loading.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Hide_FireStart.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Knee_ZoomFire.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Knee_ZoomStart.cpp)
+  Level_Lobby.cpp
+  Level_Logo.cpp
+  Loader.cpp
+  LoadingImage.cpp
+  M_AtkIng.cpp
+  M_AtkStart.cpp
+  M_Landing.cpp
+  M_Run.cpp
+  M_Runend.cpp
+  MainApp.cpp
+  Monster.cpp
+  Monster_Boss.cpp
+  Monster_Droid.cpp
+  Monster_State.cpp
+  Monster_Trigger.cpp
+  Mutsuki.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Loader.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\private\loadingimage.cpp(40): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\loadingimage.cpp(118): warning C4244: '=': 'Engine::_uint'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\loadingimage.cpp(119): warning C4244: '=': 'Engine::_uint'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\M_AtkIng.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\M_AtkStart.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\M_Landing.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\M_Run.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Monster.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\M_Runend.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Monster_Boss.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Monster_Droid.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Monster_State.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\private\monster.cpp(85): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\monster.cpp(93): warning C4267: '인수': 'size_t'에서 'Engine::_int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Mutsuki_Ex.cpp
+  Mutsuki_ExBullet.cpp
+  Rifle_Delay.cpp
+  Rifle_Fire.cpp
+  Run.cpp
+  Run_Sign.cpp
+  Run_ToKnee.cpp
+  Sensei.cpp
+  Sky.cpp
+  State.cpp
+  Student.cpp
+  Student_Img.cpp
+  Student_Portrait.cpp
+  Terrain.cpp
+  UI.cpp
+  UI_RecruitButton.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Mutsuki_ExBullet.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Rifle_Delay.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\State.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Rifle_Fire.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Run.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\private\run.cpp(134): warning C4267: '인수': 'size_t'에서 'Engine::_int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Sensei.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\public\monster.h(44): warning C4267: 'return': 'size_t'에서 'Engine::_uint'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 ..\Private\Student.cpp)
+c:\users\slave\documents\github\bluearchive\framework\client\private\student_img.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\student_portrait.cpp(45): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\student_portrait.cpp(51): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  UI_Student.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\private\ui.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\ui_recruitbutton.cpp(42): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Victory.cpp
+  Victory_Bg.cpp
+  Warning.cpp
+  Warning_Bar.cpp
+  Work_Button.cpp
+  Run_ToHide.cpp
+  BackGround.cpp
+  Client.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\private\victory.cpp(41): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\work_button.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\warning_bar.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\victory_bg.cpp(41): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\warning.cpp(44): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\background.cpp(43): warning C4244: '인수': 'const unsigned int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\background.cpp(79): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\background.cpp(80): warning C4244: '=': 'const UINT'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

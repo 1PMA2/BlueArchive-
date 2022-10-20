@@ -119,8 +119,13 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 	if (0 < m_TargetMonsters.size())
 	{
-
 		Find_Cover();
+
+		if (SHOTGUN == m_pOwner->Get_StudentInfo().eWeapon)
+		{
+			m_bOnce = false;
+			m_pTargetCover = nullptr;
+		}
 
 		if (0 < m_TargetCovers.size()) //¾öÆó¹° Å½»ö ¼º°ø½Ã
 		{

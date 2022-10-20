@@ -309,7 +309,7 @@ HRESULT CLoader::Loading_ForGachaLevel()
 		lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중이비낟. "));
 		/* For.Prototype_Component_Texture_Default */
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Student"),
-			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Student/sqr%d.png"), 3))))
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Student/spr%d.png"), 4))))
 			return E_FAIL;
 
 		_matrix TransformMatrix;

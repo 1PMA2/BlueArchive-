@@ -35,6 +35,7 @@ HRESULT CKayoko::Initialize(void * pArg)
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
 	//m_tStudentInfo.eFormation = FORMATION_THIRD;
 	m_tStudentInfo.eFormation = FORMATION_END;
+	m_tStudentInfo.eWeapon = GUN;
 	m_tStudentInfo.iAtk = 10;
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.iEx = 30;

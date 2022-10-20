@@ -186,6 +186,8 @@ void CForkLift::Collision_ToPlayer()
 	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Student")); ++i)
 	{
 		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
+		if (SHOTGUN == pStudent->Get_StudentInfo().eWeapon)
+			continue;
 
 		CCollider* pCollider = (CCollider*)pStudent->Get_Component(TEXT("Com_SPHERE"));
 

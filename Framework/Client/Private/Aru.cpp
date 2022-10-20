@@ -35,6 +35,7 @@ HRESULT CAru::Initialize(void * pArg)
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
 	//m_tStudentInfo.eFormation = FORMATION_FIRST;
 	m_tStudentInfo.eFormation = FORMATION_END;
+	m_tStudentInfo.eWeapon = GUN;
 	m_tStudentInfo.fFireSpeed = 0.5f;
 	m_tStudentInfo.iAtk = 25;
 	m_tStudentInfo.iDef = 0;

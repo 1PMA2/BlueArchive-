@@ -35,6 +35,7 @@ HRESULT CMutsuki::Initialize(void * pArg)
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
 	//m_tStudentInfo.eFormation = FORMATION_SECOND;
 	m_tStudentInfo.eFormation = FORMATION_END;
+	m_tStudentInfo.eWeapon = GUN;
 	m_tStudentInfo.iAtk = 15;
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.iEx = 30;
