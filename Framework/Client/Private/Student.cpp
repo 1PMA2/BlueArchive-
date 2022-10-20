@@ -177,7 +177,7 @@ HRESULT CStudent::SetUp_Components()
 	/* For.Com_SPHERE */
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(0.4f, 0.4f, 0.4f);
+	ColliderDesc.vScale = _float3(0.3f, 0.3f, 0.3f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
@@ -358,6 +358,7 @@ void CStudent::ToStudentCollision(_float fTimeDelta)
 
 			if (m_pAABBCom->Collision(pOther))
 			{
+				m_pOtherStudent = pStudent;
 				m_bOther = true;
 				break;
 			}
@@ -370,6 +371,7 @@ void CStudent::ToStudentCollision(_float fTimeDelta)
 
 		if (0.5f < m_fTimeAcc)
 		{
+			m_pOtherStudent = nullptr;
 			m_bOther = false;
 			m_fTimeAcc = 0.f;
 		}

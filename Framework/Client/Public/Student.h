@@ -61,6 +61,7 @@ public:
 	_bool		Get_IsColl() { return m_bColled; }
 	_bool		Get_Other() { return m_bOther; }
 	void		Set_Other(_bool bOther) { m_bOther = bOther; }
+	CStudent*   Get_OtherStudent() { return m_pOtherStudent; }
 	_bool		Get_ExReady() { return m_bExReady; }
 	void		Set_ExReady(_bool bEx) { m_bExReady = bEx; }
 	//void		Set_ExReady () { m_bExReady = (m_bExReady) ? (false) : (true); }
@@ -97,6 +98,7 @@ protected:
 	_float					m_fTimeAcc = 0.f;
 	_bool					m_bColled = false;
 	_bool					m_bOther = false;
+	CStudent*				m_pOtherStudent = nullptr;
 	_bool					m_bExReady = false;
 	_bool					m_bEx = false;
 	_vector					m_vPreTranslation = {};

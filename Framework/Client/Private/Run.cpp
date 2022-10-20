@@ -27,11 +27,11 @@ CRun::CRun(CStudent* pOwner)
 		break;
 	case 1:
 		pModel->Set_CurrentAnimation(7);
-		m_fHideLength = 0.1f;
+		m_fHideLength = 0.15f;
 		break;
 	case 2:
 		pModel->Set_CurrentAnimation(36);
-		m_fHideLength = 0.1f;
+		m_fHideLength = 0.15f;
 		break;
 
 	}
@@ -190,6 +190,22 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 						return nullptr;
 					}
 				}
+			}
+			else
+			{
+				CStudent* pOther = m_pOwner->Get_OtherStudent();
+				CTransform * pOtherTransform = (CTransform*)pOther->Get_Component(TEXT("Com_Transform"));
+				_vector vOther = pOtherTransform->Get_WorldMatrix().r[3];
+				_float fLong = XMVectorGetZ(vTranslation) - XMVectorGetZ(vOther);
+				_vector vYZ = pStudentTransform->Get_WorldMatrix().r[3];
+
+				if (0 < fLong)
+					pStudentTransform->LookAtLerp(XMVectorSet(10.f, XMVectorGetY(vYZ), XMVectorGetZ(vYZ), 1.f), m_fTurnSpeed, fTimeDelta);
+				else
+					pStudentTransform->LookAtLerp(XMVectorSet(-10.f, XMVectorGetY(vYZ), XMVectorGetZ(vYZ), 1.f), m_fTurnSpeed, fTimeDelta);
+
+				pStudentTransform->Go_Straight(fTimeDelta); //범위 내 몬스터 없을시 앞으로 전진
+				return nullptr;
 			}
 		}
 
