@@ -365,7 +365,7 @@ HRESULT CLoader::Loading_ForGachaScene()
 
 	CSensei* pSensei = GET_SENSEI;
 
-	for (_int i = 0; i < pSensei->Get_StudentNum(); ++i)
+	for (_uint i = 0; i < pSensei->Get_StudentNum(); ++i)
 	{
 		if (nullptr == pSensei->Get_StudentIndex(i))
 		{

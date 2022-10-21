@@ -137,7 +137,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 		{
 			if (m_bOnce)
 				{
-					_uint iRandom = random(0, m_TargetCovers.size() - 1);
+					_uint iRandom = random(0, (_uint)m_TargetCovers.size() - 1);
 					m_pTargetCover = m_TargetCovers.at(iRandom);
 					m_pTargetCover->Set_Use();
 					m_bOnce = false;

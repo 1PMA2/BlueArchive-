@@ -90,7 +90,7 @@ CStudent * CMonster::Get_RandomStudent()
 
 	if (0 < m_Students.size())
 	{
-		_uint iRand = random(0, m_Students.size() - 1);
+		_uint iRand = random(0, (_int)m_Students.size() - 1);
 		m_pRandomStudent = m_Students.at(iRand);
 		m_vRandomTarget = m_pRandomStudent->Get_StudentTranslation();
 		return m_pRandomStudent;

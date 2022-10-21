@@ -171,7 +171,7 @@ HRESULT CLevel_Gacha::Ready_Layer_Student(const _tchar * pLayerTag)
 	CSensei* pSensei = CSensei::Get_Instance();
 
 	/* For.Player */
-	for (int i = 0; i < pSensei->Get_StudentNum(); ++i)
+	for (_uint i = 0; i < pSensei->Get_StudentNum(); ++i)
 	{
 		if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, pSensei->Get_StudentIndex(i)->Get_StudentInfo().pName)))
 			return E_FAIL;

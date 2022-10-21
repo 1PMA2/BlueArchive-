@@ -212,7 +212,7 @@ HRESULT CLevel_Formation::Ready_Layer_Student(const _tchar * pLayerTag)
 	CSensei* pSensei = CSensei::Get_Instance();
 
 	/* For.Player */
-	for (int i = 0; i < pSensei->Get_StudentNum(); ++i)
+	for (_uint i = 0; i < pSensei->Get_StudentNum(); ++i)
 	{
 		if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, pSensei->Get_StudentIndex(i)->Get_StudentInfo().pName))) //뽑은 모든 학생 넘김 이름정보만 가지고있음
 			return E_FAIL;

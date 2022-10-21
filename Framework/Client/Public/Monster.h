@@ -41,7 +41,7 @@ public:
 	class CStudent* Get_FoundStudent() { return m_pTargetStudent; }
 	class CStudent* Get_RandomStudent();
 	CStudent* Get_RandomTarget() { return m_pRandomStudent; }
-	_uint Get_StudentSize() { return m_Students.size(); }
+	_uint Get_StudentSize() { return (_uint)m_Students.size(); }
 	_vector Get_TargetTranslation() { return m_vTargetTranslation; }
 	_vector Get_RandomTargetTranslation() { return m_vRandomTarget; }
 	

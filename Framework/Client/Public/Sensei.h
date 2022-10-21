@@ -67,7 +67,7 @@ public:
 	void Set_Student(const _tchar* pStudentTag, CStudent* pStudent);
 	void Set_RealStudent(const _tchar* pStudentTag, CStudent* pStudent);
 	const _tchar* Get_StudentName(_int iIndex);
-	_int Get_StudentNum() { return (_int)m_Student.size(); }
+	_uint Get_StudentNum() { return (_uint)m_Student.size(); }
 	CStudent* Get_Student(_tchar* pStudentTag);
 	CStudent* Get_StudentIndex(_uint iIndex); //studentinfoÀÇ index ¾Æ´Ô
 

@@ -38,7 +38,7 @@ HRESULT CVictory::Initialize(void * pArg)
 	m_fY = g_iWinCY >> 1;
 
 	// XMMatrixPerspectiveFovLH()
-	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH(g_iWinCX, g_iWinCY, 0.f, 1.f)));
+	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH((_float)g_iWinCX, (_float)g_iWinCY, 0.f, 1.f)));
 
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0.f, -0.f, 0.f, 1.f));

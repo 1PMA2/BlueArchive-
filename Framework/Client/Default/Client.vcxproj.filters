@@ -358,6 +358,9 @@
     <ClInclude Include="..\Public\Camera_Haruka.h">
       <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Haruka</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Muzzle.h">
+      <Filter>02.GameObject\09.Effect\Muzzle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -701,6 +704,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Camera_Haruka.cpp">
       <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Haruka</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Muzzle.cpp">
+      <Filter>02.GameObject\09.Effect\Muzzle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1138,9 +1144,6 @@
     <Filter Include="02.GameObject\05.UI\GamePlay_UI\Victory\Black_Bg">
       <UniqueIdentifier>{db0c45e1-8d96-41b4-b692-3cdefbb86654}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\09Effect">
-      <UniqueIdentifier>{3a94f209-0509-41aa-aed2-d5fa1145d453}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.GameObject\05.UI\Student_Portrait">
       <UniqueIdentifier>{d7fa45c9-9c8a-495d-9519-efdcfe1df800}</UniqueIdentifier>
     </Filter>
@@ -1152,6 +1155,12 @@
     </Filter>
     <Filter Include="02.GameObject\00.Student\03. Haruka\Haruka_Ex">
       <UniqueIdentifier>{6a155a54-d7ba-4253-8345-cd5ee47c2d41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect">
+      <UniqueIdentifier>{3a94f209-0509-41aa-aed2-d5fa1145d453}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Muzzle">
+      <UniqueIdentifier>{01c7b3e5-6bd3-47cc-bfe3-8c8fba0d5882}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

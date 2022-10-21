@@ -37,7 +37,7 @@ HRESULT CLoadingImage::Initialize(void * pArg)
 	m_fY = g_iWinCY >> 1;
 
 	// XMMatrixPerspectiveFovLH()
-	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH(g_iWinCX, g_iWinCY, 0.f, 1.f)));
+	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH((_float)g_iWinCX, (_float)g_iWinCY, 0.f, 1.f)));
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
 	
 
@@ -115,8 +115,8 @@ HRESULT CLoadingImage::SetUp_ShaderResource()
 	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", m_iImgNum)))
 		return E_FAIL;
 
-	m_fSizeX = (_uint)m_pTextureCom->Get_TextureSize(m_iImgNum).Width;
-	m_fSizeY = (_uint)m_pTextureCom->Get_TextureSize(m_iImgNum).Height;
+	m_fSizeX = (_float)m_pTextureCom->Get_TextureSize(m_iImgNum).Width;
+	m_fSizeY = (_float)m_pTextureCom->Get_TextureSize(m_iImgNum).Height;
 
 
 	return S_OK;
