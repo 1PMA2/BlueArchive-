@@ -12,7 +12,7 @@ CRun_Sign::CRun_Sign(CStudent* pOwner)
 	pOwner->Set_State(m_eAnim);
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
-	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+	pModel->Set_CurrentAnimation(11);
 }
 
 
@@ -32,6 +32,8 @@ CState * CRun_Sign::Loop(_float fTimeDelta)
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 	
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
+
+	pModel->Play_Animation(fTimeDelta);
 
 	pTransform->Go_Straight(fTimeDelta);
 	

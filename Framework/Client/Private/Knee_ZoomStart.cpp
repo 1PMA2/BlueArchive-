@@ -28,6 +28,9 @@ CKnee_ZoomStart::CKnee_ZoomStart(CStudent* pOwner)
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(25);
 		break;
+	case HARUKA:
+		pModel->Set_CurrentAnimation(10);
+		break;
 
 	}
 }

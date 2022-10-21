@@ -350,10 +350,10 @@
       <Filter>02.GameObject\05.UI\Student_Portrait</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Haruka.h">
-      <Filter>02.GameObject\00.Student\03.Haruka</Filter>
+      <Filter>02.GameObject\00.Student\03. Haruka</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Haruka_Ex.h">
-      <Filter>02.GameObject\00.Student\03.Haruka\Haruka_Ex</Filter>
+      <Filter>02.GameObject\00.Student\03. Haruka\Haruka_Ex</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Camera_Haruka.h">
       <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Haruka</Filter>
@@ -694,10 +694,10 @@
       <Filter>02.GameObject\05.UI\Student_Portrait</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Haruka.cpp">
-      <Filter>02.GameObject\00.Student\03.Haruka</Filter>
+      <Filter>02.GameObject\00.Student\03. Haruka</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Haruka_Ex.cpp">
-      <Filter>02.GameObject\00.Student\03.Haruka\Haruka_Ex</Filter>
+      <Filter>02.GameObject\00.Student\03. Haruka\Haruka_Ex</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Camera_Haruka.cpp">
       <Filter>02.GameObject\03.Camera\Camera_Ex\Camera_Haruka</Filter>
@@ -1144,14 +1144,14 @@
     <Filter Include="02.GameObject\05.UI\Student_Portrait">
       <UniqueIdentifier>{d7fa45c9-9c8a-495d-9519-efdcfe1df800}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.GameObject\00.Student\03.Haruka">
-      <UniqueIdentifier>{d2014c88-91da-4886-ac93-a861c5a3cd9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.GameObject\00.Student\03.Haruka\Haruka_Ex">
-      <UniqueIdentifier>{6a155a54-d7ba-4253-8345-cd5ee47c2d41}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02.GameObject\03.Camera\Camera_Ex\Camera_Haruka">
       <UniqueIdentifier>{5c21f1b4-a9c5-4581-8ee6-b8671773ae9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Student\03. Haruka">
+      <UniqueIdentifier>{d2014c88-91da-4886-ac93-a861c5a3cd9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\00.Student\03. Haruka\Haruka_Ex">
+      <UniqueIdentifier>{6a155a54-d7ba-4253-8345-cd5ee47c2d41}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

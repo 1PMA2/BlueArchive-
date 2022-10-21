@@ -21,16 +21,20 @@ CRun::CRun(CStudent* pOwner)
 
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
-	case 0:
+	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 		m_fHideLength = 0.35f;
 		break;
-	case 1:
+	case MUTSUKI:
 		pModel->Set_CurrentAnimation(7);
 		m_fHideLength = 0.15f;
 		break;
-	case 2:
+	case KAYOKO:
 		pModel->Set_CurrentAnimation(36);
+		m_fHideLength = 0.15f;
+		break;
+	case HARUKA:
+		pModel->Set_CurrentAnimation(30);
 		m_fHideLength = 0.15f;
 		break;
 
@@ -189,6 +193,10 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 						pStudentTransform->Go_Straight(fTimeDelta); //몬스터 방향으로 공격범위까지 이동
 						return nullptr;
 					}
+				}
+				else if(SHOTGUN == m_pOwner->Get_StudentInfo().eWeapon)
+				{
+					return CRun_Sign::Create(m_pOwner);
 				}
 			}
 			else

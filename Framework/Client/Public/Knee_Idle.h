@@ -16,6 +16,9 @@ public:
 	virtual CState * Loop(_float fTimeDelta) override;
 	virtual void Exit() override;
 
+private:
+	_float m_fDelay = 0.f;
+
 public:
 	static CKnee_Idle* Create(CStudent* pOwner);
 };

@@ -19,11 +19,15 @@ CKnee_Idle::CKnee_Idle(CStudent* pOwner)
 	{
 	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		m_fDelay = 1.f;
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(8);
+		m_fDelay = 2.f;
 		break;
-	case 2:
+	case HARUKA:
+		pModel->Set_CurrentAnimation(3);
+		m_fDelay = 1.f;
 		break;
 
 	}
@@ -44,7 +48,7 @@ CState * CKnee_Idle::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	pModel->Play_Animation(fTimeDelta * 2.f);
+	pModel->Play_Animation(fTimeDelta * m_fDelay);
 
 	if (pModel->Get_isFinished())
 	{

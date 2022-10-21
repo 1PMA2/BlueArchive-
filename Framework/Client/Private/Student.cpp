@@ -177,7 +177,7 @@ HRESULT CStudent::SetUp_Components()
 	/* For.Com_SPHERE */
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(0.3f, 0.3f, 0.3f);
+	ColliderDesc.vScale = _float3(0.35f, 0.35f, 0.35f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, 0.f);
 
@@ -245,13 +245,16 @@ HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 			_vector vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
 			_vector vSlide = m_pSlideTransform->Get_State(CTransform::STATE_TRANSLATION);
 			_vector vLook = vTranslation - vSlide;
-
 			_float fDir = XMVectorGetX(vLook);
-			if (-0.2f <= fDir)
-				m_pTransformCom->LookAtLerp(XMVectorSet(5.f, 0.f, XMVectorGetZ(vSlide) - 1.f, 1.f), 7.f, fTimeDelta);
-			else
-				m_pTransformCom->LookAtLerp(XMVectorSet(-5.f, 0.f, XMVectorGetZ(vSlide) - 1.f, 1.f), 7.f, fTimeDelta);
-			break;
+
+			if (GUN == m_tStudentInfo.eWeapon)
+			{
+				if (-0.2f <= fDir)
+					m_pTransformCom->LookAtLerp(XMVectorSet(5.f, 0.f, XMVectorGetZ(vSlide) - 1.f, 1.f), 7.f, fTimeDelta);
+				else
+					m_pTransformCom->LookAtLerp(XMVectorSet(-5.f, 0.f, XMVectorGetZ(vSlide) - 1.f, 1.f), 7.f, fTimeDelta);
+			}
+				break;
 		}
 
 	}
