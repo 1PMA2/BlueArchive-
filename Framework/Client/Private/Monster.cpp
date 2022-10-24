@@ -152,7 +152,7 @@ void CMonster::Tick(_float fTimeDelta)
 	}
 
 
-	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
+	m_pAABBCom->Update(m_pTransformCom->Get_WorldMatrix());
 
 	SelectMonster();
 
@@ -192,7 +192,7 @@ HRESULT CMonster::Render()
 	}
 
 #ifdef _DEBUG
-	m_pSphereCom->Render();
+	m_pAABBCom->Render();
 #endif // _DEBUG
 
 	return S_OK;
@@ -247,7 +247,7 @@ void CMonster::SelectMonster()
 	if (this == pSensei->Get_LockonMonster())
 		pSensei->Get_LockonVector();
 
-	if (m_pSphereCom->CollisionRay())
+	if (m_pAABBCom->CollisionRay())
 	{
 		if (pSensei->Get_ExReady())
 		{
@@ -325,7 +325,7 @@ void CMonster::Free()
 		m_pState = nullptr;
 	}
 
-	Safe_Release(m_pSphereCom);
+	Safe_Release(m_pAABBCom);
 	Safe_Release(m_pShaderCom);
 	Safe_Release(m_pRendererCom);
 	Safe_Release(m_pModelCom);

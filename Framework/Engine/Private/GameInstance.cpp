@@ -338,6 +338,14 @@ _float4 CGameInstance::Get_CamPosition()
 	return m_pPipeLine->Get_CamPosition();	
 }
 
+_matrix CGameInstance::Get_Inv()
+{
+	if (nullptr == m_pPipeLine)
+		return _matrix{};
+
+	return m_pPipeLine->Get_Inv();
+}
+
 HRESULT CGameInstance::Add_Font(ID3D11Device * pDevice, ID3D11DeviceContext * pContext, const _tchar * pFontTag, const _tchar * pFontFilePath)
 {
 	if (nullptr == m_pFont_Manager)

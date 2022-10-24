@@ -21,6 +21,9 @@ public:
 	_float4 Get_CamPosition() const {
 		return m_vCamPosition;
 	}
+	_matrix Get_Inv() {
+		return XMLoadFloat4x4(&m_vInv);
+	}
 
 	_matrix Get_Transform(TRANSFORMSTATE eState) {
 		return XMLoadFloat4x4(&m_TransformState[eState]);
@@ -41,6 +44,7 @@ private:
 	_float4x4			m_TransformState[D3DTS_END];
 	_float4x4			m_TransformState_TP[D3DTS_END];
 	_float4				m_vCamPosition;
+	_float4x4			m_vInv;
 public:
 	virtual void Free() override;
 };

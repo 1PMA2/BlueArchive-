@@ -361,6 +361,9 @@
     <ClInclude Include="..\Public\Muzzle.h">
       <Filter>02.GameObject\09.Effect\Muzzle</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Bullet.h">
+      <Filter>02.GameObject\09.Effect\Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -707,6 +710,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Muzzle.cpp">
       <Filter>02.GameObject\09.Effect\Muzzle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Bullet.cpp">
+      <Filter>02.GameObject\09.Effect\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1161,6 +1167,21 @@
     </Filter>
     <Filter Include="02.GameObject\09.Effect\Muzzle">
       <UniqueIdentifier>{01c7b3e5-6bd3-47cc-bfe3-8c8fba0d5882}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Hit">
+      <UniqueIdentifier>{5cdb6945-0358-4de0-9788-c6f011645aab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Bullet">
+      <UniqueIdentifier>{d25cfd8b-d29e-4df4-be07-6158ec5e834d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Boom">
+      <UniqueIdentifier>{c6af4666-7df8-46fd-bff1-ce16e26875e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Smoke">
+      <UniqueIdentifier>{2246fb2c-c88a-437c-b78f-1467b99df4c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Flare">
+      <UniqueIdentifier>{2ebff9f5-93ba-49b4-9d12-cc07f35d7146}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

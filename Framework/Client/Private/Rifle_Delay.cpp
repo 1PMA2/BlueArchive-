@@ -54,7 +54,7 @@ CState * CRifle_Delay::Loop(_float fTimeDelta)
 
 	CMonster* pMonster = m_pOwner->FoundMonster();
 
-	pModel->Play_Animation(fTimeDelta * 2.f);
+	pModel->Play_Animation(fTimeDelta);
 
 	if (nullptr != pMonster)
 	{

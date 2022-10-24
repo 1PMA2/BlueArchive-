@@ -57,7 +57,8 @@
 #include "Formaton_Btn.h"
 #include "Formation_Window.h"
 #include "Student_Portrait.h"
-
+#include "Muzzle.h"
+#include "Bullet.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -176,7 +177,7 @@ HRESULT CLoader::Loading_ForLogoLevel()
 
 	/* For.Prototype_Component_Shader_VtxAnimModel */
 	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Shader_Effect"),
-		CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_Effect.hlsl"), VTXANIM_DECLARATION::Element, VTXANIM_DECLARATION::iNumElements))))
+		CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_Effect.hlsl"), VTXTEX_INSTANCE_DECLARATION::Element, VTXTEX_INSTANCE_DECLARATION::iNumElements))))
 		return E_FAIL;
 
 	
@@ -530,6 +531,10 @@ HRESULT CLoader::Loading_ForFormationLevel()
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Cube"),
 			CVIBuffer_Cube::Create(m_pDevice, m_pContext, 15.f))))
 			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Rect_Instance"),
+			CVIBuffer_Rect_Instance::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
 		
 		lstrcpy(m_szLoadingText, TEXT("sky tex. "));
 		/* For.Prototype_Component_Texture_Sky */
@@ -669,6 +674,14 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CVictory::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Muzzle"),
+			CMuzzle::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Bullet"),
+			CBullet::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		///* For.Prototype_GameObject_Effect */
 		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Effect"),
 		//	CEffect::Create(m_pGraphic_Device))))
@@ -694,6 +707,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Victory.png"), 1))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Muzzle"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Fx/Muzzle%d.png"), 5))))
+			return E_FAIL;
+
 		lstrcpy(m_szLoadingText, TEXT("¸ðµ¨À» ·ÎµùÁßÀÌºñ³®. "));
 
 		_matrix			TransformMatrix;
@@ -705,11 +722,11 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/Cover/", "cover.fbx", TransformMatrix))))
 			return E_FAIL;
 
-		ZeroMemory(&TransformMatrix, sizeof(_matrix));
-		TransformMatrix = XMMatrixRotationY(XMConvertToRadians(180.0f));
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_City"),
-			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/map/", "City.fbx", TransformMatrix))))
-			return E_FAIL;
+		//ZeroMemory(&TransformMatrix, sizeof(_matrix));
+		//TransformMatrix = XMMatrixRotationY(XMConvertToRadians(180.0f));
+		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_City"),
+		//	CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/map/", "City.fbx", TransformMatrix))))
+		//	return E_FAIL;
 
 		ZeroMemory(&TransformMatrix, sizeof(_matrix));
 		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.f));

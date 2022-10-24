@@ -76,6 +76,7 @@ public: /* For.PipeLine */
 	const _float4x4* Get_Transform_float4x4(CPipeLine::TRANSFORMSTATE eState);
 	const _float4x4* Get_Transform_TP(CPipeLine::TRANSFORMSTATE eState);
 	_float4 Get_CamPosition();
+	_matrix Get_Inv();
 
 public: /* For.Font_Manager */
 	HRESULT Add_Font(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, const _tchar* pFontTag, const _tchar* pFontFilePath);

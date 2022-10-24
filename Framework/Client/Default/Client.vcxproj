@@ -192,6 +192,7 @@
     <ClInclude Include="..\Public\Boss_ShieldToIdle.h" />
     <ClInclude Include="..\Public\Boss_Skill.h" />
     <ClInclude Include="..\Public\Boss_Trigger.h" />
+    <ClInclude Include="..\Public\Bullet.h" />
     <ClInclude Include="..\Public\Camera_Aru.h" />
     <ClInclude Include="..\Public\Camera_Ex.h" />
     <ClInclude Include="..\Public\Camera_Free.h" />
@@ -312,6 +313,7 @@
     <ClCompile Include="..\Private\Boss_ShieldToIdle.cpp" />
     <ClCompile Include="..\Private\Boss_Skill.cpp" />
     <ClCompile Include="..\Private\Boss_Trigger.cpp" />
+    <ClCompile Include="..\Private\Bullet.cpp" />
     <ClCompile Include="..\Private\Camera_Aru.cpp" />
     <ClCompile Include="..\Private\Camera_Ex.cpp" />
     <ClCompile Include="..\Private\Camera_Free.cpp" />

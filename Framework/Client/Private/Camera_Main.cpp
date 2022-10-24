@@ -52,6 +52,17 @@ void CCamera_Main::Tick(_float fTimeDelta)
 			Set_Fov(XMConvertToRadians(25.f));
 		}
 	} //map 확인용
+	else if (KEY(A, HOLD))
+	{
+		_float fZposition = XMVectorGetZ(m_pTransformCom->Get_WorldMatrix().r[3]);
+		fZposition -= fTimeDelta * 5.f;
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_CameraDesc.vEye.x, m_CameraDesc.vEye.y, fZposition, 1.f));
+
+		if (KEY(S, HOLD))
+		{
+			Set_Fov(XMConvertToRadians(25.f));
+		}
+	} //map 확인용
 	else
 	{
 		Shake_Camera(fTimeDelta);

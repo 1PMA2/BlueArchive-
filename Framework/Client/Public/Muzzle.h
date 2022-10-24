@@ -8,6 +8,8 @@ class CShader;
 class CTexture;
 class CRenderer;
 class CVIBuffer_Rect_Instance;
+class CModel;
+class CHierarchyNode;
 END
 
 BEGIN(Client)
@@ -31,10 +33,20 @@ private:
 	CTexture*						m_pTextureCom = nullptr;
 	CRenderer*						m_pRendererCom = nullptr;
 	CVIBuffer_Rect_Instance*		m_pVIBufferCom = nullptr;
+private:
+	class CStudent*			m_pOwner = nullptr;
+	class CHierarchyNode*	m_pBonePtr = nullptr;
+
+private:
+	_float4x4				m_WorldMatrix;
+	_float	m_fFrame = 0.f;
 
 private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
+
+private:
+	HRESULT InitLook();
 
 public:
 	virtual void OnDisable() override;

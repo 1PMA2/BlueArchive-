@@ -75,20 +75,22 @@ HRESULT CImgui_Manager::Render()
 		ImGui::SliderFloat("X Scale", &fScaleX, 10.f, 1280.f);  // Edit 1 float using a slider from 0.0f to 1.0f
 		ImGui::SliderFloat("Y Scale", &fScaleY, 10.f, 1280.f);
 
-		//if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-		//{
-		//	m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"), TEXT("Prototype_GameObject_Victory"));
-		//}
+		if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+		{
+			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"));
+		}
 
-		//if(0 < m_pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_W")))
-		//	pObj = m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"));
+		if (0 < m_pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Effect")))
+			pObj = m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"));
+		else
+			pObj = nullptr;
 
 		if (nullptr != pObj)
 		{
 			CTransform* pTransform = (CTransform*)pObj->Get_Component(TEXT("Com_Transform"));
 
-			pTransform->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(fTranslationX, fTranslationY, 0.f, 1.f));
-			pTransform->Set_Scaled(_float3(fScaleX, fScaleY, 0.f));
+			//pTransform->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(fTranslationX, fTranslationY, 0.f, 1.f));
+			//pTransform->Set_Scaled(_float3(fScaleX, fScaleY, 0.f));
 		}
 
 		ImGui::SameLine();

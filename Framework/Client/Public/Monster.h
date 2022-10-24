@@ -65,7 +65,7 @@ protected:
 	CShader*				m_pShaderCom = nullptr;
 	CRenderer*				m_pRendererCom = nullptr;
 	CModel*					m_pModelCom = nullptr;
-	CCollider*				m_pSphereCom = nullptr;
+	CCollider*				m_pAABBCom = nullptr;
 	CMonster_State*			m_pState = nullptr;
 	_bool					m_bFear = false;
 	_float					m_fFearAcc = 0.f;
