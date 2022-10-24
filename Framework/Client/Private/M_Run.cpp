@@ -37,21 +37,19 @@ CMonster_State * CM_Run::Loop(_float fTimeDelta)
 	if (m_pOwner->Get_Fear())
 	{
 		
-		pTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vFear), 0.f, XMVectorGetZ(vFear) - 1.f, 1.f), 5.f, fTimeDelta);
+		pTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vFear), 0.f, XMVectorGetZ(vFear) - 5.f, 1.f), 7.f, fTimeDelta);
 		return pState;
 	}
 	else
 	{
-		pTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vFear), 0.f, XMVectorGetZ(vFear) + 1.f, 1.f), 5.f, fTimeDelta);
+		pTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vFear), 0.f, XMVectorGetZ(vFear) + 5.f, 1.f), 7.f, fTimeDelta);
 	}
+
 
 	if (m_pOwner->Get_FoundStudent()) //학생을 찾았음
 	{
-
 		pState = CM_Runend::Create(m_pOwner);
 	}
-
-		
 
 
 	return pState;

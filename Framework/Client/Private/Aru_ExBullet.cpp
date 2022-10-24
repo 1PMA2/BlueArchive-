@@ -130,9 +130,9 @@ HRESULT CAru_ExBullet::Collision_ToMonster()
 	{
 		CMonster* pMonster = (CMonster*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), i);
 
-		CCollider* pSphere = (CCollider*)pMonster->Get_Component(TEXT("Com_SPHERE"));
+		CCollider* pAABB = (CCollider*)pMonster->Get_Component(TEXT("Com_AABB"));
 
-		if (m_pSphereCom->Collision(pSphere))
+		if (m_pSphereCom->Collision(pAABB))
 		{
 			pMonster->Set_MinusHp(220);
 		}

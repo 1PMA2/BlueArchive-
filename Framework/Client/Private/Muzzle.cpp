@@ -46,7 +46,7 @@ void CMuzzle::Tick(_float fTimeDelta)
 	if (nullptr == m_pVIBufferCom)
 		return;
 
-	m_fFrame += 40.f * fTimeDelta;
+	m_fFrame += 35.f * fTimeDelta;
 	
 	if (m_fFrame > 2.f)
 	{

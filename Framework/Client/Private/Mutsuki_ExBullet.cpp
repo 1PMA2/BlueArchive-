@@ -112,17 +112,17 @@ HRESULT CMutsuki_ExBullet::Collision_ToMonster()
 	{
 		CMonster* pMonster = (CMonster*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), i);
 
-		CCollider* pSphere = (CCollider*)pMonster->Get_Component(TEXT("Com_SPHERE"));
+		CCollider* pAABB = (CCollider*)pMonster->Get_Component(TEXT("Com_AABB"));
 
-		if (m_pSphereACom->Collision(pSphere))
+		if (m_pSphereACom->Collision(pAABB))
 		{
 			pMonster->Set_MinusHp(220);
 		}
-		if (m_pSphereBCom->Collision(pSphere))
+		if (m_pSphereBCom->Collision(pAABB))
 		{
 			pMonster->Set_MinusHp(220);
 		}
-		if (m_pSphereCCom->Collision(pSphere))
+		if (m_pSphereCCom->Collision(pAABB))
 		{
 			pMonster->Set_MinusHp(220);
 		}

@@ -722,11 +722,11 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/Cover/", "cover.fbx", TransformMatrix))))
 			return E_FAIL;
 
-		//ZeroMemory(&TransformMatrix, sizeof(_matrix));
-		//TransformMatrix = XMMatrixRotationY(XMConvertToRadians(180.0f));
-		//if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_City"),
-		//	CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/map/", "City.fbx", TransformMatrix))))
-		//	return E_FAIL;
+		ZeroMemory(&TransformMatrix, sizeof(_matrix));
+		TransformMatrix = XMMatrixRotationY(XMConvertToRadians(180.0f));
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_City"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/map/", "City.fbx", TransformMatrix))))
+			return E_FAIL;
 
 		ZeroMemory(&TransformMatrix, sizeof(_matrix));
 		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(0.f));

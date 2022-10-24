@@ -42,7 +42,7 @@ CMonster_State * CM_AtkIng::Loop(_float fTimeDelta)
 
 	if (nullptr != pStudent)
 	{
-		pTransform->LookAtLerp(pStudent->Get_StudentTranslation(), 5.f, -fTimeDelta); //반대편을 바라봐야 하므로 마이너스
+		pTransform->LookAtLerp(pStudent->Get_StudentTranslation(), 7.f, -fTimeDelta); //반대편을 바라봐야 하므로 마이너스
 
 		/*if (m_bOnce)
 		{
