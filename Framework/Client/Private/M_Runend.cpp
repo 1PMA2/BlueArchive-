@@ -29,7 +29,6 @@ CMonster_State * CM_Runend::Loop(_float fTimeDelta)
 
 	pModel->Play_Animation(fTimeDelta);
 
-
 	if (pModel->Get_isFinished())
 	{
 		pState = CM_AtkStart::Create(m_pOwner);
