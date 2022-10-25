@@ -180,6 +180,12 @@ HRESULT CLoader::Loading_ForLogoLevel()
 		CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_Effect.hlsl"), VTXTEX_INSTANCE_DECLARATION::Element, VTXTEX_INSTANCE_DECLARATION::iNumElements))))
 		return E_FAIL;
 
+
+	/*Test */
+	if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Shader_Test"),
+		CShader::Create(m_pDevice, m_pContext, TEXT("../Bin/ShaderFiles/Shader_Test.hlsl"), VTXTEX_DECLARATION::Element, VTXTEX_DECLARATION::iNumElements))))
+		return E_FAIL;
+
 	
 
 #pragma endregion

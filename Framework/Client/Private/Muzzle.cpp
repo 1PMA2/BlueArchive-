@@ -128,6 +128,8 @@ HRESULT CMuzzle::SetUp_ShaderResource()
 		return E_FAIL;
 	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 0)))
 		return E_FAIL;
+	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_BlurTexture", 0)))
+		return E_FAIL;
 
 	RELEASE_INSTANCE(CGameInstance);
 
@@ -162,7 +164,7 @@ HRESULT CMuzzle::InitLook()
 
 	m_pTransformCom->Set_State(CTransform::STATE_LOOK, pMuzzle->Get_WorldMatrix().r[2]);
 
-	m_pTransformCom->Set_Scaled(_float3(0.f, 0.7f, 0.7f));
+	m_pTransformCom->Set_Scaled(_float3(0.f, 0.6f, 0.6f));
 
 	return S_OK;
 }

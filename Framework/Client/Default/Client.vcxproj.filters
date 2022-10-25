@@ -1213,5 +1213,8 @@
     <FxCompile Include="..\Bin\ShaderFiles\Shader_Effect.hlsl">
       <Filter>03.ShaderFiles</Filter>
     </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_Test.hlsl">
+      <Filter>03.ShaderFiles</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

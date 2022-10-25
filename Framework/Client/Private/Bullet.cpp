@@ -102,7 +102,7 @@ HRESULT CBullet::Render()
 	if (FAILED(SetUp_ShaderResource()))
 		return E_FAIL;
 
-	m_pShaderCom->Begin(0);
+	m_pShaderCom->Begin(2);
 
 	m_pVIBufferCom->Render();
 

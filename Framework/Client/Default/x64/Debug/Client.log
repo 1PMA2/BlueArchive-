@@ -1,4 +1,7 @@
-﻿  M_Run.cpp
-  M_Runend.cpp
+﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
+C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\ShaderFiles\Shader_Effect.hlsl(97,39-53): warning X3556: integer modulus may be much slower, try using uints if possible.
+  
+  compilation object save succeeded; see C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\Shader_Effect.cso
+  Bullet.cpp
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)
