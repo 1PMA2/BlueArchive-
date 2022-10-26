@@ -209,7 +209,9 @@
     <ClInclude Include="..\Public\Cost_Num.h" />
     <ClInclude Include="..\Public\Droid_Dead.h" />
     <ClInclude Include="..\Public\Ex.h" />
+    <ClInclude Include="..\Public\Explosion.h" />
     <ClInclude Include="..\Public\Ex_Cutin.h" />
+    <ClInclude Include="..\Public\Ex_Portrait.h" />
     <ClInclude Include="..\Public\Fade_InOut.h" />
     <ClInclude Include="..\Public\Fade_Out.h" />
     <ClInclude Include="..\Public\Fire.h" />
@@ -280,7 +282,6 @@
     <ClInclude Include="..\Public\Terrain.h" />
     <ClInclude Include="..\Public\UI.h" />
     <ClInclude Include="..\Public\UI_RecruitButton.h" />
-    <ClInclude Include="..\Public\UI_Student.h" />
     <ClInclude Include="..\Public\Victory.h" />
     <ClInclude Include="..\Public\Victory_Bg.h" />
     <ClInclude Include="..\Public\Warning.h" />
@@ -330,7 +331,9 @@
     <ClCompile Include="..\Private\Cost_Num.cpp" />
     <ClCompile Include="..\Private\Droid_Dead.cpp" />
     <ClCompile Include="..\Private\Ex.cpp" />
+    <ClCompile Include="..\Private\Explosion.cpp" />
     <ClCompile Include="..\Private\Ex_Cutin.cpp" />
+    <ClCompile Include="..\Private\Ex_Portrait.cpp" />
     <ClCompile Include="..\Private\Fade_InOut.cpp" />
     <ClCompile Include="..\Private\Fade_Out.cpp" />
     <ClCompile Include="..\Private\Fire.cpp" />
@@ -400,7 +403,6 @@
     <ClCompile Include="..\Private\Terrain.cpp" />
     <ClCompile Include="..\Private\UI.cpp" />
     <ClCompile Include="..\Private\UI_RecruitButton.cpp" />
-    <ClCompile Include="..\Private\UI_Student.cpp" />
     <ClCompile Include="..\Private\Victory.cpp" />
     <ClCompile Include="..\Private\Victory_Bg.cpp" />
     <ClCompile Include="..\Private\Warning.cpp" />

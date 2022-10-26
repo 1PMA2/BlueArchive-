@@ -82,6 +82,8 @@ public:
 	_bool Get_ExReady() { return m_bExReady; }
 	_bool Get_End() { return m_bEnd; }
 	void Set_End(_bool bEnd) { m_bEnd = bEnd; }
+	void Set_Sequence(_uint iIdx) { m_iSequence = iIdx; }
+	_uint Get_Sequence() { return m_iSequence; }
 	void Victory();
 
 private:
@@ -101,6 +103,7 @@ private:
 	_bool m_bOpenFormationLevel = false;
 	_bool m_bOpenLobbyLevel = false;
 	_bool m_bFormationOnce = true;
+	_uint m_iSequence = 0;
 
 	map<const _tchar*, class CStudent*>					m_Student;
 	typedef map<const _tchar*, class CStudent*>			STUDENTS;
@@ -134,6 +137,7 @@ public:
 	void Set_FormationInfo(CStudent* pStudent);
 	_uint Get_FormationInfoSize() { return (_uint)m_FormationsInfo.size(); }
 	CStudent::STUDENTINFO Get_FormationInfo(_uint iIndex);
+
 
 
 

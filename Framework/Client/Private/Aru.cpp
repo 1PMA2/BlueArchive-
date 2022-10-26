@@ -35,7 +35,7 @@ HRESULT CAru::Initialize(void * pArg)
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
 	//m_tStudentInfo.eFormation = FORMATION_FIRST;
 	m_tStudentInfo.eFormation = FORMATION_END;
-	m_tStudentInfo.eWeapon = GUN;
+	m_tStudentInfo.eWeapon = SR;
 	m_tStudentInfo.fFireSpeed = 0.5f;
 	m_tStudentInfo.iAtk = 25;
 	m_tStudentInfo.iDef = 0;
@@ -131,12 +131,13 @@ HRESULT CAru::GamePlayLevel_Collision(_float fTimeDelta)
 
 	CSensei* pSensei = GET_SENSEI;
 	
-	if (KEY(NUM1, TAP) && pSensei->Get_SenseiInfo().fCost >= m_tStudentInfo.fExCost)
+	if (m_bPortrait && pSensei->Get_SenseiInfo().fCost >= m_tStudentInfo.fExCost)
 	{
 		pSensei->ReSet_Ex();
 		pSensei->Set_ExReady(true);
 		pSensei->Set_ExStudent(this);
 		Set_ExReady(true);
+		Set_Portrait(false);
 	}
 
 

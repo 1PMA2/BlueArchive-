@@ -47,6 +47,10 @@ HRESULT CCost_GaugeBg::Initialize(void * pArg)
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-m_fX + m_fLocationX + (m_fSizeX * 0.5f), m_fY - m_fLocationY, 0.f, 1.f));
 
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	CSensei* pSensei = CSensei::Get_Instance();
+
 	return S_OK;
 }
 
@@ -57,7 +61,12 @@ void CCost_GaugeBg::Tick(_float fTimeDelta)
 
 void CCost_GaugeBg::LateTick(_float fTimeDelta)
 {
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_UI, this);
+	CSensei* pSensei = GET_SENSEI;
+
+	if (!pSensei->Get_SenseiInfo().bEx)
+	{
+		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_UI, this);
+	}
 }
 
 HRESULT CCost_GaugeBg::Render()

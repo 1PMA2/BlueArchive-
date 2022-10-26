@@ -38,6 +38,8 @@ HRESULT CMuzzle::Initialize(void * pArg)
 
 	InitLook();
 
+
+
 	return S_OK;
 }
 
@@ -46,15 +48,29 @@ void CMuzzle::Tick(_float fTimeDelta)
 	if (nullptr == m_pVIBufferCom)
 		return;
 
-	m_fFrame += 35.f * fTimeDelta;
+	m_fFrame += 40.f * fTimeDelta;
 	
-	if (m_fFrame > 2.f)
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+	Safe_AddRef(pGameInstance);
+
+	if (m_pOwner->Get_StudentInfo().eWeapon == SR || m_pOwner->Get_StudentInfo().eWeapon == SHOTGUN)
+	{
+		if (4 < m_fFrame)
+		{
+			if (m_bOnce)
+			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Smoke"), &m_pOwner);
+				m_bOnce = false;
+			}
+		}
+	}
+
+
+	if (m_fFrame > (_float)m_iMAXFrame)
 	{
 		DELETE(this);
 	}
 	
-	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-	Safe_AddRef(pGameInstance);
 
 
 	_matrix vInv = pGameInstance->Get_Inv();
@@ -126,9 +142,11 @@ HRESULT CMuzzle::SetUp_ShaderResource()
 		return E_FAIL;
 	if (FAILED(m_pShaderCom->Set_RawValue("g_Frame", &m_fFrame, sizeof(_int))))
 		return E_FAIL;
-	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 0)))
+	if (FAILED(m_pShaderCom->Set_RawValue("g_Weapon", &m_iWeapon, sizeof(_int))))
 		return E_FAIL;
-	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_BlurTexture", 0)))
+	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture",m_iWeapon)))
+		return E_FAIL;
+	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_BlurTexture", m_iWeapon)))
 		return E_FAIL;
 
 	RELEASE_INSTANCE(CGameInstance);
@@ -156,15 +174,38 @@ HRESULT CMuzzle::InitLook()
 	XMStoreFloat4x4(&m_WorldMatrix, ParentMatrix * pMuzzle->Get_WorldMatrix());
 
 	_vector vTranslation = XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_TRANSLATION];
-	_vector		vLook = pMuzzle->Get_WorldMatrix().r[2];
+	_vector		vLook = XMVector4Normalize(pMuzzle->Get_WorldMatrix().r[2]);
 
-	vTranslation += XMVector3Normalize(vLook) * 0.3f;
+	m_pTransformCom->Set_State(CTransform::STATE_LOOK, vLook);
+
+	switch (m_pOwner->Get_StudentInfo().eWeapon)
+	{
+	case SR:
+		m_iWeapon = 0;
+		m_iMAXFrame = 4;
+		vTranslation += XMVector3Normalize(vLook) * 0.2f;
+		m_pTransformCom->Set_Scaled(_float3(0.f, 0.6f, 0.6f));
+		break;
+	case RF:
+		m_iWeapon = 1;
+		m_iMAXFrame = 4;
+		vTranslation += XMVector3Normalize(vLook) * 0.f;
+		m_pTransformCom->Set_Scaled(_float3(0.f, 0.6f, 0.6f));
+		break;
+	case HG:
+		m_iWeapon = 3;
+		m_iMAXFrame = 4;
+		vTranslation += XMVector3Normalize(vLook) * 0.f;
+		m_pTransformCom->Set_Scaled(_float3(0.f, 0.4f, 0.4f));
+		break;
+	case SHOTGUN:
+		m_iWeapon = 2;
+		m_iMAXFrame = 9;
+		vTranslation += XMVector3Normalize(vLook) * 0.4f;
+		break;
+	}
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
-
-	m_pTransformCom->Set_State(CTransform::STATE_LOOK, pMuzzle->Get_WorldMatrix().r[2]);
-
-	m_pTransformCom->Set_Scaled(_float3(0.f, 0.6f, 0.6f));
 
 	return S_OK;
 }

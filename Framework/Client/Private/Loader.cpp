@@ -44,6 +44,7 @@
 #include "Boss_Dead.h"
 #include "Cost_Gauge.h"
 #include "Cost_GaugeBg.h"
+#include "Ex_Portrait.h"
 #include "Camera_Aru.h"
 #include "Camera_Mutsuki.h"
 #include "Camera_Kayoko.h"
@@ -595,6 +596,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_CostGauge"),
 			CCost_Gauge::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Ex_Portrait"),
+			Ex_Portrait::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Trigger"),

@@ -35,7 +35,7 @@ HRESULT CKayoko::Initialize(void * pArg)
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
 	//m_tStudentInfo.eFormation = FORMATION_THIRD;
 	m_tStudentInfo.eFormation = FORMATION_END;
-	m_tStudentInfo.eWeapon = GUN;
+	m_tStudentInfo.eWeapon = HG;
 	m_tStudentInfo.iAtk = 10;
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.iEx = 30;
@@ -135,12 +135,13 @@ HRESULT CKayoko::GamePlayLevel_Collision(_float fTimeDelta)
 
 	CSensei* pSensei = GET_SENSEI;
 
-	if (KEY(NUM3, TAP) && pSensei->Get_SenseiInfo().fCost >= m_tStudentInfo.fExCost)
+	if (m_bPortrait && pSensei->Get_SenseiInfo().fCost >= m_tStudentInfo.fExCost)
 	{
 		pSensei->ReSet_Ex();
 		pSensei->Set_ExReady(true);
 		pSensei->Set_ExStudent(this);
 		Set_ExReady(true);
+		Set_Portrait(false);
 	}
 
 

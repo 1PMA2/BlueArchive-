@@ -17,7 +17,7 @@ namespace Client
 	};
 	enum STUDENT {ARU, MUTSUKI, KAYOKO, HARUKA, S_END};
 	enum MONSTER {DROID, SHILD, BOSS, M_END};
-	enum WEAPON {GUN, SHOTGUN, W_END};
+	enum WEAPON {SR, RF, HG, SHOTGUN, W_END};
 }
 
 #define GET_SENSEI		CSensei::Get_Instance()

@@ -67,6 +67,7 @@ public:
 	//void		Set_ExReady () { m_bExReady = (m_bExReady) ? (false) : (true); }
 	_bool		Get_Ex() { return m_bEx; }
 	void		Set_Ex(_bool bEx) { m_bEx = bEx; }
+	void		Set_Portrait(_bool bPortrait) { m_bPortrait = bPortrait; }
 	_bool		Is_Retire() { return m_bRetire; }
 	void		Set_Retire(_bool bRetire) { m_bRetire = bRetire; }
 
@@ -101,10 +102,12 @@ protected:
 	CStudent*				m_pOtherStudent = nullptr;
 	_bool					m_bExReady = false;
 	_bool					m_bEx = false;
+	_bool					m_bPortrait = false;
 	_vector					m_vPreTranslation = {};
 
 	_bool					m_bDamaged = false;
 	_bool					m_bRetire = false;
+
 
 	vector<CMonster*>	m_Monsters;
 	typedef vector<CMonster*> MONSTERS;

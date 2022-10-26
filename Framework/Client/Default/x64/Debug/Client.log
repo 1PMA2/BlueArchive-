@@ -1,3 +1,7 @@
-﻿  Smoke.cpp
+﻿  Cost_Gauge.cpp
+  Cost_GaugeBg.cpp
+  Ex_Portrait.cpp
+  Level_GamePlay.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\private\ex_portrait.cpp(199): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

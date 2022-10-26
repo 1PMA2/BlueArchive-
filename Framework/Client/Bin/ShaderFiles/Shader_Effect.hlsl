@@ -6,6 +6,7 @@ texture2D	g_DiffuseTexture;
 texture2D	g_BlurTexture;
 
 float g_Frame;
+int g_Weapon;
 
 float m_TexW = 256.f;
 float m_TexH = 256.f;
@@ -90,11 +91,22 @@ VS_OUT VS_MUZZLE(VS_IN In)
 	Out.vPosition = mul(vPosition, matWVP);
 	Out.vTexUV = In.vTexUV;
 
-	if (fFrame > 2.f)
-		fFrame = 1.f;
+	if (2 != g_Weapon)
+	{
+		if (fFrame > 4.f)
+			fFrame = 3.f;
 
-	Out.vTexUV.x = In.vTexUV.x * 0.5f;
-	Out.vTexUV.y = In.vTexUV.y * 0.5f + ((uint)fFrame % 2) * 0.5f;
+		Out.vTexUV.x = In.vTexUV.x * (1.f / 2.f) + ((uint)fFrame % 2) * (1.f / 2.f);
+		Out.vTexUV.y = In.vTexUV.y * (1.f / 2.f) + ((uint)fFrame / 2) * (1.f / 2.f);
+	}
+	else
+	{
+		if (fFrame > 9.f)
+			fFrame = 8.f;
+
+		Out.vTexUV.x = In.vTexUV.x * (1.f / 3.f) + ((uint)fFrame % 3) * (1.f / 3.f);
+		Out.vTexUV.y = In.vTexUV.y * (1.f / 3.f) + ((uint)fFrame / 3) * (1.f / 3.f);
+	}
 
 	return Out;
 }
@@ -120,7 +132,7 @@ VS_OUT VS_SMOKE(VS_IN In)
 	if (fFrame > 9.f)
 		fFrame = 8.f;
 
-	Out.vTexUV.x = In.vTexUV.x * (1.f / 3.f) +((uint)fFrame % 3) * (1.f / 3.f);
+	Out.vTexUV.x = In.vTexUV.x * (1.f / 3.f) + ((uint)fFrame % 3) * (1.f / 3.f);
 	Out.vTexUV.y = In.vTexUV.y * (1.f / 3.f) + ((uint)fFrame / 3) * (1.f / 3.f);
 
 	return Out;
@@ -142,7 +154,7 @@ PS_OUT PS_MAIN(PS_IN In)
 {
 	PS_OUT		Out = (PS_OUT)0;
 
-	/*Out.vColor = g_DiffuseTexture.Sample(PointSampler, In.vTexUV);
+	Out.vColor = g_DiffuseTexture.Sample(PointSampler, In.vTexUV);
 
 	if (Out.vColor.a < 0.1f)
 		discard;
@@ -150,31 +162,27 @@ PS_OUT PS_MAIN(PS_IN In)
 
 	Out.vColor.a = Out.vColor.g;
 
-	Out.vColor.r = 210.f/255.f;
-	Out.vColor.g = 210.f/255.f;
-	Out.vColor.b = 0.f/255.f;*/
+	//vector vBlur;
+	//float2 t = In.vTexUV;
+	//float2 uv = 0;
 
-	vector vBlur;
-	float2 t = In.vTexUV;
-	float2 uv = 0;
+	//float tu = 1.f / (m_TexW / 2.f);
 
-	float tu = 1.f / (m_TexW / 2.f);
+	//for (int i = -6; i < 6; ++i)
+	//{
+	//	uv = t + float2(tu * i, 0);
+	//	vBlur += Weight[6 + i] * g_BlurTexture.Sample(PointSampler, uv);
+	//	vBlur.a = vBlur.r;
+	//}
 
-	for (int i = -6; i < 6; ++i)
-	{
-		uv = t + float2(tu * i, 0);
-		vBlur += Weight[6 + i] * g_BlurTexture.Sample(PointSampler, uv);
-		vBlur.a = vBlur.r;
-	}
+	//vBlur /= Total;
 
-	vBlur /= Total;
-
-	////
-	Out.vColor = vBlur;
+	//////
+	//Out.vColor = vBlur;
 
 	Out.vColor.r = 255.f / 255.f;
-	Out.vColor.g = 210.f / 255.f;
-	Out.vColor.b = 0.f / 255.f;
+	Out.vColor.g = 255.f / 255.f;
+	Out.vColor.b = 20.f / 255.f;
 
 	return Out;
 }
@@ -190,13 +198,28 @@ PS_OUT PS_BULLET(PS_IN In)
 
 	Out.vColor.a = Out.vColor.g;
 
+	Out.vColor.r = 210.f / 255.f;
+	Out.vColor.g = 210.f / 255.f;
+	Out.vColor.b = 100.f / 255.f;
+
+	return Out;
+}
+
+PS_OUT PS_SMOKE(PS_IN In)
+{
+	PS_OUT		Out = (PS_OUT)0;
+
+	Out.vColor = g_DiffuseTexture.Sample(PointSampler, In.vTexUV);
+
+	if (Out.vColor.a < 0.1f)
+		discard;
+
+	Out.vColor.a = Out.vColor.g;
+
 	if (0.2f < Out.vColor.r)
 	{
 		Out.vColor.a = 0.6f;
 	}
-	/*Out.vColor.r = 210.f / 255.f;
-	Out.vColor.g = 210.f / 255.f;
-	Out.vColor.b = 100.f / 255.f;*/
 
 	return Out;
 }
@@ -241,7 +264,7 @@ technique11 DefaultTechnique
 
 		VertexShader = compile vs_5_0 VS_SMOKE();
 		GeometryShader = NULL;
-		PixelShader = compile ps_5_0 PS_BULLET();
+		PixelShader = compile ps_5_0 PS_SMOKE();
 	}
 
 }

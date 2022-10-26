@@ -69,7 +69,12 @@ void CCost_Gauge::Tick(_float fTimeDelta)
 
 void CCost_Gauge::LateTick(_float fTimeDelta)
 {
+	CSensei* pSensei = GET_SENSEI;
+
+	if (!pSensei->Get_SenseiInfo().bEx)
+	{
 		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_UI, this);
+	}
 }
 
 HRESULT CCost_Gauge::Render()

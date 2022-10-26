@@ -247,7 +247,7 @@ HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 			_vector vLook = vTranslation - vSlide;
 			_float fDir = XMVectorGetX(vLook);
 
-			if (GUN == m_tStudentInfo.eWeapon)
+			if (SHOTGUN != m_tStudentInfo.eWeapon)
 			{
 				if (-0.2f <= fDir)
 					m_pTransformCom->LookAtLerp(XMVectorSet(5.f, 0.f, XMVectorGetZ(vSlide) - 1.f, 1.f), 7.f, fTimeDelta);

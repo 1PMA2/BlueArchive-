@@ -135,12 +135,13 @@ HRESULT CHaruka::GamePlayLevel_Collision(_float fTimeDelta)
 
 	CSensei* pSensei = GET_SENSEI;
 
-	if (KEY(NUM4, TAP) && pSensei->Get_SenseiInfo().fCost >= m_tStudentInfo.fExCost)
+	if (m_bPortrait && pSensei->Get_SenseiInfo().fCost >= m_tStudentInfo.fExCost)
 	{
 		pSensei->ReSet_Ex();
 		pSensei->Set_ExReady(true);
 		pSensei->Set_ExStudent(this);
 		Set_ExReady(true);
+		Set_Portrait(false);
 	}
 
 

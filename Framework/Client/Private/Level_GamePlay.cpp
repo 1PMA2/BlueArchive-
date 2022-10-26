@@ -191,6 +191,17 @@ HRESULT CLevel_GamePlay::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_CostGauge"))))
 		return E_FAIL;
 
+	/* For.Player */
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
+	{
+		STUDENT eStudent = pSensei->Get_FormationInfo(i).eStudent;
+
+		if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Ex_Portrait"), &eStudent)))
+			return E_FAIL;
+
+	}
 
 	Safe_Release(pGameInstance);
 

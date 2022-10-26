@@ -40,6 +40,9 @@ private:
 private:
 	_float4x4				m_WorldMatrix;
 	_float	m_fFrame = 0.f;
+	_uint	m_iWeapon = 0;
+	_uint	m_iMAXFrame = 0;
+	_bool   m_bOnce = true;
 
 private:
 	HRESULT SetUp_Components();

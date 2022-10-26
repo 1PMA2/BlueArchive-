@@ -50,10 +50,6 @@ void CSmoke::Tick(_float fTimeDelta)
 
 	m_fFrame += 20.f * fTimeDelta;
 
-	if (m_fFrame > 9.f)
-	{
-		DELETE(this);
-	}
 
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
@@ -65,9 +61,14 @@ void CSmoke::Tick(_float fTimeDelta)
 	m_pTransformCom->Set_State(CTransform::STATE_UP, vInv.r[1]);
 	m_pTransformCom->Set_State(CTransform::STATE_LOOK, vInv.r[0]);
 
-	m_pTransformCom->Set_Scaled(_float3(0.7f, 0.7f, 0.7f));
+	m_pTransformCom->Set_Scaled(_float3(0.6f, 0.6f, 0.6f));
 
 	Safe_Release(pGameInstance);
+
+	if (m_fFrame > 9.f)
+	{
+		DELETE(this);
+	}
 }
 
 void CSmoke::LateTick(_float fTimeDelta)
@@ -161,7 +162,7 @@ HRESULT CSmoke::InitLook()
 	_vector vTranslation = XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_TRANSLATION];
 	_vector		vLook = pMuzzle->Get_WorldMatrix().r[2];
 
-	vTranslation += XMVector3Normalize(vLook) * 0.3f;
+	vTranslation += XMVector3Normalize(vLook) * 0.5f;
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
 
