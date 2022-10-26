@@ -68,6 +68,7 @@ CState * CEx_Cutin::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
+		pSensei->Set_ExStudent(nullptr);
 		pSensei->Use_Ex(false);
 		m_pOwner->Set_Ex(false);
 		pState = CEx::Create(m_pOwner);

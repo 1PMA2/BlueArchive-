@@ -87,7 +87,15 @@ void CKayoko_Ex::LateTick(_float fTimeDelta)
 
 HRESULT CKayoko_Ex::Render()
 {
-	__super::Render();
+	CSensei* pSensei = GET_SENSEI;
+
+	if (nullptr != pSensei->Get_ExStudent())
+	{
+		if (pSensei->Get_ExStudent()->Get_StudentInfo().eStudent == m_tStudentInfo.eStudent)
+		{
+			__super::Render();
+		}
+	}
 
 	return S_OK;
 }

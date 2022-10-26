@@ -98,6 +98,7 @@ CState * CEx::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{ 
+
 		if (0 < m_pOwner->Get_StudentInfo().iBullet)
 			pState = CKnee_ZoomStart::Create(m_pOwner);
 		else

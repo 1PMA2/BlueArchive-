@@ -32,7 +32,7 @@ HRESULT CHaruka_Ex::Initialize(void * pArg)
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
 	m_tStudentInfo.eAnim = ANIM_EX;
-	m_tStudentInfo.eFormation = FORMATION_THIRD;
+	m_tStudentInfo.eFormation = FORMATION_FOURTH;
 
 
 	if (FAILED(SetUp_Components()))
@@ -87,7 +87,15 @@ void CHaruka_Ex::LateTick(_float fTimeDelta)
 
 HRESULT CHaruka_Ex::Render()
 {
-	__super::Render();
+	CSensei* pSensei = GET_SENSEI;
+
+	if (nullptr != pSensei->Get_ExStudent())
+	{
+		if (pSensei->Get_ExStudent()->Get_StudentInfo().eStudent == m_tStudentInfo.eStudent)
+		{
+			__super::Render();
+		}
+	}
 
 	return S_OK;
 }

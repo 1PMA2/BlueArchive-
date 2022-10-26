@@ -129,20 +129,6 @@ HRESULT CAru::GamePlayLevel_Collision(_float fTimeDelta)
 {
 	__super::GamePlayLevel_Collision(fTimeDelta);
 
-	CSensei* pSensei = GET_SENSEI;
-	
-	if (m_bPortrait && pSensei->Get_SenseiInfo().fCost >= m_tStudentInfo.fExCost)
-	{
-		pSensei->ReSet_Ex();
-		pSensei->Set_ExReady(true);
-		pSensei->Set_ExStudent(this);
-		Set_ExReady(true);
-		Set_Portrait(false);
-	}
-
-
-
-
 	return S_OK;
 }
 
