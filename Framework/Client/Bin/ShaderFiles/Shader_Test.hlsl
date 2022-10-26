@@ -159,10 +159,7 @@ PS_OUT PS_MAINXY(PS_IN In)
 	vBlury /= Total;
 
 
-	Out.vColor = (vBlury + vBlur);
-	Out.vColor.r *= 0.5f;
-	Out.vColor.g *= 0.5f;
-	Out.vColor.b *= 0.5f;
+	Out.vColor = vBlur;
 
 
 

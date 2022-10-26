@@ -272,6 +272,7 @@
     <ClInclude Include="..\Public\Run_ToKnee.h" />
     <ClInclude Include="..\Public\Sensei.h" />
     <ClInclude Include="..\Public\Sky.h" />
+    <ClInclude Include="..\Public\Smoke.h" />
     <ClInclude Include="..\Public\State.h" />
     <ClInclude Include="..\Public\Student.h" />
     <ClInclude Include="..\Public\Student_Img.h" />
@@ -391,6 +392,7 @@
     <ClCompile Include="..\Private\Run_ToKnee.cpp" />
     <ClCompile Include="..\Private\Sensei.cpp" />
     <ClCompile Include="..\Private\Sky.cpp" />
+    <ClCompile Include="..\Private\Smoke.cpp" />
     <ClCompile Include="..\Private\State.cpp" />
     <ClCompile Include="..\Private\Student.cpp" />
     <ClCompile Include="..\Private\Student_Img.cpp" />

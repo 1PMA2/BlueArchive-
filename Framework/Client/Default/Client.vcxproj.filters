@@ -364,6 +364,9 @@
     <ClInclude Include="..\Public\Bullet.h">
       <Filter>02.GameObject\09.Effect\Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Smoke.h">
+      <Filter>02.GameObject\09.Effect\Smoke</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -713,6 +716,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Bullet.cpp">
       <Filter>02.GameObject\09.Effect\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Smoke.cpp">
+      <Filter>02.GameObject\09.Effect\Smoke</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1182,6 +1188,9 @@
     </Filter>
     <Filter Include="02.GameObject\09.Effect\Flare">
       <UniqueIdentifier>{2ebff9f5-93ba-49b4-9d12-cc07f35d7146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Crack">
+      <UniqueIdentifier>{d96a7439-804e-439b-8e52-3eac876be36a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

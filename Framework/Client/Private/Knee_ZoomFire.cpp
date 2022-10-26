@@ -71,6 +71,7 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 			if (m_bOnce)
 			{
 				m_pOwner->Use_Bullet();
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Smoke"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Bullet"), &m_pOwner);
 				m_bOnce = false;

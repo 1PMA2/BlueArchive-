@@ -69,7 +69,7 @@ void CMuzzle::Tick(_float fTimeDelta)
 
 void CMuzzle::LateTick(_float fTimeDelta)
 {
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONLIGHT, this);
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_ALPHABLEND, this);
 }
 
 HRESULT CMuzzle::Render()
