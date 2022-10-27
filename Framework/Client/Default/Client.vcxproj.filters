@@ -13,9 +13,6 @@
     <ClInclude Include="targetver.h">
       <Filter>98.Default</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\MainApp.h">
-      <Filter>00.MainApp</Filter>
-    </ClInclude>
     <ClInclude Include="..\Public\Client_Defines.h">
       <Filter>99.Defines</Filter>
     </ClInclude>
@@ -372,6 +369,9 @@
     </ClInclude>
     <ClInclude Include="..\Public\BG_Pickup.h">
       <Filter>02.GameObject\04.BackGround\BG_Gacha</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\MainApp.h">
+      <Filter>00.MainApp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

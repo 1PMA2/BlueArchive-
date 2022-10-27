@@ -7,7 +7,7 @@ BEGIN(Engine)
 class CShader;
 class CTexture;
 class CRenderer;
-class CVIBuffer_Rect_Instance;
+class CVIBuffer_RectX;
 class CModel;
 class CHierarchyNode;
 END
@@ -32,7 +32,7 @@ private:
 	CShader*						m_pShaderCom = nullptr;
 	CTexture*						m_pTextureCom = nullptr;
 	CRenderer*						m_pRendererCom = nullptr;
-	CVIBuffer_Rect_Instance*		m_pVIBufferCom = nullptr;
+	CVIBuffer_RectX*		m_pVIBufferCom = nullptr;
 private:
 	class CStudent*			m_pOwner = nullptr;
 	class CHierarchyNode*	m_pBonePtr = nullptr;

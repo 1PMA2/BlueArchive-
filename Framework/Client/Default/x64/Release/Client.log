@@ -1,7 +1,7 @@
 ﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
-C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\ShaderFiles\Shader_Effect.hlsl(86,39-53): warning X3556: integer modulus may be much slower, try using uints if possible.
+C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\ShaderFiles\Shader_Test.hlsl(153,11): warning X3078: 'i': loop control variable conflicts with a previous declaration in the outer scope; most recent declaration will be used
   
-  compilation object save succeeded; see C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\Shader_Effect.cso
+  compilation object save succeeded; see C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\Shader_Test.cso
   Arona.cpp
   Arona_CAM.cpp
   Arona_Sack.cpp
@@ -11,6 +11,7 @@ C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\ShaderFiles\Sha
   BackGround.cpp
   Back_Btn.cpp
   BG_Lobby.cpp
+  BG_Pickup.cpp
   Boss_Atk.cpp
   Boss_AtkToIdle.cpp
   Boss_Bullet.cpp
@@ -22,7 +23,6 @@ C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\ShaderFiles\Sha
   Boss_MoveEnd.cpp
   Boss_SBullet.cpp
   Boss_Shield.cpp
-  Boss_ShieldToIdle.cpp
   Boss_Skill.cpp
   Boss_Trigger.cpp
   Bullet.cpp
@@ -40,7 +40,9 @@ C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\ShaderFiles\Sha
   Cost_Num.cpp
   Droid_Dead.cpp
   Ex.cpp
+  Explosion.cpp
   Ex_Cutin.cpp
+  Ex_Portrait.cpp
   Fade_InOut.cpp
   Fade_Out.cpp
   Fire.cpp
@@ -49,6 +51,7 @@ C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\ShaderFiles\Sha
   Formation_Pick.cpp
   Formation_Terrain.cpp
   Formation_Window.cpp
+..\Private\Ex_Portrait.cpp(199): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
   Formaton_Btn.cpp
   Gacha_Scene.cpp
   Haruka.cpp
@@ -81,9 +84,9 @@ C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\ShaderFiles\Sha
   Monster_Trigger.cpp
   Mutsuki.cpp
   Mutsuki_Ex.cpp
+..\Private\Monster.cpp(85): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
   Mutsuki_ExBullet.cpp
   Muzzle.cpp
-..\Private\Monster.cpp(85): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
   M_AtkIng.cpp
   M_AtkStart.cpp
   M_Landing.cpp
@@ -96,6 +99,7 @@ C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\ShaderFiles\Sha
   Run_ToKnee.cpp
   Sensei.cpp
   Sky.cpp
+  Smoke.cpp
   State.cpp
   Student.cpp
   Student_Img.cpp
@@ -103,7 +107,6 @@ C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\ShaderFiles\Sha
   Terrain.cpp
   UI.cpp
   UI_RecruitButton.cpp
-  UI_Student.cpp
   Victory.cpp
   Victory_Bg.cpp
   Warning.cpp
@@ -112,9 +115,9 @@ C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\ShaderFiles\Sha
   Run_ToHide.cpp
   Client.cpp
   코드를 생성하고 있습니다.
-  2183 of 3555 functions (61.4%) were compiled, the rest were copied from previous compilation.
-    724 functions were new in current compilation
-    272 functions had inline decision re-evaluated but remain unchanged
+  728 of 3616 functions (20.1%) were compiled, the rest were copied from previous compilation.
+    63 functions were new in current compilation
+    257 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

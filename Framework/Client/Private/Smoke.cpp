@@ -57,9 +57,9 @@ void CSmoke::Tick(_float fTimeDelta)
 
 	_matrix vInv = pGameInstance->Get_Inv();
 
-	m_pTransformCom->Set_State(CTransform::STATE_RIGHT, vInv.r[2]);
+	m_pTransformCom->Set_State(CTransform::STATE_RIGHT, vInv.r[0]);
 	m_pTransformCom->Set_State(CTransform::STATE_UP, vInv.r[1]);
-	m_pTransformCom->Set_State(CTransform::STATE_LOOK, vInv.r[0]);
+	m_pTransformCom->Set_State(CTransform::STATE_LOOK, vInv.r[2]);
 
 	m_pTransformCom->Set_Scaled(_float3(0.6f, 0.6f, 0.6f));
 
@@ -73,7 +73,7 @@ void CSmoke::Tick(_float fTimeDelta)
 
 void CSmoke::LateTick(_float fTimeDelta)
 {
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_ALPHABLEND, this);
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 }
 
 HRESULT CSmoke::Render()
@@ -109,7 +109,7 @@ HRESULT CSmoke::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_VIBuffer */
-	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Rect_Instance"), TEXT("Com_VIBuffer"), (CComponent**)&m_pVIBufferCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Rect"), TEXT("Com_VIBuffer"), (CComponent**)&m_pVIBufferCom)))
 		return E_FAIL;
 
 	return S_OK;
@@ -131,8 +131,6 @@ HRESULT CSmoke::SetUp_ShaderResource()
 	if (FAILED(m_pShaderCom->Set_RawValue("g_Frame", &m_fFrame, sizeof(_int))))
 		return E_FAIL;
 	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 0)))
-		return E_FAIL;
-	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_BlurTexture", 0)))
 		return E_FAIL;
 
 	RELEASE_INSTANCE(CGameInstance);

@@ -52,19 +52,6 @@ void CBullet::Tick(_float fTimeDelta)
 
 	m_pTransformCom->Go_Straight(5.f * fTimeDelta);
 
-	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-	Safe_AddRef(pGameInstance);
-
-
-	_matrix vInv = pGameInstance->Get_Inv();
-
-	//m_pTransformCom->Set_State(CTransform::STATE_RIGHT, vInv.r[2]);
-	//m_pTransformCom->Set_State(CTransform::STATE_UP, vInv.r[1]);
-	//m_pTransformCom->Set_State(CTransform::STATE_LOOK, vInv.r[0]);
-
-
-	Safe_Release(pGameInstance);
-
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 }
 
@@ -85,11 +72,12 @@ void CBullet::LateTick(_float fTimeDelta)
 		}
 	}
 
+
 	if(m_fTick > 2.f)
 		DELETE(this);
 
 
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONLIGHT, this);
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 }
 
 HRESULT CBullet::Render()
@@ -105,7 +93,6 @@ HRESULT CBullet::Render()
 	m_pShaderCom->Begin(2);
 
 	m_pVIBufferCom->Render();
-
 
 	return S_OK;
 }
@@ -125,7 +112,7 @@ HRESULT CBullet::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_VIBuffer */
-	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_Rect_Instance"), TEXT("Com_VIBuffer"), (CComponent**)&m_pVIBufferCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_VIBuffer_RectX"), TEXT("Com_VIBuffer"), (CComponent**)&m_pVIBufferCom)))
 		return E_FAIL;
 
 	CCollider::COLLIDERDESC			ColliderDesc;
@@ -198,8 +185,8 @@ HRESULT CBullet::InitLook()
 	else
 		m_pTransformCom->Set_State(CTransform::STATE_LOOK, pMuzzle->Get_WorldMatrix().r[2]);
 
-	m_pTransformCom->Set_Scaled(_float3(0.f, 0.1f, 1.f));
 
+	m_pTransformCom->Set_Scaled(_float3(1.f, 0.1f, 1.f));
 	return S_OK;
 }
 

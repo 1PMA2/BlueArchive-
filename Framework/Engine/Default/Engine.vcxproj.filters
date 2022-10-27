@@ -143,6 +143,9 @@
     <ClInclude Include="..\Public\VIBuffer_Rect_Instance.h">
       <Filter>01.Utility\03.Component\00.VIBuffer\Instance</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\VIBuffer_RectX.h">
+      <Filter>01.Utility\03.Component\00.VIBuffer\Rect\ViBuffer_RectX</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Base.cpp">
@@ -192,9 +195,6 @@
     </ClCompile>
     <ClCompile Include="..\private\VIBuffer.cpp">
       <Filter>01.Utility\03.Component\00.VIBuffer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\private\VIBuffer_Rect.cpp">
-      <Filter>01.Utility\03.Component\00.VIBuffer\Rect</Filter>
     </ClCompile>
     <ClCompile Include="..\private\Shader.cpp">
       <Filter>01.Utility\03.Component\01.Shader</Filter>
@@ -270,6 +270,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\VIBuffer_Rect_Instance.cpp">
       <Filter>01.Utility\03.Component\00.VIBuffer\Instance</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\VIBuffer_RectX.cpp">
+      <Filter>01.Utility\03.Component\00.VIBuffer\Rect\ViBuffer_RectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\private\VIBuffer_Rect.cpp">
+      <Filter>01.Utility\03.Component\00.VIBuffer\Rect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -407,6 +413,9 @@
     </Filter>
     <Filter Include="01.Utility\03.Component\00.VIBuffer\Instance">
       <UniqueIdentifier>{52b564de-2bc3-44e1-9de8-de7dda4e5475}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Utility\03.Component\00.VIBuffer\Rect\ViBuffer_RectX">
+      <UniqueIdentifier>{810c3747-d3d6-4125-9be0-e3d12f10bbd8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
