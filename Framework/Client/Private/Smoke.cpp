@@ -73,7 +73,7 @@ void CSmoke::Tick(_float fTimeDelta)
 
 void CSmoke::LateTick(_float fTimeDelta)
 {
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_ALPHABLEND, this);
 }
 
 HRESULT CSmoke::Render()
@@ -86,7 +86,7 @@ HRESULT CSmoke::Render()
 	if (FAILED(SetUp_ShaderResource()))
 		return E_FAIL;
 
-	m_pShaderCom->Begin(3);
+	m_pShaderCom->Begin(4);
 
 	m_pVIBufferCom->Render();
 
@@ -97,7 +97,7 @@ HRESULT CSmoke::Render()
 HRESULT CSmoke::SetUp_Components()
 {
 	/* For.Com_Shader */
-	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Shader_Effect"), TEXT("Com_Shader"), (CComponent**)&m_pShaderCom)))
+	if (FAILED(__super::Add_Component(LEVEL_STATIC, TEXT("Prototype_Component_Shader_VtxTex"), TEXT("Com_Shader"), (CComponent**)&m_pShaderCom)))
 		return E_FAIL;
 
 	/* For.Com_Renderer */
@@ -105,7 +105,7 @@ HRESULT CSmoke::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_Texture */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Smoke"), TEXT("Com_Texture"), (CComponent**)&m_pTextureCom)))
+	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_EXP"), TEXT("Com_Texture"), (CComponent**)&m_pTextureCom)))
 		return E_FAIL;
 
 	/* For.Com_VIBuffer */
@@ -130,7 +130,9 @@ HRESULT CSmoke::SetUp_ShaderResource()
 		return E_FAIL;
 	if (FAILED(m_pShaderCom->Set_RawValue("g_Frame", &m_fFrame, sizeof(_int))))
 		return E_FAIL;
-	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 0)))
+	if (FAILED(m_pShaderCom->Set_RawValue("g_Large", &m_bLarge, sizeof(_bool))))
+		return E_FAIL;
+	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 1)))
 		return E_FAIL;
 
 	RELEASE_INSTANCE(CGameInstance);
@@ -160,7 +162,7 @@ HRESULT CSmoke::InitLook()
 	_vector vTranslation = XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_TRANSLATION];
 	_vector		vLook = pMuzzle->Get_WorldMatrix().r[2];
 
-	vTranslation += XMVector3Normalize(vLook) * 0.5f;
+	vTranslation += XMVector3Normalize(vLook) * 0.2f;
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
 

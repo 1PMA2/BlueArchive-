@@ -72,11 +72,12 @@ CState * CEx::Loop(_float fTimeDelta)
 	switch (m_pOwner->Get_StudentInfo().eStudent)
 	{
 	case ARU:
-		if (20 < pModel->Get_CurrentKeyFrame())
+		if (16 < pModel->Get_CurrentKeyFrame())
 		{
 			if (m_bOnce)
 			{
 				m_pMonster = pSensei->Get_LockonMonster();
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Cylinder"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Aru_ExBullet"), &m_pMonster);
 				m_bOnce = false;
 			}

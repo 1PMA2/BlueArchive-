@@ -373,6 +373,15 @@
     <ClInclude Include="..\Public\MainApp.h">
       <Filter>00.MainApp</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Cylinder.h">
+      <Filter>02.GameObject\09.Effect\Cylinder</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Flare.h">
+      <Filter>02.GameObject\09.Effect\Flare</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\SmokeL.h">
+      <Filter>02.GameObject\09.Effect\Smoke\SmokeL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -731,6 +740,15 @@
     </ClCompile>
     <ClCompile Include="..\Private\BG_Pickup.cpp">
       <Filter>02.GameObject\04.BackGround\BG_Gacha</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Cylinder.cpp">
+      <Filter>02.GameObject\09.Effect\Cylinder</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Flare.cpp">
+      <Filter>02.GameObject\09.Effect\Flare</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\SmokeL.cpp">
+      <Filter>02.GameObject\09.Effect\Smoke\SmokeL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1194,6 +1212,15 @@
     </Filter>
     <Filter Include="02.GameObject\09.Effect\Explosion">
       <UniqueIdentifier>{c6af4666-7df8-46fd-bff1-ce16e26875e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Circle">
+      <UniqueIdentifier>{254f283b-37cf-486a-ab9a-5098052a839a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Cylinder">
+      <UniqueIdentifier>{da278bf5-8348-444b-b686-9b25a0649498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Smoke\SmokeL">
+      <UniqueIdentifier>{8a423000-9220-4d07-8cf5-248f44b2ee3b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

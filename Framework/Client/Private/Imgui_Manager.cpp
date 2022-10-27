@@ -77,7 +77,8 @@ HRESULT CImgui_Manager::Render()
 
 		if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
 		{
-			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"));
+			_vector v = XMVectorSet(0, 0, 4, 1);
+			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_SmokeL"), &v);
 		}
 
 		if (0 < m_pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Effect")))

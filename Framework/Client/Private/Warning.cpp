@@ -93,7 +93,7 @@ HRESULT CWarning::Render()
 	if (FAILED(SetUp_ShaderResource()))
 		return E_FAIL;
 
-	m_pShaderCom->Begin(4);
+	m_pShaderCom->Begin(3);
 
 	m_pVIBufferCom->Render();
 

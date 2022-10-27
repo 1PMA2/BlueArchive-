@@ -62,6 +62,9 @@
 #include "Muzzle.h"
 #include "Bullet.h"
 #include "Smoke.h"
+#include "SmokeL.h"
+#include "Flare.h"
+#include "Cylinder.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -707,6 +710,17 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CSmoke::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_SmokeL"),
+			CSmokeL::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Flare"),
+			CFlare::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Cylinder"),
+			CCylinder::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
 		///* For.Prototype_GameObject_Effect */
 		//if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Effect"),
 		//	CEffect::Create(m_pGraphic_Device))))
@@ -740,6 +754,14 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Fx/Smoke%d.jpeg"), 3))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Flare"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Fx/Flare%d.png"), 2))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_EXP"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Fx/EXP%d.png"), 2))))
+			return E_FAIL;
+
 		lstrcpy(m_szLoadingText, TEXT("¸ðµ¨À» ·ÎµùÁßÀÌºñ³®. "));
 
 		_matrix			TransformMatrix;
@@ -767,6 +789,13 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 		TransformMatrix = XMMatrixRotationX(XMConvertToRadians(90.f));
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_TankHihumi"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Monster/Boss/", "Boss.fbx", TransformMatrix))))
+			return E_FAIL;
+
+		//fx
+		ZeroMemory(&TransformMatrix, sizeof(_matrix));
+		TransformMatrix = XMMatrixRotationY(XMConvertToRadians(-90.f));
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Cylinder0"),
+			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/Fx/", "Cylinder0.obj", TransformMatrix))))
 			return E_FAIL;
 
 

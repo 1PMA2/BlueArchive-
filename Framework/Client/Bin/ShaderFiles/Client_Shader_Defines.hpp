@@ -76,3 +76,10 @@ RasterizerState RS_Wire
 	CullMode = back;
 	FrontCounterClockwise = false;
 };
+
+RasterizerState RS_Fx
+{
+	FillMode = solid;
+	CullMode = none;
+	FrontCounterClockwise = false;
+};

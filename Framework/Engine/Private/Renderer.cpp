@@ -137,11 +137,11 @@ HRESULT CRenderer::Draw_RenderGroup()
 		return E_FAIL;
 	if (FAILED(Render_NonAlphaBlend()))
 		return E_FAIL;
-	if (FAILED(Render_AlphaBlend()))
-		return E_FAIL;
 	if (FAILED(Render_Lights()))
 		return E_FAIL;
 	if (FAILED(Render_Blend()))
+		return E_FAIL;
+	if (FAILED(Render_AlphaBlend()))
 		return E_FAIL;
 	if (FAILED(Render_NonLight()))
 		return E_FAIL;
@@ -178,6 +178,11 @@ HRESULT CRenderer::Render_NonAlphaBlend()
 	/* 렌더타겟을 장치에 Diffuse + Normal 바인딩한ㄷ앋. */
 	if (FAILED(m_pTarget_Manager->Begin_MRT(m_pContext, TEXT("MRT_Deferred"))))
 		return E_FAIL;
+
+	m_RenderObjects[RENDER_NONALPHABLEND].sort([](CGameObject* pSour, CGameObject* pDest)
+	{
+		return pSour->Get_CamDistance() > pDest->Get_CamDistance();
+	});
 
 	for (auto& pGameObject : m_RenderObjects[RENDER_NONALPHABLEND])
 	{
@@ -245,6 +250,9 @@ HRESULT CRenderer::Render_Blend()
 		return E_FAIL;
 
 	if (FAILED(m_pShader->Set_ShaderResourceView("g_SpecularTexture", m_pTarget_Manager->Get_SRV(TEXT("Target_Specular")))))
+		return E_FAIL;
+
+	if (FAILED(m_pShader->Set_ShaderResourceView("g_FlagTexture", m_pTarget_Manager->Get_SRV(TEXT("Target_Flag")))))
 		return E_FAIL;
 
 	/* 모든 빛들은 셰이드 타겟을 꽉 채우고 지굑투영으로 그려지면 되기때문에 빛마다 다른 상태를 줄 필요가 없다. */

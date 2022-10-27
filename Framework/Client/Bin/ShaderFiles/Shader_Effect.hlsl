@@ -91,15 +91,17 @@ PS_OUT PS_MAIN(PS_IN In)
 
 	Out.vDiffuse = g_DiffuseTexture.Sample(DefaultSampler, vTexUV);
 
+	Out.vDiffuse.a = Out.vDiffuse.r;
+
 	if (Out.vDiffuse.r < 0.1f)
 		discard;
 
 	//Out.vFlag = g_FlagTexture.Sample(DefaultSampler, In.vTexUV);
 
 
-	Out.vDiffuse.r = 255.f / 255.f;
-	Out.vDiffuse.g = 255.f / 255.f;
-	Out.vDiffuse.b = 20.f / 255.f;
+	Out.vDiffuse.r = 250.f / 255.f;
+	Out.vDiffuse.g = 230.f / 255.f;
+	Out.vDiffuse.b = 80.f / 255.f;
 
 	return Out;
 }
@@ -110,49 +112,20 @@ PS_OUT PS_BULLET(PS_IN In)
 
 	Out.vDiffuse = g_DiffuseTexture.Sample(DefaultSampler, In.vTexUV);
 
-	Out.vDiffuse.a = Out.vDiffuse.g;
+	Out.vDiffuse.a = Out.vDiffuse.r;
 
 	if (Out.vDiffuse.r < 0.1f)
 		discard;
 
 
-	Out.vDiffuse.r = 210.f / 255.f;
-	Out.vDiffuse.g = 210.f / 255.f;
-	Out.vDiffuse.b = 20.f / 255.f;
+	Out.vDiffuse.r = 250.f / 255.f;
+	Out.vDiffuse.g = 230.f / 255.f;
+	Out.vDiffuse.b = 80.f / 255.f;
 
 	return Out;
 }
 
-PS_OUT PS_SMOKE(PS_IN In)
-{
-	PS_OUT		Out = (PS_OUT)0;
 
-	float2	vTexUV = In.vTexUV;
-
-	float	fFrame = g_Frame;
-
-	if (fFrame > 9.f)
-		fFrame = 8.f;
-
-	vTexUV.x = vTexUV.x * (1.f / 3.f) + ((uint)fFrame % 3) * (1.f / 3.f);
-	vTexUV.y = vTexUV.y * (1.f / 3.f) + ((uint)fFrame / 3) * (1.f / 3.f);
-
-
-	Out.vDiffuse = g_DiffuseTexture.Sample(DefaultSampler, vTexUV);
-
-	if (Out.vDiffuse.r < 0.1f)
-		discard;
-
-	//Out.vFlag = g_FlagTexture.Sample(DefaultSampler, In.vTexUV);
-
-
-	if (0.2f < Out.vDiffuse.r)
-	{
-		Out.vDiffuse.a = 0.6f;
-	}
-
-	return Out;
-}
 
 technique11 DefaultTechnique
 {
@@ -185,16 +158,6 @@ technique11 DefaultTechnique
 		VertexShader = compile vs_5_0 VS_MAIN();
 		GeometryShader = NULL;
 		PixelShader = compile ps_5_0 PS_BULLET();
-	}
-	pass Smoke
-	{
-		SetBlendState(BS_AlphaBlending, float4(0.f, 0.f, 0.f, 1.f), 0xffffffff);
-		SetDepthStencilState(DSS_Default, 0);
-		SetRasterizerState(RS_Default);
-
-		VertexShader = compile vs_5_0 VS_MAIN();
-		GeometryShader = NULL;
-		PixelShader = compile ps_5_0 PS_SMOKE();
 	}
 
 }

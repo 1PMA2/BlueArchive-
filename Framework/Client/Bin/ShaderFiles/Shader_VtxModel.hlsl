@@ -4,8 +4,10 @@
 matrix	g_WorldMatrix, g_ViewMatrix, g_ProjMatrix;
 
 texture2D	g_DiffuseTexture;
+texture2D	g_DissolveTexture;
 texture2D	g_NormalTexture;
 
+float g_UVx;
 
 sampler DefaultSampler = sampler_state 
 {		
@@ -13,6 +15,14 @@ sampler DefaultSampler = sampler_state
 	AddressU = wrap;
 	AddressV = wrap;
 };
+
+sampler ClampSampler = sampler_state
+{
+	filter = min_mag_mip_linear;
+	AddressU = clamp;
+	AddressV = clamp;
+};
+
 struct VS_IN
 {
 	float3		vPosition : POSITION;
@@ -79,6 +89,28 @@ PS_OUT PS_MAIN(PS_IN In)
 	Out.vDepth = vector(In.vProjPos.z / In.vProjPos.w, In.vProjPos.w / 300.0f, 0.f, 0.f);
 
 	if (Out.vDiffuse.a < 0.1f)
+		discard;
+
+	return Out;
+}
+
+PS_OUT PS_CYL(PS_IN In)
+{
+	PS_OUT		Out = (PS_OUT)0;
+
+	//vector vDissolve = g_DissolveTexture.Sample(DefaultSampler, In.vTexUV);
+
+	float2		vTexUV = In.vTexUV;
+
+
+	vTexUV.x -= g_UVx;
+	//vTexUV.y += g_UVx;
+
+	Out.vDiffuse = g_DiffuseTexture.Sample(ClampSampler, vTexUV);
+	Out.vNormal = vector(In.vNormal.xyz * 0.5f + 0.5f, 1.f);
+	Out.vDepth = vector(In.vProjPos.z / In.vProjPos.w, In.vProjPos.w / 300.0f, 0.f, 0.f);
+
+	if (Out.vDiffuse.r < 0.1f)
 		discard;
 
 	return Out;
@@ -175,5 +207,16 @@ technique11 DefaultTechnique
 		VertexShader = compile vs_5_0 VS_MAIN_NORMAL();
 		GeometryShader = NULL;
 		PixelShader = compile ps_5_0 PS_MAIN_NORMAL();
+	}
+
+	pass CYL
+	{
+		SetBlendState(BS_Default, float4(0.f, 0.f, 0.f, 1.f), 0xffffffff);
+		SetDepthStencilState(DSS_Default, 0);
+		SetRasterizerState(RS_Fx);
+
+		VertexShader = compile vs_5_0 VS_MAIN();
+		GeometryShader = NULL;
+		PixelShader = compile ps_5_0 PS_CYL();
 	}
 }

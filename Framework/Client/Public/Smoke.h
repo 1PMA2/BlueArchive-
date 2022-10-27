@@ -40,6 +40,7 @@ private:
 private:
 	_float4x4				m_WorldMatrix;
 	_float	m_fFrame = 0.f;
+	_bool	m_bLarge = true;
 
 private:
 	HRESULT SetUp_Components();
