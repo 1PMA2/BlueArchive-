@@ -73,7 +73,7 @@ void Ex_Portrait::Tick(_float fTimeDelta)
 	if (3 != m_iSequence)
 		m_fLocationX = ((m_iSequence % 4) + 1.f) * 120;
 	else
-		m_fLocationX = 500.f;
+		m_fLocationX = 600.f;
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(200.f + m_fLocationX, m_fY - m_fLocationY, 0.f, 1.f));
 

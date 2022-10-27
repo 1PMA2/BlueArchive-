@@ -35,7 +35,6 @@ HRESULT CLevel_Gacha::Initialize()
 		return E_FAIL;*/
 
 
-
 	return S_OK;
 }
 
@@ -61,6 +60,8 @@ void CLevel_Gacha::Late_Tick(_float TimeDelta)
 
 HRESULT CLevel_Gacha::Render()
 {
+
+
 	if (FAILED(__super::Render()))
 		return E_FAIL;
 
@@ -114,10 +115,13 @@ HRESULT CLevel_Gacha::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	//if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Terrain"))))
 	//	return E_FAIL;
 
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHA, pLayerTag, TEXT("Prototype_GameObject_BG_Pickup"))))
+		return E_FAIL;
+
 	_int iImgNum = 1;
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHA, pLayerTag, TEXT("Prototype_GameObject_BG"), &iImgNum)))
 		return E_FAIL;
-
+	
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHA, pLayerTag, TEXT("Prototype_GameObject_BackButton"))))
 		return E_FAIL;
 
@@ -266,6 +270,7 @@ CLevel_Gacha * CLevel_Gacha::Create(ID3D11Device* pDevice, ID3D11DeviceContext* 
 
 void CLevel_Gacha::Free()
 {
+
 	__super::Free();
 
 }

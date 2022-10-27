@@ -72,7 +72,14 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 			{
 				m_pOwner->Use_Bullet();
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
-				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Bullet"), &m_pOwner);
+
+				if (m_pOwner->Get_StudentInfo().eWeapon == SHOTGUN)
+				{
+					pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
+				}
+				else
+					pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Bullet"), &m_pOwner);
+
 				m_bOnce = false;
 			}
 		}

@@ -115,8 +115,8 @@ HRESULT CLoadingImage::SetUp_ShaderResource()
 	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", m_iImgNum)))
 		return E_FAIL;
 
-	m_fSizeX = (_float)m_pTextureCom->Get_TextureSize(m_iImgNum).Width;
-	m_fSizeY = (_float)m_pTextureCom->Get_TextureSize(m_iImgNum).Height;
+	//m_fSizeX = (_float)m_pTextureCom->Get_TextureSize(m_iImgNum).Width;
+	//m_fSizeY = (_float)m_pTextureCom->Get_TextureSize(m_iImgNum).Height;
 
 
 	return S_OK;

@@ -7,6 +7,7 @@
 #include "LoadingImage.h"
 #include "BG_Lobby.h"
 #include "BG_Gacha.h"
+#include "BG_Pickup.h"
 #include "Camera_Free.h"
 #include "Camera_Main.h"
 #include "Camera_Ex.h"
@@ -256,6 +257,10 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Back_Btn.png"), 1))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Video"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Video/gif/%d.png"), 200))))
+			return E_FAIL;
+
 		/* For.Prototype_GameObject_Student */
 		g_bLobby = false;
 	}
@@ -290,6 +295,10 @@ HRESULT CLoader::Loading_ForGachaLevel()
 
 	if (g_bGacha) //객체 개수, 재생성 막기
 	{
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_BG_Pickup"),
+			CBG_Pickup::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_StudentImg"),
 			CStudent_Img::Create(m_pDevice, m_pContext))))

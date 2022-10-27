@@ -73,7 +73,6 @@ CState * CFire::Loop(_float fTimeDelta)
 				m_pOwner->Use_Bullet();
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Bullet"), &m_pOwner);
-				//pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
 				m_bOnce = false;
 			}
 		}

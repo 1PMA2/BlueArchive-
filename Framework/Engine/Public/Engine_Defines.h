@@ -45,6 +45,9 @@ using namespace DirectX;
 #include <typeinfo>
 #include <functional>
 
+#include <Vfw.h>
+#pragma comment(lib, "vfw32.lib")
+
 using namespace std;
 
 #include "Engine_Typedef.h"

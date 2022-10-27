@@ -179,6 +179,7 @@
     <ClInclude Include="..\public\BackGround.h" />
     <ClInclude Include="..\Public\Back_Btn.h" />
     <ClInclude Include="..\Public\BG_Lobby.h" />
+    <ClInclude Include="..\Public\BG_Pickup.h" />
     <ClInclude Include="..\Public\Boss_Atk.h" />
     <ClInclude Include="..\Public\Boss_AtkToIdle.h" />
     <ClInclude Include="..\Public\Boss_Bullet.h" />
@@ -302,6 +303,7 @@
     <ClCompile Include="..\private\BackGround.cpp" />
     <ClCompile Include="..\Private\Back_Btn.cpp" />
     <ClCompile Include="..\Private\BG_Lobby.cpp" />
+    <ClCompile Include="..\Private\BG_Pickup.cpp" />
     <ClCompile Include="..\Private\Boss_Atk.cpp" />
     <ClCompile Include="..\Private\Boss_AtkToIdle.cpp" />
     <ClCompile Include="..\Private\Boss_Bullet.cpp" />

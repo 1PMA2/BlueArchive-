@@ -31,8 +31,8 @@ HRESULT CFade_Out::Initialize(void * pArg)
 		return E_FAIL;
 
 
-	m_fSizeX = 1.f;
-	m_fSizeY = 1.f;
+	m_fSizeX = 1600.f;
+	m_fSizeY = 1124.f;
 	m_fX = g_iWinCX >> 1;
 	m_fY = g_iWinCY >> 1;
 
@@ -75,8 +75,8 @@ HRESULT CFade_Out::Render()
 	if (FAILED(SetUp_ShaderResource()))
 		return E_FAIL;
 
-	m_fSizeX = (_float)m_pTextureCom->Get_TextureSize(m_iImgNum).Width;
-	m_fSizeY = (_float)m_pTextureCom->Get_TextureSize(m_iImgNum).Height;
+	//m_fSizeX = (_float)m_pTextureCom->Get_TextureSize(m_iImgNum).Width;
+	//m_fSizeY = (_float)m_pTextureCom->Get_TextureSize(m_iImgNum).Height;
 
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
 
