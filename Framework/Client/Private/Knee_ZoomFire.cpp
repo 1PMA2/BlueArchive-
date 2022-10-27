@@ -88,6 +88,14 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 
 	if (pModel->Get_isFinished())
 	{
+		if (SHOTGUN == m_pOwner->Get_StudentInfo().eWeapon)
+		{
+			if (m_pOwner->Get_Other())
+			{
+				return CRun::Create(m_pOwner);
+			}
+		}
+
 		if (nullptr == pMonster)
 		{
 			pState = CRun::Create(m_pOwner);

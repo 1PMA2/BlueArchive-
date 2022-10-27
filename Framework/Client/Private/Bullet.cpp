@@ -171,6 +171,11 @@ HRESULT CBullet::InitLook()
 	_vector vTranslation = XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_TRANSLATION];
 	_vector		vLook = pMuzzle->Get_WorldMatrix().r[2];
 
+	_float fDegree;
+
+	fDegree = acos(XMVectorGetX(XMVector4Dot(XMVectorSet(0.f, 0.f, 1.f, 0.f), vLook)));
+
+	m_pTransformCom->Rotation(vLook, fDegree);
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
 
@@ -184,7 +189,6 @@ HRESULT CBullet::InitLook()
 	}
 	else
 		m_pTransformCom->Set_State(CTransform::STATE_LOOK, pMuzzle->Get_WorldMatrix().r[2]);
-
 
 	m_pTransformCom->Set_Scaled(_float3(1.f, 0.1f, 1.f));
 	return S_OK;

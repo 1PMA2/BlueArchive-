@@ -176,9 +176,7 @@ HRESULT CMuzzle::InitLook()
 	_vector vTranslation = XMLoadFloat4x4(&m_WorldMatrix).r[CTransform::STATE_TRANSLATION];
 	_vector		vLook = pMuzzle->Get_State(CTransform::STATE_LOOK);
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
-	m_pTransformCom->Set_State(CTransform::STATE_LOOK, vLook);
-
+	_float fScale;
 
 	switch (m_pOwner->Get_StudentInfo().eWeapon)
 	{
@@ -186,29 +184,35 @@ HRESULT CMuzzle::InitLook()
 		m_iWeapon = 0;
 		m_iMAXFrame = 4;
 		vTranslation += XMVector3Normalize(vLook) * 0.2f;
-		m_pTransformCom->Set_Scaled(_float3(1.f, 0.6f, 0.6f));
+		fScale = 0.6f;
 		break;
 	case RF:
 		m_iWeapon = 1;
 		m_iMAXFrame = 4;
 		vTranslation += XMVector3Normalize(vLook) * 0.f;
-		m_pTransformCom->Set_Scaled(_float3(1.f, 0.6f, 0.6f));
+		fScale = 0.6f;
 		break;
 	case HG:
 		m_iWeapon = 3;
 		m_iMAXFrame = 4;
 		vTranslation += XMVector3Normalize(vLook) * 0.f;
-		m_pTransformCom->Set_Scaled(_float3(1.f, 0.4f, 0.4f));
+		fScale = 0.4f;
 		break;
 	case SHOTGUN:
 		m_iWeapon = 2;
 		m_iMAXFrame = 9;
 		vTranslation += XMVector3Normalize(vLook) * 0.4f;
+		fScale = 1.f;
 		break;
 	}
+	_float fDegree;
 
+	fDegree = acos(XMVectorGetX(XMVector4Dot(XMVectorSet(0.f, 0.f, 1.f, 0.f), vLook)));
 
-
+	m_pTransformCom->Rotation(vLook, fDegree);
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
+	m_pTransformCom->Set_State(CTransform::STATE_LOOK, vLook);
+	m_pTransformCom->Set_Scaled(_float3(1.f, fScale, fScale));
 
 
 
