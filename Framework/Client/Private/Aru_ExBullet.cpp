@@ -143,9 +143,9 @@ HRESULT CAru_ExBullet::Collision_ToMonster()
 
 	}
 
-	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Flare"), &m_vTranslation);
+	/*pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Flare"), &m_vTranslation);
 	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_SmokeL"), &m_vTranslation);
-
+*/
 	DELETE(this);
 
 	return S_OK;

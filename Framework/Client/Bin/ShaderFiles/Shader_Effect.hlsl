@@ -101,7 +101,7 @@ PS_OUT PS_MAIN(PS_IN In)
 
 	Out.vDiffuse.r = 250.f / 255.f;
 	Out.vDiffuse.g = 230.f / 255.f;
-	Out.vDiffuse.b = 80.f / 255.f;
+	Out.vDiffuse.b = 50.f / 255.f;
 
 	return Out;
 }
@@ -120,7 +120,7 @@ PS_OUT PS_BULLET(PS_IN In)
 
 	Out.vDiffuse.r = 250.f / 255.f;
 	Out.vDiffuse.g = 230.f / 255.f;
-	Out.vDiffuse.b = 80.f / 255.f;
+	Out.vDiffuse.b = 50.f / 255.f;
 
 	return Out;
 }

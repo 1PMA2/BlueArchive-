@@ -233,6 +233,7 @@ PS_OUT PS_SMOKE(PS_IN In)
 		vTexUV.x = vTexUV.x * (1.f / 4.f) + ((uint)fFrame % 4) * (1.f / 4.f);
 		vTexUV.y = vTexUV.y * (1.f / 4.f) + ((uint)fFrame / 4) * (1.f / 4.f);
 		Out.vColor = g_DiffuseTexture.Sample(DefaultSampler, vTexUV);
+		//.vColor.a = Out.vColor.r;
 
 	}
 	else
@@ -252,10 +253,10 @@ PS_OUT PS_SMOKE(PS_IN In)
 	//Out.vFlag = g_FlagTexture.Sample(DefaultSampler, In.vTexUV);
 
 
-	/*if (0.2f < Out.vColor.r)
+	if (0.2f < Out.vColor.r)
 	{
 		Out.vColor -= 0.3f;
-	}*/
+	}
 
 	return Out;
 }
