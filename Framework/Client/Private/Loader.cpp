@@ -66,6 +66,7 @@
 #include "Flare.h"
 #include "Cylinder.h"
 #include "Workspace.h"
+#include "Slash.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -310,6 +311,10 @@ HRESULT CLoader::Loading_ForGachaLevel()
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_StudentImg"),
 			CStudent_Img::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Slash"),
+			CSlash::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_RecruitButton"),

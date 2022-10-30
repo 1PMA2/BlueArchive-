@@ -51,8 +51,41 @@ HRESULT CStudent_Img::Initialize(void * pArg)
 
 void CStudent_Img::Tick(_float fTimeDelta)
 {
-	_vector vTarget = XMVectorSet(m_fX - (g_iWinCX * 0.5f) - 100.f, -m_fY + (g_iWinCY * 0.5f) - 200.f, 0, 1);
-	m_pTransformCom->Go_Lerp(vTarget, 3.f, fTimeDelta);
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+	m_fTimeAcc += fTimeDelta;
+
+	if(0.5f > m_fTimeAcc)
+	{ 
+		_vector vTarget = XMVectorSet(m_fX - (g_iWinCX * 0.5f) - 100.f, -m_fY + (g_iWinCY * 0.5f) - 200.f, 0, 1);
+		m_pTransformCom->Go_Lerp(vTarget, 3.f, fTimeDelta);
+	}
+	else
+	{
+		if (m_bOnce)
+		{
+			if (FAILED(pGameInstance->Add_GameObject(LEVEL_GACHASCENE, TEXT("Layer_Student"), TEXT("Prototype_GameObject_Slash"))))
+				return;
+			m_bOnce = false;
+		}
+
+		if (0.7 < m_fTimeAcc)
+		{
+			if (m_bSize)
+			{
+				m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_fX - (g_iWinCX * 0.5f) - 100.f, -m_fY + (g_iWinCY * 0.5f) - 200.f, 0, 1));
+				m_bSize = false;
+			}
+			_vector vTarget = XMVectorSet(m_fX - (g_iWinCX * 0.5f) - 200.f, -m_fY + (g_iWinCY * 0.5f) - 200.f, 0, 1);
+			m_pTransformCom->Go_Lerp(vTarget, 1.f, fTimeDelta);
+			m_fSizeX = 800.f;
+			m_fSizeY = 1200.f;
+		}
+		
+	}
+
+	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
+
+	
 
 }
 

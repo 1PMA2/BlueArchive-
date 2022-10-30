@@ -38,6 +38,9 @@ private:
 
 	_int			m_iImgNum = 0;
 	_float			m_fFade = -1.f;
+	_float			m_fTimeAcc = 0.f;
+	_bool			m_bOnce = true;
+	_bool			m_bSize = true;
 
 private:
 	HRESULT SetUp_Components();
