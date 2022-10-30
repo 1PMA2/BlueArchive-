@@ -228,6 +228,7 @@
     <ClInclude Include="..\Public\Gacha_Scene.h" />
     <ClInclude Include="..\Public\Haruka.h" />
     <ClInclude Include="..\Public\Haruka_Ex.h" />
+    <ClInclude Include="..\Public\Haruka_ExBullet.h" />
     <ClInclude Include="..\Public\Hide_FireStart.h" />
     <ClInclude Include="..\Public\Hide_Idle.h" />
     <ClInclude Include="..\Public\Hide_Reloading.h" />
@@ -271,6 +272,7 @@
     <ClInclude Include="..\Public\M_Landing.h" />
     <ClInclude Include="..\Public\M_Run.h" />
     <ClInclude Include="..\Public\M_Runend.h" />
+    <ClInclude Include="..\Public\Retire.h" />
     <ClInclude Include="..\Public\Rifle_Delay.h" />
     <ClInclude Include="..\Public\Rifle_Fire.h" />
     <ClInclude Include="..\Public\Run.h" />
@@ -356,6 +358,7 @@
     <ClCompile Include="..\Private\Gacha_Scene.cpp" />
     <ClCompile Include="..\Private\Haruka.cpp" />
     <ClCompile Include="..\Private\Haruka_Ex.cpp" />
+    <ClCompile Include="..\Private\Haruka_ExBullet.cpp" />
     <ClCompile Include="..\Private\Hide_FireStart.cpp" />
     <ClCompile Include="..\Private\Hide_Idle.cpp" />
     <ClCompile Include="..\Private\Hide_Reloading.cpp" />
@@ -398,6 +401,7 @@
     <ClCompile Include="..\Private\M_Landing.cpp" />
     <ClCompile Include="..\Private\M_Run.cpp" />
     <ClCompile Include="..\Private\M_Runend.cpp" />
+    <ClCompile Include="..\Private\Retire.cpp" />
     <ClCompile Include="..\Private\Rifle_Delay.cpp" />
     <ClCompile Include="..\Private\Rifle_Fire.cpp" />
     <ClCompile Include="..\Private\Run.cpp" />

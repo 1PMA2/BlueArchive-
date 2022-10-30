@@ -76,8 +76,6 @@ CState * CKnee_ZoomStart::Loop(_float fTimeDelta)
 	}
 
 	return pState;
-
-	return pState;
 }
 
 void CKnee_ZoomStart::Exit()

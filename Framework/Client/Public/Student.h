@@ -28,7 +28,7 @@ public:
 		FORMATION eFormation;
 
 		_bool	bExModel;
-		_uint	iHp;
+		_int	iHp;
 		_uint	iShield;
 		_uint	iAtk;
 		_uint	iDef; //엄폐시 데미지 입을 확률
@@ -70,6 +70,8 @@ public:
 	void		Set_Portrait(_bool bPortrait) { m_bPortrait = bPortrait; }
 	_bool		Is_Retire() { return m_bRetire; }
 	void		Set_Retire(_bool bRetire) { m_bRetire = bRetire; }
+	void		Set_MinusHp(_int iAtk);
+	void		Set_Covered(_bool bCovered) { m_bCovered = bCovered; }
 
 	CMonster*		FoundMonster();
 
@@ -107,6 +109,7 @@ protected:
 
 	_bool					m_bDamaged = false;
 	_bool					m_bRetire = false;
+	_bool					m_bCovered = false;
 
 
 	vector<CMonster*>	m_Monsters;

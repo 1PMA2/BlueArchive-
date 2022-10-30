@@ -31,6 +31,12 @@ CMonster_State * CM_AtkIng::Loop(_float fTimeDelta)
 
 	CStudent* pStudent = m_pOwner->Get_FoundStudent();
 
+	if (m_bOnce && pStudent)
+	{
+		pStudent->Set_MinusHp(30);
+		m_bOnce = false;
+	}
+
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
 	pModel->Play_Animation(fTimeDelta);

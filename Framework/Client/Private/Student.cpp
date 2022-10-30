@@ -24,6 +24,11 @@ CStudent::CStudent(const CStudent & rhs)
 {
 }
 
+void CStudent::Set_MinusHp(_int iAtk)
+{
+	m_tStudentInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1));
+}
+
 CMonster* CStudent::FoundMonster()
 {
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
@@ -112,11 +117,10 @@ void CStudent::LateTick(_float fTimeDelta)
 {
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 
-	if (KEY(L, TAP))
-	{
-		m_bRetire = true;
-		DISABLE(this);
-	}
+	//if (0 > m_tStudentInfo.iHp)
+	//{
+	//	m_bRetire = true;
+	//}
 }
 
 HRESULT CStudent::Render()

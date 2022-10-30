@@ -48,11 +48,14 @@ HRESULT Ex_Portrait::Initialize(void * pArg)
 
 	CSensei* pSensei = GET_SENSEI;
 
-	for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
+	m_iLive = pSensei->Get_FormationInfoSize();
+
+	for (_uint i = 0; i < m_iLive; ++i)
 	{
 		if (pSensei->Get_FormationInfo(i).eStudent == m_iImgNum)
 		{
-			m_iSequence = pSensei->Get_FormationInfo(i).eFormation;
+			m_iSequence = i;
+
 			m_iStudent = i;
 			break;
 		}
@@ -71,11 +74,11 @@ void Ex_Portrait::Tick(_float fTimeDelta)
 
 
 	if (3 != m_iSequence)
-		m_fLocationX = ((m_iSequence % 4) + 1.f) * 120;
+		m_fLocationX = m_iSequence * 120;
 	else
 		m_fLocationX = 600.f;
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(200.f + m_fLocationX, m_fY - m_fLocationY, 0.f, 1.f));
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(300.f + m_fLocationX, m_fY - m_fLocationY, 0.f, 1.f));
 
 
 
@@ -159,7 +162,11 @@ void Ex_Portrait::ClickPortrait()
 
 	m_pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), m_iStudent);
 
+	m_iLive = pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Icon"));
+
 	CSensei* pSensei = GET_SENSEI;
+
+	
 
 	_float3 vPos;
 
@@ -192,7 +199,7 @@ void Ex_Portrait::ClickPortrait()
 		}
 	}
 
-	if (pSensei->Get_SenseiInfo().bEx)
+	if (pSensei->Get_SenseiInfo().bEx) // 나머지
 	{
 		if (m_pStudent != pSensei->Get_ExStudent())
 		{
@@ -206,10 +213,40 @@ void Ex_Portrait::ClickPortrait()
 			}
 		}
 		else
-			m_iSequence += (pSensei->Get_FormationInfoSize() - 1) - m_iSequence;
+			m_iSequence += (m_iLive - 1) - m_iSequence; //눌린애
 	}
 	else
 		m_bOnce = true;
+
+
+	if (m_pStudent->Is_Retire())
+	{
+		pSensei->Set_Sequence(m_iSequence);
+		pSensei->Set_Retire(true);
+		DELETE(this);
+	}
+	else
+	{
+		if (pSensei->Get_Retire())
+		{
+			if (m_bRetire)
+			{
+				m_bRetire = false;
+				if (m_iSequence > pSensei->Get_Sequence())
+				{
+					m_iSequence -= 1;
+				}
+			}
+
+
+			if (m_iLive - 1 == m_iStudent)
+			{
+				pSensei->Set_Retire(false);
+			}
+		}
+		else
+			m_bRetire = true;
+	}
 }
 
 void Ex_Portrait::OnDisable()

@@ -124,6 +124,9 @@ void CCamera_Main::Move_Camera(_float fTimeDelta)
 	{
 		CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), i);
 
+		if (pStudent->Is_Retire())
+			continue;
+
 		CTransform* pTransform = (CTransform*)pStudent->Get_Component(TEXT("Com_Transform"));
 
 		_vector vTarget = pTransform->Get_State(CTransform::STATE_TRANSLATION);

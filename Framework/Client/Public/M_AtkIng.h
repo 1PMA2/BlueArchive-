@@ -16,6 +16,9 @@ public:
 	virtual CMonster_State * Loop(_float fTimeDelta) override;
 	virtual void Exit() override;
 
+private:
+	_bool m_bOnce = true;
+
 public:
 	static CM_AtkIng* Create(CMonster* pOwner);
 };

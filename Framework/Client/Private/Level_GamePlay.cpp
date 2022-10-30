@@ -48,7 +48,7 @@ HRESULT CLevel_GamePlay::Initialize()
 	CSensei* pSensei = CSensei::Get_Instance();
 
 	pSensei->ReSet_Ex();
-
+	pSensei->Set_Retire(false);
 	return S_OK;
 }
 
@@ -198,7 +198,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	{
 		STUDENT eStudent = pSensei->Get_FormationInfo(i).eStudent;
 
-		if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_Ex_Portrait"), &eStudent)))
+		if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Icon"), TEXT("Prototype_GameObject_Ex_Portrait"), &eStudent)))
 			return E_FAIL;
 
 	}

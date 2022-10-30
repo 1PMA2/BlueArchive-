@@ -62,6 +62,18 @@ void CSensei::Victory()
 	m_bEnd = true;
 }
 
+void CSensei::Retirecount()
+{
+	m_iRetire += 1;
+
+	if (Get_FormationInfoSize() == m_iRetire)
+	{
+		m_bFail = true;
+	}
+	else
+		m_bFail = false;
+}
+
 _bool CSensei::Useable_Ex(_float fUseCost) //사용할 코스트
 {
 	if (fUseCost <= m_tSensei.fCost)
@@ -125,7 +137,7 @@ void CSensei::Formation_Level(_float fTimeDelta)
 void CSensei::Tick_Cost(_float fTimeDelta)
 {
 	if (10.f > m_tSensei.fCost)
-		m_tSensei.fCost += (fTimeDelta * 0.2f);
+		m_tSensei.fCost += (fTimeDelta * 0.1f);
 	else
 		m_tSensei.fCost = 10.f;
 }
@@ -155,6 +167,8 @@ CStudent * CSensei::Get_FormationStudents(_uint iIndex)
 
 void CSensei::Clear_FormationInfo()
 {
+	m_iRetire = 0;
+	m_bFail = false;
 	m_FormationsInfo.clear();
 }
 

@@ -86,6 +86,11 @@ public:
 	_uint Get_Sequence() { return m_iSequence; }
 	void Victory();
 
+	void Retirecount();
+	_bool IsFail() { return m_bFail; }
+	_bool Get_Retire() { return m_bRetire; }
+	void Set_Retire(_bool bRetire) { m_bRetire = bRetire; }
+
 private:
 	_bool m_bExReady = false;
 	_bool m_bEnd = false;
@@ -104,6 +109,9 @@ private:
 	_bool m_bOpenLobbyLevel = false;
 	_bool m_bFormationOnce = true;
 	_uint m_iSequence = 0;
+	_uint m_iRetire = 0;
+	_bool m_bRetire = false;
+	_bool m_bFail = false;
 
 	map<const _tchar*, class CStudent*>					m_Student;
 	typedef map<const _tchar*, class CStudent*>			STUDENTS;

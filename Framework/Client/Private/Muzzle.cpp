@@ -201,7 +201,7 @@ HRESULT CMuzzle::InitLook()
 	case SHOTGUN:
 		m_iWeapon = 2;
 		m_iMAXFrame = 9;
-		vTranslation += XMVector3Normalize(vLook) * 0.4f;
+		vTranslation += XMVector3Normalize(vLook) * 0.5f;
 		fScale = 1.5f;
 		break;
 	}
