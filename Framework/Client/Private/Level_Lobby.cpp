@@ -26,15 +26,15 @@ HRESULT CLevel_Lobby::Initialize()
 	pSensei->Release_FormationStudents();
 
 	pSensei->Set_End(false);
-
-
+	CGameInstance::Get_Instance()->StopSound(BGM);
+	CGameInstance::Get_Instance()->PlayBGM(L"ClearMorning_Short", 0.5f);
 	return S_OK;
 }
 
 void CLevel_Lobby::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);
-
+	
 	Open_Formation();
 	
 	Open_Gacha();

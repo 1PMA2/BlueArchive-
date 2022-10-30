@@ -45,8 +45,10 @@ using namespace DirectX;
 #include <typeinfo>
 #include <functional>
 
-#include <Vfw.h>
-#pragma comment(lib, "vfw32.lib")
+#include <io.h>
+#include "fmod.h"
+#include "fmod.hpp"
+#pragma comment(lib, "fmodex64_vc.lib")
 
 using namespace std;
 

@@ -18,6 +18,7 @@ CGameInstance::CGameInstance()
 	, m_pPicking(CPicking::Get_Instance())
 	, m_pFrustum(CFrustum::Get_Instance())
 	, m_pTarget_Manager(CTarget_Manager::Get_Instance())
+	, m_pSound_Device(CSound_Device::Get_Instance())
 	
 {	
 	Safe_AddRef(m_pTarget_Manager);
@@ -34,6 +35,7 @@ CGameInstance::CGameInstance()
 	Safe_AddRef(m_pLevel_Manager);
 	Safe_AddRef(m_pInput_Device);
 	Safe_AddRef(m_pGraphic_Device);
+	Safe_AddRef(m_pSound_Device);
 }
 
 HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInst, _uint iNumLevels, const GRAPHICDESC& GraphicDesc, ID3D11Device** ppDeviceOut, ID3D11DeviceContext** ppDeviceContextOut)
@@ -58,6 +60,9 @@ HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInst, _uint iNumLevels, cons
 	if (FAILED(m_pPicking->Initialize(GraphicDesc.hWnd, *ppDeviceContextOut)))
 		return E_FAIL;
 
+	/* FMOD */
+	if (FAILED(m_pSound_Device->Initialize()))
+		return E_FAIL;
 
 	if (FAILED(m_pKey_Manager->Initialize(GraphicDesc.hWnd)))
 		return E_FAIL;
@@ -205,6 +210,79 @@ _long CGameInstance::Get_DIMouseMoveState(MOUSEMOVE eMouseMove)
 		return 0;
 
 	return m_pInput_Device->Get_DIMouseMoveState(eMouseMove);
+}
+
+void CGameInstance::Play_Sound(const _tchar * strSoundKey, _float fVolume)
+{
+	wstring strKey = strSoundKey;
+	strKey += L".ogg";
+
+	m_pSound_Device->Play_Sound(strKey.c_str(), fVolume);
+}
+
+void CGameInstance::Play_Sound_Rand(const _tchar * strSoundKey, const _uint & iRandNum, _float fVolume)
+{
+	wstring strKey = strSoundKey;
+
+	_int iRand = random(0, iRandNum);
+	_tchar szTemp[64] = {};
+
+	_itow_s(iRand, szTemp, 10);
+
+	strKey += szTemp;
+	strKey += L".ogg";
+
+	m_pSound_Device->Play_Sound(strKey.c_str(), fVolume);
+}
+
+void CGameInstance::Play_Sound_Player(const _tchar * strSoundKey, _float fVolume)
+{
+	wstring strKey = strSoundKey;
+	strKey += L".ogg";
+
+	m_pSound_Device->Play_Sound_Player(strKey.c_str(), fVolume);
+}
+
+void CGameInstance::Play_Sound_Player_Rand(const _tchar * strSoundKey, const _uint & iRandNum, _float fVolume)
+{
+	wstring strKey = strSoundKey;
+
+	_int iRand = random(0, iRandNum);
+	_tchar szTemp[64] = {};
+
+	_itow_s(iRand, szTemp, 10);
+
+	strKey += szTemp;
+	strKey += L".ogg";
+
+	m_pSound_Device->Play_Sound_Player(strKey.c_str(), fVolume);
+}
+
+void CGameInstance::PlayBGM(const _tchar * strSoundKey, _float fVolume)
+{
+	wstring strKey = strSoundKey;
+	strKey += L".ogg";
+	m_pSound_Device->PlayBGM(strKey.c_str(), fVolume);
+}
+
+void CGameInstance::StopSound(CHANNELID eType)
+{
+	m_pSound_Device->StopSound(eType);
+}
+
+void CGameInstance::StopAll()
+{
+	m_pSound_Device->StopAll();
+}
+
+void CGameInstance::SetVolume(_float fVolume)
+{
+	m_pSound_Device->SetVolume(fVolume);
+}
+
+void CGameInstance::SetChannelVolume(CHANNELID eID, _float fVolume)
+{
+	m_pSound_Device->SetChannelVolume(eID, fVolume);
 }
 
 HRESULT CGameInstance::Open_Level(_uint iLevelID, CLevel * pLevel)
@@ -463,6 +541,8 @@ void CGameInstance::Release_Engine()
 
 	CInput_Device::Get_Instance()->Destroy_Instance();	
 
+	CSound_Device::Get_Instance()->Destroy_Instance();
+
 	CGraphic_Device::Get_Instance()->Destroy_Instance();
 
 }
@@ -482,5 +562,6 @@ void CGameInstance::Free()
 	Safe_Release(m_pObject_Manager);
 	Safe_Release(m_pLevel_Manager);
 	Safe_Release(m_pInput_Device);
+	Safe_Release(m_pSound_Device);
 	Safe_Release(m_pGraphic_Device);
 }

@@ -14,6 +14,7 @@
 #include "Event_Manager.h"
 #include "Frustum.h"
 #include "Target_Manager.h"
+#include "Sound_Device.h"
 
 /* 1. 게임내에 필요한 객체(매니져등)들을 모아서 보관한다. */
 /* 2. 클라이언트 개발자가 접근하기좋은 루트를 제공해준다. 나. */
@@ -46,6 +47,17 @@ public: /* For.Input_Device */
 	_byte Get_DIKeyState(_ubyte byKeyID);
 	_byte Get_DIMouseKeyState(MOUSEBUTTON eMouseButtonID);
 	_long Get_DIMouseMoveState(MOUSEMOVE eMouseMove);
+
+public: /* For. Sound_Device */
+	void		Play_Sound(const _tchar* strSoundKey, _float fVolume = 1.f);
+	void		Play_Sound_Rand(const _tchar* strSoundKey, const _uint& iRandNum, _float fVolume = 1.f);
+	void		Play_Sound_Player(const _tchar* strSoundKey, _float fVolume = 1.f);
+	void		Play_Sound_Player_Rand(const _tchar* strSoundKey, const _uint& iRandNum, _float fVolume = 1.f);
+	void		PlayBGM(const _tchar* strSoundKey, _float fVolume);
+	void		StopSound(CHANNELID eType);
+	void		StopAll();
+	void		SetVolume(_float fVolume);
+	void		SetChannelVolume(CHANNELID eID, _float fVolume);
 
 public: /* For.Level_Manager */
 	HRESULT Open_Level(_uint iLevelID, class CLevel* pLevel);
@@ -129,6 +141,7 @@ private:
 	CPicking*						m_pPicking = nullptr;
 	CFrustum*						m_pFrustum = nullptr;
 	CTarget_Manager*				m_pTarget_Manager = nullptr;
+	CSound_Device*					m_pSound_Device = nullptr;
 
 
 public:

@@ -183,3 +183,39 @@ namespace Engine
 		WINMODE	isWindowMode;
 	}GRAPHICDESC;
 }
+
+enum CHANNELID
+{
+	BGM,
+	CH_PLAYER_0,
+	CH_PLAYER_1,
+	CH_PLAYER_2,
+	CH_PLAYER_3,
+	CH_PLAYER_4,
+	CH6,
+	CH7,
+	CH8,
+	CH9,
+	CH10,
+	CH11,
+	CH12,
+	CH13,
+	CH14,
+	CH15,
+	CH16,
+	CH17,
+	CH18,
+	CH19,
+	CH20,
+	CH21,
+	CH22,
+	CH23,
+	CH24,
+	CH25,
+	CH26,
+	CH27,
+	CH28,
+	CH29,
+	CH30,
+	CH_END,
+};

@@ -146,6 +146,9 @@
     <ClInclude Include="..\Public\VIBuffer_RectX.h">
       <Filter>01.Utility\03.Component\00.VIBuffer\Rect\ViBuffer_RectX</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Sound_Device.h">
+      <Filter>00.System\03.Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Base.cpp">
@@ -276,6 +279,9 @@
     </ClCompile>
     <ClCompile Include="..\private\VIBuffer_Rect.cpp">
       <Filter>01.Utility\03.Component\00.VIBuffer\Rect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Sound_Device.cpp">
+      <Filter>00.System\03.Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -416,6 +422,9 @@
     </Filter>
     <Filter Include="01.Utility\03.Component\00.VIBuffer\Rect\ViBuffer_RectX">
       <UniqueIdentifier>{810c3747-d3d6-4125-9be0-e3d12f10bbd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.System\03.Sound">
+      <UniqueIdentifier>{0465edf4-a733-4caa-a7f0-d8a6e0d454b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -49,7 +49,7 @@ void CWorkspace::Tick(_float fTimeDelta)
 {
 	m_fFrame += 20 * fTimeDelta;
 
-	if (m_fFrame > 134.f)
+	if (m_fFrame > 150.f)
 		m_fFrame = 0.f;
 }
 
