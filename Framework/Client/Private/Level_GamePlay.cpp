@@ -85,7 +85,7 @@ void CLevel_GamePlay::Late_Tick(_float TimeDelta)
 	}
 
 
-	if (pSensei->Get_Retire())
+	if (pSensei->IsFail())
 	{
 		pSensei->Set_PreLevel(LEVEL_GAMEPLAY);
 

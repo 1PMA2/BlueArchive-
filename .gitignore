@@ -37,3 +37,5 @@ Framework.VC.db
 ## 다음과 같은 확장자는 전체 무시
 *.ipch
 *.opendb
+*.png
+*.fbx

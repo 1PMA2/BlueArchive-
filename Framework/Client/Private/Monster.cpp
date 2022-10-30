@@ -118,6 +118,8 @@ HRESULT CMonster::Initialize(void * pArg)
 
 void CMonster::Tick(_float fTimeDelta)
 {
+	DeleteMonster();
+
 	FoundStudent();
 
 	if (CMonster_State*	pNewState = m_pState->Loop(fTimeDelta))
@@ -163,7 +165,7 @@ void CMonster::LateTick(_float fTimeDelta)
 {
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 	
-	DeleteMonster();
+
 }
 
 HRESULT CMonster::Render()
