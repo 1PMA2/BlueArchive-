@@ -44,7 +44,9 @@ CEx::CEx(CStudent* pOwner)
 			pMonster->Set_Fear(true);
 		}
 		break;
-
+	case HARUKA:
+		pModel->Set_CurrentAnimation(32);
+		break;
 	}
 }
 
@@ -92,6 +94,91 @@ CState * CEx::Loop(_float fTimeDelta)
 			m_bMutsukli = false;
 		}
 		break;
+	case HARUKA:
+		if (!m_b0 && m_b8) // 1.15, 2.05, 2.23, 3.04, 3.12, 3.19, 3.24, 4, 
+			pTransform->Go_Straight(fTimeDelta * 0.2f);
+		
+		if (0.5f < pModel->Get_TimeAcc())
+		{
+			if (m_b0)
+			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+				m_b0 = false;
+			}
+		}
+
+		if (1.5f < pModel->Get_TimeAcc())
+		{
+			if (m_b1)
+			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+				m_b1 = false;
+			}
+		}
+
+		if (2.15f < pModel->Get_TimeAcc())
+		{
+			if (m_b2)
+			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+				m_b2 = false;
+			}
+		}
+
+		if (2.75f < pModel->Get_TimeAcc())
+		{
+			if (m_b3)
+			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+				m_b3 = false;
+			}
+		}
+
+		if (3.14f < pModel->Get_TimeAcc())
+		{
+			if (m_b4)
+			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+				m_b4 = false;
+			}
+		}
+
+		if (3.4f < pModel->Get_TimeAcc())
+		{
+			if (m_b5)
+			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+				m_b5 = false;
+			}
+		}
+
+		if (3.6f < pModel->Get_TimeAcc())
+		{
+			if (m_b6)
+			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+				m_b6 = false;
+			}
+		}
+
+		if (3.8f < pModel->Get_TimeAcc())
+		{
+			if (m_b7)
+			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+				m_b7 = false;
+			}
+		}
+
+		if (4.f < pModel->Get_TimeAcc())
+		{
+			if (m_b8)
+			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+				m_b8 = false;
+			}
+		}
+	break;
 	default:
 		break;
 	}

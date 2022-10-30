@@ -143,7 +143,7 @@ HRESULT CBoss_Bullet::Collision_ToMonster()
 		}
 
 	}
-
+	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_SmokeL"), &m_vTranslation);
 
 	DELETE(this);
 

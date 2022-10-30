@@ -202,7 +202,7 @@ HRESULT CMuzzle::InitLook()
 		m_iWeapon = 2;
 		m_iMAXFrame = 9;
 		vTranslation += XMVector3Normalize(vLook) * 0.4f;
-		fScale = 1.f;
+		fScale = 1.5f;
 		break;
 	}
 	_float fDegree;

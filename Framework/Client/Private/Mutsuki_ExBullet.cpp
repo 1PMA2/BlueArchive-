@@ -185,6 +185,15 @@ void CMutsuki_ExBullet::Boom()
 		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 		dynamic_cast<CCamera_Main*>(pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera")))->Shaking_Camera(true);
 
+		_vector vTranslation
+			;
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_SmokeL"), &m_vTranslation);
+
+		vTranslation = XMVectorSet(XMVectorGetX(m_vTranslation) - 1.5f, 0.f, XMVectorGetZ(m_vTranslation), 1.f);
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_SmokeL"), &vTranslation);
+
+		vTranslation = XMVectorSet(XMVectorGetX(m_vTranslation) + 1.5f, 0.f, XMVectorGetZ(m_vTranslation), 1.f);
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_SmokeL"), &vTranslation);
 		DELETE(this);
 	}
 	

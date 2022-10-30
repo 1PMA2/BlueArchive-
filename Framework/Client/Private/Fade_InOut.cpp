@@ -76,7 +76,6 @@ void CFade_InOut::Tick(_float fTimeDelta)
 	{
 		m_fFade = 0.f;
 		m_fOdd *= 1.f;
-
 		this->Set_Enable(false);
 	}
 

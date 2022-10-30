@@ -70,7 +70,7 @@ void CFlare::Tick(_float fTimeDelta)
 
 
 	m_pTransformCom->Set_Scaled(_float3(m_fSize, m_fSize, m_fSize));
-	if (fabs(m_fSize) > 5.f)
+	if (fabs(m_fSize) > 3.f)
 	{
 		DELETE(this);
 	}

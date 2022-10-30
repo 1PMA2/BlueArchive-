@@ -382,6 +382,12 @@
     <ClInclude Include="..\Public\SmokeL.h">
       <Filter>02.GameObject\09.Effect\Smoke\SmokeL</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Crack.h">
+      <Filter>02.GameObject\09.Effect\Crack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Workspace.h">
+      <Filter>02.GameObject\04.BackGround\BG_Lobby\workspace</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -749,6 +755,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\SmokeL.cpp">
       <Filter>02.GameObject\09.Effect\Smoke\SmokeL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Crack.cpp">
+      <Filter>02.GameObject\09.Effect\Crack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Workspace.cpp">
+      <Filter>02.GameObject\04.BackGround\BG_Lobby\workspace</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1221,6 +1233,15 @@
     </Filter>
     <Filter Include="02.GameObject\09.Effect\Smoke\SmokeL">
       <UniqueIdentifier>{8a423000-9220-4d07-8cf5-248f44b2ee3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\08.Bullet\Haruka_ExBullet">
+      <UniqueIdentifier>{56f4f022-f9a2-433e-9d25-ce2fef7d69e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Bullet\MonsterBullet">
+      <UniqueIdentifier>{eb8e728f-9203-43e7-be5f-3e13165a7886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\04.BackGround\BG_Lobby\workspace">
+      <UniqueIdentifier>{c9a5ef44-252c-44e1-a21b-5e6f060f9039}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

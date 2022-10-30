@@ -36,10 +36,10 @@ HRESULT CHaruka::Initialize(void * pArg)
 	//m_tStudentInfo.eFormation = FORMATION_THIRD;
 	m_tStudentInfo.eFormation = FORMATION_END;
 	m_tStudentInfo.eWeapon = SHOTGUN;
-	m_tStudentInfo.iAtk = 40;
+	m_tStudentInfo.iAtk = 4;
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.iEx = 30;
-	m_tStudentInfo.fExCost = 5.f;
+	m_tStudentInfo.fExCost = 0.f;
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 5;
 	m_tStudentInfo.iBullet = 5;

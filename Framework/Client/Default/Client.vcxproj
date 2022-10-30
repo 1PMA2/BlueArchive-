@@ -208,6 +208,7 @@
     <ClInclude Include="..\Public\Cost_Gauge.h" />
     <ClInclude Include="..\Public\Cost_GaugeBg.h" />
     <ClInclude Include="..\Public\Cost_Num.h" />
+    <ClInclude Include="..\Public\Crack.h" />
     <ClInclude Include="..\Public\Cylinder.h" />
     <ClInclude Include="..\Public\Droid_Dead.h" />
     <ClInclude Include="..\Public\Ex.h" />
@@ -290,6 +291,7 @@
     <ClInclude Include="..\Public\Victory_Bg.h" />
     <ClInclude Include="..\Public\Warning.h" />
     <ClInclude Include="..\Public\Warning_Bar.h" />
+    <ClInclude Include="..\Public\Workspace.h" />
     <ClInclude Include="..\Public\Work_Button.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Resource.h" />
@@ -334,6 +336,7 @@
     <ClCompile Include="..\Private\Cost_Gauge.cpp" />
     <ClCompile Include="..\Private\Cost_GaugeBg.cpp" />
     <ClCompile Include="..\Private\Cost_Num.cpp" />
+    <ClCompile Include="..\Private\Crack.cpp" />
     <ClCompile Include="..\Private\Cylinder.cpp" />
     <ClCompile Include="..\Private\Droid_Dead.cpp" />
     <ClCompile Include="..\Private\Ex.cpp" />
@@ -415,6 +418,7 @@
     <ClCompile Include="..\Private\Victory_Bg.cpp" />
     <ClCompile Include="..\Private\Warning.cpp" />
     <ClCompile Include="..\Private\Warning_Bar.cpp" />
+    <ClCompile Include="..\Private\Workspace.cpp" />
     <ClCompile Include="..\Private\Work_Button.cpp" />
     <ClCompile Include="..\Public\Run_ToHide.cpp" />
     <ClCompile Include="Client.cpp" />

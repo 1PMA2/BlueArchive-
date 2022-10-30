@@ -43,6 +43,13 @@ DepthStencilState DSS_ZEnable_ZWriteEnable_false
 	DepthWriteMask = zero;
 };
 
+DepthStencilState DSS_Z
+{
+	DepthEnable = false;
+	DepthFunc = 2;
+	DepthWriteMask = zero;
+};
+
 /*
 D3D11_FILL_MODE FillMode;
 D3D11_CULL_MODE CullMode;

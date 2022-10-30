@@ -65,6 +65,7 @@
 #include "SmokeL.h"
 #include "Flare.h"
 #include "Cylinder.h"
+#include "Workspace.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -234,6 +235,10 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 			CBG_Lobby::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Workspace"),
+			CWorkspace::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_GachaButton"),
 			CUI::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
@@ -260,8 +265,8 @@ HRESULT CLoader::Loading_ForLobbyLevel()
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Back_Btn.png"), 1))))
 			return E_FAIL;
 
-		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Video"),
-			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Video/gif/%d.png"), 200))))
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Workpage"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/zzz/images/%d.png"), 134))))
 			return E_FAIL;
 
 		/* For.Prototype_GameObject_Student */
@@ -351,6 +356,10 @@ HRESULT CLoader::Loading_ForGachaLevel()
 		TransformMatrix = XMMatrixScaling(1.f, 1.f, 1.f) * XMMatrixRotationX(XMConvertToRadians(0.f)) * XMMatrixRotationY(XMConvertToRadians(180.0f));
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Model_AronaSack"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_ANIM, "../Bin/Resources/Meshes/Student/Arona/", "Sack.fbx", TransformMatrix))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Video"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Video/gif/%d.png"), 200))))
 			return E_FAIL;
 
 		g_bGacha = false;
@@ -759,7 +768,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_EXP"),
-			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Fx/EXP%d.png"), 2))))
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Fx/EXP%d.png"), 3))))
 			return E_FAIL;
 
 		lstrcpy(m_szLoadingText, TEXT("¸ðµ¨À» ·ÎµùÁßÀÌºñ³®. "));

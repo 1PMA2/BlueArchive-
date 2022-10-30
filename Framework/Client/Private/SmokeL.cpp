@@ -23,7 +23,7 @@ HRESULT CSmokeL::Initialize_Prototype()
 HRESULT CSmokeL::Initialize(void * pArg)
 {
 	CTransform::TRANSFORMDESC		TransformDesc;
-	TransformDesc.fSpeedPerSec = 0.2f;
+	TransformDesc.fSpeedPerSec = 0.5f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
 
@@ -36,7 +36,7 @@ HRESULT CSmokeL::Initialize(void * pArg)
 	if (nullptr != pArg)
 		memcpy(&m_vTranslation, pArg, sizeof(_vector));
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(XMVectorGetX(m_vTranslation), XMVectorGetY(m_vTranslation) + 1.5f, XMVectorGetZ(m_vTranslation), 1.f));
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(XMVectorGetX(m_vTranslation), XMVectorGetY(m_vTranslation) + 0.6f, XMVectorGetZ(m_vTranslation), 1.f));
 
 
 	InitLook();
@@ -49,10 +49,7 @@ void CSmokeL::Tick(_float fTimeDelta)
 	if (nullptr == m_pVIBufferCom)
 		return;
 
-	m_pTransformCom->Go_Straight(fTimeDelta);
-
-	m_fFrame += 20.f * fTimeDelta;
-
+	m_fFrame +=  30.f * fTimeDelta;
 
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
@@ -64,7 +61,7 @@ void CSmokeL::Tick(_float fTimeDelta)
 	m_pTransformCom->Set_State(CTransform::STATE_UP, vInv.r[1]);
 	m_pTransformCom->Set_State(CTransform::STATE_LOOK, vInv.r[2]);
 
-	//m_pTransformCom->Set_Scaled(_float3(4.f, 4.f, 4.f));
+	m_pTransformCom->Set_Scaled(_float3(2.5f, 2.5f, 2.5f));
 
 	Safe_Release(pGameInstance);
 
@@ -108,7 +105,7 @@ HRESULT CSmokeL::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_Texture */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Smoke"), TEXT("Com_Texture"), (CComponent**)&m_pTextureCom)))
+	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_EXP"), TEXT("Com_Texture"), (CComponent**)&m_pTextureCom)))
 		return E_FAIL;
 
 	/* For.Com_VIBuffer */
@@ -135,7 +132,7 @@ HRESULT CSmokeL::SetUp_ShaderResource()
 		return E_FAIL;
 	if (FAILED(m_pShaderCom->Set_RawValue("g_Large", &m_bLarge, sizeof(_bool))))
 		return E_FAIL;
-	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 1)))
+	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 0)))
 		return E_FAIL;
 
 	RELEASE_INSTANCE(CGameInstance);

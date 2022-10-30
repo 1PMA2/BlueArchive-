@@ -27,7 +27,9 @@ CEx_Cutin::CEx_Cutin(CStudent* pOwner)
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(6);
 		break;
-
+	case HARUKA:
+		pModel->Set_CurrentAnimation(15);
+		break;
 	}
 	
 

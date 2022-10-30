@@ -38,8 +38,8 @@ private:
 	class CHierarchyNode*	m_pBonePtr = nullptr;
 
 private:
-	_float4x4				m_WorldMatrix;
-	_float	m_fFrame = 0.f;
+	_float4x4				m_ProjMatrix;
+	_float	m_fFrame = 1.f;
 	_bool	m_bLarge = true;
 
 private:

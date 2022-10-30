@@ -20,6 +20,16 @@ private:
 	class CMonster* m_pMonster = nullptr;
 	_bool	m_bOnce = true;
 	_bool	m_bMutsukli = true;
+	_bool	m_b0 = true;
+	_bool	m_b1 = true;
+	_bool	m_b2 = true;
+	_bool	m_b3 = true;
+	_bool	m_b4 = true;
+	_bool	m_b5 = true;
+	_bool	m_b6 = true;
+	_bool	m_b7 = true;
+	_bool	m_b8 = true;
+
 	_vector m_vTarget = {};
 
 public:

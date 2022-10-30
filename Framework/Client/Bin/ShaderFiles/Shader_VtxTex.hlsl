@@ -233,6 +233,8 @@ PS_OUT PS_SMOKE(PS_IN In)
 		vTexUV.x = vTexUV.x * (1.f / 4.f) + ((uint)fFrame % 4) * (1.f / 4.f);
 		vTexUV.y = vTexUV.y * (1.f / 4.f) + ((uint)fFrame / 4) * (1.f / 4.f);
 		Out.vColor = g_DiffuseTexture.Sample(DefaultSampler, vTexUV);
+		if(Out.vColor.a < 0.01)
+			discard;
 		//.vColor.a = Out.vColor.r;
 
 	}
@@ -253,10 +255,19 @@ PS_OUT PS_SMOKE(PS_IN In)
 	//Out.vFlag = g_FlagTexture.Sample(DefaultSampler, In.vTexUV);
 
 
-	if (0.2f < Out.vColor.r)
+	/*if (0.2f < Out.vColor.r)
 	{
 		Out.vColor -= 0.3f;
-	}
+	}*/
+
+	return Out;
+}
+
+PS_OUT PS_EXP(PS_IN In)
+{
+	PS_OUT		Out = (PS_OUT)0;
+
+	Out.vColor = g_DiffuseTexture.Sample(DefaultSampler, In.vTexUV);
 
 	return Out;
 }
@@ -312,5 +323,15 @@ technique11 DefaultTechnique
 		VertexShader = compile vs_5_0 VS_MAIN();
 		GeometryShader = NULL;
 		PixelShader = compile ps_5_0 PS_SMOKE();
+	}
+	pass EXP
+	{
+		SetBlendState(BS_AlphaBlending, float4(0.f, 0.f, 0.f, 1.f), 0xffffffff);
+		SetDepthStencilState(DSS_ZEnable_ZWriteEnable_false, 0);
+		SetRasterizerState(RS_Default);
+
+		VertexShader = compile vs_5_0 VS_MAIN();
+		GeometryShader = NULL;
+		PixelShader = compile ps_5_0 PS_EXP();
 	}
 }

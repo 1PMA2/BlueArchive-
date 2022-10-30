@@ -98,7 +98,7 @@ HRESULT CMainApp::Render()
 	
 	m_pRenderer->Draw_RenderGroup();
 
-	//CImgui_Manager::Get_Instance()->Render();
+	CImgui_Manager::Get_Instance()->Render();
 
 	m_pGameInstance->Render_Engine();
 
