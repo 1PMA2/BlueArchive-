@@ -43,6 +43,12 @@ HRESULT CMutsuki_ExBullet::Initialize(void * pArg)
 	if (nullptr != pArg)
 		memcpy(&m_pTarget, pArg, sizeof(CMonster*));
 
+	CSensei* pSensei = GET_SENSEI;
+
+	CStudent* pMutsuki = pSensei->Get_Student(TEXT("Mutsuki"));
+
+	m_iDamage = pMutsuki->Get_StudentInfo().iEx;
+
 	m_bOnce = true;
 	m_fBoomAcc = 0.f;
 
@@ -116,15 +122,15 @@ HRESULT CMutsuki_ExBullet::Collision_ToMonster()
 
 		if (m_pSphereACom->Collision(pAABB))
 		{
-			pMonster->Set_MinusHp(220);
+			pMonster->Set_MinusHp(m_iDamage);
 		}
 		if (m_pSphereBCom->Collision(pAABB))
 		{
-			pMonster->Set_MinusHp(220);
+			pMonster->Set_MinusHp(m_iDamage);
 		}
 		if (m_pSphereCCom->Collision(pAABB))
 		{
-			pMonster->Set_MinusHp(220);
+			pMonster->Set_MinusHp(m_iDamage);
 		}
 
 	}

@@ -22,7 +22,7 @@ HRESULT CAru::Initialize_Prototype()
 	m_tStudentInfo.pName = TEXT("Aru");
 	m_tStudentInfo.bExModel = false;
 	m_tStudentInfo.eStudent = ARU;
-
+	m_tStudentInfo.iEx = 200;
 	return S_OK;
 }
 
@@ -39,7 +39,6 @@ HRESULT CAru::Initialize(void * pArg)
 	m_tStudentInfo.fFireSpeed = 0.5f;
 	m_tStudentInfo.iAtk = 25;
 	m_tStudentInfo.iDef = 0;
-	m_tStudentInfo.iEx = 50;
 	m_tStudentInfo.fExCost = 4.f;
 	m_tStudentInfo.iHp = 100;
 	m_tStudentInfo.iMagazine = 5;

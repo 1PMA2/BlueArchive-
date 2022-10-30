@@ -233,20 +233,6 @@ HRESULT CLevel_GamePlay::Ready_Layer_Student_Ex(const _tchar * pLayerTag)
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 	Safe_AddRef(pGameInstance);
 
-	//CSensei* pSensei = CSensei::Get_Instance();
-	///* For.Player */
-
-	//for (_uint i = 0; i < pSensei->Get_FormationInfoSize(); ++i)
-	//{
-	//	_tchar*			pName = pSensei->Get_FormationInfo(i).pName;
-	//	_tchar szBuffer[20] = {};
-
-	//	wcscpy_s(szBuffer, pName);
-	//	wcscat_s(szBuffer, TEXT("_Ex"));
-
-	//	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, szBuffer)))
-	//		return E_FAIL;
-	//}
 
 	Safe_Release(pGameInstance);
 

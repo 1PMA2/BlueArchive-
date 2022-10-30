@@ -31,7 +31,7 @@ private:
 	CCollider*				m_pSphereBCom = nullptr;
 	CCollider*				m_pSphereCCom = nullptr;
 	class CMonster*				m_pTarget = nullptr;
-	vector <CMonster*> Monsters;
+	_uint					m_iDamage = 0;
 
 public:
 	virtual void OnDisable() override;

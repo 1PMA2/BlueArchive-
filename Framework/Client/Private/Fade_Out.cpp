@@ -56,7 +56,6 @@ void CFade_Out::Tick(_float fTimeDelta)
 	{
 		m_fFade = 1.f;
 		m_bIsFinished = true;
-		DELETE(this);
 	}
 }
 

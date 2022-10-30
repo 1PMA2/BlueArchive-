@@ -29,6 +29,7 @@ private:
 	CRenderer*				m_pRendererCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
 	class CMonster*				m_pTarget = nullptr;
+	_uint						m_iDamage = 0;
 
 public:
 	virtual void OnDisable() override;

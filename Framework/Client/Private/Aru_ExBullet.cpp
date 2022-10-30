@@ -44,7 +44,11 @@ HRESULT CAru_ExBullet::Initialize(void * pArg)
 
 	
 
+	CSensei* pSensei = GET_SENSEI;
+
+	CStudent* pAru = pSensei->Get_Student(TEXT("Aru"));
 	
+	m_iDamage = pAru->Get_StudentInfo().iEx;
 
 	m_bOnce = true;
 	m_fBoomAcc = 0.f;
@@ -62,7 +66,7 @@ void CAru_ExBullet::Tick(_float fTimeDelta)
 	{
 		if (m_bOnce)
 		{
-			m_pTarget->Set_MinusHp(220);
+			m_pTarget->Set_MinusHp(m_iDamage);
 			m_bOnce = false;
 		}
 	}
@@ -127,7 +131,7 @@ void CAru_ExBullet::Boom()
 HRESULT CAru_ExBullet::Collision_ToMonster()
 {
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-
+	
 	_uint iCount = pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Monster"));
 
 	for (_uint i = 0; i < iCount; ++i)
@@ -138,7 +142,7 @@ HRESULT CAru_ExBullet::Collision_ToMonster()
 
 		if (m_pSphereCom->Collision(pAABB))
 		{
-			pMonster->Set_MinusHp(220);
+			pMonster->Set_MinusHp(m_iDamage);
 		}
 
 	}

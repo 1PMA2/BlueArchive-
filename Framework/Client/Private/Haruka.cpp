@@ -22,6 +22,7 @@ HRESULT CHaruka::Initialize_Prototype()
 	m_tStudentInfo.pName = TEXT("Haruka");
 	m_tStudentInfo.bExModel = false;
 	m_tStudentInfo.fFireSpeed = 0.2f;
+	m_tStudentInfo.iEx = 40;
 	m_tStudentInfo.eStudent = HARUKA;
 	return S_OK;
 }
@@ -36,7 +37,7 @@ HRESULT CHaruka::Initialize(void * pArg)
 	//m_tStudentInfo.eFormation = FORMATION_THIRD;
 	m_tStudentInfo.eFormation = FORMATION_END;
 	m_tStudentInfo.eWeapon = SHOTGUN;
-	m_tStudentInfo.iAtk = 4;
+	m_tStudentInfo.iAtk = 50;
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.iEx = 30;
 	m_tStudentInfo.fExCost = 0.f;
