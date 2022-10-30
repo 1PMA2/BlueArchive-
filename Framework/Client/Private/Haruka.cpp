@@ -34,7 +34,6 @@ HRESULT CHaruka::Initialize(void * pArg)
 	TransformDesc.fRotationPerSec = XMConvertToRadians(180.0f);
 
 	m_tStudentInfo.eAnim = ANIM_KNEEZOOMFIRE;
-	//m_tStudentInfo.eFormation = FORMATION_THIRD;
 	m_tStudentInfo.eFormation = FORMATION_END;
 	m_tStudentInfo.eWeapon = SHOTGUN;
 	m_tStudentInfo.iAtk = 50;

@@ -4,12 +4,14 @@
 #include "GameInstance.h"
 #include "Student.h"
 #include "Model.h"
-#include "Fire.h"
-#include "Knee_Reload.h"
+#include "Sensei.h"
 
 CRetire::CRetire(CStudent* pOwner)
 	:CState(pOwner)
 {
+	CSensei* pSensei = GET_SENSEI;
+
+	pSensei->Retirecount();
 
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 	m_eAnim = ANIM_RETIRE;
@@ -30,7 +32,7 @@ CRetire::CRetire(CStudent* pOwner)
 		pModel->Set_CurrentAnimation(26);
 		break;
 	}
-
+	
 	m_pOwner->Set_Retire(true);
 }
 

@@ -35,15 +35,15 @@ HRESULT CStudent_Img::Initialize(void * pArg)
 	if (nullptr != pArg)
 		memcpy(&m_iImgNum, pArg, sizeof(_int));
 
-	m_fSizeX = 800.f;
-	m_fSizeY = 1200.f;
+	m_fSizeX = 600.f;
+	m_fSizeY = 900.f;
 	m_fX = g_iWinCX >> 1;
 	m_fY = g_iWinCY >> 1;
 
 	// XMMatrixPerspectiveFovLH()
 	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH((_float)g_iWinCX, (_float)g_iWinCY, 0.f, 1.f)));
 
-	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-m_fX + 1000.f, m_fY - 500.f, 0.f, 1.f));
+	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_fX - (g_iWinCX * 0.5f), -m_fY + (g_iWinCY * 0.5f) - 200.f, 0.f, 1.f));
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
 
 	return S_OK;
@@ -51,7 +51,8 @@ HRESULT CStudent_Img::Initialize(void * pArg)
 
 void CStudent_Img::Tick(_float fTimeDelta)
 {
-	
+	_vector vTarget = XMVectorSet(m_fX - (g_iWinCX * 0.5f) - 100.f, -m_fY + (g_iWinCY * 0.5f) - 200.f, 0, 1);
+	m_pTransformCom->Go_Lerp(vTarget, 3.f, fTimeDelta);
 
 }
 

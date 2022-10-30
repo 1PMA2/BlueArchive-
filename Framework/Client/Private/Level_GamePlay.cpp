@@ -68,10 +68,25 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 
 void CLevel_GamePlay::Late_Tick(_float TimeDelta)
 {
+	CSensei* pSensei = CSensei::Get_Instance();
+
 	if (GetKeyState(VK_RETURN) & 0x8000)
 	{
-		CSensei* pSensei = CSensei::Get_Instance();
 
+		pSensei->Set_PreLevel(LEVEL_GAMEPLAY);
+
+		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+		Safe_AddRef(pGameInstance);
+
+		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
+			return;
+
+		Safe_Release(pGameInstance);
+	}
+
+
+	if (pSensei->Get_Retire())
+	{
 		pSensei->Set_PreLevel(LEVEL_GAMEPLAY);
 
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();

@@ -57,6 +57,7 @@ public:
 	HRESULT Go_Left(_float fTimeDelta);
 	HRESULT Go_Right(_float fTimeDelta);
 	HRESULT Go_Up(_float fTimeDelta);
+	HRESULT Go_Lerp(_fvector vTargetPos, _float fSpeed, _float fTimeDelta);
 
 	_bool TurnFor(_fvector vAxis, _float fTimeDelta, _float fRadian = 0.f);
 	void Turn(_fvector vAxis, _float fTimeDelta);

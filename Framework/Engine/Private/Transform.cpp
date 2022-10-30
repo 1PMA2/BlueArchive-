@@ -111,6 +111,17 @@ HRESULT CTransform::Go_Up(_float fTimeDelta)
 	return S_OK;
 }
 
+HRESULT CTransform::Go_Lerp(_fvector vTargetPos, _float fSpeed, _float fTimeDelta)
+{
+	_vector		vPosition = Get_State(CTransform::STATE_TRANSLATION);
+
+	_vector vLerp = XMVectorLerp(vPosition, vTargetPos, fTimeDelta * fSpeed);
+
+	Set_State(CTransform::STATE_TRANSLATION, vLerp);
+
+	return E_NOTIMPL;
+}
+
 _bool CTransform::TurnFor(_fvector vAxis, _float fTimeDelta, _float fRadian)
 {
 	_matrix		RotationMatrix;

@@ -26,7 +26,21 @@ CStudent::CStudent(const CStudent & rhs)
 
 void CStudent::Set_MinusHp(_int iAtk)
 {
-	m_tStudentInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1));
+	if (m_bCovered)
+	{
+		_uint iRandom = random(1, 10);
+
+		if (9 < iRandom)
+		{
+			m_tStudentInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1));
+
+		}
+	}
+	else
+	{
+		m_tStudentInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1));
+
+	}
 }
 
 CMonster* CStudent::FoundMonster()
@@ -233,8 +247,21 @@ HRESULT CStudent::FormationLevel_Collision(_float fTimeDelta)
 HRESULT CStudent::GamePlayLevel_Collision(_float fTimeDelta)
 {
 	m_bColled = false;
+	m_bCovered = false;
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Cover")); ++i)
+	{
+		CForkLift* pCover = (CForkLift*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Cover"), i);
+		CCollider* pSphere = (CCollider*)pCover->Get_Component(TEXT("Com_SPHERE"));
+
+		if (m_pSphereCom->Collision(pSphere))
+		{
+			m_bCovered = true;
+			break;
+		}
+	}
 
 	for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Cover")); ++i)
 	{
