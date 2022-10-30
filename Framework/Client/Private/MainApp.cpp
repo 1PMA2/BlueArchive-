@@ -93,7 +93,7 @@ HRESULT CMainApp::Render()
 
 	
 
-	m_pGameInstance->Clear_BackBuffer_View(_float4(250.f/255.f, 198.f/255.f, 235.f/255.f, 1.f));
+	m_pGameInstance->Clear_BackBuffer_View(_float4(1, 1, 1, 1.f));
 	m_pGameInstance->Clear_DepthStencil_View();
 	
 	m_pRenderer->Draw_RenderGroup();
