@@ -284,6 +284,7 @@
     <ClInclude Include="..\Public\Smoke.h" />
     <ClInclude Include="..\Public\SmokeL.h" />
     <ClInclude Include="..\Public\State.h" />
+    <ClInclude Include="..\Public\StateVictory.h" />
     <ClInclude Include="..\Public\Student.h" />
     <ClInclude Include="..\Public\Student_Img.h" />
     <ClInclude Include="..\Public\Student_Portrait.h" />
@@ -292,6 +293,7 @@
     <ClInclude Include="..\Public\UI_RecruitButton.h" />
     <ClInclude Include="..\Public\Victory.h" />
     <ClInclude Include="..\Public\Victory_Bg.h" />
+    <ClInclude Include="..\Public\Victory_Start.h" />
     <ClInclude Include="..\Public\Warning.h" />
     <ClInclude Include="..\Public\Warning_Bar.h" />
     <ClInclude Include="..\Public\Workspace.h" />
@@ -414,6 +416,7 @@
     <ClCompile Include="..\Private\Smoke.cpp" />
     <ClCompile Include="..\Private\SmokeL.cpp" />
     <ClCompile Include="..\Private\State.cpp" />
+    <ClCompile Include="..\Private\StateVictory.cpp" />
     <ClCompile Include="..\Private\Student.cpp" />
     <ClCompile Include="..\Private\Student_Img.cpp" />
     <ClCompile Include="..\Private\Student_Portrait.cpp" />
@@ -422,6 +425,7 @@
     <ClCompile Include="..\Private\UI_RecruitButton.cpp" />
     <ClCompile Include="..\Private\Victory.cpp" />
     <ClCompile Include="..\Private\Victory_Bg.cpp" />
+    <ClCompile Include="..\Private\Victory_Start.cpp" />
     <ClCompile Include="..\Private\Warning.cpp" />
     <ClCompile Include="..\Private\Warning_Bar.cpp" />
     <ClCompile Include="..\Private\Workspace.cpp" />

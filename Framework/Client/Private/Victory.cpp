@@ -67,6 +67,20 @@ void CVictory::Tick(_float fTimeDelta)
 		m_fSizeY = m_fSizeY * fScale;
 	}
 
+	if (1.f == m_fFade)
+	{
+		if (KEY(LBUTTON, TAP))
+		{
+			CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+			CGameObject* pGameObject = pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"));
+			CSensei* pSensei = GET_SENSEI;
+			DELETE(pGameObject);
+			DELETE(this);
+			pSensei->EndScene(true);
+			
+		}
+	}
+
 
 
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));

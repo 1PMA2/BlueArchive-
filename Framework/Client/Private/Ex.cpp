@@ -102,6 +102,7 @@ CState * CEx::Loop(_float fTimeDelta)
 		{
 			if (m_b0)
 			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Haruka_ExBullet"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				m_b0 = false;
 			}
@@ -111,6 +112,7 @@ CState * CEx::Loop(_float fTimeDelta)
 		{
 			if (m_b1)
 			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Haruka_ExBullet"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				m_b1 = false;
 			}
@@ -120,6 +122,7 @@ CState * CEx::Loop(_float fTimeDelta)
 		{
 			if (m_b2)
 			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Haruka_ExBullet"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				m_b2 = false;
 			}
@@ -129,6 +132,7 @@ CState * CEx::Loop(_float fTimeDelta)
 		{
 			if (m_b3)
 			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Haruka_ExBullet"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				m_b3 = false;
 			}
@@ -138,6 +142,7 @@ CState * CEx::Loop(_float fTimeDelta)
 		{
 			if (m_b4)
 			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Haruka_ExBullet"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				m_b4 = false;
 			}
@@ -147,6 +152,7 @@ CState * CEx::Loop(_float fTimeDelta)
 		{
 			if (m_b5)
 			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Haruka_ExBullet"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				m_b5 = false;
 			}
@@ -156,6 +162,7 @@ CState * CEx::Loop(_float fTimeDelta)
 		{
 			if (m_b6)
 			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Haruka_ExBullet"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				m_b6 = false;
 			}
@@ -165,6 +172,7 @@ CState * CEx::Loop(_float fTimeDelta)
 		{
 			if (m_b7)
 			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Haruka_ExBullet"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				m_b7 = false;
 			}
@@ -174,13 +182,12 @@ CState * CEx::Loop(_float fTimeDelta)
 		{
 			if (m_b8)
 			{
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Haruka_ExBullet"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				m_b8 = false;
 			}
 		}
 	break;
-	default:
-		break;
 	}
 
 

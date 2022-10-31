@@ -26,6 +26,7 @@ HRESULT CLevel_Lobby::Initialize()
 	pSensei->Release_FormationStudents();
 
 	pSensei->Set_End(false);
+	pSensei->EndScene(false);
 	CGameInstance::Get_Instance()->StopSound(BGM);
 	CGameInstance::Get_Instance()->PlayBGM(L"ClearMorning_Short", 0.5f);
 	return S_OK;

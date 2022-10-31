@@ -11,6 +11,7 @@
 #include "ForkLift.h"
 #include "Run_ToKnee.h"
 #include "Collider.h"
+#include "Victory_Start.h"
 
 CRun::CRun(CStudent* pOwner)
 	:CState(pOwner)
@@ -61,6 +62,15 @@ CState * CRun::Loop(_float fTimeDelta)
 
 	if (nullptr != pState)
 		return pState;
+
+	CSensei* pSensei = GET_SENSEI;
+
+	if (pSensei->Get_EndScene())
+	{
+		pState = CVictory_Start::Create(m_pOwner);
+
+		return pState;
+	}
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));

@@ -16,6 +16,9 @@ public:
 	virtual CState * Loop(_float fTimeDelta) override;
 	virtual void Exit() override;
 
+private:
+	_bool	m_bOnce = true;
+
 public:
 	static CRetire* Create(CStudent* pOwner);
 };

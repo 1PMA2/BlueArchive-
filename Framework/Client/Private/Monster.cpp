@@ -264,9 +264,16 @@ void CMonster::SelectMonster()
 
 void CMonster::DeleteMonster()
 {
-	if (0 >= m_tMonsterInfo.iHp)
+	CSensei* pSensei = GET_SENSEI;
+	if (pSensei->Get_EndScene())
 	{
-		CSensei* pSensei = GET_SENSEI;
+		DELETE(this);
+	}
+
+
+
+	if ((0 >= m_tMonsterInfo.iHp))
+	{
 
 		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 

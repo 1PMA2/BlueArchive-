@@ -125,16 +125,45 @@ void CStudent::Tick(_float fTimeDelta)
 	m_pAABBCom->Update(NoneScaleWorldMatrix);
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
 
+
+	CSensei* pSensei = GET_SENSEI;
+
+	if (pSensei->Get_EndScene())
+	{
+
+		FORMATION eFormation = m_tStudentInfo.eFormation;
+
+		_vector m_vPreTranslation;
+		_vector vLook;
+
+		switch (eFormation)
+		{
+		case FORMATION_FIRST:
+			m_vPreTranslation = XMVectorSet(-1.5f, 0.f, -5.f, 1.f);
+			vLook = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+			break;
+		case FORMATION_SECOND:
+			m_vPreTranslation = XMVectorSet(-0.5f, 0.f, -5.f, 1.f);
+			vLook = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+			break;
+		case FORMATION_THIRD:
+			m_vPreTranslation = XMVectorSet(0.5f, 0.f, -5.f, 1.f);
+			vLook = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+			break;
+		case FORMATION_FOURTH:
+			m_vPreTranslation = XMVectorSet(1.5f, 0.f, -5.f, 1.f);
+			vLook = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+			break;
+		}
+		m_pTransformCom->LookAt(vLook);
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vPreTranslation);
+	}
 }
 
 void CStudent::LateTick(_float fTimeDelta)
 {
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 
-	//if (0 > m_tStudentInfo.iHp)
-	//{
-	//	m_bRetire = true;
-	//}
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 }
 
 HRESULT CStudent::Render()
@@ -311,7 +340,7 @@ void CStudent::InitializeStudentState()
 {
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-	CSensei* pSensei = GET_INSTANCE(CSensei);
+	CSensei* pSensei = GET_SENSEI;
 
 	LEVEL eLEVEL = pSensei->Get_CurrentLevel();
 
@@ -384,7 +413,7 @@ void CStudent::InitializeStudentState()
 			break;
 		}
 	}
-	RELEASE_INSTANCE(CSensei);
+
 }
 
 void CStudent::ToStudentCollision(_float fTimeDelta)

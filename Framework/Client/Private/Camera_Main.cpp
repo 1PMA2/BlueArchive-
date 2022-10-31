@@ -4,6 +4,7 @@
 #include "GameInstance.h"
 #include "Monster.h"
 #include "Student.h"
+#include "Sensei.h"
 
 CCamera_Main::CCamera_Main(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: CCamera(pDevice, pContext)
@@ -68,6 +69,22 @@ void CCamera_Main::Tick(_float fTimeDelta)
 		Shake_Camera(fTimeDelta);
 
 		Move_Camera(fTimeDelta);
+	}
+
+	CSensei* pSensei = GET_SENSEI;
+	
+	if (pSensei->Get_EndScene())
+	{
+		pSensei->Set_End(false);
+
+		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+		if (m_bOnce)
+		{
+			m_bOnce = false;
+			pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Fade"), TEXT("Prototype_GameObject_BackGround"));
+		}
+		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0, 1, 0, 1));
+		m_pTransformCom->LookAt(XMVectorSet(0, 0, -10, 1));
 	}
 
 	if (FAILED(Bind_PipeLine()))

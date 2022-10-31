@@ -9,10 +9,6 @@
 CRetire::CRetire(CStudent* pOwner)
 	:CState(pOwner)
 {
-	CSensei* pSensei = GET_SENSEI;
-
-	pSensei->Retirecount();
-
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 	m_eAnim = ANIM_RETIRE;
 	pOwner->Set_State(m_eAnim);
@@ -49,10 +45,17 @@ CState * CRetire::Loop(_float fTimeDelta)
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
+	CSensei* pSensei = GET_SENSEI;
+
 	pModel->Play_Animation(fTimeDelta);
 
 	if (pModel->Get_isFinished())
 	{
+		if (m_bOnce)
+		{
+			pSensei->Retirecount();
+			m_bOnce = false;
+		}
 		DISABLE(m_pOwner);
 	}
 

@@ -93,11 +93,6 @@ void CUI::Tick(_float fTimeDelta)
 
 void CUI::LateTick(_float fTimeDelta)
 {
-
-	
-
-
-
 	/*m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(-m_fX + 800.f + (m_fSizeX * 0.5f), m_fY - 600.f, 0.f, 1.f)); cost */

@@ -85,6 +85,8 @@ public:
 	void Set_Sequence(_uint iIdx) { m_iSequence = iIdx; }
 	_uint Get_Sequence() { return m_iSequence; }
 	void Victory();
+	void EndScene(_bool bEndScene) { m_bEndScene = bEndScene; };
+	_bool Get_EndScene() { return m_bEndScene; }
 
 	void Retirecount();
 	_bool IsFail() { return m_bFail; }
@@ -94,6 +96,7 @@ public:
 private:
 	_bool m_bExReady = false;
 	_bool m_bEnd = false;
+	_bool m_bEndScene = false;
 
 private:
 	CStudent* m_pExStudent = nullptr;

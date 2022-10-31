@@ -397,6 +397,12 @@
     <ClInclude Include="..\Public\Slash.h">
       <Filter>02.GameObject\04.BackGround\BG_Gacha\slash</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Victory_Start.h">
+      <Filter>02.GameObject\01.State\Student_State\Victory_Start</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\StateVictory.h">
+      <Filter>02.GameObject\01.State\Student_State\Victory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -779,6 +785,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\Slash.cpp">
       <Filter>02.GameObject\04.BackGround\BG_Gacha\slash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Victory_Start.cpp">
+      <Filter>02.GameObject\01.State\Student_State\Victory_Start</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\StateVictory.cpp">
+      <Filter>02.GameObject\01.State\Student_State\Victory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

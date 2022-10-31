@@ -84,19 +84,6 @@ void CLevel_GamePlay::Late_Tick(_float TimeDelta)
 		Safe_Release(pGameInstance);
 	}
 
-
-	if (pSensei->IsFail())
-	{
-		pSensei->Set_PreLevel(LEVEL_GAMEPLAY);
-
-		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
-		Safe_AddRef(pGameInstance);
-
-		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))
-			return;
-
-		Safe_Release(pGameInstance);
-	}
 }
 
 HRESULT CLevel_GamePlay::Render()
@@ -283,7 +270,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_Trigger(const _tchar * pLayerTag)
 		return E_FAIL;
 
 	//55
-	vTranslation = XMVectorSet(1.2f, 0.f, 55.f, 1.f);
+	vTranslation = XMVectorSet(1.2f, 0.f, 10.f, 1.f);
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, pLayerTag, TEXT("Prototype_GameObject_BossTrigger"), &vTranslation)))
 		return E_FAIL;
 

@@ -42,6 +42,7 @@ private:
 	_float m_fShakeTime = 0.f;
 	_bool m_bShake = false;
 	_float m_fShakePower = 0.05f;
+	_bool	m_bOnce = true;
 
 private:
 	void Shake_Camera(_float fTimeDelta);

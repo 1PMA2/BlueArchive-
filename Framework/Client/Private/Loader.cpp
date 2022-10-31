@@ -25,6 +25,7 @@
 #include "Kayoko_Ex.h"
 #include "Haruka.h"
 #include "Haruka_Ex.h"
+#include "Haruka_ExBullet.h"
 //#include "Effect.h"
 #include "Sky.h"
 #include "Sensei.h"
@@ -481,6 +482,10 @@ HRESULT CLoader::Loading_ForGachaScene()
 
 				if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Camera_Haruka"),
 					CCamera_Haruka::Create(m_pDevice, m_pContext))))
+					return E_FAIL;
+
+				if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Haruka_ExBullet"),
+					CHaruka_ExBullet::Create(m_pDevice, m_pContext))))
 					return E_FAIL;
 
 				ZeroMemory(&TransformMatrix, sizeof(_matrix));
