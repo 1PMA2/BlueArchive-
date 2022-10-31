@@ -93,6 +93,11 @@ void Ex_Portrait::LateTick(_float fTimeDelta)
 	{
 		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_UI, this);
 	}
+
+	if (pSensei->Get_EndScene())
+	{
+		DELETE(this);
+	}
 }
 
 HRESULT Ex_Portrait::Render()

@@ -28,6 +28,7 @@
 #include "Haruka_ExBullet.h"
 //#include "Effect.h"
 #include "Sky.h"
+#include "Sky_Ex.h"
 #include "Sensei.h"
 #include "ForkLift.h"
 #include "City.h"
@@ -624,6 +625,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 #pragma region PROTOTYPE_GAMEOBJECT
 
 		lstrcpy(m_szLoadingText, TEXT("객체를 생성중입니다."));
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Sky_Ex"),
+			CSky_Ex::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_CostGaugeBg"),
 			CCost_GaugeBg::Create(m_pDevice, m_pContext))))

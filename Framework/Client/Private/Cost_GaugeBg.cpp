@@ -67,6 +67,11 @@ void CCost_GaugeBg::LateTick(_float fTimeDelta)
 	{
 		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_UI, this);
 	}
+
+	if (pSensei->Get_EndScene())
+	{
+		DELETE(this);
+	}
 }
 
 HRESULT CCost_GaugeBg::Render()

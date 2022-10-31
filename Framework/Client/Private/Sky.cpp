@@ -2,7 +2,8 @@
 #include "..\Public\Sky.h"
 
 #include "GameInstance.h"
-
+#include "Sensei.h"
+#include "Student.h"
 CSky::CSky(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CGameObject(pDevice, pContext)
 {
@@ -44,6 +45,7 @@ void CSky::Tick(_float fTimeDelta)
 void CSky::LateTick(_float fTimeDelta)
 {
 	CGameInstance*		pGameInstance = GET_INSTANCE(CGameInstance);
+	CSensei* pSensei = GET_SENSEI;
 
 	_vector vCampos = XMLoadFloat4(&pGameInstance->Get_CamPosition());
 
@@ -56,11 +58,13 @@ void CSky::LateTick(_float fTimeDelta)
 
 	RELEASE_INSTANCE(CGameInstance);
 
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, this);
+	if(!pSensei->Get_SenseiInfo().bEx)
+		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, this);
 }
 
 HRESULT CSky::Render()
 {
+	
 	if (nullptr == m_pShaderCom ||
 		nullptr == m_pVIBufferCom)
 		return E_FAIL;

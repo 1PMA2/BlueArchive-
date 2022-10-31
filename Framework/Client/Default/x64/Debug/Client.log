@@ -1,5 +1,8 @@
-﻿  Student.cpp
-c:\users\slave\documents\github\bluearchive\framework\client\private\student.cpp(35): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
-c:\users\slave\documents\github\bluearchive\framework\client\private\student.cpp(41): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+﻿  Cost_Gauge.cpp
+  Cost_GaugeBg.cpp
+  Ex_Portrait.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\private\ex_portrait.cpp(77): warning C4244: '=': 'int'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\ex_portrait.cpp(211): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\ex_portrait.cpp(240): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

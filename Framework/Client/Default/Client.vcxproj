@@ -280,6 +280,7 @@
     <ClInclude Include="..\Public\Run_ToKnee.h" />
     <ClInclude Include="..\Public\Sensei.h" />
     <ClInclude Include="..\Public\Sky.h" />
+    <ClInclude Include="..\Public\Sky_Ex.h" />
     <ClInclude Include="..\Public\Slash.h" />
     <ClInclude Include="..\Public\Smoke.h" />
     <ClInclude Include="..\Public\SmokeL.h" />
@@ -412,6 +413,7 @@
     <ClCompile Include="..\Private\Run_ToKnee.cpp" />
     <ClCompile Include="..\Private\Sensei.cpp" />
     <ClCompile Include="..\Private\Sky.cpp" />
+    <ClCompile Include="..\Private\Sky_Ex.cpp" />
     <ClCompile Include="..\Private\Slash.cpp" />
     <ClCompile Include="..\Private\Smoke.cpp" />
     <ClCompile Include="..\Private\SmokeL.cpp" />
