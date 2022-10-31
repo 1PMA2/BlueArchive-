@@ -61,7 +61,7 @@ HRESULT CImgui_Manager::Render()
 		static float fScaleX = 0.1f;
 		static float fScaleY = 0.1f;
 		static int counter = 0;
-		
+		DAMAGE tD;
 
 		ImGui::Begin(u8"µûÈåÈæ");                          // Create a window called "Hello, world!" and append into it.
 
@@ -70,7 +70,7 @@ HRESULT CImgui_Manager::Render()
 		ImGui::Checkbox("costwindow", &costbg);
 
 		//ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-		ImGui::SliderFloat("X Translation", &fTranslationX, -640.f, 640.f);  // Edit 1 float using a slider from 0.0f to 1.0f
+		ImGui::SliderInt("tD.iNum = 4;", &counter, 0, 9);  // Edit 1 float using a slider from 0.0f to 1.0f
 		ImGui::SliderFloat("Y Translation", &fTranslationY, -360.f, 360.f);
 		ImGui::SliderFloat("X Scale", &fScaleX, 10.f, 1280.f);  // Edit 1 float using a slider from 0.0f to 1.0f
 		ImGui::SliderFloat("Y Scale", &fScaleY, 10.f, 1280.f);
@@ -78,7 +78,25 @@ HRESULT CImgui_Manager::Render()
 		if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
 		{
 			_vector v = XMVectorSet(0, 0, 4, 1);
-			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Cylinder"), &v);
+			tD.vTranslation = v;
+			int iDamage = 235;
+
+			tD.iNum = iDamage % 10;
+			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
+
+			tD.iNum = ((iDamage / 10) % 10);
+			if (0 < tD.iNum)
+			{
+				tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation), XMVectorGetZ(tD.vTranslation)-0.2f, 1.f);
+				m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
+			}
+
+			tD.iNum = iDamage / 100;
+			if (0 < tD.iNum)
+			{
+				tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation), XMVectorGetZ(tD.vTranslation)-0.2f, 1.f);
+				m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
+			}
 		}
 
 		if (0 < m_pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Effect")))
@@ -95,7 +113,11 @@ HRESULT CImgui_Manager::Render()
 		}
 
 		ImGui::SameLine();
-		ImGui::Text("counter = %d", counter);
+		if (ImGui::Button("del"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+		{
+			DELETE(pObj);
+		}
+
 
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 

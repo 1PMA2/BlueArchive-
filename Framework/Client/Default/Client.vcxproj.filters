@@ -406,6 +406,9 @@
     <ClInclude Include="..\Public\Sky_Ex.h">
       <Filter>02.GameObject\07.Sky\Sky_Ex</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Damage.h">
+      <Filter>02.GameObject\09.Effect\Damage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -797,6 +800,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Sky_Ex.cpp">
       <Filter>02.GameObject\07.Sky\Sky_Ex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Damage.cpp">
+      <Filter>02.GameObject\09.Effect\Damage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1284,6 +1290,9 @@
     </Filter>
     <Filter Include="02.GameObject\07.Sky\Sky_Ex">
       <UniqueIdentifier>{b67ad268-95ec-45ad-a543-c6af56cc74e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Damage">
+      <UniqueIdentifier>{0262382f-fce3-4f40-bbfb-4dfa0b3cb0a7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

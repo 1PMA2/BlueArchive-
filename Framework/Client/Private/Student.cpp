@@ -26,20 +26,25 @@ CStudent::CStudent(const CStudent & rhs)
 
 void CStudent::Set_MinusHp(_int iAtk)
 {
+	_uint iDamage = (_int)(iAtk * frandom(0.9, 1.1));
+
 	if (m_bCovered)
 	{
 		_uint iRandom = random(1, 10);
 
 		if (9 < iRandom)
-		{
-			m_tStudentInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1));
-
+		{	
+			m_tStudentInfo.iHp -= iDamage;
+			Damage(iDamage);
 		}
+		else
+			Damage(0);
+
 	}
 	else
 	{
-		m_tStudentInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1));
-
+		m_tStudentInfo.iHp -= iDamage;
+		Damage(iDamage);
 	}
 }
 
@@ -453,6 +458,31 @@ void CStudent::ToStudentCollision(_float fTimeDelta)
 	}
 
 
+}
+
+void CStudent::Damage(_uint iDamage)
+{
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	DAMAGE tD = {};
+
+	tD.vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
+	tD.iNum = iDamage % 10;
+	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
+
+	tD.iNum = ((iDamage / 10) % 10);
+	if (0 < tD.iNum)
+	{
+		tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation), XMVectorGetZ(tD.vTranslation) - 0.13f, 1.f);
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
+	}
+
+	tD.iNum = iDamage / 100;
+	if (0 < tD.iNum)
+	{
+		tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation), XMVectorGetZ(tD.vTranslation) - 0.13f, 1.f);
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
+	}
 }
 
 void CStudent::Free()

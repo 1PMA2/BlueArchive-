@@ -1,8 +1,102 @@
-﻿  Cost_Gauge.cpp
+﻿  Arona_Sack.cpp
+  Aru.cpp
+  Aru_Ex.cpp
+  Aru_ExBullet.cpp
+  Back_Btn.cpp
+  Boss_Bullet.cpp
+  Boss_Dead.cpp
+  Boss_Idle.cpp
+  Boss_SBullet.cpp
+  Boss_Trigger.cpp
+  Bullet.cpp
+  Camera_Aru.cpp
+  Camera_Ex.cpp
+  Camera_Gacha.cpp
+  Camera_Haruka.cpp
+  Camera_Kayoko.cpp
+  Camera_Main.cpp
+  Camera_Mutsuki.cpp
+  Cost_Gauge.cpp
   Cost_GaugeBg.cpp
+  Cost_Num.cpp
+  Cylinder.cpp
+  Damage.cpp
+  Droid_Dead.cpp
+  Ex.cpp
+  Ex_Cutin.cpp
   Ex_Portrait.cpp
+  Fade_InOut.cpp
+  Fire.cpp
+  Flare.cpp
+  ForkLift.cpp
+  Formation_Idle.cpp
 c:\users\slave\documents\github\bluearchive\framework\client\private\ex_portrait.cpp(77): warning C4244: '=': 'int'에서 'Engine::_float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 c:\users\slave\documents\github\bluearchive\framework\client\private\ex_portrait.cpp(211): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
 c:\users\slave\documents\github\bluearchive\framework\client\private\ex_portrait.cpp(240): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+  Formation_Pick.cpp
+  Formation_Window.cpp
+  Formaton_Btn.cpp
+  Gacha_Scene.cpp
+  Haruka.cpp
+  Haruka_Ex.cpp
+  Haruka_ExBullet.cpp
+  Hide_FireStart.cpp
+  Hide_Idle.cpp
+  Hide_ReloadStart.cpp
+  Hide_Reloading.cpp
+  Imgui_Manager.cpp
+  Kayoko.cpp
+  Kayoko_Ex.cpp
+  Knee_Idle.cpp
+  Knee_Reload.cpp
+  Knee_ZoomEnd.cpp
+  Knee_ZoomFire.cpp
+  Knee_ZoomStart.cpp
+  Level_Formation.cpp
+  Level_Gacha.cpp
+  Level_GamePlay.cpp
+  Level_Loading.cpp
+  Level_Lobby.cpp
+  Level_Logo.cpp
+  Loader.cpp
+  M_AtkIng.cpp
+  M_AtkStart.cpp
+  M_Run.cpp
+  MainApp.cpp
+  Monster.cpp
+  Monster_Boss.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\private\monster.cpp(85): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+  Monster_Droid.cpp
+  Monster_State.cpp
+  Monster_Trigger.cpp
+  Mutsuki.cpp
+  Mutsuki_Ex.cpp
+  Mutsuki_ExBullet.cpp
+  Muzzle.cpp
+  Retire.cpp
+  Rifle_Delay.cpp
+  Rifle_Fire.cpp
+  Run.cpp
+  Run_Sign.cpp
+  Run_ToKnee.cpp
+  Sensei.cpp
+  Sky.cpp
+  Sky_Ex.cpp
+  Smoke.cpp
+  SmokeL.cpp
+  State.cpp
+  StateVictory.cpp
+  Student.cpp
+  Student_Portrait.cpp
+  UI.cpp
+  UI_RecruitButton.cpp
+  Victory.cpp
+  Victory_Bg.cpp
+  Victory_Start.cpp
+  Warning.cpp
+  Warning_Bar.cpp
+  Work_Button.cpp
+  Run_ToHide.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\private\student.cpp(29): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)

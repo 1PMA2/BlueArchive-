@@ -141,8 +141,7 @@ HRESULT CBoss_SBullet::Collision_ToMonster()
 
 		if (m_pAABBCom->Collision(pSphere))
 		{
-			int i = 0;
-			
+			pStudent->Set_MinusHp(m_pOwner->Get_MonsterAtk());
 		}
 
 	}

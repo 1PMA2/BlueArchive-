@@ -210,6 +210,7 @@
     <ClInclude Include="..\Public\Cost_Num.h" />
     <ClInclude Include="..\Public\Crack.h" />
     <ClInclude Include="..\Public\Cylinder.h" />
+    <ClInclude Include="..\Public\Damage.h" />
     <ClInclude Include="..\Public\Droid_Dead.h" />
     <ClInclude Include="..\Public\Ex.h" />
     <ClInclude Include="..\Public\Explosion.h" />
@@ -344,6 +345,7 @@
     <ClCompile Include="..\Private\Cost_Num.cpp" />
     <ClCompile Include="..\Private\Crack.cpp" />
     <ClCompile Include="..\Private\Cylinder.cpp" />
+    <ClCompile Include="..\Private\Damage.cpp" />
     <ClCompile Include="..\Private\Droid_Dead.cpp" />
     <ClCompile Include="..\Private\Ex.cpp" />
     <ClCompile Include="..\Private\Explosion.cpp" />

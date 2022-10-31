@@ -9,8 +9,8 @@ texture2D	g_DepthTexture;
 float g_Fade;
 float g_Frame;
 float g_Cost;
-float g_DNum;
 float g_UVx;
+uint g_DNum;
 int g_Dir;
 int g_Warning;
 bool g_Large;
@@ -263,6 +263,26 @@ PS_OUT PS_SMOKE(PS_IN In)
 	return Out;
 }
 
+
+PS_OUT PS_NUM(PS_IN In)
+{
+	PS_OUT		Out = (PS_OUT)0;
+
+	float2	vTexUV = In.vTexUV;
+
+	uint	iNum = g_DNum;
+
+	
+	vTexUV.x = vTexUV.x * (1.f / 5.f) + ((uint)iNum % 5) * (1.f / 5.f);
+	vTexUV.y = vTexUV.y * (1.f / 2.f) + ((uint)iNum / 5) * (1.f / 2.f);
+
+	Out.vColor = g_DiffuseTexture.Sample(DefaultSampler, vTexUV);
+
+	if (Out.vColor.a < 0.1f)
+		discard;
+
+	return Out;
+}
 PS_OUT PS_EXP(PS_IN In)
 {
 	PS_OUT		Out = (PS_OUT)0;
@@ -317,7 +337,7 @@ technique11 DefaultTechnique
 	pass SMOKE
 	{
 		SetBlendState(BS_AlphaBlending, float4(0.f, 0.f, 0.f, 1.f), 0xffffffff);
-		SetDepthStencilState(DSS_Default, 0);
+		SetDepthStencilState(DSS_Z, 0);
 		SetRasterizerState(RS_Default);
 
 		VertexShader = compile vs_5_0 VS_MAIN();
@@ -333,5 +353,15 @@ technique11 DefaultTechnique
 		VertexShader = compile vs_5_0 VS_MAIN();
 		GeometryShader = NULL;
 		PixelShader = compile ps_5_0 PS_EXP();
+	}
+	pass NUM
+	{
+		SetBlendState(BS_AlphaBlending, float4(0.f, 0.f, 0.f, 1.f), 0xffffffff);
+		SetDepthStencilState(DSS_ZEnable_ZWriteEnable_false, 0);
+		SetRasterizerState(RS_Default);
+
+		VertexShader = compile vs_5_0 VS_MAIN();
+		GeometryShader = NULL;
+		PixelShader = compile ps_5_0 PS_NUM();
 	}
 }

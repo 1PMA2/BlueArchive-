@@ -38,7 +38,6 @@ HRESULT CSmokeL::Initialize(void * pArg)
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(XMVectorGetX(m_vTranslation), XMVectorGetY(m_vTranslation) + 0.6f, XMVectorGetZ(m_vTranslation), 1.f));
 
-
 	InitLook();
 
 	return S_OK;
