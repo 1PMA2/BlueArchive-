@@ -20,6 +20,9 @@ private:
 	_float m_fAtkTime = 0.f;
 	_float m_fTimeAcc = 0.f;
 	_bool m_bOnce = true;
+	_bool m_b0 = true;
+	_bool m_b1 = true;
+	_bool m_b2 = true;
 
 public:
 	static CKnee_ZoomFire* Create(CStudent* pOwner);

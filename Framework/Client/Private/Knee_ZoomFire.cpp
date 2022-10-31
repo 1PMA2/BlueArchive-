@@ -63,28 +63,70 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
 	pModel->Play_Animation(fTimeDelta);
+
 	if (nullptr != pMonster)
 	{
 		pTransform->LookAtLerp(pMonster->Get_MonsterTranslation(), 5.f, fTimeDelta);
-		if (m_fAtkTime < m_fTimeAcc)
+		
+		switch (m_pOwner->Get_StudentInfo().eStudent)
 		{
-			if (m_bOnce)
+		case MUTSUKI:
+			if (0.1f < m_fTimeAcc)
 			{
-				m_pOwner->Use_Bullet();
-				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
-
-				if (m_pOwner->Get_StudentInfo().eWeapon == SHOTGUN)
+				if (m_b0)
 				{
-					pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
-				}
-				else
+					m_pOwner->Use_Bullet();
+					pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 					pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Bullet"), &m_pOwner);
-
-				m_bOnce = false;
+					m_b0 = false;
+				}
 			}
-		}
 
+			if (0.2f < m_fTimeAcc)
+			{
+				if (m_b1)
+				{
+					m_pOwner->Use_Bullet();
+					pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+					pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Bullet"), &m_pOwner);
+					m_b1 = false;
+				}
+			}
+
+			if (0.3f < m_fTimeAcc)
+			{
+				if (m_b2)
+				{
+					m_pOwner->Use_Bullet();
+					pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+					pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Bullet"), &m_pOwner);
+					m_b2 = false;
+				}
+			}
+			break;
+		default:
+			if (m_fAtkTime < m_fTimeAcc)
+			{
+				if (m_bOnce)
+				{
+					m_pOwner->Use_Bullet();
+					pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+
+					if (m_pOwner->Get_StudentInfo().eWeapon == SHOTGUN)
+					{
+						pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
+					}
+					else
+						pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Bullet"), &m_pOwner);
+
+					m_bOnce = false;
+				}
+			}
+			break;
+		}
 	}
+
+
 
 	if (pModel->Get_isFinished())
 	{

@@ -21,7 +21,11 @@ private:
 
 private:
 	_uint m_iAtkFrame = 0;
+	_float m_fTimeAcc = 0.f;
 	_bool m_bOnce = true;
+	_bool m_b0 = true;
+	_bool m_b1 = true;
+	_bool m_b2 = true;
 
 public:
 	static CRifle_Fire* Create(CStudent* pOwner);

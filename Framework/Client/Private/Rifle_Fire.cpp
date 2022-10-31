@@ -44,6 +44,8 @@ CState * CRifle_Fire::Loop(_float fTimeDelta)
 	if (nullptr != pState)
 		return pState;
 
+	m_fTimeAcc += fTimeDelta;
+
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
@@ -57,13 +59,38 @@ CState * CRifle_Fire::Loop(_float fTimeDelta)
 	{
 		pTransform->LookAtLerp(pMonster->Get_MonsterTranslation(), 5.f, fTimeDelta);
 
-			if (m_bOnce)
+		if (0.1f < m_fTimeAcc)
+		{
+			if (m_b0)
 			{
 				m_pOwner->Use_Bullet();
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Bullet"), &m_pOwner);
-				m_bOnce = false;
+				m_b0 = false;
 			}
+		}
+
+		if (0.2f < m_fTimeAcc)
+		{
+			if (m_b1)
+			{
+				m_pOwner->Use_Bullet();
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Bullet"), &m_pOwner);
+				m_b1 = false;
+			}
+		}
+
+		if (0.3f < m_fTimeAcc)
+		{
+			if (m_b2)
+			{
+				m_pOwner->Use_Bullet();
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
+				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Bullet"), &m_pOwner);
+				m_b2 = false;
+			}
+		}
 	}
 
 	if (pModel->Get_isFinished())
