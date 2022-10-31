@@ -409,6 +409,12 @@
     <ClInclude Include="..\Public\Damage.h">
       <Filter>02.GameObject\09.Effect\Damage</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Hit.h">
+      <Filter>02.GameObject\09.Effect\Hit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\M_AtkEnd.h">
+      <Filter>02.GameObject\01.State\Monster_State\M_AtkEnd</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -803,6 +809,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\Damage.cpp">
       <Filter>02.GameObject\09.Effect\Damage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Hit.cpp">
+      <Filter>02.GameObject\09.Effect\Hit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\M_AtkEnd.cpp">
+      <Filter>02.GameObject\01.State\Monster_State\M_AtkEnd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

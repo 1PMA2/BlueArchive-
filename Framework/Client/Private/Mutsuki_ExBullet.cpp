@@ -70,7 +70,7 @@ void CMutsuki_ExBullet::Tick(_float fTimeDelta)
 	m_fBoomAcc += fTimeDelta;
 
 
-
+	Boom();
 }
 
 void CMutsuki_ExBullet::LateTick(_float fTimeDelta)
@@ -82,8 +82,6 @@ void CMutsuki_ExBullet::LateTick(_float fTimeDelta)
 	//m_pRendererCom->Add_DebugRenderGroup(m_pSphereCCom);
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 #endif // _DEBUG
-
-	Boom();
 
 }
 

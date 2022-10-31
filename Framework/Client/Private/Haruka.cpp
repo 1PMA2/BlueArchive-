@@ -40,7 +40,7 @@ HRESULT CHaruka::Initialize(void * pArg)
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.iEx = 30;
 	m_tStudentInfo.fExCost = 0.f;
-	m_tStudentInfo.iHp = 10000;
+	m_tStudentInfo.iHp = 5000;
 	m_tStudentInfo.iMagazine = 5;
 	m_tStudentInfo.iBullet = 5;
 	m_tStudentInfo.fRange = 2.5f;

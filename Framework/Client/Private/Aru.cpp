@@ -40,7 +40,7 @@ HRESULT CAru::Initialize(void * pArg)
 	m_tStudentInfo.iAtk = 25;
 	m_tStudentInfo.iDef = 0;
 	m_tStudentInfo.fExCost = 4.f;
-	m_tStudentInfo.iHp = 100;
+	m_tStudentInfo.iHp = 200;
 	m_tStudentInfo.iMagazine = 5;
 	m_tStudentInfo.iBullet = 5;
 	m_tStudentInfo.fRange = 5.5f;

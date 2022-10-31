@@ -62,13 +62,9 @@ HRESULT CHaruka_ExBullet::Initialize(void * pArg)
 
 void CHaruka_ExBullet::Tick(_float fTimeDelta)
 {
-
-
-
-
 	m_pOBBCom->Update(m_pTransformCom->Get_WorldMatrix());
 
-
+	Boom();
 }
 
 void CHaruka_ExBullet::LateTick(_float fTimeDelta)
@@ -76,8 +72,6 @@ void CHaruka_ExBullet::LateTick(_float fTimeDelta)
 #ifdef _DEBUG
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 #endif // _DEBUG
-
-	Boom();
 
 }
 
@@ -143,7 +137,7 @@ HRESULT CHaruka_ExBullet::SetUp_Components()
 	CCollider::COLLIDERDESC			ColliderDesc;
 	ZeroMemory(&ColliderDesc, sizeof(CCollider::COLLIDERDESC));
 
-	ColliderDesc.vScale = _float3(2.f, 2.f, 2.f);
+	ColliderDesc.vScale = _float3(3.f, 3.f, 3.f);
 	ColliderDesc.vRotation = _float4(0.f, 0.f, 0.f, 1.f);
 	ColliderDesc.vTranslation = _float3(0.f, ColliderDesc.vScale.y * 0.f, (ColliderDesc.vScale.z) * 0.5f);
 

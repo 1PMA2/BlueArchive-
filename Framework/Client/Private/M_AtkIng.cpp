@@ -6,6 +6,7 @@
 #include "Model.h"
 #include "M_Run.h"
 #include "M_AtkIng.h"
+#include "M_AtkEnd.h"
 #include "Student.h"
 
 CM_AtkIng::CM_AtkIng(CMonster* pOwner)
@@ -33,7 +34,7 @@ CMonster_State * CM_AtkIng::Loop(_float fTimeDelta)
 
 	if (m_bOnce && pStudent)
 	{
-		pStudent->Set_MinusHp(30);
+		pStudent->Set_MinusHp(m_pOwner->Get_MonsterAtk());
 		m_bOnce = false;
 	}
 
@@ -49,14 +50,6 @@ CMonster_State * CM_AtkIng::Loop(_float fTimeDelta)
 	if (nullptr != pStudent)
 	{
 		pTransform->LookAtLerp(pStudent->Get_StudentTranslation(), 7.f, -fTimeDelta); //반대편을 바라봐야 하므로 마이너스
-
-		/*if (m_bOnce)
-		{
-			m_pOwner->Use_Bullet();
-			pMonster->Set_MinusHp(m_pOwner->Get_StudentInfo().iAtk);
-			m_bOnce = false;
-		}*/
-
 	}
 
 	if (pModel->Get_isFinished())
@@ -66,7 +59,7 @@ CMonster_State * CM_AtkIng::Loop(_float fTimeDelta)
 			pState = CM_Run::Create(m_pOwner);
 		}
 		else
-			pState = CM_AtkIng::Create(m_pOwner);
+			pState = CM_AtkEnd::Create(m_pOwner);
 		//else
 		//	pState = CHide_ReloadStart::Create(m_pOwner);
 

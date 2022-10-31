@@ -79,7 +79,7 @@ void CAru_ExBullet::Tick(_float fTimeDelta)
 
 	m_fBoomAcc += fTimeDelta;
 
-
+	Boom();
 }
 
 void CAru_ExBullet::LateTick(_float fTimeDelta)
@@ -87,9 +87,6 @@ void CAru_ExBullet::LateTick(_float fTimeDelta)
 #ifdef _DEBUG
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 #endif // _DEBUG
-
-	Boom();
-
 }
 
 HRESULT CAru_ExBullet::Render()

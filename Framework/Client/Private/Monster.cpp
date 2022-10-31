@@ -82,7 +82,10 @@ CStudent * CMonster::FoundStudent()
 void CMonster::Set_MinusHp(_int iAtk)
 {
 	m_bDamaged = true;
-	m_tMonsterInfo.iHp -= (_int)(iAtk * frandom(0.9, 1.1));
+
+	_uint iDamage = (_int)(iAtk * frandom(0.9, 1.1));
+	m_tMonsterInfo.iHp -= iDamage;
+	Damage(iDamage);
 }
 
 CStudent * CMonster::Get_RandomStudent()
@@ -118,8 +121,6 @@ HRESULT CMonster::Initialize(void * pArg)
 
 void CMonster::Tick(_float fTimeDelta)
 {
-	DeleteMonster();
-
 	FoundStudent();
 
 	if (CMonster_State*	pNewState = m_pState->Loop(fTimeDelta))
@@ -165,7 +166,7 @@ void CMonster::LateTick(_float fTimeDelta)
 {
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 	
-
+	DeleteMonster();
 }
 
 HRESULT CMonster::Render()
@@ -265,6 +266,7 @@ void CMonster::SelectMonster()
 void CMonster::DeleteMonster()
 {
 	CSensei* pSensei = GET_SENSEI;
+
 	if (pSensei->Get_EndScene())
 	{
 		DELETE(this);
@@ -274,6 +276,7 @@ void CMonster::DeleteMonster()
 
 	if ((0 >= m_tMonsterInfo.iHp))
 	{
+		
 
 		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
@@ -295,6 +298,31 @@ void CMonster::DeleteMonster()
 			pSensei->Ex_Lockon(nullptr);
 
 		DELETE(this);
+	}
+}
+
+void CMonster::Damage(_uint iDamage)
+{
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	DAMAGE tD = {};
+
+	tD.vTranslation = m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION);
+	tD.iNum = iDamage % 10;
+	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
+
+	tD.iNum = ((iDamage / 10) % 10);
+	if (0 < tD.iNum)
+	{
+		tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation), XMVectorGetZ(tD.vTranslation) - 0.16f, 1.f);
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
+	}
+
+	tD.iNum = iDamage / 100;
+	if (0 < tD.iNum)
+	{
+		tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation), XMVectorGetZ(tD.vTranslation) - 0.16f, 1.f);
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
 	}
 }
 

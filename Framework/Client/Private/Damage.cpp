@@ -42,17 +42,6 @@ HRESULT CDamage::Initialize(void * pArg)
 
 	m_vTranslation = XMVectorSet(XMVectorGetX(m_tDAMAGE.vTranslation), XMVectorGetY(m_tDAMAGE.vTranslation) + 1.5f, XMVectorGetZ(m_tDAMAGE.vTranslation), 1.f);
 	m_iNum = m_tDAMAGE.iNum;
-	return S_OK;
-}
-
-void CDamage::Tick(_float fTimeDelta)
-{
-	if (nullptr == m_pVIBufferCom)
-		return;
-
-	m_fTimeAcc += fTimeDelta;
-
-	m_pTransformCom->Go_Lerp(m_vTranslation, 1, fTimeDelta);
 
 	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 
@@ -63,6 +52,19 @@ void CDamage::Tick(_float fTimeDelta)
 	m_pTransformCom->Set_State(CTransform::STATE_LOOK, vInv.r[2]);
 
 	m_pTransformCom->Set_Scaled(_float3(0.18f, 0.2f, 0.f));
+	return S_OK;
+}
+
+void CDamage::Tick(_float fTimeDelta)
+{
+	if (nullptr == m_pVIBufferCom)
+		return;
+
+	m_fTimeAcc += fTimeDelta;
+
+	m_pTransformCom->Go_Lerp(m_vTranslation, 1.f, fTimeDelta);
+
+	
 
 }
 

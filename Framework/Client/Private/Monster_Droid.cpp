@@ -43,7 +43,7 @@ HRESULT CMonster_Droid::Initialize(void * pArg)
 
 
 	m_tMonsterInfo.eMonster = DROID;
-	m_tMonsterInfo.iAtk = 10;
+	m_tMonsterInfo.iAtk = 20;
 	m_tMonsterInfo.iHp = 200;
 	m_tMonsterInfo.fRange = 3.f;
 

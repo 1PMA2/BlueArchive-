@@ -87,6 +87,7 @@ protected:
 protected:
 	void SelectMonster();
 	void DeleteMonster();
+	void Damage(_uint iDamage);
 
 
 public:
