@@ -40,15 +40,17 @@ private:
 
 private:
 	_float4x4				m_WorldMatrix;
+	_vector					m_vT;
 	_float					m_fTick = 0.f;
 	_float					m_fFade = -1.f;
-
+	_float					m_fSize = 0.f;
 private:
 	HRESULT SetUp_Components();
 	HRESULT SetUp_ShaderResource();
 
 private:
 	HRESULT InitLook();
+	_float Lerp(_float fStart, _float fEnd, _float fTime);
 
 public:
 	virtual void OnDisable() override;

@@ -36,12 +36,11 @@ HRESULT CCylinder::Initialize(void * pArg)
 		return E_FAIL;
 
 	if (nullptr != pArg)
-		memcpy(&m_pOwner, pArg, sizeof(CStudent*));
+		memcpy(&m_pOwner, pArg, sizeof(CMonster*));
 
 	InitLook();
 	
-
-
+	//m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, m_vT);
 	return S_OK;
 }
 
@@ -50,14 +49,18 @@ void CCylinder::Tick(_float fTimeDelta)
 	if (nullptr == m_pModelCom)
 		return;
 
-	m_fTick += fTimeDelta * 0.5f;
+	m_fTick += fTimeDelta * 10.f;
+
+	m_fSize = Lerp(m_fSize, 8.f, fTimeDelta);
+
+	m_pTransformCom->Set_Scaled(_float3(8.f - m_fSize, 8.f - m_fSize, 25.f));
 
 }
 
 void CCylinder::LateTick(_float fTimeDelta)
 {
 
-	if (m_fTick > 2.f)
+	if (m_fTick > 20.f)
 		DELETE(this);
 
 
@@ -90,7 +93,7 @@ HRESULT CCylinder::SetUp_Components()
 		return E_FAIL;
 
 	/* For.Com_Texture */
-	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Muzzle"), TEXT("Com_Texture"), (CComponent**)&m_pTextureCom)))
+	if (FAILED(__super::Add_Component(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Wave"), TEXT("Com_Texture"), (CComponent**)&m_pTextureCom)))
 		return E_FAIL;
 
 	/* For.Com_VIBuffer */
@@ -115,7 +118,7 @@ HRESULT CCylinder::SetUp_ShaderResource()
 		return E_FAIL;
 	if (FAILED(m_pShaderCom->Set_RawValue("g_UVx", &m_fTick, sizeof(_float))))
 		return E_FAIL;
-	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 4)))
+	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 0)))
 		return E_FAIL;
 
 
@@ -128,10 +131,9 @@ HRESULT CCylinder::InitLook()
 {
 	CTransform* pMuzzle = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
-
 	CModel*		pTargetModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 
-	m_pBonePtr = pTargetModel->Find_HierarcyNode("fire_01");
+	m_pBonePtr = pTargetModel->Find_HierarcyNode("Fire_01");
 
 	if (nullptr == m_pBonePtr)
 		return E_FAIL;
@@ -148,15 +150,24 @@ HRESULT CCylinder::InitLook()
 
 	m_pTransformCom->Rotation(vLook, 0.5f);
 
-	vTranslation += XMVector3Normalize(vLook) * 0.4f;
+	vTranslation -= XMVector3Normalize(vLook) * 4.5f;
 
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
 
 	m_pTransformCom->Set_State(CTransform::STATE_LOOK, pMuzzle->Get_WorldMatrix().r[2]);
 
-	m_pTransformCom->Set_Scaled(_float3(0.1f, 0.1f, 0.07f));
+	m_pTransformCom->Set_Scaled(_float3(8.f, 8.f, 25.f));
 
 	return S_OK;
+}
+
+_float CCylinder::Lerp(_float fStart, _float fEnd, _float fTime)
+{
+	fTime = fTime * 5.f;
+
+	_float fLerp = (1 - fTime) * fStart + (fTime * fEnd);
+
+	return fLerp;
 }
 
 void CCylinder::OnDisable()

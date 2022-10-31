@@ -46,12 +46,14 @@ HRESULT CMonster_Boss::Initialize(void * pArg)
 
 	m_tMonsterInfo.eMonster = BOSS;
 	m_tMonsterInfo.iAtk = 20;
-	m_tMonsterInfo.iHp = 100;
+	m_tMonsterInfo.iHp = 3000;
 	m_tMonsterInfo.fRange = 6.f;
 
 	m_pState = CBoss_Landing::Create(this);
 	
 	m_pBone = m_pModelCom->Find_HierarcyNode("Head_sp");
+
+
 	
 	return S_OK;
 }

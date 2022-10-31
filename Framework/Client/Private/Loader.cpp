@@ -799,6 +799,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Num.png"), 1))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Wave"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Fx/123.png"), 1))))
+			return E_FAIL;
+
 		lstrcpy(m_szLoadingText, TEXT("¸ðµ¨À» ·ÎµùÁßÀÌºñ³®. "));
 
 		_matrix			TransformMatrix;
@@ -830,7 +834,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 
 		//fx
 		ZeroMemory(&TransformMatrix, sizeof(_matrix));
-		TransformMatrix = XMMatrixRotationY(XMConvertToRadians(-90.f));
+		TransformMatrix = XMMatrixRotationY(XMConvertToRadians(180.f));
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Model_Cylinder0"),
 			CModel::Create(m_pDevice, m_pContext, CModel::TYPE_NONANIM, "../Bin/Resources/Meshes/Fx/", "Cylinder0.obj", TransformMatrix))))
 			return E_FAIL;

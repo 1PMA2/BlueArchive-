@@ -77,27 +77,11 @@ HRESULT CImgui_Manager::Render()
 
 		if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
 		{
-			_vector v = XMVectorSet(0, 0, 4, 1);
-			tD.vTranslation = v;
-			int iDamage = 235;
+			_vector v = XMVectorSet(0, 1, 4, 1);
 
-			tD.iNum = iDamage % 10;
-			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
-
-			tD.iNum = ((iDamage / 10) % 10);
-			if (0 < tD.iNum)
-			{
-				tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation), XMVectorGetZ(tD.vTranslation)-0.2f, 1.f);
-				m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
-			}
-
-			tD.iNum = iDamage / 100;
-			if (0 < tD.iNum)
-			{
-				tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation), XMVectorGetZ(tD.vTranslation)-0.2f, 1.f);
-				m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
-			}
+			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Cylinder"), &v);
 		}
+	
 
 		if (0 < m_pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Effect")))
 			pObj = m_pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"));

@@ -286,10 +286,12 @@ void CMonster::DeleteMonster()
 		{
 		case DROID:
 			pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Dead"), TEXT("Prototype_GameObject_Dead"), &WorldMatrix);
+			DELETE(this);
 			break;
 
 		case BOSS:
 			pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Dead"), TEXT("Prototype_GameObject_BossDead"), &WorldMatrix);
+			DISABLE(this);
 			break;
 
 		}
@@ -297,7 +299,7 @@ void CMonster::DeleteMonster()
 		if(this == pSensei->Get_LockonMonster())
 			pSensei->Ex_Lockon(nullptr);
 
-		DELETE(this);
+		
 	}
 }
 

@@ -106,12 +106,18 @@ PS_OUT PS_CYL(PS_IN In)
 	vTexUV.x -= g_UVx;
 	//vTexUV.y += g_UVx;
 
-	Out.vDiffuse = g_DiffuseTexture.Sample(ClampSampler, vTexUV);
+	Out.vDiffuse = g_DiffuseTexture.Sample(DefaultSampler, vTexUV);
 	Out.vNormal = vector(In.vNormal.xyz * 0.5f + 0.5f, 1.f);
 	Out.vDepth = vector(In.vProjPos.z / In.vProjPos.w, In.vProjPos.w / 300.0f, 0.f, 0.f);
 
 	if (Out.vDiffuse.r < 0.1f)
 		discard;
+
+	Out.vDiffuse = 1.f;
+	Out.vDiffuse.r = 242.f / 255.f;
+	Out.vDiffuse.g = 200.f / 255.f;
+	Out.vDiffuse.b = 80.f / 255.f;
+	Out.vDiffuse.a = 0.8f;
 
 	return Out;
 }

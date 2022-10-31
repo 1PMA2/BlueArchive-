@@ -122,6 +122,8 @@ void CBoss_SBullet::Boom()
 
 		dynamic_cast<CCamera_Main*>(pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera")))->Shaking_Camera(true, 0.07f);
 
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Cylinder"), &m_pOwner);
+
 		m_fBoomAcc = 0.f;
 		Collision_ToMonster();
 	}
