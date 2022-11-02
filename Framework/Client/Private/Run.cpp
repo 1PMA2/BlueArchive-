@@ -13,6 +13,8 @@
 #include "Collider.h"
 #include "Victory_Start.h"
 
+#define FINISH_POS 65.f
+
 CRun::CRun(CStudent* pOwner)
 	:CState(pOwner)
 {
@@ -109,7 +111,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 	{
 		pStudentTransform->Go_Straight(fTimeDelta);
 		_vector vXY = pStudentTransform->Get_WorldMatrix().r[3];
-		pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), m_fTurnSpeed, fTimeDelta);
+		pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), FINISH_POS, 1.f), m_fTurnSpeed, fTimeDelta);
 		return nullptr;
 	}
 	
@@ -124,9 +126,9 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 		_float fLength = XMVectorGetX(XMVector3Length(vMonsterTranslation - vTranslation)); //학생과 모든 몬스터 사이의 거리 
 
-		if (m_pOwner->Get_StudentInfo().fReConRange > fLength) //레이어의 몬스터 검사 후 인식범위 내 몬스터 
+		if (m_pOwner->Get_StudentInfo().fReConRange > fLength) //인식범위 내 몬스터 
 		{
-			m_TargetMonsters.push_back(pMonster); //범위 내 몬스터
+			m_TargetMonsters.push_back(pMonster); //공격범위 내 몬스터
 		}
 	}
 
@@ -165,19 +167,11 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 			_vector		vLook = vTarget - vPosition;
 
-			if (-1.f > XMVectorGetZ(vLook))
-			{
-				m_pTargetCover = nullptr;
-				m_bOnce = true;
-				return nullptr;
-			}
-
 			pStudentTransform->LookAtLerp(vTarget, m_fTurnSpeed, fTimeDelta); // 엄폐물 방향 look
-
 
 			if (m_fHideLength <= XMVectorGetX(XMVector3Length(vLook)))
 			{
-				pStudentTransform->Go_Straight(fTimeDelta); //Chase(vTarget, fTimeDelta); 엄폐물에 닿을때 까지 앞으로
+				pStudentTransform->Go_Straight(fTimeDelta); //엄폐물에 닿을때 까지 앞으로
 				return nullptr;
 			}
 			else
@@ -232,7 +226,7 @@ CState* CRun::Find_Monster(_float fTimeDelta)
 
 	pStudentTransform->Go_Straight(fTimeDelta); //범위 내 몬스터 없을시 앞으로 전진
 	_vector vXY = pStudentTransform->Get_WorldMatrix().r[3];
-	pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), 65.f, 1.f), m_fTurnSpeed, fTimeDelta);
+	pStudentTransform->LookAtLerp(XMVectorSet(XMVectorGetX(vXY), XMVectorGetY(vXY), FINISH_POS, 1.f), m_fTurnSpeed, fTimeDelta);
 
 
 	return nullptr;
@@ -263,7 +257,7 @@ void CRun::Find_Cover()
 		CForkLift* pCover = (CForkLift*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Cover"), i);
 
 		CTransform* pCoverTransform = (CTransform*)pCover->Get_Component(TEXT("Com_Transform"));
-
+		
 		CTransform* pMonsterTransform = (CTransform*)m_TargetMonsters.at(0)->Get_Component(TEXT("Com_Transform"));
 
 		_vector vCoverTranslation = pCoverTransform->Get_State(CTransform::STATE_TRANSLATION); //엄폐물
@@ -273,9 +267,11 @@ void CRun::Find_Cover()
 
 		if (m_pOwner->Get_StudentInfo().fRange > fToCover) //학생 공격범위 내에 엄폐물 있을 경우
 		{
-			_float fLength = XMVectorGetX(XMVector3Length(vMonsterTranslation - vCoverTranslation)); //가까운 몬스터와 엄폐물 사이의 거리 
+			_float fLength = XMVectorGetX(XMVector3Length(vMonsterTranslation - vCoverTranslation)); 
+			//가까운 몬스터와 엄폐물 사이의 거리 
 
-			if (m_pOwner->Get_StudentInfo().fRange > (fLength)) //가까운 몬스터와 엄폐물 사이의 거리가 공격 범위 내
+			if (m_pOwner->Get_StudentInfo().fRange > (fLength)) 
+				//가까운 몬스터와 엄폐물 사이의 거리가 공격 범위 내
 			{
 				if (false == pCover->Get_Use())
 					m_TargetCovers.push_back(pCover); //가장 가까운 엄폐물 탐색,사용중이 아닌

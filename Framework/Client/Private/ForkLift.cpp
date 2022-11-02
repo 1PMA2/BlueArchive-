@@ -198,7 +198,6 @@ void CForkLift::Collision_ToPlayer()
 		{
 			m_bUsed = true;
 			m_bExit = true; //나갈 준비
-
 			break;
 		}
 		else

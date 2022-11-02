@@ -28,6 +28,7 @@ namespace Client
 
 #define GET_SENSEI		CSensei::Get_Instance()
 
+const char* const aru = "aru";
 
 
 extern HWND g_hWnd;

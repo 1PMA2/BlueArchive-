@@ -8,6 +8,14 @@
 #include "Sensei.h"
 #include "Formaton_Btn.h"
 
+#define FIRST_POS XMVectorSet(1.5f, 0.f, 0.f, 1.f)
+#define SECOND_POS XMVectorSet(0.5f, 0.f, 0.f, 1.f)
+#define THIRD_POS XMVectorSet(-0.5f, 0.f, 0.f, 1.f)
+#define FOURTH_POS XMVectorSet(-1.5f, 0.f, 0.f, 1.f)
+#define DEFAULT_POS XMVectorSet(-5.f, 0.f, 0.f, 1.f)
+#define S_SIZE _float3(0.8f, 0.8f, 0.8f)
+
+
 CFormation_Idle::CFormation_Idle(CStudent* pOwner)
 	:CState(pOwner)
 {
@@ -70,19 +78,19 @@ CFormation_Idle::CFormation_Idle(CStudent* pOwner)
 				switch (m_pOwner->Get_StudentInfo().eFormation)
 				{
 				case FORMATION_FIRST:
-					m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+					m_vPreTranslation = FIRST_POS;
 					break;
 				case FORMATION_SECOND:
-					m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+					m_vPreTranslation = SECOND_POS;
 					break;
 				case FORMATION_THIRD:
-					m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+					m_vPreTranslation = THIRD_POS;
 					break;
 				case FORMATION_FOURTH:
-					m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+					m_vPreTranslation = FOURTH_POS;
 					break;
 				default:
-					m_vPreTranslation = XMVectorSet(-5.f, 0.f, 0.f, 1.f);
+					m_vPreTranslation = DEFAULT_POS;
 					break;
 				}
 				
@@ -122,19 +130,19 @@ CState * CFormation_Idle::Loop(_float fTimeDelta)
 	switch (m_pOwner->Get_StudentInfo().eFormation)
 	{
 	case FORMATION_FIRST:
-		m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+		m_vPreTranslation = FIRST_POS;
 		break;
 	case FORMATION_SECOND:
-		m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+		m_vPreTranslation = SECOND_POS;
 		break;
 	case FORMATION_THIRD:
-		m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+		m_vPreTranslation = THIRD_POS;
 		break;
 	case FORMATION_FOURTH:
-		m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+		m_vPreTranslation = FOURTH_POS;
 		break;
 	default:
-		m_vPreTranslation = XMVectorSet(-5.f, 0.f, 0.f, 1.f);
+		m_vPreTranslation = DEFAULT_POS;
 		break;
 	}
 
@@ -167,7 +175,7 @@ CState * CFormation_Idle::Loop(_float fTimeDelta)
 
 			if (pOwnerAABB->Collision(pAABB))
 			{
-				pTransform->Set_Scaled({ 0.8f, 0.8f, 0.8f });
+				pTransform->Set_Scaled(S_SIZE);
 				break;
 			}
 

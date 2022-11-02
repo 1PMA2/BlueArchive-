@@ -148,7 +148,9 @@ HRESULT CStudent_Portrait::SetUp_ShaderResource()
 void CStudent_Portrait::ClickPortrait()
 {
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-	m_pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_Student"), m_iSequence);
+
+	m_pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_FORMATION,
+		TEXT("Layer_Formation_Student"), m_iSequence);
 
 	CSensei* pSensei = GET_SENSEI;
 
@@ -167,7 +169,7 @@ void CStudent_Portrait::ClickPortrait()
 	if (FORMATION_END != m_pStudent->Get_StudentInfo().eFormation)
 	{
 		m_bPicked = true;
-		m_bOnce = false;
+		m_bFormationSet = false;
 		m_iPickedNum = m_pStudent->Get_StudentInfo().eFormation;
 	}
 
@@ -210,10 +212,10 @@ void CStudent_Portrait::ClickPortrait()
 	if (m_bPicked)
 	{
 
-		if (m_bOnce)
+		if (m_bFormationSet)
 		{
 			CGameInstance::Get_Instance()->WithoutBGM();
-			m_bOnce = false;
+			m_bFormationSet = false;
 			STUDENT eStudent = m_pStudent->Get_StudentInfo().eStudent;
 			
 			switch (eStudent)
@@ -237,9 +239,9 @@ void CStudent_Portrait::ClickPortrait()
 			ENABLE(m_pStudent);
 		}
 	}
-	else if(!m_bOnce)
+	else if(!m_bFormationSet)
 	{
-		m_bOnce = true;
+		m_bFormationSet = true;
 		pSensei->Set_FormationAry(m_iPickedNum, false);
 		m_pStudent->Set_Formation(FORMATION_END);
 		DISABLE(m_pStudent);

@@ -44,7 +44,7 @@ private:
 	_int			m_iSequence = 0;
 	_float			m_fFade = -1.f;
 	_float			m_fLocationX, m_fLocationY;
-	_bool			m_bOnce = true;
+	_bool			m_bFormationSet = true;
 
 
 private:

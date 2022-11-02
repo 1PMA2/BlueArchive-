@@ -63,9 +63,6 @@ CMonster_State * CBoss_Idle::Loop(_float fTimeDelta)
 		case 0:
 			pState = CBoss_Skill::Create(m_pOwner);
 			break;
-		//case 1:
-		//	pState = CBoss_Shield::Create(m_pOwner);
-		//	break;
 		default:
 			pState = CBoss_IdleToAtk::Create(m_pOwner);
 			break;

@@ -7,6 +7,12 @@
 #include "Formation_Idle.h"
 #include "Sensei.h"
 
+#define FIRST_POS XMVectorSet(1.5f, 0.f, 0.f, 1.f)
+#define SECOND_POS XMVectorSet(0.5f, 0.f, 0.f, 1.f)
+#define THIRD_POS XMVectorSet(-0.5f, 0.f, 0.f, 1.f)
+#define FOURTH_POS XMVectorSet(-1.5f, 0.f, 0.f, 1.f)
+#define DEFAULT_POS XMVectorSet(-5.f, 0.f, 0.f, 1.f)
+
 CFormation_Pick::CFormation_Pick(CStudent* pOwner)
 	:CState(pOwner)
 {
@@ -43,19 +49,19 @@ CFormation_Pick::CFormation_Pick(CStudent* pOwner)
 	{
 	case FORMATION_FIRST:
 		m_ePreFormation = FORMATION_FIRST;
-		m_vPreTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+		m_vPreTranslation = FIRST_POS;
 		break;
 	case FORMATION_SECOND:
 		m_ePreFormation = FORMATION_SECOND;
-		m_vPreTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+		m_vPreTranslation = SECOND_POS;
 		break;
 	case FORMATION_THIRD:
 		m_ePreFormation = FORMATION_THIRD;
-		m_vPreTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+		m_vPreTranslation = THIRD_POS;
 		break;
 	case FORMATION_FOURTH:
 		m_ePreFormation = FORMATION_FOURTH;
-		m_vPreTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+		m_vPreTranslation = FOURTH_POS;
 		break;
 	}
 
@@ -79,10 +85,17 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
 
+	
+
 	if (KEY(LBUTTON, HOLD))
 	{
-		pGameInstance->Picking((CVIBuffer*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_VIBuffer"), 1),
-			(CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 1), &m_vOut);
+		CTransform* pBGTransform = (CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION,
+			TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 1);
+
+		CVIBuffer* pBGBuffer = (CVIBuffer*)pGameInstance->Get_Component(LEVEL_FORMATION,
+			TEXT("Layer_Formation_BackGround"), TEXT("Com_VIBuffer"), 1);
+
+		pGameInstance->Picking(pBGBuffer, pBGTransform, &m_vOut);
 
 		m_vOut.y -= 0.5f; // offset
 		pTransform->Set_State(CTransform::STATE_TRANSLATION, XMLoadFloat4(&m_vOut));
@@ -95,34 +108,33 @@ CState * CFormation_Pick::Loop(_float fTimeDelta)
 			{
 				m_pOwner->Set_Formation(FORMATION_FIRST);
 				m_eCurrentFormation = FORMATION_FIRST;
-				m_vCurrentTranslation = XMVectorSet(1.5f, 0.f, 0.f, 1.f);
+				m_vCurrentTranslation = FIRST_POS;
 
 			}
 			else if (1.f > m_vOut.x && 0.f <= m_vOut.x)
 			{
 				m_pOwner->Set_Formation(FORMATION_SECOND);
 				m_eCurrentFormation = FORMATION_SECOND;
-				m_vCurrentTranslation = XMVectorSet(0.5f, 0.f, 0.f, 1.f);
+				m_vCurrentTranslation = SECOND_POS;
 			}
 			else if (0.f > m_vOut.x && -1.f <= m_vOut.x)
 			{
 				m_pOwner->Set_Formation(FORMATION_THIRD);
 				m_eCurrentFormation = FORMATION_THIRD;
-				m_vCurrentTranslation = XMVectorSet(-0.5f, 0.f, 0.f, 1.f);
+				m_vCurrentTranslation = THIRD_POS;
 			}
 			else if (-1.f > m_vOut.x)
 			{
 				m_pOwner->Set_Formation(FORMATION_FOURTH);
 				m_eCurrentFormation = FORMATION_FOURTH;
-				m_vCurrentTranslation = XMVectorSet(-1.5f, 0.f, 0.f, 1.f);
+				m_vCurrentTranslation = FOURTH_POS;
 			}
-
-
 		}  //포메이션 위치
 		else
 		{
 			m_vCurrentTranslation = m_vPreTranslation;
 		}
+
 		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_FORMATION, TEXT("Layer_Formation_Student")); ++i)
 		{
 			CStudent* pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_Student"), i);

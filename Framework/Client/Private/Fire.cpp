@@ -74,18 +74,18 @@ CState * CFire::Loop(_float fTimeDelta)
 
 				if (!pSensei->Get_SenseiInfo().bEx)
 				{
-					switch (m_pOwner->Get_StudentInfo().eStudent)
+					switch (m_pOwner->Get_StudentInfo().eWeapon)
 					{
-					case ARU:
+					case SR:
 						CGameInstance::Get_Instance()->Play_Sound(L"SR",1, 0.8f);
 						break;
-					case MUTSUKI:
+					case RF:
 						CGameInstance::Get_Instance()->Play_Sound(L"AR", 1, 0.8f);
 						break;
-					case KAYOKO:
+					case HG:
 						CGameInstance::Get_Instance()->Play_Sound(L"HG",1, 0.8f);
 						break;
-					case HARUKA:
+					case SHOTGUN:
 						CGameInstance::Get_Instance()->Play_Sound(L"SG",1, 0.8f);
 						break;
 					}

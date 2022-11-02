@@ -153,7 +153,7 @@ public:
 	CStudent::STUDENTINFO Get_FormationInfo(_uint iIndex);
 
 
-
+	static const double Factor;
 
 public:
 	virtual void Free() override;

@@ -75,7 +75,8 @@ void CMainApp::Tick()
 
 	pSensei->Set_TimeSpeed();
 
-	_float fTimeDelta = m_pGameInstance->Compute_Timer(TEXT("Timer_60"), pSensei->Get_SenseiInfo().fTimeSpeed);
+	_float fTimeDelta = m_pGameInstance->Compute_Timer(TEXT("Timer_60"),
+		pSensei->Get_SenseiInfo().fTimeSpeed);
 
 	m_fTimeAcc += fTimeDelta / pSensei->Get_SenseiInfo().fTimeSpeed;
 

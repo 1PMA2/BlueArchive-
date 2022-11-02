@@ -4,6 +4,8 @@
 #include "Student.h"
 #include "Monster.h"
 
+const double CSensei::Factor = 1.35;
+
 IMPLEMENT_SINGLETON(CSensei)
 
 CSensei::CSensei()
@@ -14,7 +16,7 @@ CSensei::CSensei()
 
 void CSensei::Set_Student(const _tchar* pStudentTag, CStudent* pStudent)
 {
-	m_Student.emplace(pStudentTag, pStudent); //선생이 뽑은 학생
+	m_Student.emplace(pStudentTag, pStudent); //뽑은 학생
 }
 
 void CSensei::Set_RealStudent(const _tchar * pStudentTag, CStudent * pStudent)
@@ -131,6 +133,7 @@ void CSensei::Set_TimeSpeed()
 		m_tSensei.fTimeSpeed = 0.1f;
 		return;
 	}
+	Factor;
 
 	m_tSensei.fTimeSpeed = 1.f;
 }

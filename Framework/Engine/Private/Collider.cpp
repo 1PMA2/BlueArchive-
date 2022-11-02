@@ -220,9 +220,9 @@ _bool CCollider::CollisionRay()
 {
 	CPicking* pPicking = GET_INSTANCE(CPicking);
 
-	_vector vRayPos = XMLoadFloat4(&_float4(pPicking->Get_RayPos().x, pPicking->Get_RayPos().y, pPicking->Get_RayPos().z, 1.f));
+	_vector vRayPos = XMLoadFloat4(&pPicking->Get_RayPos());
 
-	_vector vRayDir = XMVector3Normalize(XMLoadFloat4(&_float4(pPicking->Get_RayDir().x, pPicking->Get_RayDir().y, pPicking->Get_RayDir().z, 0.f)));
+	_vector vRayDir = XMVector3Normalize(XMLoadFloat4(&pPicking->Get_RayDir()));
 
 	_float fDist = 0;
 

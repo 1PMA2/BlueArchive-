@@ -229,7 +229,7 @@ void CLevel_Gacha::Gacha()
 {
 	CSensei* pSensei = GET_SENSEI;
 
-	_int iRandom = random(1, 4);
+	_int iRandom = random(1, 4); //mt19937
 
 	if (1 == iRandom)
 	{

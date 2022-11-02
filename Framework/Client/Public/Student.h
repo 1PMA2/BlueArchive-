@@ -32,7 +32,7 @@ public:
 		_uint	iShield;
 		_uint	iAtk;
 		_uint	iDef; //엄폐시 데미지 입을 확률
-		_uint	iEx; //스킬공격력, 실드, 힐 여러곳에서 사용
+		_uint	iEx; //스킬공격력
 		_float	fExCost;
 
 		_uint	iMagazine;

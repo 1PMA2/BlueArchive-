@@ -417,7 +417,9 @@ HRESULT CLoader::Loading_ForGachaScene()
 		{
 			if (TEXT("Aru") == pSensei->Get_StudentName(i))
 			{
-				pSensei->Set_RealStudent(pSensei->Get_StudentName(i), CAru::Create(m_pDevice, m_pContext));
+				pSensei->Set_RealStudent(pSensei->Get_StudentName(i),
+					CAru::Create(m_pDevice, m_pContext));
+
 				if (FAILED(pGameInstance->Add_Prototype(pSensei->Get_StudentName(i),
 					pSensei->Get_StudentIndex(i))))
 					return E_FAIL;

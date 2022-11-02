@@ -118,7 +118,8 @@ void CLevel_GamePlay::Change_Camera()
 
 	CSensei* pSensei = CSensei::Get_Instance();
 
-	CCamera* pCameraMain = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera"));
+	CCamera* pCameraMain = (CCamera*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY,
+		TEXT("Layer_Camera"));
 
 	if (pSensei->Get_SenseiInfo().bEx)
 		{
