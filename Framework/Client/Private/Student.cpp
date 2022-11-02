@@ -34,7 +34,7 @@ void CStudent::Set_MinusHp(_int iAtk)
 	{
 		_uint iRandom = random(1, 10);
 
-		if (6 < iRandom)
+		if (7 < iRandom)
 		{	
 			m_tStudentInfo.iHp -= iDamage;
 			Damage(iDamage);
