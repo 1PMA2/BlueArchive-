@@ -83,7 +83,7 @@ void CMonster::Set_MinusHp(_int iAtk)
 {
 	m_bDamaged = true;
 
-	_uint iDamage = (_int)(iAtk * frandom(0.9, 1.1));
+	_int iDamage = (_int)(iAtk * frandom(0.9, 1.1));
 	m_tMonsterInfo.iHp -= iDamage;
 	Damage(iDamage);
 }
@@ -237,6 +237,8 @@ HRESULT CMonster::SetUp_ShaderResource()
 		return E_FAIL;
 	if (FAILED(m_pShaderCom->Set_RawValue("g_Damaged", &m_bDamaged, sizeof(_bool))))
 		return E_FAIL;
+	if (FAILED(m_pShaderCom->Set_RawValue("g_Sel", &m_bSelected, sizeof(_bool))))
+		return E_FAIL;
 
 	RELEASE_INSTANCE(CGameInstance);
 
@@ -250,10 +252,13 @@ void CMonster::SelectMonster()
 	if (this == pSensei->Get_LockonMonster())
 		pSensei->Get_LockonVector();
 
-	if (m_pAABBCom->CollisionRay())
+	m_bSelected = false;
+
+	if (pSensei->Get_ExReady())
 	{
-		if (pSensei->Get_ExReady())
+		if (m_pAABBCom->CollisionRay())
 		{
+			m_bSelected = true;
 			if (KEY(LBUTTON, TAP))
 			{
 				pSensei->Ex_Lockon(this);

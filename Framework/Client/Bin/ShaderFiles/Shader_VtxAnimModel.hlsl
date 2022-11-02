@@ -7,6 +7,7 @@ texture2D	g_DiffuseTexture;
 texture2D	g_FlagTexture;
 
 bool g_Damaged;
+bool g_Sel;
 
 struct		tagBoneMatrix
 {
@@ -106,6 +107,17 @@ PS_OUT PS_MAIN(PS_IN In)
 		Out.vDiffuse += 0.3f;
 	else
 		Out.vDiffuse += 0.f;
+
+	if (g_Sel)
+	{
+		Out.vDiffuse.r += 0.4f;
+		Out.vDiffuse.g += 0.4f;
+	}
+	else
+	{
+		Out.vDiffuse.r += 0.f;
+		Out.vDiffuse.g += 0.f;
+	}
 
 	return Out;
 }

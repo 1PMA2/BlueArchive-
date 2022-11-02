@@ -111,6 +111,7 @@ protected:
 	_bool					m_bRetire = false;
 	_bool					m_bCovered = false;
 	_float					m_fDamagedAcc = 0.f;
+	_bool					m_bSelected = false;
 
 	vector<CMonster*>	m_Monsters;
 	typedef vector<CMonster*> MONSTERS;

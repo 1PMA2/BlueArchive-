@@ -74,6 +74,7 @@ protected:
 	_vector					m_vRandomTarget = {};
 	_bool					m_bDamaged = false;
 	_float					m_fDamagedAcc = 0.f;
+	_bool					m_bSelected = false;
 
 public:
 	virtual void OnDisable() override;
