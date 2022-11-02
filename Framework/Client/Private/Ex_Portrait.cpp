@@ -89,6 +89,8 @@ void Ex_Portrait::LateTick(_float fTimeDelta)
 {
 	CSensei* pSensei = GET_SENSEI;
 
+	pSensei->Set_Retire(false);
+	
 	if (!pSensei->Get_SenseiInfo().bEx)
 	{
 		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_UI, this);
@@ -247,11 +249,6 @@ void Ex_Portrait::ClickPortrait()
 				}
 			}
 
-
-			if (m_iLive - 1 == m_iStudent)
-			{
-				pSensei->Set_Retire(false);
-			}
 		}
 		else
 			m_bRetire = true;

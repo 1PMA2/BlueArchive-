@@ -7,7 +7,7 @@
 #include "Sensei.h"
 #include "Student.h"
 #include "HIerarchyNode.h"
-
+#include "Boss_HP.h"
 
 CMonster_Boss::CMonster_Boss(ID3D11Device * pDevice, ID3D11DeviceContext * pContext)
 	: CMonster(pDevice, pContext)
@@ -53,23 +53,24 @@ HRESULT CMonster_Boss::Initialize(void * pArg)
 	
 	m_pBone = m_pModelCom->Find_HierarcyNode("Head_sp");
 
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
+	//CMonster* pBoss = this;
+
+	//pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_BossHp"), &pBoss);
 	
 	return S_OK;
 }
 
 void CMonster_Boss::Tick(_float fTimeDelta)
 {
-
+	
 	__super::Tick(fTimeDelta);
-
-
 }
 
 void CMonster_Boss::LateTick(_float fTimeDelta)
 {
 	__super::LateTick(fTimeDelta);
-
 }
 
 HRESULT CMonster_Boss::Render()

@@ -3,6 +3,7 @@
 #include "Client_Defines.h"
 #include "GameObject.h"
 #include "Monster.h"
+#include "Boss_HP.h"
 
 BEGIN(Engine)
 class CShader;
@@ -40,6 +41,7 @@ private:
 
 private:
 	class CHierarchyNode* m_pBone = nullptr;
+	class CBoss_HP*		  m_pHp = nullptr;
 
 public:
 	static CMonster_Boss* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext);

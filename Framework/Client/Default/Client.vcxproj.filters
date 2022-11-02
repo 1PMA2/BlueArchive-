@@ -421,6 +421,9 @@
     <ClInclude Include="..\Public\Monster_Bullet.h">
       <Filter>02.GameObject\09.Effect\Bullet\MonsterBullet</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Boss_HP.h">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\BossHp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -827,6 +830,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Monster_Bullet.cpp">
       <Filter>02.GameObject\09.Effect\Bullet\MonsterBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Boss_HP.cpp">
+      <Filter>02.GameObject\05.UI\GamePlay_UI\BossHp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1323,6 +1329,9 @@
     </Filter>
     <Filter Include="02.GameObject\09.Effect\Muzzle\Monster_Muzzle">
       <UniqueIdentifier>{8af608f4-b771-47c2-a69d-4fa98081a78c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\GamePlay_UI\BossHp">
+      <UniqueIdentifier>{6764d488-6e5b-40d8-a2f2-07745ffa129e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

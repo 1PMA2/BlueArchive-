@@ -35,6 +35,7 @@ public:
 public:
 	MONSTER Get_Monster() { return m_tMonsterInfo.eMonster; }
 	_int Get_MonsterAtk() { return m_tMonsterInfo.iAtk; }
+	_int Get_MonsterHp() { return m_tMonsterInfo.iHp; }
 	_vector Get_MonsterTranslation() { return m_pTransformCom->Get_State(CTransform::STATE_TRANSLATION); }
 	void Set_MinusHp(_int iAtk);
 	_bool Get_Fear() { return m_bFear; }

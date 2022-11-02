@@ -79,7 +79,7 @@ HRESULT CImgui_Manager::Render()
 		{
 			_vector v = XMVectorSet(0, 1, 4, 1);
 
-			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Cylinder"), &v);
+			m_pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_BossHp"));
 		}
 	
 

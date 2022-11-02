@@ -184,6 +184,7 @@
     <ClInclude Include="..\Public\Boss_AtkToIdle.h" />
     <ClInclude Include="..\Public\Boss_Bullet.h" />
     <ClInclude Include="..\Public\Boss_Dead.h" />
+    <ClInclude Include="..\Public\Boss_HP.h" />
     <ClInclude Include="..\Public\Boss_Idle.h" />
     <ClInclude Include="..\Public\Boss_IdleToAtk.h" />
     <ClInclude Include="..\Public\Boss_Landing.h" />
@@ -324,6 +325,7 @@
     <ClCompile Include="..\Private\Boss_AtkToIdle.cpp" />
     <ClCompile Include="..\Private\Boss_Bullet.cpp" />
     <ClCompile Include="..\Private\Boss_Dead.cpp" />
+    <ClCompile Include="..\Private\Boss_HP.cpp" />
     <ClCompile Include="..\Private\Boss_Idle.cpp" />
     <ClCompile Include="..\Private\Boss_IdleToAtk.cpp" />
     <ClCompile Include="..\Private\Boss_Landing.cpp" />

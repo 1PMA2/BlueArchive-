@@ -115,8 +115,8 @@ PS_OUT PS_CYL(PS_IN In)
 
 	Out.vDiffuse = 1.f;
 	Out.vDiffuse.r = 242.f / 255.f;
-	Out.vDiffuse.g = 200.f / 255.f;
-	Out.vDiffuse.b = 80.f / 255.f;
+	Out.vDiffuse.g = 220.f / 255.f;
+	Out.vDiffuse.b = 30.f / 255.f;
 	Out.vDiffuse.a = 0.8f;
 
 	return Out;
