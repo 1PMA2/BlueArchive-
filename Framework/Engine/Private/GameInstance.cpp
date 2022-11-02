@@ -224,7 +224,7 @@ void CGameInstance::Play_Sound_Rand(const _tchar * strSoundKey, const _uint & iR
 {
 	wstring strKey = strSoundKey;
 
-	_int iRand = random(0, iRandNum);
+	_int iRand = random(1, iRandNum);
 	_tchar szTemp[64] = {};
 
 	_itow_s(iRand, szTemp, 10);
@@ -238,7 +238,7 @@ void CGameInstance::Play_Sound_Rand(const _tchar * strSoundKey, const _uint & iR
 void CGameInstance::Play_Sound_Player(const _tchar * strSoundKey, _float fVolume)
 {
 	wstring strKey = strSoundKey;
-	strKey += L".ogg";
+	strKey += L".wav";
 
 	m_pSound_Device->Play_Sound_Player(strKey.c_str(), fVolume);
 }
@@ -273,6 +273,11 @@ void CGameInstance::StopSound(CHANNELID eType)
 void CGameInstance::StopAll()
 {
 	m_pSound_Device->StopAll();
+}
+
+void CGameInstance::WithoutBGM()
+{
+	m_pSound_Device->WithoutBGM();
 }
 
 void CGameInstance::SetVolume(_float fVolume)

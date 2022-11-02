@@ -48,7 +48,6 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 {
 	__super::Tick(fTimeDelta);	
 
-
 	if (true == m_pLoader->is_Finished())
 	{
 		CSensei*  pSensei = GET_SENSEI;
@@ -67,7 +66,9 @@ void CLevel_Loading::Tick(_float fTimeDelta)
 						pLevel = CLevel_Lobby::Create(m_pDevice, m_pContext);
 				}
 				else
+				{
 					pLevel = CLevel_Lobby::Create(m_pDevice, m_pContext);
+				}
 				break;
 			case LEVEL_GACHA:
 				pLevel = CLevel_Gacha::Create(m_pDevice, m_pContext);

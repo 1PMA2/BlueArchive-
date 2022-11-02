@@ -86,6 +86,7 @@ void CFormaton_Btn::Tick(_float fTimeDelta)
 		}
 		else if (KEY(LBUTTON, AWAY))
 		{
+			CGameInstance::Get_Instance()->Play_Sound_Player(L"Click", 1.f);
 			m_bOpenwindow = !m_bOpenwindow;
 		}
 	}

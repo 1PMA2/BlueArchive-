@@ -56,6 +56,7 @@ public: /* For. Sound_Device */
 	void		PlayBGM(const _tchar* strSoundKey, _float fVolume);
 	void		StopSound(CHANNELID eType);
 	void		StopAll();
+	void		WithoutBGM();
 	void		SetVolume(_float fVolume);
 	void		SetChannelVolume(CHANNELID eID, _float fVolume);
 

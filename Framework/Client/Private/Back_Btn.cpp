@@ -80,6 +80,7 @@ void CBack_Btn::Tick(_float fTimeDelta)
 		}
 		else if (KEY(LBUTTON, AWAY))
 		{
+			CGameInstance::Get_Instance()->Play_Sound_Player(L"Click", 1.f);
 			//m_pTransformCom->Set_Scaled({ 1.f, 1.f, 0.f });
 
 			CSensei* pSensei = GET_SENSEI;

@@ -36,6 +36,7 @@ HRESULT CArona::Initialize(void * pArg)
 
 	m_pModelCom->Set_CurrentAnimation(0);
 
+	CGameInstance::Get_Instance()->Play_Sound_Player(L"UI_Gacha_0", 0.5f);
 	return S_OK;
 }
 
@@ -130,6 +131,11 @@ HRESULT CArona::RenderArona()
 	}
 	else
 	{
+		if (m_b0)
+		{
+			CGameInstance::Get_Instance()->Play_Sound_Player(L"UI_Gacha_1", 0.5f);
+			m_b0 = false;
+		}
 		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", 3, aiTextureType_DIFFUSE)))
 			return E_FAIL;
 		m_pModelCom->Render(3, m_pShaderCom, 0, "g_Bones");

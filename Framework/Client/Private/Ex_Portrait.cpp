@@ -60,6 +60,33 @@ HRESULT Ex_Portrait::Initialize(void * pArg)
 			break;
 		}
 	}
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+	
+	if (pSensei->Get_FormationInfo(m_iStudent).eFormation == FORMATION_FIRST)
+	{
+		switch (m_iImgNum)
+		{
+		case Client::ARU:
+			CGameInstance::Get_Instance()->Play_Sound_Rand(L"Aru_Battle_In_", 2, 0.7f);
+			break;
+		case Client::MUTSUKI:
+			CGameInstance::Get_Instance()->Play_Sound_Rand(L"Mutsuki_Battle_In_", 2, 0.7f);
+			break;
+		case Client::KAYOKO:
+			CGameInstance::Get_Instance()->Play_Sound_Rand(L"Kayoko_Battle_In_", 2, 0.7f);
+			break;
+		case Client::HARUKA:
+			CGameInstance::Get_Instance()->Play_Sound_Rand(L"Haruka_Battle_In_", 2, 0.7f);
+			break;
+		case Client::S_END:
+			break;
+		default:
+			break;
+		}
+	}
+
+	
 	
 	m_fLocationY = 630.f;
 
@@ -167,10 +194,9 @@ void Ex_Portrait::ClickPortrait()
 {
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-	m_pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), m_iStudent);
-
 	m_iLive = pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Icon"));
 
+	m_pStudent = (CStudent*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Student"), m_iStudent);
 	CSensei* pSensei = GET_SENSEI;
 
 	

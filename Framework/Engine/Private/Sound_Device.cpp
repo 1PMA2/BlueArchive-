@@ -250,6 +250,12 @@ void CSound_Device::StopAll()
 		FMOD_Channel_Stop(m_pChannelArr[i]);
 }
 
+void CSound_Device::WithoutBGM()
+{
+	for (UINT i = 1; i < CH_END; ++i)
+		FMOD_Channel_Stop(m_pChannelArr[i]);
+}
+
 void CSound_Device::SetVolume(float fVolume)
 {
 	for (int i = BGM; i < CH_END; ++i)

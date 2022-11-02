@@ -31,6 +31,8 @@ private:
 	CRenderer*				m_pRendererCom = nullptr;
 	CModel*					m_pModelCom = nullptr;
 	CCollider*				m_pSphereCom = nullptr;
+	_bool					m_b0 = true;
+	_bool					m_b1 = true;
 
 public:
 	virtual void OnDisable() override;

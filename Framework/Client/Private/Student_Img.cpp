@@ -46,6 +46,22 @@ HRESULT CStudent_Img::Initialize(void * pArg)
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(m_fX - (g_iWinCX * 0.5f), -m_fY + (g_iWinCY * 0.5f) - 200.f, 0.f, 1.f));
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
 
+	switch (m_iImgNum)
+	{
+	case 0:
+		CGameInstance::Get_Instance()->Play_Sound(L"Aru_Gachaget", 0.7f);
+		break;
+	case 1:
+		CGameInstance::Get_Instance()->Play_Sound(L"Mutsuki_Gachaget", 0.7f);
+		break;
+	case 2:
+		CGameInstance::Get_Instance()->Play_Sound(L"Kayoko_Gachaget", 0.7f);
+		break;
+	case 3:
+		CGameInstance::Get_Instance()->Play_Sound(L"Haruka_Gachaget", 0.7f);
+		break;
+	}
+
 	return S_OK;
 }
 

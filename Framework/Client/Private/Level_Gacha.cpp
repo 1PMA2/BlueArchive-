@@ -33,6 +33,7 @@ HRESULT CLevel_Gacha::Initialize()
 
 	/*if (FAILED(Ready_Layer_Student(TEXT("Layer_Formation_Student"))))
 		return E_FAIL;*/
+	CGameInstance::Get_Instance()->WithoutBGM();
 
 
 	return S_OK;

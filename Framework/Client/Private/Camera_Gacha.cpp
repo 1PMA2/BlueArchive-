@@ -89,6 +89,11 @@ void CCamera_Gacha::Tick(_float fTimeDelta)
 		
 		if (pSack->Get_SackOpen())
 		{
+			if (m_b1)
+			{
+				CGameInstance::Get_Instance()->Play_Sound_Player(L"UI_Gacha_3", 0.5f);
+				m_b1 = false;
+			}
 			m_fOpenFov -= 1.f * fTimeDelta;
 			Set_Fov(XMConvertToRadians(m_fOpenFov));
 
@@ -148,6 +153,11 @@ void CCamera_Gacha::MoveCamera(_float fTimeDelta)
 	if(fHeigth > 0.7f && fHeigth < 0.8f)
 	{
 		m_fFov -= 8.f * fTimeDelta;
+		if (m_b0)
+		{
+			CGameInstance::Get_Instance()->Play_Sound_Player(L"UI_Gacha_2", 0.5f);
+			m_b0 = false;
+		}
 		this->Set_Fov(XMConvertToRadians(m_fFov));
 	}
 

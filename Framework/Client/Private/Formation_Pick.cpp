@@ -16,19 +16,25 @@ CFormation_Pick::CFormation_Pick(CStudent* pOwner)
 	CModel* pModel = (CModel*)m_pOwner->Get_Component(TEXT("Com_Model"));
 	pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
 
+	CGameInstance::Get_Instance()->WithoutBGM();
+
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
 	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		CGameInstance::Get_Instance()->Play_Sound(L"Aru_Formation_Select", 0.7f);
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		CGameInstance::Get_Instance()->Play_Sound(L"Mutsuki_Formation_Select", 0.7f);
 		break;
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(26);
+		CGameInstance::Get_Instance()->Play_Sound(L"Kayoko_Formation_Select", 0.7f);
 		break;
 	case HARUKA:
 		pModel->Set_CurrentAnimation(8);
+		CGameInstance::Get_Instance()->Play_Sound(L"Haruka_Formation_Select", 0.7f);
 		break;
 
 	}
@@ -53,6 +59,7 @@ CFormation_Pick::CFormation_Pick(CStudent* pOwner)
 		break;
 	}
 
+	
 	pModel->ResetAnimation();
 }
 

@@ -27,8 +27,9 @@ HRESULT CLevel_Lobby::Initialize()
 
 	pSensei->Set_End(false);
 	pSensei->EndScene(false);
-	CGameInstance::Get_Instance()->StopSound(BGM);
-	CGameInstance::Get_Instance()->PlayBGM(L"ClearMorning_Short", 0.5f);
+	CGameInstance::Get_Instance()->StopAll();
+
+	CGameInstance::Get_Instance()->PlayBGM(L"Lobby", 0.5f);
 	return S_OK;
 }
 
@@ -75,6 +76,8 @@ void CLevel_Lobby::Open_Formation()
 
 	if (pSensei->Get_OpenFormationLevel())
 	{
+		CGameInstance::Get_Instance()->StopSound(BGM);
+
 		pSensei->Set_PreLevel(LEVEL_LOBBY);
 
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
@@ -95,6 +98,8 @@ void CLevel_Lobby::Open_Gacha()
 
 	if (pSensei->Get_OpenGacha())
 	{
+		CGameInstance::Get_Instance()->StopSound(BGM);
+		CGameInstance::Get_Instance()->PlayBGM(L"Gacha", 0.5f);
 		pSensei->Set_PreLevel(LEVEL_LOBBY);
 
 		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();

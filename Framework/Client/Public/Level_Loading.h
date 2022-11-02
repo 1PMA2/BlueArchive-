@@ -27,6 +27,7 @@ private:
 private:
 	LEVEL			m_eNextLevel = LEVEL_END;
 	class CLoader*	m_pLoader = nullptr;
+	_float			m_fVol = 1.f;
 
 public:
 	static CLevel_Loading* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, LEVEL eNextLevel);

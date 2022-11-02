@@ -50,6 +50,8 @@ private:
 	_float m_fFov = 10.f;
 	_float m_fOpenFov = 4.3f;
 	_bool m_bOnce = true;
+	_bool m_b0 = true;
+	_bool m_b1 = true;
 
 private:
 	void MoveCamera(_float fTimeDelta);

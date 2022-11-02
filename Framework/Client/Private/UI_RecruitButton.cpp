@@ -75,6 +75,7 @@ void CUI_RecruitButton::Tick(_float fTimeDelta)
 	{
 		if (KEY(LBUTTON, TAP))
 		{
+			CGameInstance::Get_Instance()->Play_Sound_Player(L"Click", 1.f);
 			CSensei* pSensei = GET_SENSEI;
 			
 			pSensei->Set_OpenGachaScene(true);

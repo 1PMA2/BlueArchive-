@@ -32,6 +32,7 @@ HRESULT CLevel_Formation::Initialize()
 	if (FAILED(Ready_Layer_Student(TEXT("Layer_Formation_Student"))))
 		return E_FAIL;
 
+	CGameInstance::Get_Instance()->PlayBGM(L"Formation", 0.5f);
 
 	return S_OK;
 }

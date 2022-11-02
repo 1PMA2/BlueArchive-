@@ -202,6 +202,7 @@ void CStudent_Portrait::ClickPortrait()
 		}
 		else if (KEY(LBUTTON, AWAY))
 		{
+			CGameInstance::Get_Instance()->Play_Sound_Player(L"Click", 1.f);
 			m_bPicked = !m_bPicked;
 		}
 	}
@@ -211,7 +212,25 @@ void CStudent_Portrait::ClickPortrait()
 
 		if (m_bOnce)
 		{
+			CGameInstance::Get_Instance()->WithoutBGM();
 			m_bOnce = false;
+			STUDENT eStudent = m_pStudent->Get_StudentInfo().eStudent;
+			
+			switch (eStudent)
+			{
+			case ARU:
+				CGameInstance::Get_Instance()->Play_Sound_Rand(L"Aru_Formation_In_", 2, 0.7f);
+				break;
+			case MUTSUKI:
+				CGameInstance::Get_Instance()->Play_Sound_Rand(L"Mutsuki_Formation_In_", 2, 0.7f);
+				break;
+			case KAYOKO:
+				CGameInstance::Get_Instance()->Play_Sound_Rand(L"Kayoko_Formation_In_", 2, 0.7f);
+				break;
+			case HARUKA:
+				CGameInstance::Get_Instance()->Play_Sound_Rand(L"Haruka_Formation_In_", 2, 0.7f);
+				break;
+			}
 			pSensei->Set_FormationAry(m_iEmptyNum, true);
 			m_pStudent->Set_Formation((FORMATION)m_iEmptyNum);
 			m_iPickedNum = m_iEmptyNum;
