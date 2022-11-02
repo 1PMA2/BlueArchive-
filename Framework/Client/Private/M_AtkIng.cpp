@@ -36,6 +36,7 @@ CMonster_State * CM_AtkIng::Loop(_float fTimeDelta)
 
 	if (m_bOnce && pStudent)
 	{
+		CGameInstance::Get_Instance()->Play_Sound(L"AR_One", 1, 1.f);
 		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Monster_Muzzle"), &m_pOwner);
 		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Monster_Bullet"), &m_pOwner);
 		//pStudent->Set_MinusHp(m_pOwner->Get_MonsterAtk());

@@ -822,6 +822,10 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/hp.png"), 1))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Ex_Sky"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/Ex_Sky/Ex%d.dds"), 4))))
+			return E_FAIL;
+
 		lstrcpy(m_szLoadingText, TEXT("¸ðµ¨À» ·ÎµùÁßÀÌºñ³®. "));
 
 		_matrix			TransformMatrix;

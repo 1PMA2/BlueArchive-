@@ -118,6 +118,8 @@ void CBoss_Bullet::Boom()
 	{
 		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
+		CGameInstance::Get_Instance()->Play_Sound(L"Tank", 1, 1.f);
+
 		dynamic_cast<CCamera_Main*>(pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera")))->Shaking_Camera(true);
 
 		m_fBoomAcc = 0.f;

@@ -29,6 +29,25 @@ CVictory_Start::CVictory_Start(CStudent* pOwner)
 		pModel->Set_CurrentAnimation(2);
 		break;
 	}
+
+	if (pOwner->Get_StudentInfo().eFormation == FORMATION_FIRST)
+	{
+		switch (pOwner->Get_StudentInfo().eStudent)
+		{
+		case ARU:
+			CGameInstance::Get_Instance()->Play_Sound(L"Aru_Tactic_Victory_1", 0, 1.f);
+			break;
+		case MUTSUKI:
+			CGameInstance::Get_Instance()->Play_Sound(L"Mutsuki_Tactic_Victory_1", 0, 1.f);
+			break;
+		case KAYOKO:
+			CGameInstance::Get_Instance()->Play_Sound(L"Kayoko_Tactic_Victory_1", 0, 1.f);
+			break;
+		case HARUKA:
+			CGameInstance::Get_Instance()->Play_Sound(L"Haruka_Tactic_Victory_1", 0, 1.f);
+			break;
+		}
+	}
 }
 
 void CVictory_Start::Enter()

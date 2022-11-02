@@ -57,6 +57,7 @@ HRESULT CWarning::Initialize(void * pArg)
 	m_pTop = (CWarning_Bar*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"), 0);
 	m_pBottom = (CWarning_Bar*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_W"), 1);
 
+	CGameInstance::Get_Instance()->Play_Sound(L"Warning", 1, 1.f);
 	return S_OK;
 }
 

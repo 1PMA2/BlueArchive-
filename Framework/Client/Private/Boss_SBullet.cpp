@@ -124,6 +124,8 @@ void CBoss_SBullet::Boom()
 
 		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Cylinder"), &m_pOwner);
 
+		CGameInstance::Get_Instance()->Play_Sound(L"Tank_Ex", 1, 1.f);
+
 		m_fBoomAcc = 0.f;
 		Collision_ToMonster();
 	}

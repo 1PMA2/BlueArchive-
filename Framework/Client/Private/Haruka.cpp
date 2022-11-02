@@ -22,7 +22,7 @@ HRESULT CHaruka::Initialize_Prototype()
 	m_tStudentInfo.pName = TEXT("Haruka");
 	m_tStudentInfo.bExModel = false;
 	m_tStudentInfo.fFireSpeed = 0.2f;
-	m_tStudentInfo.iEx = 40;
+	m_tStudentInfo.iEx = 60;
 	m_tStudentInfo.eStudent = HARUKA;
 	return S_OK;
 }

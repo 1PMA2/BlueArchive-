@@ -48,6 +48,10 @@ HRESULT CVictory::Initialize(void * pArg)
 
 	m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
 
+	CGameInstance::Get_Instance()->StopAll();
+
+	CGameInstance::Get_Instance()->Play_Sound(L"Vic",1 , 0.5f);
+
 	return S_OK;
 }
 

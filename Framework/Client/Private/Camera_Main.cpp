@@ -82,6 +82,7 @@ void CCamera_Main::Tick(_float fTimeDelta)
 		{
 			m_bOnce = false;
 			pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Fade"), TEXT("Prototype_GameObject_BackGround"));
+			CGameInstance::Get_Instance()->PlayBGM(L"Victory", 0.5f);
 		}
 		m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, XMVectorSet(0, 1, 0, 1));
 		m_pTransformCom->LookAt(XMVectorSet(0, 0, -10, 1));

@@ -22,7 +22,7 @@ HRESULT CMutsuki::Initialize_Prototype()
 	m_tStudentInfo.pName = TEXT("Mutsuki");
 	m_tStudentInfo.bExModel = false;
 	m_tStudentInfo.fFireSpeed = 0.2f;
-	m_tStudentInfo.iEx = 200;
+	m_tStudentInfo.iEx = 300;
 	m_tStudentInfo.eStudent = MUTSUKI;
 	return S_OK;
 }

@@ -22,7 +22,7 @@ HRESULT CAru::Initialize_Prototype()
 	m_tStudentInfo.pName = TEXT("Aru");
 	m_tStudentInfo.bExModel = false;
 	m_tStudentInfo.eStudent = ARU;
-	m_tStudentInfo.iEx = 200;
+	m_tStudentInfo.iEx = 300;
 	return S_OK;
 }
 

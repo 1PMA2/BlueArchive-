@@ -46,7 +46,7 @@ HRESULT CMonster_Boss::Initialize(void * pArg)
 
 	m_tMonsterInfo.eMonster = BOSS;
 	m_tMonsterInfo.iAtk = 100;
-	m_tMonsterInfo.iHp = 5000;
+	m_tMonsterInfo.iHp = 4000;
 	m_tMonsterInfo.fRange = 6.f;
 
 	m_pState = CBoss_Landing::Create(this);

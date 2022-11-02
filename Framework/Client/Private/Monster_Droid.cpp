@@ -44,7 +44,7 @@ HRESULT CMonster_Droid::Initialize(void * pArg)
 
 	m_tMonsterInfo.eMonster = DROID;
 	m_tMonsterInfo.iAtk = 20;
-	m_tMonsterInfo.iHp = 180;
+	m_tMonsterInfo.iHp = 300;
 	m_tMonsterInfo.fRange = 4.f;
 
 	m_pState = CM_Landing::Create(this);

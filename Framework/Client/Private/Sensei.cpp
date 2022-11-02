@@ -69,7 +69,7 @@ void CSensei::Retirecount()
 	if (Get_FormationInfoSize() == m_iRetire)
 	{
 		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-
+		pGameInstance->StopAll();
 		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"), TEXT("Prototype_GameObject_VictoryBg"));
 
 		_uint i = 1;
@@ -144,7 +144,7 @@ void CSensei::Formation_Level(_float fTimeDelta)
 void CSensei::Tick_Cost(_float fTimeDelta)
 {
 	if (10.f > m_tSensei.fCost)
-		m_tSensei.fCost += (fTimeDelta * 0.1f);
+		m_tSensei.fCost += (fTimeDelta * 0.2f);
 	else
 		m_tSensei.fCost = 10.f;
 }
