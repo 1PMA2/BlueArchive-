@@ -37,6 +37,7 @@ private:
 	_float4x4		m_ProjMatrix;
 
 	_float			m_fFade = 0.f;
+	_uint			m_iImg;
 
 
 private:

@@ -26,6 +26,9 @@ HRESULT CVictory::Initialize(void * pArg)
 	TransformDesc.fSpeedPerSec = 10.f;
 	TransformDesc.fRotationPerSec = XMConvertToRadians(90.0f);
 
+	if (nullptr != pArg)
+		memcpy(&m_iImg, pArg, sizeof(_uint));
+
 	if (FAILED(__super::Initialize(&TransformDesc)))
 		return E_FAIL;
 
@@ -71,12 +74,15 @@ void CVictory::Tick(_float fTimeDelta)
 	{
 		if (KEY(LBUTTON, TAP))
 		{
-			CGameInstance* pGameInstance = CGameInstance::Get_Instance();
-			CGameObject* pGameObject = pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"));
-			CSensei* pSensei = GET_SENSEI;
-			DELETE(pGameObject);
-			DELETE(this);
-			pSensei->EndScene(true);
+			if (0 == m_iImg)
+			{
+				CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+				CGameObject* pGameObject = pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"));
+				CSensei* pSensei = GET_SENSEI;
+				DELETE(pGameObject);
+				DELETE(this);
+				pSensei->EndScene(true);
+			}
 			
 		}
 	}
@@ -152,7 +158,7 @@ HRESULT CVictory::SetUp_ShaderResource()
 		return E_FAIL;
 	if (FAILED(m_pShaderCom->Set_RawValue("g_Fade", &m_fFade, sizeof(_float))))
 		return E_FAIL;
-	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", 0)))
+	if (FAILED(m_pTextureCom->Set_ShaderResourceView(m_pShaderCom, "g_DiffuseTexture", m_iImg)))
 		return E_FAIL;
 
 	return S_OK;

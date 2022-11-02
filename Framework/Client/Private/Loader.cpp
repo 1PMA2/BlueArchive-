@@ -62,7 +62,9 @@
 #include "Formation_Window.h"
 #include "Student_Portrait.h"
 #include "Muzzle.h"
+#include "Monster_Muzzle.h"
 #include "Bullet.h"
+#include "Monster_Bullet.h"
 #include "Smoke.h"
 #include "SmokeL.h"
 #include "Flare.h"
@@ -735,8 +737,16 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			CMuzzle::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Monster_Muzzle"),
+			CMonster_Muzzle::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Bullet"),
 			CBullet::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Monster_Bullet"),
+			CMonster_Bullet::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Smoke"),
@@ -776,7 +786,7 @@ HRESULT CLoader::Loading_ForGamePlayLevel()
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Victory"),
-			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Victory.png"), 1))))
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Victory%d.png"), 2))))
 			return E_FAIL;
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_GAMEPLAY, TEXT("Prototype_Component_Texture_Muzzle"),

@@ -68,6 +68,13 @@ void CSensei::Retirecount()
 
 	if (Get_FormationInfoSize() == m_iRetire)
 	{
+		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"), TEXT("Prototype_GameObject_VictoryBg"));
+
+		_uint i = 1;
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_End"), TEXT("Prototype_GameObject_Victory"), &i);
+
 		m_bFail = true;
 	}
 	else

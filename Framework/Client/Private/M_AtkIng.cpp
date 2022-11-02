@@ -24,6 +24,8 @@ void CM_AtkIng::Enter()
 
 CMonster_State * CM_AtkIng::Loop(_float fTimeDelta)
 {
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
+
 	CMonster_State* pState = nullptr;
 
 	CTransform* pTransform = (CTransform*)m_pOwner->Get_Component(TEXT("Com_Transform"));
@@ -34,11 +36,11 @@ CMonster_State * CM_AtkIng::Loop(_float fTimeDelta)
 
 	if (m_bOnce && pStudent)
 	{
-		pStudent->Set_MinusHp(m_pOwner->Get_MonsterAtk());
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Monster_Muzzle"), &m_pOwner);
+		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Monster_Bullet"), &m_pOwner);
+		//pStudent->Set_MinusHp(m_pOwner->Get_MonsterAtk());
 		m_bOnce = false;
 	}
-
-	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
 	pModel->Play_Animation(fTimeDelta);
 

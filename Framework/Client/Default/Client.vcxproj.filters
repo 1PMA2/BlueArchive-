@@ -50,7 +50,7 @@
       <Filter>02.GameObject\04.BackGround\BG_Lobby</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Sensei.h">
-      <Filter>00.Design\Sensei</Filter>
+      <Filter>00.User\Sensei</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Camera_Ex.h">
       <Filter>02.GameObject\03.Camera\Camera_Ex</Filter>
@@ -415,6 +415,12 @@
     <ClInclude Include="..\Public\M_AtkEnd.h">
       <Filter>02.GameObject\01.State\Monster_State\M_AtkEnd</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Monster_Muzzle.h">
+      <Filter>02.GameObject\09.Effect\Muzzle\Monster_Muzzle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Monster_Bullet.h">
+      <Filter>02.GameObject\09.Effect\Bullet\MonsterBullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -454,7 +460,7 @@
       <Filter>02.GameObject\04.BackGround\BG_Lobby</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Sensei.cpp">
-      <Filter>00.Design\Sensei</Filter>
+      <Filter>00.User\Sensei</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Camera_Ex.cpp">
       <Filter>02.GameObject\03.Camera\Camera_Ex</Filter>
@@ -816,6 +822,12 @@
     <ClCompile Include="..\Private\M_AtkEnd.cpp">
       <Filter>02.GameObject\01.State\Monster_State\M_AtkEnd</Filter>
     </ClCompile>
+    <ClCompile Include="..\Private\Monster_Muzzle.cpp">
+      <Filter>02.GameObject\09.Effect\Muzzle\Monster_Muzzle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Monster_Bullet.cpp">
+      <Filter>02.GameObject\09.Effect\Bullet\MonsterBullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Client.ico">
@@ -858,12 +870,6 @@
     </Filter>
     <Filter Include="01.Level\Lobby">
       <UniqueIdentifier>{7e404202-24cc-48c1-a722-9784376dee40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="00.Design">
-      <UniqueIdentifier>{36de67cd-4c03-46d2-ab0c-9d373df96dbc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="00.Design\Sensei">
-      <UniqueIdentifier>{389923aa-b11d-4cfc-830b-df03a6d85bfc}</UniqueIdentifier>
     </Filter>
     <Filter Include="02.GameObject\00.Student">
       <UniqueIdentifier>{3907ecac-8ac1-4f4b-aa9f-6060b7bdd066}</UniqueIdentifier>
@@ -1305,6 +1311,18 @@
     </Filter>
     <Filter Include="02.GameObject\09.Effect\Damage">
       <UniqueIdentifier>{0262382f-fce3-4f40-bbfb-4dfa0b3cb0a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\Formation_UI\Select_Window">
+      <UniqueIdentifier>{0e3433b2-527c-46e7-a5c4-d05a1488796c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.User">
+      <UniqueIdentifier>{36de67cd-4c03-46d2-ab0c-9d373df96dbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.User\Sensei">
+      <UniqueIdentifier>{389923aa-b11d-4cfc-830b-df03a6d85bfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\09.Effect\Muzzle\Monster_Muzzle">
+      <UniqueIdentifier>{8af608f4-b771-47c2-a69d-4fa98081a78c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

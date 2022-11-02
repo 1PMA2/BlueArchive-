@@ -18,7 +18,6 @@ CM_AtkStart::CM_AtkStart(CMonster* pOwner)
 
 void CM_AtkStart::Enter()
 {
-
 }
 
 CMonster_State * CM_AtkStart::Loop(_float fTimeDelta)
