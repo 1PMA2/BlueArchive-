@@ -95,7 +95,10 @@ PS_OUT_LIGHT PS_MAIN_LIGHT_DIRECTIONAL(PS_IN In)
 	/* 0 -> -1, 1 -> 1*/
 	vector			vNormal = vector(vNormalDesc.xyz * 2.f - 1.f, 0.f);
 	
-	Out.vShade = g_vLightDiffuse * saturate(saturate(dot(normalize(g_vLightDir) * -1.f, vNormal)) + (g_vLightAmbient * g_vMtrlAmbient));
+	float         fDot = saturate(dot(normalize(g_vLightDir) * -1.f, vNormal));
+	fDot = ceil(fDot * 3) / 3.f;
+
+	Out.vShade = g_vLightDiffuse * saturate(fDot + (g_vLightAmbient * g_vMtrlAmbient));
 	Out.vShade.a = 1.f;
 
 	vector			vReflect = reflect(normalize(g_vLightDir), vNormal);

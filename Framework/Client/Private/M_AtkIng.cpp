@@ -8,6 +8,7 @@
 #include "M_AtkIng.h"
 #include "M_AtkEnd.h"
 #include "Student.h"
+#include "Sensei.h"
 
 CM_AtkIng::CM_AtkIng(CMonster* pOwner)
 	:CMonster_State(pOwner)
@@ -34,9 +35,13 @@ CMonster_State * CM_AtkIng::Loop(_float fTimeDelta)
 
 	CStudent* pStudent = m_pOwner->Get_FoundStudent();
 
+	CSensei* pSensei = GET_SENSEI;
+
 	if (m_bOnce && pStudent)
 	{
-		CGameInstance::Get_Instance()->Play_Sound(L"AR_One", 1, 1.f);
+		if (!pSensei->Get_SenseiInfo().bEx)
+			CGameInstance::Get_Instance()->Play_Sound(L"AR_One", 1, 1.f);
+
 		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Monster_Muzzle"), &m_pOwner);
 		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Monster_Bullet"), &m_pOwner);
 		//pStudent->Set_MinusHp(m_pOwner->Get_MonsterAtk());
