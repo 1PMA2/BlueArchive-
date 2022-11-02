@@ -26,6 +26,7 @@ CRifle_Fire::CRifle_Fire(CStudent* pOwner)
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(18);
+		CGameInstance::Get_Instance()->Play_Sound_Player(L"AR", 0.8f);
 		//m_iAtkFrame = 
 		break;
 	}

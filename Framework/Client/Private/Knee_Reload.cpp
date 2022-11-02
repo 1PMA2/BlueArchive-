@@ -19,15 +19,19 @@ CKnee_Reload::CKnee_Reload(CStudent* pOwner)
 	{
 	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		CGameInstance::Get_Instance()->Play_Sound_Player(L"SR_Reload", 0.8f);
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(14);
+		CGameInstance::Get_Instance()->Play_Sound_Player(L"AR_Reload", 0.8f);
 		break;
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(7);
+		CGameInstance::Get_Instance()->Play_Sound_Player(L"HG_Reload", 0.8f);
 		break;
 	case HARUKA:
 		pModel->Set_CurrentAnimation(12);
+		CGameInstance::Get_Instance()->Play_Sound_Player(L"SG_Reload", 0.8f);
 		break;
 
 	}

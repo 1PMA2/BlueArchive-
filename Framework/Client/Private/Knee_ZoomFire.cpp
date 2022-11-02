@@ -33,6 +33,7 @@ CKnee_ZoomFire::CKnee_ZoomFire(CStudent* pOwner)
 		pModel->Set_CurrentAnimation(3);
 		break;
 	case HARUKA:
+		CGameInstance::Get_Instance()->Play_Sound_Player(L"SG", 0.8f);
 		pModel->Set_CurrentAnimation(23); //µô·¹ÀÌ 3
 		break;
 
@@ -109,6 +110,23 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 			{
 				if (m_bOnce)
 				{
+					switch (m_pOwner->Get_StudentInfo().eStudent)
+					{
+					case ARU:
+						CGameInstance::Get_Instance()->Play_Sound_Player(L"SR", 0.8f);
+						break;
+					case MUTSUKI:
+					
+						CGameInstance::Get_Instance()->Play_Sound_Player(L"AR", 0.8f);
+						break;
+					case KAYOKO:
+						
+						CGameInstance::Get_Instance()->Play_Sound_Player(L"HG", 0.8f);
+						break;
+					case HARUKA:						
+						CGameInstance::Get_Instance()->Play_Sound_Player(L"SG", 0.8f);
+						break;
+					}
 					m_pOwner->Use_Bullet();
 					pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 
@@ -148,15 +166,19 @@ CState * CKnee_ZoomFire::Loop(_float fTimeDelta)
 			{
 			case ARU:
 				pState = CKnee_ZoomFire::Create(m_pOwner);
+				CGameInstance::Get_Instance()->Play_Sound_Player(L"SR", 0.8f);
 				break;
 			case MUTSUKI:
 				pState = CKnee_Idle::Create(m_pOwner);
+				CGameInstance::Get_Instance()->Play_Sound_Player(L"AR", 0.8f);
 				break;
 			case KAYOKO:
 				pState = CKnee_ZoomFire::Create(m_pOwner);
+				CGameInstance::Get_Instance()->Play_Sound_Player(L"HG", 0.8f);
 				break;
 			case HARUKA:
 				pState = CKnee_Idle::Create(m_pOwner);
+				CGameInstance::Get_Instance()->Play_Sound_Player(L"SG", 0.8f);
 				break;
 			}
 			

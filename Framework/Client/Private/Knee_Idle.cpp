@@ -23,10 +23,11 @@ CKnee_Idle::CKnee_Idle(CStudent* pOwner)
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(8);
-		m_fDelay = 2.f;
+		m_fDelay = 1.f;
 		break;
 	case HARUKA:
 		pModel->Set_CurrentAnimation(3);
+		CGameInstance::Get_Instance()->Play_Sound_Player(L"SG_Delay", 0.8f);
 		m_fDelay = 1.f;
 		break;
 

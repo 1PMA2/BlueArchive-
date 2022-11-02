@@ -19,12 +19,15 @@ CHide_Reloading::CHide_Reloading(CStudent* pOwner)
 	{
 	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		CGameInstance::Get_Instance()->Play_Sound_Player(L"SR_Reload", 0.8f);
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(22);
+		CGameInstance::Get_Instance()->Play_Sound_Player(L"AR_Reload", 0.8f);
 		break;
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(12);
+		CGameInstance::Get_Instance()->Play_Sound_Player(L"HG_Reload", 0.8f);
 		break;
 	}
 }
