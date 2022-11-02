@@ -115,8 +115,6 @@ void Ex_Portrait::Tick(_float fTimeDelta)
 void Ex_Portrait::LateTick(_float fTimeDelta)
 {
 	CSensei* pSensei = GET_SENSEI;
-
-	pSensei->Set_Retire(false);
 	
 	if (!pSensei->Get_SenseiInfo().bEx)
 	{
@@ -274,7 +272,10 @@ void Ex_Portrait::ClickPortrait()
 					m_iSequence -= 1;
 				}
 			}
-
+			if (m_iLive - 1 == m_iStudent)
+			{
+				pSensei->Set_Retire(false);
+			}
 		}
 		else
 			m_bRetire = true;

@@ -424,6 +424,9 @@
     <ClInclude Include="..\Public\Boss_HP.h">
       <Filter>02.GameObject\05.UI\GamePlay_UI\BossHp</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Sally.h">
+      <Filter>02.GameObject\05.UI\Formation_UI\Sally</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -833,6 +836,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Boss_HP.cpp">
       <Filter>02.GameObject\05.UI\GamePlay_UI\BossHp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Sally.cpp">
+      <Filter>02.GameObject\05.UI\Formation_UI\Sally</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1332,6 +1338,9 @@
     </Filter>
     <Filter Include="02.GameObject\05.UI\GamePlay_UI\BossHp">
       <UniqueIdentifier>{6764d488-6e5b-40d8-a2f2-07745ffa129e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObject\05.UI\Formation_UI\Sally">
+      <UniqueIdentifier>{50a75d26-bd02-4ab4-80d5-10f63fa5bdd2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

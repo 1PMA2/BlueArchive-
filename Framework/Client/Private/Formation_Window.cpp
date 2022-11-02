@@ -48,7 +48,7 @@ HRESULT CFormation_Window::Initialize(void * pArg)
 
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-	m_pBtn = (CFormaton_Btn*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), 3);
+	m_pBtn = (CFormaton_Btn*)pGameInstance->Get_GameObject(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), 4);
 
 	if (nullptr == m_pBtn)
 		return E_FAIL;

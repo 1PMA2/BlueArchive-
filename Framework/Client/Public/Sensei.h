@@ -51,6 +51,8 @@ public:
 	_bool Get_OpenLobbyLevel() { return m_bOpenLobbyLevel; }
 	void Set_OpenLobbyLevel(_bool bLobbyLevel) { m_bOpenLobbyLevel = bLobbyLevel; }
 	//
+	_bool Get_OpenPlayLevel() { return m_bPlayLevel; }
+	void Set_OpenPlayLevel(_bool bplayLevel) { m_bPlayLevel = bplayLevel; }
 
 	/*ingame set*/
 	void Tick_Cost(_float fTimeDelta);
@@ -115,6 +117,7 @@ private:
 	_uint m_iRetire = 0;
 	_bool m_bRetire = false;
 	_bool m_bFail = false;
+	_bool m_bPlayLevel = false;
 
 	map<const _tchar*, class CStudent*>					m_Student;
 	typedef map<const _tchar*, class CStudent*>			STUDENTS;

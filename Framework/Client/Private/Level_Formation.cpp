@@ -47,7 +47,7 @@ void CLevel_Formation::Tick(_float fTimeDelta)
 
 
 
-	if (KEY(ENTER,TAP))
+	if (pSensei->Get_OpenPlayLevel())
 	{
 
 		pSensei->Set_PreLevel(LEVEL_FORMATION);
@@ -65,7 +65,8 @@ void CLevel_Formation::Tick(_float fTimeDelta)
 
 		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_GAMEPLAY))))
 			return;
-
+		
+		pSensei->Set_OpenPlayLevel(false);
 	}
 
 
@@ -163,11 +164,16 @@ HRESULT CLevel_Formation::Ready_Layer_BackGround(const _tchar * pLayerTag)
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_BackButton"))))
 		return E_FAIL;
 
+	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Sally"))))
+		return E_FAIL;
+
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Btn"))))
 		return E_FAIL;
 
 	if (FAILED(pGameInstance->Add_GameObject(LEVEL_FORMATION, pLayerTag, TEXT("Prototype_GameObject_Formation_Window"))))
 		return E_FAIL;
+
+	
 
 
 	Safe_Release(pGameInstance);

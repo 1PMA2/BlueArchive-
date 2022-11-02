@@ -73,6 +73,7 @@
 #include "Slash.h"
 #include "Damage.h"
 #include "Boss_HP.h"
+#include "Sally.h"
 
 CLoader::CLoader(ID3D11Device* pDevice, ID3D11DeviceContext* pContext)
 	: m_pDevice(pDevice)
@@ -537,6 +538,10 @@ HRESULT CLoader::Loading_ForFormationLevel()
 			CFormaton_Btn::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
 
+		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Sally"),
+			CSally::Create(m_pDevice, m_pContext))))
+			return E_FAIL;
+
 		if (FAILED(pGameInstance->Add_Prototype(TEXT("Prototype_GameObject_Formation_Window"),
 			CFormation_Window::Create(m_pDevice, m_pContext))))
 			return E_FAIL;
@@ -592,6 +597,10 @@ HRESULT CLoader::Loading_ForFormationLevel()
 
 		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Portrait"),
 			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/Portrait%d.png"), 4))))
+			return E_FAIL;
+
+		if (FAILED(pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Prototype_Component_Texture_Sally"),
+			CTexture::Create(m_pDevice, m_pContext, TEXT("../Bin/Resources/Textures/UI/rr.png"), 1))))
 			return E_FAIL;
 
 

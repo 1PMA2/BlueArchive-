@@ -284,6 +284,7 @@
     <ClInclude Include="..\Public\Run.h" />
     <ClInclude Include="..\Public\Run_Sign.h" />
     <ClInclude Include="..\Public\Run_ToKnee.h" />
+    <ClInclude Include="..\Public\Sally.h" />
     <ClInclude Include="..\Public\Sensei.h" />
     <ClInclude Include="..\Public\Sky.h" />
     <ClInclude Include="..\Public\Sky_Ex.h" />
@@ -423,6 +424,7 @@
     <ClCompile Include="..\Private\Run.cpp" />
     <ClCompile Include="..\Private\Run_Sign.cpp" />
     <ClCompile Include="..\Private\Run_ToKnee.cpp" />
+    <ClCompile Include="..\Private\Sally.cpp" />
     <ClCompile Include="..\Private\Sensei.cpp" />
     <ClCompile Include="..\Private\Sky.cpp" />
     <ClCompile Include="..\Private\Sky_Ex.cpp" />

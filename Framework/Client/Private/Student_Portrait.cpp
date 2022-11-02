@@ -68,7 +68,7 @@ void CStudent_Portrait::Tick(_float fTimeDelta)
 {
 	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
-	CTransform* pTarget = (CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 4);
+	CTransform* pTarget = (CTransform*)pGameInstance->Get_Component(LEVEL_FORMATION, TEXT("Layer_Formation_BackGround"), TEXT("Com_Transform"), 5);
 
 	_float fY = XMVectorGetY(pTarget->Get_State(CTransform::STATE_TRANSLATION)) + 300.f - m_fLocationY;
 
