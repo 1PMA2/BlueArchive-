@@ -62,8 +62,16 @@ void CLevel_GamePlay::Tick(_float fTimeDelta)
 
 	Change_Camera();
 
-	
+	CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
+	if (pSensei->Get_ExReady())
+	{
+		pGameInstance->Set_Diffuse(0, _float4{ 0.5f, 0.5f, 0.5f, 0.f });
+	}
+	else
+	{
+		pGameInstance->Set_Diffuse(0, _float4{ 1.f, 1.f, 1.f, 0.f });
+	}
 }
 
 void CLevel_GamePlay::Late_Tick(_float TimeDelta)

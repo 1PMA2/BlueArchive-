@@ -14,6 +14,8 @@ public:
 	const LIGHTDESC* Get_LightDesc() const {
 		return &m_LightDesc;
 	}
+public:
+	void Set_Diffuse(_float4 vDiff) { m_LightDesc.vDiffuse = vDiff; }
 
 public:
 	HRESULT Initialize(const LIGHTDESC& LightDesc);

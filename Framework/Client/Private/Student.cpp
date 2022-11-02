@@ -98,6 +98,7 @@ CMonster* CStudent::FoundMonster()
 		}
 	}
 
+
 	return m_pTargetMonster;
 }
 
@@ -180,8 +181,11 @@ void CStudent::Tick(_float fTimeDelta)
 
 void CStudent::LateTick(_float fTimeDelta)
 {
+	if(m_bExReady)
+		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONLIGHT, this);
+	else
+		m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_NONALPHABLEND, this);
 }
 
 HRESULT CStudent::Render()
@@ -203,8 +207,8 @@ HRESULT CStudent::Render()
 	{
 		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_DiffuseTexture", i, aiTextureType_DIFFUSE)))
 			return E_FAIL;
-		/*if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_NormalTexture", i, aiTextureType_NORMALS)))
-		return E_FAIL;*/
+		if (FAILED(m_pModelCom->Bind_SRV(m_pShaderCom, "g_FlagTexture", i, aiTextureType_EMISSIVE)))
+			return E_FAIL;
 
 
 		m_pModelCom->Render(i, m_pShaderCom, 0, "g_Bones");

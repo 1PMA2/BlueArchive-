@@ -143,9 +143,9 @@ HRESULT CRenderer::Draw_RenderGroup()
 		return E_FAIL;
 	if (FAILED(Render_AlphaBlend()))
 		return E_FAIL;
-	if (FAILED(Render_NonLight()))
-		return E_FAIL;
 	if (FAILED(Render_UI()))
+		return E_FAIL;
+	if (FAILED(Render_NonLight()))
 		return E_FAIL;
 
 #ifdef _DEBUG

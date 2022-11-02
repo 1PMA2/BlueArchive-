@@ -4,6 +4,7 @@
 matrix	g_WorldMatrix, g_ViewMatrix, g_ProjMatrix;
 
 texture2D	g_DiffuseTexture;
+texture2D	g_FlagTexture;
 
 bool g_Damaged;
 
@@ -87,6 +88,7 @@ struct PS_OUT
 	vector		vDiffuse : SV_TARGET0;
 	vector		vNormal : SV_TARGET1;
 	vector		vDepth : SV_TARGET2;
+//	vector		vFlag : SV_TARGET3;
 };
 
 PS_OUT PS_MAIN(PS_IN In)

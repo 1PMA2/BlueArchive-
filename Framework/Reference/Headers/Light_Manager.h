@@ -13,6 +13,7 @@ private:
 
 public:
 	const LIGHTDESC* Get_LightDesc(_uint iIndex);
+	void Set_Diffuse(_uint iIndex, _float4 vDiff);
 
 public:
 	HRESULT Add_Light(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, const LIGHTDESC & LightDesc);

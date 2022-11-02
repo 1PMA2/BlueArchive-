@@ -17,6 +17,16 @@ const LIGHTDESC * CLight_Manager::Get_LightDesc(_uint iIndex)
 	return (*iter)->Get_LightDesc();
 }
 
+void CLight_Manager::Set_Diffuse(_uint iIndex, _float4 vDiff)
+{
+	auto	iter = m_Lights.begin();
+
+	for (_uint i = 0; i < iIndex; ++i)
+		++iter;
+
+	(*iter)->Set_Diffuse(vDiff);
+}
+
 HRESULT CLight_Manager::Add_Light(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, const LIGHTDESC & LightDesc)
 {
 	CLight*			pLight = CLight::Create(pDevice, pContext, LightDesc);

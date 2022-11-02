@@ -97,6 +97,7 @@ public: /* For.Font_Manager */
 	
 public: /* For.Light_Manager */
 	HRESULT Add_Light(ID3D11Device* pDevice, ID3D11DeviceContext* pContext, const LIGHTDESC & LightDesc);
+	void Set_Diffuse(_uint iIndex, _float4 vDiff);
 	HRESULT Delete_Light();
 	const LIGHTDESC* Get_LightDesc(_uint iIndex);
 

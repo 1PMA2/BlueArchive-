@@ -448,6 +448,14 @@ HRESULT CGameInstance::Add_Light(ID3D11Device * pDevice, ID3D11DeviceContext * p
 	return m_pLight_Manager->Add_Light(pDevice, pContext, LightDesc);	
 }
 
+void CGameInstance::Set_Diffuse(_uint iIndex, _float4 vDiff)
+{
+	if (nullptr == m_pLight_Manager)
+		return;
+
+	m_pLight_Manager->Set_Diffuse(iIndex, vDiff);
+}
+
 HRESULT CGameInstance::Delete_Light()
 {
 	if (nullptr == m_pLight_Manager)
