@@ -6,6 +6,7 @@
 #include "Model.h"
 #include "Fire.h"
 #include "Knee_ZoomStart.h"
+#include "Sensei.h"
 
 CKnee_Reload::CKnee_Reload(CStudent* pOwner)
 	:CState(pOwner)
@@ -19,21 +20,38 @@ CKnee_Reload::CKnee_Reload(CStudent* pOwner)
 	{
 	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
-		CGameInstance::Get_Instance()->Play_Sound_Player(L"SR_Reload", 0.8f);
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(14);
-		CGameInstance::Get_Instance()->Play_Sound_Player(L"AR_Reload", 0.8f);
 		break;
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(7);
-		CGameInstance::Get_Instance()->Play_Sound_Player(L"HG_Reload", 0.8f);
 		break;
 	case HARUKA:
-		pModel->Set_CurrentAnimation(12);
-		CGameInstance::Get_Instance()->Play_Sound_Player(L"SG_Reload", 0.8f);
+		pModel->Set_CurrentAnimation(12);	
 		break;
 
+	}
+
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	if (!pSensei->Get_SenseiInfo().bEx)
+	{
+		switch (m_pOwner->Get_StudentInfo().eStudent)
+		{
+		case ARU:
+			CGameInstance::Get_Instance()->Play_Sound(L"SR_Reload",1, 0.8f);
+			break;
+		case MUTSUKI:
+			CGameInstance::Get_Instance()->Play_Sound(L"AR_Reload",1, 0.8f);
+			break;
+		case KAYOKO:
+			CGameInstance::Get_Instance()->Play_Sound(L"HG_Reload",1, 0.8f);
+			break;
+		case HARUKA:
+			CGameInstance::Get_Instance()->Play_Sound(L"SG_Reload",1, 0.8f);
+			break;
+		}
 	}
 }
 

@@ -15,8 +15,10 @@ CRifle_Fire::CRifle_Fire(CStudent* pOwner)
 	:CState(pOwner)
 {
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
-		m_eAnim = ANIM_FIRE;
-		pOwner->Set_State(m_eAnim);
+	m_eAnim = ANIM_FIRE;
+	pOwner->Set_State(m_eAnim);
+
+	CSensei* pSensei = CSensei::Get_Instance();
 
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
@@ -26,8 +28,8 @@ CRifle_Fire::CRifle_Fire(CStudent* pOwner)
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(18);
-		CGameInstance::Get_Instance()->Play_Sound_Player(L"AR", 0.8f);
-		//m_iAtkFrame = 
+		if (!pSensei->Get_SenseiInfo().bEx)
+			CGameInstance::Get_Instance()->Play_Sound(L"AR",1, 0.8f);
 		break;
 	}
 }

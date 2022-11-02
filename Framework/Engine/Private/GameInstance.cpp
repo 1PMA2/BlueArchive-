@@ -212,10 +212,14 @@ _long CGameInstance::Get_DIMouseMoveState(MOUSEMOVE eMouseMove)
 	return m_pInput_Device->Get_DIMouseMoveState(eMouseMove);
 }
 
-void CGameInstance::Play_Sound(const _tchar * strSoundKey, _float fVolume)
+void CGameInstance::Play_Sound(const _tchar * strSoundKey, _int iEx, _float fVolume)
 {
 	wstring strKey = strSoundKey;
-	strKey += L".ogg";
+
+	if(0 == iEx)
+		strKey += L".ogg";
+	else
+		strKey += L".wav";
 
 	m_pSound_Device->Play_Sound(strKey.c_str(), fVolume);
 }

@@ -16,13 +16,19 @@ CEx_Cutin::CEx_Cutin(CStudent* pOwner)
 
 	CModel* pModel = (CModel*)pOwner->Get_Component(TEXT("Com_Model"));
 
+	CGameInstance::Get_Instance()->SetChannelVolume(BGM, 0.1f);
+	CGameInstance::Get_Instance()->WithoutBGM();
 	switch (pOwner->Get_StudentInfo().eStudent)
 	{
 	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		CGameInstance::Get_Instance()->Play_Sound_Rand(L"Aru_ExSkill_", 3, 1.f);
+		CGameInstance::Get_Instance()->Play_Sound(L"SFX_Aru_Skill_EX_1",1, 1.f);
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		CGameInstance::Get_Instance()->Play_Sound_Rand(L"Mutsuki_ExSkill_", 3, 1.f);
+		CGameInstance::Get_Instance()->Play_Sound(L"SFX_Skill_Mutsuki_Ex_Cut_in", 1, 1.f);
 		break;
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(6);

@@ -14,6 +14,9 @@
 CEx::CEx(CStudent* pOwner)
 	:CState(pOwner)
 {
+
+	CGameInstance::Get_Instance()->SetChannelVolume(BGM, 0.5f);
+
 	m_eAnim = ANIM_EX;
 	pOwner->Set_State(m_eAnim);
 	CSensei* pSensei = GET_SENSEI;
@@ -30,9 +33,11 @@ CEx::CEx(CStudent* pOwner)
 	{
 	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		CGameInstance::Get_Instance()->Play_Sound_Rand(L"Aru_ExSkill_Level_", 3, 1.f);
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
+		CGameInstance::Get_Instance()->Play_Sound_Rand(L"Mutsuki_ExSkill_Level_", 3, 1.f);
 		break;
 	case KAYOKO:
 		pSensei->ReSet_Ex();
@@ -78,6 +83,7 @@ CState * CEx::Loop(_float fTimeDelta)
 		{
 			if (m_bOnce)
 			{
+				CGameInstance::Get_Instance()->Play_Sound(L"SFX_Aru_Skill_EX_2",1, 1.f);
 				m_pMonster = pSensei->Get_LockonMonster();
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Cylinder"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Aru_ExBullet"), &m_pMonster);

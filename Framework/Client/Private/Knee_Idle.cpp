@@ -6,6 +6,7 @@
 #include "Model.h"
 #include "Fire.h"
 #include "Knee_ZoomFire.h"
+#include "Sensei.h"
 
 CKnee_Idle::CKnee_Idle(CStudent* pOwner)
 	:CState(pOwner)
@@ -27,10 +28,23 @@ CKnee_Idle::CKnee_Idle(CStudent* pOwner)
 		break;
 	case HARUKA:
 		pModel->Set_CurrentAnimation(3);
-		CGameInstance::Get_Instance()->Play_Sound_Player(L"SG_Delay", 0.8f);
 		m_fDelay = 1.f;
 		break;
+	}
 
+
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	if (!pSensei->Get_SenseiInfo().bEx)
+	{
+		switch (m_pOwner->Get_StudentInfo().eStudent)
+		{
+		case HARUKA:
+			CGameInstance::Get_Instance()->Play_Sound(L"SG_Reload",1, 0.8f);
+			break;
+		default:
+			break;
+		}
 	}
 }
 

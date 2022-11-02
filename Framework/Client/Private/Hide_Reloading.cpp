@@ -6,6 +6,7 @@
 #include "Model.h"
 #include "Fire.h"
 #include "Hide_FireStart.h"
+#include "Sensei.h"
 
 CHide_Reloading::CHide_Reloading(CStudent* pOwner)
 	:CState(pOwner)
@@ -19,16 +20,31 @@ CHide_Reloading::CHide_Reloading(CStudent* pOwner)
 	{
 	case ARU:
 		pModel->Set_CurrentAnimation(pOwner->Get_StudentInfo().eAnim);
-		CGameInstance::Get_Instance()->Play_Sound_Player(L"SR_Reload", 0.8f);
 		break;
 	case MUTSUKI:
 		pModel->Set_CurrentAnimation(22);
-		CGameInstance::Get_Instance()->Play_Sound_Player(L"AR_Reload", 0.8f);
 		break;
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(12);
-		CGameInstance::Get_Instance()->Play_Sound_Player(L"HG_Reload", 0.8f);
 		break;
+	}
+
+	CSensei* pSensei = CSensei::Get_Instance();
+
+	if (!pSensei->Get_SenseiInfo().bEx)
+	{
+		switch (m_pOwner->Get_StudentInfo().eStudent)
+		{
+		case ARU:
+			CGameInstance::Get_Instance()->Play_Sound(L"SR_Reload",1, 0.8f);
+			break;
+		case MUTSUKI:
+			CGameInstance::Get_Instance()->Play_Sound(L"AR_Reload",1, 0.8f);
+			break;
+		case KAYOKO:
+			CGameInstance::Get_Instance()->Play_Sound(L"HG_Reload",1, 0.8f);
+			break;
+		}
 	}
 }
 

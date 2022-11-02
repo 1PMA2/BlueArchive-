@@ -53,6 +53,7 @@ HRESULT CAru_ExBullet::Initialize(void * pArg)
 	m_bOnce = true;
 	m_fBoomAcc = 0.f;
 
+	CGameInstance::Get_Instance()->Play_Sound(L"SFX_Aru_Skill_EX_3", 1, 1.f);
 	return S_OK;
 }
 
@@ -119,7 +120,7 @@ void CAru_ExBullet::Boom()
 		CGameInstance* pGameInstance = CGameInstance::Get_Instance();
 
 		dynamic_cast<CCamera_Main*>(pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Camera")))->Shaking_Camera(true);
-
+		CGameInstance::Get_Instance()->Play_Sound(L"SFX_Aru_Skill_EX_4", 1, 1.f);
 		m_fBoomAcc = 0.f;
 		Collision_ToMonster();
 	}

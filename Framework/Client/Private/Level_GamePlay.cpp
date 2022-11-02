@@ -49,7 +49,7 @@ HRESULT CLevel_GamePlay::Initialize()
 
 	CGameInstance::Get_Instance()->StopSound(BGM);
 
-	CGameInstance::Get_Instance()->PlayBGM(L"P1", 0.5f);
+	CGameInstance::Get_Instance()->PlayBGM(L"Play", 0.4f);
 
 	pSensei->ReSet_Ex();
 	pSensei->Set_Retire(false);
@@ -58,6 +58,8 @@ HRESULT CLevel_GamePlay::Initialize()
 
 void CLevel_GamePlay::Tick(_float fTimeDelta)
 {
+	
+
 	__super::Tick(fTimeDelta);		
 
 	CSensei* pSensei = CSensei::Get_Instance();
@@ -82,12 +84,13 @@ void CLevel_GamePlay::Late_Tick(_float TimeDelta)
 {
 	CSensei* pSensei = CSensei::Get_Instance();
 
+	CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
+
 	if (GetKeyState(VK_RETURN) & 0x8000)
 	{
 
 		pSensei->Set_PreLevel(LEVEL_GAMEPLAY);
 
-		CGameInstance*		pGameInstance = CGameInstance::Get_Instance();
 		Safe_AddRef(pGameInstance);
 
 		if (FAILED(pGameInstance->Open_Level(LEVEL_LOADING, CLevel_Loading::Create(m_pDevice, m_pContext, LEVEL_LOBBY))))

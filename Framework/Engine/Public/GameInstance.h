@@ -49,7 +49,7 @@ public: /* For.Input_Device */
 	_long Get_DIMouseMoveState(MOUSEMOVE eMouseMove);
 
 public: /* For. Sound_Device */
-	void		Play_Sound(const _tchar* strSoundKey, _float fVolume = 1.f);
+	void		Play_Sound(const _tchar* strSoundKey, _int iEx, _float fVolume = 1.f);
 	void		Play_Sound_Rand(const _tchar* strSoundKey, const _uint& iRandNum, _float fVolume = 1.f);
 	void		Play_Sound_Player(const _tchar* strSoundKey, _float fVolume = 1.f);
 	void		Play_Sound_Player_Rand(const _tchar* strSoundKey, const _uint& iRandNum, _float fVolume = 1.f);

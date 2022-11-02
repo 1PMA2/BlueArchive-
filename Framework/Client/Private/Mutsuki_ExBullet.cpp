@@ -183,6 +183,7 @@ void CMutsuki_ExBullet::Boom()
 {
 	if (2.5f < m_fBoomAcc)
 	{
+		CGameInstance::Get_Instance()->Play_Sound(L"SFX_Mutsuki_Skill_Ex3", 1, 1.f);
 		m_fBoomAcc = 0.f;
 		Collision_ToMonster();
 
