@@ -42,6 +42,7 @@ CEx::CEx(CStudent* pOwner)
 	case KAYOKO:
 		pSensei->ReSet_Ex();
 		pModel->Set_CurrentAnimation(33);
+		CGameInstance::Get_Instance()->Play_Sound_Rand(L"Kayoko_ExSkill_Level_", 3, 1.f);
 		for (_uint i = 0; i < pGameInstance->Get_GameObjectSize(LEVEL_GAMEPLAY, TEXT("Layer_Monster")); ++i)
 		{
 			CMonster* pMonster = (CMonster*)pGameInstance->Get_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Monster"), i);
@@ -51,6 +52,7 @@ CEx::CEx(CStudent* pOwner)
 		break;
 	case HARUKA:
 		pModel->Set_CurrentAnimation(32);
+		CGameInstance::Get_Instance()->Play_Sound_Rand(L"Haruka_ExSkill_Level_", 3, 1.f);
 		break;
 	}
 }
@@ -108,6 +110,7 @@ CState * CEx::Loop(_float fTimeDelta)
 		{
 			if (m_b0)
 			{
+				CGameInstance::Get_Instance()->Play_Sound(L"SFX_Skill_Haruka_Ex", 1, 1.f);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_ExBullet"), TEXT("Prototype_GameObject_Haruka_ExBullet"), &m_pOwner);
 				pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Muzzle"), &m_pOwner);
 				m_b0 = false;

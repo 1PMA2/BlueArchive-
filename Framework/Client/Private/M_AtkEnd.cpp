@@ -6,6 +6,7 @@
 #include "Model.h"
 #include "M_AtkIng.h"
 #include "Student.h"
+#include "M_Run.h"
 
 CM_AtkEnd::CM_AtkEnd(CMonster* pOwner)
 	:CMonster_State(pOwner)
@@ -35,6 +36,11 @@ CMonster_State * CM_AtkEnd::Loop(_float fTimeDelta)
 	if (pModel->Get_isFinished())
 	{
 		pState = CM_AtkIng::Create(m_pOwner);
+	}
+
+	if (m_pOwner->Get_Fear())
+	{
+		return CM_Run::Create(m_pOwner);
 	}
 
 	return pState;

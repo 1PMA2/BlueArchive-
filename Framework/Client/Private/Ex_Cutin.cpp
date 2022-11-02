@@ -32,9 +32,13 @@ CEx_Cutin::CEx_Cutin(CStudent* pOwner)
 		break;
 	case KAYOKO:
 		pModel->Set_CurrentAnimation(6);
+		CGameInstance::Get_Instance()->Play_Sound_Rand(L"Kayoko_ExSkill_", 3, 1.f);
+		CGameInstance::Get_Instance()->Play_Sound(L"SFX_Skill_Kayoko_Ex_Cut_in", 1, 1.f);
 		break;
 	case HARUKA:
 		pModel->Set_CurrentAnimation(15);
+		CGameInstance::Get_Instance()->Play_Sound_Rand(L"Haruka_ExSkill_", 3, 1.f);
+		CGameInstance::Get_Instance()->Play_Sound(L"SFX_Skill_Haruka_Ex_Cut_in", 1, 1.f);
 		break;
 	}
 	
