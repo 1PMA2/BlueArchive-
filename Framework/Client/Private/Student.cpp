@@ -26,6 +26,8 @@ CStudent::CStudent(const CStudent & rhs)
 
 void CStudent::Set_MinusHp(_int iAtk)
 {
+	m_bDamaged = true;
+
 	_uint iDamage = (_int)(iAtk * frandom(0.9, 1.1));
 
 	if (m_bCovered)
@@ -129,6 +131,17 @@ void CStudent::Tick(_float fTimeDelta)
 
 	m_pAABBCom->Update(NoneScaleWorldMatrix);
 	m_pSphereCom->Update(m_pTransformCom->Get_WorldMatrix());
+
+	if (m_bDamaged)
+	{
+		m_fDamagedAcc += fTimeDelta;
+
+		if (0.05f < m_fDamagedAcc)
+		{
+			m_bDamaged = false;
+			m_fDamagedAcc = 0.f;
+		}
+	}
 
 
 	CSensei* pSensei = GET_SENSEI;
@@ -458,6 +471,7 @@ void CStudent::ToStudentCollision(_float fTimeDelta)
 	}
 
 
+
 }
 
 void CStudent::Damage(_uint iDamage)
@@ -471,16 +485,16 @@ void CStudent::Damage(_uint iDamage)
 	pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
 
 	tD.iNum = ((iDamage / 10) % 10);
-	if (0 < tD.iNum)
+	if ((10 <= iDamage) && (0 <= tD.iNum))
 	{
-		tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation), XMVectorGetZ(tD.vTranslation) - 0.16f, 1.f);
+		tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation) + 0.05f, XMVectorGetZ(tD.vTranslation) - 0.16f, 1.f);
 		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
 	}
 
 	tD.iNum = iDamage / 100;
 	if (0 < tD.iNum)
 	{
-		tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation), XMVectorGetZ(tD.vTranslation) - 0.16f, 1.f);
+		tD.vTranslation = XMVectorSet(XMVectorGetX(tD.vTranslation), XMVectorGetY(tD.vTranslation) + 0.05f, XMVectorGetZ(tD.vTranslation) - 0.16f, 1.f);
 		pGameInstance->Add_GameObject(LEVEL_GAMEPLAY, TEXT("Layer_Effect"), TEXT("Prototype_GameObject_Damage"), &tD);
 	}
 }

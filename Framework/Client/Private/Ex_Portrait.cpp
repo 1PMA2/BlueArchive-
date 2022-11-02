@@ -198,6 +198,7 @@ void Ex_Portrait::ClickPortrait()
 	{
 		if (KEY(LBUTTON, TAP))
 		{
+			m_pTransformCom->Set_Scaled(_float3(m_fSizeX * 1.2f, m_fSizeY * 1.2f, 0.f));
 			pSensei->Set_Sequence(m_iSequence);
 			m_pStudent->Set_Portrait(true);
 			
@@ -206,6 +207,7 @@ void Ex_Portrait::ClickPortrait()
 
 	if (pSensei->Get_SenseiInfo().bEx) // 나머지
 	{
+		m_pTransformCom->Set_Scaled(_float3(m_fSizeX, m_fSizeY, 0.f));
 		if (m_pStudent != pSensei->Get_ExStudent())
 		{
 			if (m_iSequence > pSensei->Get_Sequence())
@@ -221,7 +223,9 @@ void Ex_Portrait::ClickPortrait()
 			m_iSequence += (m_iLive - 1) - m_iSequence; //눌린애
 	}
 	else
+	{
 		m_bOnce = true;
+	}
 
 
 	if (m_pStudent->Is_Retire())

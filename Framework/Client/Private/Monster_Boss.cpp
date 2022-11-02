@@ -45,7 +45,7 @@ HRESULT CMonster_Boss::Initialize(void * pArg)
 	m_pTransformCom->Set_State(CTransform::STATE_TRANSLATION, vTranslation);
 
 	m_tMonsterInfo.eMonster = BOSS;
-	m_tMonsterInfo.iAtk = 20;
+	m_tMonsterInfo.iAtk = 100;
 	m_tMonsterInfo.iHp = 5000;
 	m_tMonsterInfo.fRange = 6.f;
 

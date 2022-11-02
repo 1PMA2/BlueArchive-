@@ -110,7 +110,7 @@ protected:
 	_bool					m_bDamaged = false;
 	_bool					m_bRetire = false;
 	_bool					m_bCovered = false;
-
+	_float					m_fDamagedAcc = 0.f;
 
 	vector<CMonster*>	m_Monsters;
 	typedef vector<CMonster*> MONSTERS;

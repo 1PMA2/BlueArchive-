@@ -1,5 +1,6 @@
-﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
-  
-  compilation object save succeeded; see C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Bin\Shader_Effect.cso
+﻿  Monster.cpp
+  Student.cpp
+c:\users\slave\documents\github\bluearchive\framework\client\private\monster.cpp(86): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
+c:\users\slave\documents\github\bluearchive\framework\client\private\student.cpp(31): warning C4305: '인수': 'double'에서 'Engine::_float'(으)로 잘립니다.
   Client.vcxproj -> C:\Users\Slave\Documents\GitHub\BlueArchive\Framework\Client\Default\..\Bin\Client.exe
   Client.vcxproj -> ..\Bin\Client.pdb (Full PDB)
